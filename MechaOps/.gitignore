@@ -1,0 +1,13 @@
+Temp/UnityLockfile
+Library/
+Temp/
+.apk/
+.vs/
+.dll/
+*.csproj
+*.pidb
+*.unityproj
+*.DS_Store
+*.sln
+*.userprefs
+obj/Debug/
