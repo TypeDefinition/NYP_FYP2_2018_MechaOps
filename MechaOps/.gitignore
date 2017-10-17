@@ -11,3 +11,6 @@ Temp/
 *.sln
 *.userprefs
 obj/Debug/
+
+#Directories
+#MechaOps/ProjectSettings/*

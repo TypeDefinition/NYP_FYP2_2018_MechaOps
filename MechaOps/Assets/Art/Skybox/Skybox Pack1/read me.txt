@@ -1,0 +1,1 @@
+If skyboxes have visible seams, please set textures' Wrap Mode to "Clamp".
