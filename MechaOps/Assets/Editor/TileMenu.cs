@@ -15,8 +15,7 @@ public class TileMenu {
             GameObject tileSystem = (GameObject)Selection.activeObject;
             if (tileSystem.GetComponent<TileSystem>() == null) {
                 Debug.Log("Selected GameObject has no TileSystem. Unable to generate tiles.");
-            }
-            else {
+            } else {
                 tileSystem.GetComponent<TileSystem>().GenerateTiles();
                 //Undo.RecordObject(gridSystem.GetComponent<GridSystem>(), gridSystem.name + "Load Grid");
                 EditorUtility.SetDirty(tileSystem.GetComponent<TileSystem>());
@@ -34,8 +33,7 @@ public class TileMenu {
             GameObject tileSystem = (GameObject)Selection.activeObject;
             if (tileSystem.GetComponent<TileSystem>() == null) {
                 Debug.Log("Selected GameObject has no TileSystem. Unable to clear tiles.");
-            }
-            else {
+            } else {
                 tileSystem.GetComponent<TileSystem>().ClearTiles();
                 //Undo.RecordObject(gridSystem.GetComponent<GridSystem>(), gridSystem.name + "Load Grid");
                 EditorUtility.SetDirty(tileSystem.GetComponent<TileSystem>());

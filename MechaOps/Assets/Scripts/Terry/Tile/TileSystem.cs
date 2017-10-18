@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
+using System.Reflection;
 
 /*
 The tiles are hexagons.
@@ -9,38 +11,35 @@ Their sides are labels from 0 to 6, with 0 being the top, and increasing in the 
 
 using TileId = System.Int32;
 
+[System.Serializable]
 public class TileInfo {
-
-    // The tiles are hexagons.
-    public const int NUM_SIDES = 6; // Might as well hardcode this to 6. This whole file will break if the number changes.
 
     public TileId m_Id;
     public int m_Ring;
-    public TileInfo[] m_Neighbours;
     public Tile m_Tile;
+    public TileId[] m_Neighbours;
 
     public TileInfo(TileId _id, int _ring) {
         m_Id = _id;
         m_Ring = _ring;
-        m_Neighbours = new TileInfo[6];
         m_Tile = null;
-        for (int i = 0; i < NUM_SIDES; ++i) {
-            m_Neighbours[i] = null;
+        m_Neighbours = new TileId[6];
+        for (int i = 0; i < m_Neighbours.Length; ++i) {
+            m_Neighbours[i] = Tile.INVALID_ID;
         }
     }
 
     ~TileInfo() {}
 
-    public void SetNeighbour(TileInfo _neighbourTile, int _index) {
-        if (_neighbourTile == null) {
-            m_Neighbours[_index] = null;
-            m_Tile.m_Neighbours[_index] = null;
+    public void SetNeighbour(TileInfo _neighbour, uint _index) {
+        if (_neighbour == null) {
+            m_Neighbours[_index] = Tile.INVALID_ID;
+            m_Tile.SetNeighbour(null, _index);
         } else {
-            m_Neighbours[_index] = _neighbourTile;
-            m_Tile.m_Neighbours[_index] = _neighbourTile.m_Tile;
+            m_Neighbours[_index] = _neighbour.m_Id;
+            _neighbour.m_Neighbours[(_index + 3) % 6] = this.m_Id;
 
-            _neighbourTile.m_Neighbours[(_index + 3) % 6] = this;
-            _neighbourTile.m_Tile.m_Neighbours[(_index + 3) % 6] = this.m_Tile;
+            m_Tile.SetNeighbour(_neighbour.m_Tile, _index);
         }
     }
 
@@ -52,11 +51,8 @@ public class TileSystem : MonoBehaviour {
     [Range(0, 5000)]
     public int m_Radius = 20;
     public Tile m_DefaultTile;
-
-    //[SerializeField]
+    [SerializeField]
     private TileInfo[] m_TileInfos;
-
-    public int m_NumTiles = 0;
 
     public void ClearTiles() {
         if (m_TileInfos == null) {
@@ -74,24 +70,25 @@ public class TileSystem : MonoBehaviour {
         m_TileInfos = null;
     }
 
+    // This function calculates how many tiles we need to generate based on the radius.
     private int CalculateNumTiles(int _radius) {
         // _radius should never be < 0.
-        if (_radius < 0) {
-            Debug.Log("TileSystem.CalculateNumTiles - Invalid value for _radius!");
-            return 0;
-        }
+        Assert.IsFalse(_radius < 0, MethodBase.GetCurrentMethod().Name + " -Invalid value for _radius!");
 
         // We start from 1 because if the radius is 0, there is still 1 tile.
         // Becareful of the <= or < sign when looping.
         int result = 1;
         for (int i = 1; i <= _radius; ++i) {
-            result += i * TileInfo.NUM_SIDES;
+            result += i * 6;
         }
 
         return result;
     }
 	
     private TileId CalculateRingStartId(int _ring) {
+        // _ring should never be < 0.
+        Assert.IsFalse(_ring < 0, MethodBase.GetCurrentMethod().Name + " - Invalid value for _ring!");
+
         // Special case for 0.
         if (_ring == 0) {
             return 0;
@@ -101,16 +98,15 @@ public class TileSystem : MonoBehaviour {
         TileId result = 1;
         // Becareful of the <= or < sign when looping.
         for (int i = 1; i < _ring; ++i) {
-            result += i * TileInfo.NUM_SIDES;
+            result += i * 6;
         }
         
         return result;
     }
 
     private void GenerateRing(int _ring, Vector3 _centre) {
-        if (_ring < 0) {
-            Debug.Log("TileSystem.GenerateRing - Invalid value for _ring!");
-        }
+        // _ring should never be < 0.
+        Assert.IsFalse(_ring < 0, MethodBase.GetCurrentMethod().Name + " - Invalid value for _ring!");
 
         // The centre is a special case.
         if (_ring == 0) {
@@ -119,7 +115,6 @@ public class TileSystem : MonoBehaviour {
             Tile tile = GameObject.Instantiate(m_DefaultTile.gameObject).GetComponent<Tile>();
             tile.SetId(tileId);
             tile.transform.position = _centre;
-            tile.gameObject.name = m_DefaultTile.name = tileId.ToString();
 
             m_TileInfos[tileId] = new TileInfo(tileId, _ring);
             m_TileInfos[tileId].m_Tile = tile;
@@ -128,13 +123,12 @@ public class TileSystem : MonoBehaviour {
         }
 
         // Create all the tiles.
-        int numTiles = _ring * TileInfo.NUM_SIDES;
+        int numTiles = _ring * 6;
         TileId startId = CalculateRingStartId(_ring);
         for (int i = 0; i < numTiles; ++i) {
             TileId tileId = startId + i;
             Tile tile = GameObject.Instantiate(m_DefaultTile.gameObject).GetComponent<Tile>();
             tile.SetId(tileId);
-            tile.gameObject.name = m_DefaultTile.name = tileId.ToString();
 
             m_TileInfos[tileId] = new TileInfo(tileId, _ring);
             m_TileInfos[tileId].m_Tile = tile;
@@ -144,6 +138,7 @@ public class TileSystem : MonoBehaviour {
         // The perpendicular distance from the centre of the hexagon to one of the edges is 0.5*sin(60) units.
         // Therefore the distance between 2 opposite edges are sin(60) units.
         // I calculated this on paper beforehand.
+        // We assume that the tile's X and Z scale are equal.
         float offsetDist = Mathf.Sin(60.0f * Mathf.Deg2Rad) * m_DefaultTile.transform.localScale.x;
 
         // This is the position of the tile at the top.
@@ -160,7 +155,7 @@ public class TileSystem : MonoBehaviour {
         int currentOffsetSide = startOffsetSide;
         do {
             // We add 90.0f at the end as we want 0 degrees to start upwards rather than to the right.
-            float offsetAngle = ((float)currentOffsetSide / (float)TileInfo.NUM_SIDES * 360.0f + 90.0f) * Mathf.Deg2Rad;
+            float offsetAngle = ((float)currentOffsetSide/6.0f * 360.0f + 90.0f) * Mathf.Deg2Rad;
             Vector3 offsetDir = new Vector3(Mathf.Cos(offsetAngle), 0.0f, Mathf.Sin(offsetAngle)) * offsetDist;
             
             // The number of tiles per side = _ring.
@@ -173,16 +168,19 @@ public class TileSystem : MonoBehaviour {
                 currentPos += offsetDir;
             }
 
-            currentOffsetSide = (currentOffsetSide + 1) % TileInfo.NUM_SIDES;
+            currentOffsetSide = (currentOffsetSide + 1) % 6;
         } while (currentOffsetSide != startOffsetSide);
     }
 
     private int CalculateNumTileInRing(int _ring) {
+        // _ring should never be < 0.
+        Assert.IsFalse(_ring < 0, MethodBase.GetCurrentMethod().Name + " - Invalid value for _ring!");
+
         if (_ring == 0) {
             return 1;
         }
 
-        return _ring * 6;
+        return _ring*6;
     }
 
     private void SetTileNeighbours(int _radius) {
@@ -191,16 +189,17 @@ public class TileSystem : MonoBehaviour {
         }
 
         // Special Case for Tile 0.
-        for (int side = 0; side < TileInfo.NUM_SIDES; ++side) {
+        for (uint side = 0; side < 6; ++side) {
             m_TileInfos[0].SetNeighbour(m_TileInfos[side + 1], side);
         }
 
         // Fuck it, just hardcode this damn thing.
         for (int ring = 1; ring <= _radius; ++ring) {
+            // The number of tiles for each side = ring.
             TileId startId = CalculateRingStartId(ring);
             TileId currentId = startId;
 
-            // The number of tiles for each side = ring.
+            // Side 0 (Top)
             for (int j = 0; j < ring; ++j) {
                 m_TileInfos[currentId].SetNeighbour(GetTileInfo(currentId + ring * 6 + 0), 0);
                 m_TileInfos[currentId].SetNeighbour(GetTileInfo(currentId + ring * 6 + 1), 1);
@@ -213,6 +212,7 @@ public class TileSystem : MonoBehaviour {
                 ++currentId;
             }
 
+            // Side 1 (Top Left)
             for (int j = 0; j < ring; ++j) {
                 m_TileInfos[currentId].SetNeighbour(GetTileInfo(currentId + ring * 6 + 1), 1);
                 m_TileInfos[currentId].SetNeighbour(GetTileInfo(currentId + ring * 6 + 2), 2);
@@ -225,6 +225,7 @@ public class TileSystem : MonoBehaviour {
                 ++currentId;
             }
 
+            // Side 2 (Bottom Left)
             for (int j = 0; j < ring; ++j) {
                 m_TileInfos[currentId].SetNeighbour(GetTileInfo(currentId + ring * 6 + 2), 2);
                 m_TileInfos[currentId].SetNeighbour(GetTileInfo(currentId + ring * 6 + 3), 3);
@@ -237,6 +238,7 @@ public class TileSystem : MonoBehaviour {
                 ++currentId;
             }
 
+            // Side 2 (Bottom)
             for (int j = 0; j < ring; ++j) {
                 m_TileInfos[currentId].SetNeighbour(GetTileInfo(currentId + ring * 6 + 3), 3);
                 m_TileInfos[currentId].SetNeighbour(GetTileInfo(currentId + ring * 6 + 4), 4);
@@ -249,6 +251,7 @@ public class TileSystem : MonoBehaviour {
                 ++currentId;
             }
 
+            // Side 3 (Bottom Right)
             for (int j = 0; j < ring; ++j) {
                 m_TileInfos[currentId].SetNeighbour(GetTileInfo(currentId + ring * 6 + 4), 4);
                 m_TileInfos[currentId].SetNeighbour(GetTileInfo(currentId + ring * 6 + 5), 5);
@@ -261,6 +264,7 @@ public class TileSystem : MonoBehaviour {
                 ++currentId;
             }
 
+            // Side 4 (Top Right)
             for (int j = 0; j < ring; ++j) {
                 m_TileInfos[currentId].SetNeighbour(GetTileInfo(currentId + ring * 6 + 5), 5);
                 m_TileInfos[currentId].SetNeighbour(GetTileInfo(currentId + ring * 6 + 6), 0);
@@ -279,35 +283,33 @@ public class TileSystem : MonoBehaviour {
     }
 
     public bool HasTileInfo(TileId _id) {
-        if (_id < 0 || _id >= m_TileInfos.Length) {
-            return false;
-        }
-
-        return m_TileInfos[_id] != null;
+        return (_id < 0 || _id >= m_TileInfos.Length) ? false : (m_TileInfos[_id] != null);
     }
 
     public TileInfo GetTileInfo(TileId _id) {
-        if (HasTileInfo(_id)) {
-            return m_TileInfos[_id];
-        }
-
-        return null;
+        return HasTileInfo(_id) ? m_TileInfos[_id] : null;
     }
 
     public void GenerateTiles() {
+        // Delete existing tiles.
         ClearTiles();
 
+        // Make the array the necessary size.
         m_TileInfos = new TileInfo[CalculateNumTiles(m_Radius)];
 
+        // Create the tiles.
         for (int i = 0; i <= m_Radius; ++i) {
             GenerateRing(i, transform.position);
         }
 
-        for (int i = 0; i < m_TileInfos.Length; ++i) {
-            m_TileInfos[i].m_Tile.transform.SetParent(gameObject.transform);
-        }
-
+        // Calculate the adjacent tiles for each tiles.
         SetTileNeighbours(m_Radius);
+
+        for (int i = 0; i < m_TileInfos.Length; ++i) {
+            m_TileInfos[i].m_Tile.gameObject.name = m_DefaultTile.name + " " + i.ToString();
+            m_TileInfos[i].m_Tile.transform.SetParent(gameObject.transform);
+            m_TileInfos[i].m_Tile.LoadType();
+        }
     }
 
     public int GetNumTiles() {
@@ -315,11 +317,6 @@ public class TileSystem : MonoBehaviour {
     }
 
     private void OnDestroy() {
-        ClearTiles();
-    }
-
-    private void Awake() {
-        m_NumTiles = m_TileInfos.Length;
     }
 
 }
