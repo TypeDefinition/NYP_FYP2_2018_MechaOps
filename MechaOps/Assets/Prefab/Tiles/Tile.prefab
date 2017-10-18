@@ -9,30 +9,30 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1905394400577742}
+  m_RootGameObject: {fileID: 1097548891737592}
   m_IsPrefabParent: 1
---- !u!1 &1905394400577742
+--- !u!1 &1097548891737592
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4708115254171780}
-  - component: {fileID: 114089585884769652}
+  - component: {fileID: 4675978850685918}
+  - component: {fileID: 114079124963158328}
   m_Layer: 0
-  m_Name: TileSystem
+  m_Name: Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4708115254171780
+--- !u!4 &4675978850685918
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1905394400577742}
+  m_GameObject: {fileID: 1097548891737592}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,18 +40,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114089585884769652
+--- !u!114 &114079124963158328
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1905394400577742}
+  m_GameObject: {fileID: 1097548891737592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f509540172899444c99eba92c834074b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9919079dcc1e6ea48984877a51c955b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Radius: 5
-  m_DefaultTile: {fileID: 114079124963158328, guid: a37f54e50f9b4ab49a753fe6297a8ca7,
+  m_TileLibrary: {fileID: 114106312783724426, guid: c54ed89f153ad4947bd00fd8b0dbf07e,
     type: 2}
-  m_TileInfos: []
+  m_Id: -1
+  m_Neighbours:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_Attributes:
+    m_MovementCost: 0
+    m_ConcealmentPoints: 0
+    m_DisplayObject: {fileID: 0}
+  m_DisplayObject: {fileID: 0}
+  m_Type: 0
