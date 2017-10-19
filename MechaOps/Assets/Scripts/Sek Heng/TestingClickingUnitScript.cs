@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectingUnitLogic : MonoBehaviour {
+public class TestingClickingUnitScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 3daac790cb991474f952197fd4657a3a
-timeCreated: 1508425175
+guid: 50fa03da21c954e4eb9e91fa2f8c8e47
+timeCreated: 1508426922
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
-  - actionIconUI: {fileID: 21300000, guid: d9d27dc5793e3d249b4bc573d0309805, type: 3}
+  - actionIconUI: {fileID: 21300000, guid: 7fa2b56696c075f4eafe02c8cfd5df76, type: 3}
   - unitStatGO: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}

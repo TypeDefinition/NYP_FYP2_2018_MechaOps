@@ -10,8 +10,8 @@ using UnityEngine.UI;
 public abstract class UnitAction : MonoBehaviour
 {
     [Header("[ Values and References for abstract Unit Action ]")]
-    [Tooltip("The image UI for unit's action!")]
-    public Image actionIconUI;
+    [Tooltip("The sprite UI for unit's action!")]
+    public Sprite actionIconUI;
     [Tooltip("The action cost. For now it will always be 1 but this will be for expandability sake")]
     public int actionCost = 1;
     [Tooltip("The component name for debugging sake")]
