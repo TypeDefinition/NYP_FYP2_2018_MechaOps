@@ -53,7 +53,7 @@ public class GetPlayerInputUnit : MonoBehaviour {
                         // Then assign the sprite there!
                         allOfUnitUIIcon[num].gameObject.SetActive(true);
                         allOfUnitUIIcon[num].sprite = allPossibleUnitActions[num].actionIconUI;
-                        allOfUnitUIIcon[num].GetComponent<UnitActionUILogic>().m_unitiActionRef = allPossibleUnitActions[num];
+                        allOfUnitUIIcon[num].GetComponent<UnitActionUILogic>().m_unitActionRef = allPossibleUnitActions[num];
                     }
                     else
                     {
@@ -63,4 +63,15 @@ public class GetPlayerInputUnit : MonoBehaviour {
             }
         }
 	}
+
+    /// <summary>
+    /// A simple function which sets all current function 
+    /// </summary>
+    public void SetAllUnitActionIconInactive()
+    {
+        foreach (Image zeUIImg in allOfUnitUIIcon)
+        {
+            zeUIImg.gameObject.SetActive(false);
+        }
+    }
 }

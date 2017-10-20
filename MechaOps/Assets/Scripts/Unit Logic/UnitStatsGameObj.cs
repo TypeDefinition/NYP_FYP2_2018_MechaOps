@@ -74,6 +74,8 @@ public class UnitStatsJSON
     public int accuracyPt;
     [Tooltip("The Deployment cost of the unit")]
     public int deploymentCost;
+    [Tooltip("The Attack points of the unit")]
+    public int attackPt;
 }
 
 public class UnitStatsGameObj : MonoBehaviour {
