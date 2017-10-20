@@ -6,12 +6,19 @@ public class UnitAttackAction : UnitAction
 {
     public override void UseAction()
     {
-        throw new System.NotImplementedException();
+        
     }
 
     // Use this for initialization
     void Start () {
-		
-	}
-
+        // Just in case the action name is not included!
+        switch (unitActionName.Length)
+        {
+            case 0:
+                unitActionName = "Attack";
+                break;
+            default:
+                break;
+        }
+    }
 }

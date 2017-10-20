@@ -10,6 +10,14 @@ public class UnitGuardAction : UnitAction {
 
     // Use this for initialization
     void Start () {
-		
-	}
+        // Just in case the action name is not included!
+        switch (unitActionName.Length)
+        {
+            case 0:
+                unitActionName = "Guard";
+                break;
+            default:
+                break;
+        }
+    }
 }

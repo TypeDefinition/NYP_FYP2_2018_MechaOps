@@ -17,6 +17,11 @@ public class GetPlayerInputUnit : MonoBehaviour {
     [Tooltip("The number of image icons beneath it")]
     public List<Image> allOfUnitUIIcon;
 
+    static void activateGameObjWithTag(string objTagName)
+    {
+        GameObject.FindGameObjectWithTag(objTagName).SetActive(true);
+    }
+
     private void Start()
     {
         // if there is any image UI on standby, use that!
@@ -48,6 +53,7 @@ public class GetPlayerInputUnit : MonoBehaviour {
                         // Then assign the sprite there!
                         allOfUnitUIIcon[num].gameObject.SetActive(true);
                         allOfUnitUIIcon[num].sprite = allPossibleUnitActions[num].actionIconUI;
+                        allOfUnitUIIcon[num].GetComponent<UnitActionUILogic>().m_unitiActionRef = allPossibleUnitActions[num];
                     }
                     else
                     {

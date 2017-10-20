@@ -16,6 +16,14 @@ public class UnitWalkAction : UnitAction {
 
     // Use this for initialization
     void Start () {
-		
-	}
+        // Just in case the action name is not included!
+        switch (unitActionName.Length)
+        {
+            case 0:
+                unitActionName = "Walk";
+                break;
+            default:
+                break;
+        }
+    }
 }
