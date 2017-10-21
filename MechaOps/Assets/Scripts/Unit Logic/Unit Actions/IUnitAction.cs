@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 /// <summary>
 /// To ensure that no one will inheirit from it!
+/// Provide a base class for 
 /// </summary>
 [ExecuteInEditMode]
 public abstract class UnitAction : MonoBehaviour
@@ -14,7 +15,7 @@ public abstract class UnitAction : MonoBehaviour
     public Sprite actionIconUI;
     [Tooltip("The action cost. For now it will always be 1 but this will be for expandability sake")]
     public int actionCost = 1;
-    [Tooltip("The component name for debugging sake")]
+    [Tooltip("The component name which will be use to indicate what UI tag to be activated.")]
     public string unitActionName;
 
     [Header("[ Debugging purpose sake ]")]
@@ -31,5 +32,12 @@ public abstract class UnitAction : MonoBehaviour
             unitStatGO = GetComponent<UnitStatsGameObj>();
     }
 
-    public abstract void UseAction();
+    public virtual bool UseAction()
+    {
+        return false;
+    }
+    public virtual bool UseAction(GameObject other)
+    {
+        return false;
+    }
 }

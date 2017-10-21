@@ -6,8 +6,13 @@ using UnityEngine;
 /// Handles all of the UI for the gameplay!
 /// </summary>
 public class GameUI_Manager : MonoBehaviour {
+    [Header("The references needed")]
     [Tooltip("An array of all the UI manager that needs to hold and set active!")]
     public GameObject[] AllGameNeededUI;
+
+    [Header("Debugging purpose!")]
+    [Tooltip("The unit stats reference")]
+    public UnitStatsGameObj m_UnitStats;
 
     // The dictionary so that accessing gameobject will be faster
     protected Dictionary<string, GameObject> m_TagGO_dict = new Dictionary<string, GameObject>();

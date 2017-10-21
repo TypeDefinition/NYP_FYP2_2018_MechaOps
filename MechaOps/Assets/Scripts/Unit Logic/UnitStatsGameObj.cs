@@ -8,6 +8,8 @@ using UnityEngine;
 [System.Serializable]
 public class UnitStatsJSON
 {
+    [Tooltip("Name of the unit")]
+    public string nameOfUnit;
     [Tooltip("The view range of the unit")]
     public float viewRange;
     [Tooltip("Minimum attack range of the unit")]
@@ -43,6 +45,8 @@ public class UnitStatsJSON
         set
         {
             m_healthPt = Mathf.Clamp(value, 0, maxHealthPt);
+            if (m_healthPt == 0)
+                GameObject.Destroy(unitStatGO);
         }
         get
         {
@@ -76,8 +80,29 @@ public class UnitStatsJSON
     public int deploymentCost;
     [Tooltip("The Attack points of the unit")]
     public int attackPt;
+    [Tooltip("The reference to the class")]
+    public GameObject unitStatGO;
 }
 
 public class UnitStatsGameObj : MonoBehaviour {
+    [Header("The references of the ")]
+    [Tooltip("The unit stats information")]
     public UnitStatsJSON unitStatStuff = new UnitStatsJSON();
+
+    private void Start()
+    {
+        // Assign the gameobject name to the unit if there is none for the unit stat!
+        if (unitStatStuff.nameOfUnit == null)
+        {
+            unitStatStuff.nameOfUnit = name;
+        }
+        unitStatStuff.unitStatGO = gameObject;
+    }
+
+    private void OnDestroy()
+    {
+        ObserverSystemScript.Instance.storeVariableInEvent(tag + "IsDead", gameObject);
+        // Trigger an event when the unit died
+        ObserverSystemScript.Instance.TriggerEvent(tag + "IsDead");
+    }
 }

@@ -16,10 +16,25 @@ public class GetPlayerInputUnit : MonoBehaviour {
     public GameObject clickedPlayerUnitGO;
     [Tooltip("The number of image icons beneath it")]
     public List<Image> allOfUnitUIIcon;
+    [Tooltip("The flag to allow the player to select unit when in certain unit's action")]
+    public bool m_CanSelectUnit = true;
 
-    static void activateGameObjWithTag(string objTagName)
+    /// <summary>
+    /// Setting the bool flag of selection of unit to be true!
+    /// </summary>
+    void ToggleSelectionOfUnit()
     {
-        GameObject.FindGameObjectWithTag(objTagName).SetActive(true);
+        m_CanSelectUnit = !m_CanSelectUnit;
+    }
+
+    private void OnEnable()
+    {
+        ObserverSystemScript.Instance.SubscribeEvent("ToggleSelectingUnit", ToggleSelectionOfUnit);
+    }
+
+    private void OnDisable()
+    {
+        ObserverSystemScript.Instance.UnsubscribeEvent("ToggleSelectingUnit", ToggleSelectionOfUnit);
     }
 
     private void Start()
@@ -31,7 +46,7 @@ public class GetPlayerInputUnit : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         // Touch Input can also use GetMouseButton(0)!
-        if (Input.GetMouseButton(0))
+        if (m_CanSelectUnit && Input.GetMouseButton(0))
         {
             Ray clickedRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit clickedObj;
