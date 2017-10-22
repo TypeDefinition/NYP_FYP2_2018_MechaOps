@@ -12,7 +12,7 @@ public class GameUI_Manager : MonoBehaviour {
 
     [Header("Debugging purpose!")]
     [Tooltip("The unit stats reference")]
-    public UnitStatsGameObj m_UnitStats;
+    public UnitStats m_UnitStats;
 
     // The dictionary so that accessing gameobject will be faster
     protected Dictionary<string, GameObject> m_TagGO_dict = new Dictionary<string, GameObject>();

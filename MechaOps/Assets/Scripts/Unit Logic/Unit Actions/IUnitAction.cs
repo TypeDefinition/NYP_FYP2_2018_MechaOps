@@ -20,7 +20,7 @@ public abstract class UnitAction : MonoBehaviour
 
     [Header("[ Debugging purpose sake ]")]
     [SerializeField, Tooltip("The unit stats")]
-    protected UnitStatsGameObj unitStatGO;
+    protected UnitStats unitStatGO;
 
     /// <summary>
     /// Do note that if the Awake function is written anew at other children, U need to call this function or prepare to face annoying bug.
@@ -29,7 +29,7 @@ public abstract class UnitAction : MonoBehaviour
     {
         // If the unit stat is not linked, get the component of it!
         if (!unitStatGO)
-            unitStatGO = GetComponent<UnitStatsGameObj>();
+            unitStatGO = GetComponent<UnitStats>();
     }
 
     public virtual bool UseAction()

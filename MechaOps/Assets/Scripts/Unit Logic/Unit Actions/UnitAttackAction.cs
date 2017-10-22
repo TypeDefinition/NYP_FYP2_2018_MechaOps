@@ -11,7 +11,7 @@ public class UnitAttackAction : UnitAction
     /// <returns>Dont know yet!</returns>
     public override bool UseAction(GameObject other)
     {
-        UnitStatsGameObj otherUnitStatGO = other.GetComponent<UnitStatsGameObj>();
+        UnitStats otherUnitStatGO = other.GetComponent<UnitStats>();
         if (otherUnitStatGO)
         {
             // Just attack lol

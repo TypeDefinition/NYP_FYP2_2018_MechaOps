@@ -89,7 +89,7 @@ public class UnitStatsJSON
     
 }
 
-public class UnitStatsGameObj : MonoBehaviour {
+public class UnitStats : MonoBehaviour {
 
     [Header("The references of the ")]
     [Tooltip("The unit stats information")]
