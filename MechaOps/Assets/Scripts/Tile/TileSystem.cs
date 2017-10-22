@@ -58,7 +58,7 @@ public class TileSystem : MonoBehaviour {
     [HideInInspector, SerializeField] private TileDictionaryPair[] m_TileArray = new TileDictionaryPair[0];
 
     public int m_Radius = 10;
-    public float m_DistanceBetweenTiles = 0.5f;
+    public float m_DistanceBetweenTiles = 1.0f;
 
     public TileLibrary GetTileLibrary() {
         return m_TileLibrary;
@@ -105,10 +105,13 @@ public class TileSystem : MonoBehaviour {
                 tile.InitId(tileId);
                 tile.SetTileSystem(this);
                 tile.gameObject.name = "Tile (" + tileId.GetX().ToString() + ", " + tileId.GetY().ToString() + ", " + tileId.GetZ().ToString() + ")";
-                Vector3 xOffset = new Vector3(1.0f, 0.0f, 0.0f) * tileId.GetX() * m_DistanceBetweenTiles;
-                Vector3 yOffset = new Vector3(Mathf.Cos(120.0f * Mathf.Deg2Rad), 0.0f, Mathf.Sin(120.0f * Mathf.Deg2Rad)) * tileId.GetY() * m_DistanceBetweenTiles;
-                Vector3 zOffset = new Vector3(Mathf.Cos(240.0f * Mathf.Deg2Rad), 0.0f, Mathf.Sin(240.0f * Mathf.Deg2Rad)) * tileId.GetZ() * m_DistanceBetweenTiles;
-                tile.transform.position = xOffset + yOffset + zOffset + transform.position;
+                // The x, y and z here are the axis of the grid, not the world.
+                Vector3 xOffset = new Vector3(1.0f, 0.0f, 0.0f) * tileId.GetX();
+                Vector3 yOffset = new Vector3(Mathf.Cos(120.0f * Mathf.Deg2Rad), 0.0f, Mathf.Sin(120.0f * Mathf.Deg2Rad)) * tileId.GetY();
+                Vector3 zOffset = new Vector3(Mathf.Cos(240.0f * Mathf.Deg2Rad), 0.0f, Mathf.Sin(240.0f * Mathf.Deg2Rad)) * tileId.GetZ();
+                // The reason we multiply by 0.5 here is because the Ids of adjacemt tiles are 2 apart in a cube coordinate.
+                // So if we do not multiple 0.5, the tiles will be twice as far apart as they should be.
+                tile.transform.position = transform.position + (xOffset + yOffset + zOffset) * m_DistanceBetweenTiles * 0.5f;
                 tile.transform.SetParent(transform);
 
                 tile.LoadType();
@@ -141,7 +144,7 @@ public class TileSystem : MonoBehaviour {
         LoadDictionary();
 
         if (m_TileDictionary.Count == 0) {
-            Debug.Log(MethodBase.GetCurrentMethod().Name + " - No tiles to clear!");
+            //Debug.Log(MethodBase.GetCurrentMethod().Name + " - No tiles to clear!");
             return;
         }
 
@@ -176,7 +179,29 @@ public class TileSystem : MonoBehaviour {
         return result.ToArray();
     }
     
+    public void LoadTileTypes()
+    {
+        LoadDictionary();
+
+        if (m_TileDictionary.Count == 0)
+        {
+            Debug.Log(MethodBase.GetCurrentMethod().Name + " - No tiles to load!");
+            return;
+        }
+
+        foreach (TileInfo value in m_TileDictionary.Values)
+        {
+            if (value != null && value.GetTile() != null)
+            {
+                value.GetTile().LoadType();
+            }
+        }
+
+    }
+
     public int GetNumTiles() {
+        LoadDictionary();
+
         return m_TileDictionary.Count;
     }
 

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 64704237146431210}
   - component: {fileID: 114831931147255818}
   m_Layer: 0
-  m_Name: Tile_Normal
+  m_Name: Tile_Swirl
   m_TagString: TileDisplay
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -56,7 +56,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f5b61c09f7f3d4b4db8980b742120af3, type: 2}
+  - {fileID: 2100000, guid: cca6c6e5301b6494a94298fc28d53af4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

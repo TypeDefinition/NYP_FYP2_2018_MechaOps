@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114006940085896276}
   m_Layer: 0
   m_Name: TileSystem
-  m_TagString: Untagged
+  m_TagString: TileSystem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -56,5 +56,5 @@ MonoBehaviour:
   m_DefaultTile: {fileID: 114553182710685338, guid: 63cb481f6a73e3640961951b73627b88,
     type: 2}
   m_TileArray: []
-  m_Radius: 2
-  m_DistanceBetweenTiles: 0.5
+  m_Radius: 8
+  m_DistanceBetweenTiles: 1

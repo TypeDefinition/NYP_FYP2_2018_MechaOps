@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 64561046443384814}
   m_Layer: 0
   m_Name: Tile
-  m_TagString: Untagged
+  m_TagString: TileBase
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Attributes:
-    m_MovementCost: 0
+    m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_DisplayObject: {fileID: 0}
   m_DisplayObject: {fileID: 0}

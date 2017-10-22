@@ -11,13 +11,27 @@ public class TileSystemEditor : Editor {
         DrawDefaultInspector();
 
         TileSystem tileSystem = (TileSystem)target;
+
         if (GUILayout.Button("Generate Tiles")) {
-            tileSystem.GenerateTiles();
-            EditorUtility.SetDirty(tileSystem);
+            if (tileSystem.GetNumTiles() == 0 || EditorUtility.DisplayDialog("TileSystem - Generate Tiles", "Are you sure you want to generate new tiles? This will clear all current tiles in this TileSystem.", "Yes", "No"))
+            {
+                tileSystem.GenerateTiles();
+                EditorUtility.SetDirty(tileSystem);
+            }
         }
 
         if (GUILayout.Button("Clear Tiles")) {
-            tileSystem.ClearTiles();
+            if (EditorUtility.DisplayDialog("TileSystem - Clear Tiles", "Are you sure you want to clear all tiles in this TileSystem?", "Yes", "No"))
+            {
+                tileSystem.ClearTiles();
+                EditorUtility.SetDirty(tileSystem);
+            }
+            
+        }
+
+        if (GUILayout.Button("Load Tile Types"))
+        {
+            tileSystem.LoadTileTypes();
             EditorUtility.SetDirty(tileSystem);
         }
     }

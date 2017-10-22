@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hazard : MonoBehaviour {
+public class Hazard_Fire : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -13,5 +13,4 @@ public class Hazard : MonoBehaviour {
 	void Update () {
 		
 	}
-
 }
