@@ -85,8 +85,7 @@ public class TileId {
 public class Tile : MonoBehaviour {
 
     private TileId m_Id = null;
-
-    private TileLibrary m_TileLibrary = null;
+    private TileSystem m_TileSystem = null;
     [SerializeField] private TileAttributes m_Attributes;
     [SerializeField] private TileDisplay m_DisplayObject;
     [SerializeField] private Hazard m_Hazard = null;
@@ -98,10 +97,12 @@ public class Tile : MonoBehaviour {
         m_Id = _id;
     }
 
-    public void InitLibrary(TileLibrary _library) {
-        Assert.IsTrue(m_TileLibrary == null, MethodBase.GetCurrentMethod().Name + " - InitLibrary can only be called once per Tile!");
+    public void SetTileSystem(TileSystem _tileSystem) {
+        m_TileSystem = _tileSystem;
+    }
 
-        m_TileLibrary = _library;
+    public TileSystem GetTileSystem() {
+        return m_TileSystem;
     }
 
     public TileId GetId() {
@@ -113,7 +114,11 @@ public class Tile : MonoBehaviour {
     }
 
     public void LoadType() {
-        m_Attributes = m_TileLibrary.GetAttribute(m_Type);
+        if (m_TileSystem == null) {
+            return;
+        }
+
+        m_Attributes = m_TileSystem.GetTileLibrary().GetAttribute(m_Type);
 
         if (m_DisplayObject != null) {
             GameObject.DestroyImmediate(m_DisplayObject);

@@ -51,14 +51,22 @@ public class TileDictionaryPair {
 [DisallowMultipleComponent]
 public class TileSystem : MonoBehaviour {
 
-    public TileLibrary m_TileLibrary = null;
-    public Tile m_DefaultTile = null;
+    [SerializeField] private TileLibrary m_TileLibrary = null;
+    [SerializeField] private Tile m_DefaultTile = null;
 
     private Dictionary<TileId, TileInfo> m_TileDictionary = new Dictionary<TileId, TileInfo>();
     [HideInInspector, SerializeField] private TileDictionaryPair[] m_TileArray = new TileDictionaryPair[0];
 
     public int m_Radius = 10;
     public float m_DistanceBetweenTiles = 0.5f;
+
+    public TileLibrary GetTileLibrary() {
+        return m_TileLibrary;
+    }
+
+    public Tile GetDefaultTile() {
+        return m_DefaultTile;
+    }
 
     public TileInfo GetTileInfo(TileId _id) {
         return m_TileDictionary.ContainsKey(_id) ? (TileInfo)m_TileDictionary[_id] : null;
@@ -88,14 +96,14 @@ public class TileSystem : MonoBehaviour {
         */
 
         // The above can be further optimised.
-        // I understood this code by drawing out the heaxgon grid on a piece of paper and seeing the order
+        // I understood this code by drawing out the hexagon grid on a piece of paper and seeing the order
         // which the loop generated the hexagons and compared the TileId(s).
         for (int x = -m_Radius; x <= m_Radius; ++x) {
             for (int y = Mathf.Max(-m_Radius, -m_Radius-x); y <= Mathf.Min(m_Radius, m_Radius-x); ++y) {
                 TileId tileId = new TileId(x, y);
                 Tile tile = GameObject.Instantiate(m_DefaultTile).GetComponent<Tile>();
                 tile.InitId(tileId);
-                tile.InitLibrary(this.m_TileLibrary);
+                tile.SetTileSystem(this);
                 tile.gameObject.name = "Tile (" + tileId.GetX().ToString() + ", " + tileId.GetY().ToString() + ", " + tileId.GetZ().ToString() + ")";
                 Vector3 xOffset = new Vector3(1.0f, 0.0f, 0.0f) * tileId.GetX() * m_DistanceBetweenTiles;
                 Vector3 yOffset = new Vector3(Mathf.Cos(120.0f * Mathf.Deg2Rad), 0.0f, Mathf.Sin(120.0f * Mathf.Deg2Rad)) * tileId.GetY() * m_DistanceBetweenTiles;
