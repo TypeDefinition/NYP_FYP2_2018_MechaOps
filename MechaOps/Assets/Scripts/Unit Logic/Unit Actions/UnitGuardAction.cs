@@ -5,17 +5,17 @@ using UnityEngine;
 public class UnitGuardAction : UnitAction {
     // Use this for initialization
     void Start () {
-        if (unitActionName == null)
+        if (m_UnitActionName == null)
         {
-            unitActionName = "Guard";
+            m_UnitActionName = "Guard";
         }
         else
         {
             // Just in case the action name is not included!
-            switch (unitActionName.Length)
+            switch (m_UnitActionName.Length)
             {
                 case 0:
-                    unitActionName = "Guard";
+                    m_UnitActionName = "Guard";
                     break;
                 default:
                     break;

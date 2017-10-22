@@ -111,5 +111,4 @@ public class UnitStats : MonoBehaviour {
         // Trigger an event when the unit died
         ObserverSystemScript.Instance.TriggerEvent(tag + "IsDead");
     }
-
 }

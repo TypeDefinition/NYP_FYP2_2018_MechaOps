@@ -8,12 +8,13 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 
 /// <summary>
-/// For now, this SQLite will only work for this game!
-/// Because it only satisfy my needs
-/// There can only be 1 database at any point of time!
-/// This will only be compatible with PC and Android
+/// There can only be 1 database at any point of time to avoid confusion!
+/// This will only be compatible with PC, Android.
+/// Need testing with IOS version!
 /// </summary>
 public class MySQLiteHandler : MonoBehaviour {
+    [Tooltip("The DataBase filename")]
+    public string m_DataBaseName = "AllData";
     private string connectionDB;
     private IDbConnection dbconn;
     private IDataReader reader;
@@ -22,7 +23,7 @@ public class MySQLiteHandler : MonoBehaviour {
     // The Single instance that will exists throughout the game!
     private static MySQLiteHandler cantTouchThiz;
 
-    public static MySQLiteHandler instance
+    public static MySQLiteHandler Instance
     {
         get
         {
@@ -69,7 +70,7 @@ public class MySQLiteHandler : MonoBehaviour {
         actualDBFilePath = Application.dataPath + "/StreamingAssets/AllData.db";
         connectionDB = "URI=file:" + actualDBFilePath;
 #endif
-        dbconn = (IDbConnection)new SqliteConnection(connectionDB);
+        dbconn = new SqliteConnection(connectionDB);
         //dbconn.Open(); //Open connection to the database.
     }
 	

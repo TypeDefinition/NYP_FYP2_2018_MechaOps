@@ -8,17 +8,17 @@ using UnityEngine;
 public class UnitWalkAction : UnitAction {
     // Use this for initialization
     void Start () {
-        if (unitActionName == null)
+        if (m_UnitActionName == null)
         {
-            unitActionName = "Walk";
+            m_UnitActionName = "Walk";
         }
         else
         {
             // Just in case the action name is not included!
-            switch (unitActionName.Length)
+            switch (m_UnitActionName.Length)
             {
                 case 0:
-                    unitActionName = "Walk";
+                    m_UnitActionName = "Walk";
                     break;
                 default:
                     break;

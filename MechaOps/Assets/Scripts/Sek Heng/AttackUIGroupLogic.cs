@@ -14,7 +14,7 @@ public class AttackUIGroupLogic : MonoBehaviour {
     [Tooltip("The unit attack action reference. Player's Unit attack action is to be expected")]
     public UnitAction m_UnitAttackActRef;
     [Tooltip("The unit it is targetting. Usually should be the gameobject with the enemy tag!")]
-    public GameObject otherTarget;
+    public GameObject m_OtherTarget;
     [Tooltip("Index of the target in the array. Usually there should be an array of enemy unit that the unit can see and iterate through that.")]
     public int m_IndexOfTarget;
 
@@ -44,7 +44,7 @@ public class AttackUIGroupLogic : MonoBehaviour {
     /// </summary>
     public void DoTheAttackAction()
     {
-        m_UnitAttackActRef.UseAction(otherTarget);
+        m_UnitAttackActRef.UseAction(m_OtherTarget);
         gameObject.SetActive(false);
     }
 
@@ -73,6 +73,6 @@ public class AttackUIGroupLogic : MonoBehaviour {
     protected void KeepTrackOfGameObj(GameObject trackedTarget)
     {
         m_TargetUIref.transform.position = new Vector3(trackedTarget.transform.position.x, trackedTarget.transform.position.y + trackedTarget.transform.localScale.y * 0.5f, trackedTarget.transform.position.z);
-        otherTarget = trackedTarget;
+        m_OtherTarget = trackedTarget;
     }
 }

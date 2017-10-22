@@ -175,6 +175,12 @@ public class ObserverSystemScript : MonoBehaviour {
         return storedVariable;
     }
 
+    /// <summary>
+    /// Help to convert the StoredVariable into the type they want
+    /// </summary>
+    /// <typeparam name="T">The Type they want</typeparam>
+    /// <param name="_eventName">The eventName</param>
+    /// <returns>Return the converted type variable if successful</returns>
     public T GetStoredEventVariable<T>(string _eventName)
     {
         return (T)GetStoredEventVariable(_eventName);

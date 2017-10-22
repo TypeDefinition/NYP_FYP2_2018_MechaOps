@@ -9,13 +9,13 @@ using UnityEngine.UI;
 public class GetPlayerInputUnit : MonoBehaviour {
     [Header("Values and objects that need to linked!")]
     [Tooltip("The holder for the unit's actions!")]
-    public Image unitActionUIIconGO;
+    public Image m_UnitActionUIIconGO;
 
     [Header("Debugging purposes!")]
     [Tooltip("The player clicked on the unit")]
-    public GameObject clickedPlayerUnitGO;
+    public GameObject m_ClickedPlayerUnitGO;
     [Tooltip("The number of image icons beneath it")]
-    public List<Image> allOfUnitUIIcon;
+    public List<Image> m_AllOfUnitUIIcon;
     [Tooltip("The flag to allow the player to select unit when in certain unit's action")]
     public bool m_CanSelectUnit = true;
 
@@ -40,7 +40,7 @@ public class GetPlayerInputUnit : MonoBehaviour {
     private void Start()
     {
         // if there is any image UI on standby, use that!
-        allOfUnitUIIcon = new List<Image>(GetComponentsInChildren<Image>());
+        m_AllOfUnitUIIcon = new List<Image>(GetComponentsInChildren<Image>());
     }
 
     // Update is called once per frame
@@ -54,25 +54,25 @@ public class GetPlayerInputUnit : MonoBehaviour {
             {
                 UnitAction[] allPossibleUnitActions = clickedObj.collider.GetComponentsInChildren<UnitAction>();
                 // Instantiate more unit actions if there is not enough actions!
-                while (allOfUnitUIIcon.Count < allPossibleUnitActions.Length)
+                while (m_AllOfUnitUIIcon.Count < allPossibleUnitActions.Length)
                 {
-                    Image instantiatedUnitIcon = Instantiate(unitActionUIIconGO, transform);
+                    Image instantiatedUnitIcon = Instantiate(m_UnitActionUIIconGO, transform);
                     instantiatedUnitIcon.gameObject.SetActive(true);
-                    allOfUnitUIIcon.Add(instantiatedUnitIcon);
+                    m_AllOfUnitUIIcon.Add(instantiatedUnitIcon);
                 }
                 // Once clicked on the unit, transform the unit's sprite into actual icon!
-                for (int num = 0; num < allOfUnitUIIcon.Count; ++num)
+                for (int num = 0; num < m_AllOfUnitUIIcon.Count; ++num)
                 {
                     if (num < allPossibleUnitActions.Length)
                     {
                         // Then assign the sprite there!
-                        allOfUnitUIIcon[num].gameObject.SetActive(true);
-                        allOfUnitUIIcon[num].sprite = allPossibleUnitActions[num].actionIconUI;
-                        allOfUnitUIIcon[num].GetComponent<UnitActionUILogic>().m_unitActionRef = allPossibleUnitActions[num];
+                        m_AllOfUnitUIIcon[num].gameObject.SetActive(true);
+                        m_AllOfUnitUIIcon[num].sprite = allPossibleUnitActions[num].m_ActionIconUI;
+                        m_AllOfUnitUIIcon[num].GetComponent<UnitActionUILogic>().m_unitActionRef = allPossibleUnitActions[num];
                     }
                     else
                     {
-                        allOfUnitUIIcon[num].gameObject.SetActive(false);
+                        m_AllOfUnitUIIcon[num].gameObject.SetActive(false);
                     }
                 }
             }
@@ -84,7 +84,7 @@ public class GetPlayerInputUnit : MonoBehaviour {
     /// </summary>
     public void SetAllUnitActionIconInactive()
     {
-        foreach (Image zeUIImg in allOfUnitUIIcon)
+        foreach (Image zeUIImg in m_AllOfUnitUIIcon)
         {
             zeUIImg.gameObject.SetActive(false);
         }

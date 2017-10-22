@@ -15,7 +15,7 @@ public class UnitAttackAction : UnitAction
         if (otherUnitStatGO)
         {
             // Just attack lol
-            otherUnitStatGO.m_UnitStatsJSON.HealthPt -= unitStatGO.m_UnitStatsJSON.m_AttackPt;
+            otherUnitStatGO.m_UnitStatsJSON.HealthPt -= m_UnitStatGO.m_UnitStatsJSON.m_AttackPt;
             return true;
         }
         return false;
@@ -23,17 +23,17 @@ public class UnitAttackAction : UnitAction
 
     // Use this for initialization
     void Start () {
-        if (unitActionName == null)
+        if (m_UnitActionName == null)
         {
-            unitActionName = "Attack";
+            m_UnitActionName = "Attack";
         }
         else
         {
             // Just in case the action name is not included!
-            switch (unitActionName.Length)
+            switch (m_UnitActionName.Length)
             {
                 case 0:
-                    unitActionName = "Attack";
+                    m_UnitActionName = "Attack";
                     break;
                 default:
                     break;
