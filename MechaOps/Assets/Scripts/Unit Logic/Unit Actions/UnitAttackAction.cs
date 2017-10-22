@@ -15,7 +15,7 @@ public class UnitAttackAction : UnitAction
         if (otherUnitStatGO)
         {
             // Just attack lol
-            otherUnitStatGO.unitStatStuff.healthPt -= unitStatGO.unitStatStuff.attackPt;
+            otherUnitStatGO.m_UnitStatsJSON.HealthPt -= unitStatGO.m_UnitStatsJSON.m_AttackPt;
             return true;
         }
         return false;

@@ -8,48 +8,50 @@ using UnityEngine.Events;
 /// Do always remember to unsubscribe at "Void OnDisable()" whenever you subscribe from another object!
 /// </summary>
 public class ObserverSystemScript : MonoBehaviour {
+
     // This is the subscriber's base
     private Dictionary<string, UnityEvent> m_AllSubscribers = new Dictionary<string, UnityEvent>();
     // This is where all the message will be at! Basically, <MessageName, stored variable>
     private Dictionary<string, object> m_NameStoredMessage = new Dictionary<string, object>();
     // This is to remove the event and variable name!
-    private string ToRemoveTheEventVariable;
+    private string m_ToRemoveTheEventVariable;
     // in order to keep track of updating the coroutine
-    Coroutine removeVariableCoroutine;
+    Coroutine m_RemoveVariableCoroutine;
+    // The variable to store it!
+    private static ObserverSystemScript m_Instance;
 
     public static ObserverSystemScript Instance
     {
         get
         {
-            if (instance == null)
+            if (m_Instance == null)
             {
                 // If it is yet to be awaken, awake it!
                 FindObjectOfType<ObserverSystemScript>().Awake();
             }
-            return instance;
+            return m_Instance;
         }
     }
-    // The variable to store it!
-    private static ObserverSystemScript instance;
+    
 
     void Awake()
     {
         // Making sure there is only 1 instance of this script!
-        if (instance != null && instance != this)
+        if (m_Instance != null && m_Instance != this)
             Destroy(this);
         else
         {
             DontDestroyOnLoad(this);
-            instance = this;
+            m_Instance = this;
         }
     }
 
     private void OnDisable()
     {
-        if (removeVariableCoroutine != null)
+        if (m_RemoveVariableCoroutine != null)
         {
-            StopCoroutine(removeVariableCoroutine);
-            removeVariableCoroutine = null;
+            StopCoroutine(m_RemoveVariableCoroutine);
+            m_RemoveVariableCoroutine = null;
         }
     }
 
@@ -66,54 +68,54 @@ public class ObserverSystemScript : MonoBehaviour {
     /// The coroutine to remove the event variable for the next frame.
     /// </summary>
     /// <returns></returns>
-    protected IEnumerator removeVariableRoutine()
+    protected IEnumerator RemoveVariableRoutine()
     {
         yield return null;
-        m_NameStoredMessage.Remove(ToRemoveTheEventVariable);
-        ToRemoveTheEventVariable = null;
-        removeVariableCoroutine = null;
+        m_NameStoredMessage.Remove(m_ToRemoveTheEventVariable);
+        m_ToRemoveTheEventVariable = null;
+        m_RemoveVariableCoroutine = null;
         yield break;
     }
 
     /// <summary>
     /// To Subscribe to an event!
     /// </summary>
-    /// <param name="eventName"> The event name </param>
-    /// <param name="listenerFunction"> The function to be passed in. Make sure the return type is void! </param>
-    public void SubscribeEvent(string eventName, UnityAction listenerFunction)
+    /// <param name="_eventName"> The event name </param>
+    /// <param name="_listenerFunction"> The function to be passed in. Make sure the return type is void! </param>
+    public void SubscribeEvent(string _eventName, UnityAction _listenerFunction)
     {
         UnityEvent theEvent;
         // If can't find the event name, we create another one!
-        if (!m_AllSubscribers.TryGetValue(eventName, out theEvent))
+        if (!m_AllSubscribers.TryGetValue(_eventName, out theEvent))
         {
             theEvent = new UnityEvent();
-            m_AllSubscribers.Add(eventName, theEvent);
+            m_AllSubscribers.Add(_eventName, theEvent);
         }
-        theEvent.AddListener(listenerFunction);
+        theEvent.AddListener(_listenerFunction);
     }
 
     /// <summary>
     /// To unsubscribe from an event!
     /// </summary>
-    /// <param name="eventName"> The event name to be unsubscribed from! </param>
-    /// <param name="listenerFunction"> The Function to be removed from that event! </param>
-    public void UnsubscribeEvent(string eventName, UnityAction listenerFunction)
+    /// <param name="_eventName"> The event name to be unsubscribed from! </param>
+    /// <param name="_listenerFunction"> The Function to be removed from that event! </param>
+    public void UnsubscribeEvent(string _eventName, UnityAction _listenerFunction)
     {
         UnityEvent theEvent;
-        if (m_AllSubscribers.TryGetValue(eventName, out theEvent))
+        if (m_AllSubscribers.TryGetValue(_eventName, out theEvent))
         {
-            theEvent.RemoveListener(listenerFunction);
+            theEvent.RemoveListener(_listenerFunction);
         }
     }
 
     /// <summary>
     /// The event to be triggered!
     /// </summary>
-    /// <param name="eventName"> The event name to trigger! </param>
-    public void TriggerEvent(string eventName)
+    /// <param name="_eventName"> The event name to trigger! </param>
+    public void TriggerEvent(string _eventName)
     {
         UnityEvent theEvent;
-        if (m_AllSubscribers.TryGetValue(eventName, out theEvent))
+        if (m_AllSubscribers.TryGetValue(_eventName, out theEvent))
         {
             theEvent.Invoke();
         }
@@ -122,25 +124,25 @@ public class ObserverSystemScript : MonoBehaviour {
     /// <summary>
     /// Remove the variable from the event!
     /// </summary>
-    /// <param name="eventName">The event's name</param>
-    public void removeStoredVariable(string eventName)
+    /// <param name="_eventName">The event's name</param>
+    public void RemoveStoredVariable(string _eventName)
     {
-        m_NameStoredMessage.Remove(eventName);
+        m_NameStoredMessage.Remove(_eventName);
     }
 
     /// <summary>
     /// To store a variable in the event so that everyone can receive it easily!
     /// </summary>
-    /// <param name="eventName"></param>
-    /// <param name="storedVari"></param>
+    /// <param name="_eventName"></param>
+    /// <param name="_storedVari"></param>
     /// <returns></returns>
-    public bool storeVariableInEvent(string eventName, object storedVari)
+    public bool StoreVariableInEvent(string _eventName, object _storedVari)
     {
-        if (m_NameStoredMessage.ContainsKey(eventName))
+        if (m_NameStoredMessage.ContainsKey(_eventName))
         {
-            m_NameStoredMessage.Remove(eventName);
+            m_NameStoredMessage.Remove(_eventName);
         }
-        m_NameStoredMessage.Add(eventName, storedVari);
+        m_NameStoredMessage.Add(_eventName, _storedVari);
         return true;
     }
 
@@ -148,14 +150,14 @@ public class ObserverSystemScript : MonoBehaviour {
     /// This is to ensure that all variable can receive the stored variable from the event before it is removed in the next frame.
     /// Dont be selfish!
     /// </summary>
-    /// <param name="eventName">The event name to remove the stored variable!</param>
+    /// <param name="_eventName">The event name to remove the stored variable!</param>
     /// <returns></returns>
-    public bool removeTheEventVariableNextFrame(string eventName)
+    public bool RemoveTheEventVariableNextFrame(string _eventName)
     {
-        if (ToRemoveTheEventVariable != null)
+        if (m_ToRemoveTheEventVariable != null)
         {
-            ToRemoveTheEventVariable = eventName;
-            removeVariableCoroutine = StartCoroutine(removeVariableRoutine());
+            m_ToRemoveTheEventVariable = _eventName;
+            m_RemoveVariableCoroutine = StartCoroutine(RemoveVariableRoutine());
             return true;
         }
         return false;
@@ -164,18 +166,18 @@ public class ObserverSystemScript : MonoBehaviour {
     /// <summary>
     /// To access the stored variable!
     /// </summary>
-    /// <param name="eventName">The event name</param>
+    /// <param name="_eventName">The event name</param>
     /// <returns>returns null if no variable can be found!</returns>
-    public object GetStoredEventVariable(string eventName)
+    public object GetStoredEventVariable(string _eventName)
     {
         object storedVariable;
-        m_NameStoredMessage.TryGetValue(eventName, out storedVariable);
+        m_NameStoredMessage.TryGetValue(_eventName, out storedVariable);
         return storedVariable;
     }
 
-    public T GetStoredEventVariable<T>(string eventName)
+    public T GetStoredEventVariable<T>(string _eventName)
     {
-        return (T)GetStoredEventVariable(eventName);
+        return (T)GetStoredEventVariable(_eventName);
     }
 
     /// <summary>
@@ -185,4 +187,5 @@ public class ObserverSystemScript : MonoBehaviour {
     {
         m_NameStoredMessage.Clear();
     }
+
 }

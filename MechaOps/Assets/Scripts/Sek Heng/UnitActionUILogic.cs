@@ -16,7 +16,7 @@ public class UnitActionUILogic : MonoBehaviour {
     public void ActivateGameObjWithTag()
     {
         // Too lazy to use a system, use ObserverSystem to pass message for now! TODO: Think of a better solution than this.
-        ObserverSystemScript.Instance.storeVariableInEvent(m_unitActionRef.unitActionName, m_unitActionRef);
+        ObserverSystemScript.Instance.StoreVariableInEvent(m_unitActionRef.unitActionName, m_unitActionRef);
         GameUI_Manager.Instance.SetTheGameObjTagActive(m_unitActionRef.unitActionName);
     }
 }

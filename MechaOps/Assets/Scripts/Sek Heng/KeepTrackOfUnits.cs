@@ -55,7 +55,7 @@ public class KeepTrackOfUnits : MonoBehaviour {
     {
         GameObject theMessageGO = ObserverSystemScript.Instance.GetStoredEventVariable<GameObject>("EnemyUnitIsDead");
         m_AllEnemyUnitGO.Remove(theMessageGO);
-        ObserverSystemScript.Instance.removeTheEventVariableNextFrame("EnemyUnitIsDead");
+        ObserverSystemScript.Instance.RemoveTheEventVariableNextFrame("EnemyUnitIsDead");
     }
 
     /// <summary>
@@ -66,6 +66,6 @@ public class KeepTrackOfUnits : MonoBehaviour {
     {
         GameObject theMessageGO = ObserverSystemScript.Instance.GetStoredEventVariable<GameObject>("PlayerIsDead");
         m_AllPlayerUnitGO.Remove(theMessageGO);
-        ObserverSystemScript.Instance.removeTheEventVariableNextFrame("PlayerIsDead");
+        ObserverSystemScript.Instance.RemoveTheEventVariableNextFrame("PlayerIsDead");
     }
 }

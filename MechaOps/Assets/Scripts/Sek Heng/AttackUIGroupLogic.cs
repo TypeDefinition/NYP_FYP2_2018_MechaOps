@@ -22,7 +22,7 @@ public class AttackUIGroupLogic : MonoBehaviour {
     {
         // TODO: Use another system aside from ObserverSystem for better optimization. maybe.
         m_UnitAttackActRef = ObserverSystemScript.Instance.GetStoredEventVariable<UnitAction>(tag);
-        ObserverSystemScript.Instance.removeTheEventVariableNextFrame(tag);
+        ObserverSystemScript.Instance.RemoveTheEventVariableNextFrame(tag);
         m_IndexOfTarget = 0;
         // Need to set the references to be active
         m_TargetUIref.SetActive(true);
