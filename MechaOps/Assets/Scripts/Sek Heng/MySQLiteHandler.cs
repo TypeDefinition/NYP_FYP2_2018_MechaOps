@@ -13,8 +13,27 @@ using UnityEngine.UI;
 /// Need testing with IOS version!
 /// </summary>
 public class MySQLiteHandler : MonoBehaviour {
-    [Tooltip("The DataBase filename")]
-    public string m_DataBaseName = "AllData";
+    [SerializeField, Tooltip("The DataBase filename")]
+    private string m_DataBaseName = "AllData";
+
+    /// <summary>
+    /// The only way to change the database! However shouldn't be used way too often! If this is needed to be changed, the filepath must be stated explicitly.
+    /// ".db" will be added behind for you.
+    /// </summary>
+    public string DataBaseName
+    {
+        set
+        {
+            m_DataBaseName = value;
+            string zeConnectionDBStr = "URI=file:" + m_DataBaseName + ".db";
+            dbconn = new SqliteConnection(zeConnectionDBStr);
+        }
+        get
+        {
+            return m_DataBaseName;
+        }
+    }
+
     private string connectionDB;
     private IDbConnection dbconn;
     private IDataReader reader;
@@ -44,34 +63,18 @@ public class MySQLiteHandler : MonoBehaviour {
             hasInitialized = true;
         else
             return;
-        //Debug.Log(String.Format("INSERT INTO PlaceSequence(PlayerDamage,Name) VALUES(\"{0}\",\"{1}\")", 100, String.Format("YOLO")));
         string actualDBFilePath;
 #if UNITY_ANDROID
         //Debug.Log(Application.persistentDataPath);
-        actualDBFilePath = Application.persistentDataPath + "/AllData.db";
+        actualDBFilePath = Application.streamingAssetsPath + "/" + m_DataBaseName + ".db";
         connectionDB = "URI=file:" + actualDBFilePath;
         Debug.Log("Android filepath: " + actualDBFilePath);
-        if (!File.Exists(actualDBFilePath))
-        {
-            //int countLoop = 0;
-            WWW loadDB = new WWW("jar:file://" + Application.dataPath + "!/assets/AllData.db");
-            // Need to make sure it is not stuck forever!
-            while (!loadDB.isDone
-                //&& countLoop < 10000
-                )
-            {
-                //countLoop++;
-            }
-            // then save to Application.persistentDataPath
-            File.WriteAllBytes(actualDBFilePath, loadDB.bytes);
-        }
         //Debug.Log("Initializing the DB connection in Android");
 #else
-        actualDBFilePath = Application.dataPath + "/StreamingAssets/AllData.db";
+        actualDBFilePath = Application.streamingAssetsPath + "/" + m_DataBaseName + ".db";
         connectionDB = "URI=file:" + actualDBFilePath;
 #endif
         dbconn = new SqliteConnection(connectionDB);
-        //dbconn.Open(); //Open connection to the database.
     }
 	
     /// <summary>
@@ -89,7 +92,7 @@ public class MySQLiteHandler : MonoBehaviour {
     /// <returns>
     /// returns an integer value if found. return 0 if nothing is found!
     /// </returns>
-    public int getInteger(string zeTableName, string zeCol, string[] zeCondition = null)
+    public int GetInteger(string zeTableName, string zeCol, string[] zeCondition = null)
     {
         dbconn.Open();
         int zeVal = 0;
@@ -129,8 +132,8 @@ public class MySQLiteHandler : MonoBehaviour {
     /// <param name="zeCondition">
     /// the specific condition to get the table! Default to be null
     /// </param>
-    /// <returns></returns>
-    public float getFloat(string zeTableName, string zeCol, string[] zeCondition = null)
+    /// <returns>Returns the float variable that u want</returns>
+    public float GetFloat(string zeTableName, string zeCol, string[] zeCondition = null)
     {
         //Debug.Log(zeTableName + "," + zeCol);
         float zeVal = 0;
@@ -179,7 +182,7 @@ public class MySQLiteHandler : MonoBehaviour {
     /// For every coloumn in the row, it will be separated with a comma
     /// return the whole string array
     /// </returns>
-    public string[] getAllStringFromTable(string zeTable, int numOfField, List<object> allTheField, List<string> zeConditions = null)
+    public string[] GetAllStringFromTable(string zeTable, int numOfField, List<object> allTheField, List<string> zeConditions = null)
     {
         //Text zeDebugginText = GameObject.Find("DEBUGGINGTEXTUI").GetComponent<Text>();
 
@@ -277,7 +280,7 @@ public class MySQLiteHandler : MonoBehaviour {
     /// The Condition. Null as default
     /// All the conditions will be treated as AND operator!
     /// </param>
-    public void saveSpecificResult(string zeTable, string zeCol, string zeVal, List<string> zeCondition = null)
+    public void SaveSpecificResult(string zeTable, string zeCol, string zeVal, List<string> zeCondition = null)
     {
         dbconn.Open();
         dbcmd = dbconn.CreateCommand();
@@ -307,56 +310,47 @@ public class MySQLiteHandler : MonoBehaviour {
     /// <summary>
     /// This will help to convert string usable in SQL
     /// </summary>
-    /// <param name="zeStr"></param>
+    /// <param name="zeStr">The string variable that you wish to pass in</param>
     /// <returns></returns>
-    public string helpToConvertToSQLString(string zeStr)
+    public string HelpToConvertToSQLString(string zeStr)
     {
         return String.Format("\"{0}\"", zeStr);
     }
 
-    //void OnDestroy()
-    //{
-    //    dbconn.Close();
-    //    dbconn = null;
-    //}
+    /// <summary>
+    /// Helps to create the table at the SQLite database.
+    /// You will need the SQLite query knowledge in order to do this so that it will not be very slow checking through variable type and stuff
+    /// </summary>
+    /// <param name="_TableName">The name of the table you want to give</param>
+    /// <param name="_ColumnNameWithType">The name with type which must be made in query! So basically for every string inside, u will need to put in "COLOUMN_NAME DATA_TYPE". The space in the middle is very important!</param>
+    public void CreateTableName(string _TableName, string [] _ColumnNameWithTypeInQuery)
+    {
+        dbconn.Open();
+        dbcmd = dbconn.CreateCommand();
+        string sqlQuery = "CREATE TABLE IF NOT EXISTS " + _TableName + "(";
+        for (int num = 0; num < _ColumnNameWithTypeInQuery.Length; ++num)
+        {
+            sqlQuery += _ColumnNameWithTypeInQuery[num];
+            if (num < _ColumnNameWithTypeInQuery.Length - 1)
+            {
+                sqlQuery += ",";
+            }
+            else
+                break;
+        }
+        sqlQuery += ")";
+        dbcmd.CommandText = sqlQuery;
+        dbcmd.ExecuteScalar();
+        dbcmd.Dispose();
+        dbconn.Close();
+    }
+
+    void OnDestroy()
+    {
+        if (dbcmd != null)
+        {
+            dbconn.Close();
+            dbconn = null;
+        }
+    }
 }
-
-//void SaveToDataBase()
-//{
-//    IDbConnection dbconn;
-//    dbconn = (IDbConnection)new SqliteConnection(connectionString);
-//    dbconn.Open(); //Open connection to the database.
-//    using (IDbCommand dbcmd = dbconn.CreateCommand())
-//    {
-//        //Debug.Log("Saving to SQL Table");
-//        // This is basically inserting the Coloumn where there is PlayerDamage and Name.
-//        string sqlQuery = String.Format("INSERT INTO PlaceSequence(PlayerDamage,Name) VALUES(\"{0}\",\"{1}\")", 100, String.Format("YOLO"));
-
-//        //string sqlQuery = String.Format("INSERT INTO PlaceSequence(Value,PlayerDamage) VALUES(\"{0}\",\"{1}\")", 20, 100);
-//        dbcmd.CommandText = sqlQuery;
-//        //Debug.Log("Trying to Save");
-//        dbcmd.ExecuteScalar();
-//        //Debug.Log("Successful Saving");
-//        dbcmd.Dispose();
-//        //dbcmd = null;
-//    }
-//    dbconn.Close();
-//    dbconn = null;
-//}
-
-//void TryDeleteToDataBase()
-//{
-//    IDbConnection dbconn;
-//    dbconn = (IDbConnection)new SqliteConnection(connectionString);
-//    dbconn.Open(); //Open connection to the database.
-//    using (IDbCommand dbcmd = dbconn.CreateCommand())
-//    {
-//        string sqlQuery = String.Format("DELETE FROM PlaceSequence WHERE Value = \"{0}\"", 2);
-//        dbcmd.CommandText = sqlQuery;
-//        dbcmd.ExecuteScalar();
-//        dbcmd.Dispose();
-//    }
-//    dbconn.Close();
-//    dbconn = null;
-//}
-

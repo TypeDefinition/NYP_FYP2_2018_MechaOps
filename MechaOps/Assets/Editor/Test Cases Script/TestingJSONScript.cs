@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 public class TestingJSONScript {
     [Test]
-    public void testJSONScriptOfUnitStat()
+    public void TestJSONScriptOfUnitStat()
     {
         UnitStatsJSON unitStuff = new UnitStatsJSON();
         string unitJSON = JsonUtility.ToJson(unitStuff);
