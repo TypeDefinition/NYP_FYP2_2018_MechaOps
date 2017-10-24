@@ -9,8 +9,11 @@ using UnityEngine.Events;
 /// </summary>
 public class ObserverSystemScript : MonoBehaviour {
 
-    // This is the subscriber's base
-    private Dictionary<string, UnityEvent> m_AllSubscribers = new Dictionary<string, UnityEvent>();
+    /// <summary>
+    /// This is the subscriber's base.
+    /// I trust that no one will mess with this!
+    /// </summary>
+    public Dictionary<string, UnityEvent> m_AllSubscribers = new Dictionary<string, UnityEvent>();
     // This is where all the message will be at! Basically, <MessageName, stored variable>
     private Dictionary<string, object> m_NameStoredMessage = new Dictionary<string, object>();
     // This is to remove the event and variable name!

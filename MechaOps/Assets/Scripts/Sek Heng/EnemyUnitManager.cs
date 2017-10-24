@@ -9,18 +9,26 @@ public class EnemyUnitManager : MonoBehaviour {
     /// </summary>
     Coroutine m_UpdateOfManager;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    private void OnEnable()
+    {
+        ObserverSystemScript.Instance.SubscribeEvent("PlayerAnnihilated", StopUpdate);
+        ObserverSystemScript.Instance.SubscribeEvent("EnemyAnnihilated", StopUpdate);
+    }
+
+    private void OnDisable()
+    {
+        ObserverSystemScript.Instance.UnsubscribeEvent("PlayerAnnihilated", StopUpdate);
+        ObserverSystemScript.Instance.UnsubscribeEvent("EnemyAnnihilated", StopUpdate);
+    }
 
     /// <summary>
     /// The coroutine to update the manager!
     /// </summary>
     /// <returns></returns>
-    IEnumerator IterateThroughEnemyUpdate()
+    public IEnumerator IterateThroughEnemyUpdate()
     {
         m_UpdateOfManager = null;
+        ObserverSystemScript.Instance.TriggerEvent("TurnEnded");
         yield break;
     }
 

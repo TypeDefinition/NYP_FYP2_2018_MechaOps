@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerUnitManager : MonoBehaviour {
+    [SerializeField, Tooltip("The array of how many units have yet to make their turn. Meant for debugging purpose")]
+    protected List<GameObject> m_UnitsYetToMakeMoves;
 
     /// <summary>
     /// The update of this manager. So that it can be controlled anytime
@@ -21,14 +23,16 @@ public class PlayerUnitManager : MonoBehaviour {
         ObserverSystemScript.Instance.UnsubscribeEvent("EnemyAnnihilated", StopUpdate);
     }
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-
-    IEnumerator BeginUpdateOfPlayerUnits()
+    public IEnumerator BeginUpdateOfPlayerUnits()
     {
+        // Get a shallow copy of the list of all available units!
+        m_UnitsYetToMakeMoves = new List<GameObject>(KeepTrackOfUnits.Instance.m_AllPlayerUnitGO);
+        while (m_UnitsYetToMakeMoves.Count > 0)
+        {
+            yield return null;
+        }
         m_UpdateOfManager = null;
+        ObserverSystemScript.Instance.TriggerEvent("TurnEnded");
         yield break;
     }
 	
