@@ -530,22 +530,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UnitStatsJSON:
-    m_NameOfUnit: 
+    m_Name: 
+    m_MaxHealthPoints: 0
+    m_CurrentHealthPoints: 0
+    m_MaxActionPoints: 0
+    m_CurrentActionPoints: 0
+    m_DeploymentCost: 0
     m_ViewRange: 0
     m_MinAttackRange: 0
     m_MaxAttackRange: 0
-    m_MaxMovementPoints: 0
-    m_MaxHealthPt: 0
-    m_HealthPt: 0
-    m_MaxActionPt: 0
-    m_ActionPtLeft: 0
-    m_ConcealmentPt: 0
-    m_EvasionPt: 0
-    m_AccuracyPt: 0
-    m_DeploymentCost: 0
-    m_AttackPt: 0
-    m_UnitStatGO: {fileID: 0}
-    m_MovementPtLeft: 0
+    m_Speed: 0
+    m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
+    m_AccuracyPoints: 0
+  m_TileAttributeOverrides: []
 --- !u!4 &236892920
 Transform:
   m_ObjectHideFlags: 0
@@ -964,11 +962,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 366704015}
@@ -1174,11 +1172,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -1551,11 +1549,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -1838,11 +1836,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -2114,22 +2112,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UnitStatsJSON:
-    m_NameOfUnit: 
+    m_Name: 
+    m_MaxHealthPoints: 0
+    m_CurrentHealthPoints: 0
+    m_MaxActionPoints: 0
+    m_CurrentActionPoints: 0
+    m_DeploymentCost: 0
     m_ViewRange: 0
     m_MinAttackRange: 0
     m_MaxAttackRange: 0
-    m_MaxMovementPoints: 0
-    m_MaxHealthPt: 0
-    m_HealthPt: 0
-    m_MaxActionPt: 0
-    m_ActionPtLeft: 0
-    m_ConcealmentPt: 0
-    m_EvasionPt: 0
-    m_AccuracyPt: 0
-    m_DeploymentCost: 0
-    m_AttackPt: 0
-    m_UnitStatGO: {fileID: 0}
-    m_MovementPtLeft: 0
+    m_Speed: 0
+    m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
+    m_AccuracyPoints: 0
+  m_TileAttributeOverrides: []
 --- !u!4 &833823139
 Transform:
   m_ObjectHideFlags: 0
@@ -3271,11 +3267,11 @@ MonoBehaviour:
     lineCount: 2
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -3846,22 +3842,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UnitStatsJSON:
-    m_NameOfUnit: 
+    m_Name: 
+    m_MaxHealthPoints: 0
+    m_CurrentHealthPoints: 0
+    m_MaxActionPoints: 0
+    m_CurrentActionPoints: 0
+    m_DeploymentCost: 0
     m_ViewRange: 0
     m_MinAttackRange: 0
     m_MaxAttackRange: 0
-    m_MaxMovementPoints: 0
-    m_MaxHealthPt: 0
-    m_HealthPt: 0
-    m_MaxActionPt: 0
-    m_ActionPtLeft: 0
-    m_ConcealmentPt: 0
-    m_EvasionPt: 0
-    m_AccuracyPt: 0
-    m_DeploymentCost: 0
-    m_AttackPt: 0
-    m_UnitStatGO: {fileID: 0}
-    m_MovementPtLeft: 0
+    m_Speed: 0
+    m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
+    m_AccuracyPoints: 0
+  m_TileAttributeOverrides: []
 --- !u!23 &1519159118
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4685,11 +4679,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -4842,7 +4836,7 @@ MonoBehaviour:
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
