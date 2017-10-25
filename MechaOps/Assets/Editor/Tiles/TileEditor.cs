@@ -5,13 +5,16 @@ using UnityEditor;
 
 [CustomEditor(typeof(Tile))]
 [CanEditMultipleObjects]
-public class TileEditor : Editor {
+public class TileEditor : Editor
+{
 
-    public override void OnInspectorGUI() {
+    public override void OnInspectorGUI()
+    {
         DrawDefaultInspector();
 
         Tile tile = (Tile)target;
-        if (GUILayout.Button("Load Type")) {
+        if (GUILayout.Button("Load Type"))
+        {
             tile.LoadType();
             EditorUtility.SetDirty(tile);
         }

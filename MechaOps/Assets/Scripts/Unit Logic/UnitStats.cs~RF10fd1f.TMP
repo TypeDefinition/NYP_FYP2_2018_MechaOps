@@ -1,0 +1,65 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+/// <summary>
+/// Created with JSON formatter in mind!
+/// </summary>
+[System.Serializable]
+public class UnitStatsJSON
+{
+    [Tooltip("The name of the unit")]
+    public string m_Name;
+    [Tooltip("The view range of the unit")]
+    private int m_ViewRange;
+    [Tooltip("Minimum attack range of the unit")]
+    private int m_MinAttackRange;
+    [Tooltip("Maximum attack range of the unit")]
+    private int m_MaxAttackRange;
+    [Tooltip("The maximum movement point that the unit has left!")]
+    private int m_MaxMovementPoints;
+    [Tooltip("The max healthpoint of the unit")]
+    private int m_MaxHealthPoints;
+    [SerializeField, Tooltip("The health points of the unit. It is serialized to debug from inspector.")]
+    private int m_HealthPoints;
+    [Tooltip("Max action points of the unit")]
+    private int m_MaxActionPoints;
+    [SerializeField, Tooltip("The action points left for the unit.")]
+    private int m_ActionPointsLeft;
+    [Tooltip("The concealment points of the unit")]
+    private int m_ConcealmentPoints;
+    [Tooltip("The evasion points of the unit")]
+    private int m_EvasionPoints;
+    [Tooltip("The accuracy points of the unit")]
+    private int m_AccuracyPoints;
+    [Tooltip("The Deployment cost of the unit")]
+    private int m_DeploymentCost;
+    [Tooltip("The Attack points of the unit")]
+    private int m_AttackPoints;
+    
+    
+    
+}
+
+public class UnitStats : MonoBehaviour {
+
+    [Header("The references of the ")]
+    [Tooltip("The unit stats information")]
+    public UnitStatsJSON m_UnitStatsJSON = new UnitStatsJSON();
+
+    private void Start()
+    {
+        // Assign the gameobject name to the unit if there is none for the unit stat!
+        if (m_UnitStatsJSON.m_Name == null)
+        {
+            m_UnitStatsJSON.m_Name = name;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        ObserverSystemScript.Instance.StoreVariableInEvent(tag + "IsDead", gameObject);
+        // Trigger an event when the unit died
+        ObserverSystemScript.Instance.TriggerEvent(tag + "IsDead");
+    }
+}

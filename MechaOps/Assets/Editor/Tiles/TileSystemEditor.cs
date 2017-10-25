@@ -29,6 +29,15 @@ public class TileSystemEditor : Editor {
             
         }
 
+        if (GUILayout.Button("Randomize Tile Types"))
+        {
+            if (EditorUtility.DisplayDialog("TileSystem - Randomize Tile Types", "Are you sure you want to randomize tile types? This will replace all existing tiles.", "Yes", "No"))
+            {
+                tileSystem.RandomizeTileTypes();
+                EditorUtility.SetDirty(tileSystem);
+            }
+        }
+
         if (GUILayout.Button("Load Tile Types"))
         {
             tileSystem.LoadTileTypes();
