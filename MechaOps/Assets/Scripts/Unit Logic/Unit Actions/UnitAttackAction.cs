@@ -15,7 +15,8 @@ public class UnitAttackAction : UnitAction
         if (otherUnitStatGO)
         {
             // Just attack lol
-            otherUnitStatGO.m_UnitStatsJSON.HealthPt -= m_UnitStatGO.m_UnitStatsJSON.m_AttackPt;
+            // Damage should be tied to action, not unit.
+            // otherUnitStatGO.m_UnitStatsJSON.HealthPt -= m_UnitStatGO.m_UnitStatsJSON.m_AttackPt;
             ObserverSystemScript.Instance.StoreVariableInEvent("UnitMakeMove", gameObject);
             ObserverSystemScript.Instance.TriggerEvent("UnitMakeMove");
             return true;
