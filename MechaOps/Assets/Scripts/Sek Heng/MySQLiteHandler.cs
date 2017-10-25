@@ -307,7 +307,8 @@ public class MySQLiteHandler : MonoBehaviour {
         dbconn.Close();
     }
     /// <summary>
-    /// This will help to convert string usable in SQL
+    /// This will help to convert string usable in SQLite
+    /// as the C# string is just not compatible and will not be recorded.
     /// </summary>
     /// <param name="zeStr">The string variable that you wish to pass in</param>
     /// <returns></returns>
@@ -343,6 +344,8 @@ public class MySQLiteHandler : MonoBehaviour {
         dbcmd.Dispose();
         dbconn.Close();
     }
+
+
 
     void OnDestroy()
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// To ensure that no one will inheirit from it!
+/// To ensure that no one will inherit from it!
 /// Provide a base class for 
 /// </summary>
 [ExecuteInEditMode]
@@ -21,6 +21,10 @@ public abstract class UnitAction : MonoBehaviour
     [Header("[ Debugging purpose sake ]")]
     [SerializeField, Tooltip("The unit stats")]
     protected UnitStats m_UnitStatGO;
+    /// <summary>
+    /// Most if not all, unit actions will need animation and some sort of delay
+    /// </summary>
+    protected Coroutine m_UpdateOfUnitAction;
 
     /// <summary>
     /// Do note that if the Awake function is written anew at other children, U need to call this function or prepare to face annoying bug.
@@ -36,8 +40,27 @@ public abstract class UnitAction : MonoBehaviour
     {
         return false;
     }
-    public virtual bool UseAction(GameObject other)
+    public virtual bool UseAction(GameObject _other)
     {
         return false;
+    }
+
+    /// <summary>
+    /// The actual update of the unit action
+    /// </summary>
+    /// <returns></returns>
+    public virtual IEnumerator UpdateActionRoutine()
+    {
+        m_UpdateOfUnitAction = null;
+        yield break;
+    }
+
+    /// <summary>
+    /// The function to start the coroutine of updating.
+    /// It is virtual just in case it needs to be overriden.
+    /// </summary>
+    public virtual void StartUpdating()
+    {
+        m_UpdateOfUnitAction = StartCoroutine(UpdateActionRoutine());
     }
 }

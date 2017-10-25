@@ -7,11 +7,11 @@ public class UnitAttackAction : UnitAction
     /// <summary>
     /// Optimization will have to come later as this will need to be expanded upon!
     /// </summary>
-    /// <param name="other">The opposing target</param>
+    /// <param name="_other">The opposing target</param>
     /// <returns>Dont know yet!</returns>
-    public override bool UseAction(GameObject other)
+    public override bool UseAction(GameObject _other)
     {
-        UnitStats otherUnitStatGO = other.GetComponent<UnitStats>();
+        UnitStats otherUnitStatGO = _other.GetComponent<UnitStats>();
         if (otherUnitStatGO)
         {
             // Just attack lol
