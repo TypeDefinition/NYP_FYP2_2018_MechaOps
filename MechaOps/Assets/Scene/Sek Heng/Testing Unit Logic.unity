@@ -658,7 +658,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2125375365}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1542,7 +1542,7 @@ Prefab:
     - target: {fileID: 224374391434238092, guid: b6f55b4b93d48eb448b16e21e160b186,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -91.5
       objectReference: {fileID: 0}
     - target: {fileID: 224374391434238092, guid: b6f55b4b93d48eb448b16e21e160b186,
         type: 2}
@@ -2492,7 +2492,7 @@ Prefab:
     - target: {fileID: 224374391434238092, guid: b6f55b4b93d48eb448b16e21e160b186,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -91.5
       objectReference: {fileID: 0}
     - target: {fileID: 224374391434238092, guid: b6f55b4b93d48eb448b16e21e160b186,
         type: 2}
@@ -3295,7 +3295,7 @@ Prefab:
     - target: {fileID: 224374391434238092, guid: b6f55b4b93d48eb448b16e21e160b186,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -91.5
       objectReference: {fileID: 0}
     - target: {fileID: 224374391434238092, guid: b6f55b4b93d48eb448b16e21e160b186,
         type: 2}
@@ -3472,7 +3472,7 @@ Prefab:
     - target: {fileID: 224374391434238092, guid: b6f55b4b93d48eb448b16e21e160b186,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -91.5
       objectReference: {fileID: 0}
     - target: {fileID: 224374391434238092, guid: b6f55b4b93d48eb448b16e21e160b186,
         type: 2}
@@ -3965,7 +3965,7 @@ Prefab:
     - target: {fileID: 224374391434238092, guid: b6f55b4b93d48eb448b16e21e160b186,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -91.5
       objectReference: {fileID: 0}
     - target: {fileID: 224374391434238092, guid: b6f55b4b93d48eb448b16e21e160b186,
         type: 2}
@@ -4190,7 +4190,7 @@ Prefab:
     - target: {fileID: 224374391434238092, guid: b6f55b4b93d48eb448b16e21e160b186,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -91.5
       objectReference: {fileID: 0}
     - target: {fileID: 224374391434238092, guid: b6f55b4b93d48eb448b16e21e160b186,
         type: 2}
@@ -4422,7 +4422,7 @@ Prefab:
     - target: {fileID: 224374391434238092, guid: b6f55b4b93d48eb448b16e21e160b186,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -91.5
       objectReference: {fileID: 0}
     - target: {fileID: 224374391434238092, guid: b6f55b4b93d48eb448b16e21e160b186,
         type: 2}
