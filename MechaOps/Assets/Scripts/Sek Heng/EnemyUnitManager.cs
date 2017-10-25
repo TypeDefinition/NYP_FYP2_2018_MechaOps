@@ -27,8 +27,10 @@ public class EnemyUnitManager : MonoBehaviour {
     /// <returns></returns>
     public IEnumerator IterateThroughEnemyUpdate()
     {
+        yield return new WaitForSeconds(3f);
         m_UpdateOfManager = null;
         ObserverSystemScript.Instance.TriggerEvent("TurnEnded");
+        print("Finish Enemy Manager turn");
         yield break;
     }
 

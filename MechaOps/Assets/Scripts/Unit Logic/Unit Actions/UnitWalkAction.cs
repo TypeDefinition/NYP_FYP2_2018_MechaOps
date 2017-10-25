@@ -6,6 +6,13 @@ using UnityEngine;
 /// A simper unit action for walking!
 /// </summary>
 public class UnitWalkAction : UnitAction {
+    public override bool UseAction()
+    {
+        ObserverSystemScript.Instance.StoreVariableInEvent("UnitMakeMove", gameObject);
+        ObserverSystemScript.Instance.TriggerEvent("UnitMakeMove");
+        return true;
+    }
+
     // Use this for initialization
     void Start () {
         if (m_UnitActionName == null)

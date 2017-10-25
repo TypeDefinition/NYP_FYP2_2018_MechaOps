@@ -16,6 +16,8 @@ public class UnitAttackAction : UnitAction
         {
             // Just attack lol
             otherUnitStatGO.m_UnitStatsJSON.HealthPt -= m_UnitStatGO.m_UnitStatsJSON.m_AttackPt;
+            ObserverSystemScript.Instance.StoreVariableInEvent("UnitMakeMove", gameObject);
+            ObserverSystemScript.Instance.TriggerEvent("UnitMakeMove");
             return true;
         }
         return false;

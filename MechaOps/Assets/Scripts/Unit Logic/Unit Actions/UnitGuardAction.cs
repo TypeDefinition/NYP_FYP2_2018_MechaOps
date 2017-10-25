@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UnitGuardAction : UnitAction {
+    public override bool UseAction()
+    {
+        ObserverSystemScript.Instance.StoreVariableInEvent("UnitMakeMove", gameObject);
+        ObserverSystemScript.Instance.TriggerEvent("UnitMakeMove");
+        return true;
+    }
+
     // Use this for initialization
     void Start () {
         if (m_UnitActionName == null)
