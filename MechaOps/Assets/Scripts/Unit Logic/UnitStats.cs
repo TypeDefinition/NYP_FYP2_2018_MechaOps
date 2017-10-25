@@ -2,91 +2,151 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif // UNITY_EDITOR
+
 /// <summary>
 /// Created with JSON formatter in mind!
 /// </summary>
 [System.Serializable]
 public class UnitStatsJSON
 {
-    [Tooltip("Name of the unit")]
-    public string m_NameOfUnit;
-    [Tooltip("The view range of the unit")]
-    public float m_ViewRange;
-    [Tooltip("Minimum attack range of the unit")]
-    public float m_MinAttackRange;
-    [Tooltip("Maximum attack range of the unit")]
-    public float m_MaxAttackRange;
-    [Tooltip("The maximum movement point that the unit has left!")]
-    public int m_MaxMovementPoints;
-    [Tooltip("The max healthpoint of the unit")]
-    public int m_MaxHealthPt;
-    [SerializeField, Tooltip("The health points of the unit. It is serialized to debug from inspector.")]
-    protected int m_HealthPt;
-    [Tooltip("Max action points of the unit")]
-    public int m_MaxActionPt;
+    [SerializeField, Tooltip("The name of the unit")]
+    public string m_Name;
+
+    [SerializeField, Tooltip("The max healthpoint of the unit")]
+    private int m_MaxHealthPoints;
+    [SerializeField, Tooltip("The health points of the unit.")]
+    private int m_CurrentHealthPoints;
+
+    [SerializeField, Tooltip("Max action points of the unit")]
+    private int m_MaxActionPoints;
     [SerializeField, Tooltip("The action points left for the unit.")]
-    public int m_ActionPtLeft;
-    [Tooltip("The concealment points of the unit")]
-    public int m_ConcealmentPt;
-    [Tooltip("The evasion points of the unit")]
-    public int m_EvasionPt;
-    [Tooltip("The accuracy points of the unit")]
-    public int m_AccuracyPt;
-    [Tooltip("The Deployment cost of the unit")]
-    public int m_DeploymentCost;
-    [Tooltip("The Attack points of the unit")]
-    public int m_AttackPt;
-    [Tooltip("The reference to the class")]
-    public GameObject m_UnitStatGO;
+    private int m_CurrentActionPoints;
 
-    // Debug
-    [SerializeField, Tooltip("To check how many movement points left and debugging purpose!")]
-    protected int m_MovementPtLeft;
+    [SerializeField, Tooltip("The deployment cost of the unit")]
+    private int m_DeploymentCost;
 
-    /// <summary>
-    /// The special getter and setter for movement points left
-    /// </summary>
-    public int MovementPtLeft {
-        set {
-            // Minimum value is 0 unless u want to do something special
-            m_MovementPtLeft = Mathf.Clamp(value, 0, m_MaxMovementPoints);
-        }
-        get {
-            return m_MovementPtLeft;
-        }
-    }
+    [SerializeField, Tooltip("The view range of the unit")]
+    private int m_ViewRange;
+    [SerializeField, Tooltip("Minimum attack range of the unit")]
+    private int m_MinAttackRange;
+    [SerializeField, Tooltip("Maximum attack range of the unit")]
+    private int m_MaxAttackRange;
 
-    /// <summary>
-    /// The setter and getter for health points
-    /// </summary>
-    public int HealthPt
+    [SerializeField, Tooltip("How many tiles the unit can move per action.")]
+    private int m_Speed;
+    [SerializeField, Tooltip("The concealment points of the unit")]
+    private int m_ConcealmentPoints;
+    [SerializeField, Tooltip("The evasion points of the unit")]
+    private int m_EvasionPoints;
+    [SerializeField, Tooltip("The accuracy points of the unit")]
+    private int m_AccuracyPoints;
+    
+    public int MaxHealthPoints
     {
-        set
-        {
-            m_HealthPt = Mathf.Clamp(value, 0, m_MaxHealthPt);
-            if (m_HealthPt == 0)
-            {
-                GameObject.Destroy(m_UnitStatGO);
-            }
-        }
         get
         {
-            return m_HealthPt;
+            return m_MaxHealthPoints;
         }
-    }
-    
-    public int ActionPtLeft
-    {
         set
         {
-            m_ActionPtLeft = Mathf.Clamp(value, 0, m_MaxActionPt);
-        }
-        get
-        {
-            return m_ActionPtLeft;
+            m_MaxHealthPoints = Mathf.Max(0, value);
+            m_CurrentHealthPoints = Mathf.Min(m_CurrentHealthPoints, m_MaxHealthPoints);
         }
     }
+
+    public int CurrentHealthPoints
+    {
+        get
+        {
+            return m_CurrentHealthPoints;
+        }
+        set
+        {
+            m_CurrentHealthPoints = Mathf.Clamp(value, 0, m_MaxHealthPoints);
+        }
+    }
+
+    public bool IsAlive()
+    {
+        return m_CurrentHealthPoints > 0;
+    }
+
+    public int MaxActionPoints
+    {
+        get
+        {
+            return m_MaxActionPoints;
+        }
+        set
+        {
+            m_MaxActionPoints = Mathf.Max(0, value);
+            m_CurrentActionPoints = Mathf.Min(m_CurrentActionPoints, m_MaxHealthPoints);
+        }
+    }
+
+    public int CurrentActionPoints
+    {
+        get
+        {
+            return m_CurrentActionPoints;
+        }
+        set
+        {
+            m_CurrentActionPoints = Mathf.Clamp(value, 0, m_MaxActionPoints);
+        }
+    }
+
+    public int DeploymentCost
+    {
+        get { return m_DeploymentCost; }
+        set { m_DeploymentCost = Mathf.Max(0, value); }
+    }
     
+    public int ViewRange
+    {
+        get { return m_ViewRange; }
+        set { m_ViewRange = Mathf.Max(0, value); }
+    }
+    
+    public int MinAttackRange
+    {
+        get { return m_MinAttackRange; }
+        set { m_MinAttackRange = Mathf.Clamp(value, 0, m_MaxAttackRange); }
+    }
+
+    public int MaxAttackRange
+    {
+        get { return m_MaxAttackRange; }
+        set { m_MaxAttackRange = Mathf.Max(value, m_MinAttackRange); }
+    }
+
+    public int Speed
+    {
+        get { return m_Speed; }
+        set { m_Speed = Mathf.Max(0, value); }
+    }
+
+    public int ConcealmentPoints
+    {
+        get { return m_ConcealmentPoints; }
+        set { m_ConcealmentPoints = Mathf.Max(0, value); }
+    }
+
+    public int EvasionPoints
+    {
+        get { return m_EvasionPoints; }
+        set { m_EvasionPoints = Mathf.Max(0, value); }
+    }
+
+    public int AccuracyPoints
+    {
+        get { return m_AccuracyPoints; }
+        set { m_AccuracyPoints = Mathf.Max(0, value); }
+    }
+
 }
 
 public class UnitStats : MonoBehaviour {
@@ -94,15 +154,15 @@ public class UnitStats : MonoBehaviour {
     [Header("The references of the ")]
     [Tooltip("The unit stats information")]
     public UnitStatsJSON m_UnitStatsJSON = new UnitStatsJSON();
+    public TileAttributeOverride[] m_TileAttributeOverrides;
 
     private void Start()
     {
         // Assign the gameobject name to the unit if there is none for the unit stat!
-        if (m_UnitStatsJSON.m_NameOfUnit == null)
+        if (m_UnitStatsJSON.m_Name == null)
         {
-            m_UnitStatsJSON.m_NameOfUnit = name;
+            m_UnitStatsJSON.m_Name = name;
         }
-        m_UnitStatsJSON.m_UnitStatGO = gameObject;
     }
 
     private void OnDestroy()
@@ -111,4 +171,30 @@ public class UnitStats : MonoBehaviour {
         // Trigger an event when the unit died
         ObserverSystemScript.Instance.TriggerEvent(tag + "IsDead");
     }
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        for (int i = 0; i < m_TileAttributeOverrides.Length; ++i)
+        {
+            m_TileAttributeOverrides[i].EditorValidate();
+        }
+
+        HashSet<TileType> overrideTypeValidator = new HashSet<TileType>();
+        for (int i = 0; i < m_TileAttributeOverrides.Length; ++i)
+        {
+            if (overrideTypeValidator.Contains(m_TileAttributeOverrides[i].Type))
+            {
+                string message = "More than 1 TileAttributeOverride has the same tile type!";
+                EditorUtility.DisplayDialog("Duplicate TileType!", message, "OK");
+                Debug.Log(message);
+            }
+            else
+            {
+                overrideTypeValidator.Add(m_TileAttributeOverrides[i].Type);
+            }
+        }
+    }
+#endif // UNITY_EDITOR
+
 }

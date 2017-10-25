@@ -372,20 +372,14 @@ public class TileSystem : MonoBehaviour
                 }
 
                 TileId[] neighbors = cheapestNode.Id.GetNeighbors();
-                for (int i = 0; i < neighbors.Length; ++i)
+                for (int j = 0; j < neighbors.Length; ++j)
                 {
-                    TileId neighborId = neighbors[i];
+                    TileId neighborId = neighbors[j];
 
                     // Ensure that the tile is within our search area.
                     if (searchArea.Contains(neighborId) == false)
                     {
                         // Debug.Log(MethodBase.GetCurrentMethod().Name + " - Tile " + neighborId.ToString() + " is not in search area.");
-                        continue;
-                    }
-
-                    // Don't bother searching if we already know that it is unwalkable.
-                    if (unwalkableList.Contains(neighborId))
-                    {
                         continue;
                     }
 
@@ -409,83 +403,25 @@ public class TileSystem : MonoBehaviour
                         if (hazard != null) { gCost += hazard.Attributes.MovementCost; }
                     }
 
-                    if (walkable == false)
+                    if (walkable)
+                    {
+                        if (walkableList.Contains(cheapestNode.Id) == false)
+                        {
+                            walkableList.Add(cheapestNode.Id);
+                        }
+                    }
+                    else
                     {
                         if (unwalkableList.Contains(cheapestNode.Id) == false)
                         {
+
+                        }
                             unwalkableList.Add(cheapestNode.Id);
-                        }
-                        continue;
                     }
-
-                    // 目的地に到達した？
-                    if (neighborId.Equals(end))
-                    {
-                        closedList.Add(cheapestNode);
-
-                        SearchNode endNode = new SearchNode(neighborId, gCost, hCost, cheapestNode);
-                        openList.Clear(); // We found the endNode. There's no need for the rest.
-                        openList.Add(endNode);
-                        break;
-                    }
-
-                    // Check that it is not already in closedList.
-                    bool inClosedList = false;
-                    for (int j = 0; j < closedList.Count; ++j)
-                    {
-                        if (closedList[j].Id.Equals(neighborId))
-                        {
-                            inClosedList = true;
-                            break;
-                        }
-                    }
-                    if (inClosedList)
-                    {
-                        continue;
-                    }
-
-                    SearchNode neighbourNode = null;
-                    // See if it is already in the openList.
-                    for (int j = 0; j < openList.Count; ++j)
-                    {
-                        if (openList[j].Id.Equals(neighborId))
-                        {
-                            neighbourNode = openList[j];
-                            if (gCost < neighbourNode.GCost)
-                            {
-                                neighbourNode.GCost = gCost;
-                                neighbourNode.Parent = cheapestNode;
-                            }
-                            break;
-                        }
-                    }
-
-                    // If it isn't, add it to the openList.
-                    if (neighbourNode == null)
-                    {
-                        neighbourNode = new SearchNode(neighborId, gCost, hCost, cheapestNode);
-                        openList.Add(neighbourNode);
-                    }
+                    
                 }
-
-                openList.Remove(cheapestNode);
-                closedList.Add(cheapestNode);
             }
         }
-
-        if (walkableList.Count == 0)
-        {
-            return null;
-        }
-
-        TileId[] result = new TileId[walkableList.Count];
-        int iteration = 0;
-        foreach (TileId tileId in walkableList)
-        {
-            result[iteration++] = tileId;
-        }
-
-        return result;
     }
 
     public TileId[] GetPath(int _speed, TileId _start, TileId _end, TileAttributeOverride[] _overrides)

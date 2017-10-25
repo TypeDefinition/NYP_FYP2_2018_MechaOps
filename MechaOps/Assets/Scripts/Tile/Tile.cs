@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using System.Reflection;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif // UNITY_EDITOR
+
 /*
 The tiles are hexagons.
 Their sides are labels from 0 to 6, with 0 being the top, and increasing in the anti-clockwise direction.
@@ -119,6 +123,13 @@ public class Tile : MonoBehaviour
         return m_Id;
     }
 
+#if UNITY_EDITOR
+    public void SetTileType(TileType _type)
+    {
+        m_Type = _type;
+    }
+#endif // UNITY_EDITOR
+
     public TileType GetTileType()
     {
         return m_Type;
@@ -163,6 +174,18 @@ public class Tile : MonoBehaviour
         return m_Hazard != null;
     }
 
+    public bool GetIsWalkable()
+    {
+        if (m_Hazard == null)
+        {
+            return m_Attributes.Walkable;
+        }
+        else
+        {
+            return (m_Attributes.Walkable && m_Hazard.Attributes.Walkable);
+        }
+    }
+
     public int GetTotalMovementCost()
     {
         if (m_Hazard == null)
@@ -175,13 +198,16 @@ public class Tile : MonoBehaviour
         }
     }
 
+#if UNITY_EDITOR
     private void OnValidate()
     {
-        m_Attributes.Validate();
+        m_Attributes.EditorValidate();
         if (m_Type == TileType.TileType_NumTypes)
         {
+            EditorUtility.DisplayDialog("Invalid Value!", "TileType.TileType_NumTypes is an invalid value for m_Type! Defaulting to TileType.TileType_Normal.", "OK");
             m_Type = TileType.TileType_Normal;
         }
     }
+#endif // UNITY_EDITOR
 
 }

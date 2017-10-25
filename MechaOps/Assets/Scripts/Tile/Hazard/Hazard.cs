@@ -6,16 +6,13 @@ using UnityEngine;
 public class HazardAttributes
 {
 
+    [SerializeField] private bool m_Walkable = true;
     [SerializeField] private int m_MovementCost = 0;
 
     // There are no setters as this should only be changed in the inspector.
-    public int MovementCost
-    {
-        get
-        {
-            return m_MovementCost;
-        }
-    }
+    public bool Walkable { get { return m_Walkable; } }
+
+    public int MovementCost { get { return m_MovementCost; } }
 
     public void Validate()
     {
