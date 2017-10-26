@@ -17,11 +17,23 @@ public class UnitAttackAction : UnitAction
             // Just attack lol
             // Damage should be tied to action, not unit.
             // otherUnitStatGO.m_UnitStatsJSON.HealthPt -= m_UnitStatGO.m_UnitStatsJSON.m_AttackPt;
+            m_UpdateOfUnitAction = StartCoroutine(UpdateActionRoutine());
             ObserverSystemScript.Instance.StoreVariableInEvent("UnitMakeMove", gameObject);
             ObserverSystemScript.Instance.TriggerEvent("UnitMakeMove");
             return true;
         }
         return false;
+    }
+
+    /// <summary>
+    /// To do raycasting and calculation. Along with the animation required.
+    /// </summary>
+    /// <returns></returns>
+    public override IEnumerator UpdateActionRoutine()
+    {
+        // Thinking of a way to implement it
+        m_UpdateOfUnitAction = null;
+        yield break;
     }
 
     // Use this for initialization

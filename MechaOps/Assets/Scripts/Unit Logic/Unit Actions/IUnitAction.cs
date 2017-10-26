@@ -57,10 +57,19 @@ public abstract class UnitAction : MonoBehaviour
 
     /// <summary>
     /// The function to start the coroutine of updating.
-    /// It is virtual just in case it needs to be overriden.
+    /// It is virtual just in case it needs to be overridden.
     /// </summary>
     public virtual void StartUpdating()
     {
         m_UpdateOfUnitAction = StartCoroutine(UpdateActionRoutine());
+    }
+
+    /// <summary>
+    /// Since not all action needs to be stopped,
+    /// this will be a virtual function ready to be inherited
+    /// </summary>
+    public virtual void StopActionUpdate()
+    {
+
     }
 }

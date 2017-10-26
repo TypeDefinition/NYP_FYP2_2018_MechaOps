@@ -3,11 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class UnitGuardAction : UnitAction {
+    /// <summary>
+    /// This is meant for guarding!
+    /// </summary>
+    /// <returns></returns>
     public override bool UseAction()
     {
+        m_UpdateOfUnitAction = StartCoroutine(UpdateActionRoutine());
         ObserverSystemScript.Instance.StoreVariableInEvent("UnitMakeMove", gameObject);
         ObserverSystemScript.Instance.TriggerEvent("UnitMakeMove");
         return true;
+    }
+
+    /// <summary>
+    /// To popup some UI icons that guard mode is activated!
+    /// </summary>
+    /// <returns></returns>
+    public override IEnumerator UpdateActionRoutine()
+    {
+        // Needs to at least pop up the UI icon to indicate that it is in guard mode!
+        m_UpdateOfUnitAction = null;
+        yield break;
     }
 
     // Use this for initialization
