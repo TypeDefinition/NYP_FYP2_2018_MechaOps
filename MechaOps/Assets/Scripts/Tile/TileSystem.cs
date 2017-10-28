@@ -12,6 +12,7 @@ The tiles are flat topped hexagons.
 Their sides are labels from 0 to 6, with 0 being the top, and increasing in the anti-clockwise direction.
 */
 
+/*
 [System.Serializable]
 public class TileInfo
 {
@@ -38,18 +39,19 @@ public class TileInfo
     }
 
 }
+*/
 
 [System.Serializable]
 public class TileDictionaryPair
 {
 
     public TileId m_Id = null;
-    public TileInfo m_TileInfo = null;
+    public Tile m_Tile = null;
 
-    public TileDictionaryPair(TileId _id, TileInfo _info)
+    public TileDictionaryPair(TileId _id, Tile _info)
     {
         m_Id = _id;
-        m_TileInfo = _info;
+        m_Tile = _info;
     }
 
 }
@@ -91,11 +93,11 @@ public class TileSystem : MonoBehaviour
     [SerializeField] private TileLibrary m_TileLibrary = null;
     [SerializeField] private Tile m_DefaultTile = null;
 
-    private Dictionary<TileId, TileInfo> m_TileDictionary = new Dictionary<TileId, TileInfo>();
+    private Dictionary<TileId, Tile> m_TileDictionary = new Dictionary<TileId, Tile>();
     [HideInInspector, SerializeField] private TileDictionaryPair[] m_TileArray = new TileDictionaryPair[0];
 
     public int m_Radius = 10;
-    public float m_DistanceBetweenTiles = 1.0f;
+    public float m_DistanceBetweenTiles = 5.0f;
 
     public TileLibrary GetTileLibrary()
     {
@@ -107,11 +109,7 @@ public class TileSystem : MonoBehaviour
         return m_DefaultTile;
     }
 
-    public TileInfo GetTileInfo(TileId _id)
-    {
-        return m_TileDictionary.ContainsKey(_id) ? m_TileDictionary[_id] : null;
-    }
-
+#if UNITY_EDITOR
     public void GenerateTiles()
     {
         // Delete existing tiles.
@@ -141,7 +139,7 @@ public class TileSystem : MonoBehaviour
         // which the loop generated the hexagons and compared the TileId(s).
         for (int x = -m_Radius; x <= m_Radius; ++x)
         {
-            for (int y = Mathf.Max(-m_Radius, -m_Radius-x); y <= Mathf.Min(m_Radius, m_Radius-x); ++y)
+            for (int y = Mathf.Max(-m_Radius, -m_Radius - x); y <= Mathf.Min(m_Radius, m_Radius - x); ++y)
             {
                 TileId tileId = new TileId(x, y);
                 Tile tile = GameObject.Instantiate(m_DefaultTile).GetComponent<Tile>();
@@ -156,10 +154,11 @@ public class TileSystem : MonoBehaviour
                 // So if we do not multiple 0.5, the tiles will be twice as far apart as they should be.
                 tile.transform.position = transform.position + (xOffset + yOffset + zOffset) * m_DistanceBetweenTiles * 0.5f;
                 tile.transform.SetParent(transform);
+                tile.transform.localScale = tile.transform.localScale;
 
                 tile.LoadType();
 
-                m_TileDictionary.Add(tileId, new TileInfo(tileId, tile));
+                m_TileDictionary.Add(tileId, tile);
             }
         }
 
@@ -170,33 +169,10 @@ public class TileSystem : MonoBehaviour
         {
             m_TileArray = new TileDictionaryPair[m_TileDictionary.Count];
             int index = 0;
-            foreach (KeyValuePair<TileId, TileInfo> iter in m_TileDictionary)
+            foreach (KeyValuePair<TileId, Tile> iter in m_TileDictionary)
             {
                 m_TileArray[index++] = new TileDictionaryPair(iter.Key, iter.Value);
             }
-        }
-    }
-
-#if UNITY_EDITOR
-    public void RandomizeTileTypes()
-    {
-        LoadDictionary();
-
-        foreach (KeyValuePair<TileId, TileInfo> iter in m_TileDictionary)
-        {
-            TileType tileType = (TileType)Random.Range(0, (int)TileType.TileType_NumTypes - 1);
-            iter.Value.GetTile().SetTileType(tileType);
-            iter.Value.GetTile().LoadType();
-        }
-    }
-#endif
-
-    private void LoadDictionary()
-    {
-        m_TileDictionary.Clear();
-        for (int i = 0; i < m_TileArray.Length; ++i)
-        {
-            m_TileDictionary.Add(m_TileArray[i].m_Id, m_TileArray[i].m_TileInfo);
         }
     }
 
@@ -210,40 +186,16 @@ public class TileSystem : MonoBehaviour
         }
 
         // Destroy any existing tiles.
-        foreach (TileInfo value in m_TileDictionary.Values)
+        foreach (Tile value in m_TileDictionary.Values)
         {
             if (value != null)
             {
-                GameObject.DestroyImmediate(value.GetTile().gameObject);
+                GameObject.DestroyImmediate(value.gameObject);
             }
         }
 
         m_TileArray = new TileDictionaryPair[0];
         m_TileDictionary.Clear();
-    }
-
-    public TileId[] GetSurroundingTiles(TileId _centre, int _radius)
-    {
-        // _radius should never be < 0.
-        Assert.IsFalse(_radius < 0, MethodBase.GetCurrentMethod().Name + " - Invalid value for _radius!");
-
-        List<TileId> result = new List<TileId>();
-
-        for (int x = -_radius; x <= _radius; ++x)
-        {
-            for (int y = Mathf.Max(-_radius, -_radius - x); y <= Mathf.Min(_radius, _radius - x); ++y)
-            {
-                TileId tileId = new TileId(x + _centre.GetX(), y + _centre.GetY());
-        
-                // Check that the tile exist (in case of tiles near/at the edge of the map).
-                if (m_TileDictionary.ContainsKey(tileId))
-                {
-                    result.Add(tileId);
-                }
-            }
-        }
-
-        return result.ToArray();
     }
     
     public void LoadTileTypes()
@@ -256,21 +208,42 @@ public class TileSystem : MonoBehaviour
             return;
         }
 
-        foreach (TileInfo value in m_TileDictionary.Values)
+        foreach (Tile value in m_TileDictionary.Values)
         {
-            if (value != null && value.GetTile() != null)
+            if (value != null)
             {
-                value.GetTile().LoadType();
+                value.LoadType();
             }
         }
 
     }
 
-    public int GetNumTiles()
+    public void RandomizeTileTypes()
     {
         LoadDictionary();
 
-        return m_TileDictionary.Count;
+        foreach (KeyValuePair<TileId, Tile> iter in m_TileDictionary)
+        {
+            TileType tileType = (TileType)Random.Range(0, (int)TileType.TileType_NumTypes - 1);
+            iter.Value.SetTileType(tileType);
+            iter.Value.LoadType();
+        }
+    }
+
+    private void OnValidate()
+    {
+        m_Radius = Mathf.Max(0, m_Radius);
+        m_DistanceBetweenTiles = Mathf.Max(0.0f, m_DistanceBetweenTiles);
+    }
+#endif // UNITY_EDITOR
+
+    private void LoadDictionary()
+    {
+        m_TileDictionary.Clear();
+        for (int i = 0; i < m_TileArray.Length; ++i)
+        {
+            m_TileDictionary.Add(m_TileArray[i].m_Id, m_TileArray[i].m_Tile);
+        }
     }
 
     // Get our search area so that we do not have to search the whole map.
@@ -320,6 +293,36 @@ public class TileSystem : MonoBehaviour
         }
 
         return cheapestNode;
+    }
+
+    private void Awake()
+    {
+        LoadDictionary();
+    }
+
+    // Interface Function(s)
+    public TileId[] GetSurroundingTiles(TileId _centre, int _radius)
+    {
+        // _radius should never be < 0.
+        Assert.IsFalse(_radius < 0, MethodBase.GetCurrentMethod().Name + " - Invalid value for _radius!");
+
+        List<TileId> result = new List<TileId>();
+
+        for (int x = -_radius; x <= _radius; ++x)
+        {
+            for (int y = Mathf.Max(-_radius, -_radius - x); y <= Mathf.Min(_radius, _radius - x); ++y)
+            {
+                TileId tileId = new TileId(x + _centre.GetX(), y + _centre.GetY());
+
+                // Check that the tile exist (in case of tiles near/at the edge of the map).
+                if (m_TileDictionary.ContainsKey(tileId))
+                {
+                    result.Add(tileId);
+                }
+            }
+        }
+
+        return result.ToArray();
     }
 
     public TileId[] GetReachableTiles(int _speed, TileId _start, TileAttributeOverride[] _overrides)
@@ -389,23 +392,23 @@ public class TileSystem : MonoBehaviour
                         continue;
                     }
 
-                    TileInfo info = GetTileInfo(neighborId);
+                    Tile tile = GetTile(neighborId);
                     TileAttributeOverride attributeOverride;
-                    overrideDictionary.TryGetValue(info.GetTile().GetTileType(), out attributeOverride);
+                    overrideDictionary.TryGetValue(tile.GetTileType(), out attributeOverride);
 
                     // Ensure that the tile is walkable.
-                    bool walkable = info.GetTile().GetIsWalkable();
+                    bool walkable = tile.GetIsWalkable();
                     int hCost = TileId.GetDistance(neighborId, end);
                     int gCost = cheapestNode.GCost;
                     if (attributeOverride == null)
                     {
-                        gCost += info.GetTile().GetTotalMovementCost();
+                        gCost += tile.GetTotalMovementCost();
                     }
                     else
                     {
                         walkable = attributeOverride.Walkable;
                         gCost += attributeOverride.MovementCost;
-                        Hazard hazard = info.GetTile().GetHazard();
+                        Hazard hazard = tile.GetHazard();
                         if (hazard != null) { gCost += hazard.Attributes.MovementCost; }
                     }
 
@@ -506,7 +509,7 @@ public class TileSystem : MonoBehaviour
         }
 
         // Check that both tiles are valid.
-        if (GetTileInfo(_start) == null || GetTileInfo(_end) == null)
+        if (GetTile(_start) == null || GetTile(_end) == null)
         {
             Debug.Log(MethodBase.GetCurrentMethod().Name + " - Invalid Tile.");
             return null;
@@ -563,23 +566,23 @@ public class TileSystem : MonoBehaviour
                     continue;
                 }
 
-                TileInfo info = GetTileInfo(neighborId);
+                Tile tile = GetTile(neighborId);
                 TileAttributeOverride attributeOverride;
-                overrideDictionary.TryGetValue(info.GetTile().GetTileType(), out attributeOverride);
+                overrideDictionary.TryGetValue(tile.GetTileType(), out attributeOverride);
 
                 // Ensure that the tile is walkable.
-                bool walkable = info.GetTile().GetIsWalkable();
+                bool walkable = tile.GetIsWalkable();
                 int hCost = TileId.GetDistance(neighborId, _end);
                 int gCost = cheapestNode.GCost;
                 if (attributeOverride == null)
                 {
-                    gCost += info.GetTile().GetTotalMovementCost();
+                    gCost += tile.GetTotalMovementCost();
                 }
                 else
                 {
                     walkable = attributeOverride.Walkable;
                     gCost += attributeOverride.MovementCost;
-                    Hazard hazard = info.GetTile().GetHazard();
+                    Hazard hazard = tile.GetHazard();
                     if (hazard != null) { gCost += hazard.Attributes.MovementCost; }
                 }
 
@@ -646,17 +649,16 @@ public class TileSystem : MonoBehaviour
         return null;
     }
 
-    private void Awake()
+    public int GetNumTiles()
     {
         LoadDictionary();
+
+        return m_TileDictionary.Count;
     }
 
-#if UNITY_EDITOR
-    private void OnValidate()
+    public Tile GetTile(TileId _id)
     {
-        m_Radius = Mathf.Max(0, m_Radius);
-        m_DistanceBetweenTiles = Mathf.Max(0.0f, m_DistanceBetweenTiles);
+        return m_TileDictionary.ContainsKey(_id) ? m_TileDictionary[_id] : null;
     }
-#endif // UNITY_EDITOR
 
 }

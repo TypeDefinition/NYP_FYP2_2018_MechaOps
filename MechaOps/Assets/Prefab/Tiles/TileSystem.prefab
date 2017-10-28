@@ -57,4 +57,4 @@ MonoBehaviour:
     type: 2}
   m_TileArray: []
   m_Radius: 8
-  m_DistanceBetweenTiles: 1
+  m_DistanceBetweenTiles: 4

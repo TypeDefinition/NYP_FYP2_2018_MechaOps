@@ -94,7 +94,9 @@ public class TileId
 public class Tile : MonoBehaviour
 {
 
-    private TileId m_Id = null;
+    [SerializeField, HideInInspector] private bool m_IdInited = false;
+    [SerializeField] private TileId m_Id = null;
+
     [SerializeField, HideInInspector] private TileSystem m_TileSystem = null;
     [SerializeField] private TileAttributes m_Attributes;
     [SerializeField] private TileDisplay m_DisplayObject;
@@ -103,9 +105,10 @@ public class Tile : MonoBehaviour
     
     public void InitId(TileId _id)
     {
-        Assert.IsTrue(m_Id == null, MethodBase.GetCurrentMethod().Name + " - InitId can only be called once per Tile!");
+        Assert.IsTrue(m_IdInited == false, MethodBase.GetCurrentMethod().Name + " - InitId can only be called once per Tile!");
 
         m_Id = _id;
+        m_IdInited = true;
     }
 
     public void SetTileSystem(TileSystem _tileSystem)

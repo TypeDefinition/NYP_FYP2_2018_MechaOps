@@ -37,7 +37,7 @@ public class PathFindTest : MonoBehaviour
             List<Vector3> linePositions = new List<Vector3>();
             for (int i = 0; i < m_Path.Length; ++i)
             {
-                linePositions.Add(m_TileSystem.GetTileInfo(m_Path[i]).GetTile().transform.position + offset);
+                linePositions.Add(m_TileSystem.GetTile(m_Path[i]).transform.position + offset);
             }
 
             m_LineRenderer.positionCount = linePositions.Count;
@@ -52,7 +52,7 @@ public class PathFindTest : MonoBehaviour
             for (int i = 0; i < m_ReachableArea.Length; ++i)
             {
                 GameObject marker = GameObject.Instantiate(m_ReachableTileMarker);
-                marker.transform.position = m_TileSystem.GetTileInfo(m_ReachableArea[i]).GetTile().transform.position + offset;
+                marker.transform.position = m_TileSystem.GetTile(m_ReachableArea[i]).transform.position + offset;
                 marker.transform.SetParent(gameObject.transform);
                 marker.GetComponent<MeshRenderer>().material.color = m_ReachableColor;
 
