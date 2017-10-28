@@ -197,26 +197,6 @@ public class TileSystem : MonoBehaviour
         m_TileArray = new TileDictionaryPair[0];
         m_TileDictionary.Clear();
     }
-    
-    public void LoadTileTypes()
-    {
-        LoadDictionary();
-
-        if (m_TileDictionary.Count == 0)
-        {
-            Debug.Log(MethodBase.GetCurrentMethod().Name + " - No tiles to load!");
-            return;
-        }
-
-        foreach (Tile value in m_TileDictionary.Values)
-        {
-            if (value != null)
-            {
-                value.LoadType();
-            }
-        }
-
-    }
 
     public void RandomizeTileTypes()
     {
@@ -236,6 +216,26 @@ public class TileSystem : MonoBehaviour
         m_DistanceBetweenTiles = Mathf.Max(0.0f, m_DistanceBetweenTiles);
     }
 #endif // UNITY_EDITOR
+
+    public void LoadTileTypes()
+    {
+        LoadDictionary();
+
+        if (m_TileDictionary.Count == 0)
+        {
+            Debug.Log(MethodBase.GetCurrentMethod().Name + " - No tiles to load!");
+            return;
+        }
+
+        foreach (Tile value in m_TileDictionary.Values)
+        {
+            if (value != null)
+            {
+                value.LoadType();
+            }
+        }
+
+    }
 
     private void LoadDictionary()
     {
@@ -298,6 +298,7 @@ public class TileSystem : MonoBehaviour
     private void Awake()
     {
         LoadDictionary();
+        LoadTileTypes();
     }
 
     // Interface Function(s)

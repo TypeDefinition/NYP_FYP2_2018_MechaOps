@@ -102,7 +102,10 @@ public class Tile : MonoBehaviour
     [SerializeField] private TileDisplay m_DisplayObject;
     [SerializeField] private Hazard m_Hazard = null;
     [SerializeField] private TileType m_Type = TileType.TileType_Normal;
-    
+
+    // The unit currently on this tile.
+    public GameObject m_Unit = null;
+
     public void InitId(TileId _id)
     {
         Assert.IsTrue(m_IdInited == false, MethodBase.GetCurrentMethod().Name + " - InitId can only be called once per Tile!");

@@ -271,6 +271,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4427685246760966}
   - component: {fileID: 114648331247888822}
+  - component: {fileID: 114608685260297390}
   m_Layer: 0
   m_Name: Panzer
   m_TagString: Untagged
@@ -1428,6 +1429,32 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1096713439112884}
   m_Mesh: {fileID: 4300060, guid: ac4c29d6b5b11cb41abd404b17da628b, type: 3}
+--- !u!114 &114608685260297390
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1438208578754642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 246350ebb97584b41afd26ddbb5c1537, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UnitStatsJSON:
+    m_Name: Panzer
+    m_MaxHealthPoints: 0
+    m_CurrentHealthPoints: 0
+    m_MaxActionPoints: 0
+    m_CurrentActionPoints: 0
+    m_DeploymentCost: 0
+    m_ViewRange: 0
+    m_MinAttackRange: 0
+    m_MaxAttackRange: 0
+    m_Speed: 0
+    m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
+    m_AccuracyPoints: 0
+  m_TileAttributeOverrides: []
 --- !u!114 &114648331247888822
 MonoBehaviour:
   m_ObjectHideFlags: 1
