@@ -159,7 +159,7 @@ public class Tile : MonoBehaviour
         if (m_Attributes.DisplayObject != null)
         {
             m_DisplayObject = GameObject.Instantiate(m_Attributes.DisplayObject.gameObject).GetComponent<TileDisplay>();
-            m_DisplayObject.InitTile(this);
+            m_DisplayObject.InitOwner(this);
             m_DisplayObject.transform.SetParent(transform);
             m_DisplayObject.transform.position = transform.position;
         }
