@@ -12,6 +12,14 @@ public class UnitWalkAction : UnitAction {
     [Tooltip("The speed to move from 1 point to another. For animation purpose.")]
     public float m_Speed = 10.0f;
 
+    [Header("Debugging References for Unit Walk")]
+    [Tooltip("The array of tiles to move to!")]
+    public TileId[] m_TilePath;
+    [Tooltip("The current tile that it is moving towards to!")]
+    public Tile m_CurrentDestinationTile;
+    [SerializeField, Tooltip("The tile system that is needed to be linked as there is no singleton. Right now, the codes is doing the linking for you")]
+    public TileSystem m_TileSys;
+
     public override bool UseAction()
     {
         m_UpdateOfUnitAction = StartCoroutine(UpdateActionRoutine());
@@ -25,18 +33,42 @@ public class UnitWalkAction : UnitAction {
     /// <returns></returns>
     public override IEnumerator UpdateActionRoutine()
     {
+        // Since the start of the index in the array is 0!
+        int zeNumOfIndex = 0;
+        bool zeFinishedMoving = false;
+        m_CurrentDestinationTile = m_TileSys.GetTile(m_TilePath[zeNumOfIndex]);
+        Vector3 zeNewPos = new Vector3(m_CurrentDestinationTile.transform.position.x, transform.position.y, m_CurrentDestinationTile.transform.position.z);
+        // TODO: use LeanTween to move towards the position for now
+        LeanTween.move(gameObject, zeNewPos, 0.5f).setOnComplete(() => zeFinishedMoving = true);
+        while (zeNumOfIndex < m_TilePath.Length)
+        {
+            yield return null;
+            if (zeFinishedMoving)
+            {
+                ++zeNumOfIndex;
+                if (zeNumOfIndex >= m_TilePath.Length)
+                    break;
+                m_CurrentDestinationTile = m_TileSys.GetTile(m_TilePath[zeNumOfIndex]);
+                zeNewPos = new Vector3(m_CurrentDestinationTile.transform.position.x, transform.position.y, m_CurrentDestinationTile.transform.position.z);
+                // TODO: use LeanTween to move towards the position for now
+                LeanTween.move(gameObject, zeNewPos, 0.5f).setOnComplete(() => zeFinishedMoving = true);
+            }
+        }
         m_UpdateOfUnitAction = null;
         m_UnitStatGO.m_UnitStatsJSON.CurrentActionPoints--;
+        //ObserverSystemScript.Instance.TriggerEvent()
         switch (m_UnitStatGO.m_UnitStatsJSON.CurrentActionPoints)
         {
             case 0:
+                m_UnitStatGO.ResetUnitStat();
                 // tell the player unit manager that it can no longer do any action
+                ObserverSystemScript.Instance.StoreVariableInEvent("UnitMakeMove", gameObject);
+                ObserverSystemScript.Instance.TriggerEvent("UnitMakeMove");
                 break;
             default:
                 break;
         }
-        ObserverSystemScript.Instance.StoreVariableInEvent("UnitMakeMove", gameObject);
-        ObserverSystemScript.Instance.TriggerEvent("UnitMakeMove");
+        ObserverSystemScript.Instance.TriggerEvent("UnitFinishAction");
         yield break;
     }
 
@@ -58,6 +90,8 @@ public class UnitWalkAction : UnitAction {
                     break;
             }
         }
+        if (!m_TileSys)
+            m_TileSys = FindObjectOfType<TileSystem>();
     }
 
     /// <summary>

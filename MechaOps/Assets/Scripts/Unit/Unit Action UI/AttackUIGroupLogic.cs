@@ -34,7 +34,7 @@ public class AttackUIGroupLogic : MonoBehaviour {
     private void OnDisable()
     {
         // Making sure the PlayerInput will be able to select unit again!
-        ObserverSystemScript.Instance.TriggerEvent("ToggleSelectingUnit");
+        //ObserverSystemScript.Instance.TriggerEvent("ToggleSelectingUnit");
         // Set to inactive when the Attack UI is closed
         m_TargetUIref.SetActive(false);
     }

@@ -14,6 +14,10 @@ public class UnitAttackAction : UnitAction
     [Tooltip("The damage point it dealt")]
     public int m_DamagePts;
 
+    [Header("Debugging purpose for Unit Attack Action")]
+    [Tooltip("The unit stat of the target")]
+    public UnitStats m_OtherTargetStat;
+
     /// <summary>
     /// Optimization will have to come later as this will need to be expanded upon!
     /// </summary>
@@ -21,15 +25,10 @@ public class UnitAttackAction : UnitAction
     /// <returns>Dont know yet!</returns>
     public override bool UseAction(GameObject _other)
     {
-        UnitStats otherUnitStatGO = _other.GetComponent<UnitStats>();
-        if (otherUnitStatGO)
+        m_OtherTargetStat = _other.GetComponent<UnitStats>();
+        if (m_OtherTargetStat)
         {
-            // Just attack lol
-            // Damage should be tied to action, not unit.
-            // otherUnitStatGO.m_UnitStatsJSON.HealthPt -= m_UnitStatGO.m_UnitStatsJSON.m_AttackPt;
             m_UpdateOfUnitAction = StartCoroutine(UpdateActionRoutine());
-            ObserverSystemScript.Instance.StoreVariableInEvent("UnitMakeMove", gameObject);
-            ObserverSystemScript.Instance.TriggerEvent("UnitMakeMove");
             return true;
         }
         return false;
@@ -41,8 +40,22 @@ public class UnitAttackAction : UnitAction
     /// <returns></returns>
     public override IEnumerator UpdateActionRoutine()
     {
+        // TODO: Do some complex calculation and animation for this
+        m_OtherTargetStat.m_UnitStatsJSON.CurrentHealthPoints -= m_DamagePts;
         // Thinking of a way to implement it
         m_UpdateOfUnitAction = null;
+        --m_UnitStatGO.m_UnitStatsJSON.CurrentActionPoints;
+        switch (m_UnitStatGO.m_UnitStatsJSON.CurrentActionPoints)
+        {
+            case 0:
+                m_UnitStatGO.ResetUnitStat();
+                ObserverSystemScript.Instance.StoreVariableInEvent("UnitMakeMove", gameObject);
+                ObserverSystemScript.Instance.TriggerEvent("UnitMakeMove");
+                break;
+            default:
+                break;
+        }
+        ObserverSystemScript.Instance.TriggerEvent("UnitFinishAction");
         yield break;
     }
 

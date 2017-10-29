@@ -118,9 +118,11 @@ public class UnitStatsJSON
 
 public class UnitStats : MonoBehaviour {
 
-    [Header("The references of the ")]
+    [Header("The references of the Unit stats")]
     [Tooltip("The unit stats information")]
     public UnitStatsJSON m_UnitStatsJSON = new UnitStatsJSON();
+    [Tooltip("The current tile that the unit is at. Currently needs to be manually linked as the TileSystem cant identify current tile is at world space")]
+    public TileId m_CurrentTileID;
     public TileAttributeOverride[] m_TileAttributeOverrides;
 
     private void Start()
@@ -130,6 +132,14 @@ public class UnitStats : MonoBehaviour {
         {
             m_UnitStatsJSON.m_Name = name;
         }
+    }
+
+    /// <summary>
+    /// TODO: expand these upon 
+    /// </summary>
+    public void ResetUnitStat()
+    {
+        m_UnitStatsJSON.CurrentActionPoints = m_UnitStatsJSON.MaxActionPoints;
     }
 
     private void OnDestroy()

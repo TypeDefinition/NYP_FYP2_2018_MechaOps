@@ -20,7 +20,8 @@ public class GetPlayerInputUnit : MonoBehaviour {
             RaycastHit clickedObj;
             if (Physics.Raycast(clickedRay, out clickedObj))
             {
-                ObserverSystemScript.Instance.StoreVariableInEvent("ClickedUnit", clickedObj.collider.gameObject);
+                m_ClickedPlayerUnitGO = clickedObj.collider.gameObject;
+                ObserverSystemScript.Instance.StoreVariableInEvent("ClickedUnit", m_ClickedPlayerUnitGO);
                 ObserverSystemScript.Instance.TriggerEvent("ClickedUnit");
             }
         }

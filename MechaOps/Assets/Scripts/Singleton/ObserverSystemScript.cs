@@ -58,15 +58,6 @@ public class ObserverSystemScript : MonoBehaviour {
         }
     }
 
-    //void LateUpdate()
-    //{
-    //    if (ToRemoveTheEventVariable != null)
-    //    {
-    //        m_NameStoredMessage.Remove(ToRemoveTheEventVariable);
-    //        ToRemoveTheEventVariable = null;
-    //    }
-    //}
-
     /// <summary>
     /// The coroutine to remove the event variable for the next frame.
     /// </summary>
@@ -196,5 +187,4 @@ public class ObserverSystemScript : MonoBehaviour {
     {
         m_NameStoredMessage.Clear();
     }
-
 }

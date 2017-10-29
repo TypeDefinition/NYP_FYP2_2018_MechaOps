@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 4c794582435101341abc18dba755bdb5
+timeCreated: 1509278940
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - m_TileSys: {instanceID: 0}
+  - m_HighlightedTileMat: {fileID: 2100000, guid: 8187a1d532b7a264fae388491dd10342,
+      type: 2}
+  - m_UnitWalkRef: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

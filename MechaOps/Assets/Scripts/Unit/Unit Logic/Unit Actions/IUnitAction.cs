@@ -20,7 +20,7 @@ public abstract class UnitAction : MonoBehaviour
 
     [Header("[ Debugging purpose sake ]")]
     [SerializeField, Tooltip("The unit stats")]
-    protected UnitStats m_UnitStatGO;
+    public UnitStats m_UnitStatGO;
     /// <summary>
     /// Most if not all, unit actions will need animation and some sort of delay
     /// </summary>

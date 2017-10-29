@@ -30,6 +30,7 @@ public class PlayerUnitManager : MonoBehaviour {
         ObserverSystemScript.Instance.SubscribeEvent("EnemyAnnihilated", StopUpdate);
         ObserverSystemScript.Instance.SubscribeEvent("ClickedUnit", PlayerSelectUnit);
         ObserverSystemScript.Instance.SubscribeEvent("ToggleSelectingUnit", ToggleThePlayerInput);
+        ObserverSystemScript.Instance.SubscribeEvent("UnitFinishAction", PollingForPlayerInput);
     }
 
     private void OnDisable()
@@ -38,6 +39,7 @@ public class PlayerUnitManager : MonoBehaviour {
         ObserverSystemScript.Instance.UnsubscribeEvent("EnemyAnnihilated", StopUpdate);
         ObserverSystemScript.Instance.UnsubscribeEvent("ClickedUnit", PlayerSelectUnit);
         ObserverSystemScript.Instance.UnsubscribeEvent("ToggleSelectingUnit", ToggleThePlayerInput);
+        ObserverSystemScript.Instance.UnsubscribeEvent("UnitFinishAction", PollingForPlayerInput);
     }
 
     public IEnumerator BeginUpdateOfPlayerUnits()
@@ -54,6 +56,7 @@ public class PlayerUnitManager : MonoBehaviour {
         ObserverSystemScript.Instance.UnsubscribeEvent("UnitMakeMove", UnitHasMakeMove);
         m_UpdateOfManager = null;
         ObserverSystemScript.Instance.TriggerEvent("TurnEnded");
+        // Player no longer needs to interact with the game so might as well turn off the polling
         m_PlayerInputOnUnit.enabled = false;
         yield break;
     }
@@ -114,11 +117,28 @@ public class PlayerUnitManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// Helps to toggle the component of player input
+    /// Helps to toggle the observer action subscription and the UI too!
     /// </summary>
     void ToggleThePlayerInput()
     {
-        m_PlayerInputOnUnit.enabled = !m_PlayerInputOnUnit.enabled;
-        m_ScrollRectUnitIcons.SetActive(m_PlayerInputOnUnit.enabled);
+        //m_PlayerInputOnUnit.enabled = !m_PlayerInputOnUnit.enabled;
+        m_ScrollRectUnitIcons.SetActive(!m_ScrollRectUnitIcons.activeSelf);
+        switch (m_ScrollRectUnitIcons.activeSelf)
+        {
+            case true:
+                ObserverSystemScript.Instance.SubscribeEvent("ClickedUnit", PlayerSelectUnit);
+                break;
+            default:
+                ObserverSystemScript.Instance.UnsubscribeEvent("ClickedUnit", PlayerSelectUnit);
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Starts polling for user input from GetPlayerInput
+    /// </summary>
+    void PollingForPlayerInput()
+    {
+        ObserverSystemScript.Instance.SubscribeEvent("ClickedUnit", PlayerSelectUnit);
     }
 }
