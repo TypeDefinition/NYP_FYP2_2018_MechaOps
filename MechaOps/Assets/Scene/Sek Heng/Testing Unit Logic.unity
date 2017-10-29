@@ -424,12 +424,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 236892920}
-  - component: {fileID: 236892919}
   - component: {fileID: 236892918}
   - component: {fileID: 236892917}
   - component: {fileID: 236892916}
-  - component: {fileID: 236892915}
-  - component: {fileID: 236892914}
   m_Layer: 0
   m_Name: Unit testing stuff artillery
   m_TagString: EnemyUnit
@@ -437,36 +434,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &236892914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 236892913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50fa03da21c954e4eb9e91fa2f8c8e47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ActionIconUI: {fileID: 21300000, guid: 7fa2b56696c075f4eafe02c8cfd5df76, type: 3}
-  m_ActionCost: 1
-  m_UnitActionName: Attack
-  m_UnitStatGO: {fileID: 236892919}
---- !u!114 &236892915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 236892913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3daac790cb991474f952197fd4657a3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ActionIconUI: {fileID: 21300000, guid: d9d27dc5793e3d249b4bc573d0309805, type: 3}
-  m_ActionCost: 1
-  m_UnitActionName: Walk
-  m_UnitStatGO: {fileID: 236892919}
 --- !u!65 &236892916
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -518,32 +485,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 236892913}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &236892919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 236892913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 246350ebb97584b41afd26ddbb5c1537, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UnitStatsJSON:
-    m_Name: 
-    m_MaxHealthPoints: 0
-    m_CurrentHealthPoints: 0
-    m_MaxActionPoints: 0
-    m_CurrentActionPoints: 0
-    m_DeploymentCost: 0
-    m_ViewRange: 0
-    m_MinAttackRange: 0
-    m_MaxAttackRange: 0
-    m_Speed: 0
-    m_ConcealmentPoints: 0
-    m_EvasionPoints: 0
-    m_AccuracyPoints: 0
-  m_TileAttributeOverrides: []
 --- !u!4 &236892920
 Transform:
   m_ObjectHideFlags: 0
@@ -896,8 +837,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4294440959
+  m_fontColor: {r: 1, g: 0.9705882, b: 0.9705882, a: 1}
   m_enableVertexGradient: 0
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
@@ -2006,12 +1947,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 833823139}
-  - component: {fileID: 833823138}
   - component: {fileID: 833823137}
   - component: {fileID: 833823136}
   - component: {fileID: 833823135}
-  - component: {fileID: 833823134}
-  - component: {fileID: 833823133}
   m_Layer: 0
   m_Name: Unit testing stuff artillery (1)
   m_TagString: EnemyUnit
@@ -2019,36 +1957,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &833823133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 833823132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50fa03da21c954e4eb9e91fa2f8c8e47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ActionIconUI: {fileID: 21300000, guid: 7fa2b56696c075f4eafe02c8cfd5df76, type: 3}
-  m_ActionCost: 1
-  m_UnitActionName: Attack
-  m_UnitStatGO: {fileID: 833823138}
---- !u!114 &833823134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 833823132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3daac790cb991474f952197fd4657a3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ActionIconUI: {fileID: 21300000, guid: d9d27dc5793e3d249b4bc573d0309805, type: 3}
-  m_ActionCost: 1
-  m_UnitActionName: Walk
-  m_UnitStatGO: {fileID: 833823138}
 --- !u!65 &833823135
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2100,32 +2008,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 833823132}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &833823138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 833823132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 246350ebb97584b41afd26ddbb5c1537, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UnitStatsJSON:
-    m_Name: 
-    m_MaxHealthPoints: 0
-    m_CurrentHealthPoints: 0
-    m_MaxActionPoints: 0
-    m_CurrentActionPoints: 0
-    m_DeploymentCost: 0
-    m_ViewRange: 0
-    m_MinAttackRange: 0
-    m_MaxAttackRange: 0
-    m_Speed: 0
-    m_ConcealmentPoints: 0
-    m_EvasionPoints: 0
-    m_AccuracyPoints: 0
-  m_TileAttributeOverrides: []
 --- !u!4 &833823139
 Transform:
   m_ObjectHideFlags: 0
@@ -3791,10 +3673,6 @@ GameObject:
   - component: {fileID: 1519159119}
   - component: {fileID: 1519159118}
   - component: {fileID: 1519159120}
-  - component: {fileID: 1519159117}
-  - component: {fileID: 1519159122}
-  - component: {fileID: 1519159121}
-  - component: {fileID: 1519159115}
   - component: {fileID: 1519159123}
   m_Layer: 0
   m_Name: Unit testing stuff
@@ -3803,21 +3681,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1519159115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1519159114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b3d6ddf13e66f64587cefc6f58589c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ActionIconUI: {fileID: 21300000, guid: 756d6ebf69a7f8440b47aa7620bad1ee, type: 3}
-  m_ActionCost: 1
-  m_UnitActionName: Guard
-  m_UnitStatGO: {fileID: 1519159117}
 --- !u!4 &1519159116
 Transform:
   m_ObjectHideFlags: 0
@@ -3831,32 +3694,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1519159117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1519159114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 246350ebb97584b41afd26ddbb5c1537, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UnitStatsJSON:
-    m_Name: 
-    m_MaxHealthPoints: 0
-    m_CurrentHealthPoints: 0
-    m_MaxActionPoints: 0
-    m_CurrentActionPoints: 0
-    m_DeploymentCost: 0
-    m_ViewRange: 0
-    m_MinAttackRange: 0
-    m_MaxAttackRange: 0
-    m_Speed: 0
-    m_ConcealmentPoints: 0
-    m_EvasionPoints: 0
-    m_AccuracyPoints: 0
-  m_TileAttributeOverrides: []
 --- !u!23 &1519159118
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3908,36 +3745,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1519159121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1519159114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50fa03da21c954e4eb9e91fa2f8c8e47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ActionIconUI: {fileID: 21300000, guid: 7fa2b56696c075f4eafe02c8cfd5df76, type: 3}
-  m_ActionCost: 1
-  m_UnitActionName: Attack
-  m_UnitStatGO: {fileID: 1519159117}
---- !u!114 &1519159122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1519159114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3daac790cb991474f952197fd4657a3a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ActionIconUI: {fileID: 21300000, guid: d9d27dc5793e3d249b4bc573d0309805, type: 3}
-  m_ActionCost: 1
-  m_UnitActionName: Walk
-  m_UnitStatGO: {fileID: 1519159117}
 --- !u!54 &1519159123
 Rigidbody:
   m_ObjectHideFlags: 0

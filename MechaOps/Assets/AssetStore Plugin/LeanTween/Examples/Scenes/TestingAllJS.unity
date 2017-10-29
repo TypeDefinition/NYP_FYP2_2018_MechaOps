@@ -904,83 +904,68 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   customAnimationCurve:
-    serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
-      time: 0
+    - time: 0
       value: 0
       inSlope: 2
       outSlope: 2
       tangentMode: 0
-    - serializedVersion: 2
-      time: 0.62517834
+    - time: 0.62517834
       value: 1.0104444
       inSlope: -6.279713
       outSlope: -6.279713
       tangentMode: 0
-    - serializedVersion: 2
-      time: 0.8634699
+    - time: 0.8634699
       value: 1.0309091
       inSlope: -1.5956022
       outSlope: -1.5956022
       tangentMode: 0
-    - serializedVersion: 2
-      time: 1
+    - time: 1
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
   shakeCurve:
-    serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
-      time: 0
+    - time: 0
       value: 0
       inSlope: 21.574825
       outSlope: 21.574825
       tangentMode: 0
-    - serializedVersion: 2
-      time: 0.13993259
+    - time: 0.13993259
       value: 0.008158841
       inSlope: -20.64766
       outSlope: -20.64766
       tangentMode: 0
-    - serializedVersion: 2
-      time: 0.29420608
+    - time: 0.29420608
       value: -0.0016184151
       inSlope: 6.5252113
       outSlope: 6.5252113
       tangentMode: 0
-    - serializedVersion: 2
-      time: 0.46408838
+    - time: 0.46408838
       value: -0.019107489
       inSlope: -9.737831
       outSlope: -9.737831
       tangentMode: 0
-    - serializedVersion: 2
-      time: 0.65681696
+    - time: 0.65681696
       value: -0.00817207
       inSlope: 3.022186
       outSlope: 3.022186
       tangentMode: 0
-    - serializedVersion: 2
-      time: 0.81483006
+    - time: 0.81483006
       value: -0.0071904855
       inSlope: -9.08752
       outSlope: -9.08752
       tangentMode: 0
-    - serializedVersion: 2
-      time: 0.9989034
+    - time: 0.9989034
       value: 0.0006173253
       inSlope: 0
       outSlope: 0
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
   pt1: {fileID: 2079683211}
   pt2: {fileID: 1719844711}
   pt3: {fileID: 467586324}

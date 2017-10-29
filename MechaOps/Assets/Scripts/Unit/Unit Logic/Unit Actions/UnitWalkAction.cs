@@ -6,6 +6,12 @@ using UnityEngine;
 /// A simper unit action for walking!
 /// </summary>
 public class UnitWalkAction : UnitAction {
+    [Header("References and variables needed for unit walk")]
+    [Tooltip("The number of tiles it can move")]
+    public int m_MovementPoints;
+    [Tooltip("The speed to move from 1 point to another. For animation purpose.")]
+    public float m_Speed = 10.0f;
+
     public override bool UseAction()
     {
         m_UpdateOfUnitAction = StartCoroutine(UpdateActionRoutine());
@@ -20,6 +26,15 @@ public class UnitWalkAction : UnitAction {
     public override IEnumerator UpdateActionRoutine()
     {
         m_UpdateOfUnitAction = null;
+        m_UnitStatGO.m_UnitStatsJSON.CurrentActionPoints--;
+        switch (m_UnitStatGO.m_UnitStatsJSON.CurrentActionPoints)
+        {
+            case 0:
+                // tell the player unit manager that it can no longer do any action
+                break;
+            default:
+                break;
+        }
         ObserverSystemScript.Instance.StoreVariableInEvent("UnitMakeMove", gameObject);
         ObserverSystemScript.Instance.TriggerEvent("UnitMakeMove");
         yield break;

@@ -4,6 +4,16 @@ using UnityEngine;
 
 public class UnitAttackAction : UnitAction
 {
+    [Header("The References and variables needed for Unit Attack")]
+    [SerializeField, Tooltip("Minimum attack range of the unit")]
+    private int m_MinAttackRange;
+    [SerializeField, Tooltip("Maximum attack range of the unit")]
+    private int m_MaxAttackRange;
+    [SerializeField, Tooltip("The accuracy points of the unit")]
+    private int m_AccuracyPoints;
+    [Tooltip("The damage point it dealt")]
+    public int m_DamagePts;
+
     /// <summary>
     /// Optimization will have to come later as this will need to be expanded upon!
     /// </summary>
