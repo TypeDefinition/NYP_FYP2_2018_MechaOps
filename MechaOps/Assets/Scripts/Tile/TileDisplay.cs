@@ -6,17 +6,19 @@ using UnityEngine.Assertions;
 
 public class TileDisplay : MonoBehaviour {
 
-    private Tile m_Tile = null;
+    [SerializeField] private bool m_OwnerInitialized = false;
+    [SerializeField] private Tile m_Owner = null;
 
-    public void InitTile(Tile _tile) {
+    public void InitOwner(Tile _owner) {
         // _radius should never be < 0.
-        Assert.IsTrue(m_Tile == null, MethodBase.GetCurrentMethod().Name + " - InitTile can only be called once per TileDisplay!");
+        Assert.IsTrue(m_OwnerInitialized == false, MethodBase.GetCurrentMethod().Name + " - InitTile can only be called once per TileDisplay!");
 
-        m_Tile = _tile;
+        m_Owner = _owner;
+        m_OwnerInitialized = true;
     }
 
-    public Tile GetTile() {
-        return m_Tile;
+    public Tile GetOwner() {
+        return m_Owner;
     }
 
 	// Use this for initialization

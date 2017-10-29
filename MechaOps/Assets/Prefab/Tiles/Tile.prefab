@@ -54,7 +54,7 @@ MeshCollider:
   m_Convex: 0
   m_InflateMesh: 0
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 4686e1377678d8b45aaab49e090656a4, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
 --- !u!114 &114553182710685338
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -66,10 +66,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f5719f6aadbea4e9288745d4c94e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_IdInited: 0
+  m_Id:
+    x: 0
+    y: 0
+    z: 0
+  m_TileSystem: {fileID: 0}
   m_Attributes:
+    m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_DisplayObject: {fileID: 0}
   m_DisplayObject: {fileID: 0}
   m_Hazard: {fileID: 0}
   m_Type: 0
+  m_Unit: {fileID: 0}
