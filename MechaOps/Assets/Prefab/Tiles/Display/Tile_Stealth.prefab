@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23475074523179058}
   - component: {fileID: 114127839350334378}
   - component: {fileID: 114621463578543154}
+  - component: {fileID: 64080943135641246}
   m_Layer: 0
   m_Name: Tile_Stealth
   m_TagString: Untagged
@@ -82,6 +83,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1269986956057342}
   m_Mesh: {fileID: 4300000, guid: 3cf715d2824f02b4fa094d3f1e475183, type: 3}
+--- !u!64 &64080943135641246
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1269986956057342}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
 --- !u!114 &114127839350334378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -106,3 +121,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb804e4e2cadf7540b2ae29f25a22d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_OwnerInitialized: 0
+  m_Owner: {fileID: 0}

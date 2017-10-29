@@ -1,7 +1,6 @@
 # Blender v2.79 (sub 0) OBJ File: 'Tile_Normal.blend'
 # www.blender.org
-mtllib Tile_Normal.mtl
-o Circle
+o Tile_Normal
 v 2.000000 -0.000000 -0.000000
 v 1.000000 -0.000000 1.732051
 v -1.000000 0.000000 1.732051

@@ -9,30 +9,30 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1049850476235206}
+  m_RootGameObject: {fileID: 1848773262884392}
   m_IsPrefabParent: 1
---- !u!1 &1049850476235206
+--- !u!1 &1848773262884392
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4599281584294250}
-  - component: {fileID: 114512876186301656}
+  - component: {fileID: 4101388603970590}
+  - component: {fileID: 114691502990005192}
   m_Layer: 0
-  m_Name: Hazard_Fire
+  m_Name: HazardLibrary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4599281584294250
+--- !u!4 &4101388603970590
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1049850476235206}
+  m_GameObject: {fileID: 1848773262884392}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -40,14 +40,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114512876186301656
+--- !u!114 &114691502990005192
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1049850476235206}
+  m_GameObject: {fileID: 1848773262884392}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ffbef1cb6ceae54984a2580a2d71701, type: 3}
+  m_Script: {fileID: 11500000, guid: 38be48fd848c81e48bcb79e69f243a44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Library:
+  - {fileID: 114659997287923196, guid: 510caf9d639ab2c43b2c6e9da3af3559, type: 2}

@@ -38,9 +38,18 @@ public class TileSystemEditor : Editor {
             }
         }
 
-        if (GUILayout.Button("Load Tile Types"))
+        if (GUILayout.Button("Randomize Hazard Types"))
         {
-            tileSystem.LoadTileTypes();
+            if (EditorUtility.DisplayDialog("TileSystem - Randomize Hazard Types", "Are you sure you want to randomize hazard types? This will replace all existing hazards.", "Yes", "No"))
+            {
+                tileSystem.RandomizeHazardTypes();
+                EditorUtility.SetDirty(tileSystem);
+            }
+        }
+
+        if (GUILayout.Button("Load Tile & Hazard Types"))
+        {
+            tileSystem.LoadTileAndHazardTypes();
             EditorUtility.SetDirty(tileSystem);
         }
     }

@@ -13,9 +13,15 @@ public class TileEditor : Editor
         DrawDefaultInspector();
 
         Tile tile = (Tile)target;
-        if (GUILayout.Button("Load Type"))
+        if (GUILayout.Button("Load Tile Type"))
         {
-            tile.LoadType();
+            tile.LoadTileType();
+            EditorUtility.SetDirty(tile);
+        }
+
+        if (GUILayout.Button("Load Hazard Type"))
+        {
+            tile.LoadHazardType();
             EditorUtility.SetDirty(tile);
         }
     }

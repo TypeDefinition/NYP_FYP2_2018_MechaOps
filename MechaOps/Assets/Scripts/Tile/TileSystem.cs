@@ -90,6 +90,7 @@ public class TileSystem : MonoBehaviour
 
     }
 
+    [SerializeField] private HazardLibrary m_HazardLibrary = null;
     [SerializeField] private TileLibrary m_TileLibrary = null;
     [SerializeField] private Tile m_DefaultTile = null;
 
@@ -98,6 +99,11 @@ public class TileSystem : MonoBehaviour
 
     public int m_Radius = 10;
     public float m_DistanceBetweenTiles = 5.0f;
+
+    public HazardLibrary GetHazardLibrary()
+    {
+        return m_HazardLibrary;
+    }
 
     public TileLibrary GetTileLibrary()
     {
@@ -156,7 +162,7 @@ public class TileSystem : MonoBehaviour
                 tile.transform.SetParent(transform);
                 tile.transform.localScale = tile.transform.localScale;
 
-                tile.LoadType();
+                tile.LoadTileType();
 
                 m_TileDictionary.Add(tileId, tile);
             }
@@ -204,9 +210,21 @@ public class TileSystem : MonoBehaviour
 
         foreach (KeyValuePair<TileId, Tile> iter in m_TileDictionary)
         {
-            TileType tileType = (TileType)Random.Range(0, (int)TileType.TileType_NumTypes - 1);
+            TileType tileType = (TileType)Random.Range(0, (int)TileType.Num_TileType - 1);
             iter.Value.SetTileType(tileType);
-            iter.Value.LoadType();
+        }
+    }
+
+    public void RandomizeHazardTypes()
+    {
+        LoadDictionary();
+
+        foreach (KeyValuePair<TileId, Tile> iter in m_TileDictionary)
+        {
+            //HazardType hazardType = (HazardType)Random.Range((int)HazardType.None, (int)HazardType.Num_HazardType - 1);
+            HazardType hazardType = (HazardType)Random.Range(0, 1);
+            Debug.Log((int)hazardType);
+            iter.Value.SetHazardType(hazardType);
         }
     }
 
@@ -217,7 +235,7 @@ public class TileSystem : MonoBehaviour
     }
 #endif // UNITY_EDITOR
 
-    public void LoadTileTypes()
+    public void LoadTileAndHazardTypes()
     {
         LoadDictionary();
 
@@ -231,7 +249,8 @@ public class TileSystem : MonoBehaviour
         {
             if (value != null)
             {
-                value.LoadType();
+                value.LoadTileType();
+                value.LoadHazardType();
             }
         }
 
@@ -298,7 +317,7 @@ public class TileSystem : MonoBehaviour
     private void Awake()
     {
         LoadDictionary();
-        LoadTileTypes();
+        // LoadTileAndHazardTypes();
     }
 
     // Interface Function(s)

@@ -1,7 +1,4 @@
-# Blender v2.79 (sub 0) OBJ File: 'Tile_Stealth.blend'
-# www.blender.org
-mtllib Tile_Stealth.mtl
-o Circle.001
+o Tile_Stealth
 v 0.000000 0.050000 -1.600000
 v -0.612294 0.050000 -1.478207
 v -1.131371 0.050000 -1.131371

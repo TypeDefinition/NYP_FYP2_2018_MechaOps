@@ -51,6 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14820c44486c4a740b6205b63c987f2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_HazardLibrary: {fileID: 114691502990005192, guid: a7cc40b0c2aad2a46ab51bb4fd334f37,
+    type: 2}
   m_TileLibrary: {fileID: 114082965932432936, guid: 0149d9218bd849c4d8415a7bd4eef871,
     type: 2}
   m_DefaultTile: {fileID: 114553182710685338, guid: 63cb481f6a73e3640961951b73627b88,

@@ -94,24 +94,29 @@ public class TileId
 public class Tile : MonoBehaviour
 {
 
-    [SerializeField, HideInInspector] private bool m_IdInited = false;
+    // ID
+    [SerializeField, HideInInspector] private bool m_IdInitialized = false;
     [SerializeField] private TileId m_Id = null;
 
+    // Tile
     [SerializeField, HideInInspector] private TileSystem m_TileSystem = null;
     [SerializeField] private TileAttributes m_Attributes;
     [SerializeField] private TileDisplay m_DisplayObject;
+    [SerializeField] private TileType m_Type = TileType.Normal;
+
+    // Hazard
     [SerializeField] private Hazard m_Hazard = null;
-    [SerializeField] private TileType m_Type = TileType.TileType_Normal;
+    [SerializeField] private HazardType m_HazardType = HazardType.None;
 
     // The unit currently on this tile.
     public GameObject m_Unit = null;
 
     public void InitId(TileId _id)
     {
-        Assert.IsTrue(m_IdInited == false, MethodBase.GetCurrentMethod().Name + " - InitId can only be called once per Tile!");
+        Assert.IsTrue(m_IdInitialized == false, MethodBase.GetCurrentMethod().Name + " - InitId can only be called once per Tile!");
 
         m_Id = _id;
-        m_IdInited = true;
+        m_IdInitialized = true;
     }
 
     public void SetTileSystem(TileSystem _tileSystem)
@@ -133,6 +138,7 @@ public class Tile : MonoBehaviour
     public void SetTileType(TileType _type)
     {
         m_Type = _type;
+        LoadTileType();
     }
 #endif // UNITY_EDITOR
 
@@ -141,7 +147,7 @@ public class Tile : MonoBehaviour
         return m_Type;
     }
 
-    public void LoadType()
+    public void LoadTileType()
     {
         if (m_TileSystem == null)
         {
@@ -165,9 +171,39 @@ public class Tile : MonoBehaviour
         }
     }
 
-    public void SetHazard(Hazard _hazard)
+    public void SetHazardType(HazardType _hazardType)
     {
-        m_Hazard = _hazard;
+        Assert.AreNotEqual(_hazardType, HazardType.Num_HazardType, MethodBase.GetCurrentMethod().Name + " - HazardType.Num_HazardType is an invalid Hazard Type!");
+
+        m_HazardType = _hazardType;
+        LoadHazardType();
+    }
+
+    public void LoadHazardType()
+    {
+        if (m_Hazard != null)
+        {
+            GameObject.DestroyImmediate(m_Hazard.gameObject);
+        }
+
+        Assert.AreNotEqual(m_HazardType, HazardType.Num_HazardType, MethodBase.GetCurrentMethod().Name + " - HazardType.Num_HazardType is an invalid Hazard Type!");
+
+        if (m_HazardType == HazardType.None)
+        {
+            return;
+        }
+
+        if (m_TileSystem == null)
+        {
+            Debug.Log(MethodBase.GetCurrentMethod().Name + " - Tile System is null!");
+            return;
+        }
+
+        GameObject hazard = GameObject.Instantiate(m_TileSystem.GetHazardLibrary().GetHazard(m_HazardType).gameObject);
+        m_Hazard = hazard.GetComponent<Hazard>();
+        m_Hazard.InitOwner(this);
+        hazard.transform.position = gameObject.transform.position;
+        hazard.transform.SetParent(gameObject.transform);
     }
 
     public Hazard GetHazard()
@@ -208,12 +244,18 @@ public class Tile : MonoBehaviour
     private void OnValidate()
     {
         m_Attributes.EditorValidate();
-        if (m_Type == TileType.TileType_NumTypes)
+        if (m_Type == TileType.Num_TileType)
         {
             EditorUtility.DisplayDialog("Invalid Value!", "TileType.TileType_NumTypes is an invalid value for m_Type! Defaulting to TileType.TileType_Normal.", "OK");
-            m_Type = TileType.TileType_Normal;
+            m_Type = TileType.Normal;
         }
     }
 #endif // UNITY_EDITOR
+
+    private void Awake()
+    {
+        LoadTileType();
+        LoadHazardType();
+    }
 
 }

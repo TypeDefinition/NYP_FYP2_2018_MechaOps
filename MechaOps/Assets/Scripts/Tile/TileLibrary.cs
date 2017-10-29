@@ -9,14 +9,14 @@ using UnityEditor;
 
 public enum TileType
 {
-    TileType_Normal = 0,
-    TileType_FullCover,
-    TileType_HalfCover,
-    TileType_Obstacle,
-    TileType_Swirl,
-    TileType_Stealth,
+    Normal = 0,
+    FullCover,
+    HalfCover,
+    Obstacle,
+    Swirl,
+    Stealth,
 
-    TileType_NumTypes
+    Num_TileType
 }
 
 [System.Serializable]
@@ -53,7 +53,7 @@ public class TileAttributes
 public class TileAttributeOverride
 {
 
-    [SerializeField] private TileType m_Type = TileType.TileType_Normal;
+    [SerializeField] private TileType m_Type = TileType.Normal;
     [SerializeField] private bool m_Walkable = true;
     [SerializeField] private int m_MovementCost = 1;
     [SerializeField] private int m_ConcealmentPoints = 0;
@@ -66,7 +66,7 @@ public class TileAttributeOverride
         }
         set
         {
-            Assert.IsFalse(value == TileType.TileType_NumTypes, "TileAttributeOverride.Type - Invalid value for m_Type!");
+            Assert.IsFalse(value == TileType.Num_TileType, "TileAttributeOverride.Type - Invalid value for m_Type!");
             m_Type = value;
         }
     }
@@ -80,10 +80,10 @@ public class TileAttributeOverride
 #if UNITY_EDITOR
     public void EditorValidate()
     {
-        if (m_Type == TileType.TileType_NumTypes)
+        if (m_Type == TileType.Num_TileType)
         {
             EditorUtility.DisplayDialog("Invalid Value!", "TileType.TileType_NumTypes is an invalid value for m_Type! Defaulting to TileType.TileType_Normal.", "OK");
-            m_Type = TileType.TileType_Normal;
+            m_Type = TileType.Normal;
         }
         
         m_MovementCost = Mathf.Max(1, m_MovementCost);
@@ -97,7 +97,7 @@ public class TileAttributeOverride
 public class TileLibrary : MonoBehaviour
 {
 
-    [SerializeField] private TileAttributes[] m_Library = new TileAttributes[(uint)TileType.TileType_NumTypes];
+    [SerializeField] private TileAttributes[] m_Library = new TileAttributes[(uint)TileType.Num_TileType];
 
     public TileAttributes GetAttribute(TileType _type)
     {

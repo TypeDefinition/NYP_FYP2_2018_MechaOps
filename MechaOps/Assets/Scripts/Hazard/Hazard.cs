@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 [System.Serializable]
 public class HazardAttributes
@@ -24,11 +26,17 @@ public class HazardAttributes
 public abstract class Hazard : MonoBehaviour
 {
 
+    [SerializeField, HideInInspector] private bool m_OwnerInitialized = false;
+    [SerializeField, HideInInspector] private Tile m_Owner = null;
     [SerializeField] private HazardAttributes m_Attributes = new HazardAttributes();
     [SerializeField] private bool m_Decay = false;
     [SerializeField] private int m_TurnsToDecay = 3;
     private int m_CurrentTurnsToDecay;
-    [SerializeField] private HazardDisplay m_DisplayObject = null;
+
+    public Tile Owner
+    {
+        get { return m_Owner; }
+    }
 
     public bool Decay
     {
@@ -38,22 +46,27 @@ public abstract class Hazard : MonoBehaviour
 
     public int TurnsToDecay
     {
-        get { return m_TurnsToDecay; }
-        set { m_TurnsToDecay = Mathf.Max(1, value); }
+        get
+        {
+            return m_TurnsToDecay;
+        }
+        set
+        {
+            m_TurnsToDecay = Mathf.Max(1, value);
+            m_CurrentTurnsToDecay = Mathf.Clamp(m_CurrentTurnsToDecay, 0, m_TurnsToDecay);
+        }
     }
 
-    public HazardDisplay DisplayObject
+    public int CurrentTurnsToDecay
     {
-        get { return m_DisplayObject; }
+        get { return m_CurrentTurnsToDecay; }
+        set { m_CurrentTurnsToDecay = Mathf.Clamp(value, 0, m_TurnsToDecay); }
     }
 
     // There are no setters as this should only be changed in the inspector.
     public HazardAttributes Attributes
     {
-        get
-        {
-            return m_Attributes;
-        }
+        get { return m_Attributes; }
     }
 
 #if UNITY_EDITOR
@@ -65,6 +78,18 @@ public abstract class Hazard : MonoBehaviour
     }
 #endif // UNITY_EDITOR
 
+    public void InitOwner(Tile _owner)
+    {
+        Assert.IsTrue(m_OwnerInitialized == false, MethodBase.GetCurrentMethod().Name + " - m_Owner can only be called once per Tile!");
+
+        m_Owner = _owner;
+        m_OwnerInitialized = true;
+    }
+
     public abstract void ExcecuteHazard(GameObject _unit);
+
+    private void Start()
+    {
+    }
 
 }
