@@ -30,19 +30,11 @@ public class UnitStatsJSON
 
     [SerializeField, Tooltip("The view range of the unit")]
     private int m_ViewRange;
-    [SerializeField, Tooltip("Minimum attack range of the unit")]
-    private int m_MinAttackRange;
-    [SerializeField, Tooltip("Maximum attack range of the unit")]
-    private int m_MaxAttackRange;
 
-    [SerializeField, Tooltip("How many tiles the unit can move per action.")]
-    private int m_Speed;
     [SerializeField, Tooltip("The concealment points of the unit")]
     private int m_ConcealmentPoints;
     [SerializeField, Tooltip("The evasion points of the unit")]
     private int m_EvasionPoints;
-    [SerializeField, Tooltip("The accuracy points of the unit")]
-    private int m_AccuracyPoints;
     
     public int MaxHealthPoints
     {
@@ -111,24 +103,6 @@ public class UnitStatsJSON
         set { m_ViewRange = Mathf.Max(0, value); }
     }
     
-    public int MinAttackRange
-    {
-        get { return m_MinAttackRange; }
-        set { m_MinAttackRange = Mathf.Clamp(value, 0, m_MaxAttackRange); }
-    }
-
-    public int MaxAttackRange
-    {
-        get { return m_MaxAttackRange; }
-        set { m_MaxAttackRange = Mathf.Max(value, m_MinAttackRange); }
-    }
-
-    public int Speed
-    {
-        get { return m_Speed; }
-        set { m_Speed = Mathf.Max(0, value); }
-    }
-
     public int ConcealmentPoints
     {
         get { return m_ConcealmentPoints; }
@@ -140,13 +114,6 @@ public class UnitStatsJSON
         get { return m_EvasionPoints; }
         set { m_EvasionPoints = Mathf.Max(0, value); }
     }
-
-    public int AccuracyPoints
-    {
-        get { return m_AccuracyPoints; }
-        set { m_AccuracyPoints = Mathf.Max(0, value); }
-    }
-
 }
 
 public class UnitStats : MonoBehaviour {

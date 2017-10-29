@@ -29,7 +29,7 @@ public class PlayerUnitManager : MonoBehaviour {
         ObserverSystemScript.Instance.SubscribeEvent("PlayerAnnihilated", StopUpdate);
         ObserverSystemScript.Instance.SubscribeEvent("EnemyAnnihilated", StopUpdate);
         ObserverSystemScript.Instance.SubscribeEvent("ClickedUnit", PlayerSelectUnit);
-        ObserverSystemScript.Instance.SubscribeEvent("ToggleSelectingUnit", SetThePlayerInputFalse);
+        ObserverSystemScript.Instance.SubscribeEvent("ToggleSelectingUnit", ToggleThePlayerInput);
     }
 
     private void OnDisable()
@@ -37,7 +37,7 @@ public class PlayerUnitManager : MonoBehaviour {
         ObserverSystemScript.Instance.UnsubscribeEvent("PlayerAnnihilated", StopUpdate);
         ObserverSystemScript.Instance.UnsubscribeEvent("EnemyAnnihilated", StopUpdate);
         ObserverSystemScript.Instance.UnsubscribeEvent("ClickedUnit", PlayerSelectUnit);
-        ObserverSystemScript.Instance.UnsubscribeEvent("ToggleSelectingUnit", SetThePlayerInputFalse);
+        ObserverSystemScript.Instance.UnsubscribeEvent("ToggleSelectingUnit", ToggleThePlayerInput);
     }
 
     public IEnumerator BeginUpdateOfPlayerUnits()
@@ -83,8 +83,8 @@ public class PlayerUnitManager : MonoBehaviour {
     void PlayerSelectUnit()
     {
         GameObject zeClickedGO = ObserverSystemScript.Instance.GetStoredEventVariable<GameObject>("ClickedUnit");
-        // If only the clicked unit belongs to the player!
-        if (zeClickedGO.tag == "Player")
+        // If only the clicked unit belongs to the player and it must be inside the list of player unit that has yet to make a move!
+        if (zeClickedGO.tag == "Player" && m_UnitsYetToMakeMoves.Contains(zeClickedGO))
         {
             m_ScrollRectUnitIcons.SetActive(true);
             UnitAction[] allPossibleUnitActions = zeClickedGO.GetComponentsInChildren<UnitAction>();
@@ -114,11 +114,11 @@ public class PlayerUnitManager : MonoBehaviour {
     }
 
     /// <summary>
-    /// Helps to set the component of player input to be false
+    /// Helps to toggle the component of player input
     /// </summary>
-    void SetThePlayerInputFalse()
+    void ToggleThePlayerInput()
     {
-        m_PlayerInputOnUnit.enabled = false;
-        m_ScrollRectUnitIcons.SetActive(false);
+        m_PlayerInputOnUnit.enabled = !m_PlayerInputOnUnit.enabled;
+        m_ScrollRectUnitIcons.SetActive(m_PlayerInputOnUnit.enabled);
     }
 }
