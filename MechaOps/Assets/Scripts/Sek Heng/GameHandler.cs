@@ -74,9 +74,9 @@ public class GameHandler : MonoBehaviour {
 
     // Use this for initialization
     void OnDisable () {
-        ObserverSystemScript.Instance.SubscribeEvent("PlayerAnnihilated", DisplayLosingScreenForPlayer);
-        ObserverSystemScript.Instance.SubscribeEvent("EnemyAnnihilated", DisplayWinningScreenForPlayer);
-        ObserverSystemScript.Instance.SubscribeEvent("TurnEnded", () => PlayerTurn = !PlayerTurn);
+        ObserverSystemScript.Instance.UnsubscribeEvent("PlayerAnnihilated", DisplayLosingScreenForPlayer);
+        ObserverSystemScript.Instance.UnsubscribeEvent("EnemyAnnihilated", DisplayWinningScreenForPlayer);
+        ObserverSystemScript.Instance.UnsubscribeEvent("TurnEnded", () => PlayerTurn = !PlayerTurn);
     }
 
     private IEnumerator Start()

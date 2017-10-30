@@ -18,6 +18,8 @@ public class PlayerUnitManager : MonoBehaviour {
     protected List<GameObject> m_UnitsYetToMakeMoves;
     [Tooltip("The number of image icons beneath it")]
     public List<Image> m_AllOfUnitUIIcon;
+    [Tooltip("The player unit that has been clicked upon")]
+    public GameObject m_SelectedPlayerUnit;
 
     /// <summary>
     /// The update of this manager. So that it can be controlled anytime
@@ -90,6 +92,8 @@ public class PlayerUnitManager : MonoBehaviour {
         if (zeClickedGO.tag == "Player" && m_UnitsYetToMakeMoves.Contains(zeClickedGO))
         {
             m_ScrollRectUnitIcons.SetActive(true);
+            // Need to ensure the selectedPlayerUnit is thr
+            m_SelectedPlayerUnit = zeClickedGO;
             UnitAction[] allPossibleUnitActions = zeClickedGO.GetComponentsInChildren<UnitAction>();
             // Instantiate more unit actions if there is not enough actions!
             while (m_AllOfUnitUIIcon.Count < allPossibleUnitActions.Length)

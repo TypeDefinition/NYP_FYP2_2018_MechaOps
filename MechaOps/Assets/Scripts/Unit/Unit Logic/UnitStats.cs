@@ -35,7 +35,10 @@ public class UnitStatsJSON
     private int m_ConcealmentPoints;
     [SerializeField, Tooltip("The evasion points of the unit")]
     private int m_EvasionPoints;
-    
+
+    [Tooltip("The current tile that the unit is at. Currently needs to be manually linked as the TileSystem cant identify current tile is at world space")]
+    public TileId m_CurrentTileID;
+
     public int MaxHealthPoints
     {
         get
@@ -121,8 +124,6 @@ public class UnitStats : MonoBehaviour {
     [Header("The references of the Unit stats")]
     [Tooltip("The unit stats information")]
     public UnitStatsJSON m_UnitStatsJSON = new UnitStatsJSON();
-    [Tooltip("The current tile that the unit is at. Currently needs to be manually linked as the TileSystem cant identify current tile is at world space")]
-    public TileId m_CurrentTileID;
     public TileAttributeOverride[] m_TileAttributeOverrides;
 
     private void Start()
