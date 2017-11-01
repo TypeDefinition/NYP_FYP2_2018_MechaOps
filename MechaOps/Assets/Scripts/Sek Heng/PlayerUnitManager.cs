@@ -12,12 +12,16 @@ public class PlayerUnitManager : MonoBehaviour {
     public GameObject m_HolderOfIcons;
     [Tooltip("The ScrollRect of the unit icons")]
     public GameObject m_ScrollRectUnitIcons;
+    [Tooltip("The canvas transform that holds all of the action stuff")]
+    public Transform m_UICanvasTransform;
 
     [Header("Debugging References")]
     [SerializeField, Tooltip("The array of how many units have yet to make their turn. Meant for debugging purpose")]
     protected List<GameObject> m_UnitsYetToMakeMoves;
     [Tooltip("The number of image icons beneath it")]
-    public List<Image> m_AllOfUnitUIIcon;
+    public List<Button> m_AllOfUnitUIIcon;
+    [Tooltip("The current unit action that is clicked upon")]
+    public IUnitAction m_CurrentSelectedAct;
     [Tooltip("The player unit that has been clicked upon")]
     public GameObject m_SelectedPlayerUnit;
 
@@ -95,27 +99,24 @@ public class PlayerUnitManager : MonoBehaviour {
             // Need to ensure the selectedPlayerUnit is thr
             m_SelectedPlayerUnit = zeClickedGO;
             IUnitAction[] allPossibleUnitActions = zeClickedGO.GetComponentsInChildren<IUnitAction>();
-            // Instantiate more unit actions if there is not enough actions!
-            while (m_AllOfUnitUIIcon.Count < allPossibleUnitActions.Length)
+#region Clear The old buttons
+            foreach (Button zeUnitButton in m_AllOfUnitUIIcon)
             {
-                Image instantiatedUnitIcon = Instantiate(m_UnitActionUIIconGO, m_HolderOfIcons.transform);
-                instantiatedUnitIcon.gameObject.SetActive(true);
-                m_AllOfUnitUIIcon.Add(instantiatedUnitIcon);
+                Destroy(zeUnitButton.gameObject);
             }
-            // Once clicked on the unit, transform the unit's sprite into actual icon!
-            for (int num = 0; num < m_AllOfUnitUIIcon.Count; ++num)
+            m_AllOfUnitUIIcon.Clear();
+#endregion
+            // When we will instantiate the button according to the amount of unit actions there are!
+            foreach (IUnitAction zeUnitAction in allPossibleUnitActions)
             {
-                if (num < allPossibleUnitActions.Length)
-                {
-                    // Then assign the sprite there!
-                    m_AllOfUnitUIIcon[num].gameObject.SetActive(true);
-                    m_AllOfUnitUIIcon[num].sprite = allPossibleUnitActions[num].m_ActionIconUI;
-                    m_AllOfUnitUIIcon[num].GetComponent<UnitActionUILogic>().m_unitActionRef = allPossibleUnitActions[num];
-                }
-                else
-                {
-                    m_AllOfUnitUIIcon[num].gameObject.SetActive(false);
-                }
+                Image zeUnitIconUI = Instantiate(m_UnitActionUIIconGO, m_HolderOfIcons.transform);
+                // Replace the sprite
+                zeUnitIconUI.gameObject.SetActive(true);
+                zeUnitIconUI.sprite = zeUnitAction.m_ActionIconUI;
+                // Add to the onclick event for Unity button!
+                Button zeUnitIconButton = zeUnitIconUI.GetComponent<Button>();
+                zeUnitIconButton.onClick.AddListener(() => ToInstantiateSpecificActionUI(zeUnitAction.m_UnitActionUI, zeUnitAction));
+                m_AllOfUnitUIIcon.Add(zeUnitIconButton);
             }
         }
     }
@@ -144,5 +145,16 @@ public class PlayerUnitManager : MonoBehaviour {
     protected void PollingForPlayerInput()
     {
         ObserverSystemScript.Instance.SubscribeEvent("ClickedUnit", PlayerSelectUnit);
+    }
+
+    /// <summary>
+    /// Instantiating the specific action UI and keeping the reference to it!
+    /// </summary>
+    /// <param name="_SpecificUIGO">The Specific Action UI GameObject</param>
+    /// <param name="_SelectedAction">The reference to that UI</param>
+    public void ToInstantiateSpecificActionUI(GameObject _SpecificUIGO, IUnitAction _SelectedAction)
+    {
+        Instantiate(_SpecificUIGO, m_UICanvasTransform).SetActive(true);
+        m_CurrentSelectedAct = _SelectedAction;
     }
 }

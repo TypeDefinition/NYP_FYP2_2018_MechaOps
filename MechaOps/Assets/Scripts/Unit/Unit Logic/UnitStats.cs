@@ -124,7 +124,11 @@ public class UnitStats : MonoBehaviour {
     [Header("The references of the Unit stats")]
     [Tooltip("The unit stats information")]
     public UnitStatsJSON m_UnitStatsJSON = new UnitStatsJSON();
+    [Tooltip("The current active action so that it can be stopped")]
+    public IUnitAction m_CurrentActiveAct;
+    [Tooltip("The array of tiles override")]
     public TileAttributeOverride[] m_TileAttributeOverrides;
+
 
     private void Start()
     {

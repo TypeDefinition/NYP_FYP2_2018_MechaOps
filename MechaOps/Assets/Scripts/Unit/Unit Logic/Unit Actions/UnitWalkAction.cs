@@ -6,13 +6,13 @@ using UnityEngine;
 /// A simper unit action for walking!
 /// </summary>
 public class UnitWalkAction : IUnitAction {
-    [Header("References and variables needed for unit walk")]
+    [Header("References and variables needed for UnitWalkAction")]
     [Tooltip("The number of tiles it can move")]
     public int m_MovementPoints;
     [Tooltip("The speed to move from 1 point to another. For animation purpose.")]
     public float m_Speed = 10.0f;
 
-    [Header("Debugging References for Unit Walk")]
+    [Header("Debugging References for UnitWalkAction")]
     [Tooltip("The array of tiles to move to!")]
     public TileId[] m_TilePath;
     [Tooltip("The current tile that it is moving towards to!")]
@@ -40,18 +40,26 @@ public class UnitWalkAction : IUnitAction {
         Vector3 zeNewPos = new Vector3(m_CurrentDestinationTile.transform.position.x, transform.position.y, m_CurrentDestinationTile.transform.position.z);
         // TODO: use LeanTween to move towards the position for now
         LeanTween.move(gameObject, zeNewPos, 0.5f).setOnComplete(() => zeFinishedMoving = true);
-        while (zeNumOfIndex < m_TilePath.Length)
+        while (zeNumOfIndex < m_TilePath.Length )
         {
             yield return null;
             if (zeFinishedMoving)
-            {
-                ++zeNumOfIndex;
-                if (zeNumOfIndex >= m_TilePath.Length)
-                    break;
-                m_CurrentDestinationTile = m_TileSys.GetTile(m_TilePath[zeNumOfIndex]);
-                zeNewPos = new Vector3(m_CurrentDestinationTile.transform.position.x, transform.position.y, m_CurrentDestinationTile.transform.position.z);
-                // TODO: use LeanTween to move towards the position for now
-                LeanTween.move(gameObject, zeNewPos, 0.5f).setOnComplete(() => zeFinishedMoving = true);
+            { 
+                // Only move when the current state is running!
+                switch (m_ActionState)
+                {
+                    case ActionState.Running:
+                        ++zeNumOfIndex;
+                        if (zeNumOfIndex >= m_TilePath.Length)
+                            break;
+                        m_CurrentDestinationTile = m_TileSys.GetTile(m_TilePath[zeNumOfIndex]);
+                        zeNewPos = new Vector3(m_CurrentDestinationTile.transform.position.x, transform.position.y, m_CurrentDestinationTile.transform.position.z);
+                        // TODO: use LeanTween to move towards the position for now
+                        LeanTween.move(gameObject, zeNewPos, 0.5f).setOnComplete(() => zeFinishedMoving = true);
+                        break;
+                    default:
+                        break;
+                }
             }
         }
         m_UpdateOfUnitAction = null;
@@ -99,6 +107,26 @@ public class UnitWalkAction : IUnitAction {
     /// </summary>
     public override void StopActionUpdate()
     {
-        base.StopActionUpdate();
+        
+    }
+
+    public override void PauseAction()
+    {
+        m_ActionState = ActionState.Paused;
+    }
+
+    public override void ResumeAction()
+    {
+        m_ActionState = ActionState.Running;
+    }
+
+    public override void StopAction()
+    {
+        if (m_UpdateOfUnitAction != null)
+        {
+            StopCoroutine(m_UpdateOfUnitAction);
+            m_UpdateOfUnitAction = null;
+        }
+        m_ActionState = ActionState.Completed;
     }
 }

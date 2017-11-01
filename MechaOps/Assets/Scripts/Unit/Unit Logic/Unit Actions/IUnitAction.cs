@@ -30,7 +30,8 @@ public abstract class IUnitAction : MonoBehaviour
     public int m_Priority;
     [Tooltip("The current state that this action update is in")]
     public ActionState m_ActionState = ActionState.None;
-
+    [Tooltip("The specific action UI")]
+    public GameObject m_UnitActionUI;
 
     [Header("[ Debugging purpose sake ]")]
     [SerializeField, Tooltip("The unit stats")]
