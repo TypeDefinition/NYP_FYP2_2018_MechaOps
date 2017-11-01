@@ -154,7 +154,8 @@ public class PlayerUnitManager : MonoBehaviour {
     /// <param name="_SelectedAction">The reference to that UI</param>
     public void ToInstantiateSpecificActionUI(GameObject _SpecificUIGO, IUnitAction _SelectedAction)
     {
-        Instantiate(_SpecificUIGO, m_UICanvasTransform).SetActive(true);
         m_CurrentSelectedAct = _SelectedAction;
+        ObserverSystemScript.Instance.StoreVariableInEvent("SelectedAction", m_CurrentSelectedAct);
+        Instantiate(_SpecificUIGO, m_UICanvasTransform).SetActive(true);
     }
 }

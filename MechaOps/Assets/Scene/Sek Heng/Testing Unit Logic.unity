@@ -29700,7 +29700,8 @@ MonoBehaviour:
   m_UnitActionName: Walk
   m_Priority: 0
   m_ActionState: 0
-  m_UnitActionUI: {fileID: 0}
+  m_UnitActionUI: {fileID: 1134435258809106, guid: f60f06ef37015e14ba42bc5dad875b1c,
+    type: 2}
   m_UnitStatGO: {fileID: 1365931110}
   m_Activated: 0
   m_MovementPoints: 5
@@ -41913,6 +41914,7 @@ MonoBehaviour:
   m_UICanvasTransform: {fileID: 1020636871}
   m_UnitsYetToMakeMoves: []
   m_AllOfUnitUIIcon: []
+  m_CurrentSelectedAct: {fileID: 0}
   m_SelectedPlayerUnit: {fileID: 0}
 --- !u!114 &1995284699
 MonoBehaviour:

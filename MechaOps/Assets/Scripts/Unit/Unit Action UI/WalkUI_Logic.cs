@@ -23,10 +23,12 @@ public class WalkUI_Logic : MonoBehaviour {
     private void OnEnable()
     {
         // TODO: Use another system aside from ObserverSystem for better optimization. maybe.
-        m_UnitWalkRef = ObserverSystemScript.Instance.GetStoredEventVariable<UnitWalkAction>(tag);
-        ObserverSystemScript.Instance.RemoveTheEventVariableNextFrame(tag);
+        m_UnitWalkRef = ObserverSystemScript.Instance.GetStoredEventVariable<UnitWalkAction>("SelectedAction");
+        ObserverSystemScript.Instance.RemoveTheEventVariableNextFrame("SelectedAction");
         // For now, it will just pick the 1st enemy in the array
         ObserverSystemScript.Instance.TriggerEvent("ToggleSelectingUnit");
+        // Since the tile system is not linked from the start, find it at the scene
+        m_TileSys = FindObjectOfType<TileSystem>();
         // And then access the tile stuff from the system and get reachable tiles
         m_AllReachableTileHighlight = new List<TileId>(m_TileSys.GetReachableTiles(m_UnitWalkRef.m_MovementPoints, m_UnitWalkRef.m_UnitStatGO.m_UnitStatsJSON.m_CurrentTileID, m_UnitWalkRef.m_UnitStatGO.m_TileAttributeOverrides));
         // TODO: make a fanciful UI or highlight for the reachable tiles.
@@ -46,9 +48,19 @@ public class WalkUI_Logic : MonoBehaviour {
     void PlayerClickedTile()
     {
         GameObject zeClickedObj = ObserverSystemScript.Instance.GetStoredEventVariable<GameObject>("ClickedUnit");
-        if (zeClickedObj.tag == "TileBase")
+        if (zeClickedObj.tag == "TileDisplay" || zeClickedObj.tag == "TileBase")
         {
-            Tile zeTileComponent = zeClickedObj.GetComponent<Tile>();
+            // We have to hardcode a bit since the tags will differ!
+            Tile zeTileComponent = null;
+            switch (zeClickedObj.tag)
+            {
+                case "TileDisplay":
+                    zeTileComponent = zeClickedObj.transform.parent.GetComponent<Tile>();
+                    break;
+                case "TileBase":
+                    zeTileComponent = zeClickedObj.GetComponent<Tile>();
+                    break;
+            }
             if (m_AllReachableTileHighlight.Contains(zeTileComponent.GetId()))
             {
                 // Then we have to find the path for it!
