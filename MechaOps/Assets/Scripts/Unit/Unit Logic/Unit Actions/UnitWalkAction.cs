@@ -22,6 +22,7 @@ public class UnitWalkAction : IUnitAction {
 
     public override bool StartAction()
     {
+        m_UnitStatGO.m_CurrentActiveAct = this;
         m_UpdateOfUnitAction = StartCoroutine(UpdateActionRoutine());
         return true;
     }
@@ -33,13 +34,11 @@ public class UnitWalkAction : IUnitAction {
     /// <returns></returns>
     public override IEnumerator UpdateActionRoutine()
     {
+        m_ActionState = ActionState.Running;
         // Since the start of the index in the array is 0!
-        int zeNumOfIndex = 0;
-        bool zeFinishedMoving = false;
-        m_CurrentDestinationTile = m_TileSys.GetTile(m_TilePath[zeNumOfIndex]);
-        Vector3 zeNewPos = new Vector3(m_CurrentDestinationTile.transform.position.x, transform.position.y, m_CurrentDestinationTile.transform.position.z);
+        int zeNumOfIndex = 1;
+        bool zeFinishedMoving = true;
         // TODO: use LeanTween to move towards the position for now
-        LeanTween.move(gameObject, zeNewPos, 0.5f).setOnComplete(() => zeFinishedMoving = true);
         while (zeNumOfIndex < m_TilePath.Length )
         {
             yield return null;
@@ -52,8 +51,8 @@ public class UnitWalkAction : IUnitAction {
                         ++zeNumOfIndex;
                         if (zeNumOfIndex >= m_TilePath.Length)
                             break;
-                        m_CurrentDestinationTile = m_TileSys.GetTile(m_TilePath[zeNumOfIndex]);
-                        zeNewPos = new Vector3(m_CurrentDestinationTile.transform.position.x, transform.position.y, m_CurrentDestinationTile.transform.position.z);
+                        Tile m_CurrentDestinationTile = m_TileSys.GetTile(m_TilePath[zeNumOfIndex]);
+                        Vector3 zeNewPos = new Vector3(m_CurrentDestinationTile.transform.position.x, transform.position.y, m_CurrentDestinationTile.transform.position.z);
                         // TODO: use LeanTween to move towards the position for now
                         LeanTween.move(gameObject, zeNewPos, 0.5f).setOnComplete(() => zeFinishedMoving = true);
                         break;
@@ -128,5 +127,27 @@ public class UnitWalkAction : IUnitAction {
             m_UpdateOfUnitAction = null;
         }
         m_ActionState = ActionState.Completed;
+    }
+
+    /// <summary>
+    /// A simper update function that only allow the current gameobject move at the same velocity
+    /// </summary>
+    /// <param name="_StartPt">Starting point</param>
+    /// <param name="_EndPt">End Point</param>
+    /// <returns></returns>
+    protected virtual IEnumerator WalkingBetweenPtsRoutine(Vector3 _StartPt, Vector3 _EndPt)
+    {
+        // We get the velocity direction
+        Vector3 vel = (_EndPt - transform.position).normalized * m_Speed;
+        Vector3 zeInverseDirBetStartEnd = -(_EndPt - _StartPt);
+        zeInverseDirBetStartEnd.Normalize();
+        while (true)
+        {
+            transform.position += vel * Time.fixedDeltaTime;
+            // Checks whether the direction between current pos and end point is the opposite of start pt and end pt!
+            if ((_EndPt - transform.position).normalized == zeInverseDirBetStartEnd)
+                break;
+        }
+        yield break;
     }
 }

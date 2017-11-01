@@ -65,8 +65,17 @@ public class WalkUI_Logic : MonoBehaviour {
             {
                 // Then we have to find the path for it!
                 m_UnitWalkRef.m_TilePath = m_TileSys.GetPath(m_UnitWalkRef.m_MovementPoints, m_UnitWalkRef.m_UnitStatGO.m_UnitStatsJSON.m_CurrentTileID, zeTileComponent.GetId(), m_UnitWalkRef.m_UnitStatGO.m_TileAttributeOverrides);
+                m_UnitWalkRef.StartAction();
                 gameObject.SetActive(false);
             }
         }
+    }
+
+    /// <summary>
+    /// When player pressed back button!
+    /// </summary>
+    public void PressedBack()
+    {
+
     }
 }
