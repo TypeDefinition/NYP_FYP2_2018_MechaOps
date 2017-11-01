@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// A simper unit action for walking!
 /// </summary>
-public class UnitWalkAction : UnitAction {
+public class UnitWalkAction : IUnitAction {
     [Header("References and variables needed for unit walk")]
     [Tooltip("The number of tiles it can move")]
     public int m_MovementPoints;
@@ -20,7 +20,7 @@ public class UnitWalkAction : UnitAction {
     [SerializeField, Tooltip("The tile system that is needed to be linked as there is no singleton. Right now, the codes is doing the linking for you")]
     public TileSystem m_TileSys;
 
-    public override bool UseAction()
+    public override bool StartAction()
     {
         m_UpdateOfUnitAction = StartCoroutine(UpdateActionRoutine());
         return true;

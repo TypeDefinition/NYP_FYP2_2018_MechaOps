@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitGuardAction : UnitAction {
+public class UnitGuardAction : IUnitAction {
     /// <summary>
     /// This is meant for guarding!
     /// </summary>
     /// <returns></returns>
-    public override bool UseAction()
+    public override bool StartAction()
     {
         m_UpdateOfUnitAction = StartCoroutine(UpdateActionRoutine());
         ObserverSystemScript.Instance.StoreVariableInEvent("UnitMakeMove", gameObject);

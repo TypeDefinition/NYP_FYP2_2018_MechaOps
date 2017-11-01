@@ -24,7 +24,7 @@ public class PlayerUnitManager : MonoBehaviour {
     /// <summary>
     /// The update of this manager. So that it can be controlled anytime
     /// </summary>
-    Coroutine m_UpdateOfManager;
+    protected Coroutine m_UpdateOfManager;
 
     private void OnEnable()
     {
@@ -66,7 +66,7 @@ public class PlayerUnitManager : MonoBehaviour {
     /// <summary>
     /// To stop the coroutine update of this game object
     /// </summary>
-    void StopUpdate()
+    protected void StopUpdate()
     {
         ObserverSystemScript.Instance.UnsubscribeEvent("UnitMakeMove", UnitHasMakeMove);
         if (m_UpdateOfManager != null)
@@ -79,13 +79,13 @@ public class PlayerUnitManager : MonoBehaviour {
     /// <summary>
     /// To recognize that the unit has already made a move and remove it from the list!
     /// </summary>
-    void UnitHasMakeMove()
+    protected void UnitHasMakeMove()
     {
         m_UnitsYetToMakeMoves.Remove(ObserverSystemScript.Instance.GetStoredEventVariable<GameObject>("UnitMakeMove"));
         ObserverSystemScript.Instance.RemoveTheEventVariableNextFrame("UnitMakeMove");
     }
 
-    void PlayerSelectUnit()
+    protected void PlayerSelectUnit()
     {
         GameObject zeClickedGO = ObserverSystemScript.Instance.GetStoredEventVariable<GameObject>("ClickedUnit");
         // If only the clicked unit belongs to the player and it must be inside the list of player unit that has yet to make a move!
@@ -94,7 +94,7 @@ public class PlayerUnitManager : MonoBehaviour {
             m_ScrollRectUnitIcons.SetActive(true);
             // Need to ensure the selectedPlayerUnit is thr
             m_SelectedPlayerUnit = zeClickedGO;
-            UnitAction[] allPossibleUnitActions = zeClickedGO.GetComponentsInChildren<UnitAction>();
+            IUnitAction[] allPossibleUnitActions = zeClickedGO.GetComponentsInChildren<IUnitAction>();
             // Instantiate more unit actions if there is not enough actions!
             while (m_AllOfUnitUIIcon.Count < allPossibleUnitActions.Length)
             {
@@ -123,7 +123,7 @@ public class PlayerUnitManager : MonoBehaviour {
     /// <summary>
     /// Helps to toggle the observer action subscription and the UI too!
     /// </summary>
-    void ToggleThePlayerInput()
+    protected void ToggleThePlayerInput()
     {
         //m_PlayerInputOnUnit.enabled = !m_PlayerInputOnUnit.enabled;
         m_ScrollRectUnitIcons.SetActive(!m_ScrollRectUnitIcons.activeSelf);
@@ -141,7 +141,7 @@ public class PlayerUnitManager : MonoBehaviour {
     /// <summary>
     /// Starts polling for user input from GetPlayerInput
     /// </summary>
-    void PollingForPlayerInput()
+    protected void PollingForPlayerInput()
     {
         ObserverSystemScript.Instance.SubscribeEvent("ClickedUnit", PlayerSelectUnit);
     }

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 /// </summary>
 public class UnitActionUILogic : MonoBehaviour {
     [Tooltip("To get the unit's action reference")]
-    public UnitAction m_unitActionRef;
+    public IUnitAction m_unitActionRef;
 
     /// <summary>
     /// It will only set the UI to be active according to m_unitActionRef.unitActionName if the tag of the UI is the same!

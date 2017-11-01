@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitAttackAction : UnitAction
+public class UnitAttackAction : IUnitAction
 {
     [Header("The References and variables needed for Unit Attack")]
     [SerializeField, Tooltip("Minimum attack range of the unit")]
@@ -23,7 +23,7 @@ public class UnitAttackAction : UnitAction
     /// </summary>
     /// <param name="_other">The opposing target</param>
     /// <returns>Dont know yet!</returns>
-    public override bool UseAction(GameObject _other)
+    public override bool StartAction(GameObject _other)
     {
         m_OtherTargetStat = _other.GetComponent<UnitStats>();
         if (m_OtherTargetStat)

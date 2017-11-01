@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitOverwatchAction : UnitAction {
+public class UnitOverwatchAction : IUnitAction {
     [Header("Linking reference and variables required")]
     [Tooltip("The attack action so as to reuse the attack logic. If there is no linking, then there will be Getting of the component at Start")]
     public UnitAttackAction m_AttackAction;
@@ -17,7 +17,7 @@ public class UnitOverwatchAction : UnitAction {
             m_AttackAction = GetComponent<UnitAttackAction>();
     }
 
-    public override bool UseAction()
+    public override bool StartAction()
     {
         m_OverwatchFlag = true;
         return true;

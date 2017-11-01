@@ -12,7 +12,7 @@ public class AttackUIGroupLogic : MonoBehaviour {
 
     [Header("The references for debugging")]
     [Tooltip("The unit attack action reference. Player's Unit attack action is to be expected")]
-    public UnitAction m_UnitAttackActRef;
+    public IUnitAction m_UnitAttackActRef;
     [Tooltip("The unit it is targetting. Usually should be the gameobject with the enemy tag!")]
     public GameObject m_OtherTarget;
     [Tooltip("Index of the target in the array. Usually there should be an array of enemy unit that the unit can see and iterate through that.")]
@@ -21,7 +21,7 @@ public class AttackUIGroupLogic : MonoBehaviour {
     private void OnEnable()
     {
         // TODO: Use another system aside from ObserverSystem for better optimization. maybe.
-        m_UnitAttackActRef = ObserverSystemScript.Instance.GetStoredEventVariable<UnitAction>(tag);
+        m_UnitAttackActRef = ObserverSystemScript.Instance.GetStoredEventVariable<IUnitAction>(tag);
         ObserverSystemScript.Instance.RemoveTheEventVariableNextFrame(tag);
         m_IndexOfTarget = 0;
         // Need to set the references to be active
@@ -44,7 +44,7 @@ public class AttackUIGroupLogic : MonoBehaviour {
     /// </summary>
     public void DoTheAttackAction()
     {
-        m_UnitAttackActRef.UseAction(m_OtherTarget);
+        m_UnitAttackActRef.StartAction(m_OtherTarget);
         gameObject.SetActive(false);
     }
 
