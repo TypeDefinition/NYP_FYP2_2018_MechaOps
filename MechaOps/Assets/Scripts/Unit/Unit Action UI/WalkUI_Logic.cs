@@ -76,6 +76,9 @@ public class WalkUI_Logic : MonoBehaviour {
     /// </summary>
     public void PressedBack()
     {
-
+        // since the PlayerUnitSystem will gob back to normal
+        ObserverSystemScript.Instance.TriggerEvent("ToggleSelectingUnit");
+        // Since this UI is not needed anymore!
+        Destroy(gameObject);
     }
 }

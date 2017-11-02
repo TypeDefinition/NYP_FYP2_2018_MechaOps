@@ -36,10 +36,10 @@ public class UnitWalkAction : IUnitAction {
     {
         m_ActionState = ActionState.Running;
         // Since the start of the index in the array is 0!
-        int zeNumOfIndex = 1;
+        int zeNumOfIndex = 0;
         bool zeFinishedMoving = true;
         // TODO: use LeanTween to move towards the position for now
-        while (zeNumOfIndex < m_TilePath.Length )
+        while (zeNumOfIndex < m_TilePath.Length)
         {
             yield return null;
             if (zeFinishedMoving)
@@ -53,8 +53,10 @@ public class UnitWalkAction : IUnitAction {
                             break;
                         Tile m_CurrentDestinationTile = m_TileSys.GetTile(m_TilePath[zeNumOfIndex]);
                         Vector3 zeNewPos = new Vector3(m_CurrentDestinationTile.transform.position.x, transform.position.y, m_CurrentDestinationTile.transform.position.z);
-                        // TODO: use LeanTween to move towards the position for now
-                        LeanTween.move(gameObject, zeNewPos, 0.5f).setOnComplete(() => zeFinishedMoving = true);
+                        // TODO: Right now it is using the same terminal velocity to travel between points
+                        yield return StartCoroutine(WalkBetPtsRoutine(transform.position, zeNewPos));
+                        // Then assign the arrived tile to be the current tile at the unit Stat
+                        m_UnitStatGO.m_UnitStatsJSON.m_CurrentTileID = m_CurrentDestinationTile.GetId();
                         break;
                     default:
                         break;
@@ -135,18 +137,29 @@ public class UnitWalkAction : IUnitAction {
     /// <param name="_StartPt">Starting point</param>
     /// <param name="_EndPt">End Point</param>
     /// <returns></returns>
-    protected virtual IEnumerator WalkingBetweenPtsRoutine(Vector3 _StartPt, Vector3 _EndPt)
+    protected virtual IEnumerator WalkBetPtsRoutine(Vector3 _StartPt, Vector3 _EndPt)
     {
         // We get the velocity direction
         Vector3 vel = (_EndPt - transform.position).normalized * m_Speed;
-        Vector3 zeInverseDirBetStartEnd = -(_EndPt - _StartPt);
-        zeInverseDirBetStartEnd.Normalize();
-        while (true)
+        Vector3 zeInverseDirBetStartEnd = (_EndPt - _StartPt);
+        // Need to ensure the current state is running
+        bool zeStillTravel = true;
+        WaitForFixedUpdate zeFixedUpdateWait = new WaitForFixedUpdate();
+        while (m_ActionState != ActionState.Completed && m_ActionState != ActionState.None && zeStillTravel)
         {
-            transform.position += vel * Time.fixedDeltaTime;
-            // Checks whether the direction between current pos and end point is the opposite of start pt and end pt!
-            if ((_EndPt - transform.position).normalized == zeInverseDirBetStartEnd)
-                break;
+            switch (m_ActionState)
+            {
+                case ActionState.Running:
+                    transform.position += vel * Time.fixedDeltaTime;
+                    float zeDotResult = Vector3.Dot(_EndPt - transform.position, zeInverseDirBetStartEnd);
+                    // Checks whether the direction between current pos and end point is the opposite of start pt and end pt!
+                    if (zeDotResult < 0)
+                        zeStillTravel = false;
+                    yield return zeFixedUpdateWait;
+                    break;
+                default:
+                    break;
+            }
         }
         yield break;
     }
