@@ -2774,11 +2774,65 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114060657274925068, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114060657274925068, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114383052777327128, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114383052777327128, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114601669453380662, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114601669453380662, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114308836248981854, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114308836248981854, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114333404035773480, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114333404035773480, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114668755676894246, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
         type: 2}
       propertyPath: m_TargetUIref
       value: 
       objectReference: {fileID: 867613027}
+    - target: {fileID: 1044431308409052, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21, type: 2}
   m_IsPrefabParent: 0
@@ -4377,7 +4431,7 @@ MonoBehaviour:
       x: 0
       y: 0
       z: 0
-  m_CurrentActiveAct: {fileID: 0}
+  m_CurrentActiveAction: {fileID: 0}
   m_TileAttributeOverrides: []
 --- !u!65 &236892916
 BoxCollider:
@@ -15679,7 +15733,7 @@ MonoBehaviour:
       x: 0
       y: 0
       z: 0
-  m_CurrentActiveAct: {fileID: 0}
+  m_CurrentActiveAction: {fileID: 0}
   m_TileAttributeOverrides: []
 --- !u!65 &833823135
 BoxCollider:
@@ -29843,14 +29897,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be508312b83cd6f4592665901db99df7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ActionIconUI: {fileID: 21300000, guid: 756d6ebf69a7f8440b47aa7620bad1ee, type: 3}
-  m_ActionCost: 1
   m_UnitActionName: Guard
+  m_TurnedOn: 0
   m_Priority: 0
+  m_ActionCost: 1
+  m_EndsTurn: 0
   m_ActionState: 0
   m_UnitActionUI: {fileID: 0}
-  m_UnitStatGO: {fileID: 1365931110}
-  m_Activated: 0
+  m_ActionIconUI: {fileID: 21300000, guid: 756d6ebf69a7f8440b47aa7620bad1ee, type: 3}
+  m_UnitStats: {fileID: 1365931110}
 --- !u!114 &1365931108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29862,19 +29917,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 078b10b2239b1494ea96266b728d0a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ActionIconUI: {fileID: 21300000, guid: 7fa2b56696c075f4eafe02c8cfd5df76, type: 3}
-  m_ActionCost: 1
   m_UnitActionName: Attack
+  m_TurnedOn: 0
   m_Priority: 0
+  m_ActionCost: 1
+  m_EndsTurn: 0
   m_ActionState: 0
   m_UnitActionUI: {fileID: 0}
-  m_UnitStatGO: {fileID: 1365931110}
-  m_Activated: 0
+  m_ActionIconUI: {fileID: 21300000, guid: 7fa2b56696c075f4eafe02c8cfd5df76, type: 3}
+  m_UnitStats: {fileID: 1365931110}
   m_MinAttackRange: 0
   m_MaxAttackRange: 0
   m_AccuracyPoints: 0
-  m_DamagePts: 10000
-  m_OtherTargetStat: {fileID: 0}
+  m_TargetUnitStats: {fileID: 0}
 --- !u!114 &1365931109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29886,15 +29941,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c88f8e9033dd44880244eae61eb940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ActionIconUI: {fileID: 21300000, guid: d9d27dc5793e3d249b4bc573d0309805, type: 3}
-  m_ActionCost: 1
   m_UnitActionName: Walk
+  m_TurnedOn: 0
   m_Priority: 0
+  m_ActionCost: 1
+  m_EndsTurn: 0
   m_ActionState: 0
   m_UnitActionUI: {fileID: 1134435258809106, guid: f60f06ef37015e14ba42bc5dad875b1c,
     type: 2}
-  m_UnitStatGO: {fileID: 1365931110}
-  m_Activated: 0
+  m_ActionIconUI: {fileID: 21300000, guid: d9d27dc5793e3d249b4bc573d0309805, type: 3}
+  m_UnitStats: {fileID: 1365931110}
   m_MovementPoints: 5
   m_Speed: 10
   m_TilePath: []
@@ -29925,7 +29981,7 @@ MonoBehaviour:
       x: -2
       y: 3
       z: -1
-  m_CurrentActiveAct: {fileID: 0}
+  m_CurrentActiveAction: {fileID: 0}
   m_TileAttributeOverrides: []
 --- !u!65 &1365931112
 BoxCollider:
@@ -32654,20 +32710,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 078b10b2239b1494ea96266b728d0a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ActionIconUI: {fileID: 21300000, guid: 7fa2b56696c075f4eafe02c8cfd5df76, type: 3}
-  m_ActionCost: 1
   m_UnitActionName: Attack
+  m_TurnedOn: 0
   m_Priority: 0
+  m_ActionCost: 1
+  m_EndsTurn: 0
   m_ActionState: 0
   m_UnitActionUI: {fileID: 1044431308409052, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
     type: 2}
-  m_UnitStatGO: {fileID: 1519159122}
-  m_Activated: 0
+  m_ActionIconUI: {fileID: 21300000, guid: 7fa2b56696c075f4eafe02c8cfd5df76, type: 3}
+  m_UnitStats: {fileID: 1519159122}
   m_MinAttackRange: 0
   m_MaxAttackRange: 0
   m_AccuracyPoints: 0
-  m_DamagePts: 10000
-  m_OtherTargetStat: {fileID: 0}
+  m_TargetUnitStats: {fileID: 0}
 --- !u!23 &1519159118
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -32730,15 +32786,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c88f8e9033dd44880244eae61eb940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ActionIconUI: {fileID: 21300000, guid: d9d27dc5793e3d249b4bc573d0309805, type: 3}
-  m_ActionCost: 1
   m_UnitActionName: Walk
+  m_TurnedOn: 0
   m_Priority: 0
+  m_ActionCost: 1
+  m_EndsTurn: 0
   m_ActionState: 0
   m_UnitActionUI: {fileID: 1134435258809106, guid: f60f06ef37015e14ba42bc5dad875b1c,
     type: 2}
-  m_UnitStatGO: {fileID: 1519159122}
-  m_Activated: 0
+  m_ActionIconUI: {fileID: 21300000, guid: d9d27dc5793e3d249b4bc573d0309805, type: 3}
+  m_UnitStats: {fileID: 1519159122}
   m_MovementPoints: 5
   m_Speed: 10
   m_TilePath: []
@@ -32769,7 +32826,7 @@ MonoBehaviour:
       x: -2
       y: 4
       z: -2
-  m_CurrentActiveAct: {fileID: 0}
+  m_CurrentActiveAction: {fileID: 0}
   m_TileAttributeOverrides: []
 --- !u!1 &1525591204
 GameObject:
@@ -42037,6 +42094,7 @@ GameObject:
   - component: {fileID: 1995284697}
   - component: {fileID: 1995284699}
   - component: {fileID: 1995284700}
+  - component: {fileID: 1995284694}
   m_Layer: 5
   m_Name: GameUI_Manager
   m_TagString: Untagged
@@ -42044,6 +42102,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1995284694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1995284693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba734093ed9c91c418bd533016d0c8e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1995284695
 RectTransform:
   m_ObjectHideFlags: 0

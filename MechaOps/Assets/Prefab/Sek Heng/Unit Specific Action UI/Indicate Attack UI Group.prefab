@@ -26,7 +26,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1083350171595828
 GameObject:
   m_ObjectHideFlags: 1
@@ -352,9 +352,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1044431308409052}
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 114668755676894246}
+        m_MethodName: PressBack
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -936,6 +936,7 @@ MonoBehaviour:
   m_UnitAttackActRef: {fileID: 0}
   m_OtherTarget: {fileID: 0}
   m_IndexOfTarget: 0
+  m_actScheduler: {fileID: 0}
 --- !u!114 &114690579002968396
 MonoBehaviour:
   m_ObjectHideFlags: 1
