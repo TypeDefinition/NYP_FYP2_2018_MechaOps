@@ -16,39 +16,54 @@ public class UnitStatsJSON
     public string m_Name;
 
     [SerializeField, Tooltip("The max healthpoint of the unit")]
-    private int m_MaxHealthPoints;
+    public int m_MaxHealthPoints;
     [SerializeField, Tooltip("The health points of the unit.")]
-    private int m_CurrentHealthPoints;
+    public int m_CurrentHealthPoints;
 
     [SerializeField, Tooltip("Max action points of the unit")]
-    private int m_MaxActionPoints;
+    public int m_MaxActionPoints;
     [SerializeField, Tooltip("The action points left for the unit.")]
-    private int m_CurrentActionPoints;
+    public int m_CurrentActionPoints;
 
     [SerializeField, Tooltip("The deployment cost of the unit")]
-    private int m_DeploymentCost;
+    public int m_DeploymentCost;
 
     [SerializeField, Tooltip("The view range of the unit")]
-    private int m_ViewRange;
+    public int m_ViewRange;
 
     [SerializeField, Tooltip("The concealment points of the unit")]
-    private int m_ConcealmentPoints;
+    public int m_ConcealmentPoints;
     [SerializeField, Tooltip("The evasion points of the unit")]
-    private int m_EvasionPoints;
+    public int m_EvasionPoints;
 
     [Tooltip("The current tile that the unit is at. Currently needs to be manually linked as the TileSystem cant identify current tile is at world space")]
     public TileId m_CurrentTileID;
+}
+
+public class UnitStats : MonoBehaviour
+{
+    [SerializeField]
+    private UnitStatsJSON m_UnitStatsJSON = new UnitStatsJSON();
+    [SerializeField, Tooltip("The current active action so that it can be stopped")]
+    private IUnitAction m_CurrentActiveAction;
+    [SerializeField, Tooltip("The array of tiles override")]
+    private TileAttributeOverride[] m_TileAttributeOverrides;
+
+    public string Name
+    {
+        get { return m_UnitStatsJSON.m_Name; }
+    }
 
     public int MaxHealthPoints
     {
         get
         {
-            return m_MaxHealthPoints;
+            return m_UnitStatsJSON.m_MaxHealthPoints;
         }
         set
         {
-            m_MaxHealthPoints = Mathf.Max(0, value);
-            m_CurrentHealthPoints = Mathf.Min(m_CurrentHealthPoints, m_MaxHealthPoints);
+            m_UnitStatsJSON.m_MaxHealthPoints = Mathf.Max(0, value);
+            m_UnitStatsJSON.m_CurrentHealthPoints = Mathf.Min(m_UnitStatsJSON.m_CurrentHealthPoints, m_UnitStatsJSON.m_MaxHealthPoints);
         }
     }
 
@@ -56,79 +71,88 @@ public class UnitStatsJSON
     {
         get
         {
-            return m_CurrentHealthPoints;
+            return m_UnitStatsJSON.m_CurrentHealthPoints;
         }
         set
         {
-            m_CurrentHealthPoints = Mathf.Clamp(value, 0, m_MaxHealthPoints);
+            m_UnitStatsJSON.m_CurrentHealthPoints = Mathf.Clamp(value, 0, m_UnitStatsJSON.m_MaxHealthPoints);
         }
+    }
+
+    public void ResetHealthPoints()
+    {
+        CurrentHealthPoints = MaxHealthPoints;
     }
 
     public bool IsAlive()
     {
-        return m_CurrentHealthPoints > 0;
+        return m_UnitStatsJSON.m_CurrentHealthPoints > 0;
     }
 
     public int MaxActionPoints
     {
         get
         {
-            return m_MaxActionPoints;
+            return m_UnitStatsJSON.m_MaxActionPoints;
         }
         set
         {
-            m_MaxActionPoints = Mathf.Max(0, value);
-            m_CurrentActionPoints = Mathf.Min(m_CurrentActionPoints, m_MaxHealthPoints);
+            m_UnitStatsJSON.m_MaxActionPoints = Mathf.Max(0, value);
+            m_UnitStatsJSON.m_CurrentActionPoints = Mathf.Min(m_UnitStatsJSON.m_CurrentActionPoints, m_UnitStatsJSON.m_MaxHealthPoints);
         }
     }
 
     public int CurrentActionPoints
     {
-        get
-        {
-            return m_CurrentActionPoints;
-        }
-        set
-        {
-            m_CurrentActionPoints = Mathf.Clamp(value, 0, m_MaxActionPoints);
-        }
+        get { return m_UnitStatsJSON.m_CurrentActionPoints; }
+        set { m_UnitStatsJSON.m_CurrentActionPoints = Mathf.Clamp(value, 0, m_UnitStatsJSON.m_MaxActionPoints); }
+    }
+
+    public void ResetActionPoints()
+    {
+        CurrentActionPoints = MaxActionPoints;
     }
 
     public int DeploymentCost
     {
-        get { return m_DeploymentCost; }
-        set { m_DeploymentCost = Mathf.Max(0, value); }
+        get { return m_UnitStatsJSON.m_DeploymentCost; }
+        set { m_UnitStatsJSON.m_DeploymentCost = Mathf.Max(0, value); }
     }
-    
+
     public int ViewRange
     {
-        get { return m_ViewRange; }
-        set { m_ViewRange = Mathf.Max(0, value); }
+        get { return m_UnitStatsJSON.m_ViewRange; }
+        set { m_UnitStatsJSON.m_ViewRange = Mathf.Max(0, value); }
     }
-    
+
     public int ConcealmentPoints
     {
-        get { return m_ConcealmentPoints; }
-        set { m_ConcealmentPoints = Mathf.Max(0, value); }
+        get { return m_UnitStatsJSON.m_ConcealmentPoints; }
+        set { m_UnitStatsJSON.m_ConcealmentPoints = Mathf.Max(0, value); }
     }
 
     public int EvasionPoints
     {
-        get { return m_EvasionPoints; }
-        set { m_EvasionPoints = Mathf.Max(0, value); }
+        get { return m_UnitStatsJSON.m_EvasionPoints; }
+        set { m_UnitStatsJSON.m_EvasionPoints = Mathf.Max(0, value); }
     }
-}
 
-public class UnitStats : MonoBehaviour {
+    public TileId CurrentTileID
+    {
+        get { return m_UnitStatsJSON.m_CurrentTileID; }
+        set { m_UnitStatsJSON.m_CurrentTileID = value; }
+    }
 
-    [Header("The references of the Unit stats")]
-    [Tooltip("The unit stats information")]
-    public UnitStatsJSON m_UnitStatsJSON = new UnitStatsJSON();
-    [Tooltip("The current active action so that it can be stopped")]
-    public IUnitAction m_CurrentActiveAct;
-    [Tooltip("The array of tiles override")]
-    public TileAttributeOverride[] m_TileAttributeOverrides;
+    public IUnitAction CurrentActiveAction
+    {
+        get { return m_CurrentActiveAction; }
+        set { m_CurrentActiveAction = value; }
+    }
 
+    public TileAttributeOverride[] GetTileAttributeOverrides()
+    {
+        return m_TileAttributeOverrides;
+    }
 
     private void Start()
     {
@@ -144,7 +168,8 @@ public class UnitStats : MonoBehaviour {
     /// </summary>
     public void ResetUnitStat()
     {
-        m_UnitStatsJSON.CurrentActionPoints = m_UnitStatsJSON.MaxActionPoints;
+        ResetHealthPoints();
+        ResetActionPoints();
     }
 
     private void OnDestroy()

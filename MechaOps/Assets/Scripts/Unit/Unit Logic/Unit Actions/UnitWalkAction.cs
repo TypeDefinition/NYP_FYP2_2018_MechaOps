@@ -20,11 +20,10 @@ public class UnitWalkAction : IUnitAction {
     [SerializeField, Tooltip("The tile system that is needed to be linked as there is no singleton. Right now, the codes is doing the linking for you")]
     public TileSystem m_TileSys;
 
-    public override bool StartAction()
+    public override void StartAction()
     {
-        m_UnitStatGO.m_CurrentActiveAct = this;
+        GetUnitStats().CurrentActiveAction = this;
         m_UpdateOfUnitAction = StartCoroutine(UpdateActionRoutine());
-        return true;
     }
 
     /// <summary>
@@ -56,7 +55,7 @@ public class UnitWalkAction : IUnitAction {
                         // TODO: Right now it is using the same terminal velocity to travel between points
                         yield return StartCoroutine(WalkBetPtsRoutine(transform.position, zeNewPos));
                         // Then assign the arrived tile to be the current tile at the unit Stat
-                        m_UnitStatGO.m_UnitStatsJSON.m_CurrentTileID = m_CurrentDestinationTile.GetId();
+                        GetUnitStats().CurrentTileID = m_CurrentDestinationTile.GetId();
                         break;
                     default:
                         break;
@@ -64,12 +63,12 @@ public class UnitWalkAction : IUnitAction {
             }
         }
         m_UpdateOfUnitAction = null;
-        m_UnitStatGO.m_UnitStatsJSON.CurrentActionPoints--;
+        GetUnitStats().CurrentActionPoints--;
         //ObserverSystemScript.Instance.TriggerEvent()
-        switch (m_UnitStatGO.m_UnitStatsJSON.CurrentActionPoints)
+        switch (GetUnitStats().CurrentActionPoints)
         {
             case 0:
-                m_UnitStatGO.ResetUnitStat();
+                GetUnitStats().ResetUnitStat();
                 // tell the player unit manager that it can no longer do any action
                 ObserverSystemScript.Instance.StoreVariableInEvent("UnitMakeMove", gameObject);
                 ObserverSystemScript.Instance.TriggerEvent("UnitMakeMove");
@@ -162,5 +161,31 @@ public class UnitWalkAction : IUnitAction {
             }
         }
         yield break;
+    }
+
+    protected override void StartTurnCallback()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void EndTurnCallback()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void InitializeEvents()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void DeinitializeEvents()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override bool VerifyRunCondition()
+    {
+        throw new System.NotImplementedException();
+        return false;
     }
 }

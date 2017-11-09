@@ -1,42 +1,78 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.Assertions;
 
-public class UnitOverwatchAction : IUnitAction {
-    [Header("Linking reference and variables required")]
-    [Tooltip("The attack action so as to reuse the attack logic. If there is no linking, then there will be Getting of the component at Start")]
-    public UnitAttackAction m_AttackAction;
+public class UnitOverwatchAction : UnitAttackAction
+{
+    private bool m_EnemyTurnOver = false;
 
-    [Header("Debug Reference for OverWatch Action")]
-    [SerializeField, Tooltip("The flag to allow OverWatch!")]
-    protected bool m_OverwatchFlag = false;
-
-	// Use this for initialization
-	void Start () {
-        if (!m_AttackAction)
-            m_AttackAction = GetComponent<UnitAttackAction>();
+    // Use this for initialization
+    void Start ()
+    {
+        Assert.IsTrue(m_UnitActionName != null, MethodBase.GetCurrentMethod().Name + " - m_UnitActionName is null!");
     }
 
-    public override bool StartAction()
+    protected override void OnTurnOn()
     {
-        m_OverwatchFlag = true;
-        return true;
+        m_EnemyTurnOver = false;
     }
 
-    /// <summary>
-    /// To wait for the enemy to enter it's range!
-    /// </summary>
-    /// <param name="other"></param>
-    private void OnTriggerEnter(Collider other)
+    protected override void OnTurnOff()
     {
-        switch (m_OverwatchFlag)
-        {
-            case true:
-                // TODO: need to do something special here
-                m_OverwatchFlag = false;
-                break;
-            default:
-                break;
-        }
+        m_EnemyTurnOver = false;
+    }
+
+    public override void StartAction()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected virtual void OnUnitMoveCallback(/*UnitMovementData*/)
+    {
+        // Check if unit is enemy.
+        // Check if enemy is seen.
+    }
+
+    protected override void StartTurnCallback()
+    {
+        throw new System.NotImplementedException();
+
+        // If PlayerTurnStart,
+        m_EnemyTurnOver = false;
+    }
+
+    protected override void EndTurnCallback()
+    {
+        throw new System.NotImplementedException();
+
+        // If EnemyTurnOver,
+        m_EnemyTurnOver = true;
+    }
+
+    protected override void InitializeEvents()
+    {
+        throw new System.NotImplementedException();
+
+        // Subscribe to turn start event.
+        // Subscribe to unit move event.
+    }
+
+    protected override void DeinitializeEvents()
+    {
+        throw new System.NotImplementedException();
+
+        // unsubscribe to turn start event.
+        // unsubscribe to unit move event.
+    }
+
+    public override bool VerifyRunCondition()
+    {
+        throw new System.NotImplementedException();
+
+        // Check if can see enemy (Our View Range as well as teammate scouting)
+
+        return false;
     }
 }

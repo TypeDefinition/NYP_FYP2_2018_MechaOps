@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class UnitAttackAction : IUnitAction
 {
@@ -12,26 +14,87 @@ public class UnitAttackAction : IUnitAction
     [SerializeField, Tooltip("The accuracy points of the unit")]
     private int m_AccuracyPoints;
     [Tooltip("The damage point it dealt")]
-    public int m_DamagePts;
+    private int m_DamagePoints;
 
-    [Header("Debugging purpose for Unit Attack Action")]
-    [Tooltip("The unit stat of the target")]
-    public UnitStats m_OtherTargetStat;
+    [SerializeField, Tooltip("The unit stat of the target")]
+    private UnitStats m_TargetUnitStats;
+
+    public int MinAttackRange {
+        get { return m_MinAttackRange; }
+        set { m_MinAttackRange = Mathf.Clamp(value, 0, MaxAttackRange); }
+    }
+
+    public int MaxAttackRange {
+        get
+        {
+            return m_MaxAttackRange;
+        }
+        set
+        {
+            m_MaxAttackRange = Mathf.Max(0, value);
+            m_MinAttackRange = Mathf.Min(m_MaxAttackRange, m_MinAttackRange);
+        }
+    }
+
+    public int AccuracyPoints
+    {
+        get { return m_AccuracyPoints; }
+        set { m_AccuracyPoints = Mathf.Max(0, value); }
+    }
+
+    public int DamagePoints
+    {
+        get { return m_DamagePoints; }
+        set { m_DamagePoints = Mathf.Max(0, value); }
+    }
+
+    public void SetTarget(GameObject _target)
+    {
+        Assert.IsTrue(_target != null, MethodBase.GetCurrentMethod().Name + " - _target is null!");
+        m_TargetUnitStats = _target.GetComponent<UnitStats>();
+        Assert.IsTrue(m_TargetUnitStats != false, MethodBase.GetCurrentMethod().Name + " - _target has no UnitStats!");
+    }
+
+    public void RemoveTarget()
+    {
+        m_TargetUnitStats = null;
+    }
+
+    public UnitStats GetTargetUnitStats()
+    {
+        return m_TargetUnitStats;
+    }
 
     /// <summary>
     /// Optimization will have to come later as this will need to be expanded upon!
     /// </summary>
     /// <param name="_other">The opposing target</param>
     /// <returns>Dont know yet!</returns>
-    public override bool StartAction(GameObject _other)
+    public override void StartAction()
     {
-        m_OtherTargetStat = _other.GetComponent<UnitStats>();
-        if (m_OtherTargetStat)
-        {
-            m_UpdateOfUnitAction = StartCoroutine(UpdateActionRoutine());
-            return true;
-        }
-        return false;
+        base.StartAction();
+        m_UpdateOfUnitAction = StartCoroutine(UpdateActionRoutine());
+    }
+
+    public override void StopAction()
+    {
+        base.StopAction();
+    }
+
+    public override void PauseAction()
+    {
+        base.PauseAction();
+    }
+
+    public override void ResumeAction()
+    {
+        base.ResumeAction();
+    }
+
+    protected override void OnTurnOn()
+    {
+        Assert.IsTrue(VerifyRunCondition());
+        // m_ActionScheduler.ScheduleAction(this);
     }
 
     /// <summary>
@@ -41,14 +104,14 @@ public class UnitAttackAction : IUnitAction
     public override IEnumerator UpdateActionRoutine()
     {
         // TODO: Do some complex calculation and animation for this
-        m_OtherTargetStat.m_UnitStatsJSON.CurrentHealthPoints -= m_DamagePts;
+        m_TargetUnitStats.CurrentHealthPoints -= m_DamagePoints;
         // Thinking of a way to implement it
         m_UpdateOfUnitAction = null;
-        --m_UnitStatGO.m_UnitStatsJSON.CurrentActionPoints;
-        switch (m_UnitStatGO.m_UnitStatsJSON.CurrentActionPoints)
+        --GetUnitStats().CurrentActionPoints;
+        switch (GetUnitStats().CurrentActionPoints)
         {
             case 0:
-                m_UnitStatGO.ResetUnitStat();
+                GetUnitStats().ResetUnitStat();
                 ObserverSystemScript.Instance.StoreVariableInEvent("UnitMakeMove", gameObject);
                 ObserverSystemScript.Instance.TriggerEvent("UnitMakeMove");
                 break;
@@ -60,22 +123,60 @@ public class UnitAttackAction : IUnitAction
     }
 
     // Use this for initialization
-    void Start () {
-        if (m_UnitActionName == null)
-        {
-            m_UnitActionName = "Attack";
-        }
-        else
-        {
-            // Just in case the action name is not included!
-            switch (m_UnitActionName.Length)
-            {
-                case 0:
-                    m_UnitActionName = "Attack";
-                    break;
-                default:
-                    break;
-            }
-        }
+    void Start ()
+    {
+        Assert.IsTrue(m_UnitActionName != null, MethodBase.GetCurrentMethod().Name + " - m_UnitActionName is null!");
     }
+
+    protected override void StartTurnCallback()
+    {
+    }
+
+    protected override void EndTurnCallback()
+    {
+    }
+
+    protected override void InitializeEvents()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void DeinitializeEvents()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override bool VerifyRunCondition()
+    {
+        if (m_TargetUnitStats == null)
+        {
+            return false;
+        }
+
+        if (m_TargetUnitStats.IsAlive() == false)
+        {
+            return false;
+        }
+
+        int distanceToTarget = TileId.GetDistance(m_TargetUnitStats.CurrentTileID, GetUnitStats().CurrentTileID);
+        if (distanceToTarget < m_MaxAttackRange)
+        {
+            return false;
+        }
+
+        // Check if can see enemy (Our View Range as well as teammate scouting)
+
+        return true;
+    }
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        MinAttackRange = m_MinAttackRange;
+        MaxAttackRange = m_MaxAttackRange;
+        AccuracyPoints = m_AccuracyPoints;
+        DamagePoints = m_DamagePoints;
+    }
+#endif
+
 }

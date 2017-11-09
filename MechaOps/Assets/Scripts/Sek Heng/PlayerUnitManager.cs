@@ -112,10 +112,10 @@ public class PlayerUnitManager : MonoBehaviour {
                 Image zeUnitIconUI = Instantiate(m_UnitActionUIIconGO, m_HolderOfIcons.transform);
                 // Replace the sprite
                 zeUnitIconUI.gameObject.SetActive(true);
-                zeUnitIconUI.sprite = zeUnitAction.m_ActionIconUI;
+                zeUnitIconUI.sprite = zeUnitAction.ActionIconUI;
                 // Add to the onclick event for Unity button!
                 Button zeUnitIconButton = zeUnitIconUI.GetComponent<Button>();
-                zeUnitIconButton.onClick.AddListener(() => ToInstantiateSpecificActionUI(zeUnitAction.m_UnitActionUI, zeUnitAction));
+                zeUnitIconButton.onClick.AddListener(() => ToInstantiateSpecificActionUI(zeUnitAction.UnitActionUI, zeUnitAction));
                 m_AllOfUnitUIIcon.Add(zeUnitIconButton);
             }
         }

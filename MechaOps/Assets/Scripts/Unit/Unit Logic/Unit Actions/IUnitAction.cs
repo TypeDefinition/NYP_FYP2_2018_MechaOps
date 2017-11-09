@@ -3,15 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum ActionState
-{
-    None,
-    Running,
-    Paused,
-    Completed,
-    Num_ActionState,
-}
-
 /// <summary>
 /// To ensure that no one will inherit from it!
 /// Provide a base class for 
@@ -19,60 +10,110 @@ public enum ActionState
 [ExecuteInEditMode]
 public abstract class IUnitAction : MonoBehaviour
 {
+    public enum ActionState
+    {
+        None,
+        Running,
+        Paused,
+        Completed,
+    }
+
+    [SerializeField, Tooltip("The component name which will be use to indicate what UI tag to be activated.")]
+    protected string m_UnitActionName;
+    [SerializeField, Tooltip("The flag to indicates whether is it turned on.")]
+    private bool m_TurnedOn = false;
+    [SerializeField, Tooltip("The priority number for this action")]
+    private int m_Priority;
+    [SerializeField, Tooltip("The action cost. For now it will always be 1 but this will be for expandability sake")]
+    private int m_ActionCost = 1;
+    [SerializeField, Tooltip("Does this action end the turn immediately?")]
+    private bool m_EndsTurn = false;
+    [SerializeField, Tooltip("The current state that this action update is in")]
+    protected ActionState m_ActionState = ActionState.None;
+
+    [SerializeField, Tooltip("The specific action UI")]
+    private GameObject m_UnitActionUI;
     [Header("[ Values and References for abstract Unit Action ]")]
-    [Tooltip("The sprite UI for unit's action!")]
-    public Sprite m_ActionIconUI;
-    [Tooltip("The action cost. For now it will always be 1 but this will be for expandability sake")]
-    public int m_ActionCost = 1;
-    [Tooltip("The component name which will be use to indicate what UI tag to be activated.")]
-    public string m_UnitActionName;
-    [Tooltip("The priority number for this action")]
-    public int m_Priority;
-    [Tooltip("The current state that this action update is in")]
-    public ActionState m_ActionState = ActionState.None;
-    [Tooltip("The specific action UI")]
-    public GameObject m_UnitActionUI;
+    [SerializeField, Tooltip("The sprite UI for unit's action!")]
+    private Sprite m_ActionIconUI;
 
     [Header("[ Debugging purpose sake ]")]
     [SerializeField, Tooltip("The unit stats")]
-    public UnitStats m_UnitStatGO;
-    [SerializeField, Tooltip("The flag to indicates whether is it activated")]
-    protected bool m_Activated = false;
+    private UnitStats m_UnitStats;
 
     /// <summary>
     /// Most if not all, unit actions will need animation and some sort of delay
     /// </summary>
     protected Coroutine m_UpdateOfUnitAction;
-    /// <summary>
-    /// The getter and setter for m_Activated. The setter is meant to do something special
-    /// </summary>
-    protected bool Activated
+
+    protected string UnitActionName
     {
-        set
-        {
-            m_Activated = value;
-        }
-        get
-        {
-            return m_Activated;
-        }
+        get { return m_UnitActionName; }
+    }
+
+    public void TurnOn()
+    {
+        m_TurnedOn = true;
+        OnTurnOn();
+    }
+
+    public void TurnOff()
+    {
+        m_TurnedOn = false;
+        OnTurnOff();
+    }
+
+    protected virtual void OnTurnOn() { }
+
+    protected virtual void OnTurnOff() { }
+
+    public bool TurnedOn { get { return m_TurnedOn; } }
+
+    public int Priority
+    {
+        get { return m_Priority; }
+        set { m_Priority = Mathf.Max(0, value); }
+    }
+
+    public int ActionCost
+    {
+        get { return m_ActionCost; }
+        set { m_ActionCost = Mathf.Max(0, value); }
+    }
+
+    public bool EndsTurn
+    {
+        get { return m_EndsTurn; }
+        set { m_EndsTurn = value; }
+    }
+
+    // Those that have no setters is because they should not have to change during runtime.
+    // They should only be set in the inspector. If I am wrong and they do need to be changed, add the setters.
+    public ActionState GetActionState() { return m_ActionState; }
+
+    public GameObject UnitActionUI { get { return m_UnitActionUI; } }
+
+    public Sprite ActionIconUI { get { return m_ActionIconUI; } }
+
+    public void SetUnitStats(UnitStats _unitStats)
+    {
+        m_UnitStats = _unitStats;
+    }
+
+    public UnitStats GetUnitStats()
+    {
+        return m_UnitStats;
     }
 
     /// <summary>
     /// To subscribe to some of the events with the ObserverSystem
     /// </summary>
-    protected virtual void InitializeEvents()
-    {
-
-    }
+    protected abstract void InitializeEvents();
 
     /// <summary>
     /// To unsubscribe from some of the events with the ObserverSystem
     /// </summary>
-    protected virtual void DeinitializeEvents()
-    {
-
-    }
+    protected abstract void DeinitializeEvents();
 
     /// <summary>
     /// Do note that if the Awake function is written anew at other children, U need to call this function or prepare to face annoying bug.
@@ -80,8 +121,10 @@ public abstract class IUnitAction : MonoBehaviour
     protected virtual void Awake()
     {
         // If the unit stat is not linked, get the component of it!
-        if (!m_UnitStatGO)
-            m_UnitStatGO = GetComponent<UnitStats>();
+        if (!m_UnitStats)
+        {
+            m_UnitStats = GetComponent<UnitStats>();
+        }
     }
 
     /// <summary>
@@ -97,41 +140,7 @@ public abstract class IUnitAction : MonoBehaviour
     /// Since not all action needs to be stopped,
     /// this will be a virtual function ready to be inherited
     /// </summary>
-    public virtual void StopActionUpdate()
-    {
-
-    }
-
-    /// <summary>
-    /// The function should do when turn has started
-    /// </summary>
-    public virtual void StartTurn()
-    {
-
-    }
-
-    /// <summary>
-    /// The function that this should be doing when turn has ended
-    /// </summary>
-    public virtual void EndTurn()
-    {
-
-    }
-
-    /// <summary>
-    /// Check if this action is running
-    /// </summary>
-    /// <returns>True if current state is Running</returns>
-    public bool VerifyRunCondition()
-    {
-        switch (m_ActionState)
-        {
-            case ActionState.Running:
-                return true;
-            default:
-                return false;
-        }
-    }
+    public virtual void StopActionUpdate() {}
 
     /// <summary>
     /// The actual update of the unit action
@@ -143,13 +152,25 @@ public abstract class IUnitAction : MonoBehaviour
         yield break;
     }
 
-    public virtual bool StartAction()
+    /// <summary>
+    /// The function should do when turn has started
+    /// </summary>
+    protected abstract void StartTurnCallback();
+
+    /// <summary>
+    /// The function that this should be doing when turn has ended
+    /// </summary>
+    protected abstract void EndTurnCallback();
+
+    /// <summary>
+    /// Check if the condition for this action to run is met.
+    /// </summary>
+    /// <returns>True if the condition for this action to run is met.</returns>
+    public abstract bool VerifyRunCondition();
+
+    public virtual void StartAction()
     {
-        return false;
-    }
-    public virtual bool StartAction(GameObject _other)
-    {
-        return false;
+        m_ActionState = ActionState.Running;
     }
 
     /// <summary>
@@ -177,4 +198,13 @@ public abstract class IUnitAction : MonoBehaviour
     {
         m_ActionState = ActionState.Completed;
     }
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        Priority = m_Priority;
+        ActionCost = m_ActionCost;
+    }
+#endif // UNITY_EDITOR
+
 }

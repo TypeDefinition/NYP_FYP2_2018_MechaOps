@@ -30,7 +30,7 @@ public class WalkUI_Logic : MonoBehaviour {
         // Since the tile system is not linked from the start, find it at the scene
         m_TileSys = FindObjectOfType<TileSystem>();
         // And then access the tile stuff from the system and get reachable tiles
-        m_AllReachableTileHighlight = new List<TileId>(m_TileSys.GetReachableTiles(m_UnitWalkRef.m_MovementPoints, m_UnitWalkRef.m_UnitStatGO.m_UnitStatsJSON.m_CurrentTileID, m_UnitWalkRef.m_UnitStatGO.m_TileAttributeOverrides));
+        m_AllReachableTileHighlight = new List<TileId>(m_TileSys.GetReachableTiles(m_UnitWalkRef.m_MovementPoints, m_UnitWalkRef.GetUnitStats().CurrentTileID, m_UnitWalkRef.GetUnitStats().GetTileAttributeOverrides()));
         // TODO: make a fanciful UI or highlight for the reachable tiles.
         // TODO: Cant really highlight the reachable tiles
         //foreach (TileId zeTile in m_AllReachableTileHighlight)
@@ -64,7 +64,7 @@ public class WalkUI_Logic : MonoBehaviour {
             if (m_AllReachableTileHighlight.Contains(zeTileComponent.GetId()))
             {
                 // Then we have to find the path for it!
-                m_UnitWalkRef.m_TilePath = m_TileSys.GetPath(m_UnitWalkRef.m_MovementPoints, m_UnitWalkRef.m_UnitStatGO.m_UnitStatsJSON.m_CurrentTileID, zeTileComponent.GetId(), m_UnitWalkRef.m_UnitStatGO.m_TileAttributeOverrides);
+                m_UnitWalkRef.m_TilePath = m_TileSys.GetPath(m_UnitWalkRef.m_MovementPoints, m_UnitWalkRef.GetUnitStats().CurrentTileID, zeTileComponent.GetId(), m_UnitWalkRef.GetUnitStats().GetTileAttributeOverrides());
                 m_UnitWalkRef.StartAction();
                 gameObject.SetActive(false);
             }

@@ -85,9 +85,7 @@ public abstract class Hazard : MonoBehaviour
         m_Owner = _owner;
         m_OwnerInitialized = true;
     }
-
-    public abstract void ExcecuteHazard(GameObject _unit);
-
+    
     private void Start()
     {
     }

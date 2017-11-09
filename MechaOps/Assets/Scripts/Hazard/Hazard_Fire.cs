@@ -4,21 +4,34 @@ using UnityEngine;
 
 public class Hazard_Fire : Hazard {
 
-    public override void ExcecuteHazard(GameObject _unit)
+    private int m_Damage = 1;
+
+    public int Damage
     {
-        // Do stuff.
+        get { return m_Damage; }
+        set { m_Damage = Mathf.Max(0, value); }
+    }
+    
+    private void OnCollisionEnter(Collision collision)
+    {
+        GameObject collidedObject = collision.gameObject;
+        if (collidedObject.activeSelf == false)
+        {
+            return;
+        }
+
+        UnitStats unitStats = gameObject.GetComponent<UnitStats>();
+        if (unitStats != null)
+        {
+            unitStats.CurrentHealthPoints -= m_Damage;
+        }
     }
 
-    // Use this for initialization
-    void Start()
+#if UNITY_EDITOR
+    private void OnValidate()
     {
-
+        Damage = m_Damage;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+#endif // UNITY_EDITOR
 
 }

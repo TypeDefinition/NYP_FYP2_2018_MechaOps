@@ -1,18 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class UnitGuardAction : IUnitAction {
+
+    private bool m_EnemyTurnOver = false;
+
     /// <summary>
     /// This is meant for guarding!
     /// </summary>
     /// <returns></returns>
-    public override bool StartAction()
+    public override void StartAction()
     {
         m_UpdateOfUnitAction = StartCoroutine(UpdateActionRoutine());
         ObserverSystemScript.Instance.StoreVariableInEvent("UnitMakeMove", gameObject);
         ObserverSystemScript.Instance.TriggerEvent("UnitMakeMove");
-        return true;
     }
 
     /// <summary>
@@ -27,22 +31,54 @@ public class UnitGuardAction : IUnitAction {
     }
 
     // Use this for initialization
-    void Start () {
-        if (m_UnitActionName == null)
-        {
-            m_UnitActionName = "Guard";
-        }
-        else
-        {
-            // Just in case the action name is not included!
-            switch (m_UnitActionName.Length)
-            {
-                case 0:
-                    m_UnitActionName = "Guard";
-                    break;
-                default:
-                    break;
-            }
-        }
+    void Start ()
+    {
+        Assert.IsTrue(m_UnitActionName != null, MethodBase.GetCurrentMethod().Name + " - m_UnitActionName is null!");
     }
+
+    protected override void OnTurnOn()
+    {
+        m_EnemyTurnOver = false;
+    }
+
+    protected override void OnTurnOff()
+    {
+        m_EnemyTurnOver = false;
+    }
+
+    protected override void StartTurnCallback()
+    {
+        throw new System.NotImplementedException();
+
+        // If PlayerTurnStart,
+        m_EnemyTurnOver = false;
+    }
+
+    protected override void EndTurnCallback()
+    {
+        throw new System.NotImplementedException();
+
+        // If EnemyTurnOver,
+        m_EnemyTurnOver = true;
+    }
+
+    protected override void InitializeEvents()
+    {
+        throw new System.NotImplementedException();
+
+        // subscribe for turn start and turn end.
+    }
+
+    protected override void DeinitializeEvents()
+    {
+        throw new System.NotImplementedException();
+
+        // unsubscribe for turn start and turn end.
+    }
+
+    public override bool VerifyRunCondition()
+    {
+        return !m_EnemyTurnOver;
+    }
+
 }

@@ -44,8 +44,8 @@ public class AttackUIGroupLogic : MonoBehaviour {
     /// </summary>
     public void DoTheAttackAction()
     {
-        m_UnitAttackActRef.StartAction(m_OtherTarget);
-        gameObject.SetActive(false);
+        //m_UnitAttackActRef.StartAction(m_OtherTarget);
+        //gameObject.SetActive(false);
     }
 
     /// <summary>

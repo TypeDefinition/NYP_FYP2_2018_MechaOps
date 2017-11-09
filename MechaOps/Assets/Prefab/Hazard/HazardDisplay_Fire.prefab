@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114837964109721294}
   - component: {fileID: 114888624789775684}
   - component: {fileID: 114659997287923196}
+  - component: {fileID: 65416202237848564}
   m_Layer: 0
   m_Name: HazardDisplay_Fire
   m_TagString: Untagged
@@ -83,6 +84,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1988392383896020}
   m_Mesh: {fileID: 4300000, guid: 5259b7e5ea4812f4b8c4bc8119c3ffcf, type: 3}
+--- !u!65 &65416202237848564
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1988392383896020}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 3, z: 2}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!114 &114659997287923196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,4 +141,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BillboardAxis: 1
-  m_ReverseDirection: 1
+  m_ReverseDirection: 0
