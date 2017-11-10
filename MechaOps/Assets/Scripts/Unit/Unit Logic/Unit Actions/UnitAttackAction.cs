@@ -13,7 +13,7 @@ public class UnitAttackAction : IUnitAction
     private int m_MaxAttackRange;
     [SerializeField, Tooltip("The accuracy points of the unit")]
     private int m_AccuracyPoints;
-    [Tooltip("The damage point it dealt")]
+    [SerializeField, Tooltip("The damage point it dealt")]
     private int m_DamagePoints;
 
     [SerializeField, Tooltip("The unit stat of the target")]
@@ -103,6 +103,7 @@ public class UnitAttackAction : IUnitAction
     /// <returns></returns>
     public override IEnumerator UpdateActionRoutine()
     {
+        m_ActionState = ActionState.Running;
         // TODO: Do some complex calculation and animation for this
         m_TargetUnitStats.CurrentHealthPoints -= m_DamagePoints;
         // Thinking of a way to implement it
@@ -119,6 +120,7 @@ public class UnitAttackAction : IUnitAction
                 break;
         }
         ObserverSystemScript.Instance.TriggerEvent("UnitFinishAction");
+        m_ActionState = ActionState.Completed;
         yield break;
     }
 
@@ -138,12 +140,10 @@ public class UnitAttackAction : IUnitAction
 
     protected override void InitializeEvents()
     {
-        throw new System.NotImplementedException();
     }
 
     protected override void DeinitializeEvents()
     {
-        throw new System.NotImplementedException();
     }
 
     public override bool VerifyRunCondition()
@@ -159,7 +159,7 @@ public class UnitAttackAction : IUnitAction
         }
 
         int distanceToTarget = TileId.GetDistance(m_TargetUnitStats.CurrentTileID, GetUnitStats().CurrentTileID);
-        if (distanceToTarget < m_MaxAttackRange)
+        if (distanceToTarget > m_MaxAttackRange)
         {
             return false;
         }

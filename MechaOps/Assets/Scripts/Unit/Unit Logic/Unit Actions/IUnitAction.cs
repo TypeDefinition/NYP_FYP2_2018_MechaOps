@@ -38,8 +38,8 @@ public abstract class IUnitAction : MonoBehaviour
     private Sprite m_ActionIconUI;
 
     [Header("[ Debugging purpose sake ]")]
-    [SerializeField, Tooltip("The unit stats")]
-    private UnitStats m_UnitStats;
+    [Tooltip("The unit stats")]
+    public UnitStats m_UnitStats;
 
     /// <summary>
     /// Most if not all, unit actions will need animation and some sort of delay

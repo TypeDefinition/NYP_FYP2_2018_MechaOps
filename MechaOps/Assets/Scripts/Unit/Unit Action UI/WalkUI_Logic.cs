@@ -61,12 +61,15 @@ public class WalkUI_Logic : MonoBehaviour {
                     zeTileComponent = zeClickedObj.GetComponent<Tile>();
                     break;
             }
-            if (m_AllReachableTileHighlight.Contains(zeTileComponent.GetId()))
+            if (!m_UnitWalkRef.m_UnitStats.CurrentTileID.Equals(zeTileComponent.GetId()) && m_AllReachableTileHighlight.Contains(zeTileComponent.GetId()))
             {
                 // Then we have to find the path for it!
                 m_UnitWalkRef.m_TilePath = m_TileSys.GetPath(m_UnitWalkRef.m_MovementPoints, m_UnitWalkRef.GetUnitStats().CurrentTileID, zeTileComponent.GetId(), m_UnitWalkRef.GetUnitStats().GetTileAttributeOverrides());
-                m_UnitWalkRef.StartAction();
-                gameObject.SetActive(false);
+                // have to find the scheduler and schedule this action!
+                UnitActionScheduler zeActScheduler = FindObjectOfType<UnitActionScheduler>();
+                m_UnitWalkRef.TurnOn();
+                zeActScheduler.ScheduleAction(m_UnitWalkRef);
+                Destroy(gameObject);
             }
         }
     }

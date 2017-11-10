@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 /// <summary>
 /// A simper unit action for walking!
@@ -77,6 +78,7 @@ public class UnitWalkAction : IUnitAction {
                 break;
         }
         ObserverSystemScript.Instance.TriggerEvent("UnitFinishAction");
+        m_ActionState = ActionState.Completed;
         yield break;
     }
 
@@ -185,7 +187,15 @@ public class UnitWalkAction : IUnitAction {
 
     public override bool VerifyRunCondition()
     {
-        throw new System.NotImplementedException();
-        return false;
+        // if there is hardly any tile to move, then ignore it!
+        if (m_TilePath.Length <= 1)
+            return false;
+
+        return true;
+    }
+
+    protected override void OnTurnOn()
+    {
+        Assert.IsTrue(VerifyRunCondition());
     }
 }

@@ -13,21 +13,26 @@ public class AttackUIGroupLogic : MonoBehaviour {
     [Header("The references for debugging")]
     [Tooltip("The unit attack action reference. Player's Unit attack action is to be expected")]
     public UnitAttackAction m_UnitAttackActRef;
-    [Tooltip("The unit it is targetting. Usually should be the gameobject with the enemy tag!")]
+    [Tooltip("The unit it is targeting. Usually should be the gameobject with the enemy tag!")]
     public GameObject m_OtherTarget;
     [Tooltip("Index of the target in the array. Usually there should be an array of enemy unit that the unit can see and iterate through that.")]
     public int m_IndexOfTarget;
     [Tooltip("UnitActionScheduler ref")]
     public UnitActionScheduler m_actScheduler;
+    [Tooltip("The target UI indicator in the scene as a reference")]
+    public GameObject m_TargetGO;
+    [Tooltip("The transform reference to world canvas")]
+    public Transform m_WorldCanvasTrans;
 
     private void OnEnable()
     {
         // TODO: Use another system aside from ObserverSystem for better optimization. maybe.
-        m_UnitAttackActRef = ObserverSystemScript.Instance.GetStoredEventVariable<UnitAttackAction>(tag);
-        ObserverSystemScript.Instance.RemoveTheEventVariableNextFrame(tag);
+        m_UnitAttackActRef = ObserverSystemScript.Instance.GetStoredEventVariable<UnitAttackAction>("SelectedAction");
+        ObserverSystemScript.Instance.RemoveTheEventVariableNextFrame("SelectedAction");
         m_IndexOfTarget = 0;
-        // Need to set the references to be active
-        m_TargetUIref.SetActive(true);
+        m_WorldCanvasTrans = GameObject.FindGameObjectWithTag("WorldCanvas").transform;
+        m_TargetGO = Instantiate(m_TargetUIref, m_WorldCanvasTrans);
+        m_TargetGO.SetActive(true);
         // For now, it will just pick the 1st enemy in the array
         KeepTrackOfGameObj(KeepTrackOfUnits.Instance.m_AllEnemyUnitGO[0]);
         ObserverSystemScript.Instance.TriggerEvent("ToggleSelectingUnit");
@@ -38,7 +43,7 @@ public class AttackUIGroupLogic : MonoBehaviour {
     private void OnDisable()
     {
         // Set to inactive when the Attack UI is closed
-        m_TargetUIref.SetActive(false);
+        Destroy(m_TargetGO);
     }
 
     /// <summary>
@@ -50,6 +55,7 @@ public class AttackUIGroupLogic : MonoBehaviour {
         //gameObject.SetActive(false);
         // set the target, schedule this action. then destroy this UI gameobject since it is not needed
         m_UnitAttackActRef.SetTarget(m_OtherTarget);
+        m_UnitAttackActRef.TurnOn();
         m_actScheduler.ScheduleAction(m_UnitAttackActRef);
         Destroy(gameObject);
     }
@@ -78,7 +84,7 @@ public class AttackUIGroupLogic : MonoBehaviour {
     /// <param name="trackedTarget">The GameObject that needs to be tracked</param>
     protected void KeepTrackOfGameObj(GameObject trackedTarget)
     {
-        m_TargetUIref.transform.position = new Vector3(trackedTarget.transform.position.x, trackedTarget.transform.position.y + trackedTarget.transform.localScale.y * 0.5f, trackedTarget.transform.position.z);
+        m_TargetGO.transform.position = new Vector3(trackedTarget.transform.position.x, trackedTarget.transform.position.y + trackedTarget.transform.localScale.y * 0.5f, trackedTarget.transform.position.z);
         m_OtherTarget = trackedTarget;
     }
 

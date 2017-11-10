@@ -11,6 +11,7 @@ TagManager:
   - TileBase
   - TileDisplay
   - TileSystem
+  - WorldCanvas
   layers:
   - Default
   - TransparentFX

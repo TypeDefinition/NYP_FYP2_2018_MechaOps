@@ -76,6 +76,13 @@ public class UnitStats : MonoBehaviour
         set
         {
             m_UnitStatsJSON.m_CurrentHealthPoints = Mathf.Clamp(value, 0, m_UnitStatsJSON.m_MaxHealthPoints);
+            // Send the event that this unit is dead!
+            if (m_UnitStatsJSON.m_CurrentHealthPoints <= 0)
+            {
+                ObserverSystemScript.Instance.StoreVariableInEvent(tag + "IsDead", gameObject);
+                // Trigger an event when the unit died
+                ObserverSystemScript.Instance.TriggerEvent(tag + "IsDead");
+            }
         }
     }
 
@@ -172,12 +179,12 @@ public class UnitStats : MonoBehaviour
         ResetActionPoints();
     }
 
-    private void OnDestroy()
-    {
-        ObserverSystemScript.Instance.StoreVariableInEvent(tag + "IsDead", gameObject);
-        // Trigger an event when the unit died
-        ObserverSystemScript.Instance.TriggerEvent(tag + "IsDead");
-    }
+    //private void OnDestroy()
+    //{
+    //    ObserverSystemScript.Instance.StoreVariableInEvent(tag + "IsDead", gameObject);
+    //    // Trigger an event when the unit died
+    //    ObserverSystemScript.Instance.TriggerEvent(tag + "IsDead");
+    //}
 
 #if UNITY_EDITOR
     private void OnValidate()
