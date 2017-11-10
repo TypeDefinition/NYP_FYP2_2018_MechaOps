@@ -73,6 +73,8 @@ public class PlayerUnitManager : MonoBehaviour {
     protected void StopUpdate()
     {
         ObserverSystemScript.Instance.UnsubscribeEvent("UnitMakeMove", UnitHasMakeMove);
+        ObserverSystemScript.Instance.UnsubscribeEvent("ClickedUnit", PlayerSelectUnit);
+        ObserverSystemScript.Instance.UnsubscribeEvent("UnitFinishAction", PollingForPlayerInput);
         if (m_UpdateOfManager != null)
         {
             StopCoroutine(m_UpdateOfManager);

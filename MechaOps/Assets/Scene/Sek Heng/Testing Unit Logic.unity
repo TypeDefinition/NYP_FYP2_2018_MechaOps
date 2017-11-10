@@ -29750,20 +29750,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 078b10b2239b1494ea96266b728d0a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UnitActionName: Attack
+  m_UnitActionName: 
   m_TurnedOn: 0
   m_Priority: 0
   m_ActionCost: 1
   m_EndsTurn: 0
   m_ActionState: 0
-  m_UnitActionUI: {fileID: 0}
+  m_UnitActionUI: {fileID: 1044431308409052, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
+    type: 2}
   m_ActionIconUI: {fileID: 21300000, guid: 7fa2b56696c075f4eafe02c8cfd5df76, type: 3}
   m_UnitStats: {fileID: 1365931110}
   m_MinAttackRange: 0
   m_MaxAttackRange: 100
-  m_AccuracyPoints: 100
+  m_AccuracyPoints: 2
   m_DamagePoints: 2
-  m_TargetUnitStats: {fileID: 0}
+  m_TargetUnitStats: {fileID: 1365931110}
 --- !u!114 &1365931109
 MonoBehaviour:
   m_ObjectHideFlags: 0

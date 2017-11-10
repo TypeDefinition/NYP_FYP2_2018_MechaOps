@@ -97,6 +97,11 @@ public class UnitAttackAction : IUnitAction
         // m_ActionScheduler.ScheduleAction(this);
     }
 
+    protected override void OnTurnOff()
+    {
+        base.OnTurnOff();
+    }
+
     /// <summary>
     /// To do raycasting and calculation. Along with the animation required.
     /// </summary>

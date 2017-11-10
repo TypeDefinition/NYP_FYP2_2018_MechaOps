@@ -65,7 +65,7 @@ public abstract class IUnitAction : MonoBehaviour
 
     protected virtual void OnTurnOn() { }
 
-    protected virtual void OnTurnOff() { }
+    protected virtual void OnTurnOff() { m_ActionState = ActionState.None; }
 
     public bool TurnedOn { get { return m_TurnedOn; } }
 
