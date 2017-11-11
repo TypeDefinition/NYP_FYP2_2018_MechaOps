@@ -2,7 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Mainly to iterate and update all of the enemy units 1 by 1
+/// </summary>
 public class EnemyUnitManager : MonoBehaviour {
+    [Header("Debugging purposes")]
+    [SerializeField, Tooltip("The list of available units when it begins")]
+    protected List<GameObject> m_EnemyList;
+    [SerializeField, Tooltip("Tile marker where all of the player units last gathered")]
+    protected TileId m_TilePlayerUnits;
 
     /// <summary>
     /// The Update of this manager
@@ -27,19 +35,28 @@ public class EnemyUnitManager : MonoBehaviour {
     /// <returns></returns>
     public IEnumerator IterateThroughEnemyUpdate()
     {
-        yield return new WaitForSeconds(3f);
+
+
         m_UpdateOfManager = null;
         ObserverSystemScript.Instance.TriggerEvent("TurnEnded");
         print("Finish Enemy Manager turn");
         yield break;
     }
 
-    void StopUpdate()
+    protected void StopUpdate()
     {
         if (m_UpdateOfManager != null)
         {
             StopCoroutine(m_UpdateOfManager);
             m_UpdateOfManager = null;
         }
+    }
+
+    /// <summary>
+    /// Meant to re-update the position of the player units gathered if the enemy unit has reached the current marker
+    /// </summary>
+    public void UpdateMarker()
+    {
+
     }
 }
