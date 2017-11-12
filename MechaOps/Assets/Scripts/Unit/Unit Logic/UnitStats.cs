@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -46,6 +47,8 @@ public class UnitStats : MonoBehaviour
     private UnitStatsJSON m_UnitStatsJSON = new UnitStatsJSON();
     [SerializeField, Tooltip("The current active action so that it can be stopped")]
     private IUnitAction m_CurrentActiveAction;
+    [SerializeField, Tooltip("The list of units that are in range")]
+    public UnitStats[] m_EnemyInRange;
     [SerializeField, Tooltip("The array of tiles override")]
     private TileAttributeOverride[] m_TileAttributeOverrides;
 
@@ -177,6 +180,33 @@ public class UnitStats : MonoBehaviour
     {
         ResetHealthPoints();
         ResetActionPoints();
+    }
+
+    /// <summary>
+    /// Check whether is it in range.
+    /// Should be called every time a unit ends it's turn.
+    /// </summary>
+    public void CheckEnemyInRange()
+    {
+        GameObject[] zeListOfUnits = null;
+        // TODO: Remove this hardcoding when it is done!
+        switch (tag)
+        {
+            case "Player":
+                // so get the list of enemy units
+                zeListOfUnits = KeepTrackOfUnits.Instance.m_AllEnemyUnitGO.ToArray();
+                break;
+            case "EnemyUnit":
+                zeListOfUnits = KeepTrackOfUnits.Instance.m_AllPlayerUnitGO.ToArray();
+                break;
+            default:
+                Assert.IsTrue(false, "Make CheckEnemyInRange more robust so that there can be more factions!");
+                break;
+        }
+        foreach (GameObject zeGO in zeListOfUnits)
+        {
+
+        }
     }
 
     //private void OnDestroy()
