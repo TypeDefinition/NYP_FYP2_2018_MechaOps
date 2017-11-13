@@ -4290,13 +4290,11 @@ GameObject:
   - component: {fileID: 236892925}
   - component: {fileID: 236892924}
   - component: {fileID: 236892921}
-  - component: {fileID: 236892922}
-  - component: {fileID: 236892919}
   - component: {fileID: 236892915}
   - component: {fileID: 236892923}
   - component: {fileID: 236892926}
   m_Layer: 0
-  m_Name: Unit testing stuff artillery
+  m_Name: Unit testing Enemy
   m_TagString: EnemyUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4328,6 +4326,7 @@ MonoBehaviour:
       y: -1
       z: 0
   m_CurrentActiveAction: {fileID: 0}
+  m_EnemyInRange: []
   m_TileAttributeOverrides: []
 --- !u!114 &236892915
 MonoBehaviour:
@@ -4342,9 +4341,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Cost: 2
   m_ActName: WalkTo
-  m_NamePrecActs: []
+  m_Preconditions: []
   m_Planner: {fileID: 0}
-  m_AllEffect: []
+  m_resultsOfThisAct:
+  - WalkGoal
   m_WalkAct: {fileID: 236892925}
   m_TileDest:
     x: 0
@@ -4401,21 +4401,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 236892913}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &236892919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 236892913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fc2742adf8378b4596d513d48b9d0e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Priority: 0
-  m_ActNameNeeded:
-  - WalkTo
-  m_GoapName: WalkGoal
 --- !u!4 &236892920
 Transform:
   m_ObjectHideFlags: 0
@@ -4440,26 +4425,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47a1483eb58bca14eb1a4daf0272e89e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AllGoapGoals: []
+  m_AllGoapGoals:
+  - m_Priority: 0
+    m_GoapName: WalkGoal
+  - m_Priority: 1
+    m_GoapName: AttackGoal
+  - m_Priority: 0
+    m_GoapName: SeeTarget
   m_AllGoapActions: []
-  m_Stats: {fileID: 0}
+  m_Stats: {fileID: 236892914}
   m_UnderAttack: 0
   m_BeforeAttackHP: 0
---- !u!114 &236892922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 236892913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f670edcd796b441408893d64e35692bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Priority: 0
-  m_ActNameNeeded:
-  - Attack
-  m_GoapName: AttackGoal
+  m_CurrentStates:
+  - GotTarget
 --- !u!114 &236892923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4473,10 +4451,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Cost: 2
   m_ActName: Attack
-  m_NamePrecActs:
-  - Track
+  m_Preconditions:
+  - m_NeededState: NearTarget
+    m_ActionName: NearTarget
   m_Planner: {fileID: 0}
-  m_AllEffect: []
+  m_resultsOfThisAct:
+  - AttackGoal
   m_AttackAct: {fileID: 236892924}
 --- !u!114 &236892924
 MonoBehaviour:
@@ -4542,13 +4522,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Cost: 2
-  m_ActName: Track
-  m_NamePrecActs:
-  - 
+  m_ActName: NearTarget
+  m_Preconditions:
+  - m_NeededState: GotTarget
+    m_ActionName: 
   m_Planner: {fileID: 0}
-  m_AllEffect:
-  - m_EffectName: Nearby
-    m_EffectCost: 2
+  m_resultsOfThisAct:
+  - NearTargetGoal
   m_AttackAct: {fileID: 236892924}
 --- !u!1 &246529316
 GameObject:
@@ -29872,6 +29852,7 @@ MonoBehaviour:
       y: 3
       z: -1
   m_CurrentActiveAction: {fileID: 0}
+  m_EnemyInRange: []
   m_TileAttributeOverrides: []
 --- !u!65 &1365931112
 BoxCollider:
@@ -32718,6 +32699,7 @@ MonoBehaviour:
       y: 4
       z: -2
   m_CurrentActiveAction: {fileID: 0}
+  m_EnemyInRange: []
   m_TileAttributeOverrides: []
 --- !u!1 &1525591204
 GameObject:

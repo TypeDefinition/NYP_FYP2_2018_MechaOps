@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 /// <summary>
 /// To replace the traditional state machine!
@@ -38,6 +39,8 @@ public class GoapPlanner : MonoBehaviour
     protected bool m_UnderAttack = false;
     [SerializeField, Tooltip("The health before it is attacked. This will be updated whenever it is it's turn. This will need to be changed")]
     public int m_BeforeAttackHP;
+    [SerializeField, Tooltip("It's current state that it is in! So that the actions will know the state that it is in.")]
+    protected List<string> m_CurrentStates;
 
     // Basically the name of the goap action as key, the reference to GoapAction as value
     protected Dictionary<string, IGoapAction> m_DictGoapAct = new Dictionary<string, IGoapAction>();
@@ -47,7 +50,6 @@ public class GoapPlanner : MonoBehaviour
     protected virtual void Start()
     {
         m_AllGoapActions = GetComponents<IGoapAction>();
-        m_AllGoapGoals = GetComponents<IGoapGoal>();
         m_Stats = GetComponent<UnitStats>();
         m_BeforeAttackHP = m_Stats.CurrentHealthPoints;
         // We will need to put the actions into dictionary
@@ -142,52 +144,77 @@ public class GoapPlanner : MonoBehaviour
     {
         GoapNode zeCheapestActNode = null;
         List<GoapNode> openset = new List<GoapNode>();
-        foreach (string zeActName in _goal.m_ActNameNeeded)
+        //List<GoapNode> closedset = new List<GoapNode>();
+        foreach (IGoapAction zeAct in m_AllGoapActions)
         {
-            IGoapAction zeTempAct;
-            if (m_DictGoapAct.TryGetValue(zeActName, out zeTempAct))
-            {
-                openset.Add(new GoapNode(null, zeTempAct));
-            }
+            openset.Add(new GoapNode(null, zeAct));
         }
         while (openset.Count > 0)
         {
             GoapNode zeNodeToActOn = GetCheapestNode(openset);
-            if (zeNodeToActOn.m_action.m_NamePrecActs.Length > 0)
+            if (zeNodeToActOn.m_action.m_Preconditions.Length > 0)
             {
-                bool ActionNotPossible = true;
-                foreach (string zeActName in zeNodeToActOn.m_action.m_NamePrecActs)
+                bool ActionNotPossible = false;
+                foreach (PreConditions zeActNeeded in zeNodeToActOn.m_action.m_Preconditions)
                 {
-                    IGoapAction zeOtherAct;
-                    if (m_DictGoapAct.TryGetValue(zeActName, out zeOtherAct))
+                    // If does not contain the state.
+                    if (!m_CurrentStates.Contains(zeActNeeded.m_NeededState) )
                     {
-                        zeOtherAct.CheckCurrentState();
-                        openset.Add(new GoapNode(zeNodeToActOn, zeOtherAct));
-                        ActionNotPossible = false;
+                        ActionNotPossible = true;
                     }
                 }
-                // This means there are no possible actions for this node to work on!
+                // This means the action is not workable! we will remove this node and continue to the next loop!
                 if (ActionNotPossible)
                 {
-                    openset.Remove(zeCheapestActNode);
+                    openset.Remove(zeNodeToActOn);
                     continue;
+                }
+            }
+            // if the result of the action does not contain what the goal wants
+            if (!zeNodeToActOn.m_action.m_resultsOfThisAct.Contains(_goal.m_GoapName))
+            {
+                // we will add to the OPENSET since we are bruteforcing our way through
+                List<IGoapAction> zeActsWithoutNodeActs = SubsetTheAction(m_AllGoapActions, zeNodeToActOn);
+                // from here, we will add it to the openset!
+                foreach (IGoapAction zeGoapAct in zeActsWithoutNodeActs)
+                {
+                    openset.Add(new GoapNode(zeNodeToActOn, zeGoapAct));
                 }
             }
             else
             {
-                // it means this is the final action and check if it is the cheapest to act on!
-                if (zeCheapestActNode != null && zeCheapestActNode.m_fCost > zeNodeToActOn.m_fCost)
+                // this node is the cheaper or there is no other node is act on!
+                if ((zeCheapestActNode != null && zeCheapestActNode.m_fCost > zeNodeToActOn.m_fCost) || zeCheapestActNode == null)
                 {
                     zeCheapestActNode = zeNodeToActOn;
                 }
-                else
-                {
-                    // This means we will have to operate on this node even though it is expensive
-                    zeCheapestActNode = zeNodeToActOn;
-                }
-                openset.Remove(zeNodeToActOn);
             }
+            openset.Remove(zeNodeToActOn);
         }
+        Assert.IsNotNull(zeCheapestActNode, "Can't find any action! Fix this bug!");
         return zeCheapestActNode;
+    }
+
+    List<IGoapAction> SubsetTheAction(IGoapAction[] _listOfActs, GoapNode _notRequiredAct)
+    {
+        List<IGoapAction> zeNewList = new List<IGoapAction>(_listOfActs);
+        List<IGoapAction> zeNotRequiredActs = GetListOfActs(_notRequiredAct);
+        foreach (IGoapAction zeNoNeedAct in zeNotRequiredActs)
+        {
+            zeNewList.Remove(zeNoNeedAct);
+        }
+        return zeNewList;
+    }
+
+    List<IGoapAction> GetListOfActs(GoapNode _goapNode)
+    {
+        GoapNode zeRefNode = _goapNode;   
+        List<IGoapAction> zeNewList = new List<IGoapAction>();
+        while (zeRefNode != null)
+        {
+            zeNewList.Add(zeRefNode.m_action);
+            zeRefNode = zeRefNode.m_parent;
+        }
+        return zeNewList;
     }
 }

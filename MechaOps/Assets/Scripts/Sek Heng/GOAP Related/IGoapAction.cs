@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public struct GoapActEffect
+public class PreConditions
 {
-    public string m_EffectName;
-    public int m_EffectCost;
+    public string m_NeededState;
+    public string m_ActionName;
 }
 
 public abstract class IGoapAction : MonoBehaviour {
@@ -15,23 +15,17 @@ public abstract class IGoapAction : MonoBehaviour {
     protected int m_Cost = 2;
     [Tooltip("The action name")]
     public string m_ActName;
-    [Tooltip("If there is any other action required, put the name down")]
-    public string[] m_NamePrecActs;
+    [Tooltip("Possible actions this will lead to!")]
+    public PreConditions[] m_Preconditions;
     [SerializeField, Tooltip("GOAP Planner. Will attempt to get component if there is no linking")]
     protected GoapPlanner m_Planner;
-    [SerializeField, Tooltip("The list of effects for this action")]
-    protected GoapActEffect[] m_AllEffect;
+    [Tooltip("The result that will be given when this action is done!")]
+    public List<string> m_resultsOfThisAct;
 
     public Coroutine m_UpdateRoutine
     {
         protected set; get;
     }
-
-    /// <summary>
-    /// This will be needed to add to 
-    /// </summary>
-    protected Dictionary<string, GoapActEffect> m_Effects = new Dictionary<string, GoapActEffect>();
-    protected Dictionary<string, IGoapAction> m_Preconditions = new Dictionary<string, IGoapAction>();
 
     /// <summary>
     /// Getter for cost
@@ -55,10 +49,6 @@ public abstract class IGoapAction : MonoBehaviour {
         //        m_Preconditions.Add(zePreconditionAct, zeAct);
         //    }
         //}
-        foreach (GoapActEffect zeEffect in m_AllEffect)
-        {
-            m_Effects.Add(zeEffect.m_EffectName, zeEffect);
-        }
 	}
 
     public abstract void DoAction();
