@@ -22,7 +22,7 @@ public class ObserverSystemScript : MonoBehaviour {
     Coroutine m_RemoveVariableCoroutine;
     // The variable to store it!
     private static ObserverSystemScript m_Instance;
-
+    
     public static ObserverSystemScript Instance
     {
         get
