@@ -5,9 +5,11 @@ using UnityEditor;
 
 [CustomEditor(typeof(TileSystem))]
 [CanEditMultipleObjects]
-public class TileSystemEditor : Editor {
+public class TileSystemEditor : Editor
+{
 
-    public override void OnInspectorGUI() {
+    public override void OnInspectorGUI()
+    {
         DrawDefaultInspector();
 
         TileSystem tileSystem = (TileSystem)target;
