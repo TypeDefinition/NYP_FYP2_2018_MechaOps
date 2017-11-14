@@ -48,7 +48,7 @@ public class UnitStats : MonoBehaviour
     [SerializeField, Tooltip("The current active action so that it can be stopped")]
     private IUnitAction m_CurrentActiveAction;
     [SerializeField, Tooltip("The list of units that are in range")]
-    public UnitStats[] m_EnemyInRange;
+    protected List<GameObject> m_EnemyInRange = new List<GameObject>();
     [SerializeField, Tooltip("The array of tiles override")]
     private TileAttributeOverride[] m_TileAttributeOverrides;
 
@@ -173,6 +173,16 @@ public class UnitStats : MonoBehaviour
         }
     }
 
+    private void OnEnable()
+    {
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("UnitMoveToTile", CheckEnemyInRange);
+    }
+
+    private void OnDisable()
+    {
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("UnitMoveToTile", CheckEnemyInRange);
+    }
+
     /// <summary>
     /// TODO: expand these upon 
     /// </summary>
@@ -184,7 +194,8 @@ public class UnitStats : MonoBehaviour
 
     /// <summary>
     /// Check whether is it in range.
-    /// Should be called every time a unit ends it's turn.
+    /// Should be called every time a unit moves from it's tile!
+    /// However, it will check all of the opposition units!
     /// </summary>
     public void CheckEnemyInRange()
     {
@@ -205,16 +216,23 @@ public class UnitStats : MonoBehaviour
         }
         foreach (GameObject zeGO in zeListOfUnits)
         {
-
+            float zeDistBet = Vector3.Distance(transform.position, zeGO.transform.position);
+            // if that list does not have the unit in range!
+            if (!m_EnemyInRange.Contains(zeGO) && zeDistBet <= ViewRange)
+            {
+                m_EnemyInRange.Add(zeGO);
+            }
         }
     }
 
-    //private void OnDestroy()
-    //{
-    //    ObserverSystemScript.Instance.StoreVariableInEvent(tag + "IsDead", gameObject);
-    //    // Trigger an event when the unit died
-    //    ObserverSystemScript.Instance.TriggerEvent(tag + "IsDead");
-    //}
+    /// <summary>
+    /// A function call to be passed to when a unit has moved!
+    /// </summary>
+    /// <param name="_movedUnit"></param>
+    public void CheckEnemyInRange(GameObject _movedUnit)
+    {
+
+    }
 
 #if UNITY_EDITOR
     private void OnValidate()
