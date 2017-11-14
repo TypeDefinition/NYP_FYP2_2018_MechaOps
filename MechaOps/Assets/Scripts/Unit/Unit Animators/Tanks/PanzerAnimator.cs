@@ -5,8 +5,6 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class PanzerAnimator : MonoBehaviour
 {
-    public delegate void Void_Void();
-
     // Gun Elevation (This has been removed due to time constraints. It works but I don't want to calculate elavation and depression when doing shooting animation.)
     [SerializeField, Range(0, 90)] private float m_MaxGunElevation = 80.0f;
     [SerializeField, Range(0, 90)] private float m_MaxGunDepression = 20.0f;
@@ -26,7 +24,7 @@ public class PanzerAnimator : MonoBehaviour
 
     // Bullet
     [SerializeField] private GameObject m_BulletSpawn;
-    [SerializeField] private GameObject m_BulletPrefab;
+    [SerializeField] private TankBullet m_BulletPrefab;
 
     // Shooting Animation
     private Vector3 m_TargetPosition = new Vector3();
@@ -96,19 +94,18 @@ public class PanzerAnimator : MonoBehaviour
         }
     }
 
-    public void AnimateFireBullet(Vector3 _targetPosition, bool _explodeOnContact)
+    public void AnimateFireBullet(Vector3 _targetPosition, bool _explodeOnContact, Void_Void _callback)
     {
-        GameObject bullet = GameObject.Instantiate(m_BulletPrefab);
+        TankBullet bullet = GameObject.Instantiate(m_BulletPrefab.gameObject).GetComponent<TankBullet>();
         bullet.transform.position = m_BulletSpawn.transform.position;
-
         bullet.transform.LookAt(_targetPosition);
-        //bullet.transform.rotation = m_BulletSpawn.transform.rotation;
+        bullet.CompletionCallback = _callback;
     }
 
-    public void AnimateFireGun(Vector3 _targetPosition, bool _bulletExplodeOnContact)
+    public void AnimateFireGun(Vector3 _targetPosition, bool _bulletExplodeOnContact, Void_Void _callback)
     {
         AnimateMuzzleFlash();
-        AnimateFireBullet(_targetPosition, _bulletExplodeOnContact);
+        AnimateFireBullet(_targetPosition, _bulletExplodeOnContact, _callback);
     }
 
     public void AnimateElevateGun(float _angle)
@@ -252,13 +249,10 @@ public class PanzerAnimator : MonoBehaviour
         
         if (gunAimed && turretAimed)
         {
-            AnimateFireGun(m_TargetPosition, m_Hit);
+            AnimateFireGun(m_TargetPosition, m_Hit, m_ShootingAnimationCompleteCallback);
             m_ShootingAnimationRunning = false;
-            if (m_ShootingAnimationCompleteCallback != null)
-            {
-                m_ShootingAnimationCompleteCallback();
-                m_ShootingAnimationCompleteCallback = null;
-            }
+            // Once the animation is done, the callback is removed.
+            m_ShootingAnimationCompleteCallback = null;
         }
     }
 
@@ -273,6 +267,7 @@ public class PanzerAnimator : MonoBehaviour
         m_ShootingAnimationRunning = false;
     }
 
+    // Once the animation is done, the callback is removed.
     public void SetShootAnimationParameters(Vector3 _targetPosition, bool _hit, Void_Void _callback)
     {
         m_TargetPosition = _targetPosition;
@@ -282,9 +277,6 @@ public class PanzerAnimator : MonoBehaviour
             m_ShootingAnimationCompleteCallback += _callback;
         }
     }
-
-    // Use this for initialization
-    private void Start () {}
 
     // Update is called once per frame
     private void Update ()

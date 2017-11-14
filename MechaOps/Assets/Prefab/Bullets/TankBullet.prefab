@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23528924572306312}
   - component: {fileID: 114043521242476608}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: TankBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,7 +94,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Speed: 100
   m_Lifetime: 0.5
-  m_TargetTag: 
   m_ExplodeOnContact: 1
   m_Explosion: {fileID: 1239684297980618, guid: fabb59942e39c724f8e7e33417f0ff43,
     type: 2}
+  m_CollisionLayers:
+  - Default
