@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EventSystemTestSender : MonoBehaviour {
+public class GameEventSystemTestSender : MonoBehaviour {
 
     private int m_Counter = 0;
     private float m_Timer = 1.0f;
@@ -17,7 +17,7 @@ public class EventSystemTestSender : MonoBehaviour {
         if ((m_Timer -= Time.deltaTime) < 0.0f)
         {
             m_Timer = 1.0f;
-            EventSystem.GetInstance().TriggerEvent<int>("テスト", m_Counter++);
+            GameEventSystem.GetInstance().TriggerEvent<int>("テスト", m_Counter++);
         }
     }
 

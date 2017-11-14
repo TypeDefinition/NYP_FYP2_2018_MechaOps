@@ -7,15 +7,17 @@ using UnityEngine.Assertions;
 [DisallowMultipleComponent]
 public class PanzerAnimationAttack : MonoBehaviour
 {
-    [SerializeField] private PanzerAnimator m_Animator = null;
-    [SerializeField] private Vector3 m_TargetPosition = new Vector3();
+    private PanzerAnimator m_Animator = null;
+    [SerializeField] private GameObject m_Target = null;
     [SerializeField] private bool m_Hit = true; // Is this attack a hit or miss?
+    
+    // For Debugging
     public bool m_StartAnimation = false;
 
-    public Vector3 TargetPosition
+    public GameObject Target
     {
-        get { return m_TargetPosition; }
-        set { m_TargetPosition = value; }
+        get { return m_Target; }
+        set { m_Target = value; }
     }
 
     public bool Hit
@@ -43,20 +45,23 @@ public class PanzerAnimationAttack : MonoBehaviour
 
     void StartAnimation()
     {
-        m_Animator.ShootAtTargetAnimation(m_TargetPosition, m_Hit);
+        //m_Animator.SetShootAnimationParameters(m_Target.transform.position, m_Hit);
+        m_Animator.StartShootAnimation();
     }
 
     void PauseAnimation()
     {
+        m_Animator.StopShootAnimation();
     }
 
     void ResumeAnimation()
     {
+        m_Animator.StartShootAnimation();
     }
 
     void StopAnimation()
     {
-        gameObject.GetInstanceID();
+        m_Animator.StopShootAnimation();
     }
 
 }
