@@ -17,23 +17,23 @@ public class GenericUnityEvent3<T1, T2, T3> : UnityEvent<T1, T2, T3> {}
 [System.Serializable]
 public class GenericUnityEvent4<T1, T2, T3, T4> : UnityEvent<T1, T2, T3, T4> {}
 
-public class EventSystem
+public class GameEventSystem
 {
     // Singleton Instance
-    private static EventSystem m_Instance = null;
+    private static GameEventSystem m_Instance = null;
 
     // Events
     private Dictionary<string, UnityEventBase> m_Events = new Dictionary<string, UnityEventBase>();
 
     // Constructor(s)
-    public EventSystem() {}
+    private GameEventSystem() {}
 
     // Singleton Getter
-    public static EventSystem GetInstance()
+    public static GameEventSystem GetInstance()
     {
         if (m_Instance == null)
         {
-            m_Instance = new EventSystem();
+            m_Instance = new GameEventSystem();
         }
 
         return m_Instance;

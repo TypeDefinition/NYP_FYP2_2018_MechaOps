@@ -37,15 +37,12 @@ public class TankBullet : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-        // Every frame move forward.
-        transform.position += transform.forward * m_Speed * Time.deltaTime;
-
         // Detect Hit
         RaycastHit hitInfo;
         if (m_ExplodeOnContact && Physics.Raycast(transform.position, transform.forward, out hitInfo, m_Speed * Time.deltaTime))
         {
             GameObject explosion = GameObject.Instantiate(m_Explosion);
-            explosion.transform.position = transform.position;
+            explosion.transform.position = hitInfo.point;
             m_Lifetime = 0.0f;
         }
 
@@ -54,6 +51,9 @@ public class TankBullet : MonoBehaviour
         {
             GameObject.Destroy(gameObject);
         }
+
+        // Every frame move forward.
+        transform.position += transform.forward * m_Speed * Time.deltaTime;
     }
 
 #if UNITY_EDITOR

@@ -137,6 +137,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4898256917160928}
   - component: {fileID: 114359396952436618}
+  - component: {fileID: 114666804289078842}
   m_Layer: 0
   m_Name: Panzer
   m_TagString: Untagged
@@ -1788,6 +1789,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1fa353a39c30e74eb9e7f58a0ddf3f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_MaxGunElevation: 80
+  m_MaxGunDepression: 20
   m_Turret: {fileID: 1615763490756988}
   m_Gun: {fileID: 1408577003909350}
   m_MuzzleFlashes:
@@ -1814,7 +1817,22 @@ MonoBehaviour:
   - {fileID: 1118167938941502}
   - {fileID: 1758412604803192}
   m_BulletSpawn: {fileID: 1536918850107650}
-  m_Bullet: {fileID: 1937030430803890, guid: 395c424eb347e834bb03c780aee2901b, type: 2}
+  m_BulletPrefab: {fileID: 1937030430803890, guid: 395c424eb347e834bb03c780aee2901b,
+    type: 2}
+--- !u!114 &114666804289078842
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1367731447694558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ad2ab442c84a04ea96dab1b373fbaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Target: {fileID: 0}
+  m_Hit: 1
+  m_StartAnimation: 0
 --- !u!114 &114858512076167544
 MonoBehaviour:
   m_ObjectHideFlags: 1
