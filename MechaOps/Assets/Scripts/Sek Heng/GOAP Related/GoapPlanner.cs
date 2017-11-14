@@ -24,6 +24,23 @@ public class GoapPlanner : MonoBehaviour
             if (m_parent != null)
                 m_fCost += _parent.m_fCost;
         }
+
+        /// <summary>
+        /// Comparing and checking whether the nodes will be the same!
+        /// </summary>
+        /// <param name="_other">The other node to compare to</param>
+        /// <returns>True if they are the same!</returns>
+        public bool Equals(GoapNode _other)
+        {
+            // We can compare the cost of the nodes to see if they are the same but it will not do them justice! but certainly the fastest way!
+            if (m_fCost != _other.m_fCost)
+                return false;
+            // So we will have to compare parent with parent and check! Need the number of parents are there!
+            int zeTotalChildCount = 0;
+            // since thr can be duplicates
+            List<string> m_ActName = new List<string>();
+            return true;
+        }
     }
 
     [Header("Variables and references required for GOAP Planner")]
@@ -35,6 +52,8 @@ public class GoapPlanner : MonoBehaviour
     public UnitStats m_Stats;
 
     [Header("Debugging Purpose for GoapPlanning")]
+    [SerializeField, Tooltip("The indicator to check if it has finished making a move!")]
+    protected bool m_FinishMoving = false;
     [SerializeField, Tooltip("The flag to know if it is under attacked")]
     protected bool m_UnderAttack = false;
     [SerializeField, Tooltip("The health before it is attacked. This will be updated whenever it is it's turn. This will need to be changed")]
@@ -63,6 +82,11 @@ public class GoapPlanner : MonoBehaviour
         }
     }
 
+    protected void FinishMakingMove()
+    {
+        m_FinishMoving = true;
+    }
+
     public virtual IEnumerator StartPlanning()
     {
         if (m_BeforeAttackHP < m_Stats.CurrentHealthPoints)
@@ -70,10 +94,11 @@ public class GoapPlanner : MonoBehaviour
             m_UnderAttack = true;
             m_BeforeAttackHP = m_Stats.CurrentHealthPoints;
         }
+        ObserverSystemScript.Instance.SubscribeEvent("UnitMakeMove", FinishMakingMove);
         // TODO: Probably need coroutine but not now
         GoapNode zeCheapestActNode = null;
         IGoapGoal zeCurrentGoal;
-        while (m_Stats.CurrentActionPoints > 0)
+        while (m_Stats.CurrentActionPoints > 0 && !m_FinishMoving)
         {
             if (zeCheapestActNode == null)
             {
@@ -110,6 +135,7 @@ public class GoapPlanner : MonoBehaviour
             }
             yield return null;
         }
+        ObserverSystemScript.Instance.UnsubscribeEvent("UnitMakeMove", FinishMakingMove);
         yield break;
     }
 
@@ -144,7 +170,7 @@ public class GoapPlanner : MonoBehaviour
     {
         GoapNode zeCheapestActNode = null;
         List<GoapNode> openset = new List<GoapNode>();
-        //List<GoapNode> closedset = new List<GoapNode>();
+        List<GoapNode> closedset = new List<GoapNode>();
         foreach (IGoapAction zeAct in m_AllGoapActions)
         {
             openset.Add(new GoapNode(null, zeAct));

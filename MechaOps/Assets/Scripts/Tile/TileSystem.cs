@@ -94,11 +94,24 @@ public class TileSystem : MonoBehaviour
     [SerializeField] private TileLibrary m_TileLibrary = null;
     [SerializeField] private Tile m_DefaultTile = null;
 
+    //[SerializeField, HideInInspector] private
     private Dictionary<TileId, Tile> m_TileDictionary = new Dictionary<TileId, Tile>();
     [HideInInspector, SerializeField] private TileDictionaryPair[] m_TileArray = new TileDictionaryPair[0];
 
-    public int m_Radius = 10;
-    public float m_DistanceBetweenTiles = 5.0f;
+    [SerializeField] private int m_Radius = 10;
+    [SerializeField] private float m_DistanceBetweenTiles = 5.0f;
+
+    public int Radius
+    {
+        get { return m_Radius; }
+        set { m_Radius = Mathf.Max(0, value); }
+    }
+
+    public float DistanceBetweenTiles
+    {
+        get { return m_DistanceBetweenTiles; }
+        set { m_DistanceBetweenTiles = Mathf.Max(0, value); }
+    }
 
     public HazardLibrary GetHazardLibrary()
     {
@@ -323,6 +336,8 @@ public class TileSystem : MonoBehaviour
     // Interface Function(s)
     public TileId[] GetSurroundingTiles(TileId _centre, int _radius)
     {
+        _radius = Mathf.Min(_radius, m_Radius);
+
         // _radius should never be < 0.
         Assert.IsFalse(_radius < 0, MethodBase.GetCurrentMethod().Name + " - Invalid value for _radius!");
 

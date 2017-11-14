@@ -43,12 +43,13 @@ public class WalkGoapAct : IGoapAction {
         yield return null;
         // from here, we get the walkable tiles!
         int zeCounter = 0;
-        TileId[] zeAvailablePaths = new TileId[m_WalkAct.m_MovementPoints];
+        int zeMaxTileNum = Mathf.Min(zeTileToWalkTo.Length, m_WalkAct.m_MovementPoints);
+        TileId[] zeAvailablePaths = new TileId[zeMaxTileNum];
         foreach (TileId zeTile in zeTileToWalkTo)
         {
             zeAvailablePaths[zeCounter++] = zeTile;
             // it reaches it's max movement points it has to stop!
-            if (zeCounter == m_WalkAct.m_MovementPoints)
+            if (zeCounter == zeMaxTileNum)
                 break;
         }
         m_WalkAct.m_TilePath = zeAvailablePaths;
@@ -61,6 +62,7 @@ public class WalkGoapAct : IGoapAction {
         while (m_WalkAct.GetActionState() != IUnitAction.ActionState.Completed)
             yield return zeFixedUp;
         print("Finished walk action");
+        m_TileDest = null;
         yield break;
     }
 }
