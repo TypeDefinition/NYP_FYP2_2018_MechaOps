@@ -31,6 +31,16 @@ public class GoapNearTarget : IGoapAction
             m_AttackAct = GetComponent<UnitAttackAction>();
     }
 
+    protected virtual void OnEnable()
+    {
+        // Since thr will only be player units to fight against, we will only wait for player unit died
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("PlayerIsDead", EnemyUnitDied);
+    }
+    protected virtual void OnDisable()
+    {
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("PlayerIsDead", EnemyUnitDied);
+    }
+
     public override void DoAction()
     {
         UpdateEnemyInAttack();
@@ -42,6 +52,7 @@ public class GoapNearTarget : IGoapAction
         if (m_EnemiesInAttack.Count > 0)
             yield break;
         // we will need to check through the units that are in range then move near to that unit!
+        // this got to be the most headache part
         print("Tracked the target successfully");
         yield break;
     }
@@ -71,6 +82,11 @@ public class GoapNearTarget : IGoapAction
             m_Planner.m_CurrentStates.Add("TargetAttackInRange");
         else
             m_Planner.m_CurrentStates.Remove("TargetAttackInRange");
+    }
+
+    protected void EnemyUnitDied(GameObject _deadUnit)
+    {
+        m_EnemiesInAttack.Remove(_deadUnit);
     }
 
 #if UNITY_EDITOR

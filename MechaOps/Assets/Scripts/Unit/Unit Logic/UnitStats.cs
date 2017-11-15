@@ -82,9 +82,11 @@ public class UnitStats : MonoBehaviour
             // Send the event that this unit is dead!
             if (m_UnitStatsJSON.m_CurrentHealthPoints <= 0)
             {
-                ObserverSystemScript.Instance.StoreVariableInEvent(tag + "IsDead", gameObject);
+                string zeEventName = tag + "IsDead";
+                ObserverSystemScript.Instance.StoreVariableInEvent(zeEventName, gameObject);
                 // Trigger an event when the unit died
-                ObserverSystemScript.Instance.TriggerEvent(tag + "IsDead");
+                ObserverSystemScript.Instance.TriggerEvent(zeEventName);
+                GameEventSystem.GetInstance().TriggerEvent<GameObject>(zeEventName, gameObject);
             }
         }
     }
@@ -188,11 +190,37 @@ public class UnitStats : MonoBehaviour
     protected void OnEnable()
     {
         GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("UnitMoveToTile", CheckEnemyInRange);
+        switch (tag)
+        {
+            case "Player":
+                // so get the list of enemy units
+                GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("EnemyUnitIsDead", EnemyInRangeDead);
+                break;
+            case "EnemyUnit":
+                GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("PlayerIsDead", EnemyInRangeDead);
+                break;
+            default:
+                Assert.IsTrue(false, "Make CheckEnemyInRange more robust so that there can be more factions!");
+                break;
+        }
     }
 
     protected void OnDisable()
     {
         GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("UnitMoveToTile", CheckEnemyInRange);
+        switch (tag)
+        {
+            case "Player":
+                // so get the list of enemy units
+                GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("EnemyUnitIsDead", EnemyInRangeDead);
+                break;
+            case "EnemyUnit":
+                GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("PlayerIsDead", EnemyInRangeDead);
+                break;
+            default:
+                Assert.IsTrue(false, "Make CheckEnemyInRange more robust so that there can be more factions!");
+                break;
+        }
     }
 
     /// <summary>
@@ -228,6 +256,14 @@ public class UnitStats : MonoBehaviour
         }
         foreach (GameObject zeGO in zeListOfUnits)
         {
+            UnitStats zeGOState = zeGO.GetComponent<UnitStats>();
+            switch (zeGOState.IsAlive())
+            {
+                case false:
+                    continue;
+                default:
+                    break;
+            }
             float zeDistBet = Vector3.Distance(transform.position, zeGO.transform.position);
             // if that list does not have the unit in range!
             if (!m_EnemyInRange.Contains(zeGO))
@@ -270,6 +306,13 @@ public class UnitStats : MonoBehaviour
                 }
             }
         }
+    }
+    /// <summary>
+    /// To be called when the opposing unit died
+    /// </summary>
+    protected void EnemyInRangeDead(GameObject _deadUnit)
+    {
+        m_EnemyInRange.Remove(_deadUnit);
     }
 
 #if UNITY_EDITOR

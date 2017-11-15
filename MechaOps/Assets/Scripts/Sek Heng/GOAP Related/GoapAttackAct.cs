@@ -23,6 +23,9 @@ public class GoapAttackAct : IGoapAction {
 
     public override IEnumerator UpdateActRoutine()
     {
+        // If there is no unit, might as well, quit this action!
+        if (m_GOAPTargetAct.EnemiesInAttack.Count == 0)
+            yield break;
         // we picked the target which will be the 1st unit in the range at GoapNearTarget
         GameObject zeTarget = m_GOAPTargetAct.EnemiesInAttack[0];
         m_AttackAct.SetTarget(zeTarget);
