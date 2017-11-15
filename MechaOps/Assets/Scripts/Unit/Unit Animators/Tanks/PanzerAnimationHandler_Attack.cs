@@ -8,13 +8,13 @@ using UnityEngine.Assertions;
 public class PanzerAnimationHandler_Attack : AnimationHandler
 {
     private PanzerAnimator m_Animator = null;
-    private GameObject m_Target = null;
+    private Vector3 m_TargetPosition;
     private bool m_Hit = true; // Is this attack a hit or miss?
     
-    public GameObject Target
+    public Vector3 TargetPosition
     {
-        get { return m_Target; }
-        set { m_Target = value; }
+        get { return m_TargetPosition; }
+        set { m_TargetPosition = value; }
     }
 
     public bool Hit
@@ -35,9 +35,7 @@ public class PanzerAnimationHandler_Attack : AnimationHandler
 
     public override void StartAnimation()
     {
-        Assert.IsFalse(m_Target == null, MethodBase.GetCurrentMethod().Name + " - Cannot start animation without a target!");
-
-        m_Animator.SetShootAnimationParameters(m_Target.transform.position, m_Hit, m_CompletionCallback);
+        m_Animator.SetShootAnimationParameters(m_TargetPosition, m_Hit, m_CompletionCallback);
         m_Animator.StartShootAnimation();
     }
 

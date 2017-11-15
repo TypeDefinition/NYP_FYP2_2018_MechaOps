@@ -32,8 +32,17 @@ public class PanzerAnimator : MonoBehaviour
     private float m_TurretRotationSpeed = 5.0f; // This speed is not in degrees. It's just by time cause I'm lazy.
     private float m_GunElevationSpeed = 60.0f; // This is the speed in degrees.
     private float m_AccuracyTolerance = 0.5f; // How small must the angle between where our gun is aiming and where the target is to be considered aimed.
-    private bool m_ShootingAnimationRunning = false;
-    private Void_Void m_ShootingAnimationCompleteCallback = null;
+    private Void_Void m_ShootAnimationCompleteCallback = null;
+    IEnumerator m_ShootAnimationCoroutine;
+
+    // Moving Animation
+    private Vector3 m_Destination = new Vector3();
+    private float m_MovementSpeed = 10.0f;
+    private float m_TankRotationSpeed = 3.0f;
+    private float m_DistanceTolerance = 0.1f;
+    private float m_RotationTolerance = 0.5f;
+    private Void_Void m_MoveAnimationCompleteCallback = null;
+    IEnumerator m_MoveAnimationCoroutine;
 
     public float MaxGunElevation
     {
@@ -121,8 +130,9 @@ public class PanzerAnimator : MonoBehaviour
         m_Gun.transform.localRotation = desiredRotation;
     }
 
+    // Private Function(s)
     // _maximumAngle is in degrees not radians.
-    public bool IsTurretAimingAtTarget(Vector3 _targetPosition)
+    private bool IsTurretAimingAtTarget(Vector3 _targetPosition)
     {
         Vector3 directionToTarget = _targetPosition - m_Turret.transform.position;
         directionToTarget.y = 0.0f;
@@ -143,7 +153,7 @@ public class PanzerAnimator : MonoBehaviour
         return true;
     }
 
-    public bool IsGunAimingAtTarget(Vector3 _targetPosition)
+    private bool IsGunAimingAtTarget(Vector3 _targetPosition)
     {
         Vector3 directionToTarget = _targetPosition - m_Gun.transform.position;
         directionToTarget.Normalize();
@@ -151,11 +161,7 @@ public class PanzerAnimator : MonoBehaviour
         float angleToTarget = -Mathf.Asin(directionToTarget.y) * Mathf.Rad2Deg; // Negate this because a position rotation is downwards.
         float currentAngle = ConvertAngle(m_Gun.transform.localRotation.eulerAngles.x);
         float angleDifference = angleToTarget - currentAngle;
-
-        //Debug.Log("Angle To Target: " + angleToTarget);
-        //Debug.Log("Current Angle: " + currentAngle);
-        //Debug.Log("Angle Difference: " + angleDifference);
-
+        
         if (Mathf.Abs(angleDifference) <= m_AccuracyTolerance)
         {
             return true;
@@ -173,11 +179,36 @@ public class PanzerAnimator : MonoBehaviour
             return (Mathf.Abs(currentAngle - m_MaxGunDepression) <= m_AccuracyTolerance);
         }
 
-        //Debug.Log("Angle Difference Too Large");
         return false;
     }
 
-    // Private Function(s)
+    private bool IsTankAtDestination(Vector3 _destination)
+    {
+        _destination.y = gameObject.transform.position.y;
+        return (_destination - gameObject.transform.position).sqrMagnitude < m_DistanceTolerance * m_DistanceTolerance;
+    }
+    
+    private bool IsTankFacingDestination(Vector3 _destination)
+    {
+        Vector3 directionToDestination = _destination - m_Turret.transform.position;
+        directionToDestination.y = 0.0f;
+        Vector3 forward = transform.forward;
+        forward.y = 0.0f;
+
+        // Check if the turret is facing the target.
+        if (Vector3.Dot(directionToDestination, forward) <= 0.0f)
+        {
+            return false;
+        }
+
+        if (Vector3.Angle(directionToDestination, forward) > m_RotationTolerance)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
     private float ConvertAngle(float _angle)
     {
         // Convert an angle to be between -180 and 180.
@@ -225,46 +256,128 @@ public class PanzerAnimator : MonoBehaviour
         }
     }
 
-    private void UpdateShootAnimation()
+    private void RotateTankTowardsTargetPosition(Vector3 _targetPosition)
     {
-        if (!m_ShootingAnimationRunning)
+        Vector3 directionToTarget = _targetPosition - m_Turret.transform.position;
+        directionToTarget.y = 0.0f;
+
+        Quaternion currentRotation = gameObject.transform.rotation;
+        Quaternion desiredRotation = Quaternion.LookRotation(directionToTarget);
+
+        gameObject.transform.rotation = Quaternion.Lerp(currentRotation, desiredRotation, Time.deltaTime * m_TankRotationSpeed);
+
+        // If the direction is towards the right.
+        if (Vector3.Dot(transform.right, directionToTarget) > 0.0f)
         {
-            return;
+            AnimateTracks(m_MovementSpeed * Time.deltaTime, -m_MovementSpeed * Time.deltaTime);
+        }
+        // If the direction is towards the left.
+        else
+        {
+            AnimateTracks(-m_MovementSpeed * Time.deltaTime, m_MovementSpeed * Time.deltaTime);
+        }
+    }
+
+    private void TranslateTankTowardsTargetPosition(Vector3 _targetPosition)
+    {
+        Vector3 directionToTarget = _targetPosition - m_Turret.transform.position;
+        directionToTarget.y = 0.0f;
+
+        // 与目标距离自乘
+        float distanceToTargetSquared = directionToTarget.sqrMagnitude;
+
+        if (distanceToTargetSquared < (m_DistanceTolerance * m_DistanceTolerance))
+        {
+            Vector3 snapPosition = _targetPosition;
+            snapPosition.y = gameObject.transform.position.y;
+            gameObject.transform.position = snapPosition;
+        }
+        else
+        {
+            directionToTarget.Normalize();
+            gameObject.transform.position += (directionToTarget * Time.deltaTime * m_MovementSpeed);
         }
 
-        bool turretAimed = IsTurretAimingAtTarget(m_TargetPosition);
-        bool gunAimed = IsGunAimingAtTarget(m_TargetPosition);
+        AnimateTracks(m_MovementSpeed * Time.deltaTime, m_MovementSpeed * Time.deltaTime);
+    }
 
-        if (!turretAimed)
+    // Couroutines
+    private IEnumerator ShootAnimationCouroutine()
+    {
+        while (true)
         {
-            //Debug.Log("!TurretAimed");
             RotateTurretTowardsTargetPosition(m_TargetPosition);
-        }
+            bool turretAimed = IsTurretAimingAtTarget(m_TargetPosition);
 
-        if (!gunAimed)
-        {
-            //Debug.Log("!GunAimed");
             ElevateGunTowardsTargetPosition(m_TargetPosition);
-        }
-        
-        if (gunAimed && turretAimed)
+            bool gunAimed = IsGunAimingAtTarget(m_TargetPosition);
+
+            if (gunAimed && turretAimed)
+            {
+                AnimateFireGun(m_TargetPosition, m_Hit, m_ShootAnimationCompleteCallback);
+                // Once the animation is done, the callback is removed.
+                m_ShootAnimationCompleteCallback = null;
+                break;
+            }
+
+            yield return null;
+        }        
+    }
+
+    private IEnumerator MoveAnimationCouroutine()
+    {
+        while (true)
         {
-            AnimateFireGun(m_TargetPosition, m_Hit, m_ShootingAnimationCompleteCallback);
-            m_ShootingAnimationRunning = false;
-            // Once the animation is done, the callback is removed.
-            m_ShootingAnimationCompleteCallback = null;
+            RotateTankTowardsTargetPosition(m_Destination);
+            bool tankFacingDestination = IsTankFacingDestination(m_Destination);
+            if (!tankFacingDestination)
+            {
+                yield return null;
+                continue;
+            }
+
+            TranslateTankTowardsTargetPosition(m_Destination);
+            bool tankAtDestination = IsTankAtDestination(m_Destination);
+            if (!tankAtDestination)
+            {
+                yield return null;
+                continue;
+            }
+            
+            if (tankFacingDestination && tankAtDestination)
+            {
+                if (m_MoveAnimationCompleteCallback != null)
+                {
+                    m_MoveAnimationCompleteCallback();
+                }
+                break;
+            }
+
+            yield return null;
         }
     }
 
     // Tailored Animations
     public void StartShootAnimation()
     {
-        m_ShootingAnimationRunning = true;
+        m_ShootAnimationCoroutine = ShootAnimationCouroutine();
+        StartCoroutine(m_ShootAnimationCoroutine);
     }
 
     public void StopShootAnimation()
     {
-        m_ShootingAnimationRunning = false;
+        StopCoroutine(m_ShootAnimationCoroutine);
+    }
+
+    public void StartMoveAnimation()
+    {
+        m_MoveAnimationCoroutine = MoveAnimationCouroutine();
+        StartCoroutine(m_MoveAnimationCoroutine);
+    }
+
+    public void StopMoveAnimation()
+    {
+        StopCoroutine(m_MoveAnimationCoroutine);
     }
 
     // Once the animation is done, the callback is removed.
@@ -274,14 +387,17 @@ public class PanzerAnimator : MonoBehaviour
         m_Hit = _hit;
         if (_callback != null)
         {
-            m_ShootingAnimationCompleteCallback += _callback;
+            m_ShootAnimationCompleteCallback = _callback;
         }
     }
 
-    // Update is called once per frame
-    private void Update ()
+    public void SetMoveAnimationParameters(Vector3 _destination, Void_Void _callback)
     {
-        UpdateShootAnimation();
+        m_Destination = _destination;
+        if (_callback != null)
+        {
+            m_MoveAnimationCompleteCallback = _callback;
+        }
     }
 
 #if UNITY_EDITOR
