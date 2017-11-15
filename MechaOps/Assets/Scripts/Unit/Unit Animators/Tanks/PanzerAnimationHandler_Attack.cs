@@ -5,15 +5,12 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 [DisallowMultipleComponent]
-public class PanzerAnimationAttack : MonoBehaviour
+public class PanzerAnimationHandler_Attack : AnimationHandler
 {
     private PanzerAnimator m_Animator = null;
-    [SerializeField] private GameObject m_Target = null;
-    [SerializeField] private bool m_Hit = true; // Is this attack a hit or miss?
+    private GameObject m_Target = null;
+    private bool m_Hit = true; // Is this attack a hit or miss?
     
-    // For Debugging
-    public bool m_StartAnimation = false;
-
     public GameObject Target
     {
         get { return m_Target; }
@@ -34,32 +31,27 @@ public class PanzerAnimationAttack : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update ()
-    {
-        if (m_StartAnimation)
-        {
-            StartAnimation();
-            m_StartAnimation = false;
-        }
-	}
+	void Update () {}
 
-    void StartAnimation()
+    public override void StartAnimation()
     {
-        //m_Animator.SetShootAnimationParameters(m_Target.transform.position, m_Hit);
+        Assert.IsFalse(m_Target == null, MethodBase.GetCurrentMethod().Name + " - Cannot start animation without a target!");
+
+        m_Animator.SetShootAnimationParameters(m_Target.transform.position, m_Hit, m_CompletionCallback);
         m_Animator.StartShootAnimation();
     }
 
-    void PauseAnimation()
+    public override void PauseAnimation()
     {
         m_Animator.StopShootAnimation();
     }
 
-    void ResumeAnimation()
+    public override void ResumeAnimation()
     {
         m_Animator.StartShootAnimation();
     }
 
-    void StopAnimation()
+    public override void StopAnimation()
     {
         m_Animator.StopShootAnimation();
     }

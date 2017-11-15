@@ -5,6 +5,16 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Assertions;
 
+// Declare Delegates Here
+public delegate void Void_Void();
+public delegate void Void_String(string _string);
+public delegate void Void_Char(char _char);
+public delegate void Void_Short(short _short);
+public delegate void Void_Int(int _int);
+public delegate void Void_Float(float _float);
+public delegate void Void_Double(double _double);
+public delegate void Void_Bool(bool _bool);
+
 [System.Serializable]
 public class GenericUnityEvent1<T> : UnityEvent<T> {}
 

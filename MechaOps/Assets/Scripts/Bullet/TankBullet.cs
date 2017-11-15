@@ -6,9 +6,16 @@ public class TankBullet : MonoBehaviour
 {
     [SerializeField] private float m_Speed = 100.0f;
     [SerializeField] private float m_Lifetime = 0.5f;
-    //[SerializeField] private string m_TargetTag;
     [SerializeField] private bool m_ExplodeOnContact = true;
     [SerializeField] private GameObject m_Explosion;
+    [SerializeField] private string[] m_CollisionLayers;
+    private Void_Void m_CompletionCallback = null;
+
+    public Void_Void CompletionCallback
+    {
+        get { return m_CompletionCallback; }
+        set { m_CompletionCallback = value; }
+    }
 
     public float Speed
     {
@@ -20,6 +27,12 @@ public class TankBullet : MonoBehaviour
     {
         get { return m_Lifetime; }
         set { m_Lifetime = Mathf.Max(0.0f, value); }
+    }
+
+    public string[] CollisionLayers
+    {
+        get { return m_CollisionLayers; }
+        set { m_CollisionLayers = value; }
     }
 
     /*public string TargetTag
@@ -39,21 +52,25 @@ public class TankBullet : MonoBehaviour
     {
         // Detect Hit
         RaycastHit hitInfo;
-        if (m_ExplodeOnContact && Physics.Raycast(transform.position, transform.forward, out hitInfo, m_Speed * Time.deltaTime))
+        if (m_ExplodeOnContact && Physics.Raycast(transform.position, transform.forward, out hitInfo, m_Speed * Time.deltaTime, LayerMask.GetMask(m_CollisionLayers)))
         {
             GameObject explosion = GameObject.Instantiate(m_Explosion);
             explosion.transform.position = hitInfo.point;
             m_Lifetime = 0.0f;
         }
 
+        // Every frame move forward.
+        transform.position += transform.forward * m_Speed * Time.deltaTime;
+
         // Destroy this bullet once it's lifetime is over.
         if ((m_Lifetime -= Time.deltaTime) < 0.0f)
         {
+            if (m_CompletionCallback != null)
+            {
+                m_CompletionCallback();
+            }
             GameObject.Destroy(gameObject);
         }
-
-        // Every frame move forward.
-        transform.position += transform.forward * m_Speed * Time.deltaTime;
     }
 
 #if UNITY_EDITOR
