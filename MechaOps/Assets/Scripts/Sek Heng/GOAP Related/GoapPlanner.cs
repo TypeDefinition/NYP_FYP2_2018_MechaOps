@@ -137,7 +137,10 @@ public class GoapPlanner : MonoBehaviour
                 {
                     zeAct.DoAction();
                     yield return zeAct.m_UpdateRoutine;
+                    if (m_FinishMoving)
+                        break;
                 }
+                zeCheapestActNode = null;
             }
             yield return null;
         }

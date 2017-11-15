@@ -11,6 +11,8 @@ public class GoapNearTarget : IGoapAction
     [Header("Variables required for GoapNearTarget")]
     [SerializeField, Tooltip("Unit Attack Action reference")]
     protected UnitAttackAction m_AttackAct;
+    [SerializeField, Tooltip("Unit walk act ref")]
+    protected UnitWalkAction m_WalkAct;
 
     [Header("Debugging purpose")]
     [SerializeField, Tooltip("The list of units that are within the attackin range")]
@@ -29,6 +31,8 @@ public class GoapNearTarget : IGoapAction
         base.Start();
         if (!m_AttackAct)
             m_AttackAct = GetComponent<UnitAttackAction>();
+        if (!m_WalkAct)
+            m_WalkAct = GetComponent<UnitWalkAction>();
     }
 
     protected virtual void OnEnable()
@@ -53,7 +57,34 @@ public class GoapNearTarget : IGoapAction
             yield break;
         // we will need to check through the units that are in range then move near to that unit!
         // this got to be the most headache part
-        print("Tracked the target successfully");
+        // TODO: Improve this part as we dont have time to do some of the amazing AI and stick to this shitty AI instead
+        // We will get the shortest path to the 1st player unit
+        TileSystem zeTileSys = FindObjectOfType<TileSystem>();
+        // Maybe we can randomize but we will just get the 1st unit!
+        UnitStats zeEnemyStat = m_Planner.m_Stats.EnemyInRange[0].GetComponent<UnitStats>();
+        TileId[] zePathToEnemy = zeTileSys.GetPath(999, m_Planner.m_Stats.CurrentTileID, zeEnemyStat.CurrentTileID, m_Planner.m_Stats.GetTileAttributeOverrides());
+        // But we will just walk the shortest length of tile to get to the m_EnemyState. Maybe when there is Accuracy point then it will be added in!
+        List<TileId> zeTileToWalk = new List<TileId>();
+        yield return null;
+        foreach (TileId zeTile in zePathToEnemy)
+        {
+            zeTileToWalk.Add(zeTile);
+            // Once that supposed tile is good enough for this unit to attack the enemy!
+            if (Vector3.Distance(zeTileSys.GetTile(zeTile).transform.position, zeEnemyStat.transform.position) <= m_AttackAct.MaxAttackRange)
+            {
+                break;
+            }
+        }
+        yield return null;
+        m_WalkAct.m_TilePath = zeTileToWalk.ToArray();
+        UnitActionScheduler zeScheduler = FindObjectOfType<UnitActionScheduler>();
+        m_WalkAct.TurnOn();
+        zeScheduler.ScheduleAction(m_WalkAct);
+        WaitForFixedUpdate zeFixedWait = new WaitForFixedUpdate();
+        while (m_WalkAct.GetActionState() != IUnitAction.ActionState.Completed)
+            yield return zeFixedWait;
+        UpdateEnemyInAttack();
+        print("Followed the target successfully");
         yield break;
     }
 
