@@ -81,6 +81,7 @@ public class GameHandler : MonoBehaviour {
 
     private IEnumerator Start()
     {
+        yield return null;
         // Maybe there will be a introduction or something thus this is a coroutine to delay the start
         // be lazy and reuse the same variable lol
         PlayerTurn = m_PlayerTurn;

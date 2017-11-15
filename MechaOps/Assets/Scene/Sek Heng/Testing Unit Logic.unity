@@ -4318,7 +4318,7 @@ MonoBehaviour:
     m_MaxActionPoints: 2
     m_CurrentActionPoints: 2
     m_DeploymentCost: 0
-    m_ViewRange: 0
+    m_ViewRange: 15
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
     m_CurrentTileID:
@@ -4434,10 +4434,8 @@ MonoBehaviour:
     m_GoapName: SeeTarget
   m_AllGoapActions: []
   m_Stats: {fileID: 236892914}
+  m_FinishMoving: 0
   m_UnderAttack: 0
-  m_BeforeAttackHP: 0
-  m_CurrentStates:
-  - GotTarget
 --- !u!114 &236892923
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4452,12 +4450,15 @@ MonoBehaviour:
   m_Cost: 2
   m_ActName: Attack
   m_Preconditions:
-  - m_NeededState: NearTarget
+  - m_NeededState: TargetInView
     m_ActionName: NearTarget
+  - m_NeededState: TargetAttackInRange
+    m_ActionName: 
   m_Planner: {fileID: 0}
   m_resultsOfThisAct:
   - AttackGoal
   m_AttackAct: {fileID: 236892924}
+  m_GOAPTargetAct: {fileID: 0}
 --- !u!114 &236892924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4480,9 +4481,9 @@ MonoBehaviour:
   m_ActionIconUI: {fileID: 21300000, guid: 7fa2b56696c075f4eafe02c8cfd5df76, type: 3}
   m_UnitStats: {fileID: 236892914}
   m_MinAttackRange: 0
-  m_MaxAttackRange: 0
+  m_MaxAttackRange: 14
   m_AccuracyPoints: 0
-  m_DamagePoints: 0
+  m_DamagePoints: 2
   m_TargetUnitStats: {fileID: 236892914}
 --- !u!114 &236892925
 MonoBehaviour:
@@ -4524,12 +4525,13 @@ MonoBehaviour:
   m_Cost: 2
   m_ActName: NearTarget
   m_Preconditions:
-  - m_NeededState: GotTarget
+  - m_NeededState: TargetInView
     m_ActionName: 
-  m_Planner: {fileID: 0}
+  m_Planner: {fileID: 236892921}
   m_resultsOfThisAct:
-  - NearTargetGoal
+  - TargetAttackInRange
   m_AttackAct: {fileID: 236892924}
+  m_EnemiesInAttack: []
 --- !u!1 &246529316
 GameObject:
   m_ObjectHideFlags: 0
@@ -29844,7 +29846,7 @@ MonoBehaviour:
     m_MaxActionPoints: 2
     m_CurrentActionPoints: 2
     m_DeploymentCost: 0
-    m_ViewRange: 1000
+    m_ViewRange: 15
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
     m_CurrentTileID:
@@ -32691,7 +32693,7 @@ MonoBehaviour:
     m_MaxActionPoints: 2
     m_CurrentActionPoints: 2
     m_DeploymentCost: 0
-    m_ViewRange: 1000
+    m_ViewRange: 15
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
     m_CurrentTileID:

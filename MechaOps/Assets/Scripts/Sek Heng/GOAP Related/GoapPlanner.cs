@@ -56,10 +56,7 @@ public class GoapPlanner : MonoBehaviour
     protected bool m_FinishMoving = false;
     [SerializeField, Tooltip("The flag to know if it is under attacked")]
     protected bool m_UnderAttack = false;
-    [SerializeField, Tooltip("The health before it is attacked. This will be updated whenever it is it's turn. This will need to be changed")]
-    public int m_BeforeAttackHP;
-    [SerializeField, Tooltip("It's current state that it is in! So that the actions will know the state that it is in.")]
-    protected List<string> m_CurrentStates;
+    public HashSet<string> m_CurrentStates = new HashSet<string>();
 
     // Basically the name of the goap action as key, the reference to GoapAction as value
     protected Dictionary<string, IGoapAction> m_DictGoapAct = new Dictionary<string, IGoapAction>();
@@ -70,7 +67,6 @@ public class GoapPlanner : MonoBehaviour
     {
         m_AllGoapActions = GetComponents<IGoapAction>();
         m_Stats = GetComponent<UnitStats>();
-        m_BeforeAttackHP = m_Stats.CurrentHealthPoints;
         // We will need to put the actions into dictionary
         foreach (IGoapAction zeAct in m_AllGoapActions)
         {
@@ -89,15 +85,18 @@ public class GoapPlanner : MonoBehaviour
 
     public virtual IEnumerator StartPlanning()
     {
-        if (m_BeforeAttackHP < m_Stats.CurrentHealthPoints)
-        {
-            m_UnderAttack = true;
-            m_BeforeAttackHP = m_Stats.CurrentHealthPoints;
-        }
         ObserverSystemScript.Instance.SubscribeEvent("UnitMakeMove", FinishMakingMove);
         // TODO: Probably need coroutine but not now
         GoapNode zeCheapestActNode = null;
         IGoapGoal zeCurrentGoal;
+        List<IGoapAction> zeListOfActToDo = null;
+        // We check it's current state
+        if (m_Stats.EnemyInRange.Count > 0)
+        {
+            m_CurrentStates.Add("TargetInView");
+        }
+        else
+            m_CurrentStates.Remove("TargetInView");
         while (m_Stats.CurrentActionPoints > 0 && !m_FinishMoving)
         {
             if (zeCheapestActNode == null)
@@ -111,26 +110,33 @@ public class GoapPlanner : MonoBehaviour
                         break;
                     default:
                         // We will proceed as normal
-                        // this unit did not see any player units, so move tol Before that, check whether is it near the marker
-                        if (m_Stats.CurrentTileID.Equals(EnemyUnitManager.Instance.TilePlayerUnits))
+                        if (m_CurrentStates.Contains("TargetInView"))
                         {
-                            EnemyUnitManager.Instance.UpdateMarker();
+                            zeCurrentGoal = m_DictGoapGoal["AttackGoal"];
                         }
-                        // Then move towards there!
-                        zeCurrentGoal = m_DictGoapGoal["WalkGoal"];
+                        else
+                        {
+                            // this unit did not see any player units, so move to Before that, check whether is it near the marker
+                            if (m_Stats.CurrentTileID.Equals(EnemyUnitManager.Instance.TilePlayerUnits))
+                            {
+                                EnemyUnitManager.Instance.UpdateMarker();
+                            }
+                            // Then move towards there!
+                            zeCurrentGoal = m_DictGoapGoal["WalkGoal"];
+                        }
                         // So we will have this list of actions!
                         yield return null;
                         break;
                 }
                 zeCheapestActNode = GetTheCheapestAction(zeCurrentGoal);
+                zeListOfActToDo = GetActsFromNode(zeCheapestActNode);
             }
             else
             {
-                while (zeCheapestActNode != null)
+                foreach (IGoapAction zeAct in zeListOfActToDo)
                 {
-                    zeCheapestActNode.m_action.DoAction();
-                    yield return zeCheapestActNode.m_action.m_UpdateRoutine;
-                    zeCheapestActNode = zeCheapestActNode.m_parent;
+                    zeAct.DoAction();
+                    yield return zeAct.m_UpdateRoutine;
                 }
             }
             yield return null;
@@ -177,6 +183,7 @@ public class GoapPlanner : MonoBehaviour
         }
         while (openset.Count > 0)
         {
+            // I think the get cheapest node is unnecessary
             GoapNode zeNodeToActOn = GetCheapestNode(openset);
             if (zeNodeToActOn.m_action.m_Preconditions.Length > 0)
             {
@@ -184,8 +191,11 @@ public class GoapPlanner : MonoBehaviour
                 foreach (PreConditions zeActNeeded in zeNodeToActOn.m_action.m_Preconditions)
                 {
                     // If does not contain the state.
-                    if (!m_CurrentStates.Contains(zeActNeeded.m_NeededState) )
+                    if (!m_CurrentStates.Contains(zeActNeeded.m_NeededState))
                     {
+                        // if thr is previous action and that action can fulfill the condition
+                        if (zeNodeToActOn.m_parent != null && zeNodeToActOn.m_parent.m_action.m_resultsOfThisAct.Contains(zeActNeeded.m_NeededState))
+                            continue;
                         ActionNotPossible = true;
                     }
                 }
@@ -196,15 +206,18 @@ public class GoapPlanner : MonoBehaviour
                     continue;
                 }
             }
-            // if the result of the action does not contain what the goal wants
+            // if the result of the action does not contain what the goal wants and make sure there is no parent upon it
             if (!zeNodeToActOn.m_action.m_resultsOfThisAct.Contains(_goal.m_GoapName))
             {
-                // we will add to the OPENSET since we are bruteforcing our way through
-                List<IGoapAction> zeActsWithoutNodeActs = SubsetTheAction(m_AllGoapActions, zeNodeToActOn);
-                // from here, we will add it to the openset!
-                foreach (IGoapAction zeGoapAct in zeActsWithoutNodeActs)
+                if (zeNodeToActOn.m_parent == null)
                 {
-                    openset.Add(new GoapNode(zeNodeToActOn, zeGoapAct));
+                    // we will add to the OPENSET since we are bruteforcing our way through
+                    List<IGoapAction> zeActsWithoutNodeActs = SubsetTheAction(m_AllGoapActions, zeNodeToActOn);
+                    // from here, we will add it to the openset!
+                    foreach (IGoapAction zeGoapAct in zeActsWithoutNodeActs)
+                    {
+                        openset.Add(new GoapNode(zeNodeToActOn, zeGoapAct));
+                    }
                 }
             }
             else
@@ -219,6 +232,18 @@ public class GoapPlanner : MonoBehaviour
         }
         Assert.IsNotNull(zeCheapestActNode, "Can't find any action! Fix this bug!");
         return zeCheapestActNode;
+    }
+
+    protected List<IGoapAction> GetActsFromNode(GoapNode _node)
+    {
+        List<IGoapAction> zeActToDo = new List<IGoapAction>();
+        while (_node != null)
+        {
+            zeActToDo.Add(_node.m_action);
+            _node = _node.m_parent;
+        }
+        zeActToDo.Reverse();
+        return zeActToDo;
     }
 
     List<IGoapAction> SubsetTheAction(IGoapAction[] _listOfActs, GoapNode _notRequiredAct)

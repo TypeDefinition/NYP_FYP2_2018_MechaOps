@@ -164,21 +164,33 @@ public class UnitStats : MonoBehaviour
         return m_TileAttributeOverrides;
     }
 
-    private void Start()
+    public List<GameObject> EnemyInRange
+    {
+        get
+        {
+            return m_EnemyInRange;
+        }
+    }
+
+    protected IEnumerator Start()
     {
         // Assign the gameobject name to the unit if there is none for the unit stat!
         if (m_UnitStatsJSON.m_Name == null)
         {
             m_UnitStatsJSON.m_Name = name;
         }
+        yield return null;
+        // check if there is any enemy in range when the game is starting!
+        CheckEnemyInRange();
+        yield break;
     }
 
-    private void OnEnable()
+    protected void OnEnable()
     {
         GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("UnitMoveToTile", CheckEnemyInRange);
     }
 
-    private void OnDisable()
+    protected void OnDisable()
     {
         GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("UnitMoveToTile", CheckEnemyInRange);
     }
@@ -199,16 +211,16 @@ public class UnitStats : MonoBehaviour
     /// </summary>
     public void CheckEnemyInRange()
     {
-        GameObject[] zeListOfUnits = null;
+        List<GameObject> zeListOfUnits = null;
         // TODO: Remove this hardcoding when it is done!
         switch (tag)
         {
             case "Player":
                 // so get the list of enemy units
-                zeListOfUnits = KeepTrackOfUnits.Instance.m_AllEnemyUnitGO.ToArray();
+                zeListOfUnits = KeepTrackOfUnits.Instance.m_AllEnemyUnitGO;
                 break;
             case "EnemyUnit":
-                zeListOfUnits = KeepTrackOfUnits.Instance.m_AllPlayerUnitGO.ToArray();
+                zeListOfUnits = KeepTrackOfUnits.Instance.m_AllPlayerUnitGO;
                 break;
             default:
                 Assert.IsTrue(false, "Make CheckEnemyInRange more robust so that there can be more factions!");
@@ -218,9 +230,18 @@ public class UnitStats : MonoBehaviour
         {
             float zeDistBet = Vector3.Distance(transform.position, zeGO.transform.position);
             // if that list does not have the unit in range!
-            if (!m_EnemyInRange.Contains(zeGO) && zeDistBet <= ViewRange)
+            if (!m_EnemyInRange.Contains(zeGO))
             {
-                m_EnemyInRange.Add(zeGO);
+                if (zeDistBet <= ViewRange)
+                    m_EnemyInRange.Add(zeGO);
+            }
+            else
+            {
+                if (zeDistBet > ViewRange)
+                {
+                    // if the opposing unit is in range and 
+                    m_EnemyInRange.Remove(zeGO);
+                }
             }
         }
     }
@@ -231,7 +252,24 @@ public class UnitStats : MonoBehaviour
     /// <param name="_movedUnit"></param>
     public void CheckEnemyInRange(GameObject _movedUnit)
     {
-
+        if (_movedUnit != gameObject && !CompareTag(_movedUnit.tag))
+        {
+            float zeDistBet = Vector3.Distance(_movedUnit.transform.position, transform.position);
+            // Need to make sure that the moveunit is not itself! and the tag is the opposing unit!
+            if (!m_EnemyInRange.Contains(_movedUnit))
+            {
+                if (zeDistBet <= ViewRange)
+                    m_EnemyInRange.Add(_movedUnit);
+            }
+            else
+            {
+                if (zeDistBet > ViewRange)
+                {
+                    // if the opposing unit is in range and 
+                    m_EnemyInRange.Remove(_movedUnit);
+                }
+            }
+        }
     }
 
 #if UNITY_EDITOR
@@ -256,6 +294,16 @@ public class UnitStats : MonoBehaviour
                 overrideTypeValidator.Add(m_TileAttributeOverrides[i].Type);
             }
         }
+    }
+    /// <summary>
+    /// To draw the imaginary circle of ze view ranges.
+    /// To be visualized in Unity Editor scene!
+    /// </summary>
+    protected void OnDrawGizmos()
+    {
+        // TODO: have an actual Indication of the Unit view range!
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, ViewRange);
     }
 #endif // UNITY_EDITOR
 
