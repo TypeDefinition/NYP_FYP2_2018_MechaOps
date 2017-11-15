@@ -1,4 +1,4 @@
-﻿#define GOAP_AI
+﻿//#define GOAP_AI
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
