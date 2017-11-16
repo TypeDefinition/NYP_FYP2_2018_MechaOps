@@ -46,5 +46,4 @@ public class PanzerAnimationHandler_Move : AnimationHandler
     {
         m_Animator.StopMoveAnimation();
     }
-
 }

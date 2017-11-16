@@ -41,11 +41,6 @@ public class WallTransparency : MonoBehaviour {
     public void TurnTransparent() {
         turnTransparent = true;
     }
-
-	// Use this for initialization
-	void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -79,4 +74,13 @@ public class WallTransparency : MonoBehaviour {
             }
         }
 	}
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        SetMaxAlpha(maxAlpha);
+        SetMinAlpha(minAlpha);
+        SetAlphaChangeSpeed(alphaChangeSpeed);
+    }
+#endif
 }

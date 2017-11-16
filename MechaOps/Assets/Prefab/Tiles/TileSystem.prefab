@@ -58,5 +58,5 @@ MonoBehaviour:
   m_DefaultTile: {fileID: 114553182710685338, guid: 63cb481f6a73e3640961951b73627b88,
     type: 2}
   m_TileArray: []
-  m_Radius: 8
+  m_Radius: 16
   m_DistanceBetweenTiles: 4

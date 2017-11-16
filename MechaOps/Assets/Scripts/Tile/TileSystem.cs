@@ -101,6 +101,8 @@ public class TileSystem : MonoBehaviour
     [SerializeField] private int m_Radius = 10;
     [SerializeField] private float m_DistanceBetweenTiles = 5.0f;
 
+    private GameObject[] m_PathMarkers = null;
+
     public int Radius
     {
         get { return m_Radius; }
@@ -696,4 +698,29 @@ public class TileSystem : MonoBehaviour
         return m_TileDictionary.ContainsKey(_id) ? m_TileDictionary[_id] : null;
     }
 
+    public void ClearPathMarkers()
+    {
+        if (m_PathMarkers == null)
+        {
+            return;
+        }
+
+        for (int i = 0; i < m_PathMarkers.Length; ++i)
+        {
+            if (m_PathMarkers[i] == null)
+            {
+                continue;
+            }
+
+            GameObject.Destroy(m_PathMarkers[i]);
+        }
+        m_PathMarkers = null;
+    }
+
+    public void SetPathMarkers(TileId[] _reachableTiles, TileId[] _path)
+    {
+        ClearPathMarkers();
+
+        // TO_DO
+    }
 }
