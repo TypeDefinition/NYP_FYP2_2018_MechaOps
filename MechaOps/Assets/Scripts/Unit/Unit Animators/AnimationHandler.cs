@@ -4,6 +4,9 @@ using UnityEngine;
 
 public abstract class AnimationHandler : MonoBehaviour
 {
+    [Tooltip("The Handler name")]
+    public string m_HandleName;
+
     protected Void_Void m_CompletionCallback = null;
 
     public Void_Void CompletionCallback

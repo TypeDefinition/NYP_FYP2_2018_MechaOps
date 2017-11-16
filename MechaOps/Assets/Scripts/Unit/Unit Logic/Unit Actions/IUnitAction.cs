@@ -30,6 +30,8 @@ public abstract class IUnitAction : MonoBehaviour
     private bool m_EndsTurn = false;
     [SerializeField, Tooltip("The current state that this action update is in")]
     protected ActionState m_ActionState = ActionState.None;
+    [SerializeField, Tooltip("The name of the handler to be accessed later")]
+    protected string m_NameOfAnim;
 
     [SerializeField, Tooltip("The specific action UI")]
     private GameObject m_UnitActionUI;
@@ -40,6 +42,10 @@ public abstract class IUnitAction : MonoBehaviour
     [Header("[ Debugging purpose sake ]")]
     [Tooltip("The unit stats")]
     public UnitStats m_UnitStats;
+    [SerializeField, Tooltip("The animation handler")]
+    protected AnimationHandler m_AnimHandler;
+    [SerializeField, Tooltip("The flag to check is the animation done")]
+    protected bool m_AnimDone = false;
 
     /// <summary>
     /// Most if not all, unit actions will need animation and some sort of delay
@@ -171,6 +177,11 @@ public abstract class IUnitAction : MonoBehaviour
     public virtual void StartAction()
     {
         m_ActionState = ActionState.Running;
+        // Access the animation handler or crash and burn
+        if (!m_AnimHandler)
+        {
+            m_AnimHandler = m_UnitStats.GetAnimHandler(m_NameOfAnim);
+        }
     }
 
     /// <summary>
@@ -197,6 +208,11 @@ public abstract class IUnitAction : MonoBehaviour
     public virtual void StopAction()
     {
         m_ActionState = ActionState.Completed;
+    }
+
+    protected void CallAnimDone()
+    {
+        m_AnimDone = true;
     }
 
 #if UNITY_EDITOR

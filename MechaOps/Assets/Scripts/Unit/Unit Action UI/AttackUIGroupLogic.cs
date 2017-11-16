@@ -10,7 +10,7 @@ public class AttackUIGroupLogic : MonoBehaviour {
     [Tooltip("The reference for target UI which the code should already be doing it for you. Will be expanded upon in the future!")]
     public GameObject m_TargetUIref;
 
-    [Header("The references for debugging")]
+    [Header("Debugging")]
     [Tooltip("The unit attack action reference. Player's Unit attack action is to be expected")]
     public UnitAttackAction m_UnitAttackActRef;
     [Tooltip("The unit it is targeting. Usually should be the gameobject with the enemy tag!")]
@@ -23,6 +23,8 @@ public class AttackUIGroupLogic : MonoBehaviour {
     public GameObject m_TargetGO;
     [Tooltip("The transform reference to world canvas")]
     public Transform m_WorldCanvasTrans;
+    [SerializeField, Tooltip("List of enemy units that it can attack based on the attack action range")]
+    protected List<GameObject> m_ListOfTargets = new List<GameObject>();
 
     private void OnEnable()
     {
@@ -33,8 +35,23 @@ public class AttackUIGroupLogic : MonoBehaviour {
         m_WorldCanvasTrans = GameObject.FindGameObjectWithTag("WorldCanvas").transform;
         m_TargetGO = Instantiate(m_TargetUIref, m_WorldCanvasTrans);
         m_TargetGO.SetActive(true);
-        // For now, it will just pick the 1st enemy in the array
-        KeepTrackOfGameObj(KeepTrackOfUnits.Instance.m_AllEnemyUnitGO[0]);
+        // We will iterate through the list of alived units!
+        foreach (GameObject zeObj in KeepTrackOfUnits.Instance.m_AllEnemyUnitGO)
+        {
+            // we get the unit stat and tile distance!
+            UnitStats zeObjStat = zeObj.GetComponent<UnitStats>();
+            int zeTileDist = TileId.GetDistance(zeObjStat.CurrentTileID, m_UnitAttackActRef.m_UnitStats.CurrentTileID);
+            // if within range, then add to the target list!
+            if (zeTileDist <= m_UnitAttackActRef.MaxAttackRange && zeTileDist >= m_UnitAttackActRef.MinAttackRange)
+            {
+                m_ListOfTargets.Add(zeObj);
+            }
+        }
+        if (m_ListOfTargets.Count > 0)
+        {
+            // For now, it will just pick the 1st enemy in the array
+            KeepTrackOfGameObj(m_ListOfTargets[0]);
+        }
         ObserverSystemScript.Instance.TriggerEvent("ToggleSelectingUnit");
         // And we will need to link the UnitActionScheduler then we can access the action! we can safely assume there is only 1!
         m_actScheduler = FindObjectOfType<UnitActionScheduler>();
@@ -65,8 +82,8 @@ public class AttackUIGroupLogic : MonoBehaviour {
     /// </summary>
     public void GoRightOfTarget()
     {
-        m_IndexOfTarget = Mathf.Min(++m_IndexOfTarget, KeepTrackOfUnits.Instance.m_AllEnemyUnitGO.Count - 1);
-        KeepTrackOfGameObj(KeepTrackOfUnits.Instance.m_AllEnemyUnitGO[m_IndexOfTarget]);
+        m_IndexOfTarget = Mathf.Min(++m_IndexOfTarget, m_ListOfTargets.Count - 1);
+        KeepTrackOfGameObj(m_ListOfTargets[m_IndexOfTarget]);
     }
 
     /// <summary>
@@ -75,7 +92,7 @@ public class AttackUIGroupLogic : MonoBehaviour {
     public void GoLeftOfTarget()
     {
         m_IndexOfTarget = Mathf.Max(--m_IndexOfTarget, 0);
-        KeepTrackOfGameObj(KeepTrackOfUnits.Instance.m_AllEnemyUnitGO[m_IndexOfTarget]);
+        KeepTrackOfGameObj(m_ListOfTargets[m_IndexOfTarget]);
     }
 
     /// <summary>

@@ -282,20 +282,25 @@ public class PanzerAnimator : MonoBehaviour
     {
         Vector3 directionToTarget = _targetPosition - m_Turret.transform.position;
         directionToTarget.y = 0.0f;
-
+        Vector3 forward = transform.forward;
+        forward.y = 0.0f;
+        Vector3 snapPosition = _targetPosition;
+        snapPosition.y = gameObject.transform.position.y;
         // 与目标距离自乘
-        float distanceToTargetSquared = directionToTarget.sqrMagnitude;
+        float distanceToTarget = directionToTarget.magnitude;
 
-        if (distanceToTargetSquared < (m_DistanceTolerance * m_DistanceTolerance))
+        if (distanceToTarget < m_DistanceTolerance)
         {
-            Vector3 snapPosition = _targetPosition;
-            snapPosition.y = gameObject.transform.position.y;
             gameObject.transform.position = snapPosition;
+        }
+        else if (Vector3.Dot(directionToTarget, forward) < 0.0f)
+        {
+            transform.position = snapPosition;
         }
         else
         {
             directionToTarget.Normalize();
-            gameObject.transform.position += (directionToTarget * Time.deltaTime * m_MovementSpeed);
+            gameObject.transform.position += (directionToTarget * Mathf.Min(Time.deltaTime * m_MovementSpeed, distanceToTarget));
         }
 
         AnimateTracks(m_MovementSpeed * Time.deltaTime, m_MovementSpeed * Time.deltaTime);

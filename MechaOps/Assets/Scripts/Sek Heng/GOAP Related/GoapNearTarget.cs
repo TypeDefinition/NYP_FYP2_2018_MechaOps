@@ -106,7 +106,10 @@ public class GoapNearTarget : IGoapAction
         m_EnemiesInAttack.Clear();
         foreach (GameObject zeGO in m_Planner.m_Stats.EnemyInRange)
         {
-            if (Vector3.Distance(transform.position, zeGO.transform.position) <= m_AttackAct.MaxAttackRange)
+            //if (Vector3.Distance(transform.position, zeGO.transform.position) <= m_AttackAct.MaxAttackRange)
+            UnitStats zeGoStat = zeGO.GetComponent<UnitStats>();
+            int zeTileDist = TileId.GetDistance(zeGoStat.CurrentTileID, m_Planner.m_Stats.CurrentTileID);
+            if (zeTileDist <= m_AttackAct.MaxAttackRange && zeTileDist >= m_AttackAct.MinAttackRange)
                 m_EnemiesInAttack.Add(zeGO);
         }
         if (m_EnemiesInAttack.Count > 0)
@@ -119,15 +122,4 @@ public class GoapNearTarget : IGoapAction
     {
         m_EnemiesInAttack.Remove(_deadUnit);
     }
-
-#if UNITY_EDITOR
-    protected void OnDrawGizmos()
-    {
-        if (m_AttackAct)
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, m_AttackAct.MaxAttackRange);
-        }
-    }
-#endif
 }

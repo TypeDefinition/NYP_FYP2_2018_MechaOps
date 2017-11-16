@@ -110,10 +110,20 @@ public class UnitAttackAction : IUnitAction
     {
         m_ActionState = ActionState.Running;
         // TODO: Do some complex calculation and animation for this
+        --GetUnitStats().CurrentActionPoints;
+        PanzerAnimationHandler_Attack zeAttackAnim = (PanzerAnimationHandler_Attack)m_AnimHandler;
+        zeAttackAnim.Hit = true;
+        zeAttackAnim.TargetPosition = m_TargetUnitStats.transform.position;
+        zeAttackAnim.CompletionCallback = () => m_AnimDone = true;
+        WaitForFixedUpdate zeFixedWait = new WaitForFixedUpdate();
+        zeAttackAnim.StartAnimation();
+        while (!m_AnimDone)
+        {
+            yield return zeFixedWait;
+        }
         m_TargetUnitStats.CurrentHealthPoints -= m_DamagePoints;
         // Thinking of a way to implement it
         m_UpdateOfUnitAction = null;
-        --GetUnitStats().CurrentActionPoints;
         switch (GetUnitStats().CurrentActionPoints)
         {
             case 0:
@@ -126,6 +136,8 @@ public class UnitAttackAction : IUnitAction
         }
         ObserverSystemScript.Instance.TriggerEvent("UnitFinishAction");
         m_ActionState = ActionState.Completed;
+        zeAttackAnim.CompletionCallback -= () => m_AnimDone = true;
+        m_AnimDone = false;
         yield break;
     }
 

@@ -51,6 +51,10 @@ public class UnitStats : MonoBehaviour
     protected List<GameObject> m_EnemyInRange = new List<GameObject>();
     [SerializeField, Tooltip("The array of tiles override")]
     private TileAttributeOverride[] m_TileAttributeOverrides;
+    [SerializeField, Tooltip("The list of animation handler which will be accessed through dictionary. No linking required")]
+    protected AnimationHandler[] m_AnimHandler;
+
+    protected Dictionary<string, AnimationHandler> m_NameAnimDict = new Dictionary<string, AnimationHandler>();
 
     public string Name
     {
@@ -181,6 +185,12 @@ public class UnitStats : MonoBehaviour
         {
             m_UnitStatsJSON.m_Name = name;
         }
+        m_AnimHandler = GetComponents<AnimationHandler>();
+        // Then iterate through the handler
+        foreach (AnimationHandler zeHandle in m_AnimHandler)
+        {
+            m_NameAnimDict.Add(zeHandle.m_HandleName, zeHandle);
+        }
         yield return null;
         // check if there is any enemy in range when the game is starting!
         CheckEnemyInRange();
@@ -264,16 +274,16 @@ public class UnitStats : MonoBehaviour
                 default:
                     break;
             }
-            float zeDistBet = Vector3.Distance(transform.position, zeGO.transform.position);
+            int zeTileDist = TileId.GetDistance(CurrentTileID, zeGOState.CurrentTileID) + zeGOState.ConcealmentPoints;
             // if that list does not have the unit in range!
             if (!m_EnemyInRange.Contains(zeGO))
             {
-                if (zeDistBet <= ViewRange)
+                if (zeTileDist <= ViewRange)
                     m_EnemyInRange.Add(zeGO);
             }
             else
             {
-                if (zeDistBet > ViewRange)
+                if (zeTileDist > ViewRange)
                 {
                     // if the opposing unit is in range and 
                     m_EnemyInRange.Remove(zeGO);
@@ -290,16 +300,17 @@ public class UnitStats : MonoBehaviour
     {
         if (_movedUnit != gameObject && !CompareTag(_movedUnit.tag))
         {
-            float zeDistBet = Vector3.Distance(_movedUnit.transform.position, transform.position);
+            UnitStats zeGOState = _movedUnit.GetComponent<UnitStats>();
+            int zeTileDist = TileId.GetDistance(CurrentTileID, zeGOState.CurrentTileID) + zeGOState.ConcealmentPoints;
             // Need to make sure that the moveunit is not itself! and the tag is the opposing unit!
             if (!m_EnemyInRange.Contains(_movedUnit))
             {
-                if (zeDistBet <= ViewRange)
+                if (zeTileDist <= ViewRange)
                     m_EnemyInRange.Add(_movedUnit);
             }
             else
             {
-                if (zeDistBet > ViewRange)
+                if (zeTileDist > ViewRange)
                 {
                     // if the opposing unit is in range and 
                     m_EnemyInRange.Remove(_movedUnit);
@@ -313,6 +324,13 @@ public class UnitStats : MonoBehaviour
     protected void EnemyInRangeDead(GameObject _deadUnit)
     {
         m_EnemyInRange.Remove(_deadUnit);
+    }
+
+    public AnimationHandler GetAnimHandler(string _name)
+    {
+        AnimationHandler zeHandler;
+        Assert.IsTrue(m_NameAnimDict.TryGetValue(_name, out zeHandler), "Cant access the animation handler at GetAnimHandler");
+        return zeHandler;
     }
 
 #if UNITY_EDITOR
@@ -338,16 +356,5 @@ public class UnitStats : MonoBehaviour
             }
         }
     }
-    /// <summary>
-    /// To draw the imaginary circle of ze view ranges.
-    /// To be visualized in Unity Editor scene!
-    /// </summary>
-    protected void OnDrawGizmos()
-    {
-        // TODO: have an actual Indication of the Unit view range!
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, ViewRange);
-    }
 #endif // UNITY_EDITOR
-
 }

@@ -10,8 +10,8 @@ public class UnitWalkAction : IUnitAction {
     [Header("References and variables needed for UnitWalkAction")]
     [Tooltip("The number of tiles it can move")]
     public int m_MovementPoints;
-    [Tooltip("The speed to move from 1 point to another. For animation purpose.")]
-    public float m_Speed = 10.0f;
+    //[Tooltip("The speed to move from 1 point to another. For animation purpose.")]
+    //public float m_Speed = 10.0f;
 
     [Header("Debugging References for UnitWalkAction")]
     [Tooltip("The array of tiles to move to!")]
@@ -23,6 +23,7 @@ public class UnitWalkAction : IUnitAction {
 
     public override void StartAction()
     {
+        base.StartAction();
         GetUnitStats().CurrentActiveAction = this;
         m_UpdateOfUnitAction = StartCoroutine(UpdateActionRoutine());
     }
@@ -141,27 +142,34 @@ public class UnitWalkAction : IUnitAction {
     protected virtual IEnumerator WalkBetPtsRoutine(Vector3 _StartPt, Vector3 _EndPt)
     {
         // We get the velocity direction
-        Vector3 vel = (_EndPt - transform.position).normalized * m_Speed;
-        Vector3 zeInverseDirBetStartEnd = (_EndPt - _StartPt);
+        //Vector3 vel = (_EndPt - transform.position).normalized * m_Speed;
+        //Vector3 zeInverseDirBetStartEnd = (_EndPt - _StartPt);
         // Need to ensure the current state is running
-        bool zeStillTravel = true;
+        //bool zeStillTravel = true;
+        PanzerAnimationHandler_Move zeMoveAnim = (PanzerAnimationHandler_Move)m_AnimHandler;
+        zeMoveAnim.CompletionCallback = CallAnimDone;
         WaitForFixedUpdate zeFixedUpdateWait = new WaitForFixedUpdate();
-        while (m_ActionState != ActionState.Completed && m_ActionState != ActionState.None && zeStillTravel)
+        zeMoveAnim.Destination = _EndPt;
+        zeMoveAnim.StartAnimation();
+        while (m_ActionState != ActionState.Completed && m_ActionState != ActionState.None && !m_AnimDone)
         {
             switch (m_ActionState)
             {
                 case ActionState.Running:
-                    transform.position += vel * Time.fixedDeltaTime;
-                    float zeDotResult = Vector3.Dot(_EndPt - transform.position, zeInverseDirBetStartEnd);
+                    //transform.position += vel * Time.fixedDeltaTime;
+                    //float zeDotResult = Vector3.Dot(_EndPt - transform.position, zeInverseDirBetStartEnd);
                     // Checks whether the direction between current pos and end point is the opposite of start pt and end pt!
-                    if (zeDotResult < 0)
-                        zeStillTravel = false;
+                    //if (zeDotResult < 0)
+                    //    zeStillTravel = false;
+
                     yield return zeFixedUpdateWait;
                     break;
                 default:
                     break;
             }
         }
+        zeMoveAnim.CompletionCallback = null;
+        m_AnimDone = false;
         yield break;
     }
 
