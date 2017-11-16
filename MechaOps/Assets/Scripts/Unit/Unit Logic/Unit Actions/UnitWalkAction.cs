@@ -141,13 +141,8 @@ public class UnitWalkAction : IUnitAction {
     /// <returns></returns>
     protected virtual IEnumerator WalkBetPtsRoutine(Vector3 _StartPt, Vector3 _EndPt)
     {
-        // We get the velocity direction
-        //Vector3 vel = (_EndPt - transform.position).normalized * m_Speed;
-        //Vector3 zeInverseDirBetStartEnd = (_EndPt - _StartPt);
-        // Need to ensure the current state is running
-        //bool zeStillTravel = true;
         PanzerAnimationHandler_Move zeMoveAnim = (PanzerAnimationHandler_Move)m_AnimHandler;
-        zeMoveAnim.CompletionCallback = CallAnimDone;
+        zeMoveAnim.CompletionCallback += CallAnimDone;
         WaitForFixedUpdate zeFixedUpdateWait = new WaitForFixedUpdate();
         zeMoveAnim.Destination = _EndPt;
         zeMoveAnim.StartAnimation();
@@ -156,19 +151,13 @@ public class UnitWalkAction : IUnitAction {
             switch (m_ActionState)
             {
                 case ActionState.Running:
-                    //transform.position += vel * Time.fixedDeltaTime;
-                    //float zeDotResult = Vector3.Dot(_EndPt - transform.position, zeInverseDirBetStartEnd);
-                    // Checks whether the direction between current pos and end point is the opposite of start pt and end pt!
-                    //if (zeDotResult < 0)
-                    //    zeStillTravel = false;
-
                     yield return zeFixedUpdateWait;
                     break;
                 default:
                     break;
             }
         }
-        zeMoveAnim.CompletionCallback = null;
+        zeMoveAnim.CompletionCallback -= CallAnimDone;
         m_AnimDone = false;
         yield break;
     }
