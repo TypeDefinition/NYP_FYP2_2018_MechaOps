@@ -113,9 +113,9 @@ public class GoapNearTarget : IGoapAction
                 m_EnemiesInAttack.Add(zeGO);
         }
         if (m_EnemiesInAttack.Count > 0)
-            m_Planner.m_CurrentStates.Add("TargetAttackInRange");
+            m_Planner.m_StateData.CurrentStates.Add("TargetAttackInRange");
         else
-            m_Planner.m_CurrentStates.Remove("TargetAttackInRange");
+            m_Planner.m_StateData.CurrentStates.Remove("TargetAttackInRange");
     }
 
     protected void EnemyUnitDied(GameObject _deadUnit)

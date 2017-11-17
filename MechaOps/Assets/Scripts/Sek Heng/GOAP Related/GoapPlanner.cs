@@ -50,13 +50,15 @@ public class GoapPlanner : MonoBehaviour
     public IGoapAction[] m_AllGoapActions;
     [Tooltip("The unit stats. Will try to get component of this if there is no linking")]
     public UnitStats m_Stats;
+    [Tooltip("The StateData of this current unit")]
+    public StateData m_StateData;
 
     [Header("Debugging Purpose for GoapPlanning")]
     [SerializeField, Tooltip("The indicator to check if it has finished making a move!")]
     protected bool m_FinishMoving = false;
     [SerializeField, Tooltip("The flag to know if it is under attacked")]
     protected bool m_UnderAttack = false;
-    public HashSet<string> m_CurrentStates = new HashSet<string>();
+    //public HashSet<string> m_CurrentStates = new HashSet<string>();
 
     // Basically the name of the goap action as key, the reference to GoapAction as value
     protected Dictionary<string, IGoapAction> m_DictGoapAct = new Dictionary<string, IGoapAction>();
@@ -66,7 +68,10 @@ public class GoapPlanner : MonoBehaviour
     protected virtual void Start()
     {
         m_AllGoapActions = GetComponents<IGoapAction>();
-        m_Stats = GetComponent<UnitStats>();
+        if (!m_Stats)
+            m_Stats = GetComponent<UnitStats>();
+        if (!m_StateData)
+            m_StateData = GetComponent<StateData>();
         // We will need to put the actions into dictionary
         foreach (IGoapAction zeAct in m_AllGoapActions)
         {
@@ -93,10 +98,10 @@ public class GoapPlanner : MonoBehaviour
         // We check it's current state
         if (m_Stats.EnemyInRange.Count > 0)
         {
-            m_CurrentStates.Add("TargetInView");
+            m_StateData.CurrentStates.Add("TargetInView");
         }
         else
-            m_CurrentStates.Remove("TargetInView");
+            m_StateData.CurrentStates.Remove("TargetInView");
         while (m_Stats.CurrentActionPoints > 0 && !m_FinishMoving)
         {
             if (zeCheapestActNode == null)
@@ -110,7 +115,7 @@ public class GoapPlanner : MonoBehaviour
                         break;
                     default:
                         // We will proceed as normal
-                        if (m_CurrentStates.Contains("TargetInView"))
+                        if (m_StateData.CurrentStates.Contains("TargetInView"))
                         {
                             zeCurrentGoal = m_DictGoapGoal["AttackGoal"];
                         }
@@ -194,7 +199,7 @@ public class GoapPlanner : MonoBehaviour
                 foreach (PreConditions zeActNeeded in zeNodeToActOn.m_action.m_Preconditions)
                 {
                     // If does not contain the state.
-                    if (!m_CurrentStates.Contains(zeActNeeded.m_NeededState))
+                    if (!m_StateData.CurrentStates.Contains(zeActNeeded.m_NeededState))
                     {
                         // if thr is previous action and that action can fulfill the condition
                         if (zeNodeToActOn.m_parent != null && zeNodeToActOn.m_parent.m_action.m_resultsOfThisAct.Contains(zeActNeeded.m_NeededState))
