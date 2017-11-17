@@ -58,7 +58,10 @@ public class UnitStats : MonoBehaviour
 
     protected Dictionary<string, AnimationHandler> m_NameAnimDict = new Dictionary<string, AnimationHandler>();
 
-    public Void_UnitStat m_HealthChangedCallback;
+    /// <summary>
+    /// A callback function will appear when ever the health point decreases
+    /// </summary>
+    public Void_UnitStat m_HealthDropCallback;
 
     public string Name
     {

@@ -122,6 +122,8 @@ public class UnitAttackAction : IUnitAction
             yield return zeFixedWait;
         }
         m_TargetUnitStats.CurrentHealthPoints -= m_DamagePoints;
+        // if there is anyone calling for it
+        m_TargetUnitStats.m_HealthDropCallback.Invoke(m_UnitStats);
         // Thinking of a way to implement it
         switch (GetUnitStats().CurrentActionPoints)
         {

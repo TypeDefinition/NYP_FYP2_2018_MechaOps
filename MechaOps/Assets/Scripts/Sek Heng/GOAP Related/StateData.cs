@@ -19,6 +19,23 @@ public class StateData : MonoBehaviour {
         }
     }
 
+    protected virtual void OnEnable()
+    {
+        // Since there is no need for 
+        UnitStats zeStat = GetComponent<UnitStats>();
+        // need to listen for being attacked!
+        zeStat.m_HealthDropCallback += GetAttackerGO;
+    }
+
+
+    protected virtual void OnDisable()
+    {
+        UnitStats zeStat = GetComponent<UnitStats>();
+        if (zeStat)
+        // need to listen for being attacked!
+            zeStat.m_HealthDropCallback -= GetAttackerGO;
+    }
+
     /// <summary>
     /// Getting the attacking 
     /// </summary>
@@ -26,5 +43,6 @@ public class StateData : MonoBehaviour {
     protected void GetAttackerGO(UnitStats _attacker)
     {
         m_AttackerStat = _attacker;
+        m_CurrentStates.Add("UnderAttack");
     }
 }

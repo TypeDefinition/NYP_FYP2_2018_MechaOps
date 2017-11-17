@@ -26758,7 +26758,7 @@ MonoBehaviour:
     m_CurrentActionPoints: 2
     m_DeploymentCost: 0
     m_ViewRange: 5
-    m_ConcealmentPoints: 3
+    m_ConcealmentPoints: 5
     m_EvasionPoints: 0
     m_CurrentTileID:
       m_X: -2
@@ -45944,7 +45944,7 @@ MonoBehaviour:
     m_GoapName: SeeTarget
   m_AllGoapActions: []
   m_Stats: {fileID: 2019729601}
-  m_StateData: {fileID: 0}
+  m_StateData: {fileID: 2019729611}
   m_FinishMoving: 0
   m_UnderAttack: 0
 --- !u!114 &2019729608
