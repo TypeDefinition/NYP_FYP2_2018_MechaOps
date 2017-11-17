@@ -94,25 +94,25 @@ public class TileSystem : MonoBehaviour
     [SerializeField] private TileLibrary m_TileLibrary = null;
     [SerializeField] private Tile m_DefaultTile = null;
 
-    //[SerializeField, HideInInspector] private
     private Dictionary<TileId, Tile> m_TileDictionary = new Dictionary<TileId, Tile>();
     [HideInInspector, SerializeField] private TileDictionaryPair[] m_TileArray = new TileDictionaryPair[0];
 
     [SerializeField] private int m_Radius = 10;
     [SerializeField] private float m_DistanceBetweenTiles = 5.0f;
 
-    private GameObject[] m_PathMarkers = null;
+    [SerializeField] private GameObject m_TilePath = null;
+    [SerializeField] private GameObject m_TileSelected = null;
+    [SerializeField] private GameObject m_TileReachable = null;
+    private List<GameObject> m_PathMarkers = null;
 
     public int Radius
     {
         get { return m_Radius; }
-        set { m_Radius = Mathf.Max(0, value); }
     }
 
     public float DistanceBetweenTiles
     {
         get { return m_DistanceBetweenTiles; }
-        set { m_DistanceBetweenTiles = Mathf.Max(0, value); }
     }
 
     public HazardLibrary GetHazardLibrary()
@@ -281,11 +281,11 @@ public class TileSystem : MonoBehaviour
     }
 
     // Get our search area so that we do not have to search the whole map.
-    private HashSet<TileId> GetSearchArea(TileId _start, int _speed)
+    private HashSet<TileId> GetSearchArea(TileId _start, int _movementPoints)
     {
         HashSet<TileId> searchArea = new HashSet<TileId>();
         {
-            TileId[] surroundingTiles = GetSurroundingTiles(_start, _speed);
+            TileId[] surroundingTiles = GetSurroundingTiles(_start, _movementPoints);
             for (int i = 0; i < surroundingTiles.Length; ++i)
             {
                 searchArea.Add(surroundingTiles[i]);
@@ -338,7 +338,7 @@ public class TileSystem : MonoBehaviour
     // Interface Function(s)
     public TileId[] GetSurroundingTiles(TileId _centre, int _radius)
     {
-        _radius = Mathf.Min(_radius, m_Radius);
+        _radius = Mathf.Min(_radius, m_Radius * 2);
 
         // _radius should never be < 0.
         Assert.IsFalse(_radius < 0, MethodBase.GetCurrentMethod().Name + " - Invalid value for _radius!");
@@ -361,16 +361,16 @@ public class TileSystem : MonoBehaviour
 
         return result.ToArray();
     }
-
-    public TileId[] GetReachableTiles(int _speed, TileId _start, TileAttributeOverride[] _overrides)
+    
+    public TileId[] GetReachableTiles(int _movementPoints, TileId _start, TileAttributeOverride[] _overrides)
     {
-        if (_speed <= 0)
+        if (_movementPoints <= 0)
         {
             return null;
         }
 
         // Get our search area so that we do not have to search the whole map.
-        HashSet<TileId> searchArea = GetSearchArea(_start, _speed);
+        HashSet<TileId> searchArea = GetSearchArea(_start, _movementPoints);
         // We add our overrides into a dictionary for easy lookup.
         Dictionary<TileType, TileAttributeOverride> overrideDictionary = GenerateOverrideDictionary(_overrides);
 
@@ -396,7 +396,7 @@ public class TileSystem : MonoBehaviour
                 SearchNode cheapestNode = GetCheapestNode(openList);
 
                 // 惨了，我们没办法达到目的地。
-                if (cheapestNode.FCost > _speed)
+                if (cheapestNode.FCost > _movementPoints)
                 {
                     unwalkableList.Add(cheapestNode.Id);
                     break;
@@ -528,7 +528,7 @@ public class TileSystem : MonoBehaviour
         return result;
     }
 
-    public TileId[] GetPath(int _speed, TileId _start, TileId _end, TileAttributeOverride[] _overrides)
+    public TileId[] GetPath(int _movementPoints, TileId _start, TileId _end, TileAttributeOverride[] _overrides)
     {
         // 查看我们是不是已经到达了目的地。
         if (_start.Equals(_end))
@@ -539,9 +539,9 @@ public class TileSystem : MonoBehaviour
 
         // 查看到底有没有达到目的地的这个可能。
         int minDistance = TileId.GetDistance(_start, _end);
-        if (minDistance > _speed)
+        if (minDistance > _movementPoints)
         {
-            Debug.Log(MethodBase.GetCurrentMethod().Name + " - Insufficient Speed.");
+            Debug.Log(MethodBase.GetCurrentMethod().Name + " - Insufficient Movement Points.");
             return null;
         }
 
@@ -553,7 +553,7 @@ public class TileSystem : MonoBehaviour
         }
 
         // Get our search area so that we do not have to search the whole map.
-        HashSet<TileId> searchArea = GetSearchArea(_start, _speed);
+        HashSet<TileId> searchArea = GetSearchArea(_start, _movementPoints);
         // We add our overrides into a dictionary for easy lookup.
         Dictionary<TileType, TileAttributeOverride> overrideDictionary = GenerateOverrideDictionary(_overrides);
 
@@ -569,9 +569,9 @@ public class TileSystem : MonoBehaviour
             SearchNode cheapestNode = GetCheapestNode(openList);
 
             // 惨了，我们没办法达到目的地。
-            if (cheapestNode.FCost > _speed)
+            if (cheapestNode.FCost > _movementPoints)
             {
-                Debug.Log(MethodBase.GetCurrentMethod().Name + " - Insufficient Speed. Needed: " + cheapestNode.FCost.ToString() + "(Or More) Have: " + _speed.ToString());
+                Debug.Log(MethodBase.GetCurrentMethod().Name + " - Insufficient Speed. Needed: " + cheapestNode.FCost.ToString() + "(Or More) Have: " + _movementPoints.ToString());
                 return null;
             }
 
@@ -705,7 +705,7 @@ public class TileSystem : MonoBehaviour
             return;
         }
 
-        for (int i = 0; i < m_PathMarkers.Length; ++i)
+        for (int i = 0; i < m_PathMarkers.Count; ++i)
         {
             if (m_PathMarkers[i] == null)
             {
@@ -717,10 +717,59 @@ public class TileSystem : MonoBehaviour
         m_PathMarkers = null;
     }
 
+    // Pass in null if you do not want to render the reachable tiles or path.
     public void SetPathMarkers(TileId[] _reachableTiles, TileId[] _path)
     {
         ClearPathMarkers();
 
-        // TO_DO
+        if (_reachableTiles == null && _path == null)
+        {
+            return;
+        }
+
+        m_PathMarkers = new List<GameObject>();
+        HashSet<TileId> pathTiles = new HashSet<TileId>();
+        
+        if (_path != null)
+        {
+            LineRenderer lineRenderer = gameObject.GetComponent<LineRenderer>();
+            Assert.IsTrue(lineRenderer != null, MethodBase.GetCurrentMethod().Name + " - LineRenderer required to work!");
+            List<Vector3> linePositions = new List<Vector3>();
+
+            for (int i = 0; i < _path.Length; ++i)
+            {
+                Tile tile = GetTile(_path[i]);
+                Assert.IsTrue(tile != null, MethodBase.GetCurrentMethod().Name + " - Invalid path given!");
+
+                GameObject pathMarker = GameObject.Instantiate((i == (_path.Length - 1) ? m_TileSelected : m_TilePath));
+                pathMarker.transform.position = tile.gameObject.transform.position;
+                pathMarker.transform.parent = transform;
+                m_PathMarkers.Add(pathMarker);
+                pathTiles.Add(_path[i]);
+
+                linePositions.Add(tile.gameObject.transform.position);
+            }
+            lineRenderer.positionCount = linePositions.Count;
+            lineRenderer.SetPositions(linePositions.ToArray());
+        }
+
+        if (_reachableTiles != null)
+        {
+            for (int i = 0; i < _reachableTiles.Length; ++i)
+            {
+                Tile tile = GetTile(_reachableTiles[i]);
+                Assert.IsTrue(tile != null, MethodBase.GetCurrentMethod().Name + " - Invalid reachable tiles given!");
+
+                if (pathTiles.Contains(_reachableTiles[i]))
+                {
+                    continue;
+                }
+
+                GameObject pathMarker = GameObject.Instantiate(m_TileReachable);
+                pathMarker.transform.position = tile.gameObject.transform.position;
+                pathMarker.transform.parent = transform;
+                m_PathMarkers.Add(pathMarker);
+            }
+        }
     }
 }

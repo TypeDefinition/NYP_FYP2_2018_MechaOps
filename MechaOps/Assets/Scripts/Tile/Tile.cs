@@ -16,31 +16,30 @@ Their sides are labels from 0 to 6, with 0 being the top, and increasing in the 
 [System.Serializable]
 public class TileId
 {
-
-    [SerializeField] private int x, y, z;
+    [SerializeField] private int m_X, m_Y, m_Z;
 
     public TileId(int _x = 0, int _y = 0) { Set(_x, _y); }
-    public TileId(TileId _other) { Set(_other.x, _other.y); }
+    public TileId(TileId _other) { Set(_other.m_X, _other.m_Y); }
     ~TileId() {}
 
-    public int GetX() { return x; }
-    public int GetY() { return y; }
-    public int GetZ() { return z; }
+    public int GetX() { return m_X; }
+    public int GetY() { return m_Y; }
+    public int GetZ() { return m_Z; }
 
     // Do not allow the TileId to be changed once created.
-    private void Set(int _x, int _y) { x = _x; y = _y; z = -(_x + _y); }
+    private void Set(int _x, int _y) { m_X = _x; m_Y = _y; m_Z = -(_x + _y); }
 
     public TileId[] GetNeighbors()
     {
         TileId[] result = new TileId[6];
 
         // Starting from the top and rotating anti-clockwise.
-        result[0] = new TileId(x, y + 1);
-        result[1] = new TileId(x - 1, y + 1);
-        result[2] = new TileId(x - 1, y);
-        result[3] = new TileId(x, y - 1);
-        result[4] = new TileId(x + 1, y - 1);
-        result[5] = new TileId(x + 1, y);
+        result[0] = new TileId(m_X, m_Y + 1);
+        result[1] = new TileId(m_X - 1, m_Y + 1);
+        result[2] = new TileId(m_X - 1, m_Y);
+        result[3] = new TileId(m_X, m_Y - 1);
+        result[4] = new TileId(m_X + 1, m_Y - 1);
+        result[5] = new TileId(m_X + 1, m_Y);
 
         return result;
     }
@@ -55,7 +54,7 @@ public class TileId
         In a cube grid, Manhattan distances are abs(dx) + abs(dy) + abs(dz).
         The distance on a hex grid is half that.
         */
-        return (Mathf.Abs(_origin.x - _destination.x) + Mathf.Abs(_origin.y - _destination.y) + Mathf.Abs(_origin.z - _destination.z)) >> 1;
+        return (Mathf.Abs(_origin.m_X - _destination.m_X) + Mathf.Abs(_origin.m_Y - _destination.m_Y) + Mathf.Abs(_origin.m_Z - _destination.m_Z)) >> 1;
 
         /*
         An equivalent way to write this is by noting that one of the three coordinates
@@ -68,13 +67,13 @@ public class TileId
 
     public void PrintDebug()
     {
-        Debug.Log("[" + x.ToString() + ", " + y.ToString() + ", " + z.ToString() + "]");
+        Debug.Log("[" + m_X.ToString() + ", " + m_Y.ToString() + ", " + m_Z.ToString() + "]");
     }
 
     // It is necessary to override these functions to be able to use TileId as a Key in a HashMap or Dictionary.
     public override int GetHashCode()
     {
-        string combined = x.ToString() + y.ToString() + z.ToString();
+        string combined = m_X.ToString() + m_Y.ToString() + m_Z.ToString();
         return combined.GetHashCode();
     }
 
@@ -85,7 +84,7 @@ public class TileId
 
     public bool Equals(TileId _other)
     {
-        return (_other != null) && (x == _other.x) && (y == _other.y) && (z == _other.z);
+        return (_other != null) && (m_X == _other.m_X) && (m_Y == _other.m_Y) && (m_Z == _other.m_Z);
     }
 
 }
