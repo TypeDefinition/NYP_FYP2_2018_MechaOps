@@ -6,7 +6,7 @@ using UnityEngine;
 /// The UI regarding attacking which will be depended upon especially if we are going to follow XCOM!
 /// </summary>
 public class AttackUIGroupLogic : MonoBehaviour {
-    [Header("References needed for linking")]
+    [Header("References for linking")]
     [Tooltip("The reference for target UI which the code should already be doing it for you. Will be expanded upon in the future!")]
     public GameObject m_TargetUIref;
 
@@ -25,6 +25,10 @@ public class AttackUIGroupLogic : MonoBehaviour {
     public Transform m_WorldCanvasTrans;
     [SerializeField, Tooltip("List of enemy units that it can attack based on the attack action range")]
     protected List<GameObject> m_ListOfTargets = new List<GameObject>();
+    [SerializeField, Tooltip("All of the attackable tiles within range")]
+    protected TileId[] m_AttackableTileRange;
+    [SerializeField, Tooltip("The tile system")]
+    protected TileSystem m_TileSys;
 
     private void OnEnable()
     {
@@ -35,6 +39,10 @@ public class AttackUIGroupLogic : MonoBehaviour {
         m_WorldCanvasTrans = GameObject.FindGameObjectWithTag("WorldCanvas").transform;
         m_TargetGO = Instantiate(m_TargetUIref, m_WorldCanvasTrans);
         m_TargetGO.SetActive(true);
+        m_TileSys = FindObjectOfType<TileSystem>();
+        //TODO Realised that highlighting of the tile minimum attack range to max attack range is impossible
+        m_AttackableTileRange = m_TileSys.GetReachableTiles(m_UnitAttackActRef.MaxAttackRange, m_UnitAttackActRef.m_UnitStats.CurrentTileID, null);
+        m_TileSys.SetPathMarkers(m_AttackableTileRange, null);
         // We will iterate through the list of alived units!
         foreach (GameObject zeObj in KeepTrackOfUnits.Instance.m_AllEnemyUnitGO)
         {
@@ -59,6 +67,7 @@ public class AttackUIGroupLogic : MonoBehaviour {
 
     private void OnDisable()
     {
+        m_TileSys.ClearPathMarkers();
         // Set to inactive when the Attack UI is closed
         Destroy(m_TargetGO);
     }

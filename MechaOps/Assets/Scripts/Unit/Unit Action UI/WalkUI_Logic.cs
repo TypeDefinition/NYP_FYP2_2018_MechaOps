@@ -37,7 +37,7 @@ public class WalkUI_Logic : MonoBehaviour {
 
     private void OnDisable()
     {
-        //ObserverSystemScript.Instance.UnsubscribeEvent("ClickedUnit", PlayerClickedTile);
+        m_TileSys.ClearPathMarkers();
         GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("ClickedUnit", PlayerClickedTile);
     }
 
@@ -82,7 +82,6 @@ public class WalkUI_Logic : MonoBehaviour {
         // then the unit will walk that path! if the path exists
         if (m_ReachablePath != null)
         {
-            m_TileSys.SetPathMarkers(null, null);
             m_UnitWalkRef.m_TilePath = m_ReachablePath;
             UnitActionScheduler zeActScheduler = FindObjectOfType<UnitActionScheduler>();
             m_UnitWalkRef.TurnOn();
