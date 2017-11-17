@@ -10517,6 +10517,11 @@ Prefab:
       propertyPath: m_TileArray.Array.size
       value: 217
       objectReference: {fileID: 0}
+    - target: {fileID: 120010443292654190, guid: 00b9322e7d21b114c8c2b05e00f5e754,
+        type: 2}
+      propertyPath: m_Positions.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4355928435855886, guid: 00b9322e7d21b114c8c2b05e00f5e754, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -14637,6 +14642,11 @@ Prefab:
     - target: {fileID: 120615820709746994, guid: 00b9322e7d21b114c8c2b05e00f5e754,
         type: 2}
       propertyPath: m_UseWorldSpace
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 120010443292654190, guid: 00b9322e7d21b114c8c2b05e00f5e754,
+        type: 2}
+      propertyPath: m_Positions.Array.data[1].z
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

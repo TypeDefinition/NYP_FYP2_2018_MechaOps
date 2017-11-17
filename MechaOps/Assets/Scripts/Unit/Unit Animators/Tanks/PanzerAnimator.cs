@@ -258,7 +258,7 @@ public class PanzerAnimator : MonoBehaviour
 
     private void RotateTankTowardsTargetPosition(Vector3 _targetPosition)
     {
-        Vector3 directionToTarget = _targetPosition - m_Turret.transform.position;
+        Vector3 directionToTarget = _targetPosition - transform.position;
         directionToTarget.y = 0.0f;
 
         Quaternion currentRotation = gameObject.transform.rotation;
@@ -280,7 +280,7 @@ public class PanzerAnimator : MonoBehaviour
 
     private void TranslateTankTowardsTargetPosition(Vector3 _targetPosition)
     {
-        Vector3 directionToTarget = _targetPosition - m_Turret.transform.position;
+        Vector3 directionToTarget = _targetPosition - transform.position;
         directionToTarget.y = 0.0f;
         Vector3 forward = transform.forward;
         forward.y = 0.0f;
@@ -333,18 +333,18 @@ public class PanzerAnimator : MonoBehaviour
     {
         while (true)
         {
-            RotateTankTowardsTargetPosition(m_Destination);
             bool tankFacingDestination = IsTankFacingDestination(m_Destination);
             if (!tankFacingDestination)
             {
+                RotateTankTowardsTargetPosition(m_Destination);
                 yield return null;
                 continue;
             }
 
-            TranslateTankTowardsTargetPosition(m_Destination);
             bool tankAtDestination = IsTankAtDestination(m_Destination);
             if (!tankAtDestination)
             {
+                TranslateTankTowardsTargetPosition(m_Destination);
                 yield return null;
                 continue;
             }
