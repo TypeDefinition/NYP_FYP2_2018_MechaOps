@@ -34,7 +34,7 @@ public class PlayerUnitManager : MonoBehaviour {
     {
         ObserverSystemScript.Instance.SubscribeEvent("PlayerAnnihilated", StopUpdate);
         ObserverSystemScript.Instance.SubscribeEvent("EnemyAnnihilated", StopUpdate);
-        ObserverSystemScript.Instance.SubscribeEvent("ClickedUnit", PlayerSelectUnit);
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("ClickedUnit", PlayerSelectUnit);
         ObserverSystemScript.Instance.SubscribeEvent("ToggleSelectingUnit", ToggleThePlayerInput);
         ObserverSystemScript.Instance.SubscribeEvent("UnitFinishAction", PollingForPlayerInput);
     }
@@ -43,7 +43,7 @@ public class PlayerUnitManager : MonoBehaviour {
     {
         ObserverSystemScript.Instance.UnsubscribeEvent("PlayerAnnihilated", StopUpdate);
         ObserverSystemScript.Instance.UnsubscribeEvent("EnemyAnnihilated", StopUpdate);
-        ObserverSystemScript.Instance.UnsubscribeEvent("ClickedUnit", PlayerSelectUnit);
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("ClickedUnit", PlayerSelectUnit);
         ObserverSystemScript.Instance.UnsubscribeEvent("ToggleSelectingUnit", ToggleThePlayerInput);
         ObserverSystemScript.Instance.UnsubscribeEvent("UnitFinishAction", PollingForPlayerInput);
     }
@@ -122,6 +122,38 @@ public class PlayerUnitManager : MonoBehaviour {
             }
         }
     }
+
+    protected void PlayerSelectUnit(GameObject _UnitGO)
+    {
+        // If only the clicked unit belongs to the player and it must be inside the list of player unit that has yet to make a move!
+        if (_UnitGO.tag == "Player" && m_UnitsYetToMakeMoves.Contains(_UnitGO))
+        {
+            m_ScrollRectUnitIcons.SetActive(true);
+            // Need to ensure the selectedPlayerUnit is thr
+            m_SelectedPlayerUnit = _UnitGO;
+            IUnitAction[] allPossibleUnitActions = _UnitGO.GetComponentsInChildren<IUnitAction>();
+            #region Clear The old buttons
+            foreach (Button zeUnitButton in m_AllOfUnitUIIcon)
+            {
+                Destroy(zeUnitButton.gameObject);
+            }
+            m_AllOfUnitUIIcon.Clear();
+            #endregion
+            // When we will instantiate the button according to the amount of unit actions there are!
+            foreach (IUnitAction zeUnitAction in allPossibleUnitActions)
+            {
+                Image zeUnitIconUI = Instantiate(m_UnitActionUIIconGO, m_HolderOfIcons.transform);
+                // Replace the sprite
+                zeUnitIconUI.gameObject.SetActive(true);
+                zeUnitIconUI.sprite = zeUnitAction.ActionIconUI;
+                // Add to the onclick event for Unity button!
+                Button zeUnitIconButton = zeUnitIconUI.GetComponent<Button>();
+                zeUnitIconButton.onClick.AddListener(() => ToInstantiateSpecificActionUI(zeUnitAction.UnitActionUI, zeUnitAction));
+                m_AllOfUnitUIIcon.Add(zeUnitIconButton);
+            }
+        }
+    }
+
 
     /// <summary>
     /// Helps to toggle the observer action subscription and the UI too!

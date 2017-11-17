@@ -9,14 +9,12 @@ public class WalkUI_Logic : MonoBehaviour {
     [Header("The linking and variables needed for WalkUI")]
     [Tooltip("The References to TileSystem")]
     public TileSystem m_TileSys;
-    [Tooltip("A fanciful highlight of reachable tiles. Maybe use a material for now")]
-    public Material m_HighlightedTileMat;
 
     [Header("Debugging references")]
     [Tooltip("The array of tiles that the unit can reach")]
     public List<TileId> m_AllReachableTileHighlight;
-    [Tooltip("The array of original material of the reachable tiles")]
-    public Material[] m_OriginalTileMaterials;
+    [SerializeField, Tooltip("The chosen path to walk to")]
+    protected TileId[] m_ReachablePath;
     [Tooltip("The Reference to unit walk action")]
     public UnitWalkAction m_UnitWalkRef;
 
@@ -30,46 +28,40 @@ public class WalkUI_Logic : MonoBehaviour {
         // Since the tile system is not linked from the start, find it at the scene
         m_TileSys = FindObjectOfType<TileSystem>();
         // And then access the tile stuff from the system and get reachable tiles
-        m_AllReachableTileHighlight = new List<TileId>(m_TileSys.GetReachableTiles(m_UnitWalkRef.m_MovementPoints, m_UnitWalkRef.GetUnitStats().CurrentTileID, m_UnitWalkRef.GetUnitStats().GetTileAttributeOverrides()));
-        // TODO: make a fanciful UI or highlight for the reachable tiles.
-        // TODO: Cant really highlight the reachable tiles
-        //foreach (TileId zeTile in m_AllReachableTileHighlight)
-        //{
-        //    MeshRenderer zeTileRenderer = zeTile
-        //}
-        ObserverSystemScript.Instance.SubscribeEvent("ClickedUnit", PlayerClickedTile);
+        TileId[] zeReachableTiles = m_TileSys.GetReachableTiles(m_UnitWalkRef.m_MovementPoints, m_UnitWalkRef.GetUnitStats().CurrentTileID, m_UnitWalkRef.GetUnitStats().GetTileAttributeOverrides());
+        m_AllReachableTileHighlight = new List<TileId>(zeReachableTiles);
+        m_TileSys.SetPathMarkers(zeReachableTiles, null);
+        //ObserverSystemScript.Instance.SubscribeEvent("ClickedUnit", PlayerClickedTile);
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("ClickedUnit", PlayerClickedTile);
     }
 
     private void OnDisable()
     {
-        ObserverSystemScript.Instance.UnsubscribeEvent("ClickedUnit", PlayerClickedTile);
+        //ObserverSystemScript.Instance.UnsubscribeEvent("ClickedUnit", PlayerClickedTile);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("ClickedUnit", PlayerClickedTile);
     }
 
-    void PlayerClickedTile()
+    void PlayerClickedTile(GameObject _clickedObj)
     {
-        GameObject zeClickedObj = ObserverSystemScript.Instance.GetStoredEventVariable<GameObject>("ClickedUnit");
-        if (zeClickedObj.tag == "TileDisplay" || zeClickedObj.tag == "TileBase")
+        //GameObject zeClickedObj = ObserverSystemScript.Instance.GetStoredEventVariable<GameObject>("ClickedUnit");
+        if (_clickedObj.tag == "TileDisplay" || _clickedObj.tag == "TileBase")
         {
             // We have to hardcode a bit since the tags will differ!
             Tile zeTileComponent = null;
-            switch (zeClickedObj.tag)
+            switch (_clickedObj.tag)
             {
                 case "TileDisplay":
-                    zeTileComponent = zeClickedObj.transform.parent.GetComponent<Tile>();
+                    zeTileComponent = _clickedObj.transform.parent.GetComponent<Tile>();
                     break;
                 case "TileBase":
-                    zeTileComponent = zeClickedObj.GetComponent<Tile>();
+                    zeTileComponent = _clickedObj.GetComponent<Tile>();
                     break;
             }
             if (!m_UnitWalkRef.m_UnitStats.CurrentTileID.Equals(zeTileComponent.GetId()) && m_AllReachableTileHighlight.Contains(zeTileComponent.GetId()))
             {
                 // Then we have to find the path for it!
-                m_UnitWalkRef.m_TilePath = m_TileSys.GetPath(m_UnitWalkRef.m_MovementPoints, m_UnitWalkRef.GetUnitStats().CurrentTileID, zeTileComponent.GetId(), m_UnitWalkRef.GetUnitStats().GetTileAttributeOverrides());
-                // have to find the scheduler and schedule this action!
-                UnitActionScheduler zeActScheduler = FindObjectOfType<UnitActionScheduler>();
-                m_UnitWalkRef.TurnOn();
-                zeActScheduler.ScheduleAction(m_UnitWalkRef);
-                Destroy(gameObject);
+                m_ReachablePath = m_TileSys.GetPath(m_UnitWalkRef.m_MovementPoints, m_UnitWalkRef.GetUnitStats().CurrentTileID, zeTileComponent.GetId(), m_UnitWalkRef.GetUnitStats().GetTileAttributeOverrides());
+                m_TileSys.SetPathMarkers(m_AllReachableTileHighlight.ToArray(), m_ReachablePath);
             }
         }
     }
@@ -83,5 +75,19 @@ public class WalkUI_Logic : MonoBehaviour {
         ObserverSystemScript.Instance.TriggerEvent("ToggleSelectingUnit");
         // Since this UI is not needed anymore!
         Destroy(gameObject);
+    }
+
+    public void PressedConfirm()
+    {
+        // then the unit will walk that path! if the path exists
+        if (m_ReachablePath != null)
+        {
+            m_TileSys.SetPathMarkers(null, null);
+            m_UnitWalkRef.m_TilePath = m_ReachablePath;
+            UnitActionScheduler zeActScheduler = FindObjectOfType<UnitActionScheduler>();
+            m_UnitWalkRef.TurnOn();
+            zeActScheduler.ScheduleAction(m_UnitWalkRef);
+            Destroy(gameObject);
+        }
     }
 }

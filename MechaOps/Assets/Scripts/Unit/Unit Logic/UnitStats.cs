@@ -7,6 +7,8 @@ using UnityEngine.Assertions;
 using UnityEditor;
 #endif // UNITY_EDITOR
 
+public delegate void Void_UnitStat(UnitStats _unitStat);
+
 /// <summary>
 /// Created with JSON formatter in mind!
 /// </summary>
@@ -55,6 +57,8 @@ public class UnitStats : MonoBehaviour
     protected AnimationHandler[] m_AnimHandler;
 
     protected Dictionary<string, AnimationHandler> m_NameAnimDict = new Dictionary<string, AnimationHandler>();
+
+    public Void_UnitStat m_HealthChangedCallback;
 
     public string Name
     {

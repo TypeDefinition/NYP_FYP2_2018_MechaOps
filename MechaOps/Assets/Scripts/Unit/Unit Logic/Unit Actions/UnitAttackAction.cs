@@ -114,7 +114,7 @@ public class UnitAttackAction : IUnitAction
         PanzerAnimationHandler_Attack zeAttackAnim = (PanzerAnimationHandler_Attack)m_AnimHandler;
         zeAttackAnim.Hit = true;
         zeAttackAnim.TargetPosition = m_TargetUnitStats.transform.position;
-        zeAttackAnim.CompletionCallback = () => m_AnimDone = true;
+        zeAttackAnim.CompletionCallback = CallAnimDone;
         WaitForFixedUpdate zeFixedWait = new WaitForFixedUpdate();
         zeAttackAnim.StartAnimation();
         while (!m_AnimDone)
@@ -123,7 +123,6 @@ public class UnitAttackAction : IUnitAction
         }
         m_TargetUnitStats.CurrentHealthPoints -= m_DamagePoints;
         // Thinking of a way to implement it
-        m_UpdateOfUnitAction = null;
         switch (GetUnitStats().CurrentActionPoints)
         {
             case 0:
@@ -136,8 +135,9 @@ public class UnitAttackAction : IUnitAction
         }
         ObserverSystemScript.Instance.TriggerEvent("UnitFinishAction");
         m_ActionState = ActionState.Completed;
-        zeAttackAnim.CompletionCallback -= () => m_AnimDone = true;
+        zeAttackAnim.CompletionCallback -= CallAnimDone;
         m_AnimDone = false;
+        m_UpdateOfUnitAction = null;
         yield break;
     }
 

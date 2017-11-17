@@ -11,6 +11,11 @@ public class GetPlayerInputUnit : MonoBehaviour {
     [Tooltip("The player clicked on the unit")]
     public GameObject m_ClickedPlayerUnitGO;
 
+    private void Awake()
+    {
+        GameEventSystem.GetInstance().AddEvent<GameObject>("ClickedUnit");
+    }
+
     // Update is called once per frame
     void Update () {
         // Touch Input can also use GetMouseButton(0)!
@@ -21,8 +26,7 @@ public class GetPlayerInputUnit : MonoBehaviour {
             if (Physics.Raycast(clickedRay, out clickedObj))
             {
                 m_ClickedPlayerUnitGO = clickedObj.collider.gameObject;
-                ObserverSystemScript.Instance.StoreVariableInEvent("ClickedUnit", m_ClickedPlayerUnitGO);
-                ObserverSystemScript.Instance.TriggerEvent("ClickedUnit");
+                GameEventSystem.GetInstance().TriggerEvent<GameObject>("ClickedUnit", m_ClickedPlayerUnitGO);
             }
         }
 	}

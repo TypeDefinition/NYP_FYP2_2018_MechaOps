@@ -85,22 +85,7 @@ public class UnitWalkAction : IUnitAction {
 
     // Use this for initialization
     void Start () {
-        if (m_UnitActionName == null)
-        {
-            m_UnitActionName = "Walk";
-        }
-        else
-        {
-            // Just in case the action name is not included!
-            switch (m_UnitActionName.Length)
-            {
-                case 0:
-                    m_UnitActionName = "Walk";
-                    break;
-                default:
-                    break;
-            }
-        }
+        Assert.IsTrue(m_UnitActionName != "", "No name is given to this action");
         if (!m_TileSys)
             m_TileSys = FindObjectOfType<TileSystem>();
     }

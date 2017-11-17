@@ -563,7 +563,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 114954650781830646}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114662384954406756}
+        m_MethodName: PressedConfirm
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114662384954406756
@@ -581,7 +592,7 @@ MonoBehaviour:
   m_HighlightedTileMat: {fileID: 2100000, guid: 8187a1d532b7a264fae388491dd10342,
     type: 2}
   m_AllReachableTileHighlight: []
-  m_OriginalTileMaterials: []
+  m_ReachablePath: []
   m_UnitWalkRef: {fileID: 0}
 --- !u!114 &114732853903991160
 MonoBehaviour:

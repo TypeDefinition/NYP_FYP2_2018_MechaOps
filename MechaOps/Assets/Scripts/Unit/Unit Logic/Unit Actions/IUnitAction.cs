@@ -210,7 +210,7 @@ public abstract class IUnitAction : MonoBehaviour
         m_ActionState = ActionState.Completed;
     }
 
-    protected void CallAnimDone()
+    protected virtual void CallAnimDone()
     {
         m_AnimDone = true;
     }

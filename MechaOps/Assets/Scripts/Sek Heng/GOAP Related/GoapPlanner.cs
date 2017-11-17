@@ -184,7 +184,7 @@ public class GoapPlanner : MonoBehaviour
     {
         GoapNode zeCheapestActNode = null;
         List<GoapNode> openset = new List<GoapNode>();
-        List<GoapNode> closedset = new List<GoapNode>();
+        //List<GoapNode> closedset = new List<GoapNode>();
         foreach (IGoapAction zeAct in m_AllGoapActions)
         {
             openset.Add(new GoapNode(null, zeAct));
