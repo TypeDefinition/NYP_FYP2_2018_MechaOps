@@ -128,7 +128,6 @@ public class UnitWalkAction : IUnitAction {
     {
         PanzerAnimationHandler_Move zeMoveAnim = (PanzerAnimationHandler_Move)m_AnimHandler;
         zeMoveAnim.CompletionCallback += CallAnimDone;
-        WaitForFixedUpdate zeFixedUpdateWait = new WaitForFixedUpdate();
         zeMoveAnim.Destination = _EndPt;
         zeMoveAnim.StartAnimation();
         while (m_ActionState != ActionState.Completed && m_ActionState != ActionState.None && !m_AnimDone)
@@ -136,7 +135,7 @@ public class UnitWalkAction : IUnitAction {
             switch (m_ActionState)
             {
                 case ActionState.Running:
-                    yield return zeFixedUpdateWait;
+                    yield return null;
                     break;
                 default:
                     break;
