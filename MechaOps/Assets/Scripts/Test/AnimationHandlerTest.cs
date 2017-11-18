@@ -26,7 +26,7 @@ public class AnimationHandlerTest : MonoBehaviour {
         {
             m_StartAnimation = false;
 
-            m_AnimationHandlerAttack.TargetPosition = m_Target.transform.position;
+            m_AnimationHandlerAttack.Target = m_Target;
             m_AnimationHandlerAttack.Hit = m_Hit;
             m_AnimationHandlerAttack.StartAnimation();
             

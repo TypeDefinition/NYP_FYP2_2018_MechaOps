@@ -9,6 +9,7 @@ public class TankBullet : MonoBehaviour
     [SerializeField] private bool m_ExplodeOnContact = true;
     [SerializeField] private GameObject m_Explosion;
     [SerializeField] private string[] m_CollisionLayers;
+    [SerializeField] private GameObject m_Target;
     private Void_Void m_CompletionCallback = null;
 
     public Void_Void CompletionCallback
@@ -35,6 +36,12 @@ public class TankBullet : MonoBehaviour
         set { m_CollisionLayers = value; }
     }
 
+    public GameObject Target
+    {
+        get { return m_Target; }
+        set { m_Target = value; }
+    }
+
     /*public string TargetTag
     {
         get { return m_TargetTag; }
@@ -54,9 +61,12 @@ public class TankBullet : MonoBehaviour
         RaycastHit hitInfo;
         if (m_ExplodeOnContact && Physics.Raycast(transform.position, transform.forward, out hitInfo, m_Speed * Time.deltaTime, LayerMask.GetMask(m_CollisionLayers)))
         {
-            GameObject explosion = GameObject.Instantiate(m_Explosion);
-            explosion.transform.position = hitInfo.point;
-            m_Lifetime = 0.0f;
+            if (hitInfo.collider.gameObject == m_Target)
+            {
+                GameObject explosion = GameObject.Instantiate(m_Explosion);
+                explosion.transform.position = hitInfo.point;
+                m_Lifetime = 0.0f;
+            }
         }
 
         // Every frame move forward.

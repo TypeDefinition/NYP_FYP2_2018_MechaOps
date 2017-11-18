@@ -8,13 +8,13 @@ using UnityEngine.Assertions;
 public class PanzerAnimationHandler_Attack : AnimationHandler
 {
     private PanzerAnimator m_Animator = null;
-    private Vector3 m_TargetPosition;
+    private GameObject m_Target;
     private bool m_Hit = true; // Is this attack a hit or miss?
     
-    public Vector3 TargetPosition
+    public GameObject Target
     {
-        get { return m_TargetPosition; }
-        set { m_TargetPosition = value; }
+        get { return m_Target; }
+        set { m_Target = value; }
     }
 
     public bool Hit
@@ -35,7 +35,7 @@ public class PanzerAnimationHandler_Attack : AnimationHandler
 
     public override void StartAnimation()
     {
-        m_Animator.SetShootAnimationParameters(m_TargetPosition, m_Hit, m_CompletionCallback);
+        m_Animator.SetShootAnimationParameters(m_Target, m_Hit, m_CompletionCallback);
         m_Animator.StartShootAnimation();
     }
 

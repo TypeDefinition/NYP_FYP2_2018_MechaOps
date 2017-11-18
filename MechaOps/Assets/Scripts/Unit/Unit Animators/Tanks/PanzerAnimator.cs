@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 [DisallowMultipleComponent]
 public class PanzerAnimator : MonoBehaviour
@@ -27,7 +29,7 @@ public class PanzerAnimator : MonoBehaviour
     [SerializeField] private TankBullet m_BulletPrefab;
 
     // Shooting Animation
-    private Vector3 m_TargetPosition = new Vector3();
+    private GameObject m_Target = null;
     private bool m_Hit = false; // Is the shot a hit or miss?
     private float m_TurretRotationSpeed = 5.0f; // This speed is not in degrees. It's just by time cause I'm lazy.
     private float m_GunElevationSpeed = 60.0f; // This is the speed in degrees.
@@ -103,18 +105,20 @@ public class PanzerAnimator : MonoBehaviour
         }
     }
 
-    public void AnimateFireBullet(Vector3 _targetPosition, bool _explodeOnContact, Void_Void _callback)
+    public void AnimateFireBullet(GameObject _target, bool _explodeOnContact, Void_Void _callback)
     {
+        Assert.IsTrue(_target != null);
         TankBullet bullet = GameObject.Instantiate(m_BulletPrefab.gameObject).GetComponent<TankBullet>();
         bullet.transform.position = m_BulletSpawn.transform.position;
-        bullet.transform.LookAt(_targetPosition);
+        bullet.transform.LookAt(_target.transform.position);
         bullet.CompletionCallback = _callback;
+        bullet.Target = _target;
     }
 
-    public void AnimateFireGun(Vector3 _targetPosition, bool _bulletExplodeOnContact, Void_Void _callback)
+    public void AnimateFireGun(GameObject _target, bool _bulletExplodeOnContact, Void_Void _callback)
     {
         AnimateMuzzleFlash();
-        AnimateFireBullet(_targetPosition, _bulletExplodeOnContact, _callback);
+        AnimateFireBullet(_target, _bulletExplodeOnContact, _callback);
     }
 
     public void AnimateElevateGun(float _angle)
@@ -311,15 +315,15 @@ public class PanzerAnimator : MonoBehaviour
     {
         while (true)
         {
-            RotateTurretTowardsTargetPosition(m_TargetPosition);
-            bool turretAimed = IsTurretAimingAtTarget(m_TargetPosition);
+            RotateTurretTowardsTargetPosition(m_Target.transform.position);
+            bool turretAimed = IsTurretAimingAtTarget(m_Target.transform.position);
 
-            ElevateGunTowardsTargetPosition(m_TargetPosition);
-            bool gunAimed = IsGunAimingAtTarget(m_TargetPosition);
+            ElevateGunTowardsTargetPosition(m_Target.transform.position);
+            bool gunAimed = IsGunAimingAtTarget(m_Target.transform.position);
 
             if (gunAimed && turretAimed)
             {
-                AnimateFireGun(m_TargetPosition, m_Hit, m_ShootAnimationCompleteCallback);
+                AnimateFireGun(m_Target, m_Hit, m_ShootAnimationCompleteCallback);
                 // Once the animation is done, the callback is removed.
                 m_ShootAnimationCompleteCallback = null;
                 break;
@@ -386,9 +390,10 @@ public class PanzerAnimator : MonoBehaviour
     }
 
     // Once the animation is done, the callback is removed.
-    public void SetShootAnimationParameters(Vector3 _targetPosition, bool _hit, Void_Void _callback)
+    public void SetShootAnimationParameters(GameObject _target, bool _hit, Void_Void _callback)
     {
-        m_TargetPosition = _targetPosition;
+        Assert.IsTrue(_target != null);
+        m_Target = _target;
         m_Hit = _hit;
         if (_callback != null)
         {
