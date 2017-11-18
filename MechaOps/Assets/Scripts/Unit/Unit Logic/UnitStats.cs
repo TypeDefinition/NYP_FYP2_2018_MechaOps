@@ -361,8 +361,11 @@ public class UnitStats : MonoBehaviour
 
     public AnimationHandler GetAnimHandler(string _name)
     {
-        AnimationHandler zeHandler;
-        Assert.IsTrue(m_NameAnimDict.TryGetValue(_name, out zeHandler), "Cant access the animation handler at GetAnimHandler");
+        AnimationHandler zeHandler = null;
+        if (m_NameAnimDict.TryGetValue(_name, out zeHandler))
+        {
+            Assert.IsNotNull(zeHandler, "Cant access the animation handler at GetAnimHandler");
+        }
         return zeHandler;
     }
 
