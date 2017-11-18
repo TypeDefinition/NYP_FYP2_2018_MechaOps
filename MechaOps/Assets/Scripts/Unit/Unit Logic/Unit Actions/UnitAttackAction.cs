@@ -113,7 +113,7 @@ public class UnitAttackAction : IUnitAction
         --GetUnitStats().CurrentActionPoints;
         PanzerAnimationHandler_Attack zeAttackAnim = (PanzerAnimationHandler_Attack)m_AnimHandler;
         zeAttackAnim.Hit = true;
-        zeAttackAnim.TargetPosition = m_TargetUnitStats.transform.position;
+        zeAttackAnim.Target = m_TargetUnitStats.gameObject;
         zeAttackAnim.CompletionCallback = CallAnimDone;
         WaitForFixedUpdate zeFixedWait = new WaitForFixedUpdate();
         zeAttackAnim.StartAnimation();
