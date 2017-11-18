@@ -30,14 +30,25 @@ public class WalkUI_Logic : MonoBehaviour {
         // And then access the tile stuff from the system and get reachable tiles
         TileId[] zeReachableTiles = m_TileSys.GetReachableTiles(m_UnitWalkRef.m_MovementPoints, m_UnitWalkRef.GetUnitStats().CurrentTileID, m_UnitWalkRef.GetUnitStats().GetTileAttributeOverrides());
         m_AllReachableTileHighlight = new List<TileId>(zeReachableTiles);
-        m_TileSys.SetPathMarkers(zeReachableTiles, null);
-        //ObserverSystemScript.Instance.SubscribeEvent("ClickedUnit", PlayerClickedTile);
+        // We will need to iterate through all of the unit's available and check whether is it at the reachable tiles
+        foreach (GameObject zePlayerUnit in KeepTrackOfUnits.Instance.m_AllPlayerUnitGO)
+        {
+            UnitStats zeStat = zePlayerUnit.GetComponent<UnitStats>();
+            m_AllReachableTileHighlight.Remove(zeStat.CurrentTileID);
+        }
+        foreach (GameObject zeEnemyUnit in KeepTrackOfUnits.Instance.m_AllEnemyUnitGO)
+        {
+            UnitStats zeStat = zeEnemyUnit.GetComponent<UnitStats>();
+            m_AllReachableTileHighlight.Remove(zeStat.CurrentTileID);
+        }
+        m_TileSys.SetPathMarkers(m_AllReachableTileHighlight.ToArray(), null);
         GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("ClickedUnit", PlayerClickedTile);
     }
 
     private void OnDisable()
     {
-        m_TileSys.ClearPathMarkers();
+        // This is the only way to remove that green line renderer!
+        m_TileSys.SetPathMarkers(null, null);
         GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("ClickedUnit", PlayerClickedTile);
     }
 
@@ -57,7 +68,7 @@ public class WalkUI_Logic : MonoBehaviour {
                     zeTileComponent = _clickedObj.GetComponent<Tile>();
                     break;
             }
-            if (!m_UnitWalkRef.m_UnitStats.CurrentTileID.Equals(zeTileComponent.GetId()) && m_AllReachableTileHighlight.Contains(zeTileComponent.GetId()))
+            if (m_AllReachableTileHighlight.Contains(zeTileComponent.GetId()))
             {
                 // Then we have to find the path for it!
                 m_ReachablePath = m_TileSys.GetPath(m_UnitWalkRef.m_MovementPoints, m_UnitWalkRef.GetUnitStats().CurrentTileID, zeTileComponent.GetId(), m_UnitWalkRef.GetUnitStats().GetTileAttributeOverrides());

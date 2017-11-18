@@ -73,7 +73,7 @@ public class PlayerUnitManager : MonoBehaviour {
     protected void StopUpdate()
     {
         ObserverSystemScript.Instance.UnsubscribeEvent("UnitMakeMove", UnitHasMakeMove);
-        ObserverSystemScript.Instance.UnsubscribeEvent("ClickedUnit", PlayerSelectUnit);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("ClickedUnit", PlayerSelectUnit);
         ObserverSystemScript.Instance.UnsubscribeEvent("UnitFinishAction", PollingForPlayerInput);
         if (m_UpdateOfManager != null)
         {
@@ -89,38 +89,6 @@ public class PlayerUnitManager : MonoBehaviour {
     {
         m_UnitsYetToMakeMoves.Remove(ObserverSystemScript.Instance.GetStoredEventVariable<GameObject>("UnitMakeMove"));
         ObserverSystemScript.Instance.RemoveTheEventVariableNextFrame("UnitMakeMove");
-    }
-
-    protected void PlayerSelectUnit()
-    {
-        GameObject zeClickedGO = ObserverSystemScript.Instance.GetStoredEventVariable<GameObject>("ClickedUnit");
-        // If only the clicked unit belongs to the player and it must be inside the list of player unit that has yet to make a move!
-        if (zeClickedGO.tag == "Player" && m_UnitsYetToMakeMoves.Contains(zeClickedGO))
-        {
-            m_ScrollRectUnitIcons.SetActive(true);
-            // Need to ensure the selectedPlayerUnit is thr
-            m_SelectedPlayerUnit = zeClickedGO;
-            IUnitAction[] allPossibleUnitActions = zeClickedGO.GetComponentsInChildren<IUnitAction>();
-#region Clear The old buttons
-            foreach (Button zeUnitButton in m_AllOfUnitUIIcon)
-            {
-                Destroy(zeUnitButton.gameObject);
-            }
-            m_AllOfUnitUIIcon.Clear();
-#endregion
-            // When we will instantiate the button according to the amount of unit actions there are!
-            foreach (IUnitAction zeUnitAction in allPossibleUnitActions)
-            {
-                Image zeUnitIconUI = Instantiate(m_UnitActionUIIconGO, m_HolderOfIcons.transform);
-                // Replace the sprite
-                zeUnitIconUI.gameObject.SetActive(true);
-                zeUnitIconUI.sprite = zeUnitAction.ActionIconUI;
-                // Add to the onclick event for Unity button!
-                Button zeUnitIconButton = zeUnitIconUI.GetComponent<Button>();
-                zeUnitIconButton.onClick.AddListener(() => ToInstantiateSpecificActionUI(zeUnitAction.UnitActionUI, zeUnitAction));
-                m_AllOfUnitUIIcon.Add(zeUnitIconButton);
-            }
-        }
     }
 
     protected void PlayerSelectUnit(GameObject _UnitGO)
@@ -165,10 +133,10 @@ public class PlayerUnitManager : MonoBehaviour {
         switch (m_ScrollRectUnitIcons.activeSelf)
         {
             case true:
-                ObserverSystemScript.Instance.SubscribeEvent("ClickedUnit", PlayerSelectUnit);
+                GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("ClickedUnit", PlayerSelectUnit);
                 break;
             default:
-                ObserverSystemScript.Instance.UnsubscribeEvent("ClickedUnit", PlayerSelectUnit);
+                GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("ClickedUnit", PlayerSelectUnit);
                 break;
         }
     }
@@ -178,7 +146,7 @@ public class PlayerUnitManager : MonoBehaviour {
     /// </summary>
     protected void PollingForPlayerInput()
     {
-        ObserverSystemScript.Instance.SubscribeEvent("ClickedUnit", PlayerSelectUnit);
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("ClickedUnit", PlayerSelectUnit);
     }
 
     /// <summary>
