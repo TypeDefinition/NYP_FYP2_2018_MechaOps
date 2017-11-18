@@ -107,7 +107,7 @@ public class Tile : MonoBehaviour
     [SerializeField] private HazardType m_HazardType = HazardType.None;
 
     // The unit currently on this tile.
-    private GameObject m_Unit = null;
+    public GameObject m_Unit = null;
 
     public bool HasUnit()
     {

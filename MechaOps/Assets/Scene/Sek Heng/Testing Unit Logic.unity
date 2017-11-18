@@ -38,12 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -640,6 +640,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1656105523}
@@ -811,6 +812,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 165786282}
@@ -884,6 +886,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 961349814}
@@ -1055,6 +1058,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 689901947}
@@ -1422,6 +1426,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 641983566}
@@ -1495,6 +1500,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1033759137}
@@ -1568,6 +1574,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 475792447}
@@ -1641,6 +1648,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1336733867}
@@ -1714,6 +1722,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1485205507}
@@ -1983,6 +1992,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1486250441}
@@ -2350,6 +2360,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 490724587}
@@ -2423,6 +2434,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1074581668}
@@ -2496,6 +2508,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1296660192}
@@ -2667,6 +2680,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 72084494}
@@ -3635,6 +3649,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 13021369}
@@ -3708,6 +3723,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 828438812}
@@ -3781,6 +3797,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 828611017}
@@ -3952,6 +3969,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1702199594}
@@ -4025,6 +4043,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2113846617}
@@ -4588,6 +4607,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 880399618}
@@ -4661,6 +4681,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 941687029}
@@ -4734,6 +4755,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1860895549}
@@ -4807,6 +4829,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 374355875}
@@ -4978,6 +5001,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1149467657}
@@ -5051,6 +5075,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1500447621}
@@ -5124,6 +5149,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2113222547}
@@ -5295,6 +5321,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 906480711}
@@ -5368,6 +5395,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1993347882}
@@ -5539,6 +5567,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1103721063}
@@ -5612,6 +5641,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1006246825}
@@ -5783,6 +5813,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1316267229}
@@ -5856,6 +5887,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1068114743}
@@ -6032,6 +6064,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1109312339}
@@ -6709,6 +6742,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 294427900}
@@ -6880,6 +6914,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1040241162}
@@ -7051,6 +7086,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1492349107}
@@ -7121,13 +7157,14 @@ MonoBehaviour:
     m_Z: -1
   m_TileSystem: {fileID: 1617924543}
   m_Attributes:
-    m_Walkable: 1
+    m_Walkable: 0
     m_MovementCost: 1
     m_ConcealmentPoints: 0
-    m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
+    m_EvasionPoints: 0
+    m_DisplayObject: {fileID: 114603814530369432, guid: 47faf5f328908d94fb1b9f46271e457a,
       type: 2}
-  m_DisplayObject: {fileID: 1650938170}
-  m_Type: 0
+  m_DisplayObject: {fileID: 1835740608}
+  m_Type: 1
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
@@ -7141,7 +7178,7 @@ Transform:
   m_LocalPosition: {x: -3.0000002, y: 0, z: 5.1961527}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1650938174}
+  - {fileID: 1835740612}
   m_Father: {fileID: 1617924544}
   m_RootOrder: 93
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7491,6 +7528,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 451599704}
@@ -7564,6 +7602,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1671833470}
@@ -7637,6 +7676,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 910408189}
@@ -7710,6 +7750,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1518295505}
@@ -7881,6 +7922,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 172840315}
@@ -8219,6 +8261,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1112186156}
@@ -8390,6 +8433,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 218920102}
@@ -8463,6 +8507,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2120046162}
@@ -8536,6 +8581,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 653859971}
@@ -8707,6 +8753,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 177315869}
@@ -8878,6 +8925,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1382484615}
@@ -9380,7 +9428,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1258380024048378, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
@@ -9423,6 +9471,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1418293904}
@@ -9594,6 +9643,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1772239888}
@@ -9667,6 +9717,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 758213737}
@@ -10034,6 +10085,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1944075536}
@@ -10107,6 +10159,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1397520580}
@@ -10180,6 +10233,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1141375212}
@@ -10449,6 +10503,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 228553109}
@@ -10522,6 +10577,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1614157363}
@@ -10791,6 +10847,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1603826971}
@@ -11060,6 +11117,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 78266810}
@@ -11133,6 +11191,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1576032790}
@@ -11500,6 +11559,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1450003919}
@@ -11573,6 +11633,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1806921329}
@@ -11646,6 +11707,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 172878868}
@@ -11980,6 +12042,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 18913509}
@@ -12318,6 +12381,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1724633666}
@@ -12391,6 +12455,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 222866522}
@@ -12562,6 +12627,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1351593519}
@@ -12831,6 +12897,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 867332123}
@@ -12973,6 +13040,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 32824318}
@@ -13046,6 +13114,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1318912003}
@@ -13119,6 +13188,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 45538315}
@@ -13192,6 +13262,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1015539125}
@@ -13227,104 +13298,6 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
---- !u!1 &826935022
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 826935027}
-  - component: {fileID: 826935026}
-  - component: {fileID: 826935025}
-  - component: {fileID: 826935024}
-  - component: {fileID: 826935023}
-  m_Layer: 0
-  m_Name: Tile_Normal(Clone)
-  m_TagString: TileDisplay
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!114 &826935023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 826935022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb804e4e2cadf7540b2ae29f25a22d46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OwnerInitialized: 1
-  m_Owner: {fileID: 1166187537}
---- !u!64 &826935024
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 826935022}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
---- !u!23 &826935025
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 826935022}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 7e391a17d14a94b4f98e9ff14a788be7, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &826935026
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 826935022}
-  m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
---- !u!4 &826935027
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 826935022}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1166187538}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &827970658
 GameObject:
   m_ObjectHideFlags: 0
@@ -13363,6 +13336,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1190741685}
@@ -13632,6 +13606,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 983108578}
@@ -13705,6 +13680,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 696250862}
@@ -13778,6 +13754,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1563829770}
@@ -14052,6 +14029,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 436150097}
@@ -14125,6 +14103,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1220534370}
@@ -14494,6 +14473,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1305102161}
@@ -14567,6 +14547,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1852149118}
@@ -14640,6 +14621,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1167629126}
@@ -14909,6 +14891,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1735118940}
@@ -15080,6 +15063,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 645875202}
@@ -15447,6 +15431,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1402796423}
@@ -15814,6 +15799,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2102755548}
@@ -16348,6 +16334,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 321207615}
@@ -16421,6 +16408,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 546945556}
@@ -16494,6 +16482,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 518737515}
@@ -16699,6 +16688,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1286560284}
@@ -16968,6 +16958,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1600205056}
@@ -17142,6 +17133,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2053899934}
@@ -17215,6 +17207,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1718011371}
@@ -17386,6 +17379,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2121102702}
@@ -17557,6 +17551,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1650267225}
@@ -17630,6 +17625,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 103688797}
@@ -17801,6 +17797,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1271866632}
@@ -17972,6 +17969,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1804934328}
@@ -18865,6 +18863,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1618313631}
@@ -19036,6 +19035,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1491379744}
@@ -19408,6 +19408,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1297345384}
@@ -19775,6 +19776,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1718965586}
@@ -19848,6 +19850,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 130165326}
@@ -19921,6 +19924,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 711053289}
@@ -20331,6 +20335,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2101609412}
@@ -20401,13 +20406,14 @@ MonoBehaviour:
     m_Z: -1
   m_TileSystem: {fileID: 1617924543}
   m_Attributes:
-    m_Walkable: 1
+    m_Walkable: 0
     m_MovementCost: 1
     m_ConcealmentPoints: 0
-    m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
+    m_EvasionPoints: 0
+    m_DisplayObject: {fileID: 114603814530369432, guid: 47faf5f328908d94fb1b9f46271e457a,
       type: 2}
-  m_DisplayObject: {fileID: 826935023}
-  m_Type: 0
+  m_DisplayObject: {fileID: 1399542860}
+  m_Type: 1
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
@@ -20421,7 +20427,7 @@ Transform:
   m_LocalPosition: {x: -6.0000005, y: 0, z: 6.928203}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 826935027}
+  - {fileID: 1399542864}
   m_Father: {fileID: 1617924544}
   m_RootOrder: 78
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20477,6 +20483,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1896028760}
@@ -20654,6 +20661,15 @@ Prefab:
       propertyPath: m_TileSys
       value: 
       objectReference: {fileID: 1617924543}
+    - target: {fileID: 114930548130969464, guid: d8eadb572c9988f4eb0b84df420422e5,
+        type: 2}
+      propertyPath: m_MovementPoints
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258380024048378, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
   m_IsPrefabParent: 0
@@ -20793,6 +20809,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 971181032}
@@ -21243,6 +21260,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1410755335}
@@ -21610,6 +21628,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1320731887}
@@ -21879,6 +21898,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1367426704}
@@ -21952,6 +21972,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1662591910}
@@ -22025,6 +22046,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1013821389}
@@ -22196,6 +22218,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 862718133}
@@ -22367,6 +22390,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1084758457}
@@ -22440,6 +22464,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2047877211}
@@ -22595,6 +22620,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1822104056}
@@ -22766,6 +22792,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 163890925}
@@ -22839,6 +22866,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 428264734}
@@ -23108,6 +23136,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2042491539}
@@ -23377,6 +23406,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1639079059}
@@ -23548,6 +23578,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 749644347}
@@ -23719,6 +23750,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 929321176}
@@ -23792,6 +23824,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 477345784}
@@ -23865,6 +23898,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 679912722}
@@ -23938,6 +23972,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 532098794}
@@ -24207,6 +24242,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 269879037}
@@ -24378,6 +24414,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 480629873}
@@ -24644,13 +24681,14 @@ MonoBehaviour:
     m_Z: 0
   m_TileSystem: {fileID: 1617924543}
   m_Attributes:
-    m_Walkable: 1
+    m_Walkable: 0
     m_MovementCost: 1
     m_ConcealmentPoints: 0
-    m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
+    m_EvasionPoints: 0
+    m_DisplayObject: {fileID: 114834877568814252, guid: 2475c95dfce60604f88284d2b063d5f5,
       type: 2}
-  m_DisplayObject: {fileID: 1794540380}
-  m_Type: 0
+  m_DisplayObject: {fileID: 1501954370}
+  m_Type: 3
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
@@ -24664,7 +24702,7 @@ Transform:
   m_LocalPosition: {x: -3, y: 0, z: 1.7320508}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1794540384}
+  - {fileID: 1501954374}
   m_Father: {fileID: 1617924544}
   m_RootOrder: 92
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -24920,6 +24958,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1164168101}
@@ -25091,6 +25130,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1976959786}
@@ -25164,6 +25204,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 170584059}
@@ -25237,6 +25278,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1053305605}
@@ -25310,6 +25352,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1192204827}
@@ -25443,6 +25486,104 @@ Transform:
   m_Father: {fileID: 634770992}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1399542859
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1399542864}
+  - component: {fileID: 1399542863}
+  - component: {fileID: 1399542862}
+  - component: {fileID: 1399542861}
+  - component: {fileID: 1399542860}
+  m_Layer: 0
+  m_Name: Tile_Cover(Clone)
+  m_TagString: TileDisplay
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!114 &1399542860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1399542859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb804e4e2cadf7540b2ae29f25a22d46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OwnerInitialized: 1
+  m_Owner: {fileID: 1166187537}
+--- !u!64 &1399542861
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1399542859}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 81a0ab2d4b069d846a26fc132ce2de02, type: 3}
+--- !u!23 &1399542862
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1399542859}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: d9338c4ac79c9b349bc2d78d5253fd44, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1399542863
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1399542859}
+  m_Mesh: {fileID: 4300000, guid: 81a0ab2d4b069d846a26fc132ce2de02, type: 3}
+--- !u!4 &1399542864
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1399542859}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1166187538}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1400396380
 GameObject:
   m_ObjectHideFlags: 0
@@ -25481,6 +25622,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1359291220}
@@ -25554,6 +25696,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 398821824}
@@ -26569,6 +26712,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 765108207}
@@ -26642,6 +26786,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 110998080}
@@ -26715,6 +26860,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2088687676}
@@ -26850,6 +26996,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 978637685}
@@ -26923,6 +27070,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1245188623}
@@ -27094,6 +27242,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1984573935}
@@ -27461,6 +27610,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 8917187}
@@ -27690,6 +27840,104 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 274011409}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1501954369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1501954374}
+  - component: {fileID: 1501954373}
+  - component: {fileID: 1501954372}
+  - component: {fileID: 1501954371}
+  - component: {fileID: 1501954370}
+  m_Layer: 0
+  m_Name: Tile_Obstacle(Clone)
+  m_TagString: TileDisplay
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!114 &1501954370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1501954369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb804e4e2cadf7540b2ae29f25a22d46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OwnerInitialized: 1
+  m_Owner: {fileID: 1364713252}
+--- !u!64 &1501954371
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1501954369}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
+--- !u!23 &1501954372
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1501954369}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: ae3e6b9bc4569c3449a621c6d173df9d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1501954373
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1501954369}
+  m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
+--- !u!4 &1501954374
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1501954369}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1364713253}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1502089259
@@ -27926,6 +28174,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1484172805}
@@ -28097,6 +28346,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 781571954}
@@ -28170,6 +28420,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1215661185}
@@ -28243,6 +28494,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 234398534}
@@ -28316,6 +28568,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2120986943}
@@ -28493,6 +28746,11 @@ Prefab:
       propertyPath: m_TileSys
       value: 
       objectReference: {fileID: 1617924543}
+    - target: {fileID: 114191423135492830, guid: 525f4ac0fe7c38e4b8d0c7d5edd2a90e,
+        type: 2}
+      propertyPath: m_MovementPoints
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 525f4ac0fe7c38e4b8d0c7d5edd2a90e, type: 2}
   m_IsPrefabParent: 0
@@ -28534,6 +28792,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 963112442}
@@ -28607,6 +28866,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 680419640}
@@ -28778,6 +29038,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 377269263}
@@ -28851,6 +29112,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 661298306}
@@ -29022,6 +29284,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1875879107}
@@ -29095,6 +29358,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1780530675}
@@ -29168,6 +29432,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 955687428}
@@ -29286,7 +29551,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1587401081}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -1.63, y: 22.7, z: 6.8}
+  m_LocalPosition: {x: -1.63, y: 30, z: 6.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -29330,6 +29595,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 499289832}
@@ -29599,6 +29865,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1470161607}
@@ -29672,6 +29939,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 418225531}
@@ -34104,6 +34372,10 @@ Prefab:
       propertyPath: m_UnitStatsJSON.m_CurrentTileID.m_Y
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 1411079469388966, guid: 525f4ac0fe7c38e4b8d0c7d5edd2a90e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 525f4ac0fe7c38e4b8d0c7d5edd2a90e, type: 2}
   m_IsPrefabParent: 0
@@ -34145,6 +34417,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 622651519}
@@ -34218,6 +34491,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 631841069}
@@ -34291,6 +34565,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 719466007}
@@ -34773,104 +35048,6 @@ Transform:
   m_Father: {fileID: 1046468372}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1650938169
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1650938174}
-  - component: {fileID: 1650938173}
-  - component: {fileID: 1650938172}
-  - component: {fileID: 1650938171}
-  - component: {fileID: 1650938170}
-  m_Layer: 0
-  m_Name: Tile_Normal(Clone)
-  m_TagString: TileDisplay
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!114 &1650938170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1650938169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb804e4e2cadf7540b2ae29f25a22d46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OwnerInitialized: 1
-  m_Owner: {fileID: 415389090}
---- !u!64 &1650938171
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1650938169}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
---- !u!23 &1650938172
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1650938169}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 7e391a17d14a94b4f98e9ff14a788be7, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1650938173
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1650938169}
-  m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
---- !u!4 &1650938174
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1650938169}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 415389091}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1656105522
 GameObject:
   m_ObjectHideFlags: 0
@@ -35047,6 +35224,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 220986744}
@@ -35218,6 +35396,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 308864591}
@@ -35291,6 +35470,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1781132091}
@@ -35462,6 +35642,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1901787051}
@@ -35535,6 +35716,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 138209668}
@@ -35608,6 +35790,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1859082376}
@@ -35779,6 +35962,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1407125173}
@@ -35950,6 +36134,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1078755752}
@@ -36317,6 +36502,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1082395202}
@@ -36488,6 +36674,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 912685005}
@@ -36561,6 +36748,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1412984471}
@@ -36634,6 +36822,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 964419578}
@@ -36707,6 +36896,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1086437230}
@@ -36780,6 +36970,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1109708469}
@@ -36853,6 +37044,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1914076894}
@@ -37416,6 +37608,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2097547126}
@@ -37451,104 +37644,6 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
---- !u!1 &1794540379
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1794540384}
-  - component: {fileID: 1794540383}
-  - component: {fileID: 1794540382}
-  - component: {fileID: 1794540381}
-  - component: {fileID: 1794540380}
-  m_Layer: 0
-  m_Name: Tile_Normal(Clone)
-  m_TagString: TileDisplay
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
---- !u!114 &1794540380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1794540379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb804e4e2cadf7540b2ae29f25a22d46, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OwnerInitialized: 1
-  m_Owner: {fileID: 1364713252}
---- !u!64 &1794540381
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1794540379}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Convex: 0
-  m_InflateMesh: 0
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
---- !u!23 &1794540382
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1794540379}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 7e391a17d14a94b4f98e9ff14a788be7, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1794540383
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1794540379}
-  m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
---- !u!4 &1794540384
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1794540379}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1364713253}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1795236315
 GameObject:
   m_ObjectHideFlags: 0
@@ -37587,6 +37682,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 687071283}
@@ -37660,6 +37756,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1992209517}
@@ -37733,6 +37830,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1502668759}
@@ -38198,6 +38296,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1239731792}
@@ -38271,6 +38370,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1061927372}
@@ -38306,6 +38406,104 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
+--- !u!1 &1835740607
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1835740612}
+  - component: {fileID: 1835740611}
+  - component: {fileID: 1835740610}
+  - component: {fileID: 1835740609}
+  - component: {fileID: 1835740608}
+  m_Layer: 0
+  m_Name: Tile_Cover(Clone)
+  m_TagString: TileDisplay
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!114 &1835740608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1835740607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb804e4e2cadf7540b2ae29f25a22d46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OwnerInitialized: 1
+  m_Owner: {fileID: 415389090}
+--- !u!64 &1835740609
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1835740607}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Convex: 0
+  m_InflateMesh: 0
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 81a0ab2d4b069d846a26fc132ce2de02, type: 3}
+--- !u!23 &1835740610
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1835740607}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: d9338c4ac79c9b349bc2d78d5253fd44, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &1835740611
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1835740607}
+  m_Mesh: {fileID: 4300000, guid: 81a0ab2d4b069d846a26fc132ce2de02, type: 3}
+--- !u!4 &1835740612
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1835740607}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 415389091}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1837962329
 GameObject:
   m_ObjectHideFlags: 0
@@ -38540,6 +38738,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1180907037}
@@ -38613,6 +38812,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 876656552}
@@ -38882,6 +39082,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1334627221}
@@ -38955,6 +39156,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 365922981}
@@ -39420,6 +39622,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 78558347}
@@ -39570,6 +39773,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1277347935}
@@ -39643,6 +39847,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1776368953}
@@ -39716,6 +39921,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1803507915}
@@ -39985,6 +40191,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1225146447}
@@ -40058,6 +40265,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1920049778}
@@ -40131,6 +40339,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1123219615}
@@ -40204,6 +40413,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1460998006}
@@ -40375,6 +40585,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2110125669}
@@ -40546,6 +40757,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 78822507}
@@ -40619,6 +40831,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1346536682}
@@ -41117,6 +41330,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1089864436}
@@ -41190,6 +41404,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 406427146}
@@ -41263,6 +41478,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2108331559}
@@ -41336,6 +41552,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 599714730}
@@ -41409,6 +41626,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1049860343}
@@ -41482,6 +41700,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2073455369}
@@ -41555,6 +41774,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 966889134}
@@ -41628,6 +41848,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1573691897}
@@ -41701,6 +41922,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 512631007}
@@ -41774,6 +41996,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1770378955}
@@ -42141,6 +42364,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1199317682}
@@ -42410,6 +42634,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 233631421}
@@ -42734,6 +42959,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 345401941}
@@ -43003,6 +43229,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1837962330}
@@ -43076,6 +43303,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1639140943}
@@ -43247,6 +43475,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1712307340}
@@ -43418,6 +43647,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 135443541}
@@ -43687,6 +43917,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 159448902}
@@ -44122,6 +44353,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 614137979}
@@ -44195,6 +44427,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 772051788}
@@ -44268,6 +44501,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1895547921}
@@ -44341,6 +44575,7 @@ MonoBehaviour:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1502089260}

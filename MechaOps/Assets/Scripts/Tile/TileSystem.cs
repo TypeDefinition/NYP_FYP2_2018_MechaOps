@@ -374,14 +374,16 @@ public class TileSystem : MonoBehaviour
         // We add our overrides into a dictionary for easy lookup.
         Dictionary<TileType, TileAttributeOverride> overrideDictionary = GenerateOverrideDictionary(_overrides);
 
+        // Keep track of the walkable and unwalkable tiles as we iterate to reduce number of checks.
         HashSet<TileId> walkableList = new HashSet<TileId>();
-        HashSet<TileId> unwalkableList = new HashSet<TileId>();
+        // Treat the start as always walkable.
+        walkableList.Add(_start);
 
         // Search through each tile to check if they are reachable.
         foreach (TileId end in searchArea)
         {
             // If we have already determined the reachability of this tile, continue.
-            if (walkableList.Contains(end) || unwalkableList.Contains(end))
+            if (walkableList.Contains(end))
             {
                 continue;
             }
@@ -398,7 +400,6 @@ public class TileSystem : MonoBehaviour
                 // 惨了，我们没办法达到目的地。
                 if (cheapestNode.FCost > _movementPoints)
                 {
-                    unwalkableList.Add(cheapestNode.Id);
                     break;
                 }
 
@@ -419,42 +420,32 @@ public class TileSystem : MonoBehaviour
                     // Ensure that the tile is within our search area.
                     if (searchArea.Contains(neighborId) == false)
                     {
-                        // Debug.Log(MethodBase.GetCurrentMethod().Name + " - Tile " + neighborId.ToString() + " is not in search area.");
                         continue;
                     }
 
-                    // Don't bother searching if we already know that it is unwalkable.
-                    if (unwalkableList.Contains(neighborId))
-                    {
-                        continue;
-                    }
-
-                    Tile tile = GetTile(neighborId);
+                    Tile neighbourTile = GetTile(neighborId);
                     TileAttributeOverride attributeOverride;
-                    overrideDictionary.TryGetValue(tile.GetTileType(), out attributeOverride);
+                    overrideDictionary.TryGetValue(neighbourTile.GetTileType(), out attributeOverride);
 
                     // Ensure that the tile is walkable.
-                    bool walkable = tile.GetIsWalkable();
+                    bool walkable = neighbourTile.GetIsWalkable();
                     int hCost = TileId.GetDistance(neighborId, end);
                     int gCost = cheapestNode.GCost;
                     if (attributeOverride == null)
                     {
-                        gCost += tile.GetTotalMovementCost();
+                        gCost += neighbourTile.GetTotalMovementCost();
                     }
                     else
                     {
                         walkable = attributeOverride.Walkable;
                         gCost += attributeOverride.MovementCost;
-                        Hazard hazard = tile.GetHazard();
+                        Hazard hazard = neighbourTile.GetHazard();
                         if (hazard != null) { gCost += hazard.Attributes.MovementCost; }
                     }
 
-                    if (walkable == false || tile.HasUnit())
+                    // If the tile is unwalkable, add it to the unwalkable list.
+                    if (walkable == false || neighbourTile.HasUnit())
                     {
-                        if (unwalkableList.Contains(cheapestNode.Id) == false)
-                        {
-                            unwalkableList.Add(cheapestNode.Id);
-                        }
                         continue;
                     }
 
@@ -513,11 +504,13 @@ public class TileSystem : MonoBehaviour
             }
         }
 
+        // Return a null if there are no walkable tiles.
         if (walkableList.Count == 0)
         {
             return null;
         }
 
+        // Convert the result to an array.
         TileId[] result = new TileId[walkableList.Count];
         int iteration = 0;
         foreach (TileId tileId in walkableList)
@@ -603,27 +596,27 @@ public class TileSystem : MonoBehaviour
                     continue;
                 }
 
-                Tile tile = GetTile(neighborId);
+                Tile neighbourTile = GetTile(neighborId);
                 TileAttributeOverride attributeOverride;
-                overrideDictionary.TryGetValue(tile.GetTileType(), out attributeOverride);
+                overrideDictionary.TryGetValue(neighbourTile.GetTileType(), out attributeOverride);
 
                 // Ensure that the tile is walkable.
-                bool walkable = tile.GetIsWalkable();
+                bool walkable = neighbourTile.GetIsWalkable();
                 int hCost = TileId.GetDistance(neighborId, _end);
                 int gCost = cheapestNode.GCost;
                 if (attributeOverride == null)
                 {
-                    gCost += tile.GetTotalMovementCost();
+                    gCost += neighbourTile.GetTotalMovementCost();
                 }
                 else
                 {
                     walkable = attributeOverride.Walkable;
                     gCost += attributeOverride.MovementCost;
-                    Hazard hazard = tile.GetHazard();
+                    Hazard hazard = neighbourTile.GetHazard();
                     if (hazard != null) { gCost += hazard.Attributes.MovementCost; }
                 }
 
-                if (walkable == false || tile.HasUnit())
+                if (walkable == false || neighbourTile.HasUnit())
                 {
                     continue;
                 }
