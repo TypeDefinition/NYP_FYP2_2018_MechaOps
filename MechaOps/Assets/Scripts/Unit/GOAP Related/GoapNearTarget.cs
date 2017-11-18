@@ -39,10 +39,15 @@ public class GoapNearTarget : IGoapAction
     {
         // Since thr will only be player units to fight against, we will only wait for player unit died
         GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("PlayerIsDead", EnemyUnitDied);
+        if (!m_Planner)
+            m_Planner = GetComponent<GoapPlanner>();
+        m_Planner.m_CallbackStartPlan += UpdateEnemyInAttack;
     }
     protected virtual void OnDisable()
     {
         GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("PlayerIsDead", EnemyUnitDied);
+        if (m_Planner)
+            m_Planner.m_CallbackStartPlan -= UpdateEnemyInAttack;
     }
 
     public override void DoAction()
@@ -95,7 +100,6 @@ public class GoapNearTarget : IGoapAction
     /// <returns></returns>
     public override int GetCost()
     {
-        UpdateEnemyInAttack();
         if (m_EnemiesInAttack.Count > 0)
             return 0;
         return m_Cost;

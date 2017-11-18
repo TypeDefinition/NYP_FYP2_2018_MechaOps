@@ -41240,6 +41240,7 @@ MonoBehaviour:
     m_X: 0
     m_Y: 0
     m_Z: 0
+  m_TileSys: {fileID: 1617924543}
 --- !u!114 &1995284698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41279,7 +41280,7 @@ MonoBehaviour:
   m_PlayerTurnDisplay:
   - {fileID: 472193734}
   m_EnemyTurnDisplay: {fileID: 981891805}
-  m_PlayerTurn: 1
+  m_PlayerTurn: 0
 --- !u!114 &1995284700
 MonoBehaviour:
   m_ObjectHideFlags: 0

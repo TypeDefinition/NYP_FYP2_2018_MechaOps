@@ -33,21 +33,12 @@ public class GoapAttackAct : IGoapAction {
         m_AttackAct.TurnOn();
         zeActScheduler.ScheduleAction(m_AttackAct);
         WaitForFixedUpdate zeFixedWait = new WaitForFixedUpdate();
-        while (m_AttackAct.GetActionState() != IUnitAction.ActionState.Completed &&  m_AttackAct.GetActionState() != IUnitAction.ActionState.None)
+        bool zeWaitForComplete = false;
+        m_AttackAct.CompletedCallBack += () => zeWaitForComplete = true;
+        while (!zeWaitForComplete)
             yield return zeFixedWait;
         print("Finished Attacking");
+        m_UpdateRoutine = null;
         yield break;
-    }
-
-    /// <summary>
-    ///  To put in the preconditions required!
-    /// </summary>
-    public override void CheckCurrentState()
-    {
-        // If there is no target, go according to where those targets are!
-        if (!m_AttackAct.GetTargetUnitStats())
-        {
-
-        }
     }
 }

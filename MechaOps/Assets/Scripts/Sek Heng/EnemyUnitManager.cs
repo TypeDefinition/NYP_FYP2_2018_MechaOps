@@ -13,6 +13,8 @@ public class EnemyUnitManager : MonoBehaviour {
     protected List<GameObject> m_EnemyList;
     [SerializeField, Tooltip("Tile marker where all of the player units last gathered")]
     protected TileId m_TilePlayerUnits;
+    [SerializeField, Tooltip("The Tile system")]
+    protected TileSystem m_TileSys;
 
     public static EnemyUnitManager Instance
     {
@@ -68,6 +70,7 @@ public class EnemyUnitManager : MonoBehaviour {
     {
         yield return null;
         yield return null;
+        UpdateMarker();
         m_EnemyList = new List<GameObject>(KeepTrackOfUnits.Instance.m_AllEnemyUnitGO);
 #if GOAP_AI
         foreach (GameObject zeEnemy in m_EnemyList)
@@ -106,5 +109,21 @@ public class EnemyUnitManager : MonoBehaviour {
     {
         // TODO: improve this function!
         m_TilePlayerUnits = KeepTrackOfUnits.Instance.m_AllPlayerUnitGO[0].GetComponent<UnitStats>().CurrentTileID;
+        Tile zeTile = m_TileSys.GetTile(m_TilePlayerUnits);
+        if (!zeTile.GetIsWalkable() || zeTile.HasUnit())
+        {
+            // we only need the 1 radius tile!
+            TileId []zeTiles = m_TileSys.GetSurroundingTiles(m_TilePlayerUnits, 1);
+            while (!zeTile.GetIsWalkable() || zeTile.HasUnit())
+            {
+                foreach (TileId zeTileID in zeTiles)
+                {
+                    m_TilePlayerUnits = zeTileID;
+                    zeTile = m_TileSys.GetTile(m_TilePlayerUnits);
+                    if (zeTile.GetIsWalkable() && !zeTile.HasUnit())
+                        break;
+                }
+            }
+        }
     }
 }

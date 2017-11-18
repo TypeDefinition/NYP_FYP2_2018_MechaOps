@@ -64,6 +64,11 @@ public class GoapPlanner : MonoBehaviour
     protected Dictionary<string, IGoapAction> m_DictGoapAct = new Dictionary<string, IGoapAction>();
     protected Dictionary<string, IGoapGoal> m_DictGoapGoal = new Dictionary<string, IGoapGoal>();
 
+    /// <summary>
+    /// Whenever the planner is starting, this will be called!
+    /// </summary>
+    public Void_Void m_CallbackStartPlan;
+
     // Use this for initialization
     protected virtual void Start()
     {
@@ -91,24 +96,28 @@ public class GoapPlanner : MonoBehaviour
     public virtual IEnumerator StartPlanning()
     {
         ObserverSystemScript.Instance.SubscribeEvent("UnitMakeMove", FinishMakingMove);
+        m_FinishMoving = false;
         // TODO: Probably need coroutine but not now
         GoapNode zeCheapestActNode = null;
         IGoapGoal zeCurrentGoal;
         List<IGoapAction> zeListOfActToDo = null;
         WaitForSeconds zeAmountOfTimeWait = new WaitForSeconds(0.5f);
         // We check it's current state
-        if (m_Stats.EnemyInRange.Count > 0)
-        {
-            m_StateData.CurrentStates.Add("TargetInView");
-        }
-        else
-            m_StateData.CurrentStates.Remove("TargetInView");
         while (m_Stats.CurrentActionPoints > 0 && !m_FinishMoving)
         {
             yield return zeAmountOfTimeWait;
             if (zeCheapestActNode == null)
             {
+                if (m_CallbackStartPlan != null)
+                    m_CallbackStartPlan.Invoke();
                 // We will be following how the Design looks like now
+                // TODO
+                if (m_Stats.EnemyInRange.Count > 0)
+                {
+                    m_StateData.CurrentStates.Add("TargetInView");
+                }
+                else
+                    m_StateData.CurrentStates.Remove("TargetInView");
                 switch (m_UnderAttack)
                 {
                     case true:

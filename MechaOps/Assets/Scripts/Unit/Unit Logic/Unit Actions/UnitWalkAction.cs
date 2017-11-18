@@ -146,6 +146,10 @@ public class UnitWalkAction : IUnitAction {
         m_AnimDone = false;
         // Sending out an event that this game object has moved
         GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitMoveToTile", gameObject);
+        if (CompletedCallBack != null)
+        {
+            CompletedCallBack.Invoke();
+        }
         yield break;
     }
 

@@ -42,7 +42,7 @@ public class AttackUIGroupLogic : MonoBehaviour {
     private void OnDisable()
     {
         GameEventSystem.GetInstance().UnsubscribeFromEvent<IUnitAction>("SelectedAction", PressedAction);
-        m_TileSys.ClearPathMarkers();
+        //m_TileSys.ClearPathMarkers();
         // Set to inactive when the Attack UI is closed
         Destroy(m_TargetGO);
     }
@@ -109,20 +109,21 @@ public class AttackUIGroupLogic : MonoBehaviour {
         m_WorldCanvasTrans = GameObject.FindGameObjectWithTag("WorldCanvas").transform;
         m_TargetGO = Instantiate(m_TargetUIref, m_WorldCanvasTrans);
         m_TargetGO.SetActive(true);
-        m_TileSys = FindObjectOfType<TileSystem>();
+
+        //m_TileSys = FindObjectOfType<TileSystem>();
         //TODO Realised that highlighting of the tile minimum attack range to max attack range is impossible
         //m_AttackableTileRange = m_TileSys.GetReachableTiles(m_UnitAttackActRef.MaxAttackRange, m_UnitAttackActRef.m_UnitStats.CurrentTileID, null);
         //m_TileSys.SetPathMarkers(m_AttackableTileRange, null);
         // We will iterate through the list of alived units!
-        foreach (GameObject zeObj in KeepTrackOfUnits.Instance.m_AllEnemyUnitGO)
+        foreach (GameObject zeSeenUnit in m_UnitAttackActRef.m_UnitStats.EnemyInRange)
         {
             // we get the unit stat and tile distance!
-            UnitStats zeObjStat = zeObj.GetComponent<UnitStats>();
+            UnitStats zeObjStat = zeSeenUnit.GetComponent<UnitStats>();
             int zeTileDist = TileId.GetDistance(zeObjStat.CurrentTileID, m_UnitAttackActRef.m_UnitStats.CurrentTileID);
             // if within range, then add to the target list!
             if (zeTileDist <= m_UnitAttackActRef.MaxAttackRange && zeTileDist >= m_UnitAttackActRef.MinAttackRange)
             {
-                m_ListOfTargets.Add(zeObj);
+                m_ListOfTargets.Add(zeSeenUnit);
             }
         }
         if (m_ListOfTargets.Count > 0)

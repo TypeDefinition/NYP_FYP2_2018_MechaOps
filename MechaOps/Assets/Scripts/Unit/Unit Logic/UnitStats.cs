@@ -320,23 +320,34 @@ public class UnitStats : MonoBehaviour
     /// <param name="_movedUnit"></param>
     public void CheckEnemyInRange(GameObject _movedUnit)
     {
-        if (_movedUnit != gameObject && !CompareTag(_movedUnit.tag))
+        if (!CompareTag(_movedUnit.tag))
         {
-            UnitStats zeGOState = _movedUnit.GetComponent<UnitStats>();
-            int zeTileDist = TileId.GetDistance(CurrentTileID, zeGOState.CurrentTileID) + zeGOState.ConcealmentPoints;
-            // Need to make sure that the moveunit is not itself! and the tag is the opposing unit!
-            if (!m_EnemyInRange.Contains(_movedUnit))
+            if (_movedUnit != gameObject)
             {
-                if (zeTileDist <= ViewRange)
-                    m_EnemyInRange.Add(_movedUnit);
-            }
-            else
-            {
-                if (zeTileDist > ViewRange)
+                UnitStats zeGOState = _movedUnit.GetComponent<UnitStats>();
+                int zeTileDist = TileId.GetDistance(CurrentTileID, zeGOState.CurrentTileID) + zeGOState.ConcealmentPoints;
+                // Need to make sure that the moveunit is not itself! and the tag is the opposing unit!
+                if (!m_EnemyInRange.Contains(_movedUnit))
                 {
-                    // if the opposing unit is in range and 
-                    m_EnemyInRange.Remove(_movedUnit);
+                    if (zeTileDist <= ViewRange)
+                        m_EnemyInRange.Add(_movedUnit);
                 }
+                else
+                {
+                    if (zeTileDist > ViewRange)
+                    {
+                        // if the opposing unit is in range and 
+                        m_EnemyInRange.Remove(_movedUnit);
+                    }
+                }
+            }
+        }
+        else
+        {
+            // if u are the 1 moving, check for nearby enemies
+            if (gameObject == _movedUnit)
+            {
+                CheckEnemyInRange();
             }
         }
     }

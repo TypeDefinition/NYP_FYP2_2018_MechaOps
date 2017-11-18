@@ -141,6 +141,10 @@ public class UnitAttackAction : IUnitAction
         zeAttackAnim.CompletionCallback -= CallAnimDone;
         m_AnimDone = false;
         m_UpdateOfUnitAction = null;
+        if (CompletedCallBack != null)
+        {
+            CompletedCallBack.Invoke();
+        }
         yield break;
     }
 

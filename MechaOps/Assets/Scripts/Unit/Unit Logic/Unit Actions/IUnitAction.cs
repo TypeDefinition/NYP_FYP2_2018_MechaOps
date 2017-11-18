@@ -52,6 +52,8 @@ public abstract class IUnitAction : MonoBehaviour
     /// </summary>
     protected Coroutine m_UpdateOfUnitAction;
 
+    protected Void_Void m_CompletedCallBack;
+
     protected string UnitActionName
     {
         get { return m_UnitActionName; }
@@ -109,6 +111,18 @@ public abstract class IUnitAction : MonoBehaviour
     public UnitStats GetUnitStats()
     {
         return m_UnitStats;
+    }
+
+    public Void_Void CompletedCallBack
+    {
+        set
+        {
+            m_CompletedCallBack = value;
+        }
+        get
+        {
+            return m_CompletedCallBack;
+        }
     }
 
     /// <summary>
