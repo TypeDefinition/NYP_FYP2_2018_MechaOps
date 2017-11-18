@@ -715,6 +715,10 @@ public class TileSystem : MonoBehaviour
             GameObject.Destroy(m_PathMarkers[i]);
         }
         m_PathMarkers = null;
+
+        LineRenderer lineRenderer = gameObject.GetComponent<LineRenderer>();
+        Assert.IsTrue(lineRenderer != null, MethodBase.GetCurrentMethod().Name + " - LineRenderer required to work!");
+        lineRenderer.positionCount = 0;
     }
 
     // Pass in null if you do not want to render the reachable tiles or path.
