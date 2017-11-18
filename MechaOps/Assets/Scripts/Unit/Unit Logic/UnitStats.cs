@@ -55,6 +55,8 @@ public class UnitStats : MonoBehaviour
     private TileAttributeOverride[] m_TileAttributeOverrides;
     [SerializeField, Tooltip("The list of animation handler which will be accessed through dictionary. No linking required")]
     protected AnimationHandler[] m_AnimHandler;
+    [Tooltip("The tile system!")]
+    public TileSystem m_TileSys;
 
     protected Dictionary<string, AnimationHandler> m_NameAnimDict = new Dictionary<string, AnimationHandler>();
 
@@ -163,7 +165,16 @@ public class UnitStats : MonoBehaviour
     public TileId CurrentTileID
     {
         get { return m_UnitStatsJSON.m_CurrentTileID; }
-        set { m_UnitStatsJSON.m_CurrentTileID = value; }
+        set {
+            // we will need to make sure that the value is not the same!
+            if (!value.Equals(m_UnitStatsJSON.m_CurrentTileID))
+            {
+                // and then set the previous tile to have no units since it has moved towards a new tile
+                //m_TileSys.GetTile(m_UnitStatsJSON.m_CurrentTileID).Unit = null;
+                m_UnitStatsJSON.m_CurrentTileID = value;
+                //m_TileSys.GetTile(value).Unit = gameObject;
+            }
+        }
     }
 
     public IUnitAction CurrentActiveAction
@@ -201,6 +212,10 @@ public class UnitStats : MonoBehaviour
         yield return null;
         // check if there is any enemy in range when the game is starting!
         CheckEnemyInRange();
+        // And then we will need to register our tile top the tile system so that trespassing will happen!
+        if (!m_TileSys)
+            m_TileSys = FindObjectOfType<TileSystem>();
+        m_TileSys.GetTile(CurrentTileID).Unit = gameObject;
         yield break;
     }
 

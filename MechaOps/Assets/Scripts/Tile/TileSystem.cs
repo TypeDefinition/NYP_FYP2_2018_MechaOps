@@ -449,7 +449,7 @@ public class TileSystem : MonoBehaviour
                         if (hazard != null) { gCost += hazard.Attributes.MovementCost; }
                     }
 
-                    if (walkable == false)
+                    if (walkable == false || tile.HasUnit())
                     {
                         if (unwalkableList.Contains(cheapestNode.Id) == false)
                         {
@@ -623,7 +623,7 @@ public class TileSystem : MonoBehaviour
                     if (hazard != null) { gCost += hazard.Attributes.MovementCost; }
                 }
 
-                if (walkable == false)
+                if (walkable == false || tile.HasUnit())
                 {
                     continue;
                 }

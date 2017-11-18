@@ -91,13 +91,18 @@ public class WalkUI_Logic : MonoBehaviour {
     public void PressedConfirm()
     {
         // then the unit will walk that path! if the path exists
-        if (m_ReachablePath != null)
+        switch (m_ReachablePath.Length)
         {
-            m_UnitWalkRef.m_TilePath = m_ReachablePath;
-            UnitActionScheduler zeActScheduler = FindObjectOfType<UnitActionScheduler>();
-            m_UnitWalkRef.TurnOn();
-            zeActScheduler.ScheduleAction(m_UnitWalkRef);
-            Destroy(gameObject);
+            case 0:
+                print("Player is trying to walk no path");
+                break;
+            default:
+                m_UnitWalkRef.m_TilePath = m_ReachablePath;
+                UnitActionScheduler zeActScheduler = FindObjectOfType<UnitActionScheduler>();
+                m_UnitWalkRef.TurnOn();
+                zeActScheduler.ScheduleAction(m_UnitWalkRef);
+                Destroy(gameObject);
+                break;
         }
     }
 }

@@ -227,12 +227,6 @@ public class Tile : MonoBehaviour
 
     public bool GetIsWalkable()
     {
-        // A tile cannot be walked upon if there is a unit on it.
-        if (m_Unit != null)
-        {
-            return false;
-        }
-
         if (m_Hazard == null)
         {
             return m_Attributes.Walkable;
