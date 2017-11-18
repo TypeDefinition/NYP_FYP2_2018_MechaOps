@@ -66,6 +66,8 @@ public class EnemyUnitManager : MonoBehaviour {
     /// <returns></returns>
     public IEnumerator IterateThroughEnemyUpdate()
     {
+        yield return null;
+        yield return null;
         m_EnemyList = new List<GameObject>(KeepTrackOfUnits.Instance.m_AllEnemyUnitGO);
 #if GOAP_AI
         foreach (GameObject zeEnemy in m_EnemyList)

@@ -45187,7 +45187,7 @@ MonoBehaviour:
   m_PlayerTurnDisplay:
   - {fileID: 472193734}
   m_EnemyTurnDisplay: {fileID: 981891805}
-  m_PlayerTurn: 1
+  m_PlayerTurn: 0
 --- !u!114 &1995284700
 MonoBehaviour:
   m_ObjectHideFlags: 0

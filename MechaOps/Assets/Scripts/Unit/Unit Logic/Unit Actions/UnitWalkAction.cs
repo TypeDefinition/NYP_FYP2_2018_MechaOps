@@ -144,6 +144,8 @@ public class UnitWalkAction : IUnitAction {
         }
         zeMoveAnim.CompletionCallback -= CallAnimDone;
         m_AnimDone = false;
+        // Sending out an event that this game object has moved
+        GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitMoveToTile", gameObject);
         yield break;
     }
 
