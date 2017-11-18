@@ -31,14 +31,14 @@ public class KeepTrackOfUnits : MonoBehaviour {
 
     private void OnEnable()
     {
-        ObserverSystemScript.Instance.SubscribeEvent("EnemyUnitIsDead", SignalAnEnemyDied);
-        ObserverSystemScript.Instance.SubscribeEvent("PlayerIsDead", SignalPlayerUnitDied);
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("EnemyUnitIsDead", SignalAnEnemyDied);
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("PlayerIsDead", SignalAnEnemyDied);
     }
 
     private void OnDisable()
     {
-        ObserverSystemScript.Instance.UnsubscribeEvent("EnemyUnitIsDead", SignalAnEnemyDied);
-        ObserverSystemScript.Instance.UnsubscribeEvent("PlayerIsDead", SignalPlayerUnitDied);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("EnemyUnitIsDead", SignalAnEnemyDied);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("PlayerIsDead", SignalAnEnemyDied);
     }
 
     // Use this for initialization
@@ -48,19 +48,17 @@ public class KeepTrackOfUnits : MonoBehaviour {
     }
 
     /// <summary>
-    /// A quick function that iterates and keep track of any enemy units died.
-    /// Removes the enemy unit from the list.
+    /// A quick function that iterates and keep track of any player units died.
+    /// Removes the player unit from the list.
     /// </summary>
-    void SignalAnEnemyDied()
+    void SignalPlayerUnitDied(GameObject _deadGO)
     {
-        GameObject theMessageGO = ObserverSystemScript.Instance.GetStoredEventVariable<GameObject>("EnemyUnitIsDead");
-        m_AllEnemyUnitGO.Remove(theMessageGO);
-        ObserverSystemScript.Instance.RemoveTheEventVariableNextFrame("EnemyUnitIsDead");
-        // Send a notification if all of the enemy units die.
-        switch (m_AllEnemyUnitGO.Count)
+        m_AllPlayerUnitGO.Remove(_deadGO);
+        // Send a notification once all of the player's units die
+        switch (m_AllPlayerUnitGO.Count)
         {
             case 0:
-                ObserverSystemScript.Instance.TriggerEvent("EnemyAnnihilated");
+                GameEventSystem.GetInstance().TriggerEvent("PlayerAnnihilated");
                 break;
             default:
                 break;
@@ -68,19 +66,17 @@ public class KeepTrackOfUnits : MonoBehaviour {
     }
 
     /// <summary>
-    /// A quick function that iterates and keep track of any player units died.
-    /// Removes the player unit from the list.
+    /// A quick function that iterates and keep track of any enemy units died.
+    /// Removes the enemy unit from the list.
     /// </summary>
-    void SignalPlayerUnitDied()
+    void SignalAnEnemyDied(GameObject _deadGO)
     {
-        GameObject theMessageGO = ObserverSystemScript.Instance.GetStoredEventVariable<GameObject>("PlayerIsDead");
-        m_AllPlayerUnitGO.Remove(theMessageGO);
-        ObserverSystemScript.Instance.RemoveTheEventVariableNextFrame("PlayerIsDead");
-        // Send a notification once all of the player's units die
-        switch (m_AllPlayerUnitGO.Count)
+        m_AllEnemyUnitGO.Remove(_deadGO);
+        // Send a notification if all of the enemy units die.
+        switch (m_AllEnemyUnitGO.Count)
         {
             case 0:
-                ObserverSystemScript.Instance.TriggerEvent("PlayerAnnihilated");
+                GameEventSystem.GetInstance().TriggerEvent("EnemyAnnihilated");
                 break;
             default:
                 break;

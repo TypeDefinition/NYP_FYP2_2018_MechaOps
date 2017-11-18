@@ -78,7 +78,7 @@ public class UnitWalkAction : IUnitAction {
             default:
                 break;
         }
-        ObserverSystemScript.Instance.TriggerEvent("UnitFinishAction");
+        GameEventSystem.GetInstance().TriggerEvent("UnitFinishAction");
         m_ActionState = ActionState.Completed;
         yield break;
     }

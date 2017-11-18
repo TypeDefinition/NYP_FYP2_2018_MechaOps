@@ -170,9 +170,9 @@ public class UnitStats : MonoBehaviour
             if (!value.Equals(m_UnitStatsJSON.m_CurrentTileID))
             {
                 // and then set the previous tile to have no units since it has moved towards a new tile
-                //m_TileSys.GetTile(m_UnitStatsJSON.m_CurrentTileID).Unit = null;
+                m_TileSys.GetTile(m_UnitStatsJSON.m_CurrentTileID).Unit = null;
                 m_UnitStatsJSON.m_CurrentTileID = value;
-                //m_TileSys.GetTile(value).Unit = gameObject;
+                m_TileSys.GetTile(value).Unit = gameObject;
             }
         }
     }

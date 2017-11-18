@@ -50,14 +50,14 @@ public class EnemyUnitManager : MonoBehaviour {
 
     private void OnEnable()
     {
-        ObserverSystemScript.Instance.SubscribeEvent("PlayerAnnihilated", StopUpdate);
-        ObserverSystemScript.Instance.SubscribeEvent("EnemyAnnihilated", StopUpdate);
+        GameEventSystem.GetInstance().SubscribeToEvent("PlayerAnnihilated", StopUpdate);
+        GameEventSystem.GetInstance().SubscribeToEvent("EnemyAnnihilated", StopUpdate);
     }
 
     private void OnDisable()
     {
-        ObserverSystemScript.Instance.UnsubscribeEvent("PlayerAnnihilated", StopUpdate);
-        ObserverSystemScript.Instance.UnsubscribeEvent("EnemyAnnihilated", StopUpdate);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent("PlayerAnnihilated", StopUpdate);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent("EnemyAnnihilated", StopUpdate);
     }
 
     /// <summary>
@@ -80,7 +80,7 @@ public class EnemyUnitManager : MonoBehaviour {
 #else
 #endif
         m_UpdateOfManager = null;
-        ObserverSystemScript.Instance.TriggerEvent("TurnEnded");
+        GameEventSystem.GetInstance().TriggerEvent("TurnEnded");
         print("Finish Enemy Manager turn");
         yield break;
     }

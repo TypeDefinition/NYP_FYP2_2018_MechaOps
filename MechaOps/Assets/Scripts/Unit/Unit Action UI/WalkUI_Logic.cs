@@ -19,36 +19,20 @@ public class WalkUI_Logic : MonoBehaviour {
     public UnitWalkAction m_UnitWalkRef;
 
     private void OnEnable()
-    {
-        // TODO: Use another system aside from ObserverSystem for better optimization. maybe.
-        m_UnitWalkRef = ObserverSystemScript.Instance.GetStoredEventVariable<UnitWalkAction>("SelectedAction");
-        ObserverSystemScript.Instance.RemoveTheEventVariableNextFrame("SelectedAction");
+    { 
         // For now, it will just pick the 1st enemy in the array
-        ObserverSystemScript.Instance.TriggerEvent("ToggleSelectingUnit");
+        GameEventSystem.GetInstance().TriggerEvent("ToggleSelectingUnit");
         // Since the tile system is not linked from the start, find it at the scene
         m_TileSys = FindObjectOfType<TileSystem>();
         // And then access the tile stuff from the system and get reachable tiles
-        TileId[] zeReachableTiles = m_TileSys.GetReachableTiles(m_UnitWalkRef.m_MovementPoints, m_UnitWalkRef.GetUnitStats().CurrentTileID, m_UnitWalkRef.GetUnitStats().GetTileAttributeOverrides());
-        m_AllReachableTileHighlight = new List<TileId>(zeReachableTiles);
-        // We will need to iterate through all of the unit's available and check whether is it at the reachable tiles
-        foreach (GameObject zePlayerUnit in KeepTrackOfUnits.Instance.m_AllPlayerUnitGO)
-        {
-            UnitStats zeStat = zePlayerUnit.GetComponent<UnitStats>();
-            m_AllReachableTileHighlight.Remove(zeStat.CurrentTileID);
-        }
-        foreach (GameObject zeEnemyUnit in KeepTrackOfUnits.Instance.m_AllEnemyUnitGO)
-        {
-            UnitStats zeStat = zeEnemyUnit.GetComponent<UnitStats>();
-            m_AllReachableTileHighlight.Remove(zeStat.CurrentTileID);
-        }
-        m_TileSys.SetPathMarkers(m_AllReachableTileHighlight.ToArray(), null);
         GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("ClickedUnit", PlayerClickedTile);
+        GameEventSystem.GetInstance().SubscribeToEvent<IUnitAction>("SelectedAction", PressedAction);
     }
 
     private void OnDisable()
     {
         // This is the only way to remove that green line renderer!
-        m_TileSys.SetPathMarkers(null, null);
+        m_TileSys.ClearPathMarkers();
         GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("ClickedUnit", PlayerClickedTile);
     }
 
@@ -83,11 +67,14 @@ public class WalkUI_Logic : MonoBehaviour {
     public void PressedBack()
     {
         // since the PlayerUnitSystem will gob back to normal
-        ObserverSystemScript.Instance.TriggerEvent("ToggleSelectingUnit");
+        GameEventSystem.GetInstance().TriggerEvent("ToggleSelectingUnit");
         // Since this UI is not needed anymore!
         Destroy(gameObject);
     }
 
+    /// <summary>
+    /// When player pressed the confirm button at the UI
+    /// </summary>
     public void PressedConfirm()
     {
         // then the unit will walk that path! if the path exists
@@ -104,5 +91,18 @@ public class WalkUI_Logic : MonoBehaviour {
                 Destroy(gameObject);
                 break;
         }
+    }
+
+    /// <summary>
+    /// Called when the Player unit manager triggers this event!
+    /// </summary>
+    /// <param name="_action">The unit action that is supposed to pass in!</param>
+    protected virtual void PressedAction(IUnitAction _action)
+    {
+        m_UnitWalkRef = (UnitWalkAction)_action;
+        TileId[] zeReachableTiles = m_TileSys.GetReachableTiles(m_UnitWalkRef.m_MovementPoints, m_UnitWalkRef.GetUnitStats().CurrentTileID, m_UnitWalkRef.GetUnitStats().GetTileAttributeOverrides());
+        m_AllReachableTileHighlight = new List<TileId>(zeReachableTiles);
+        m_AllReachableTileHighlight.Remove(m_UnitWalkRef.m_UnitStats.CurrentTileID);
+        m_TileSys.SetPathMarkers(m_AllReachableTileHighlight.ToArray(), null);
     }
 }

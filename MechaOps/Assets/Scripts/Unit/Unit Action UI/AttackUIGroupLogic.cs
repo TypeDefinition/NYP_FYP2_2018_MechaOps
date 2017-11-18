@@ -32,41 +32,16 @@ public class AttackUIGroupLogic : MonoBehaviour {
 
     private void OnEnable()
     {
-        // TODO: Use another system aside from ObserverSystem for better optimization. maybe.
-        m_UnitAttackActRef = ObserverSystemScript.Instance.GetStoredEventVariable<UnitAttackAction>("SelectedAction");
-        ObserverSystemScript.Instance.RemoveTheEventVariableNextFrame("SelectedAction");
-        m_IndexOfTarget = 0;
-        m_WorldCanvasTrans = GameObject.FindGameObjectWithTag("WorldCanvas").transform;
-        m_TargetGO = Instantiate(m_TargetUIref, m_WorldCanvasTrans);
-        m_TargetGO.SetActive(true);
-        m_TileSys = FindObjectOfType<TileSystem>();
-        //TODO Realised that highlighting of the tile minimum attack range to max attack range is impossible
-        m_AttackableTileRange = m_TileSys.GetReachableTiles(m_UnitAttackActRef.MaxAttackRange, m_UnitAttackActRef.m_UnitStats.CurrentTileID, null);
-        m_TileSys.SetPathMarkers(m_AttackableTileRange, null);
-        // We will iterate through the list of alived units!
-        foreach (GameObject zeObj in KeepTrackOfUnits.Instance.m_AllEnemyUnitGO)
-        {
-            // we get the unit stat and tile distance!
-            UnitStats zeObjStat = zeObj.GetComponent<UnitStats>();
-            int zeTileDist = TileId.GetDistance(zeObjStat.CurrentTileID, m_UnitAttackActRef.m_UnitStats.CurrentTileID);
-            // if within range, then add to the target list!
-            if (zeTileDist <= m_UnitAttackActRef.MaxAttackRange && zeTileDist >= m_UnitAttackActRef.MinAttackRange)
-            {
-                m_ListOfTargets.Add(zeObj);
-            }
-        }
-        if (m_ListOfTargets.Count > 0)
-        {
-            // For now, it will just pick the 1st enemy in the array
-            KeepTrackOfGameObj(m_ListOfTargets[0]);
-        }
-        ObserverSystemScript.Instance.TriggerEvent("ToggleSelectingUnit");
         // And we will need to link the UnitActionScheduler then we can access the action! we can safely assume there is only 1!
+        m_IndexOfTarget = 0;
         m_actScheduler = FindObjectOfType<UnitActionScheduler>();
+        GameEventSystem.GetInstance().TriggerEvent("ToggleSelectingUnit");
+        GameEventSystem.GetInstance().SubscribeToEvent<IUnitAction>("SelectedAction", PressedAction);
     }
 
     private void OnDisable()
     {
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<IUnitAction>("SelectedAction", PressedAction);
         m_TileSys.ClearPathMarkers();
         // Set to inactive when the Attack UI is closed
         Destroy(m_TargetGO);
@@ -77,8 +52,6 @@ public class AttackUIGroupLogic : MonoBehaviour {
     /// </summary>
     public void DoTheAttackAction()
     {
-        //m_UnitAttackActRef.StartAction(m_OtherTarget);
-        //gameObject.SetActive(false);
         // set the target, schedule this action. then destroy this UI gameobject since it is not needed
         m_UnitAttackActRef.SetTarget(m_OtherTarget);
         m_UnitAttackActRef.TurnOn();
@@ -120,8 +93,42 @@ public class AttackUIGroupLogic : MonoBehaviour {
     public void PressBack()
     {
         // ensure that the player will be able to click on unit again!
-        ObserverSystemScript.Instance.TriggerEvent("ToggleSelectingUnit");
+        GameEventSystem.GetInstance().TriggerEvent("ToggleSelectingUnit");
         // there is no point in keeping this UI anymore so destroy it!
         Destroy(gameObject);
+    }
+    
+    /// <summary>
+    /// Called when the unit action is there!
+    /// </summary>
+    /// <param name="_action"></param>
+    protected virtual void PressedAction(IUnitAction _action)
+    {
+        // it should be the generic attack action
+        m_UnitAttackActRef = (UnitAttackAction)_action;
+        m_WorldCanvasTrans = GameObject.FindGameObjectWithTag("WorldCanvas").transform;
+        m_TargetGO = Instantiate(m_TargetUIref, m_WorldCanvasTrans);
+        m_TargetGO.SetActive(true);
+        m_TileSys = FindObjectOfType<TileSystem>();
+        //TODO Realised that highlighting of the tile minimum attack range to max attack range is impossible
+        //m_AttackableTileRange = m_TileSys.GetReachableTiles(m_UnitAttackActRef.MaxAttackRange, m_UnitAttackActRef.m_UnitStats.CurrentTileID, null);
+        //m_TileSys.SetPathMarkers(m_AttackableTileRange, null);
+        // We will iterate through the list of alived units!
+        foreach (GameObject zeObj in KeepTrackOfUnits.Instance.m_AllEnemyUnitGO)
+        {
+            // we get the unit stat and tile distance!
+            UnitStats zeObjStat = zeObj.GetComponent<UnitStats>();
+            int zeTileDist = TileId.GetDistance(zeObjStat.CurrentTileID, m_UnitAttackActRef.m_UnitStats.CurrentTileID);
+            // if within range, then add to the target list!
+            if (zeTileDist <= m_UnitAttackActRef.MaxAttackRange && zeTileDist >= m_UnitAttackActRef.MinAttackRange)
+            {
+                m_ListOfTargets.Add(zeObj);
+            }
+        }
+        if (m_ListOfTargets.Count > 0)
+        {
+            // For now, it will just pick the 1st enemy in the array
+            KeepTrackOfGameObj(m_ListOfTargets[0]);
+        }
     }
 }

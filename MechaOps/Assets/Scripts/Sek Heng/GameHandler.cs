@@ -66,17 +66,16 @@ public class GameHandler : MonoBehaviour {
 
     private void OnEnable()
     {
-        ObserverSystemScript.Instance.SubscribeEvent("PlayerAnnihilated", DisplayLosingScreenForPlayer);
-        ObserverSystemScript.Instance.SubscribeEvent("EnemyAnnihilated", DisplayWinningScreenForPlayer);
-        // Lamda function will need further testing. So this is for guinea pig experimentation!
-        ObserverSystemScript.Instance.SubscribeEvent("TurnEnded", () => PlayerTurn = !PlayerTurn);
+        GameEventSystem.GetInstance().SubscribeToEvent("PlayerAnnihilated", DisplayLosingScreenForPlayer);
+        GameEventSystem.GetInstance().SubscribeToEvent("EnemyAnnihilated", DisplayWinningScreenForPlayer);
+        GameEventSystem.GetInstance().SubscribeToEvent("TurnEnded", () => PlayerTurn = !PlayerTurn);
     }
 
     // Use this for initialization
     void OnDisable () {
-        ObserverSystemScript.Instance.UnsubscribeEvent("PlayerAnnihilated", DisplayLosingScreenForPlayer);
-        ObserverSystemScript.Instance.UnsubscribeEvent("EnemyAnnihilated", DisplayWinningScreenForPlayer);
-        ObserverSystemScript.Instance.UnsubscribeEvent("TurnEnded", () => PlayerTurn = !PlayerTurn);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent("PlayerAnnihilated", DisplayLosingScreenForPlayer);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent("EnemyAnnihilated", DisplayWinningScreenForPlayer);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent("TurnEnded", () => PlayerTurn = !PlayerTurn);
     }
 
     private IEnumerator Start()

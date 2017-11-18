@@ -32,20 +32,20 @@ public class PlayerUnitManager : MonoBehaviour {
 
     private void OnEnable()
     {
-        ObserverSystemScript.Instance.SubscribeEvent("PlayerAnnihilated", StopUpdate);
-        ObserverSystemScript.Instance.SubscribeEvent("EnemyAnnihilated", StopUpdate);
+        GameEventSystem.GetInstance().SubscribeToEvent("PlayerAnnihilated", StopUpdate);
+        GameEventSystem.GetInstance().SubscribeToEvent("EnemyAnnihilated", StopUpdate);
         GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("ClickedUnit", PlayerSelectUnit);
-        ObserverSystemScript.Instance.SubscribeEvent("ToggleSelectingUnit", ToggleThePlayerInput);
-        ObserverSystemScript.Instance.SubscribeEvent("UnitFinishAction", PollingForPlayerInput);
+        GameEventSystem.GetInstance().SubscribeToEvent("ToggleSelectingUnit", ToggleThePlayerInput);
+        GameEventSystem.GetInstance().SubscribeToEvent("UnitFinishAction", PollingForPlayerInput);
     }
 
     private void OnDisable()
     {
-        ObserverSystemScript.Instance.UnsubscribeEvent("PlayerAnnihilated", StopUpdate);
-        ObserverSystemScript.Instance.UnsubscribeEvent("EnemyAnnihilated", StopUpdate);
-        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("ClickedUnit", PlayerSelectUnit);
-        ObserverSystemScript.Instance.UnsubscribeEvent("ToggleSelectingUnit", ToggleThePlayerInput);
-        ObserverSystemScript.Instance.UnsubscribeEvent("UnitFinishAction", PollingForPlayerInput);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent("PlayerAnnihilated", StopUpdate);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent("EnemyAnnihilated", StopUpdate);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("ClickedUnit", PlayerSelectUnit);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent("ToggleSelectingUnit", ToggleThePlayerInput);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent("UnitFinishAction", PollingForPlayerInput);
     }
 
     public IEnumerator BeginUpdateOfPlayerUnits()
@@ -61,7 +61,7 @@ public class PlayerUnitManager : MonoBehaviour {
         }
         ObserverSystemScript.Instance.UnsubscribeEvent("UnitMakeMove", UnitHasMakeMove);
         m_UpdateOfManager = null;
-        ObserverSystemScript.Instance.TriggerEvent("TurnEnded");
+        GameEventSystem.GetInstance().TriggerEvent("TurnEnded");
         // Player no longer needs to interact with the game so might as well turn off the polling
         m_PlayerInputOnUnit.enabled = false;
         yield break;
@@ -89,6 +89,11 @@ public class PlayerUnitManager : MonoBehaviour {
     {
         m_UnitsYetToMakeMoves.Remove(ObserverSystemScript.Instance.GetStoredEventVariable<GameObject>("UnitMakeMove"));
         ObserverSystemScript.Instance.RemoveTheEventVariableNextFrame("UnitMakeMove");
+    }
+
+    protected void UnitHasMakeMove(GameObject _unitGoFinished)
+    {
+        m_UnitsYetToMakeMoves.Remove(_unitGoFinished);
     }
 
     protected void PlayerSelectUnit(GameObject _UnitGO)
@@ -157,7 +162,7 @@ public class PlayerUnitManager : MonoBehaviour {
     public void ToInstantiateSpecificActionUI(GameObject _SpecificUIGO, IUnitAction _SelectedAction)
     {
         m_CurrentSelectedAct = _SelectedAction;
-        ObserverSystemScript.Instance.StoreVariableInEvent("SelectedAction", m_CurrentSelectedAct);
         Instantiate(_SpecificUIGO, m_UICanvasTransform).SetActive(true);
+        GameEventSystem.GetInstance().TriggerEvent<IUnitAction>("SelectedAction", m_CurrentSelectedAct);
     }
 }

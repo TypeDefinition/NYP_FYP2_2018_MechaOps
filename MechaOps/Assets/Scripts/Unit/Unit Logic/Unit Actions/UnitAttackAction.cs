@@ -136,7 +136,7 @@ public class UnitAttackAction : IUnitAction
             default:
                 break;
         }
-        ObserverSystemScript.Instance.TriggerEvent("UnitFinishAction");
+        GameEventSystem.GetInstance().TriggerEvent("UnitFinishAction");
         m_ActionState = ActionState.Completed;
         zeAttackAnim.CompletionCallback -= CallAnimDone;
         m_AnimDone = false;
