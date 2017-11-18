@@ -6,6 +6,8 @@ using UnityEngine;
 /// </summary>
 public class StateData : MonoBehaviour {
     [Header("Debugging purpose")]
+    [SerializeField, Tooltip("Own unit stat")]
+    protected UnitStats m_Stat;
     [SerializeField, Tooltip("The Attacker stats")]
     protected UnitStats m_AttackerStat;
 
@@ -21,28 +23,36 @@ public class StateData : MonoBehaviour {
 
     protected virtual void OnEnable()
     {
-        // Since there is no need for 
-        UnitStats zeStat = GetComponent<UnitStats>();
+        m_Stat = GetComponent<UnitStats>();
         // need to listen for being attacked!
-        zeStat.m_HealthDropCallback += GetAttackerGO;
+        m_Stat.m_HealthDropCallback += GetAttackerGO;
     }
 
 
     protected virtual void OnDisable()
     {
-        UnitStats zeStat = GetComponent<UnitStats>();
-        if (zeStat)
-        // need to listen for being attacked!
-            zeStat.m_HealthDropCallback -= GetAttackerGO;
+        if (m_Stat)
+            // need to listen for being attacked!
+            m_Stat.m_HealthDropCallback -= GetAttackerGO;
     }
 
     /// <summary>
     /// Getting the attacking 
     /// </summary>
     /// <param name="_attacker"></param>
-    protected void GetAttackerGO(UnitStats _attacker)
+    public void GetAttackerGO(UnitStats _attacker)
     {
         m_AttackerStat = _attacker;
         m_CurrentStates.Add("UnderAttack");
+    }
+
+    public void StartInitState()
+    {
+        if (m_Stat.EnemyInRange.Count > 0)
+        {
+            m_CurrentStates.Add("TargetInView");
+        }
+        else
+            CurrentStates.Remove("TargetInView");
     }
 }

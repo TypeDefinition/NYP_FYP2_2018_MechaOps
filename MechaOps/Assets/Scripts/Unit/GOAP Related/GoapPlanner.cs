@@ -58,7 +58,6 @@ public class GoapPlanner : MonoBehaviour
     protected bool m_FinishMoving = false;
     [SerializeField, Tooltip("The flag to know if it is under attacked")]
     protected bool m_UnderAttack = false;
-    //public HashSet<string> m_CurrentStates = new HashSet<string>();
 
     // Basically the name of the goap action as key, the reference to GoapAction as value
     protected Dictionary<string, IGoapAction> m_DictGoapAct = new Dictionary<string, IGoapAction>();
@@ -86,6 +85,8 @@ public class GoapPlanner : MonoBehaviour
         {
             m_DictGoapGoal.Add(zeGoal.m_GoapName, zeGoal);
         }
+
+        m_CallbackStartPlan += m_StateData.StartInitState;
     }
 
     protected void FinishMakingMove()
@@ -112,12 +113,6 @@ public class GoapPlanner : MonoBehaviour
                     m_CallbackStartPlan.Invoke();
                 // We will be following how the Design looks like now
                 // TODO
-                if (m_Stats.EnemyInRange.Count > 0)
-                {
-                    m_StateData.CurrentStates.Add("TargetInView");
-                }
-                else
-                    m_StateData.CurrentStates.Remove("TargetInView");
                 switch (m_UnderAttack)
                 {
                     case true:
