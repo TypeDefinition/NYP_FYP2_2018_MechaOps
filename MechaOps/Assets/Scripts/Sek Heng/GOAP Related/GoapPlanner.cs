@@ -95,6 +95,7 @@ public class GoapPlanner : MonoBehaviour
         GoapNode zeCheapestActNode = null;
         IGoapGoal zeCurrentGoal;
         List<IGoapAction> zeListOfActToDo = null;
+        WaitForSeconds zeAmountOfTimeWait = new WaitForSeconds(0.5f);
         // We check it's current state
         if (m_Stats.EnemyInRange.Count > 0)
         {
@@ -104,6 +105,7 @@ public class GoapPlanner : MonoBehaviour
             m_StateData.CurrentStates.Remove("TargetInView");
         while (m_Stats.CurrentActionPoints > 0 && !m_FinishMoving)
         {
+            yield return zeAmountOfTimeWait;
             if (zeCheapestActNode == null)
             {
                 // We will be following how the Design looks like now

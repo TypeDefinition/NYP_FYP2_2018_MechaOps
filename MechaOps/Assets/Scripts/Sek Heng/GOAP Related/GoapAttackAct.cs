@@ -33,7 +33,7 @@ public class GoapAttackAct : IGoapAction {
         m_AttackAct.TurnOn();
         zeActScheduler.ScheduleAction(m_AttackAct);
         WaitForFixedUpdate zeFixedWait = new WaitForFixedUpdate();
-        while (m_AttackAct.GetActionState() != IUnitAction.ActionState.Completed)
+        while (m_AttackAct.GetActionState() != IUnitAction.ActionState.Completed &&  m_AttackAct.GetActionState() != IUnitAction.ActionState.None)
             yield return zeFixedWait;
         print("Finished Attacking");
         yield break;

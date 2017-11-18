@@ -9342,7 +9342,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4393538622445380, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 114930548130969464, guid: d8eadb572c9988f4eb0b84df420422e5,
         type: 2}
@@ -9376,6 +9376,10 @@ Prefab:
     - target: {fileID: 114669511403171312, guid: d8eadb572c9988f4eb0b84df420422e5,
         type: 2}
       propertyPath: m_DamagePoints
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258380024048378, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -29843,7 +29847,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4355928435855886, guid: 00b9322e7d21b114c8c2b05e00f5e754, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 114006940085896276, guid: 00b9322e7d21b114c8c2b05e00f5e754,
         type: 2}
@@ -34079,7 +34083,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4633074402712596, guid: 525f4ac0fe7c38e4b8d0c7d5edd2a90e, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 114191423135492830, guid: 525f4ac0fe7c38e4b8d0c7d5edd2a90e,
         type: 2}
