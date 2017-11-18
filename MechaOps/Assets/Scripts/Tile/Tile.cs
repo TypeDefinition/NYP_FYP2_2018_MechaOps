@@ -92,7 +92,6 @@ public class TileId
 [DisallowMultipleComponent]
 public class Tile : MonoBehaviour
 {
-
     // ID
     [SerializeField, HideInInspector] private bool m_IdInitialized = false;
     [SerializeField] private TileId m_Id = null;
@@ -108,7 +107,18 @@ public class Tile : MonoBehaviour
     [SerializeField] private HazardType m_HazardType = HazardType.None;
 
     // The unit currently on this tile.
-    public GameObject m_Unit = null;
+    private GameObject m_Unit = null;
+
+    public bool HasUnit()
+    {
+        return m_Unit != null;
+    }
+
+    public GameObject Unit
+    {
+        get { return m_Unit; }
+        set { m_Unit = value; }
+    }
 
     public void InitId(TileId _id)
     {
@@ -217,6 +227,12 @@ public class Tile : MonoBehaviour
 
     public bool GetIsWalkable()
     {
+        // A tile cannot be walked upon if there is a unit on it.
+        if (m_Unit != null)
+        {
+            return false;
+        }
+
         if (m_Hazard == null)
         {
             return m_Attributes.Walkable;

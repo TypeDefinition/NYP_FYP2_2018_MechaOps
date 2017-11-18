@@ -10,8 +10,8 @@ using UnityEditor;
 public enum TileType
 {
     Normal = 0,
-    FullCover,
-    HalfCover,
+    Cover,
+    Shield,
     Obstacle,
     Swirl,
     Stealth,
@@ -26,6 +26,7 @@ public class TileAttributes
     [SerializeField] private bool m_Walkable = true;
     [SerializeField] private int m_MovementCost = 1;
     [SerializeField] private int m_ConcealmentPoints = 0;
+    [SerializeField] private int m_EvasionPoints = 0;
     // This is the GameObject that will be rendered.
     [SerializeField] private TileDisplay m_DisplayObject = null;
 
@@ -35,6 +36,8 @@ public class TileAttributes
     public int MovementCost { get { return m_MovementCost; } }
 
     public int ConcealmentPoints { get { return m_ConcealmentPoints; } }
+
+    public int EvasionPoints { get { return m_EvasionPoints; } }
 
     public TileDisplay DisplayObject { get { return m_DisplayObject; } }
 
@@ -57,7 +60,8 @@ public class TileAttributeOverride
     [SerializeField] private bool m_Walkable = true;
     [SerializeField] private int m_MovementCost = 1;
     [SerializeField] private int m_ConcealmentPoints = 0;
-    
+    [SerializeField] private int m_EvasionPoints = 0;
+
     public TileType Type
     {
         get
@@ -76,6 +80,8 @@ public class TileAttributeOverride
     public int MovementCost { get { return m_MovementCost; } }
 
     public int ConcealmentPoints { get { return m_ConcealmentPoints; } }
+
+    public int EvasionPoints { get { return m_EvasionPoints; } }
 
 #if UNITY_EDITOR
     public void EditorValidate()
