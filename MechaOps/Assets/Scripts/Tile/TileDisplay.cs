@@ -6,8 +6,8 @@ using UnityEngine.Assertions;
 
 public class TileDisplay : MonoBehaviour {
 
-    [SerializeField] private bool m_OwnerInitialized = false;
-    [SerializeField] private Tile m_Owner = null;
+    [SerializeField, HideInInspector] private bool m_OwnerInitialized = false;
+    [SerializeField, HideInInspector] private Tile m_Owner = null;
 
     public void InitOwner(Tile _owner) {
         // _radius should never be < 0.

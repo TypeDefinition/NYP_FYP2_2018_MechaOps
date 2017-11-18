@@ -18,7 +18,11 @@ public class GetPlayerInputUnit : MonoBehaviour {
         {
             Ray clickedRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit clickedObj;
-            if (Physics.Raycast(clickedRay, out clickedObj))
+            List<string> layersToCheck = new List<string>();
+            layersToCheck.Add("Unit");
+            layersToCheck.Add("Tile");
+            int layerMask = LayerMask.GetMask(layersToCheck.ToArray());
+            if (Physics.Raycast(clickedRay, out clickedObj, Mathf.Infinity, layerMask))
             {
                 m_ClickedPlayerUnitGO = clickedObj.collider.gameObject;
                 GameEventSystem.GetInstance().TriggerEvent<GameObject>("ClickedUnit", m_ClickedPlayerUnitGO);

@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23278303466620296}
   - component: {fileID: 64312302759002132}
   - component: {fileID: 114834877568814252}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tile_Obstacle
   m_TagString: TileDisplay
   m_Icon: {fileID: 0}

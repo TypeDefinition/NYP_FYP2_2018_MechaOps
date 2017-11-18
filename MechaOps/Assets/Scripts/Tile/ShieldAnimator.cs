@@ -20,8 +20,6 @@ public class ShieldAnimator : MonoBehaviour
     [SerializeField] private float m_AnimateShieldRegenSpeed = 5.0f;
 
     private MeshRenderer m_MeshRenderer = null;
-    private bool m_IsAnimationRunning = false;
-    private AnimationLock m_AnimationLock; // This doesn't do shit probably because Coroutines are done in the main thread. I'm too fucking pissed off to remove it. Just keep it there.
 
     public float AnimateTurnOffSpeed
     {
@@ -46,18 +44,11 @@ public class ShieldAnimator : MonoBehaviour
         get { return m_AnimateShieldRegenSpeed; }
         set { m_AnimateShieldRegenSpeed = Mathf.Max(0.0005f, value); }
     }
-
-    public bool IsAnimationRunning
-    {
-        get { return m_IsAnimationRunning; }
-    }
-
+    
     private void Start()
     {
         m_MeshRenderer = gameObject.GetComponent<MeshRenderer>();
         Assert.IsTrue(m_MeshRenderer != null, MethodBase.GetCurrentMethod().Name + " - MeshRenderer required for this to work!");
-
-        m_AnimationLock = new AnimationLock();
     }
 
     private Color ChangeColor(Color _color, float _r, float _g, float _b, float _a)
@@ -91,200 +82,130 @@ public class ShieldAnimator : MonoBehaviour
 
     private IEnumerator TurnOffAnimationCoroutine()
     {
-        if (m_IsAnimationRunning)
-        {
-            Debug.Log(MethodBase.GetCurrentMethod().Name + " - Cannot start an animation when another animation is currently running!");
-            yield break;
-        }
-        m_IsAnimationRunning = true;
+        bool redDone = false;
+        bool greenDone = false;
+        bool blueDone = false;
+        bool alphaDone = false;
 
-        Assert.IsTrue(m_AnimationLock != null);
-        if (Monitor.TryEnter(m_AnimationLock, 0))
+        while (true)
         {
-            //Debug.Log(MethodBase.GetCurrentMethod().Name + " - Obtained Lock");
-            try
+            redDone = EqualFloats(m_MeshRenderer.material.color.r, m_OffColor.r);
+            greenDone = EqualFloats(m_MeshRenderer.material.color.g, m_OffColor.g);
+            blueDone = EqualFloats(m_MeshRenderer.material.color.b, m_OffColor.b);
+            alphaDone = EqualFloats(m_MeshRenderer.material.color.a, m_OffColor.a);
+        
+            if (redDone && greenDone && blueDone && alphaDone)
             {
-                bool redDone = false;
-                bool greenDone = false;
-                bool blueDone = false;
-                bool alphaDone = false;
-
-                while (true)
-                {
-                    redDone = EqualFloats(m_MeshRenderer.material.color.r, m_OffColor.r);
-                    greenDone = EqualFloats(m_MeshRenderer.material.color.g, m_OffColor.g);
-                    blueDone = EqualFloats(m_MeshRenderer.material.color.b, m_OffColor.b);
-                    alphaDone = EqualFloats(m_MeshRenderer.material.color.a, m_OffColor.a);
-
-                    if (redDone && greenDone && blueDone && alphaDone)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        m_MeshRenderer.material.color = ChangeColor(m_MeshRenderer.material.color, m_OffColor, m_AnimateTurnOffSpeed * Time.deltaTime);
-                        yield return null;
-                    }
-                }
+                break;
             }
-            finally
+            else
             {
-                Monitor.Exit(m_AnimationLock);
-                Debug.Log(MethodBase.GetCurrentMethod().Name + " - Completed");
+                m_MeshRenderer.material.color = ChangeColor(m_MeshRenderer.material.color, m_OffColor, m_AnimateTurnOffSpeed * Time.deltaTime);
+                yield return null;
             }
         }
-        else
-        {
-            //Debug.Log(MethodBase.GetCurrentMethod().Name + " - Cannot start an animation when another animation is currently running!");
-        }
 
-        m_IsAnimationRunning = false;
+        Debug.Log(MethodBase.GetCurrentMethod().Name + " - Completed");
     }
 
     private IEnumerator TurnOnAnimationCoroutine()
     {
-        if (m_IsAnimationRunning)
+        bool redDone = false;
+        bool greenDone = false;
+        bool blueDone = false;
+        bool alphaDone = false;
+        
+        while (true)
         {
-            Debug.Log(MethodBase.GetCurrentMethod().Name + " - Cannot start an animation when another animation is currently running!");
-            yield break;
-        }
-        m_IsAnimationRunning = true;
-
-        Assert.IsTrue(m_AnimationLock != null);
-        if (Monitor.TryEnter(m_AnimationLock, 0))
-        {
-            //Debug.Log(MethodBase.GetCurrentMethod().Name + " - Obtained Lock");
-            try
+            redDone = EqualFloats(m_MeshRenderer.material.color.r, m_OnColor.r);
+            greenDone = EqualFloats(m_MeshRenderer.material.color.g, m_OnColor.g);
+            blueDone = EqualFloats(m_MeshRenderer.material.color.b, m_OnColor.b);
+            alphaDone = EqualFloats(m_MeshRenderer.material.color.a, m_OnColor.a);
+        
+            if (redDone && greenDone && blueDone && alphaDone)
             {
-                bool redDone = false;
-                bool greenDone = false;
-                bool blueDone = false;
-                bool alphaDone = false;
-
-                while (true)
-                {
-                    redDone = EqualFloats(m_MeshRenderer.material.color.r, m_OnColor.r);
-                    greenDone = EqualFloats(m_MeshRenderer.material.color.g, m_OnColor.g);
-                    blueDone = EqualFloats(m_MeshRenderer.material.color.b, m_OnColor.b);
-                    alphaDone = EqualFloats(m_MeshRenderer.material.color.a, m_OnColor.a);
-
-                    if (redDone && greenDone && blueDone && alphaDone)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        m_MeshRenderer.material.color = ChangeColor(m_MeshRenderer.material.color, m_OnColor, m_AnimateTurnOnSpeed * Time.deltaTime);
-                        yield return null;
-                    }
-                }
+                break;
             }
-            finally
+            else
             {
-                Monitor.Exit(m_AnimationLock);
-                Debug.Log(MethodBase.GetCurrentMethod().Name + " - Completed");
+                m_MeshRenderer.material.color = ChangeColor(m_MeshRenderer.material.color, m_OnColor, m_AnimateTurnOnSpeed * Time.deltaTime);
+                yield return null;
             }
         }
-        else
-        {
-            //Debug.Log(MethodBase.GetCurrentMethod().Name + " - Cannot start an animation when another animation is currently running!");
-        }
 
-        m_IsAnimationRunning = false;
+        Debug.Log(MethodBase.GetCurrentMethod().Name + " - Completed");
     }
 
     private IEnumerator ShieldBreakAnimationCoroutine()
     {
-        if (m_IsAnimationRunning)
+        // Turn off shield.
+        bool redDone = false;
+        bool greenDone = false;
+        bool blueDone = false;
+        bool alphaDone = false;
+
+        while (true)
         {
-            Debug.Log(MethodBase.GetCurrentMethod().Name + " - Cannot start an animation when another animation is currently running!");
-            yield break;
-        }
-        m_IsAnimationRunning = true;
-
-        Assert.IsTrue(m_AnimationLock != null);
-        if (Monitor.TryEnter(m_AnimationLock, 0))
-        {
-            //Debug.Log(MethodBase.GetCurrentMethod().Name + " - Obtained Lock");
-            try
-            {
-                // Turn off shield.
-                bool redDone = false;
-                bool greenDone = false;
-                bool blueDone = false;
-                bool alphaDone = false;
-
-                while (true)
-                {
-                    redDone = EqualFloats(m_MeshRenderer.material.color.r, m_OffColor.r);
-                    greenDone = EqualFloats(m_MeshRenderer.material.color.g, m_OffColor.g);
-                    blueDone = EqualFloats(m_MeshRenderer.material.color.b, m_OffColor.b);
-                    alphaDone = EqualFloats(m_MeshRenderer.material.color.a, m_OffColor.a);
-
-                    if (redDone && greenDone && blueDone && alphaDone)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        m_MeshRenderer.material.color = ChangeColor(m_MeshRenderer.material.color, m_OffColor, m_AnimateShieldBreakSpeed * Time.deltaTime);
-                        yield return null;
-                    }
-                }
-
-                // Wait for a while.
-                //yield return new WaitForSeconds(2.0f);
-
-                // Turn on Shields
-                redDone = false;
-                greenDone = false;
-                blueDone = false;
-                alphaDone = false;
-
-                while (true)
-                {
-                    redDone = EqualFloats(m_MeshRenderer.material.color.r, m_OnColor.r);
-                    greenDone = EqualFloats(m_MeshRenderer.material.color.g, m_OnColor.g);
-                    blueDone = EqualFloats(m_MeshRenderer.material.color.b, m_OnColor.b);
-                    alphaDone = EqualFloats(m_MeshRenderer.material.color.a, m_OnColor.a);
-
-                    if (redDone && greenDone && blueDone && alphaDone)
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        m_MeshRenderer.material.color = ChangeColor(m_MeshRenderer.material.color, m_OnColor, m_AnimateShieldRegenSpeed * Time.deltaTime);
-                        yield return null;
-                    }
-                }
-            }
-            finally
-            {
-                Monitor.Exit(m_AnimationLock);
-                Debug.Log(MethodBase.GetCurrentMethod().Name + " - Completed");
-            }
-        }
-        else
-        {
-            //Debug.Log(MethodBase.GetCurrentMethod().Name + " - Cannot start an animation when another animation is currently running!");
-        }
+            redDone = EqualFloats(m_MeshRenderer.material.color.r, m_OffColor.r);
+            greenDone = EqualFloats(m_MeshRenderer.material.color.g, m_OffColor.g);
+            blueDone = EqualFloats(m_MeshRenderer.material.color.b, m_OffColor.b);
+            alphaDone = EqualFloats(m_MeshRenderer.material.color.a, m_OffColor.a);
         
-        m_IsAnimationRunning = false;
+            if (redDone && greenDone && blueDone && alphaDone)
+            {
+                break;
+            }
+            else
+            {
+                m_MeshRenderer.material.color = ChangeColor(m_MeshRenderer.material.color, m_OffColor, m_AnimateShieldBreakSpeed * Time.deltaTime);
+                yield return null;
+            }
+        }
+
+        yield return new WaitForSeconds(2.0f);
+
+        // Turn on Shields
+        redDone = false;
+        greenDone = false;
+        blueDone = false;
+        alphaDone = false;
+
+        while (true)
+        {
+            redDone = EqualFloats(m_MeshRenderer.material.color.r, m_OnColor.r);
+            greenDone = EqualFloats(m_MeshRenderer.material.color.g, m_OnColor.g);
+            blueDone = EqualFloats(m_MeshRenderer.material.color.b, m_OnColor.b);
+            alphaDone = EqualFloats(m_MeshRenderer.material.color.a, m_OnColor.a);
+
+            if (redDone && greenDone && blueDone && alphaDone)
+            {
+                break;
+            }
+            else
+            {
+                m_MeshRenderer.material.color = ChangeColor(m_MeshRenderer.material.color, m_OnColor, m_AnimateShieldRegenSpeed * Time.deltaTime);
+                yield return null;
+            }
+        }
+           
+        Debug.Log(MethodBase.GetCurrentMethod().Name + " - Completed");
     }
 
     public void StartTurnOffAnimation()
     {
+        StopAllCoroutines();
         StartCoroutine("TurnOffAnimationCoroutine");
     }
 
     public void StartTurnOnAnimation()
     {
+        StopAllCoroutines();
         StartCoroutine("TurnOnAnimationCoroutine");
     }
 
     public void StartShieldBreakAnimation()
     {
+        StopAllCoroutines();
         StartCoroutine("ShieldBreakAnimationCoroutine");
     }
 

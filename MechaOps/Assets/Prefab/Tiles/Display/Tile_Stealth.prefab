@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114127839350334378}
   - component: {fileID: 114621463578543154}
   - component: {fileID: 64080943135641246}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tile_Stealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
