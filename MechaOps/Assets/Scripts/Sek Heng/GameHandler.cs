@@ -64,21 +64,26 @@ public class GameHandler : MonoBehaviour {
         }
     }
 
-    private void OnEnable()
+    protected void OnEnable()
     {
         GameEventSystem.GetInstance().SubscribeToEvent("PlayerAnnihilated", DisplayLosingScreenForPlayer);
         GameEventSystem.GetInstance().SubscribeToEvent("EnemyAnnihilated", DisplayWinningScreenForPlayer);
-        GameEventSystem.GetInstance().SubscribeToEvent("TurnEnded", () => PlayerTurn = !PlayerTurn);
+        GameEventSystem.GetInstance().SubscribeToEvent("TurnEnded", TurnEnded);
     }
 
     // Use this for initialization
-    void OnDisable () {
+    protected void OnDisable () {
         GameEventSystem.GetInstance().UnsubscribeFromEvent("PlayerAnnihilated", DisplayLosingScreenForPlayer);
         GameEventSystem.GetInstance().UnsubscribeFromEvent("EnemyAnnihilated", DisplayWinningScreenForPlayer);
-        GameEventSystem.GetInstance().UnsubscribeFromEvent("TurnEnded", () => PlayerTurn = !PlayerTurn);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent("TurnEnded", TurnEnded);
     }
 
-    private IEnumerator Start()
+    protected void TurnEnded()
+    {
+        PlayerTurn = !PlayerTurn;
+    }
+
+    protected IEnumerator Start()
     {
         yield return null;
         // Maybe there will be a introduction or something thus this is a coroutine to delay the start
@@ -90,7 +95,7 @@ public class GameHandler : MonoBehaviour {
     /// <summary>
     /// Displaying the winning UI for player
     /// </summary>
-    void DisplayWinningScreenForPlayer()
+    protected void DisplayWinningScreenForPlayer()
     {
         m_PlayerWonDisplayGO.SetActive(true);
         foreach (GameObject zeDisplay in m_PlayerTurnDisplay)
@@ -100,7 +105,7 @@ public class GameHandler : MonoBehaviour {
         m_EnemyTurnDisplay.SetActive(false);
     }
 
-    void DisplayLosingScreenForPlayer()
+    protected void DisplayLosingScreenForPlayer()
     {
         m_PlayerLostDisplayGO.SetActive(true);
         foreach (GameObject zeDisplay in m_PlayerTurnDisplay)
