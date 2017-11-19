@@ -65,12 +65,13 @@ public class GoapNearTarget : IGoapAction
         // TODO: Improve this part as we dont have time to do some of the amazing AI and stick to this shitty AI instead
         // We will get the shortest path to the 1st player unit
         TileSystem zeTileSys = FindObjectOfType<TileSystem>();
+        int zeEnemyIndex = 0;
         // Maybe we can randomize but we will just get the 1st unit!
-        UnitStats zeEnemyStat = m_Planner.m_Stats.EnemyInRange[0].GetComponent<UnitStats>();
+        UnitStats zeEnemyStat = m_Planner.m_Stats.EnemyInRange[zeEnemyIndex].GetComponent<UnitStats>();
         TileId zeDestinationTileID = zeEnemyStat.CurrentTileID;
         Tile zeDestTile = zeTileSys.GetTile(zeDestinationTileID);
         // we will get the surrounding tiles and check whether they are available! 
-        TileId[] zeTiles = zeTileSys.GetSurroundingTiles(zeEnemyStat.CurrentTileID, 1);
+        TileId[] zeTiles = zeTileSys.GetSurroundingTiles(zeEnemyStat.CurrentTileID, m_AttackAct.MaxAttackRange);
         while (zeDestTile.HasUnit() || !zeDestTile.GetIsWalkable())
         {
             foreach (TileId zeTileCheck in zeTiles)
@@ -79,6 +80,12 @@ public class GoapNearTarget : IGoapAction
                 zeDestTile = zeTileSys.GetTile(zeDestinationTileID);
                 if (zeDestTile.GetIsWalkable() && !zeDestTile.HasUnit())
                     break;
+            }
+            // if still cannot find any tile
+            if (zeDestTile.HasUnit() || !zeDestTile.GetIsWalkable())
+            {
+                // Then we will have to another target!
+                zeEnemyStat = m_Planner.m_Stats.EnemyInRange[++zeEnemyIndex].GetComponent<UnitStats>();
             }
         }
         TileId[] zePathToEnemy = zeTileSys.GetPath(999, m_Planner.m_Stats.CurrentTileID, zeDestinationTileID, m_Planner.m_Stats.GetTileAttributeOverrides());
