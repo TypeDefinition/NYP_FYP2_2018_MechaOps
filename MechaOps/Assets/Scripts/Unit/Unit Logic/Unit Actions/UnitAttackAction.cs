@@ -6,7 +6,7 @@ using UnityEngine.Assertions;
 
 public class UnitAttackAction : IUnitAction
 {
-    [Header("The References and variables needed for Unit Attack")]
+    [Header("Variables needed for Unit Attack")]
     [SerializeField, Tooltip("Minimum attack range of the unit")]
     private int m_MinAttackRange;
     [SerializeField, Tooltip("Maximum attack range of the unit")]
@@ -15,7 +15,9 @@ public class UnitAttackAction : IUnitAction
     private int m_AccuracyPoints;
     [SerializeField, Tooltip("The damage point it dealt")]
     private int m_DamagePoints;
-
+    [SerializeField, Tooltip("Unit Attack Animation. TODO, make it more generic")]
+    protected PanzerAnimationHandler_Attack m_AttackAnim;
+    [Header("Debugging purpose")]
     [SerializeField, Tooltip("The unit stat of the target")]
     private UnitStats m_TargetUnitStats;
 
