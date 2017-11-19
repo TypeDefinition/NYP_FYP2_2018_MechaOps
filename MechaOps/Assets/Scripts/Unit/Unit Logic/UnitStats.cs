@@ -58,8 +58,6 @@ public class UnitStats : MonoBehaviour
     [Tooltip("The tile system!")]
     public TileSystem m_TileSys;
 
-    protected Dictionary<string, AnimationHandler> m_NameAnimDict = new Dictionary<string, AnimationHandler>();
-
     /// <summary>
     /// A callback function will appear when ever the health point decreases
     /// </summary>
@@ -202,12 +200,6 @@ public class UnitStats : MonoBehaviour
         if (m_UnitStatsJSON.m_Name == null)
         {
             m_UnitStatsJSON.m_Name = name;
-        }
-        m_AnimHandler = GetComponents<AnimationHandler>();
-        // Then iterate through the handler
-        foreach (AnimationHandler zeHandle in m_AnimHandler)
-        {
-            m_NameAnimDict.Add(zeHandle.m_HandleName, zeHandle);
         }
         yield return null;
         // check if there is any enemy in range when the game is starting!
@@ -357,16 +349,6 @@ public class UnitStats : MonoBehaviour
     protected void EnemyInRangeDead(GameObject _deadUnit)
     {
         m_EnemyInRange.Remove(_deadUnit);
-    }
-
-    public AnimationHandler GetAnimHandler(string _name)
-    {
-        AnimationHandler zeHandler = null;
-        if (m_NameAnimDict.TryGetValue(_name, out zeHandler))
-        {
-            Assert.IsNotNull(zeHandler, "Cant access the animation handler at GetAnimHandler");
-        }
-        return zeHandler;
     }
 
 #if UNITY_EDITOR

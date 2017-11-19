@@ -113,12 +113,11 @@ public class UnitAttackAction : IUnitAction
         m_ActionState = ActionState.Running;
         // TODO: Do some complex calculation and animation for this
         --GetUnitStats().CurrentActionPoints;
-        PanzerAnimationHandler_Attack zeAttackAnim = (PanzerAnimationHandler_Attack)m_AnimHandler;
-        zeAttackAnim.Hit = true;
-        zeAttackAnim.Target = m_TargetUnitStats.gameObject;
-        zeAttackAnim.CompletionCallback = CallAnimDone;
+        m_AttackAnim.Hit = true;
+        m_AttackAnim.Target = m_TargetUnitStats.gameObject;
+        m_AttackAnim.CompletionCallback = CallAnimDone;
         WaitForFixedUpdate zeFixedWait = new WaitForFixedUpdate();
-        zeAttackAnim.StartAnimation();
+        m_AttackAnim.StartAnimation();
         while (!m_AnimDone)
         {
             yield return zeFixedWait;
@@ -140,7 +139,7 @@ public class UnitAttackAction : IUnitAction
         }
         GameEventSystem.GetInstance().TriggerEvent("UnitFinishAction");
         m_ActionState = ActionState.Completed;
-        zeAttackAnim.CompletionCallback -= CallAnimDone;
+        m_AttackAnim.CompletionCallback -= CallAnimDone;
         m_AnimDone = false;
         m_UpdateOfUnitAction = null;
         if (CompletedCallBack != null)

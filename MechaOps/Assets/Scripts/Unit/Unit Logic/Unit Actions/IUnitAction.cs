@@ -35,15 +35,15 @@ public abstract class IUnitAction : MonoBehaviour
 
     [SerializeField, Tooltip("The specific action UI")]
     private GameObject m_UnitActionUI;
-    [Header("[ Values and References for abstract Unit Action ]")]
+    [Header("[ Values for Unit Action ]")]
     [SerializeField, Tooltip("The sprite UI for unit's action!")]
     private Sprite m_ActionIconUI;
 
-    [Header("[ Debugging purpose sake ]")]
+    [Header("Debugging purpose")]
     [Tooltip("The unit stats")]
     public UnitStats m_UnitStats;
-    [SerializeField, Tooltip("The animation handler")]
-    protected AnimationHandler m_AnimHandler;
+    //[SerializeField, Tooltip("The animation handler")]
+    //protected AnimationHandler m_AnimHandler;
     [SerializeField, Tooltip("The flag to check is the animation done")]
     protected bool m_AnimDone = false;
 
@@ -192,10 +192,6 @@ public abstract class IUnitAction : MonoBehaviour
     {
         m_ActionState = ActionState.Running;
         // Access the animation handler or crash and burn
-        if (!m_AnimHandler)
-        {
-            m_AnimHandler = m_UnitStats.GetAnimHandler(m_NameOfAnim);
-        }
     }
 
     /// <summary>

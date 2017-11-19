@@ -7,11 +7,11 @@ using UnityEngine.Assertions;
 /// A simper unit action for walking!
 /// </summary>
 public class UnitWalkAction : IUnitAction {
-    [Header("References and variables needed for UnitWalkAction")]
+    [Header("Variables needed for UnitWalkAction")]
     [Tooltip("The number of tiles it can move")]
     public int m_MovementPoints;
-    //[Tooltip("The speed to move from 1 point to another. For animation purpose.")]
-    //public float m_Speed = 10.0f;
+    [SerializeField, Tooltip("The animation handler for walking")]
+    protected PanzerAnimationHandler_Move m_MoveAnim;
 
     [Header("Debugging References for UnitWalkAction")]
     [Tooltip("The array of tiles to move to!")]
@@ -80,6 +80,10 @@ public class UnitWalkAction : IUnitAction {
         }
         GameEventSystem.GetInstance().TriggerEvent("UnitFinishAction");
         m_ActionState = ActionState.Completed;
+        if (CompletedCallBack != null)
+        {
+            CompletedCallBack.Invoke();
+        }
         yield break;
     }
 
@@ -126,10 +130,9 @@ public class UnitWalkAction : IUnitAction {
     /// <returns></returns>
     protected virtual IEnumerator WalkBetPtsRoutine(Vector3 _StartPt, Vector3 _EndPt)
     {
-        PanzerAnimationHandler_Move zeMoveAnim = (PanzerAnimationHandler_Move)m_AnimHandler;
-        zeMoveAnim.CompletionCallback += CallAnimDone;
-        zeMoveAnim.Destination = _EndPt;
-        zeMoveAnim.StartAnimation();
+        m_MoveAnim.CompletionCallback += CallAnimDone;
+        m_MoveAnim.Destination = _EndPt;
+        m_MoveAnim.StartAnimation();
         while (m_ActionState != ActionState.Completed && m_ActionState != ActionState.None && !m_AnimDone)
         {
             switch (m_ActionState)
@@ -141,14 +144,10 @@ public class UnitWalkAction : IUnitAction {
                     break;
             }
         }
-        zeMoveAnim.CompletionCallback -= CallAnimDone;
+        m_MoveAnim.CompletionCallback -= CallAnimDone;
         m_AnimDone = false;
         // Sending out an event that this game object has moved
         GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitMoveToTile", gameObject);
-        if (CompletedCallBack != null)
-        {
-            CompletedCallBack.Invoke();
-        }
         yield break;
     }
 

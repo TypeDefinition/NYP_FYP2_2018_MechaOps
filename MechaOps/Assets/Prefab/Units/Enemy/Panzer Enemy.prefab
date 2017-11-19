@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4119848816011602}
   - component: {fileID: 33042780059569668}
   - component: {fileID: 23530824007841512}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheel_R2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4320540903020516}
   - component: {fileID: 33308251680686430}
   - component: {fileID: 23459101247707222}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheel_L1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4242562346444834}
   - component: {fileID: 33847653984051352}
   - component: {fileID: 23462606487852824}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheel_L2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 33513597487328800}
   - component: {fileID: 23000166605765184}
   - component: {fileID: 114115438538414526}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MuzzleFlash_Yellow_Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 4027735515858806}
   - component: {fileID: 33920012083060732}
   - component: {fileID: 23957562992600826}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 4285106275143328}
   - component: {fileID: 33301755227903082}
   - component: {fileID: 23672093214748770}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tracks_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 4710946030253116}
   - component: {fileID: 33183833845424768}
   - component: {fileID: 23308224856028192}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheel_R5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 4271187955346736}
   - component: {fileID: 33178090435009710}
   - component: {fileID: 23856124055882824}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheel_R3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 4080591688820204}
   - component: {fileID: 33571836159434800}
   - component: {fileID: 23727199267212928}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheel_R7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 114764957779972252}
   - component: {fileID: 114525463778650170}
   - component: {fileID: 114320079545034956}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Panzer Enemy
   m_TagString: EnemyUnit
   m_Icon: {fileID: 0}
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 4437236662934706}
   - component: {fileID: 33169626995475618}
   - component: {fileID: 23381661338029590}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheel_R4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +217,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4712455025274370}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheels_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 4051345770141074}
   - component: {fileID: 33159330324567996}
   - component: {fileID: 23570309301085244}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheel_L4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ GameObject:
   - component: {fileID: 4564571092756414}
   - component: {fileID: 33323174690842148}
   - component: {fileID: 23671492924625044}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +266,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4690490461960772}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheels_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 33706218783401306}
   - component: {fileID: 23593208988971834}
   - component: {fileID: 114303736659755040}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MuzzleFlash_Yellow_Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -299,7 +299,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4473223968069412}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 4239691321839952}
   - component: {fileID: 33780038946690968}
   - component: {fileID: 23518113352777600}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheel_R6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 33781501967667320}
   - component: {fileID: 23539404841775612}
   - component: {fileID: 114719944890479642}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MuzzleFlash_Yellow_Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -352,7 +352,7 @@ GameObject:
   - component: {fileID: 33145186461275812}
   - component: {fileID: 23118170841483142}
   - component: {fileID: 114047148403502172}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MuzzleFlash_Yellow_Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 4199167592170744}
   - component: {fileID: 33682804822154556}
   - component: {fileID: 23463484743783162}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheel_L3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -386,7 +386,7 @@ GameObject:
   - component: {fileID: 4359961705338422}
   - component: {fileID: 33301834382712528}
   - component: {fileID: 23998110882197316}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tracks_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -403,7 +403,7 @@ GameObject:
   - component: {fileID: 4726336578848536}
   - component: {fileID: 33809915043342956}
   - component: {fileID: 23522165623204306}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheel_L7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -420,7 +420,7 @@ GameObject:
   - component: {fileID: 4008997148284040}
   - component: {fileID: 33145047699121726}
   - component: {fileID: 23830802444983868}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheel_R1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,7 +437,7 @@ GameObject:
   - component: {fileID: 4055343765020018}
   - component: {fileID: 33736650969675430}
   - component: {fileID: 23958067104652354}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheel_L6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -454,7 +454,7 @@ GameObject:
   - component: {fileID: 4162912216761828}
   - component: {fileID: 33525674873195344}
   - component: {fileID: 23512473767942080}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wheel_L5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 4678192204071410}
   - component: {fileID: 33558652994925868}
   - component: {fileID: 23713194901538474}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1893,6 +1893,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f697aa5268a1a34680df8b955809e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Stat: {fileID: 0}
   m_AttackerStat: {fileID: 0}
 --- !u!114 &114525463778650170
 MonoBehaviour:
@@ -1950,7 +1951,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 117a2c9bb6de59c4ca8e990fe2b49441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HandleName: Walk
 --- !u!114 &114669511403171312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1973,12 +1973,12 @@ MonoBehaviour:
     type: 2}
   m_ActionIconUI: {fileID: 21300000, guid: 7fa2b56696c075f4eafe02c8cfd5df76, type: 3}
   m_UnitStats: {fileID: 114879956254548028}
-  m_AnimHandler: {fileID: 0}
   m_AnimDone: 0
   m_MinAttackRange: 0
   m_MaxAttackRange: 5
   m_AccuracyPoints: 0
   m_DamagePoints: 1
+  m_AttackAnim: {fileID: 114736098985811620}
   m_TargetUnitStats: {fileID: 0}
 --- !u!114 &114719944890479642
 MonoBehaviour:
@@ -2009,7 +2009,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ad2ab442c84a04ea96dab1b373fbaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HandleName: Attack
 --- !u!114 &114764957779972252
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2084,9 +2083,9 @@ MonoBehaviour:
     type: 2}
   m_ActionIconUI: {fileID: 21300000, guid: d9d27dc5793e3d249b4bc573d0309805, type: 3}
   m_UnitStats: {fileID: 114879956254548028}
-  m_AnimHandler: {fileID: 0}
   m_AnimDone: 0
   m_MovementPoints: 5
+  m_MoveAnim: {fileID: 114605145088196580}
   m_TilePath: []
   m_CurrentDestinationTile: {fileID: 0}
   m_TileSys: {fileID: 0}
