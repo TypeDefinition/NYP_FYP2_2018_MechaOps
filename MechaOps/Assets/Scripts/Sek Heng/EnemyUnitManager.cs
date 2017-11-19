@@ -50,6 +50,12 @@ public class EnemyUnitManager : MonoBehaviour {
         }
     }
 
+    private void Start()
+    {
+        if (!m_TileSys)
+            m_TileSys = FindObjectOfType<TileSystem>();
+    }
+
     private void OnEnable()
     {
         GameEventSystem.GetInstance().SubscribeToEvent("PlayerAnnihilated", StopUpdate);

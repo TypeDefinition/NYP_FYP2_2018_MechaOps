@@ -106,28 +106,30 @@ public class AttackUIGroupLogic : MonoBehaviour {
     {
         // it should be the generic attack action
         m_UnitAttackActRef = (UnitAttackAction)_action;
-        m_WorldCanvasTrans = GameObject.FindGameObjectWithTag("WorldCanvas").transform;
-        m_TargetGO = Instantiate(m_TargetUIref, m_WorldCanvasTrans);
-        m_TargetGO.SetActive(true);
 
-        //m_TileSys = FindObjectOfType<TileSystem>();
-        //TODO Realised that highlighting of the tile minimum attack range to max attack range is impossible
-        //m_AttackableTileRange = m_TileSys.GetReachableTiles(m_UnitAttackActRef.MaxAttackRange, m_UnitAttackActRef.m_UnitStats.CurrentTileID, null);
-        //m_TileSys.SetPathMarkers(m_AttackableTileRange, null);
-        // We will iterate through the list of alived units!
+        int layerToCastThrough = 1 << LayerMask.NameToLayer("TileDisplay");
+        // We will iterate through the list of units that this unit can see!
         foreach (GameObject zeSeenUnit in m_UnitAttackActRef.m_UnitStats.EnemyInRange)
         {
             // we get the unit stat and tile distance!
             UnitStats zeObjStat = zeSeenUnit.GetComponent<UnitStats>();
             int zeTileDist = TileId.GetDistance(zeObjStat.CurrentTileID, m_UnitAttackActRef.m_UnitStats.CurrentTileID);
-            // if within range, then add to the target list!
+            // if within range, then raycast to the target and check whether it works
             if (zeTileDist <= m_UnitAttackActRef.MaxAttackRange && zeTileDist >= m_UnitAttackActRef.MinAttackRange)
             {
-                m_ListOfTargets.Add(zeSeenUnit);
+                // we need the direction
+                Vector3 zeDirection = zeSeenUnit.transform.position - m_UnitAttackActRef.transform.position;
+                zeDirection.y = 1;
+                // if no obstacle is within the raycast which will be the tileDisplay layer
+                if (!Physics.Raycast(m_UnitAttackActRef.transform.position, zeDirection, zeDirection.magnitude, layerToCastThrough))
+                    m_ListOfTargets.Add(zeSeenUnit);
             }
         }
         if (m_ListOfTargets.Count > 0)
         {
+            m_WorldCanvasTrans = GameObject.FindGameObjectWithTag("WorldCanvas").transform;
+            m_TargetGO = Instantiate(m_TargetUIref, m_WorldCanvasTrans);
+            m_TargetGO.SetActive(true);
             // For now, it will just pick the 1st enemy in the array
             KeepTrackOfGameObj(m_ListOfTargets[0]);
         }
