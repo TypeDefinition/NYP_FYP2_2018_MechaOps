@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4925229294803790}
   - component: {fileID: 114553182710685338}
   - component: {fileID: 64561046443384814}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tile
   m_TagString: TileBase
   m_Icon: {fileID: 0}
@@ -66,18 +66,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6f5719f6aadbea4e9288745d4c94e2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IdInited: 0
+  m_IdInitialized: 0
   m_Id:
-    x: 0
-    y: 0
-    z: 0
+    m_X: 0
+    m_Y: 0
+    m_Z: 0
   m_TileSystem: {fileID: 0}
   m_Attributes:
     m_Walkable: 1
     m_MovementCost: 1
     m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
     m_DisplayObject: {fileID: 0}
   m_DisplayObject: {fileID: 0}
-  m_Hazard: {fileID: 0}
   m_Type: 0
+  m_Hazard: {fileID: 0}
+  m_HazardType: -1
   m_Unit: {fileID: 0}

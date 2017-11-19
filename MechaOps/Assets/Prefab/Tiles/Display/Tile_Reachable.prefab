@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4435049625173712}
   - component: {fileID: 33374593312341614}
   - component: {fileID: 23733981600948382}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tile_Reachable
   m_TagString: Untagged
   m_Icon: {fileID: 0}

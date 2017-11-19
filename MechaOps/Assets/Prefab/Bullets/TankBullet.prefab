@@ -98,4 +98,6 @@ MonoBehaviour:
   m_Explosion: {fileID: 1239684297980618, guid: fabb59942e39c724f8e7e33417f0ff43,
     type: 2}
   m_CollisionLayers:
-  - Default
+  - Unit
+  - TileDisplay
+  m_Target: {fileID: 0}
