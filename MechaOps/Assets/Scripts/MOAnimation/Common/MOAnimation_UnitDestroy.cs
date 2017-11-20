@@ -34,10 +34,8 @@ public class MOAnimation_UnitDestroy : MOAnimation
 
         DeleteAnimationObjects();
 
-        m_Explosion = GameObject.Instantiate(m_ExplosionPrefab.gameObject).GetComponent<SimpleSpriteAnimation>();
-        m_Explosion.transform.parent = gameObject.transform;
-        m_Flame = GameObject.Instantiate(m_FlamePrefab.gameObject).GetComponent<ParticleSystem>();
-        m_Flame.transform.parent = gameObject.transform;
+        m_Explosion = GameObject.Instantiate(m_ExplosionPrefab.gameObject, gameObject.transform, false).GetComponent<SimpleSpriteAnimation>();
+        m_Flame = GameObject.Instantiate(m_FlamePrefab.gameObject, gameObject.transform, false).GetComponent<ParticleSystem>();
     }
 
     public override void PauseAnimation()

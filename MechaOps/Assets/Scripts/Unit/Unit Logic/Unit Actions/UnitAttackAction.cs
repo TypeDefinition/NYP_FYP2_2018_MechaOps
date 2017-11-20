@@ -16,7 +16,7 @@ public class UnitAttackAction : IUnitAction
     [SerializeField, Tooltip("The damage point it dealt")]
     private int m_DamagePoints;
     [SerializeField, Tooltip("Unit Attack Animation. TODO, make it more generic")]
-    protected PanzerAnimationHandler_Attack m_AttackAnim;
+    protected MOAnimation_PanzerAttack m_AttackAnim;
     [Header("Debugging purpose")]
     [SerializeField, Tooltip("The unit stat of the target")]
     private UnitStats m_TargetUnitStats;

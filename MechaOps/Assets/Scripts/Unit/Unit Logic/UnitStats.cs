@@ -57,6 +57,8 @@ public class UnitStats : MonoBehaviour
     protected MOAnimation[] m_AnimHandler;
     [Tooltip("The tile system!")]
     public TileSystem m_TileSys;
+    [Tooltip("Death attack animation"), SerializeField]
+    protected MOAnimation_UnitDestroy m_DeathAnim;
 
     /// <summary>
     /// A callback function will appear when ever the health point decreases
@@ -98,6 +100,7 @@ public class UnitStats : MonoBehaviour
                 // Trigger an event when the unit died
                 ObserverSystemScript.Instance.TriggerEvent(zeEventName);
                 GameEventSystem.GetInstance().TriggerEvent<GameObject>(zeEventName, gameObject);
+                m_DeathAnim.StartAnimation();
             }
         }
     }

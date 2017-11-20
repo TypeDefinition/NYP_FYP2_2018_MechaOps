@@ -10,8 +10,8 @@ public class UnitWalkAction : IUnitAction {
     [Header("References and variables needed for UnitWalkAction")]
     [Tooltip("The number of tiles it can move")]
     public int m_MovementPoints;
-    //[Tooltip("The speed to move from 1 point to another. For animation purpose.")]
-    //public float m_Speed = 10.0f;
+    [SerializeField, Tooltip("The walking animation handler")]
+    protected MOAnimation_PanzerMove m_AttackAnim;
 
     [Header("Debugging References for UnitWalkAction")]
     [Tooltip("The array of tiles to move to!")]
@@ -126,10 +126,9 @@ public class UnitWalkAction : IUnitAction {
     /// <returns></returns>
     protected virtual IEnumerator WalkBetPtsRoutine(Vector3 _StartPt, Vector3 _EndPt)
     {
-        MOAnimation_PanzerMove zeMoveAnim = (MOAnimation_PanzerMove)m_AnimHandler;
-        zeMoveAnim.CompletionCallback += CallAnimDone;
-        zeMoveAnim.Destination = _EndPt;
-        zeMoveAnim.StartAnimation();
+        m_AttackAnim.CompletionCallback += CallAnimDone;
+        m_AttackAnim.Destination = _EndPt;
+        m_AttackAnim.StartAnimation();
         while (m_ActionState != ActionState.Completed && m_ActionState != ActionState.None && !m_AnimDone)
         {
             switch (m_ActionState)
@@ -141,7 +140,7 @@ public class UnitWalkAction : IUnitAction {
                     break;
             }
         }
-        zeMoveAnim.CompletionCallback -= CallAnimDone;
+        m_AttackAnim.CompletionCallback -= CallAnimDone;
         m_AnimDone = false;
         // Sending out an event that this game object has moved
         GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitMoveToTile", gameObject);
