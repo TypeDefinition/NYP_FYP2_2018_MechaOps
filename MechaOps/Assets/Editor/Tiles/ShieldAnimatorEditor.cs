@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(ShieldAnimator))]
+[CustomEditor(typeof(MOAnimator_Shield))]
 [CanEditMultipleObjects]
 public class ShieldAnimatorEditor : Editor
 {
@@ -12,7 +12,7 @@ public class ShieldAnimatorEditor : Editor
     {
         DrawDefaultInspector();
 
-        ShieldAnimator shieldAnimator = (ShieldAnimator)target;
+        MOAnimator_Shield shieldAnimator = (MOAnimator_Shield)target;
 
         if (GUILayout.Button("Start Turn Off Animation"))
         {

@@ -173,7 +173,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1001 &265025701
 Prefab:
@@ -264,7 +264,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4355928435855886, guid: 00b9322e7d21b114c8c2b05e00f5e754, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114006940085896276, guid: 00b9322e7d21b114c8c2b05e00f5e754,
         type: 2}
@@ -4541,6 +4541,10 @@ Prefab:
       propertyPath: m_TileArray.Array.data[125].m_Id.m_Y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1588499557193260, guid: 00b9322e7d21b114c8c2b05e00f5e754, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 00b9322e7d21b114c8c2b05e00f5e754, type: 2}
   m_IsPrefabParent: 0
@@ -4660,7 +4664,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1835027924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4697,7 +4701,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1896342194
+--- !u!1001 &2140001916
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -4734,7 +4738,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4908295020009570, guid: 3859fceba308a22429a2d4168f836ae3, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1957479602978116, guid: 3859fceba308a22429a2d4168f836ae3, type: 2}
       propertyPath: m_IsActive
@@ -4743,3 +4747,21 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3859fceba308a22429a2d4168f836ae3, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2140001917 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1957479602978116, guid: 3859fceba308a22429a2d4168f836ae3,
+    type: 2}
+  m_PrefabInternal: {fileID: 2140001916}
+--- !u!114 &2140001918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2140001917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7108dd1e0a8958b49aee3725248124fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Target: {fileID: 0}
+  m_Hit: 0

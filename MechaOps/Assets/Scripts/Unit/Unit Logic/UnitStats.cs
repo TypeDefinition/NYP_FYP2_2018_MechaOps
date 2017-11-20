@@ -54,7 +54,7 @@ public class UnitStats : MonoBehaviour
     [SerializeField, Tooltip("The array of tiles override")]
     private TileAttributeOverride[] m_TileAttributeOverrides;
     [SerializeField, Tooltip("The list of animation handler which will be accessed through dictionary. No linking required")]
-    protected AnimationHandler[] m_AnimHandler;
+    protected MOAnimation[] m_AnimHandler;
     [Tooltip("The tile system!")]
     public TileSystem m_TileSys;
 

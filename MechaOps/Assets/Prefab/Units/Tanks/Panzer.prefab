@@ -462,6 +462,7 @@ GameObject:
   - component: {fileID: 114931709713229416}
   - component: {fileID: 114908318556937372}
   - component: {fileID: 114960802366151012}
+  - component: {fileID: 114727208924393526}
   m_Layer: 8
   m_Name: Panzer
   m_TagString: Untagged
@@ -1797,6 +1798,22 @@ MonoBehaviour:
   m_PlayOnStart: 0
   m_SetInactiveOnCompletion: 1
   m_DestroyOnCompletion: 0
+--- !u!114 &114727208924393526
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1957479602978116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eace8087c840f149ae7f5976dfe421a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HandleName: 
+  m_ExplosionPrefab: {fileID: 114291209284674360, guid: 1abc2b1ddea848a4f990e0bf2efd6044,
+    type: 2}
+  m_FlamePrefab: {fileID: 198131241012019862, guid: d07da21434175a749bb97eebed0144f1,
+    type: 2}
 --- !u!114 &114908318556937372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1809,6 +1826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HandleName: 
+  m_Animator: {fileID: 114931709713229416}
 --- !u!114 &114926258109267738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1880,3 +1898,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HandleName: 
+  m_Animator: {fileID: 114931709713229416}

@@ -41,7 +41,6 @@ public class TankBullet : MonoBehaviour
         get { return m_Target; }
         set { m_Target = value; }
     }
-
     
     public bool ExplodeOnContact
     {
@@ -56,10 +55,11 @@ public class TankBullet : MonoBehaviour
         RaycastHit hitInfo;
         if (m_ExplodeOnContact && Physics.Raycast(transform.position, transform.forward, out hitInfo, m_Speed * Time.deltaTime, LayerMask.GetMask(m_CollisionLayers)))
         {
-            TileDisplay_Shield tileDisplayShield = hitInfo.collider.gameObject.GetComponent<TileDisplay_Shield>();
-            if (tileDisplayShield != null)
+            // If we touch any shield, play the break animation.
+            MOAnimation_ShieldBreak shieldBreak = hitInfo.collider.gameObject.GetComponent<MOAnimation_ShieldBreak>();
+            if (shieldBreak != null)
             {
-                tileDisplayShield.GetShieldAnimator().StartShieldBreakAnimation();
+                shieldBreak.StartAnimation();
             }
 
             if (hitInfo.collider.gameObject == m_Target)

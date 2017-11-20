@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 [DisallowMultipleComponent]
-public class PanzerAnimator : MonoBehaviour
+public class PanzerAnimator : MOAnimator
 {
     // Gun Elevation (This has been removed due to time constraints. It works but I don't want to calculate elavation and depression when doing shooting animation.)
     [SerializeField, Range(0, 90)] private float m_MaxGunElevation = 80.0f;
@@ -55,6 +55,11 @@ public class PanzerAnimator : MonoBehaviour
     {
         get { return m_MaxGunDepression; }
         set { m_MaxGunDepression = Mathf.Clamp(value, 0.0f, 90.0f); }
+    }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
     }
 
     public void AnimateTracks(float _leftSpeed, float _rightSpeed)

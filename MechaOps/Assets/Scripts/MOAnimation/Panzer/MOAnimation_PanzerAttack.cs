@@ -5,21 +5,27 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 [DisallowMultipleComponent]
-public class PanzerAnimationHandler_Move : AnimationHandler
+public class MOAnimation_PanzerAttack : MOAnimation
 {
-    private PanzerAnimator m_Animator = null;
-    private Vector3 m_Destination;
+    [SerializeField] private PanzerAnimator m_Animator = null;
+    private GameObject m_Target;
+    private bool m_Hit = true; // Is this attack a hit or miss?
     
-    public Vector3 Destination
+    public GameObject Target
     {
-        get { return m_Destination; }
-        set { m_Destination = value; }
+        get { return m_Target; }
+        set { m_Target = value; }
+    }
+
+    public bool Hit
+    {
+        get { return m_Hit; }
+        set { m_Hit = value; }
     }
 
 	// Use this for initialization
 	void Start ()
     {
-        m_Animator = gameObject.GetComponent<PanzerAnimator>();
         Assert.IsTrue(m_Animator != null, MethodBase.GetCurrentMethod().Name + " - PanzerAnimator is required for PanzerAnimationHandler to work!");
 	}
 	
@@ -28,22 +34,23 @@ public class PanzerAnimationHandler_Move : AnimationHandler
 
     public override void StartAnimation()
     {
-        m_Animator.SetMoveAnimationParameters(m_Destination, m_CompletionCallback);
-        m_Animator.StartMoveAnimation();
+        m_Animator.SetShootAnimationParameters(m_Target, m_Hit, m_CompletionCallback);
+        m_Animator.StartShootAnimation();
     }
 
     public override void PauseAnimation()
     {
-        m_Animator.StopMoveAnimation();
+        m_Animator.StopShootAnimation();
     }
 
     public override void ResumeAnimation()
     {
-        m_Animator.StartMoveAnimation();
+        m_Animator.StartShootAnimation();
     }
 
     public override void StopAnimation()
     {
-        m_Animator.StopMoveAnimation();
+        m_Animator.StopShootAnimation();
     }
+
 }

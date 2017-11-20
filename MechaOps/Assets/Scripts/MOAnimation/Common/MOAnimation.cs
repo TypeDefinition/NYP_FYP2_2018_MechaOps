@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class AnimationHandler : MonoBehaviour
+// Animations are the ones that bridge the Animator and whatever is using the Animation.
+// Sometimes an animation might not even require a Animator.
+// Sometimes an animation might require additional parameters.
+public abstract class MOAnimation : MonoBehaviour
 {
     protected Void_Void m_CompletionCallback = null;
 

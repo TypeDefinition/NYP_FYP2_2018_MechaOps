@@ -5,21 +5,17 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class AnimationLock
-{
-}
-
 [DisallowMultipleComponent]
-public class ShieldAnimator : MonoBehaviour
+public class MOAnimator_Shield : MOAnimator
 {
+    [SerializeField] private MeshRenderer m_MeshRenderer = null;
+
     [SerializeField] private Color m_OnColor = Color.yellow;
     [SerializeField] private Color m_OffColor = Color.red;
     [SerializeField] private float m_AnimateTurnOffSpeed = 0.1f;
     [SerializeField] private float m_AnimateTurnOnSpeed = 0.5f;
     [SerializeField] private float m_AnimateShieldBreakSpeed = 5.0f;
     [SerializeField] private float m_AnimateShieldRegenSpeed = 5.0f;
-
-    private MeshRenderer m_MeshRenderer = null;
 
     public float AnimateTurnOffSpeed
     {
@@ -47,7 +43,6 @@ public class ShieldAnimator : MonoBehaviour
     
     private void Start()
     {
-        m_MeshRenderer = gameObject.GetComponent<MeshRenderer>();
         Assert.IsTrue(m_MeshRenderer != null, MethodBase.GetCurrentMethod().Name + " - MeshRenderer required for this to work!");
     }
 
@@ -191,22 +186,30 @@ public class ShieldAnimator : MonoBehaviour
         Debug.Log(MethodBase.GetCurrentMethod().Name + " - Completed");
     }
 
+    // Interface Function(s)
+    // NOTE: Only 1 animation can be running at any given time.
+    // If an animation is started while another animation is running, the old animation will be stopped.
     public void StartTurnOffAnimation()
     {
-        StopAllCoroutines();
+        StopAllAnimations();
         StartCoroutine("TurnOffAnimationCoroutine");
     }
 
     public void StartTurnOnAnimation()
     {
-        StopAllCoroutines();
+        StopAllAnimations();
         StartCoroutine("TurnOnAnimationCoroutine");
     }
 
     public void StartShieldBreakAnimation()
     {
-        StopAllCoroutines();
+        StopAllAnimations();
         StartCoroutine("ShieldBreakAnimationCoroutine");
+    }
+
+    public void StopAllAnimations()
+    {
+        StopAllCoroutines();
     }
 
 #if UNITY_EDITOR

@@ -14,7 +14,8 @@ public class TileSystemEditor : Editor
 
         TileSystem tileSystem = (TileSystem)target;
 
-        if (GUILayout.Button("Generate Tiles")) {
+        if (GUILayout.Button("Generate Tiles"))
+        {
             if (tileSystem.GetNumTiles() == 0 || EditorUtility.DisplayDialog("TileSystem - Generate Tiles", "Are you sure you want to generate new tiles? This will clear all current tiles in this TileSystem.", "Yes", "No"))
             {
                 tileSystem.GenerateTiles();
@@ -22,7 +23,8 @@ public class TileSystemEditor : Editor
             }
         }
 
-        if (GUILayout.Button("Clear Tiles")) {
+        if (GUILayout.Button("Clear Tiles"))
+        {
             if (EditorUtility.DisplayDialog("TileSystem - Clear Tiles", "Are you sure you want to clear all tiles in this TileSystem?", "Yes", "No"))
             {
                 tileSystem.ClearTiles();
