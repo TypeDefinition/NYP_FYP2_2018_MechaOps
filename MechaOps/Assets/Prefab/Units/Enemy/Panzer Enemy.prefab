@@ -2064,6 +2064,7 @@ MonoBehaviour:
   m_TileAttributeOverrides: []
   m_AnimHandler: []
   m_TileSys: {fileID: 0}
+  m_DeathAnim: {fileID: 114982705508500524}
 --- !u!114 &114930548130969464
 MonoBehaviour:
   m_ObjectHideFlags: 1
