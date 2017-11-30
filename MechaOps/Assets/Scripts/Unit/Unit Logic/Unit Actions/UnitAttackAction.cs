@@ -131,8 +131,7 @@ public class UnitAttackAction : IUnitAction
         {
             case 0:
                 GetUnitStats().ResetUnitStat();
-                ObserverSystemScript.Instance.StoreVariableInEvent("UnitMakeMove", gameObject);
-                ObserverSystemScript.Instance.TriggerEvent("UnitMakeMove");
+                GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitMakeMove", gameObject);
                 break;
             default:
                 break;

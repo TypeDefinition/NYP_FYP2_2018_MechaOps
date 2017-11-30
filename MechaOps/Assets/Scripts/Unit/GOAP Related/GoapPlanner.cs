@@ -94,9 +94,14 @@ public class GoapPlanner : MonoBehaviour
         m_FinishMoving = true;
     }
 
+    protected void FinishMakingMove(GameObject _go)
+    {
+        m_FinishMoving = true;
+    }
+
     public virtual IEnumerator StartPlanning()
     {
-        ObserverSystemScript.Instance.SubscribeEvent("UnitMakeMove", FinishMakingMove);
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("UnitMakeMove", FinishMakingMove);
         m_FinishMoving = false;
         // TODO: Probably need coroutine but not now
         GoapNode zeCheapestActNode = null;
@@ -155,7 +160,7 @@ public class GoapPlanner : MonoBehaviour
             }
             yield return null;
         }
-        ObserverSystemScript.Instance.UnsubscribeEvent("UnitMakeMove", FinishMakingMove);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("UnitMakeMove", FinishMakingMove);
         yield break;
     }
 

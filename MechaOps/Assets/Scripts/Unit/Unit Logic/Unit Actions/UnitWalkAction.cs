@@ -70,8 +70,7 @@ public class UnitWalkAction : IUnitAction {
             case 0:
                 GetUnitStats().ResetUnitStat();
                 // tell the player unit manager that it can no longer do any action
-                ObserverSystemScript.Instance.StoreVariableInEvent("UnitMakeMove", gameObject);
-                ObserverSystemScript.Instance.TriggerEvent("UnitMakeMove");
+                GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitMakeMove", gameObject);
                 break;
             default:
                 break;

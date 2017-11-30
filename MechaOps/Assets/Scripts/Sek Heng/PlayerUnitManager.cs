@@ -52,14 +52,14 @@ public class PlayerUnitManager : MonoBehaviour {
     {
         // Get a shallow copy of the list of all available units!
         m_UnitsYetToMakeMoves = new List<GameObject>(KeepTrackOfUnits.Instance.m_AllPlayerUnitGO);
-        ObserverSystemScript.Instance.SubscribeEvent("UnitMakeMove", UnitHasMakeMove);
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("UnitMakeMove", UnitHasMakeMove);
         WaitForSecondsRealtime zeAmountOfWaitTime = new WaitForSecondsRealtime(0.1f);
         m_PlayerInputOnUnit.enabled = true;
         while (m_UnitsYetToMakeMoves.Count > 0)
         {
             yield return zeAmountOfWaitTime;
         }
-        ObserverSystemScript.Instance.UnsubscribeEvent("UnitMakeMove", UnitHasMakeMove);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("UnitMakeMove", UnitHasMakeMove);
         m_UpdateOfManager = null;
         GameEventSystem.GetInstance().TriggerEvent("TurnEnded");
         // Player no longer needs to interact with the game so might as well turn off the polling
@@ -72,7 +72,7 @@ public class PlayerUnitManager : MonoBehaviour {
     /// </summary>
     protected void StopUpdate()
     {
-        ObserverSystemScript.Instance.UnsubscribeEvent("UnitMakeMove", UnitHasMakeMove);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("UnitMakeMove", UnitHasMakeMove);
         GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("ClickedUnit", PlayerSelectUnit);
         ObserverSystemScript.Instance.UnsubscribeEvent("UnitFinishAction", PollingForPlayerInput);
         if (m_UpdateOfManager != null)
@@ -85,12 +85,6 @@ public class PlayerUnitManager : MonoBehaviour {
     /// <summary>
     /// To recognize that the unit has already made a move and remove it from the list!
     /// </summary>
-    protected void UnitHasMakeMove()
-    {
-        m_UnitsYetToMakeMoves.Remove(ObserverSystemScript.Instance.GetStoredEventVariable<GameObject>("UnitMakeMove"));
-        ObserverSystemScript.Instance.RemoveTheEventVariableNextFrame("UnitMakeMove");
-    }
-
     protected void UnitHasMakeMove(GameObject _unitGoFinished)
     {
         m_UnitsYetToMakeMoves.Remove(_unitGoFinished);

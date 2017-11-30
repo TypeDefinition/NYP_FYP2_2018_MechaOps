@@ -15,8 +15,7 @@ public class UnitGuardAction : IUnitAction {
     public override void StartAction()
     {
         m_UpdateOfUnitAction = StartCoroutine(UpdateActionRoutine());
-        ObserverSystemScript.Instance.StoreVariableInEvent("UnitMakeMove", gameObject);
-        ObserverSystemScript.Instance.TriggerEvent("UnitMakeMove");
+        GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitMakeMove", gameObject);
     }
 
     /// <summary>
