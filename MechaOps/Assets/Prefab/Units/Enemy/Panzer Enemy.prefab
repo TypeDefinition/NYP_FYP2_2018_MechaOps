@@ -1980,7 +1980,7 @@ MonoBehaviour:
   m_MaxAttackRange: 5
   m_AccuracyPoints: 0
   m_DamagePoints: 1
-  m_AttackAnim: {fileID: 0}
+  m_AttackAnim: {fileID: 114736098985811620}
   m_TargetUnitStats: {fileID: 0}
 --- !u!114 &114719944890479642
 MonoBehaviour:

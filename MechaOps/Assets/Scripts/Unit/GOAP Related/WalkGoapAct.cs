@@ -43,6 +43,7 @@ public class WalkGoapAct : IGoapAction {
         yield return null;
         // from here, we get the walkable tiles!
         int zeCounter = 0;
+        //TODO, this will sometimes has null reference
         int zeMaxTileNum = Mathf.Min(zeTileToWalkTo.Length, m_WalkAct.m_MovementPoints);
         TileId[] zeAvailablePaths = new TileId[zeMaxTileNum];
         foreach (TileId zeTile in zeTileToWalkTo)
