@@ -35,9 +35,9 @@ public class WalkGoapAct : IGoapAction {
 
     public override IEnumerator UpdateActRoutine()
     {
-        //m_Planner.m_Stats.CurrentActionPoints--;
-        // Set the destination from the EnemyUnitManager if it has already reaches the destination
-        if (m_Planner.m_Stats.CurrentTileID.Equals(EnemyUnitManager.Instance.TilePlayerUnits))
+        // TODO!
+        // Set the destination from the EnemyUnitManager if it has already reaches the destination or if that area got occupied
+        if (m_Planner.m_Stats.CurrentTileID.Equals(EnemyUnitManager.Instance.TilePlayerUnits) || m_WalkAct.m_TileSys.GetTile(EnemyUnitManager.Instance.TilePlayerUnits).HasUnit())
             EnemyUnitManager.Instance.UpdateMarker();
         if (m_Planner.m_Stats.CurrentTileID.Equals(EnemyUnitManager.Instance.TilePlayerUnits))
             Assert.IsTrue(true == false, "Update of Tile coordinate has failed at UpdateActRoutine in WalkGoapAct.cs");

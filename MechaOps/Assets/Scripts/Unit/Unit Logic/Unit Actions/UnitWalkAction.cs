@@ -64,7 +64,6 @@ public class UnitWalkAction : IUnitAction {
         }
         m_UpdateOfUnitAction = null;
         GetUnitStats().CurrentActionPoints--;
-        //ObserverSystemScript.Instance.TriggerEvent()
         switch (GetUnitStats().CurrentActionPoints)
         {
             case 0:

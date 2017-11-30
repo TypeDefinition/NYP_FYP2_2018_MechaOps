@@ -96,9 +96,7 @@ public class UnitStats : MonoBehaviour
             if (m_UnitStatsJSON.m_CurrentHealthPoints <= 0)
             {
                 string zeEventName = tag + "IsDead";
-                ObserverSystemScript.Instance.StoreVariableInEvent(zeEventName, gameObject);
-                // Trigger an event when the unit died
-                ObserverSystemScript.Instance.TriggerEvent(zeEventName);
+                //// Trigger an event when the unit died
                 GameEventSystem.GetInstance().TriggerEvent<GameObject>(zeEventName, gameObject);
                 m_DeathAnim.StartAnimation();
             }

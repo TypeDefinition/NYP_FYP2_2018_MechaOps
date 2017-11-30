@@ -38,7 +38,6 @@ public class WalkUI_Logic : MonoBehaviour {
 
     void PlayerClickedTile(GameObject _clickedObj)
     {
-        //GameObject zeClickedObj = ObserverSystemScript.Instance.GetStoredEventVariable<GameObject>("ClickedUnit");
         if (_clickedObj.tag == "TileDisplay" || _clickedObj.tag == "TileBase")
         {
             // We have to hardcode a bit since the tags will differ!
