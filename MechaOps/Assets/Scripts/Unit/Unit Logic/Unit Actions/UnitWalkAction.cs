@@ -16,8 +16,6 @@ public class UnitWalkAction : IUnitAction {
     [Header("Debugging References for UnitWalkAction")]
     [Tooltip("The array of tiles to move to!")]
     public TileId[] m_TilePath;
-    [Tooltip("The current tile that it is moving towards to!")]
-    public Tile m_CurrentDestinationTile;
     [SerializeField, Tooltip("The tile system that is needed to be linked as there is no singleton. Right now, the codes is doing the linking for you")]
     public TileSystem m_TileSys;
 

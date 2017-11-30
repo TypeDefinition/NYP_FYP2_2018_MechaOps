@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class WalkGoapAct : IGoapAction {
     [Header("References for WalkGoapAct")]
@@ -35,9 +36,12 @@ public class WalkGoapAct : IGoapAction {
     public override IEnumerator UpdateActRoutine()
     {
         //m_Planner.m_Stats.CurrentActionPoints--;
-        // Set the destination from the EnemyUnitManager if there is no destination!
-        if (m_TileDest == null)
-            m_TileDest = EnemyUnitManager.Instance.TilePlayerUnits;
+        // Set the destination from the EnemyUnitManager if it has already reaches the destination
+        if (m_Planner.m_Stats.CurrentTileID.Equals(EnemyUnitManager.Instance.TilePlayerUnits))
+            EnemyUnitManager.Instance.UpdateMarker();
+        if (m_Planner.m_Stats.CurrentTileID.Equals(EnemyUnitManager.Instance.TilePlayerUnits))
+            Assert.IsTrue(true == false, "Update of Tile coordinate has failed at UpdateActRoutine in WalkGoapAct.cs");
+        m_TileDest = EnemyUnitManager.Instance.TilePlayerUnits;
         // so why not lets just cheat here to get to the closest tile!
         TileId[] zeTileToWalkTo = m_WalkAct.m_TileSys.GetPath(99999, m_Planner.m_Stats.CurrentTileID, m_TileDest, m_Planner.m_Stats.GetTileAttributeOverrides());
         yield return null;
