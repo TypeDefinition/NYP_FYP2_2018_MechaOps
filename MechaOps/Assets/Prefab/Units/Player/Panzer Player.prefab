@@ -194,6 +194,7 @@ GameObject:
   - component: {fileID: 114811533488785636}
   - component: {fileID: 114191423135492830}
   - component: {fileID: 114194489393849732}
+  - component: {fileID: 114988130546796368}
   - component: {fileID: 114876947489221560}
   m_Layer: 8
   m_Name: Panzer Player
@@ -1792,13 +1793,12 @@ MonoBehaviour:
   m_NameOfAnim: Walk
   m_UnitActionUI: {fileID: 1134435258809106, guid: f60f06ef37015e14ba42bc5dad875b1c,
     type: 2}
-  m_ActionIconUI: {fileID: 21300000, guid: d9d27dc5793e3d249b4bc573d0309805, type: 3}
+  m_ActionIconUI: {fileID: 21300000, guid: d859645726494314ab2591c7384f7d53, type: 3}
   m_UnitStats: {fileID: 114811533488785636}
   m_AnimDone: 0
   m_MovementPoints: 5
   m_AttackAnim: {fileID: 114313675222075914}
   m_TilePath: []
-  m_CurrentDestinationTile: {fileID: 0}
   m_TileSys: {fileID: 0}
 --- !u!114 &114194489393849732
 MonoBehaviour:
@@ -1820,7 +1820,7 @@ MonoBehaviour:
   m_NameOfAnim: Attack
   m_UnitActionUI: {fileID: 1044431308409052, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
     type: 2}
-  m_ActionIconUI: {fileID: 21300000, guid: 7fa2b56696c075f4eafe02c8cfd5df76, type: 3}
+  m_ActionIconUI: {fileID: 21300000, guid: e392509062377594ab81881f16831a09, type: 3}
   m_UnitStats: {fileID: 114811533488785636}
   m_AnimDone: 0
   m_MinAttackRange: 0
@@ -2000,3 +2000,25 @@ MonoBehaviour:
     type: 2}
   m_FlamePrefab: {fileID: 198131241012019862, guid: d07da21434175a749bb97eebed0144f1,
     type: 2}
+--- !u!114 &114988130546796368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1411079469388966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cab5ea8101800d4ab5f64c0b12f232e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UnitActionName: Skip
+  m_TurnedOn: 0
+  m_Priority: 0
+  m_ActionCost: 2
+  m_EndsTurn: 0
+  m_ActionState: 0
+  m_NameOfAnim: 
+  m_UnitActionUI: {fileID: 0}
+  m_ActionIconUI: {fileID: 21300000, guid: 2701c9f4499a5f340a46e96aeba66a4e, type: 3}
+  m_UnitStats: {fileID: 114811533488785636}
+  m_AnimDone: 0
