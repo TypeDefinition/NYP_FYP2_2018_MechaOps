@@ -9,6 +9,10 @@ public class AttackUIGroupLogic : MonoBehaviour {
     [Header("References for linking")]
     [Tooltip("The reference for target UI which the code should already be doing it for you. Will be expanded upon in the future!")]
     public GameObject m_TargetUIref;
+    [SerializeField, Tooltip("The Animation time for the attack")]
+    protected float m_AnimTime = 0.3f;
+    [SerializeField, Tooltip("The distance from the tracked target to camera")]
+    protected float m_Dist = 3.0f;
 
     [Header("Debugging")]
     [Tooltip("The unit attack action reference. Player's Unit attack action is to be expected")]
@@ -32,6 +36,11 @@ public class AttackUIGroupLogic : MonoBehaviour {
 
     private void OnEnable()
     {
+        Vector3 zeScale = transform.localScale;
+        float zeOriginalScaleX = zeScale.x;
+        zeScale.x = 0;
+        transform.localScale = zeScale;
+        LeanTween.scaleX(gameObject, zeOriginalScaleX, m_AnimTime);
         // And we will need to link the UnitActionScheduler then we can access the action! we can safely assume there is only 1!
         m_IndexOfTarget = 0;
         m_actScheduler = FindObjectOfType<UnitActionScheduler>();
@@ -83,7 +92,12 @@ public class AttackUIGroupLogic : MonoBehaviour {
     /// <param name="trackedTarget">The GameObject that needs to be tracked</param>
     protected void KeepTrackOfGameObj(GameObject trackedTarget)
     {
-        m_TargetGO.transform.position = new Vector3(trackedTarget.transform.position.x, trackedTarget.transform.position.y + trackedTarget.transform.localScale.y * 0.5f, trackedTarget.transform.position.z);
+        //Vector3 zeTrackedUIPos = new Vector3(trackedTarget.transform.position.x, m_TargetGO.transform.position.y, trackedTarget.transform.position.z);
+        // we will use the distance from the camera to the object and determine the position there. so we will need the direction vector and from there scale the distance of the point
+        Vector3 zeDirFromTargetToCam = Camera.main.transform.position - trackedTarget.transform.position;
+        zeDirFromTargetToCam.Normalize();
+        Vector3 zeTrackedUIPos = (zeDirFromTargetToCam * m_Dist) + trackedTarget.transform.position;
+        m_TargetGO.transform.position = zeTrackedUIPos;
         m_OtherTarget = trackedTarget;
     }
 

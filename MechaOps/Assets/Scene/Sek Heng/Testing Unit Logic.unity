@@ -1190,6 +1190,20 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114576107259410292, guid: 5ff687189fe473f40842dc3ea970b39a,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114576107259410292, guid: 5ff687189fe473f40842dc3ea970b39a,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1293721087050030, guid: 5ff687189fe473f40842dc3ea970b39a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5ff687189fe473f40842dc3ea970b39a, type: 2}
   m_IsPrefabParent: 0
@@ -14569,10 +14583,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1044431308409052, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21, type: 2}
   m_IsPrefabParent: 0
@@ -19829,20 +19839,6 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224512647443018430, guid: f60f06ef37015e14ba42bc5dad875b1c,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 123.3501
-      objectReference: {fileID: 0}
-    - target: {fileID: 224866337452823182, guid: f60f06ef37015e14ba42bc5dad875b1c,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 123.3501
-      objectReference: {fileID: 0}
-    - target: {fileID: 1134435258809106, guid: f60f06ef37015e14ba42bc5dad875b1c, type: 2}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f60f06ef37015e14ba42bc5dad875b1c, type: 2}

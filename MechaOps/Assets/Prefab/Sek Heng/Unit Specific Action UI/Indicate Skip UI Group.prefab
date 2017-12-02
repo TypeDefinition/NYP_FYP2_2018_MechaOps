@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93167000c1c7abc44a43fcbe21c39d1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_AnimTime: 0.2
   m_UnitSkipAct: {fileID: 0}
 --- !u!114 &114624719295992148
 MonoBehaviour:
