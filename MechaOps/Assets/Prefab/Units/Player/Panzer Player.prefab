@@ -2018,7 +2018,8 @@ MonoBehaviour:
   m_EndsTurn: 0
   m_ActionState: 0
   m_NameOfAnim: 
-  m_UnitActionUI: {fileID: 0}
+  m_UnitActionUI: {fileID: 1612582933021620, guid: 10234cb69b925e14d9163d2556b7fb5b,
+    type: 2}
   m_ActionIconUI: {fileID: 21300000, guid: 2701c9f4499a5f340a46e96aeba66a4e, type: 3}
   m_UnitStats: {fileID: 114811533488785636}
   m_AnimDone: 0

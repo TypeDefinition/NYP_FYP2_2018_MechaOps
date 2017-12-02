@@ -58,6 +58,8 @@ public class GoapPlanner : MonoBehaviour
     protected bool m_FinishMoving = false;
     [SerializeField, Tooltip("The flag to know if it is under attacked")]
     protected bool m_UnderAttack = false;
+    [SerializeField, Tooltip("The Current goal it is working towards to!")]
+    protected IGoapGoal m_CurrentGoal;
 
     // Basically the name of the goap action as key, the reference to GoapAction as value
     protected Dictionary<string, IGoapAction> m_DictGoapAct = new Dictionary<string, IGoapAction>();
@@ -105,7 +107,6 @@ public class GoapPlanner : MonoBehaviour
         m_FinishMoving = false;
         // TODO: Probably need coroutine but not now
         GoapNode zeCheapestActNode = null;
-        IGoapGoal zeCurrentGoal;
         List<IGoapAction> zeListOfActToDo = null;
         WaitForSeconds zeAmountOfTimeWait = new WaitForSeconds(0.5f);
         // We check it's current state
@@ -122,13 +123,13 @@ public class GoapPlanner : MonoBehaviour
                 {
                     case true:
                         // Follow this special goal which is to find out whether it is able to defeat the enemy!
-                        zeCurrentGoal = m_DictGoapGoal["AttackGoal"];
+                        m_CurrentGoal = m_DictGoapGoal["AttackGoal"];
                         break;
                     default:
                         // We will proceed as normal
                         if (m_StateData.CurrentStates.Contains("TargetInView"))
                         {
-                            zeCurrentGoal = m_DictGoapGoal["AttackGoal"];
+                            m_CurrentGoal = m_DictGoapGoal["AttackGoal"];
                         }
                         else
                         {
@@ -138,13 +139,13 @@ public class GoapPlanner : MonoBehaviour
                                 EnemyUnitManager.Instance.UpdateMarker();
                             }
                             // Then move towards there!
-                            zeCurrentGoal = m_DictGoapGoal["WalkGoal"];
+                            m_CurrentGoal = m_DictGoapGoal["WalkGoal"];
                         }
                         // So we will have this list of actions!
                         yield return null;
                         break;
                 }
-                zeCheapestActNode = GetTheCheapestAction(zeCurrentGoal);
+                zeCheapestActNode = GetTheCheapestAction(m_CurrentGoal);
                 zeListOfActToDo = GetActsFromNode(zeCheapestActNode);
             }
             else

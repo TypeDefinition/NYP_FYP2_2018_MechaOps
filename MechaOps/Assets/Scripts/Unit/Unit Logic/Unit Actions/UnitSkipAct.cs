@@ -10,11 +10,12 @@ public class UnitSkipAct : IUnitAction {
     /// <summary>
     /// Just use up all of it's action points and send the event
     /// </summary>
-    public override void StartUpdating()
+    public override void StartAction()
     {
         GetUnitStats().CurrentActionPoints -= GetUnitStats().MaxActionPoints;
         GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitMakeMove", gameObject);
         GameEventSystem.GetInstance().TriggerEvent("UnitFinishAction");
+        GetUnitStats().ResetUnitStat();
         m_ActionState = ActionState.Completed;
         if (CompletedCallBack != null)
         {
