@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 /// <summary>
 /// The UI regarding attacking which will be depended upon especially if we are going to follow XCOM!
 /// </summary>
 public class AttackUIGroupLogic : MonoBehaviour {
-    [Header("References for linking")]
+    [Header("Variables needed")]
     [Tooltip("The reference for target UI which the code should already be doing it for you. Will be expanded upon in the future!")]
     public GameObject m_TargetUIref;
+    [Tooltip("Text for tracked target")]
+    public TextMeshProUGUI m_TargetNameTxt;
     [SerializeField, Tooltip("The Animation time for the attack")]
     protected float m_AnimTime = 0.3f;
     [SerializeField, Tooltip("The distance from the tracked target to camera")]
@@ -33,6 +36,8 @@ public class AttackUIGroupLogic : MonoBehaviour {
     protected TileId[] m_AttackableTileRange;
     [SerializeField, Tooltip("The tile system")]
     protected TileSystem m_TileSys;
+    [SerializeField, Tooltip("The HP text")]
+    protected TextMeshProUGUI m_hpTextUI;
 
     private void OnEnable()
     {
@@ -99,6 +104,12 @@ public class AttackUIGroupLogic : MonoBehaviour {
         Vector3 zeTrackedUIPos = (zeDirFromTargetToCam * m_Dist) + trackedTarget.transform.position;
         m_TargetGO.transform.position = zeTrackedUIPos;
         m_OtherTarget = trackedTarget;
+        // set the name and the HP there
+        m_TargetNameTxt.text = m_OtherTarget.name;
+        if (!m_hpTextUI)
+            m_hpTextUI = GameObject.FindGameObjectWithTag("AttackUI").GetComponent<TextMeshProUGUI>();
+        UnitStats zeTargetStat = trackedTarget.GetComponent<UnitStats>();
+        m_hpTextUI.text = zeTargetStat.CurrentHealthPoints + "/" + zeTargetStat.MaxHealthPoints;
     }
 
     /// <summary>

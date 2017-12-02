@@ -1190,6 +1190,16 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114756513177226518, guid: 5ff687189fe473f40842dc3ea970b39a,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114756513177226518, guid: 5ff687189fe473f40842dc3ea970b39a,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114576107259410292, guid: 5ff687189fe473f40842dc3ea970b39a,
         type: 2}
       propertyPath: m_havePropertiesChanged

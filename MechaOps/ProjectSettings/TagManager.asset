@@ -12,6 +12,8 @@ TagManager:
   - TileDisplay
   - TileSystem
   - WorldCanvas
+  - Ground
+  - AttackUI
   layers:
   - Default
   - TransparentFX
