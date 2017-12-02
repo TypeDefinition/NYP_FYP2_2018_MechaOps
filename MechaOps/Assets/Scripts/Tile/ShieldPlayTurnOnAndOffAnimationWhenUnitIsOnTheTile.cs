@@ -9,6 +9,7 @@ using UnityEngine.Assertions;
 // Feel free to rename this hedious shit name if you have a better one.
 public class ShieldPlayTurnOnAndOffAnimationWhenUnitIsOnTheTile : MonoBehaviour
 {
+    [SerializeField] MeshRenderer m_ShieldMeshRenderer = null;
     [SerializeField] TileDisplay m_TileDisplay = null;
     [SerializeField] MOAnimation_ShieldTurnOn m_ShieldAnimationOn = null;
     [SerializeField] MOAnimation_ShieldTurnOff m_ShieldAnimationOff = null;
@@ -20,10 +21,21 @@ public class ShieldPlayTurnOnAndOffAnimationWhenUnitIsOnTheTile : MonoBehaviour
         Assert.IsTrue(m_TileDisplay != null);
         Assert.IsTrue(m_ShieldAnimationOn != null);
         Assert.IsTrue(m_ShieldAnimationOff != null);
+        Assert.IsTrue(m_ShieldMeshRenderer != null);
     }
 
     private void Update()
     {
+        if (m_TileDisplay.GetOwner().VisibleCounter > 0)
+        {
+            m_ShieldMeshRenderer.enabled = true;
+        }
+        else
+        {
+            m_ShieldMeshRenderer.enabled = false;
+            return;
+        }
+
         if (m_TileDisplay.GetOwner().HasUnit() && !m_HasUnit)
         {
             m_ShieldAnimationOn.StartAnimation();

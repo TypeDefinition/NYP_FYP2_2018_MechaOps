@@ -107,5 +107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb804e4e2cadf7540b2ae29f25a22d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_VisibleMaterial: {fileID: 2100000, guid: db869c0daa94e32418c27a5823d4de21, type: 2}
+  m_NotVisibleMaterial: {fileID: 2100000, guid: 9efa92fe2128e7648969ffe76360e006,
+    type: 2}
   m_OwnerInitialized: 0
   m_Owner: {fileID: 0}

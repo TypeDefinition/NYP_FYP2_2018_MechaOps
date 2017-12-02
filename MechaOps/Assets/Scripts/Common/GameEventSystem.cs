@@ -14,6 +14,7 @@ public delegate void Void_Int(int _int);
 public delegate void Void_Float(float _float);
 public delegate void Void_Double(double _double);
 public delegate void Void_Bool(bool _bool);
+public delegate void Void_BoolBool(bool _bool, bool _bool2);
 
 [System.Serializable]
 public class GenericUnityEvent1<T> : UnityEvent<T> {}
@@ -82,7 +83,7 @@ public class GameEventSystem
         GenericUnityEvent1<T> unityEvent = new GenericUnityEvent1<T>();
         m_Events.Add(_eventName, unityEvent);
     }
-    
+
     public void AddEvent<T1, T2>(string _eventName)
     {
         Assert.IsFalse(m_Events.ContainsKey(_eventName), MethodBase.GetCurrentMethod().Name + " - An event with this name already exist!");

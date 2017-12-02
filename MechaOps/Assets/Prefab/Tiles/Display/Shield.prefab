@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4879051318174758}
   - component: {fileID: 33573738889557188}
   - component: {fileID: 23277324493222212}
-  - component: {fileID: 114366704468092242}
   - component: {fileID: 114501850536922416}
   - component: {fileID: 64165338319448506}
   m_Layer: 10
@@ -97,19 +96,6 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 41c8579bfc0e7294d81e0b72bffdcb2d, type: 3}
---- !u!114 &114366704468092242
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1843717574740932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc738b73d0a5fb245ade9f370149f5ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UScrollSpeed: 0
-  m_VScrollSpeed: -0.4
 --- !u!114 &114501850536922416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -121,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ccb0347eee670447859e7ffd9a58ab4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_MeshRenderer: {fileID: 0}
   m_OnColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   m_OffColor: {r: 1, g: 0, b: 0, a: 0}
   m_AnimateTurnOffSpeed: 1

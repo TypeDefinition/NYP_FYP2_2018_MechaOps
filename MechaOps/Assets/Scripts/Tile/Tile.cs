@@ -109,6 +109,10 @@ public class Tile : MonoBehaviour
     // The unit currently on this tile.
     public GameObject m_Unit = null;
 
+    // For Fog Of War
+    private bool m_Known = false;
+    private int m_VisibleCounter = 0;
+
     public bool HasUnit()
     {
         return m_Unit != null;
@@ -141,6 +145,30 @@ public class Tile : MonoBehaviour
     public TileId GetId()
     {
         return m_Id;
+    }
+
+    public bool Known
+    {
+        get { return m_Known; }
+    }
+
+    public int VisibleCounter
+    {
+        get
+        {
+            return m_VisibleCounter;
+        }
+        set
+        {
+            m_VisibleCounter = Mathf.Max(value, 0);
+
+            if (!m_Known && m_VisibleCounter > 0)
+            {
+                m_Known = true;
+            }
+
+            m_DisplayObject.SetVisibleState(m_Known, (m_VisibleCounter > 0) ? true : false);
+        }
     }
 
 #if UNITY_EDITOR
@@ -265,6 +293,11 @@ public class Tile : MonoBehaviour
     {
         LoadTileType();
         LoadHazardType();
+    }
+
+    private void Start()
+    {
+        m_DisplayObject.SetVisibleState(false, false);
     }
 
 }

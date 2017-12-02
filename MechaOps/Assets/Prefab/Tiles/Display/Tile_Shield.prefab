@@ -183,7 +183,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2567ac67b189e7149b2a5fd5a816602a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HandleName: 
   m_Animator: {fileID: 114111981493319390}
 --- !u!114 &114111981493319390
 MonoBehaviour:
@@ -227,6 +226,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb804e4e2cadf7540b2ae29f25a22d46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_VisibleMaterial: {fileID: 2100000, guid: aa8b29e8e9f410b4682be461b1b91c28, type: 2}
+  m_NotVisibleMaterial: {fileID: 2100000, guid: e8a9fecead4285c438da52964f7b8531,
+    type: 2}
   m_OwnerInitialized: 0
   m_Owner: {fileID: 0}
 --- !u!114 &114773879341096794
@@ -240,7 +242,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 044602e4e752ee844bb25e173b671df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HandleName: 
   m_Animator: {fileID: 114111981493319390}
 --- !u!114 &114792221564902508
 MonoBehaviour:
@@ -253,6 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 714bea9cfb481ce40ad105cadee95d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ShieldMeshRenderer: {fileID: 23395196834763236}
   m_TileDisplay: {fileID: 114752690920607154}
   m_ShieldAnimationOn: {fileID: 114966784171332024}
   m_ShieldAnimationOff: {fileID: 114036770461952780}
@@ -267,5 +269,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58ba8529ff1c4f94fbd6dedbe62dba68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HandleName: 
   m_Animator: {fileID: 114111981493319390}

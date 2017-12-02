@@ -68,7 +68,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 5
-    m_DisplayObject: {fileID: 114792221564902508, guid: f181b8033e1449641803572c8b89a866,
+    m_DisplayObject: {fileID: 114752690920607154, guid: f181b8033e1449641803572c8b89a866,
       type: 2}
   - m_Walkable: 0
     m_MovementCost: 1

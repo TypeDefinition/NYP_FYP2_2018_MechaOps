@@ -105,6 +105,9 @@ public class TileSystem : MonoBehaviour
     [SerializeField] private GameObject m_TileReachable = null;
     private List<GameObject> m_PathMarkers = null;
 
+    [SerializeField] private MeshFilter m_UnknownTilesMesh = null;
+    [SerializeField] private float m_UnknownTileMeshRadius = 2.0f;
+
     public int Radius
     {
         get { return m_Radius; }
@@ -131,6 +134,84 @@ public class TileSystem : MonoBehaviour
     }
 
 #if UNITY_EDITOR
+    // Generate Mesh for unknown tiles.
+    private void GenerateUnknownTilesMesh(float _tileRadius, float _distanceBetweenTiles)
+    {
+        List<Vector3> vertices = new List<Vector3>();
+        List<int> indices = new List<int>();
+        List<Vector2> uvs = new List<Vector2>();
+        List<Vector3> normals = new List<Vector3>();
+
+        int startIndex = 0;
+        for (int x = -m_Radius; x <= m_Radius; ++x)
+        {
+            for (int y = Mathf.Max(-m_Radius, -m_Radius - x); y <= Mathf.Min(m_Radius, m_Radius - x); ++y)
+            {
+                int z = -(x + y);
+                // The x, y and z here are the axis of the grid, not the world.
+                Vector3 xOffset = new Vector3(1.0f, 0.0f, 0.0f) * x;
+                Vector3 yOffset = new Vector3(Mathf.Cos(120.0f * Mathf.Deg2Rad), 0.0f, Mathf.Sin(120.0f * Mathf.Deg2Rad)) * y;
+                Vector3 zOffset = new Vector3(Mathf.Cos(240.0f * Mathf.Deg2Rad), 0.0f, Mathf.Sin(240.0f * Mathf.Deg2Rad)) * z;
+                
+                // The reason we multiply by 0.5 here is because the Ids of adjacemt tiles are 2 apart in a cube coordinate.
+                // So if we do not multiple 0.5, the tiles will be twice as far apart as they should be.
+                // Set the middle vertex.
+                Vector3 centreVertex = (xOffset + yOffset + zOffset) * _distanceBetweenTiles * 0.5f;
+
+                // Set the vertices and UVs
+                int numSides = 6;
+                for (int i = 0; i < numSides; ++i)
+                {
+                    float angle = (float)i * 360.0f / (float)numSides;
+                    // We multiply by negative because unlike OpenGL, clockwise winding order is visible here.
+                    angle *= -Mathf.Deg2Rad;
+
+                    Vector3 vertexPos = new Vector3(Mathf.Cos(angle), 0.0f, Mathf.Sin(angle));
+                    vertexPos *= _tileRadius;
+                    vertexPos += centreVertex;
+
+                    // We need to multiply by 0.5 because this is the radius, not the diameter.
+                    uvs.Add(new Vector2((Mathf.Cos(angle) * 0.5f) + 0.5f, (Mathf.Sin(angle) * 0.5f) + 0.5f));
+                    vertices.Add(vertexPos);
+                    normals.Add(new Vector3(0.0f, 1.0f, 0.0f));
+                }
+
+                // Add the centre vertex last.
+                vertices.Add(centreVertex);
+                uvs.Add(new Vector2(0.5f, 0.5f));
+                normals.Add(new Vector3(0.0f, 1.0f, 0.0f));
+
+                // Set the indexes
+                for (int i = 0; i < numSides; ++i)
+                {
+                    indices.Add(startIndex + i);
+                    indices.Add(startIndex + ((i + 1) % numSides));
+                    indices.Add(startIndex);
+                }
+
+                startIndex += 7;
+            }
+        }
+
+        Assert.IsTrue(m_UnknownTilesMesh != null, MethodBase.GetCurrentMethod().Name + " - UnknownTilesMesh cannot be null!");
+        Mesh mesh = new Mesh();
+        mesh.vertices = vertices.ToArray();
+        mesh.uv = uvs.ToArray();
+        mesh.normals = normals.ToArray();
+        mesh.triangles = indices.ToArray();
+
+        m_UnknownTilesMesh.mesh = mesh;
+    }
+
+    private void ClearUnknownTilesMesh()
+    {
+        Assert.IsTrue(m_UnknownTilesMesh != null, MethodBase.GetCurrentMethod().Name + " - UnknownTilesMesh cannot be null!");
+        Mesh mesh = new Mesh();
+        mesh.Clear();
+
+        m_UnknownTilesMesh.mesh = mesh;
+    }
+
     public void GenerateTiles()
     {
         // Delete existing tiles.
@@ -175,7 +256,6 @@ public class TileSystem : MonoBehaviour
                 // So if we do not multiple 0.5, the tiles will be twice as far apart as they should be.
                 tile.transform.position = transform.position + (xOffset + yOffset + zOffset) * m_DistanceBetweenTiles * 0.5f;
                 tile.transform.SetParent(transform);
-                tile.transform.localScale = tile.transform.localScale;
 
                 tile.LoadTileType();
 
@@ -195,6 +275,8 @@ public class TileSystem : MonoBehaviour
                 m_TileArray[index++] = new TileDictionaryPair(iter.Key, iter.Value);
             }
         }
+
+        GenerateUnknownTilesMesh(m_UnknownTileMeshRadius, m_DistanceBetweenTiles);
     }
 
     public void ClearTiles()
@@ -217,6 +299,8 @@ public class TileSystem : MonoBehaviour
 
         m_TileArray = new TileDictionaryPair[0];
         m_TileDictionary.Clear();
+
+        ClearUnknownTilesMesh();
     }
 
     public void RandomizeTileTypes()
@@ -225,7 +309,7 @@ public class TileSystem : MonoBehaviour
 
         foreach (KeyValuePair<TileId, Tile> iter in m_TileDictionary)
         {
-            TileType tileType = (TileType)Random.Range(0, (int)TileType.Num_TileType - 1);
+            TileType tileType = (TileType)Random.Range(0, (int)TileType.Num_TileType);
             iter.Value.SetTileType(tileType);
         }
     }
@@ -236,8 +320,7 @@ public class TileSystem : MonoBehaviour
 
         foreach (KeyValuePair<TileId, Tile> iter in m_TileDictionary)
         {
-            //HazardType hazardType = (HazardType)Random.Range((int)HazardType.None, (int)HazardType.Num_HazardType - 1);
-            HazardType hazardType = (HazardType)Random.Range(0, 1);
+            HazardType hazardType = (HazardType)Random.Range((int)HazardType.None, (int)HazardType.Num_HazardType);
             Debug.Log((int)hazardType);
             iter.Value.SetHazardType(hazardType);
         }
@@ -769,4 +852,5 @@ public class TileSystem : MonoBehaviour
             }
         }
     }
+
 }
