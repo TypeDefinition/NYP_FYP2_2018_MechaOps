@@ -9,7 +9,7 @@ using TMPro;
 public class AttackUIGroupLogic : MonoBehaviour {
     [Header("Variables needed")]
     [Tooltip("The reference for target UI which the code should already be doing it for you. Will be expanded upon in the future!")]
-    public GameObject m_TargetUIref;
+    public UnitDisplayUI m_TargetUIref;
     [Tooltip("Text for tracked target")]
     public TextMeshProUGUI m_TargetNameTxt;
     [SerializeField, Tooltip("The Animation time for the attack")]
@@ -99,17 +99,18 @@ public class AttackUIGroupLogic : MonoBehaviour {
     {
         //Vector3 zeTrackedUIPos = new Vector3(trackedTarget.transform.position.x, m_TargetGO.transform.position.y, trackedTarget.transform.position.z);
         // we will use the distance from the camera to the object and determine the position there. so we will need the direction vector and from there scale the distance of the point
-        Vector3 zeDirFromTargetToCam = Camera.main.transform.position - trackedTarget.transform.position;
-        zeDirFromTargetToCam.Normalize();
-        Vector3 zeTrackedUIPos = (zeDirFromTargetToCam * m_Dist) + trackedTarget.transform.position;
-        m_TargetGO.transform.position = zeTrackedUIPos;
+        //Vector3 zeDirFromTargetToCam = Camera.main.transform.position - trackedTarget.transform.position;
+        //zeDirFromTargetToCam.Normalize();
+        //Vector3 zeTrackedUIPos = (zeDirFromTargetToCam * m_Dist) + trackedTarget.transform.position;
+        //m_TargetGO.transform.position = zeTrackedUIPos;
+
+        UnitStats zeTargetStat = trackedTarget.GetComponent<UnitStats>();
+        UnitDisplayUI zeDisplayUI = m_TargetGO.GetComponent<UnitDisplayUI>();
+        zeDisplayUI.SetThePosToUnit(trackedTarget.transform);
+        zeDisplayUI.HpText = zeTargetStat.CurrentHealthPoints + "/" + zeTargetStat.MaxHealthPoints;
         m_OtherTarget = trackedTarget;
         // set the name and the HP there
         m_TargetNameTxt.text = m_OtherTarget.name;
-        if (!m_hpTextUI)
-            m_hpTextUI = GameObject.FindGameObjectWithTag("AttackUI").GetComponent<TextMeshProUGUI>();
-        UnitStats zeTargetStat = trackedTarget.GetComponent<UnitStats>();
-        m_hpTextUI.text = zeTargetStat.CurrentHealthPoints + "/" + zeTargetStat.MaxHealthPoints;
     }
 
     /// <summary>
@@ -153,7 +154,7 @@ public class AttackUIGroupLogic : MonoBehaviour {
         if (m_ListOfTargets.Count > 0)
         {
             m_WorldCanvasTrans = GameObject.FindGameObjectWithTag("WorldCanvas").transform;
-            m_TargetGO = Instantiate(m_TargetUIref, m_WorldCanvasTrans);
+            m_TargetGO = Instantiate(m_TargetUIref.gameObject, m_WorldCanvasTrans);
             m_TargetGO.SetActive(true);
             // For now, it will just pick the 1st enemy in the array
             KeepTrackOfGameObj(m_ListOfTargets[0]);

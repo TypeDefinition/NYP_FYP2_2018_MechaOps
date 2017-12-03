@@ -502,7 +502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd41555c41504d643b210108a3b39576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TargetUIref: {fileID: 1293721087050030, guid: 5ff687189fe473f40842dc3ea970b39a,
+  m_TargetUIref: {fileID: 114329953184238638, guid: 5ff687189fe473f40842dc3ea970b39a,
     type: 2}
   m_TargetNameTxt: {fileID: 114347574570523778}
   m_AnimTime: 0.2
