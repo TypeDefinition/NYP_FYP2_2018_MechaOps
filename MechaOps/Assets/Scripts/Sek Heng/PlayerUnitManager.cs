@@ -176,7 +176,7 @@ public class PlayerUnitManager : MonoBehaviour {
     public void NextUnit()
     {
         // this will ensure it will not go overboard
-        m_IndexOfCurrSelected = (m_IndexOfCurrSelected + 1) % m_UnitsYetToMakeMoves.Count;
+        m_IndexOfCurrSelected = Mathf.Min(m_IndexOfCurrSelected + 1, m_UnitsYetToMakeMoves.Count - 1);
         SpawnActionUI(m_UnitsYetToMakeMoves[m_IndexOfCurrSelected]);
     }
 
@@ -186,7 +186,7 @@ public class PlayerUnitManager : MonoBehaviour {
     public void PreviousUnit()
     {
         // Need to clamp it!
-        m_IndexOfCurrSelected = Mathf.Min(m_IndexOfCurrSelected - 1, 0);
+        m_IndexOfCurrSelected = Mathf.Max(m_IndexOfCurrSelected - 1, 0);
         SpawnActionUI(m_UnitsYetToMakeMoves[m_IndexOfCurrSelected]);
     }
 

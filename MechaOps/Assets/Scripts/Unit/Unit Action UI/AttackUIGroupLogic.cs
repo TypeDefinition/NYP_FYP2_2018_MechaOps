@@ -56,9 +56,9 @@ public class AttackUIGroupLogic : MonoBehaviour {
     private void OnDisable()
     {
         GameEventSystem.GetInstance().UnsubscribeFromEvent<IUnitAction>("SelectedAction", PressedAction);
-        //m_TileSys.ClearPathMarkers();
         // Set to inactive when the Attack UI is closed
-        Destroy(m_TargetGO);
+        if (m_TargetGO)
+            Destroy(m_TargetGO);
     }
 
     /// <summary>
@@ -97,17 +97,11 @@ public class AttackUIGroupLogic : MonoBehaviour {
     /// <param name="trackedTarget">The GameObject that needs to be tracked</param>
     protected void KeepTrackOfGameObj(GameObject trackedTarget)
     {
-        //Vector3 zeTrackedUIPos = new Vector3(trackedTarget.transform.position.x, m_TargetGO.transform.position.y, trackedTarget.transform.position.z);
-        // we will use the distance from the camera to the object and determine the position there. so we will need the direction vector and from there scale the distance of the point
-        //Vector3 zeDirFromTargetToCam = Camera.main.transform.position - trackedTarget.transform.position;
-        //zeDirFromTargetToCam.Normalize();
-        //Vector3 zeTrackedUIPos = (zeDirFromTargetToCam * m_Dist) + trackedTarget.transform.position;
-        //m_TargetGO.transform.position = zeTrackedUIPos;
-
         UnitStats zeTargetStat = trackedTarget.GetComponent<UnitStats>();
         UnitDisplayUI zeDisplayUI = m_TargetGO.GetComponent<UnitDisplayUI>();
         zeDisplayUI.SetThePosToUnit(trackedTarget.transform);
         zeDisplayUI.HpText = zeTargetStat.CurrentHealthPoints + "/" + zeTargetStat.MaxHealthPoints;
+        zeDisplayUI.AnimateUI();
         m_OtherTarget = trackedTarget;
         // set the name and the HP there
         m_TargetNameTxt.text = m_OtherTarget.name;
