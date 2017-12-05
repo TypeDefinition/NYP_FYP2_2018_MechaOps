@@ -7,40 +7,6 @@ using System.Reflection;
 // References:
 // Hexagon Grid - https://www.redblobgames.com/grids/hexagons
 
-/*
-The tiles are flat topped hexagons.
-Their sides are labels from 0 to 6, with 0 being the top, and increasing in the anti-clockwise direction.
-*/
-
-/*
-[System.Serializable]
-public class TileInfo
-{
-
-    [SerializeField] private TileId m_Id;
-    [SerializeField] private Tile m_Tile;
-
-    public TileInfo(TileId _id, Tile _tile)
-    {
-        m_Id = _id;
-        m_Tile = _tile;
-    }
-
-    ~TileInfo() {}
-
-    public TileId GetId()
-    {
-        return m_Id;
-    }
-
-    public Tile GetTile()
-    {
-        return m_Tile;
-    }
-
-}
-*/
-
 [System.Serializable]
 public class TileDictionaryPair
 {
@@ -97,8 +63,8 @@ public class TileSystem : MonoBehaviour
     private Dictionary<TileId, Tile> m_TileDictionary = new Dictionary<TileId, Tile>();
     [HideInInspector, SerializeField] private TileDictionaryPair[] m_TileArray = new TileDictionaryPair[0];
 
-    [SerializeField] private int m_Radius = 10;
-    [SerializeField] private float m_DistanceBetweenTiles = 5.0f;
+    [SerializeField] private int m_TileRadius = 10;
+    [SerializeField] private float m_TileDiameter = 4.0f;
 
     [SerializeField] private GameObject m_TilePath = null;
     [SerializeField] private GameObject m_TileSelected = null;
@@ -108,14 +74,14 @@ public class TileSystem : MonoBehaviour
     [SerializeField] private MeshFilter m_UnknownTilesMesh = null;
     [SerializeField] private float m_UnknownTileMeshRadius = 2.0f;
 
-    public int Radius
+    public int TileRadius
     {
-        get { return m_Radius; }
+        get { return m_TileRadius; }
     }
 
-    public float DistanceBetweenTiles
+    public float TileDiameter
     {
-        get { return m_DistanceBetweenTiles; }
+        get { return m_TileDiameter; }
     }
 
     public HazardLibrary GetHazardLibrary()
@@ -143,9 +109,9 @@ public class TileSystem : MonoBehaviour
         List<Vector3> normals = new List<Vector3>();
 
         int startIndex = 0;
-        for (int x = -m_Radius; x <= m_Radius; ++x)
+        for (int x = -m_TileRadius; x <= m_TileRadius; ++x)
         {
-            for (int y = Mathf.Max(-m_Radius, -m_Radius - x); y <= Mathf.Min(m_Radius, m_Radius - x); ++y)
+            for (int y = Mathf.Max(-m_TileRadius, -m_TileRadius - x); y <= Mathf.Min(m_TileRadius, m_TileRadius - x); ++y)
             {
                 int z = -(x + y);
                 // The x, y and z here are the axis of the grid, not the world.
@@ -239,9 +205,9 @@ public class TileSystem : MonoBehaviour
         // The above can be further optimised.
         // I understood this code by drawing out the hexagon grid on a piece of paper and seeing the order
         // which the loop generated the hexagons and compared the TileId(s).
-        for (int x = -m_Radius; x <= m_Radius; ++x)
+        for (int x = -m_TileRadius; x <= m_TileRadius; ++x)
         {
-            for (int y = Mathf.Max(-m_Radius, -m_Radius - x); y <= Mathf.Min(m_Radius, m_Radius - x); ++y)
+            for (int y = Mathf.Max(-m_TileRadius, -m_TileRadius - x); y <= Mathf.Min(m_TileRadius, m_TileRadius - x); ++y)
             {
                 TileId tileId = new TileId(x, y);
                 Tile tile = GameObject.Instantiate(m_DefaultTile).GetComponent<Tile>();
@@ -254,7 +220,7 @@ public class TileSystem : MonoBehaviour
                 Vector3 zOffset = new Vector3(Mathf.Cos(240.0f * Mathf.Deg2Rad), 0.0f, Mathf.Sin(240.0f * Mathf.Deg2Rad)) * tileId.GetZ();
                 // The reason we multiply by 0.5 here is because the Ids of adjacemt tiles are 2 apart in a cube coordinate.
                 // So if we do not multiple 0.5, the tiles will be twice as far apart as they should be.
-                tile.transform.position = transform.position + (xOffset + yOffset + zOffset) * m_DistanceBetweenTiles * 0.5f;
+                tile.transform.position = transform.position + (xOffset + yOffset + zOffset) * m_TileDiameter * 0.5f;
                 tile.transform.SetParent(transform);
 
                 tile.LoadTileType();
@@ -276,7 +242,7 @@ public class TileSystem : MonoBehaviour
             }
         }
 
-        GenerateUnknownTilesMesh(m_UnknownTileMeshRadius, m_DistanceBetweenTiles);
+        GenerateUnknownTilesMesh(m_UnknownTileMeshRadius, m_TileDiameter);
     }
 
     public void ClearTiles()
@@ -328,8 +294,8 @@ public class TileSystem : MonoBehaviour
 
     private void OnValidate()
     {
-        m_Radius = Mathf.Max(0, m_Radius);
-        m_DistanceBetweenTiles = Mathf.Max(0.0f, m_DistanceBetweenTiles);
+        m_TileRadius = Mathf.Max(0, m_TileRadius);
+        m_TileDiameter = Mathf.Max(0.0f, m_TileDiameter);
     }
 #endif // UNITY_EDITOR
 
@@ -421,7 +387,7 @@ public class TileSystem : MonoBehaviour
     // Interface Function(s)
     public TileId[] GetSurroundingTiles(TileId _centre, int _radius)
     {
-        _radius = Mathf.Min(_radius, m_Radius * 2);
+        _radius = Mathf.Min(_radius, m_TileRadius * 2);
 
         // _radius should never be < 0.
         Assert.IsFalse(_radius < 0, MethodBase.GetCurrentMethod().Name + " - Invalid value for _radius!");
