@@ -241,7 +241,11 @@ public class GameEventSystem
     public void TriggerEvent(string _eventName)
     {
         UnityEventBase unityEventBase = GetEvent(_eventName);
-        Assert.IsFalse(unityEventBase == null, MethodBase.GetCurrentMethod().Name + " - There are no events with the name " + _eventName + "!");
+        if (unityEventBase == null)
+        {
+            AddEvent(_eventName);
+            unityEventBase = GetEvent(_eventName);
+        }
 
         UnityEvent unityEvent = (UnityEvent)unityEventBase;
         Assert.IsFalse(unityEvent == null, MethodBase.GetCurrentMethod().Name + " - Wrong TriggerEvent function called! Ensure that you call the TriggerEvent function corresponding to the AddEvent function you called!");
@@ -252,7 +256,11 @@ public class GameEventSystem
     public void TriggerEvent<T>(string _eventName, T _parameter)
     {
         UnityEventBase unityEventBase = GetEvent(_eventName);
-        Assert.IsFalse(unityEventBase == null, MethodBase.GetCurrentMethod().Name + " - There are no events with the name " + _eventName + "!");
+        if (unityEventBase == null)
+        {
+            AddEvent<T>(_eventName);
+            unityEventBase = GetEvent(_eventName);
+        }
 
         GenericUnityEvent1<T> unityEvent = (GenericUnityEvent1<T>)unityEventBase;
         Assert.IsFalse(unityEvent == null, MethodBase.GetCurrentMethod().Name + " - Wrong TriggerEvent function called! Ensure that you call the TriggerEvent function corresponding to the AddEvent function you called!");
@@ -263,7 +271,11 @@ public class GameEventSystem
     public void TriggerEvent<T1, T2>(string _eventName, T1 _parameter1, T2 _parameter2)
     {
         UnityEventBase unityEventBase = GetEvent(_eventName);
-        Assert.IsFalse(unityEventBase == null, MethodBase.GetCurrentMethod().Name + " - There are no events with the name " + _eventName + "!");
+        if (unityEventBase == null)
+        {
+            AddEvent<T1, T2>(_eventName);
+            unityEventBase = GetEvent(_eventName);
+        }
 
         GenericUnityEvent2<T1, T2> unityEvent = (GenericUnityEvent2<T1, T2>)unityEventBase;
         Assert.IsFalse(unityEvent == null, MethodBase.GetCurrentMethod().Name + " - Wrong TriggerEvent function called! Ensure that you call the TriggerEvent function corresponding to the AddEvent function you called!");
@@ -274,7 +286,11 @@ public class GameEventSystem
     public void TriggerEvent<T1, T2, T3>(string _eventName, T1 _parameter1, T2 _parameter2, T3 _parameter3)
     {
         UnityEventBase unityEventBase = GetEvent(_eventName);
-        Assert.IsFalse(unityEventBase == null, MethodBase.GetCurrentMethod().Name + " - There are no events with the name " + _eventName + "!");
+        if (unityEventBase == null)
+        {
+            AddEvent<T1, T2, T3>(_eventName);
+            unityEventBase = GetEvent(_eventName);
+        }
 
         GenericUnityEvent3<T1, T2, T3> unityEvent = (GenericUnityEvent3<T1, T2, T3>)unityEventBase;
         Assert.IsFalse(unityEvent == null, MethodBase.GetCurrentMethod().Name + " - Wrong TriggerEvent function called! Ensure that you call the TriggerEvent function corresponding to the AddEvent function you called!");
@@ -285,7 +301,11 @@ public class GameEventSystem
     public void TriggerEvent<T1, T2, T3, T4>(string _eventName, T1 _parameter1, T2 _parameter2, T3 _parameter3, T4 _parameter4)
     {
         UnityEventBase unityEventBase = GetEvent(_eventName);
-        Assert.IsFalse(unityEventBase == null, MethodBase.GetCurrentMethod().Name + " - There are no events with the name " + _eventName + "!");
+        if (unityEventBase == null)
+        {
+            AddEvent<T1, T2, T3, T4>(_eventName);
+            unityEventBase = GetEvent(_eventName);
+        }
 
         GenericUnityEvent4<T1, T2, T3, T4> unityEvent = (GenericUnityEvent4<T1, T2, T3, T4>)unityEventBase;
         Assert.IsFalse(unityEvent == null, MethodBase.GetCurrentMethod().Name + " - Wrong TriggerEvent function called! Ensure that you call the TriggerEvent function corresponding to the AddEvent function you called!");

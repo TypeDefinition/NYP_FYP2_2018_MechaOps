@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4559197436356676}
   - component: {fileID: 33434311670442320}
-  - component: {fileID: 65146504462627036}
   - component: {fileID: 23087383209823338}
   m_Layer: 0
   m_Name: Tile_Unknown
@@ -112,18 +111,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1078455943299798}
   m_Mesh: {fileID: 0}
---- !u!65 &65146504462627036
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1078455943299798}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114006940085896276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -142,8 +129,8 @@ MonoBehaviour:
   m_DefaultTile: {fileID: 114553182710685338, guid: 63cb481f6a73e3640961951b73627b88,
     type: 2}
   m_TileArray: []
-  m_Radius: 3
-  m_DistanceBetweenTiles: 4
+  m_TileRadius: 10
+  m_TileDiameter: 4
   m_TilePath: {fileID: 1316762747078660, guid: 3fc27dc780f0ceb40a6b27ce7cb684a2, type: 2}
   m_TileSelected: {fileID: 1133740913659376, guid: dbc3f06385a24884a807f106a685cbba,
     type: 2}
