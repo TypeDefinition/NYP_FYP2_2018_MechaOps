@@ -59,6 +59,8 @@ public class UnitStats : MonoBehaviour
     public TileSystem m_TileSys;
     [Tooltip("Death attack animation"), SerializeField]
     protected MOAnimation_UnitDestroy m_DeathAnim;
+    [SerializeField, Tooltip("View Render Script")]
+    protected ViewTileScript m_ViewTileScript;
 
     /// <summary>
     /// A callback function will appear when ever the health point decreases
@@ -209,6 +211,8 @@ public class UnitStats : MonoBehaviour
         if (!m_TileSys)
             m_TileSys = FindObjectOfType<TileSystem>();
         m_TileSys.GetTile(CurrentTileID).Unit = gameObject;
+        if (tag == "Player" && !m_ViewTileScript)
+            m_ViewTileScript = GetComponent<PlayerViewScript>();
         yield break;
     }
 
@@ -270,6 +274,7 @@ public class UnitStats : MonoBehaviour
         {
             case "Player":
                 // so get the list of enemy units
+                m_ViewTileScript.RenderSurroundingTiles();
                 zeListOfUnits = KeepTrackOfUnits.Instance.m_AllEnemyUnitGO;
                 break;
             case "EnemyUnit":

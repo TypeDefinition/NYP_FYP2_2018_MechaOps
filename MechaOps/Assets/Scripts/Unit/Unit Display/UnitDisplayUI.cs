@@ -6,7 +6,7 @@ using TMPro;
 /// <summary>
 /// meant to just display the stats UI only!
 /// </summary>
-public class UnitDisplayUI : MonoBehaviour {
+public class UnitDisplayUI : TweenUI_Scale {
     [Header("Variables needed")]
     [SerializeField, Tooltip("The HP text of the unit!")]
     protected TextMeshProUGUI m_HpTextUI;
@@ -18,17 +18,6 @@ public class UnitDisplayUI : MonoBehaviour {
     protected GameObject m_goActPt;
     [Tooltip("The distance to from the target to the camera")]
     public float m_Dist = 3.0f;
-    [Tooltip("The animation for scaling of X")]
-    public float m_AnimTime = 0.2f;
-
-    [Header("Debugging")]
-    [SerializeField, Tooltip("Variables for original scale X")]
-    protected float m_OriginalScaleX;
-
-    private void Awake()
-    {
-        m_OriginalScaleX = transform.localScale.x;
-    }
 
     private void OnEnable()
     {
@@ -88,16 +77,5 @@ public class UnitDisplayUI : MonoBehaviour {
         HpText = _unitStat.CurrentHealthPoints + "/" + _unitStat.MaxHealthPoints;
         ActPtText = _unitStat.CurrentActionPoints.ToString();
         SetThePosToUnit(_unitStat.transform);
-    }
-
-    /// <summary>
-    /// To just do some simple tweening. If complicated tweening is required, then use Unity Animator
-    /// </summary>
-    public virtual void AnimateUI()
-    {
-        Vector3 zeLocalScale = transform.localScale;
-        zeLocalScale.x = 0;
-        transform.localScale = zeLocalScale;
-        LeanTween.scaleX(gameObject, m_OriginalScaleX, m_AnimTime);
     }
 }
