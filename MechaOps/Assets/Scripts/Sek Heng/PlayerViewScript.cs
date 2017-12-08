@@ -16,6 +16,7 @@ public class PlayerViewScript : ViewTileScript
     /// </summary>
     public override void RenderSurroundingTiles()
     {
+        CheckSurroundingTiles();
         // find the tile system if there is none!
         if (!m_TileSys)
             m_TileSys = FindObjectOfType<TileSystem>();
@@ -58,13 +59,19 @@ public class PlayerViewScript : ViewTileScript
     {
         if (!m_TileSys)
             m_TileSys = FindObjectOfType<TileSystem>();
+        List<Tile> zeTileNeedRemoved = new List<Tile>();
         foreach (Tile zeTile in m_ViewedTiles)
         {
             if (TileId.GetDistance(m_Stats.CurrentTileID, zeTile.GetId()) > m_Stats.ViewRange)
             {
                 --zeTile.VisibleCounter;
-                m_ViewedTiles.Remove(zeTile);
+                zeTileNeedRemoved.Add(zeTile);
             }
+        }
+        // we have to do this loop twice otherwise there will be an error at the above!
+        foreach (Tile zeTile in zeTileNeedRemoved)
+        {
+            m_ViewedTiles.Remove(zeTile);
         }
     }
 }

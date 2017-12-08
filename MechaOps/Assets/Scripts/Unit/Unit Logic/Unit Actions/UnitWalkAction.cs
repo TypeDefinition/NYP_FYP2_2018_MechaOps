@@ -54,8 +54,9 @@ public class UnitWalkAction : IUnitAction {
                         Vector3 zeNewPos = new Vector3(m_CurrentDestinationTile.transform.position.x, transform.position.y, m_CurrentDestinationTile.transform.position.z);
                         // TODO: Right now it is using the same terminal velocity to travel between points
                         yield return StartCoroutine(WalkBetPtsRoutine(transform.position, zeNewPos));
-                        // Then assign the arrived tile to be the current tile at the unit Stat
                         GetUnitStats().CurrentTileID = m_CurrentDestinationTile.GetId();
+                        GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitMoveToTile", gameObject);
+                        // Then assign the arrived tile to be the current tile at the unit Stat
                         break;
                     default:
                         break;
@@ -139,7 +140,6 @@ public class UnitWalkAction : IUnitAction {
         m_AttackAnim.CompletionCallback -= CallAnimDone;
         m_AnimDone = false;
         // Sending out an event that this game object has moved
-        GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitMoveToTile", gameObject);
         if (CompletedCallBack != null)
         {
             CompletedCallBack.Invoke();
