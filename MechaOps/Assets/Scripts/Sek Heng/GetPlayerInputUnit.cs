@@ -17,6 +17,8 @@ public class GetPlayerInputUnit : MonoBehaviour {
         // EventSystem.alreadySelecting doesn't work. EventSystem.IsPointerOverGameObject() doesn't work too
         if (Input.GetMouseButton(0))
         {
+            if (EventSystem.current.IsPointerOverGameObject())
+                return;
             Ray clickedRay = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit clickedObj;
             List<string> layersToCheck = new List<string>();
