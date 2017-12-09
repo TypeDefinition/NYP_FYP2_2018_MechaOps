@@ -274,7 +274,6 @@ public class UnitStats : MonoBehaviour
         {
             case "Player":
                 // so get the list of enemy units
-                m_ViewTileScript.RenderSurroundingTiles();
                 zeListOfUnits = KeepTrackOfUnits.Instance.m_AllEnemyUnitGO;
                 break;
             case "EnemyUnit":
@@ -298,18 +297,23 @@ public class UnitStats : MonoBehaviour
             // if that list does not have the unit in range!
             if (!m_EnemyInRange.Contains(zeGO))
             {
-                if (zeTileDist <= ViewRange)
+                if (zeTileDist <= ViewRange && RaycastToOtherPos(zeGO.transform))
+                {
                     m_EnemyInRange.Add(zeGO);
+                    zeGOState.m_ViewTileScript.IncreVisi();
+                }
             }
             else
             {
-                if (zeTileDist > ViewRange)
+                if (zeTileDist > ViewRange || !RaycastToOtherPos(zeGO.transform))
                 {
                     // if the opposing unit is in range and 
                     m_EnemyInRange.Remove(zeGO);
+                    zeGOState.m_ViewTileScript.DecreVisi();
                 }
             }
         }
+        m_ViewTileScript.RenderSurroundingTiles();
     }
 
     /// <summary>
@@ -327,7 +331,7 @@ public class UnitStats : MonoBehaviour
                 // Need to make sure that the moveunit is not itself! and the tag is the opposing unit!
                 if (!m_EnemyInRange.Contains(_movedUnit))
                 {
-                    if (zeTileDist <= ViewRange)
+                    if (zeTileDist <= ViewRange && RaycastToOtherPos(_movedUnit.transform))
                     {
                         m_EnemyInRange.Add(_movedUnit);
                         // so we have to render the enemy unit if it belongs to the enemy
@@ -336,7 +340,7 @@ public class UnitStats : MonoBehaviour
                 }
                 else
                 {
-                    if (zeTileDist > ViewRange)
+                    if (zeTileDist > ViewRange || !RaycastToOtherPos(_movedUnit.transform))
                     {
                         // if the opposing unit is in range and 
                         m_EnemyInRange.Remove(_movedUnit);
@@ -359,7 +363,18 @@ public class UnitStats : MonoBehaviour
     /// </summary>
     protected void EnemyInRangeDead(GameObject _deadUnit)
     {
-        m_EnemyInRange.Remove(_deadUnit);
+        //if (m_EnemyInRange.Contains(_deadUnit))
+        {
+            m_EnemyInRange.Remove(_deadUnit);
+        }
+    }
+
+    public bool RaycastToOtherPos(Transform _otherTrans)
+    {
+        // do a raycast between this gamobject and other go
+        int zeRayMask = LayerMask.GetMask("TileDisplay");
+        Vector3 zeDirection = _otherTrans.position - transform.position;
+        return !Physics.Raycast(transform.position, zeDirection, zeDirection.magnitude, zeRayMask);
     }
 
 #if UNITY_EDITOR
