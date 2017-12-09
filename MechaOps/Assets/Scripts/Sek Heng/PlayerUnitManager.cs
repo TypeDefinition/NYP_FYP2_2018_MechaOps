@@ -60,7 +60,6 @@ public class PlayerUnitManager : MonoBehaviour {
         GameEventSystem.GetInstance().SubscribeToEvent("EnemyAnnihilated", StopUpdate);
         GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("ClickedUnit", PlayerSelectUnit);
         GameEventSystem.GetInstance().SubscribeToEvent("ToggleSelectingUnit", ToggleThePlayerInput);
-        GameEventSystem.GetInstance().SubscribeToEvent("UnitFinishAction", PollingForPlayerInput);
     }
 
     private void OnDisable()
@@ -78,6 +77,7 @@ public class PlayerUnitManager : MonoBehaviour {
         m_IndexOfCurrSelected = 0;
         // Get a shallow copy of the list of all available units!
         m_UnitsYetToMakeMoves = new List<GameObject>(KeepTrackOfUnits.Instance.m_AllPlayerUnitGO);
+        GameEventSystem.GetInstance().SubscribeToEvent("UnitFinishAction", PollingForPlayerInput);
         GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("UnitMakeMove", UnitHasMakeMove);
         WaitForSecondsRealtime zeAmountOfWaitTime = new WaitForSecondsRealtime(0.1f);
         m_PlayerInputOnUnit.enabled = true;
@@ -86,6 +86,7 @@ public class PlayerUnitManager : MonoBehaviour {
             yield return zeAmountOfWaitTime;
         }
         GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("UnitMakeMove", UnitHasMakeMove);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent("UnitFinishAction", PollingForPlayerInput);
         m_UpdateOfManager = null;
         GameEventSystem.GetInstance().TriggerEvent("TurnEnded");
         // Player no longer needs to interact with the game so might as well turn off the polling
