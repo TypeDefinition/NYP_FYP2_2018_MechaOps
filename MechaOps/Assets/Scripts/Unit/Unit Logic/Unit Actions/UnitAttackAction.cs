@@ -19,7 +19,7 @@ public class UnitAttackAction : IUnitAction
     protected MOAnimation_PanzerAttack m_AttackAnim;
     [Header("Debugging purpose")]
     [SerializeField, Tooltip("The unit stat of the target")]
-    private UnitStats m_TargetUnitStats;
+    protected UnitStats m_TargetUnitStats;
 
     public int MinAttackRange {
         get { return m_MinAttackRange; }
@@ -52,9 +52,9 @@ public class UnitAttackAction : IUnitAction
 
     public void SetTarget(GameObject _target)
     {
-        Assert.IsTrue(_target != null, MethodBase.GetCurrentMethod().Name + " - _target is null!");
+        Assert.IsNotNull(_target, MethodBase.GetCurrentMethod().Name + " - _target is null!");
         m_TargetUnitStats = _target.GetComponent<UnitStats>();
-        Assert.IsTrue(m_TargetUnitStats != false, MethodBase.GetCurrentMethod().Name + " - _target has no UnitStats!");
+        Assert.IsNotNull(m_TargetUnitStats, MethodBase.GetCurrentMethod().Name + " - _target has no UnitStats!");
     }
 
     public void RemoveTarget()
@@ -113,7 +113,7 @@ public class UnitAttackAction : IUnitAction
         m_ActionState = ActionState.Running;
         // TODO: Do some complex calculation and animation for this
         --GetUnitStats().CurrentActionPoints;
-        m_AttackAnim.Hit = true;
+        m_AttackAnim.Hit = CheckIfHit();
         m_AttackAnim.Target = m_TargetUnitStats.gameObject;
         m_AttackAnim.CompletionCallback = CallAnimDone;
         WaitForFixedUpdate zeFixedWait = new WaitForFixedUpdate();
@@ -122,7 +122,14 @@ public class UnitAttackAction : IUnitAction
         {
             yield return zeFixedWait;
         }
-        m_TargetUnitStats.CurrentHealthPoints -= m_DamagePoints;
+        switch (m_AttackAnim.Hit)
+        {
+            case true:
+                m_TargetUnitStats.CurrentHealthPoints -= m_DamagePoints;
+                break;
+            default:
+                break;
+        }
         // if there is anyone calling for it, if there is no such function thr
         if (m_TargetUnitStats.m_HealthDropCallback != null)
             m_TargetUnitStats.m_HealthDropCallback.Invoke(m_UnitStats);
@@ -190,6 +197,15 @@ public class UnitAttackAction : IUnitAction
 
         // Check if can see enemy (Our View Range as well as teammate scouting)
 
+        return true;
+    }
+
+    /// <summary>
+    /// This will always be true regardless since there is nothing to see the accuracy
+    /// </summary>
+    /// <returns></returns>
+    protected virtual bool CheckIfHit()
+    {
         return true;
     }
 

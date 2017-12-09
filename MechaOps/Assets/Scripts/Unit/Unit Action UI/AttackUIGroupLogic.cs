@@ -66,11 +66,15 @@ public class AttackUIGroupLogic : MonoBehaviour {
     /// </summary>
     public void DoTheAttackAction()
     {
-        // set the target, schedule this action. then destroy this UI gameobject since it is not needed
-        m_UnitAttackActRef.SetTarget(m_OtherTarget);
-        m_UnitAttackActRef.TurnOn();
-        m_actScheduler.ScheduleAction(m_UnitAttackActRef);
-        Destroy(gameObject);
+        // only press the button if the target is not null!
+        if (m_OtherTarget)
+        {
+            // set the target, schedule this action. then destroy this UI gameobject since it is not needed
+            m_UnitAttackActRef.SetTarget(m_OtherTarget);
+            m_UnitAttackActRef.TurnOn();
+            m_actScheduler.ScheduleAction(m_UnitAttackActRef);
+            Destroy(gameObject);
+        }
     }
 
     /// <summary>
@@ -78,8 +82,15 @@ public class AttackUIGroupLogic : MonoBehaviour {
     /// </summary>
     public void GoRightOfTarget()
     {
-        m_IndexOfTarget = Mathf.Min(++m_IndexOfTarget, m_ListOfTargets.Count - 1);
-        KeepTrackOfGameObj(m_ListOfTargets[m_IndexOfTarget]);
+        switch (m_ListOfTargets.Count)
+        {
+            case 0:
+                break;
+            default:
+                m_IndexOfTarget = Mathf.Min(++m_IndexOfTarget, m_ListOfTargets.Count - 1);
+                KeepTrackOfGameObj(m_ListOfTargets[m_IndexOfTarget]);
+                break;
+        }
     }
 
     /// <summary>
@@ -87,8 +98,15 @@ public class AttackUIGroupLogic : MonoBehaviour {
     /// </summary>
     public void GoLeftOfTarget()
     {
-        m_IndexOfTarget = Mathf.Max(--m_IndexOfTarget, 0);
-        KeepTrackOfGameObj(m_ListOfTargets[m_IndexOfTarget]);
+        switch (m_ListOfTargets.Count)
+        {
+            case 0:
+                break;
+            default:
+                m_IndexOfTarget = Mathf.Max(--m_IndexOfTarget, 0);
+                KeepTrackOfGameObj(m_ListOfTargets[m_IndexOfTarget]);
+                break;
+        }
     }
 
     /// <summary>
