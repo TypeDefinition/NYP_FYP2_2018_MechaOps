@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 114313675222075914}
   - component: {fileID: 65646190498490294}
   - component: {fileID: 114811533488785636}
+  - component: {fileID: 114076083858343404}
   - component: {fileID: 114191423135492830}
   - component: {fileID: 114194489393849732}
   - component: {fileID: 114988130546796368}
@@ -1773,6 +1774,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Animator: {fileID: 114415545089679648}
+--- !u!114 &114076083858343404
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1411079469388966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44d7e9c6f646b03479e84ffce248edf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Stats: {fileID: 114811533488785636}
+  m_TileSys: {fileID: 0}
+  m_ViewedTiles: []
 --- !u!114 &114191423135492830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1985,6 +2000,7 @@ MonoBehaviour:
   m_AnimHandler: []
   m_TileSys: {fileID: 0}
   m_DeathAnim: {fileID: 114876947489221560}
+  m_ViewTileScript: {fileID: 114076083858343404}
 --- !u!114 &114876947489221560
 MonoBehaviour:
   m_ObjectHideFlags: 1

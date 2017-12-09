@@ -9,5 +9,15 @@ public abstract class ViewTileScript : MonoBehaviour {
     [SerializeField, Tooltip("Tile system of the game. Linking not required")]
     protected TileSystem m_TileSys;
 
-    public abstract void RenderSurroundingTiles();
+    public virtual void RenderSurroundingTiles()
+    {
+    }
+
+    public virtual void IncreVisi()
+    {
+    }
+
+    public virtual void DecreVisi()
+    {
+    }
 }

@@ -328,7 +328,11 @@ public class UnitStats : MonoBehaviour
                 if (!m_EnemyInRange.Contains(_movedUnit))
                 {
                     if (zeTileDist <= ViewRange)
+                    {
                         m_EnemyInRange.Add(_movedUnit);
+                        // so we have to render the enemy unit if it belongs to the enemy
+                        zeGOState.m_ViewTileScript.IncreVisi();
+                    }
                 }
                 else
                 {
@@ -336,6 +340,7 @@ public class UnitStats : MonoBehaviour
                     {
                         // if the opposing unit is in range and 
                         m_EnemyInRange.Remove(_movedUnit);
+                        zeGOState.m_ViewTileScript.DecreVisi();
                     }
                 }
             }
