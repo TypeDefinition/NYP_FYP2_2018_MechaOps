@@ -178,6 +178,7 @@ GameObject:
   - component: {fileID: 114605145088196580}
   - component: {fileID: 65121700620846896}
   - component: {fileID: 114879956254548028}
+  - component: {fileID: 114054195728922426}
   - component: {fileID: 114930548130969464}
   - component: {fileID: 114669511403171312}
   - component: {fileID: 114592386915721966}
@@ -1806,6 +1807,21 @@ MonoBehaviour:
   m_PlayOnStart: 0
   m_SetInactiveOnCompletion: 1
   m_DestroyOnCompletion: 0
+--- !u!114 &114054195728922426
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1258380024048378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4ab873f68d900f4b9393e08eb7da93e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Stats: {fileID: 0}
+  m_TileSys: {fileID: 0}
+  m_VisibilityCount: 0
+  m_AllRenderers: []
 --- !u!114 &114115438538414526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1941,6 +1957,9 @@ MonoBehaviour:
   m_StateData: {fileID: 114320079545034956}
   m_FinishMoving: 0
   m_UnderAttack: 0
+  m_CurrentGoal:
+    m_Priority: 0
+    m_GoapName: 
 --- !u!114 &114605145088196580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2065,6 +2084,7 @@ MonoBehaviour:
   m_AnimHandler: []
   m_TileSys: {fileID: 0}
   m_DeathAnim: {fileID: 114982705508500524}
+  m_ViewTileScript: {fileID: 114054195728922426}
 --- !u!114 &114930548130969464
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2091,7 +2111,6 @@ MonoBehaviour:
   m_MovementPoints: 5
   m_AttackAnim: {fileID: 114605145088196580}
   m_TilePath: []
-  m_CurrentDestinationTile: {fileID: 0}
   m_TileSys: {fileID: 0}
 --- !u!114 &114982705508500524
 MonoBehaviour:
