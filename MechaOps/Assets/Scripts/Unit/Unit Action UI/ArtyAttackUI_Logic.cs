@@ -11,19 +11,26 @@ public class ArtyAttackUI_Logic : TweenUI_Scale {
     protected ArtyAttackAct m_AttckAct;
     [SerializeField, Tooltip("The targeted Tile")]
     protected Tile m_TargetTile;
+    [SerializeField, Tooltip("Tile System")]
+    protected TileSystem m_TileSys;
+    [SerializeField, Tooltip("List of Tiles that it can attack")]
+    protected List<TileId> m_AttackableTiles;
 
     private void OnEnable()
     {
+        m_TileSys = FindObjectOfType<TileSystem>();
         // Animate the UI when enabled
         AnimateUI();
-
         GameEventSystem.GetInstance().TriggerEvent("ToggleSelectingUnit");
         GameEventSystem.GetInstance().SubscribeToEvent<IUnitAction>("SelectedAction", PressedAction);
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("ClickedUnit", ClickedUnit);
     }
 
     private void OnDisable()
     {
         GameEventSystem.GetInstance().UnsubscribeFromEvent<IUnitAction>("SelectedAction", PressedAction);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("ClickedUnit", ClickedUnit);
+        m_TileSys.ClearPathMarkers();
     }
 
     /// <summary>
@@ -39,7 +46,14 @@ public class ArtyAttackUI_Logic : TweenUI_Scale {
 
     public void ConfirmAttack()
     {
-        Destroy(gameObject);
+        if (m_TargetTile)
+        {
+            UnitActionScheduler zeSchedule = FindObjectOfType<UnitActionScheduler>();
+            m_AttckAct.SetTarget(m_TargetTile.gameObject);
+            m_AttckAct.TurnOn();
+            zeSchedule.ScheduleAction(m_AttckAct);
+            Destroy(gameObject);
+        }
     }
 
     /// <summary>
@@ -49,10 +63,45 @@ public class ArtyAttackUI_Logic : TweenUI_Scale {
     public void PressedAction(IUnitAction _act)
     {
         m_AttckAct = _act as ArtyAttackAct;
+        // then we highlight all of the tiles from here
+        TileId []zeAllTile = m_TileSys.GetSurroundingTiles(m_AttckAct.m_UnitStats.CurrentTileID, m_AttckAct.MaxAttackRange);
+        foreach (TileId zeTileID in zeAllTile)
+        {
+            int zeDist = TileId.GetDistance(m_AttckAct.m_UnitStats.CurrentTileID, zeTileID);
+            // check if it is within the range
+            if (zeDist >= m_AttckAct.MinAttackRange && zeDist <= m_AttckAct.MaxAttackRange)
+            {
+                m_AttackableTiles.Add(zeTileID);
+            }
+        }
+        m_TileSys.SetPathMarkers(m_AttackableTiles.ToArray(), null);
     }
 
-    protected void ClickedUnit()
+    protected void ClickedUnit(GameObject _go)
     {
-
+        Tile zeTile = null;
+        switch (_go.tag)
+        {
+            case "TileDisplay":
+                // if it is the tile / obstacle
+                zeTile = _go.transform.parent.GetComponent<Tile>();
+                break;
+            case "TileBase":
+                zeTile = _go.GetComponent<Tile>();
+                break;
+            case "Player":
+            case "EnemyUnit":
+                // need this to make sure it will be able to access the TileBase
+                // if it happens to click upon the units
+                zeTile = m_TileSys.GetTile(_go.GetComponent<UnitStats>().CurrentTileID);
+                break;
+            default:
+                print("Not the correct gameobject");
+                break;
+        }
+        if (m_AttackableTiles.Contains(zeTile.GetId()))
+        {
+            m_TargetTile = zeTile;
+        }
     }
 }

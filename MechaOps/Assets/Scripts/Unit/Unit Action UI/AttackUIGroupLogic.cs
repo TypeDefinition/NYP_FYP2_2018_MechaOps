@@ -6,14 +6,12 @@ using TMPro;
 /// <summary>
 /// The UI regarding attacking which will be depended upon especially if we are going to follow XCOM!
 /// </summary>
-public class AttackUIGroupLogic : MonoBehaviour {
+public class AttackUIGroupLogic : TweenUI_Scale {
     [Header("Variables needed")]
     [Tooltip("The reference for target UI which the code should already be doing it for you. Will be expanded upon in the future!")]
     public UnitDisplayUI m_TargetUIref;
     [Tooltip("Text for tracked target")]
     public TextMeshProUGUI m_TargetNameTxt;
-    [SerializeField, Tooltip("The Animation time for the attack")]
-    protected float m_AnimTime = 0.3f;
     [SerializeField, Tooltip("The distance from the tracked target to camera")]
     protected float m_Dist = 3.0f;
 
@@ -41,11 +39,7 @@ public class AttackUIGroupLogic : MonoBehaviour {
 
     private void OnEnable()
     {
-        Vector3 zeScale = transform.localScale;
-        float zeOriginalScaleX = zeScale.x;
-        zeScale.x = 0;
-        transform.localScale = zeScale;
-        LeanTween.scaleX(gameObject, zeOriginalScaleX, m_AnimTime);
+        AnimateUI();
         // And we will need to link the UnitActionScheduler then we can access the action! we can safely assume there is only 1!
         m_IndexOfTarget = 0;
         m_actScheduler = FindObjectOfType<UnitActionScheduler>();

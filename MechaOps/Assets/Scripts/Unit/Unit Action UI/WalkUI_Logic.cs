@@ -5,12 +5,11 @@ using UnityEngine;
 /// <summary>
 /// Handles how the UI for unit walking works
 /// </summary>
-public class WalkUI_Logic : MonoBehaviour {
+public class WalkUI_Logic : TweenUI_Scale
+{
     [Header("The linking and variables needed for WalkUI")]
     [Tooltip("The References to TileSystem")]
     public TileSystem m_TileSys;
-    [SerializeField, Tooltip("The max animation time for local scale X")]
-    protected float m_AnimTime = 0.3f;
 
     [Header("Debugging references")]
     [Tooltip("The array of tiles that the unit can reach")]
@@ -22,11 +21,7 @@ public class WalkUI_Logic : MonoBehaviour {
 
     private void OnEnable()
     {
-        Vector3 zeScale = transform.localScale;
-        float zeOriginalScaleX = zeScale.x;
-        zeScale.x = 0;
-        transform.localScale = zeScale;
-        LeanTween.scaleX(gameObject, zeOriginalScaleX, m_AnimTime);
+        AnimateUI();
         // For now, it will just pick the 1st enemy in the array
         GameEventSystem.GetInstance().TriggerEvent("ToggleSelectingUnit");
         // Since the tile system is not linked from the start, find it at the scene
@@ -41,6 +36,7 @@ public class WalkUI_Logic : MonoBehaviour {
         // This is the only way to remove that green line renderer!
         m_TileSys.ClearPathMarkers();
         GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("ClickedUnit", PlayerClickedTile);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<IUnitAction>("SelectedAction", PressedAction);
     }
 
     void PlayerClickedTile(GameObject _clickedObj)

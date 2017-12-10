@@ -8,5 +8,5 @@ using UnityEngine;
 public class ArtyAttackAct : UnitAttackAction {
     [Header("Variables for ArtyAttackAct")]
     [SerializeField, Tooltip("The Exploding radius of attack")]
-    protected int m_ExploddeRadius = 1;
+    protected int m_ExplodeRadius = 1;
 }
