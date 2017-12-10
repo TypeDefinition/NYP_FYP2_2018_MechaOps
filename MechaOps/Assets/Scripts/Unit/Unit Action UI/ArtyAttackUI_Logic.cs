@@ -102,6 +102,9 @@ public class ArtyAttackUI_Logic : TweenUI_Scale {
         if (m_AttackableTiles.Contains(zeTile.GetId()))
         {
             m_TargetTile = zeTile;
+            // and make sure the ID around it will be highlighted!
+            TileId[] zeSurroundTargetTiles = m_TileSys.GetSurroundingTiles(zeTile.GetId(), m_AttckAct.ExplodeRadius);
+            m_TileSys.SetPathMarkers(m_AttackableTiles.ToArray(), zeSurroundTargetTiles);
         }
     }
 }

@@ -8,13 +8,13 @@ public class UnitAttackAction : IUnitAction
 {
     [Header("Variables needed for Unit Attack")]
     [SerializeField, Tooltip("Minimum attack range of the unit")]
-    private int m_MinAttackRange;
+    protected int m_MinAttackRange;
     [SerializeField, Tooltip("Maximum attack range of the unit")]
-    private int m_MaxAttackRange;
+    protected int m_MaxAttackRange;
     [SerializeField, Tooltip("The accuracy points of the unit")]
-    private int m_AccuracyPoints;
+    protected int m_AccuracyPoints;
     [SerializeField, Tooltip("The damage point it dealt")]
-    private int m_DamagePoints;
+    protected int m_DamagePoints;
     [SerializeField, Tooltip("Unit Attack Animation. TODO, make it more generic")]
     protected MOAnimation_PanzerAttack m_AttackAnim;
     [Header("Debugging purpose")]
@@ -50,7 +50,7 @@ public class UnitAttackAction : IUnitAction
         set { m_DamagePoints = Mathf.Max(0, value); }
     }
 
-    public void SetTarget(GameObject _target)
+    public virtual void SetTarget(GameObject _target)
     {
         Assert.IsNotNull(_target, MethodBase.GetCurrentMethod().Name + " - _target is null!");
         m_TargetUnitStats = _target.GetComponent<UnitStats>();
@@ -112,7 +112,7 @@ public class UnitAttackAction : IUnitAction
     {
         m_ActionState = ActionState.Running;
         // TODO: Do some complex calculation and animation for this
-        --GetUnitStats().CurrentActionPoints;
+        GetUnitStats().CurrentActionPoints -= ActionCost;
         m_AttackAnim.Hit = CheckIfHit();
         m_AttackAnim.Target = m_TargetUnitStats.gameObject;
         m_AttackAnim.CompletionCallback = CallAnimDone;
@@ -210,7 +210,7 @@ public class UnitAttackAction : IUnitAction
     }
 
 #if UNITY_EDITOR
-    private void OnValidate()
+    protected void OnValidate()
     {
         MinAttackRange = m_MinAttackRange;
         MaxAttackRange = m_MaxAttackRange;
