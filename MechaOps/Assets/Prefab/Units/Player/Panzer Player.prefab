@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 114811533488785636}
   - component: {fileID: 114076083858343404}
   - component: {fileID: 114191423135492830}
-  - component: {fileID: 114194489393849732}
+  - component: {fileID: 114592857521324414}
   - component: {fileID: 114988130546796368}
   - component: {fileID: 114876947489221560}
   m_Layer: 8
@@ -1805,7 +1805,6 @@ MonoBehaviour:
   m_ActionCost: 1
   m_EndsTurn: 0
   m_ActionState: 0
-  m_NameOfAnim: Walk
   m_UnitActionUI: {fileID: 1134435258809106, guid: f60f06ef37015e14ba42bc5dad875b1c,
     type: 2}
   m_ActionIconUI: {fileID: 21300000, guid: d859645726494314ab2591c7384f7d53, type: 3}
@@ -1815,35 +1814,6 @@ MonoBehaviour:
   m_AttackAnim: {fileID: 114313675222075914}
   m_TilePath: []
   m_TileSys: {fileID: 0}
---- !u!114 &114194489393849732
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1411079469388966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 078b10b2239b1494ea96266b728d0a90, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UnitActionName: Attack
-  m_TurnedOn: 0
-  m_Priority: 0
-  m_ActionCost: 1
-  m_EndsTurn: 0
-  m_ActionState: 0
-  m_NameOfAnim: Attack
-  m_UnitActionUI: {fileID: 1044431308409052, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
-    type: 2}
-  m_ActionIconUI: {fileID: 21300000, guid: e392509062377594ab81881f16831a09, type: 3}
-  m_UnitStats: {fileID: 114811533488785636}
-  m_AnimDone: 0
-  m_MinAttackRange: 0
-  m_MaxAttackRange: 5
-  m_AccuracyPoints: 0
-  m_DamagePoints: 2
-  m_AttackAnim: {fileID: 114034170699782738}
-  m_TargetUnitStats: {fileID: 0}
 --- !u!114 &114257393696662072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1951,6 +1921,34 @@ MonoBehaviour:
   m_PlayOnStart: 0
   m_SetInactiveOnCompletion: 1
   m_DestroyOnCompletion: 0
+--- !u!114 &114592857521324414
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1411079469388966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51dfc0bc3a817ac4a951b8a242a9681f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UnitActionName: Attack
+  m_TurnedOn: 0
+  m_Priority: 0
+  m_ActionCost: 1
+  m_EndsTurn: 0
+  m_ActionState: 0
+  m_UnitActionUI: {fileID: 1044431308409052, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
+    type: 2}
+  m_ActionIconUI: {fileID: 21300000, guid: e392509062377594ab81881f16831a09, type: 3}
+  m_UnitStats: {fileID: 114811533488785636}
+  m_AnimDone: 0
+  m_MinAttackRange: 0
+  m_MaxAttackRange: 5
+  m_AccuracyPoints: 0
+  m_DamagePoints: 2
+  m_AttackAnim: {fileID: 114034170699782738}
+  m_TargetUnitStats: {fileID: 0}
 --- !u!114 &114724299080089450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2033,7 +2031,6 @@ MonoBehaviour:
   m_ActionCost: 2
   m_EndsTurn: 0
   m_ActionState: 0
-  m_NameOfAnim: 
   m_UnitActionUI: {fileID: 1612582933021620, guid: 10234cb69b925e14d9163d2556b7fb5b,
     type: 2}
   m_ActionIconUI: {fileID: 21300000, guid: 2701c9f4499a5f340a46e96aeba66a4e, type: 3}

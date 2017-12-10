@@ -30,8 +30,6 @@ public abstract class IUnitAction : MonoBehaviour
     private bool m_EndsTurn = false;
     [SerializeField, Tooltip("The current state that this action update is in")]
     protected ActionState m_ActionState = ActionState.None;
-    [SerializeField, Tooltip("The name of the handler to be accessed later")]
-    protected string m_NameOfAnim;
 
     [SerializeField, Tooltip("The specific action UI")]
     private GameObject m_UnitActionUI;

@@ -10,7 +10,7 @@ public class PanzerAttackAct : UnitAttackAction {
     {
         int zeHitChance = UnitGameHelper.CalculateAttackHitChance_Tank(TileId.GetDistance(m_UnitStats.CurrentTileID, m_TargetUnitStats.CurrentTileID), MinAttackRange, MaxAttackRange, m_TargetUnitStats.EvasionPoints);
         //if (AccuracyPoints > )
-        // not sure about Accuracy points
+        // not sure about Accuracy points. and unsure if this works
         if (zeHitChance > 50)
             return true;
         return false;

@@ -1,10 +1,15 @@
 fileFormatVersion: 2
 guid: 51dfc0bc3a817ac4a951b8a242a9681f
-timeCreated: 1511100623
+timeCreated: 1512878693
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - m_UnitActionUI: {instanceID: 0}
+  - m_ActionIconUI: {fileID: 21300000, guid: e392509062377594ab81881f16831a09, type: 3}
+  - m_UnitStats: {instanceID: 0}
+  - m_AttackAnim: {instanceID: 0}
+  - m_TargetUnitStats: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
