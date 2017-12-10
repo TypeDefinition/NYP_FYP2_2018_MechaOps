@@ -8,7 +8,9 @@ using UnityEngine;
 public class ArtyAttackUI_Logic : TweenUI_Scale {
     [Header("Debugging for ArtyAttackUI")]
     [SerializeField, Tooltip("Unit's attack action")]
-    protected UnitAttackAction m_AttckAct;
+    protected ArtyAttackAct m_AttckAct;
+    [SerializeField, Tooltip("The targeted Tile")]
+    protected Tile m_TargetTile;
 
     private void OnEnable()
     {
@@ -21,10 +23,8 @@ public class ArtyAttackUI_Logic : TweenUI_Scale {
 
     private void OnDisable()
     {
-        
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<IUnitAction>("SelectedAction", PressedAction);
     }
-
-
 
     /// <summary>
     /// When pressing the back button
@@ -37,7 +37,7 @@ public class ArtyAttackUI_Logic : TweenUI_Scale {
         Destroy(gameObject);
     }
 
-    public void ConfirmAttacl()
+    public void ConfirmAttack()
     {
         Destroy(gameObject);
     }
@@ -48,6 +48,11 @@ public class ArtyAttackUI_Logic : TweenUI_Scale {
     /// <param name="_act"></param>
     public void PressedAction(IUnitAction _act)
     {
-        m_AttckAct = _act as UnitAttackAction;
+        m_AttckAct = _act as ArtyAttackAct;
+    }
+
+    protected void ClickedUnit()
+    {
+
     }
 }
