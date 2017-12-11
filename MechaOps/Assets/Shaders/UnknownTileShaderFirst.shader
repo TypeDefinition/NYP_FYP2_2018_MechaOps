@@ -16,7 +16,7 @@
 
 		Pass
 		{
-            ZTest Always
+            ZTest LEqual
             ZWrite Off
 
             // This will only pass if the stencil buffer value is not 2.
