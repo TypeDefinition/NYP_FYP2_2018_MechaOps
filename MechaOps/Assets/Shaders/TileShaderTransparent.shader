@@ -1,5 +1,7 @@
-﻿Shader "Custom/TileShader (Transparent)" {
-	Properties {
+﻿Shader "Custom/TileShader (Transparent)"
+{
+	Properties
+    {
 		_Color ("Color", Color) = (1,1,1,1)
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
         _BumpTex("Normal Map", 2D) = "bump" {}
@@ -17,13 +19,28 @@
         _TextureOffSetSpeedU("Texture Offset Speed U", Float) = 0
         _TextureOffSetSpeedV("Texture Offset Speed V", Float) = 0
 	}
-	SubShader {
-		Tags {
+
+    SubShader
+    {
+		Tags
+        {
             "Queue" = "Transparent"
             "RenderType" = "Transparent"
         }
 		LOD 200
-		
+
+        // This will write 2 to the stencil buffer when it passes.
+        // It is set to always pass.
+        Stencil
+        {
+            Ref 2 // This is a 8 bit integer. Let's use 2 for our tiles.
+            Comp Always
+            Pass replace
+        }
+
+        //Blend SrcAlpha, OneMinusSrcAlpha
+        Blend Off
+
 		CGPROGRAM
 		// Physically based Standard lighting model, and enable shadows on all light types
 		#pragma surface surf Standard fullforwardshadows alpha:blend
@@ -34,7 +51,8 @@
         // Allow Instancing
         #pragma multi_compile_instancing
 
-		struct Input {
+		struct Input
+        {
             float2 uv_MainTex; //Grab the uv of MainTex and store it here in the first uv thingy.
             float2 uv_BumpTex;
 		};
@@ -64,7 +82,8 @@
             UNITY_DEFINE_INSTANCED_PROP(int, _CanSee)
 		UNITY_INSTANCING_CBUFFER_END
 
-		void surf (Input IN, inout SurfaceOutputStandard o) {
+		void surf (Input IN, inout SurfaceOutputStandard o)
+        {
             // Rotate the texture UVs.
             half Deg2Rad = 3.1415926535 / 180.0;
             half sinRotation = sin(_TextureRotationSpeed * _Time.y * Deg2Rad);

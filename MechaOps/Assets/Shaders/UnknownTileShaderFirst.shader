@@ -1,4 +1,4 @@
-﻿Shader "Custom/Unlit Texture No Depth"
+﻿Shader "Custom/Unknown TileShader First (Opaque)"
 {
 	Properties
 	{
@@ -6,14 +6,26 @@
 	}
 	SubShader
 	{
-        // Render this right after the background.
-		Tags { "RenderType"="Opaque" "Queue" = "Background+1" }
+        // Render this right before the transparent tiles.
+        Tags
+        {
+            "RenderType" = "Opaque"
+            "Queue" = "Transparent-1"
+        }
 		LOD 100
 
 		Pass
 		{
             ZTest Always
             ZWrite Off
+
+            // This will only pass if the stencil buffer value is not 2.
+            Stencil
+            {
+                Ref 2 // This is a 8 bit integer. Let's use 2 for our tiles.
+                Comp NotEqual
+                Pass Keep
+            }
 
 			CGPROGRAM
 			#pragma vertex vert

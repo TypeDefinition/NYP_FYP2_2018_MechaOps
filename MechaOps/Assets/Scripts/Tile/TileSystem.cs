@@ -71,8 +71,9 @@ public class TileSystem : MonoBehaviour
     [SerializeField] private GameObject m_TileReachable = null;
     private List<GameObject> m_PathMarkers = null;
 
-    [SerializeField] private MeshFilter m_UnknownTilesMesh = null;
-    [SerializeField] private float m_UnknownTileMeshRadius = 2.0f;
+    [SerializeField] private MeshFilter m_UnknownTilesMeshFirst = null;
+    [SerializeField] private MeshFilter m_UnknownTilesMeshSecond = null;
+    [SerializeField] private float m_UnknownTileMeshDiameter = 4.0f;
 
     public int TileRadius
     {
@@ -159,23 +160,27 @@ public class TileSystem : MonoBehaviour
             }
         }
 
-        Assert.IsTrue(m_UnknownTilesMesh != null, MethodBase.GetCurrentMethod().Name + " - UnknownTilesMesh cannot be null!");
+        Assert.IsTrue(m_UnknownTilesMeshFirst != null, MethodBase.GetCurrentMethod().Name + " - UnknownTilesMeshFirst cannot be null!");
+        Assert.IsTrue(m_UnknownTilesMeshSecond != null, MethodBase.GetCurrentMethod().Name + " - UnknownTilesMeshSecond cannot be null!");
         Mesh mesh = new Mesh();
         mesh.vertices = vertices.ToArray();
         mesh.uv = uvs.ToArray();
         mesh.normals = normals.ToArray();
         mesh.triangles = indices.ToArray();
 
-        m_UnknownTilesMesh.mesh = mesh;
+        m_UnknownTilesMeshFirst.mesh = mesh;
+        m_UnknownTilesMeshSecond.mesh = mesh;
     }
 
     private void ClearUnknownTilesMesh()
     {
-        Assert.IsTrue(m_UnknownTilesMesh != null, MethodBase.GetCurrentMethod().Name + " - UnknownTilesMesh cannot be null!");
+        Assert.IsTrue(m_UnknownTilesMeshFirst != null, MethodBase.GetCurrentMethod().Name + " - UnknownTilesMeshFirst cannot be null!");
+        Assert.IsTrue(m_UnknownTilesMeshSecond != null, MethodBase.GetCurrentMethod().Name + " - UnknownTilesMeshSecond cannot be null!");
         Mesh mesh = new Mesh();
         mesh.Clear();
 
-        m_UnknownTilesMesh.mesh = mesh;
+        m_UnknownTilesMeshFirst.mesh = mesh;
+        m_UnknownTilesMeshSecond.mesh = mesh;
     }
 
     public void GenerateTiles()
@@ -242,7 +247,7 @@ public class TileSystem : MonoBehaviour
             }
         }
 
-        GenerateUnknownTilesMesh(m_UnknownTileMeshRadius, m_TileDiameter);
+        GenerateUnknownTilesMesh(m_UnknownTileMeshDiameter * 0.5f, m_TileDiameter);
     }
 
     public void ClearTiles()
