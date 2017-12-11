@@ -24,7 +24,7 @@
 
 		Pass
 		{
-            ZTest Always
+            ZTest LEqual
             ZWrite On
 
 			CGPROGRAM
