@@ -162,10 +162,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AnimTime: 0.2
   m_OriginalScale: {x: 0, y: 0, z: 0}
+  m_UIndicatorGO: {fileID: 1293721087050030, guid: 5ff687189fe473f40842dc3ea970b39a,
+    type: 2}
   m_AttckAct: {fileID: 0}
   m_TargetTile: {fileID: 0}
   m_TileSys: {fileID: 0}
   m_AttackableTiles: []
+  m_worldCanvas: {fileID: 0}
+  m_InstantUI: {fileID: 0}
 --- !u!114 &114468435881995092
 MonoBehaviour:
   m_ObjectHideFlags: 1

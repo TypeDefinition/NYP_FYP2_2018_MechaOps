@@ -6,6 +6,10 @@ using UnityEngine;
 /// The logic for artillery attack UI
 /// </summary>
 public class ArtyAttackUI_Logic : TweenUI_Scale {
+    [Header("Variables for ArtyAttackUI_Logic")]
+    [SerializeField, Tooltip("prefab UI indicator of the tile to be targeted")]
+    protected GameObject m_UIndicatorGO;
+
     [Header("Debugging for ArtyAttackUI")]
     [SerializeField, Tooltip("Unit's attack action")]
     protected ArtyAttackAct m_AttckAct;
@@ -15,10 +19,17 @@ public class ArtyAttackUI_Logic : TweenUI_Scale {
     protected TileSystem m_TileSys;
     [SerializeField, Tooltip("List of Tiles that it can attack")]
     protected List<TileId> m_AttackableTiles;
+    [SerializeField, Tooltip("The world canvas UI")]
+    protected GameObject m_worldCanvas;
+    [SerializeField, Tooltip("Instantiated UI")]
+    protected UnitDisplayUI m_InstantUI;
 
     private void OnEnable()
     {
         m_TileSys = FindObjectOfType<TileSystem>();
+        m_worldCanvas = GameObject.FindGameObjectWithTag("WorldCanvas");
+        m_InstantUI = Instantiate(m_UIndicatorGO, m_worldCanvas.transform, false).GetComponent<UnitDisplayUI>();
+        m_InstantUI.gameObject.SetActive(false);
         // Animate the UI when enabled
         AnimateUI();
         GameEventSystem.GetInstance().TriggerEvent("ToggleSelectingUnit");
@@ -31,6 +42,7 @@ public class ArtyAttackUI_Logic : TweenUI_Scale {
         GameEventSystem.GetInstance().UnsubscribeFromEvent<IUnitAction>("SelectedAction", PressedAction);
         GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("ClickedUnit", ClickedUnit);
         m_TileSys.ClearPathMarkers();
+        Destroy(m_InstantUI.gameObject);
     }
 
     /// <summary>
@@ -76,7 +88,10 @@ public class ArtyAttackUI_Logic : TweenUI_Scale {
         }
         m_TileSys.SetPathMarkers(m_AttackableTiles.ToArray(), null);
     }
-
+    /// <summary>
+    /// When player clicked the tile or unit!
+    /// </summary>
+    /// <param name="_go"></param>
     protected void ClickedUnit(GameObject _go)
     {
         Tile zeTile = null;
@@ -105,6 +120,9 @@ public class ArtyAttackUI_Logic : TweenUI_Scale {
             // and make sure the ID around it will be highlighted!
             TileId[] zeSurroundTargetTiles = m_TileSys.GetSurroundingTiles(zeTile.GetId(), m_AttckAct.ExplodeRadius);
             m_TileSys.SetPathMarkers(m_AttackableTiles.ToArray(), zeSurroundTargetTiles);
+            m_InstantUI.gameObject.SetActive(true);
+            m_InstantUI.AnimateUI();
+            m_InstantUI.SetThePosToUnit(zeTile.transform);
         }
     }
 }
