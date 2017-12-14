@@ -140,7 +140,7 @@ public class GameCameraMovement : MonoBehaviour
         // Radius by distance, not tiles. This formula is figured out by looking at the tiles from the top.
         m_MaxDistanceFromCentre =
             (m_TileSystem.TileDiameter * 0.5f) + // The first tile.
-            (m_TileSystem.TileRadius * m_TileSystem.TileDiameter * 0.75f); // Every subsequent tile.
+            (m_TileSystem.MapRadius * m_TileSystem.TileDiameter * 0.75f); // Every subsequent tile.
         m_CentrePosition = m_TileSystem.transform.position;
 
         LimitHeight(m_MinHeight, m_MaxHeight);

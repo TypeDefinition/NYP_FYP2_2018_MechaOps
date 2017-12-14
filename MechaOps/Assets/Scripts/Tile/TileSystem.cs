@@ -63,7 +63,9 @@ public class TileSystem : MonoBehaviour
     private Dictionary<TileId, Tile> m_TileDictionary = new Dictionary<TileId, Tile>();
     [HideInInspector, SerializeField] private TileDictionaryPair[] m_TileArray = new TileDictionaryPair[0];
 
-    [SerializeField] private int m_TileRadius = 10;
+    // This affects how many tiles there are.
+    [SerializeField] private int m_MapRadius = 10;
+    // This affects the size of the tile.
     [SerializeField] private float m_TileDiameter = 4.0f;
 
     [SerializeField] private GameObject m_TilePath = null;
@@ -75,9 +77,9 @@ public class TileSystem : MonoBehaviour
     [SerializeField] private MeshFilter m_UnknownTilesMeshSecond = null;
     [SerializeField] private float m_UnknownTileMeshDiameter = 4.0f;
 
-    public int TileRadius
+    public int MapRadius
     {
-        get { return m_TileRadius; }
+        get { return m_MapRadius; }
     }
 
     public float TileDiameter
@@ -102,7 +104,7 @@ public class TileSystem : MonoBehaviour
 
 #if UNITY_EDITOR
     // Generate Mesh for unknown tiles.
-    private void GenerateUnknownTilesMesh(float _tileRadius, float _distanceBetweenTiles)
+    private void GenerateUnknownTilesMesh(float _mapRadius, float _distanceBetweenTiles)
     {
         List<Vector3> vertices = new List<Vector3>();
         List<int> indices = new List<int>();
@@ -110,9 +112,9 @@ public class TileSystem : MonoBehaviour
         List<Vector3> normals = new List<Vector3>();
 
         int startIndex = 0;
-        for (int x = -m_TileRadius; x <= m_TileRadius; ++x)
+        for (int x = -m_MapRadius; x <= m_MapRadius; ++x)
         {
-            for (int y = Mathf.Max(-m_TileRadius, -m_TileRadius - x); y <= Mathf.Min(m_TileRadius, m_TileRadius - x); ++y)
+            for (int y = Mathf.Max(-m_MapRadius, -m_MapRadius - x); y <= Mathf.Min(m_MapRadius, m_MapRadius - x); ++y)
             {
                 int z = -(x + y);
                 // The x, y and z here are the axis of the grid, not the world.
@@ -134,7 +136,7 @@ public class TileSystem : MonoBehaviour
                     angle *= -Mathf.Deg2Rad;
 
                     Vector3 vertexPos = new Vector3(Mathf.Cos(angle), 0.0f, Mathf.Sin(angle));
-                    vertexPos *= _tileRadius;
+                    vertexPos *= _mapRadius;
                     vertexPos += centreVertex;
 
                     // We need to multiply by 0.5 because this is the radius, not the diameter.
@@ -210,9 +212,9 @@ public class TileSystem : MonoBehaviour
         // The above can be further optimised.
         // I understood this code by drawing out the hexagon grid on a piece of paper and seeing the order
         // which the loop generated the hexagons and compared the TileId(s).
-        for (int x = -m_TileRadius; x <= m_TileRadius; ++x)
+        for (int x = -m_MapRadius; x <= m_MapRadius; ++x)
         {
-            for (int y = Mathf.Max(-m_TileRadius, -m_TileRadius - x); y <= Mathf.Min(m_TileRadius, m_TileRadius - x); ++y)
+            for (int y = Mathf.Max(-m_MapRadius, -m_MapRadius - x); y <= Mathf.Min(m_MapRadius, m_MapRadius - x); ++y)
             {
                 TileId tileId = new TileId(x, y);
                 Tile tile = GameObject.Instantiate(m_DefaultTile).GetComponent<Tile>();
@@ -299,7 +301,7 @@ public class TileSystem : MonoBehaviour
 
     private void OnValidate()
     {
-        m_TileRadius = Mathf.Max(0, m_TileRadius);
+        m_MapRadius = Mathf.Max(0, m_MapRadius);
         m_TileDiameter = Mathf.Max(0.0f, m_TileDiameter);
     }
 #endif // UNITY_EDITOR
@@ -392,7 +394,7 @@ public class TileSystem : MonoBehaviour
     // Interface Function(s)
     public TileId[] GetSurroundingTiles(TileId _centre, int _radius)
     {
-        _radius = Mathf.Min(_radius, m_TileRadius * 2);
+        _radius = Mathf.Min(_radius, m_MapRadius * 2);
 
         // _radius should never be < 0.
         Assert.IsFalse(_radius < 0, MethodBase.GetCurrentMethod().Name + " - Invalid value for _radius!");
