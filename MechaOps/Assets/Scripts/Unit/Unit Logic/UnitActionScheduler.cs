@@ -4,8 +4,8 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class UnitActionScheduler : MonoBehaviour {
-
+public class UnitActionScheduler : MonoBehaviour
+{
     private List<IUnitAction> m_ScheduledActions = new List<IUnitAction>();
     private IUnitAction m_CurrentAction = null;
 

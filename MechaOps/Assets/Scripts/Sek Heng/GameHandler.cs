@@ -8,7 +8,8 @@ using UnityEngine;
 /// This will instead handle 2 different opposing factions for now.
 /// So now it will only be compatible with domination mode.
 /// </summary>
-public class GameHandler : MonoBehaviour {
+public class GameHandler : MonoBehaviour
+{
     [Header("Linking references and values needed")]
     [Tooltip("The Player unit manager")]
     public PlayerUnitManager m_PlayerManager;

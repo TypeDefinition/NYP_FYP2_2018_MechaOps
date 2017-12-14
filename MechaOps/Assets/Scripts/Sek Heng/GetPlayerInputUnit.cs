@@ -4,31 +4,36 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 /// <summary>
-/// A simple testing to get the player to 
+/// This is responsible for checking for when the player clicks a unit.
 /// </summary>
-public class GetPlayerInputUnit : MonoBehaviour {
+public class GetPlayerInputUnit : MonoBehaviour
+{
     [Header("Debugging purposes!")]
     [Tooltip("The player clicked on the unit")]
-    public GameObject m_ClickedPlayerUnitGO;
+    [SerializeField] private GameObject m_ClickedPlayerUnit = null;
+    [SerializeField] private string[] m_LayersToCheck = { "Unit", "Tile" };
 
-    // Update is called once per frame
-    void Update () {
-        // Touch Input can also use GetMouseButton(0)! and making sure that the pointer is not over some canvas UI!
-        if (Input.GetMouseButton(0))
+    public GameObject ClickedPlayerUnit
+    {
+        get { return m_ClickedPlayerUnit; }
+        set { m_ClickedPlayerUnit = value; }
+    }
+
+    // Update is called once per frame.
+    void Update ()
+    {
+        // Touch Input can also use GetMouseButton(0)!
+        int pointerId = 0;
+        if (!Input.GetMouseButton(pointerId)) { return; }
+        // Make sure that the pointer is not over some canvas UI!
+        if (EventSystem.current.IsPointerOverGameObject(pointerId)) { return; }
+
+        RaycastHit hitInfo;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, LayerMask.GetMask(m_LayersToCheck)))
         {
-            if (EventSystem.current.IsPointerOverGameObject())
-                return;
-            Ray clickedRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit clickedObj;
-            List<string> layersToCheck = new List<string>();
-            layersToCheck.Add("Unit");
-            layersToCheck.Add("Tile");
-            int layerMask = LayerMask.GetMask(layersToCheck.ToArray());
-            if (Physics.Raycast(clickedRay, out clickedObj, Mathf.Infinity, layerMask))
-            {
-                m_ClickedPlayerUnitGO = clickedObj.collider.gameObject;
-                GameEventSystem.GetInstance().TriggerEvent<GameObject>("ClickedUnit", m_ClickedPlayerUnitGO);
-            }
+            m_ClickedPlayerUnit = hitInfo.collider.gameObject;
+            GameEventSystem.GetInstance().TriggerEvent<GameObject>("ClickedUnit", m_ClickedPlayerUnit);
         }
 	}
 }
