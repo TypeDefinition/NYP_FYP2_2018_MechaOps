@@ -15,6 +15,8 @@ public class EnemyUnitManager : MonoBehaviour {
     protected TileId m_TilePlayerUnits;
     [SerializeField, Tooltip("The Tile system")]
     protected TileSystem m_TileSys;
+    [SerializeField, Tooltip("Keep Track Of Units script")]
+    protected KeepTrackOfUnits m_TrackedUnits;
 
     public static EnemyUnitManager Instance
     {
@@ -40,6 +42,8 @@ public class EnemyUnitManager : MonoBehaviour {
 
     private void Awake()
     {
+        if (!m_TrackedUnits)
+            m_TrackedUnits = FindObjectOfType<KeepTrackOfUnits>();
         if (Instance)
         {
             Destroy(this);
@@ -77,7 +81,7 @@ public class EnemyUnitManager : MonoBehaviour {
         yield return null;
         yield return null;
         UpdateMarker();
-        m_EnemyList = new List<GameObject>(KeepTrackOfUnits.Instance.m_AllEnemyUnitGO);
+        m_EnemyList = new List<GameObject>(m_TrackedUnits.m_AllEnemyUnitGO);
 #if GOAP_AI
         foreach (GameObject zeEnemy in m_EnemyList)
         {
@@ -114,7 +118,7 @@ public class EnemyUnitManager : MonoBehaviour {
     public void UpdateMarker()
     {
         // TODO: improve this function!
-        m_TilePlayerUnits = KeepTrackOfUnits.Instance.m_AllPlayerUnitGO[0].GetComponent<UnitStats>().CurrentTileID;
+        m_TilePlayerUnits = m_TrackedUnits.m_AllPlayerUnitGO[0].GetComponent<UnitStats>().CurrentTileID;
         Tile zeTile = m_TileSys.GetTile(m_TilePlayerUnits);
         if (!zeTile.GetIsWalkable() || zeTile.HasUnit())
         {

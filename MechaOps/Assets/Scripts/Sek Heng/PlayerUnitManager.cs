@@ -37,6 +37,8 @@ public class PlayerUnitManager : MonoBehaviour {
     protected UnitDisplayUI m_InstantUnitUI;
     [SerializeField, Tooltip("The index of the current selected unit for select between units")]
     protected int m_IndexOfCurrSelected = 0;
+    [SerializeField, Tooltip("Keep track units script")]
+    protected KeepTrackOfUnits m_TrackedUnits;
 
     /// <summary>
     /// The update of this manager. So that it can be controlled anytime
@@ -45,6 +47,8 @@ public class PlayerUnitManager : MonoBehaviour {
 
     private void Start()
     {
+        if (!m_TrackedUnits)
+            m_TrackedUnits = FindObjectOfType<KeepTrackOfUnits>();
         if (!m_worldCanvasTrans)
             m_worldCanvasTrans = GameObject.FindGameObjectWithTag("WorldCanvas").transform;
         if (!m_InstantUnitUI)
@@ -76,7 +80,7 @@ public class PlayerUnitManager : MonoBehaviour {
         m_SelectBetUnits.SetActive(true);
         m_IndexOfCurrSelected = 0;
         // Get a shallow copy of the list of all available units!
-        m_UnitsYetToMakeMoves = new List<GameObject>(KeepTrackOfUnits.Instance.m_AllPlayerUnitGO);
+        m_UnitsYetToMakeMoves = new List<GameObject>(m_TrackedUnits.m_AllPlayerUnitGO);
         GameEventSystem.GetInstance().SubscribeToEvent("UnitFinishAction", PollingForPlayerInput);
         GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("UnitMakeMove", UnitHasMakeMove);
         WaitForSecondsRealtime zeAmountOfWaitTime = new WaitForSecondsRealtime(0.1f);

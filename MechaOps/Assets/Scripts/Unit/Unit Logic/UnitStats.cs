@@ -61,6 +61,8 @@ public class UnitStats : MonoBehaviour
     protected MOAnimation_UnitDestroy m_DeathAnim;
     [SerializeField, Tooltip("View Render Script")]
     protected ViewTileScript m_ViewTileScript;
+    [SerializeField, Tooltip("Keep Track of units script")]
+    protected KeepTrackOfUnits m_TrackedUnits;
 
     /// <summary>
     /// A callback function will appear when ever the health point decreases
@@ -197,6 +199,12 @@ public class UnitStats : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        if (!m_TrackedUnits)
+            m_TrackedUnits = FindObjectOfType<KeepTrackOfUnits>();
+    }
+
     protected IEnumerator Start()
     {
         // Assign the gameobject name to the unit if there is none for the unit stat!
@@ -274,10 +282,10 @@ public class UnitStats : MonoBehaviour
         {
             case "Player":
                 // so get the list of enemy units
-                zeListOfUnits = KeepTrackOfUnits.Instance.m_AllEnemyUnitGO;
+                zeListOfUnits = m_TrackedUnits.m_AllEnemyUnitGO;
                 break;
             case "EnemyUnit":
-                zeListOfUnits = KeepTrackOfUnits.Instance.m_AllPlayerUnitGO;
+                zeListOfUnits = m_TrackedUnits.m_AllPlayerUnitGO;
                 break;
             default:
                 Assert.IsTrue(false, "Make CheckEnemyInRange more robust so that there can be more factions!");

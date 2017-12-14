@@ -12,22 +12,22 @@ public class KeepTrackOfUnits : MonoBehaviour {
     [Tooltip("The list of enemy units")]
     public List<GameObject> m_AllEnemyUnitGO;
 
-    public static KeepTrackOfUnits Instance
-    {
-        get; private set;
-    }
+    //public static KeepTrackOfUnits Instance
+    //{
+    //    get; private set;
+    //}
 
-    private void Awake()
-    {
-        if (Instance)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-        }
-    }
+    //private void Awake()
+    //{
+    //    if (Instance)
+    //    {
+    //        Destroy(this);
+    //    }
+    //    else
+    //    {
+    //        Instance = this;
+    //    }
+    //}
 
     private void OnEnable()
     {
