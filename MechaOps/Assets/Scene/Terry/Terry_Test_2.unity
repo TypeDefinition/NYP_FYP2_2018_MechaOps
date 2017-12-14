@@ -1452,22 +1452,22 @@ Prefab:
     - target: {fileID: 114756513177226518, guid: 5ff687189fe473f40842dc3ea970b39a,
         type: 2}
       propertyPath: m_havePropertiesChanged
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114756513177226518, guid: 5ff687189fe473f40842dc3ea970b39a,
         type: 2}
       propertyPath: m_isInputParsingRequired
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114389548954127560, guid: 5ff687189fe473f40842dc3ea970b39a,
         type: 2}
       propertyPath: m_havePropertiesChanged
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114389548954127560, guid: 5ff687189fe473f40842dc3ea970b39a,
         type: 2}
       propertyPath: m_isInputParsingRequired
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1293721087050030, guid: 5ff687189fe473f40842dc3ea970b39a, type: 2}
       propertyPath: m_IsActive
@@ -10024,6 +10024,7 @@ MonoBehaviour:
   m_TileSys: {fileID: 0}
   m_DeathAnim: {fileID: 352312353}
   m_ViewTileScript: {fileID: 352312357}
+  m_TrackedUnits: {fileID: 0}
 --- !u!65 &352312359
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -62326,6 +62327,7 @@ MonoBehaviour:
     m_Y: 0
     m_Z: 0
   m_TileSys: {fileID: 1055990749}
+  m_TrackedUnits: {fileID: 0}
 --- !u!114 &1995284698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62337,23 +62339,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd43ec47068063942bc35d15b47b02b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlayerInputOnUnit: {fileID: 1995284700}
-  m_UnitActionUIIconGO: {fileID: 114775635339453894, guid: b6f55b4b93d48eb448b16e21e160b186,
+  m_UnitDisplayUI_Prefab: {fileID: 114329953184238638, guid: 5ff687189fe473f40842dc3ea970b39a,
     type: 2}
+  m_UnitActionIconImage_Prefab: {fileID: 114775635339453894, guid: b6f55b4b93d48eb448b16e21e160b186,
+    type: 2}
+  m_GetPlayerInputUnit: {fileID: 1995284700}
+  m_KeepTrackOfUnits: {fileID: 1995284696}
+  m_WorldCanvasTransform: {fileID: 1907982644}
   m_ScrollRectUnitActionSelection: {fileID: 1374940854}
   m_ScrollRectContent: {fileID: 1205299962}
   m_UICanvasTransform: {fileID: 1020636871}
-  m_UnitDisplayUI: {fileID: 114329953184238638, guid: 5ff687189fe473f40842dc3ea970b39a,
-    type: 2}
-  m_UnitSelection: {fileID: 879365206}
+  m_UnitSelectionUI: {fileID: 879365206}
   m_UnitNameTextUI: {fileID: 946759885}
   m_UnitsYetToMakeMoves: []
-  m_AllOfUnitUIIcon: []
-  m_CurrentSelectedAct: {fileID: 0}
-  m_SelectedPlayerUnit: {fileID: 0}
-  m_worldCanvasTrans: {fileID: 0}
-  m_InstantiatedUnitUI: {fileID: 0}
   m_SelectedUnitIndex: 0
+  m_SelectedPlayerUnit: {fileID: 0}
+  m_SelectedUnitActionButtons: []
+  m_CurrentSelectedAction: {fileID: 0}
+  m_UnitDisplayUI: {fileID: 0}
 --- !u!114 &1995284699
 MonoBehaviour:
   m_ObjectHideFlags: 0
