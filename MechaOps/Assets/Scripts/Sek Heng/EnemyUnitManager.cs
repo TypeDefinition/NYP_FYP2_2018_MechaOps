@@ -18,11 +18,6 @@ public class EnemyUnitManager : MonoBehaviour {
     [SerializeField, Tooltip("Keep Track Of Units script")]
     protected KeepTrackOfUnits m_TrackedUnits;
 
-    public static EnemyUnitManager Instance
-    {
-        private set; get;
-    }
-
     /// <summary>
     /// The Update of this manager
     /// </summary>
@@ -44,14 +39,6 @@ public class EnemyUnitManager : MonoBehaviour {
     {
         if (!m_TrackedUnits)
             m_TrackedUnits = FindObjectOfType<KeepTrackOfUnits>();
-        if (Instance)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-        }
     }
 
     private void Start()

@@ -60,6 +60,18 @@ public class GoapPlanner : MonoBehaviour
     protected bool m_UnderAttack = false;
     [SerializeField, Tooltip("The Current goal it is working towards to!")]
     protected IGoapGoal m_CurrentGoal;
+    [SerializeField, Tooltip("Enemy Unit Manager script")]
+    protected EnemyUnitManager m_EnemiesManager;
+
+    public EnemyUnitManager EnemiesManager
+    {
+        get
+        {
+            if (!m_EnemiesManager)
+                m_EnemiesManager = FindObjectOfType<EnemyUnitManager>();
+            return m_EnemiesManager;
+        }
+    }
 
     // Basically the name of the goap action as key, the reference to GoapAction as value
     protected Dictionary<string, IGoapAction> m_DictGoapAct = new Dictionary<string, IGoapAction>();
@@ -73,6 +85,8 @@ public class GoapPlanner : MonoBehaviour
     // Use this for initialization
     protected virtual void Start()
     {
+        if (!m_EnemiesManager)
+            m_EnemiesManager = FindObjectOfType<EnemyUnitManager>();
         m_AllGoapActions = GetComponents<IGoapAction>();
         if (!m_Stats)
             m_Stats = GetComponent<UnitStats>();
@@ -134,9 +148,9 @@ public class GoapPlanner : MonoBehaviour
                         else
                         {
                             // this unit did not see any player units, so move to Before that, check whether is it near the marker
-                            if (m_Stats.CurrentTileID.Equals(EnemyUnitManager.Instance.TilePlayerUnits))
+                            if (m_Stats.CurrentTileID.Equals(m_EnemiesManager.TilePlayerUnits))
                             {
-                                EnemyUnitManager.Instance.UpdateMarker();
+                                m_EnemiesManager.UpdateMarker();
                             }
                             // Then move towards there!
                             m_CurrentGoal = m_DictGoapGoal["WalkGoal"];

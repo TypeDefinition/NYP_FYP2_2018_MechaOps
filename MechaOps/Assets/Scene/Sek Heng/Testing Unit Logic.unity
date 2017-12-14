@@ -64827,20 +64827,20 @@ MonoBehaviour:
   m_PlayerInputOnUnit: {fileID: 1995284700}
   m_UnitActionUIIconGO: {fileID: 114775635339453894, guid: b6f55b4b93d48eb448b16e21e160b186,
     type: 2}
-  m_HolderOfIcons: {fileID: 1205299962}
-  m_ScrollRectUnitIcons: {fileID: 1374940854}
+  m_ScrollRectUnitActionSelection: {fileID: 1374940854}
+  m_ScrollRectContent: {fileID: 1205299962}
   m_UICanvasTransform: {fileID: 1020636871}
   m_UnitDisplayUI: {fileID: 114329953184238638, guid: 5ff687189fe473f40842dc3ea970b39a,
     type: 2}
-  m_SelectBetUnits: {fileID: 879365206}
-  m_UnitNameTxtUI: {fileID: 946759885}
+  m_UnitSelection: {fileID: 879365206}
+  m_UnitNameTextUI: {fileID: 946759885}
   m_UnitsYetToMakeMoves: []
   m_AllOfUnitUIIcon: []
-  m_CurrentSelectedAct: {fileID: 0}
+  m_CurrentSelectedAction: {fileID: 0}
   m_SelectedPlayerUnit: {fileID: 0}
-  m_worldCanvasTrans: {fileID: 0}
-  m_InstantUnitUI: {fileID: 0}
-  m_IndexOfCurrSelected: 0
+  m_WorldCanvasTrans: {fileID: 0}
+  m_InstantiatedUnitUI: {fileID: 0}
+  m_SelectedUnitIndex: 0
   m_TrackedUnits: {fileID: 1995284696}
 --- !u!114 &1995284699
 MonoBehaviour:
@@ -64872,7 +64872,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: facde880791e93e4bbf8e4c0abeb2bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ClickedPlayerUnitGO: {fileID: 0}
+  m_ClickedPlayerUnit: {fileID: 0}
+  m_LayersToCheck:
+  - Unit
+  - Tile
 --- !u!1 &1997461133
 GameObject:
   m_ObjectHideFlags: 0

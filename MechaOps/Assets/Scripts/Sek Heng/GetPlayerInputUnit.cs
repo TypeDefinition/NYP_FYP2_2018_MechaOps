@@ -26,7 +26,7 @@ public class GetPlayerInputUnit : MonoBehaviour
         int pointerId = 0;
         if (!Input.GetMouseButton(pointerId)) { return; }
         // Make sure that the pointer is not over some canvas UI!
-        if (EventSystem.current.IsPointerOverGameObject(pointerId)) { return; }
+        if (EventSystem.current.IsPointerOverGameObject()) { return; }
 
         RaycastHit hitInfo;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
