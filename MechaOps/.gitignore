@@ -11,5 +11,5 @@ Temp/
 *.sln
 *.userprefs
 obj/Debug/
-
-#Directories
+build_info.txt
+build_info.txt.meta
