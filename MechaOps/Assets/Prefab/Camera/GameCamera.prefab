@@ -38,13 +38,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1195895580189434}
-  m_LocalRotation: {x: 0.30070576, y: 0, z: 0, w: 0.953717}
-  m_LocalPosition: {x: 0, y: 5, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 35, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &20899708474880752
 Camera:
   m_ObjectHideFlags: 1
@@ -106,7 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9e5f29779f5e6542ae7488d37960b6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GameCameraMovement: {fileID: 114789354129003924}
   m_ZoomSpeed: 50
   m_MovementSpeed: 10
 --- !u!114 &114789354129003924
@@ -120,12 +119,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a040196ff837940459ff1b9d0e40e37a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ViewAngle: {x: 30, y: 90, z: 0}
+  m_ViewAngle: {x: 45, y: 90, z: 0}
   m_RotationSpeed: 5
   m_DefaultMovementForward: {x: 1, y: 0, z: 0}
   m_MinHeight: 3
   m_MaxHeight: 15
-  m_TileSystem: {fileID: 0}
+  m_GameSystemsDirectory: {fileID: 0}
   m_MinFOV: 5
   m_MaxFOV: 80
 --- !u!124 &124763215133911558

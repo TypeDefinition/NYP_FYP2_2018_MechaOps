@@ -19,7 +19,8 @@ public class GameCameraMovement : MonoBehaviour
     [SerializeField] private float m_MinHeight = 3.0f;
     [SerializeField] private float m_MaxHeight = 15.0f;
 
-    [SerializeField] TileSystem m_TileSystem = null;
+    [SerializeField] private GameSystemsDirectory m_GameSystemsDirectory = null;
+    private TileSystem m_TileSystem = null;
     private Vector3 m_CentrePosition = new Vector3();
     private float m_MaxDistanceFromCentre = 50.0f;
 
@@ -134,10 +135,16 @@ public class GameCameraMovement : MonoBehaviour
         camera.fieldOfView = Mathf.Clamp(camera.fieldOfView + _zoomValue, m_MinFOV, m_MaxFOV);
     }
 
+    private void Awake()
+    {
+        Assert.IsTrue(m_GameSystemsDirectory != null);
+        m_TileSystem = m_GameSystemsDirectory.GetTileSystem();
+        Assert.IsTrue(m_TileSystem != null);
+    }
+
     // 初期化(しょきか)する時、このを使う
     private void Start()
     {
-        Assert.IsTrue(m_TileSystem != null);
         // Radius by distance, not tiles. This formula is figured out by looking at the tiles from the top.
         m_MaxDistanceFromCentre =
             (m_TileSystem.TileDiameter * 0.5f) + // The first tile.

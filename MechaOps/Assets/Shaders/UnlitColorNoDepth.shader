@@ -6,12 +6,16 @@
 	}
 	SubShader
 	{
-		Tags { "RenderType"="Opaque" "Queue"="Overlay+1" }
+		Tags
+        {
+            "RenderType"="Opaque"
+            "Queue"="Overlay+1"
+        }
 		LOD 100
 
 		Pass
 		{
-			ZTest Always
+			ZTest Off
 			ZWrite Off
 
 			CGPROGRAM
@@ -19,7 +23,8 @@
 			#pragma fragment frag
 			// make fog work
 			#pragma multi_compile_fog
-			
+            // Allow Instancing
+            #pragma multi_compile_instancing
 			#include "UnityCG.cginc"
 
 			struct appdata
@@ -45,7 +50,6 @@
 			
 			fixed4 frag (v2f i) : SV_Target
 			{
-				// sample the texture
 				fixed4 col = _Color;
 				// apply fog
 				UNITY_APPLY_FOG(i.fogCoord, col);

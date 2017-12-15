@@ -94,18 +94,56 @@ public class GameCameraController : MonoBehaviour
         }
     }
 
+    // Very basic Handling of Keyboard Input for development purposes.
+    private void HandleKeyboardInput()
+    {
+        // We need a multiplier because the zoom speed on PC is too high.
+        float zoomMultiplier = 0.01f;
+        m_GameCameraMovement.Zoom(Input.GetAxis("Zoom") * zoomMultiplier * m_ZoomSpeed * Time.deltaTime);
+        m_GameCameraMovement.MoveRight(Input.GetAxis("Horizontal") * m_MovementSpeed * Time.deltaTime);
+        m_GameCameraMovement.MoveForward(Input.GetAxis("Vertical") * m_MovementSpeed * Time.deltaTime);
+
+        if (Input.GetButtonDown("RotateLeft"))
+        {
+            m_GameCameraMovement.RotateLeft();
+        }
+        if (Input.GetButtonDown("RotateRight"))
+        {
+            m_GameCameraMovement.RotateRight();
+        }
+        if (Input.GetButton("MoveDown"))
+        {
+            m_GameCameraMovement.MoveDown(m_MovementSpeed * Time.deltaTime);
+        }
+        if (Input.GetButton("MoveUp"))
+        {
+            m_GameCameraMovement.MoveUp(m_MovementSpeed * Time.deltaTime);
+        }
+    }
+
     private void Awake()
     {
         m_GameCameraMovement = gameObject.GetComponent<GameCameraMovement>();
     }
 
-    private void Start()
+    private void Update()
     {
-        InitEvents();
+        HandleKeyboardInput();
     }
 
     private void OnDestroy()
     {
         DeinitEvents();
     }
+
+    private void OnEnable()
+    {
+        InitEvents();
+    }
+
+    private void OnDisable()
+    {
+        DeinitEvents();
+    }
+
 }

@@ -32,7 +32,8 @@
 			#pragma fragment frag
 			// make fog work
 			#pragma multi_compile_fog
-			
+            // Allow Instancing
+            #pragma multi_compile_instancing
 			#include "UnityCG.cginc"
 
 			struct appdata

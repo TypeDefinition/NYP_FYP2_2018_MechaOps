@@ -218,13 +218,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c3023f02e8fd9443961a9fa68613f93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_GameSystemsDirectory: {fileID: 114092306247629050}
   m_EnemyList: []
   m_PlayerUnitsLocations:
     m_X: 0
     m_Y: 0
     m_Z: 0
-  m_TileSystem: {fileID: 0}
-  m_UnitsTracker: {fileID: 0}
 --- !u!114 &114501620522289274
 MonoBehaviour:
   m_ObjectHideFlags: 1

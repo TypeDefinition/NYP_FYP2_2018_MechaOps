@@ -40,7 +40,7 @@ public class PlayerUnitsManager : MonoBehaviour
     [SerializeField, Tooltip("The gameobject to toggle between selecting units")]
     private UnitSelection m_UnitSelection;
     [SerializeField, Tooltip("The text UI to display the unit's name!")]
-    private TextMeshProUGUI m_UnitNameTextUI;
+    private TextMeshProUGUI m_UnitNameText;
 
     // Game Logic
     [SerializeField, Tooltip("The array of how many units have yet to make their turn. Meant for debugging purpose")]
@@ -79,8 +79,8 @@ public class PlayerUnitsManager : MonoBehaviour
         Assert.IsFalse(m_UnitActionSelectionUIScrollRect == null);
         m_UnitSelection = m_ScreenSpaceCanvas.GetComponent<ScreenSpaceCanvas>().GetUnitSelection();
         Assert.IsFalse(m_UnitSelection == null);
-        m_UnitNameTextUI = m_UnitSelection.GetSelectedUnitNameText();
-        Assert.IsFalse(m_UnitNameTextUI == null);
+        m_UnitNameText = m_UnitSelection.GetSelectedUnitNameText();
+        Assert.IsFalse(m_UnitNameText == null);
 
         // Unit Info Display
         if (m_UnitInfoDisplay != null) { GameObject.Destroy(m_UnitInfoDisplay); }
@@ -272,7 +272,7 @@ public class PlayerUnitsManager : MonoBehaviour
     {
         m_SelectedPlayerUnit = _unit;
         UnitStats zeStat = _unit.GetComponent<UnitStats>();
-        m_UnitNameTextUI.text = zeStat.Name;
+        m_UnitNameText.text = zeStat.Name;
         m_UnitActionSelectionUIScrollRect.gameObject.SetActive(true);
 
         if (!m_UnitInfoDisplay.gameObject.activeSelf)

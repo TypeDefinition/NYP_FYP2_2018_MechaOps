@@ -1,23 +1,25 @@
 ﻿#define GOAP_AI
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
-
+using UnityEngine.Assertions;
 
 /// <summary>
 /// Mainly to iterate and update all of the enemy units 1 by 1
 /// </summary>
 public class EnemyUnitsManager : MonoBehaviour
 {
-    [Header("Debugging purposes")]
+    [SerializeField] private GameSystemsDirectory m_GameSystemsDirectory = null;
+    private TileSystem m_TileSystem = null;
+    private UnitsTracker m_UnitsTracker = null;
+
+    [Header("Shown in the Inspector for debugging purposes.")]
+
     [SerializeField, Tooltip("The list of available units when it begins")]
-    protected List<GameObject> m_EnemyList;
+    private List<GameObject> m_EnemyList;
     [SerializeField, Tooltip("Tile marker where all of the player units last gathered")]
-    protected TileId m_PlayerUnitsLocations; // This isn't an array?
-    [SerializeField, Tooltip("The Tile system")]
-    protected TileSystem m_TileSystem;
-    [SerializeField, Tooltip("Keep Track Of Units script")]
-    protected UnitsTracker m_UnitsTracker;
+    private TileId m_PlayerUnitsLocations; // This isn't an array?
 
     /// <summary>
     /// The Update of this manager
@@ -35,18 +37,12 @@ public class EnemyUnitsManager : MonoBehaviour
 
     private void Awake()
     {
-        if (!m_UnitsTracker)
-        {
-            m_UnitsTracker = FindObjectOfType<UnitsTracker>();
-        }
-    }
+        Assert.IsFalse(m_GameSystemsDirectory == null, MethodBase.GetCurrentMethod().Name + " - m_GameSystemsDirectory must not be null!");
 
-    private void Start()
-    {
-        if (!m_TileSystem)
-        {
-            m_TileSystem = FindObjectOfType<TileSystem>();
-        }
+        m_TileSystem = m_GameSystemsDirectory.GetTileSystem();
+        Assert.IsFalse(m_TileSystem == null, MethodBase.GetCurrentMethod().Name + " - TileSystem not found in m_GameSystemsDirectory.");
+        m_UnitsTracker = m_GameSystemsDirectory.GetUnitsTracker();
+        Assert.IsFalse(m_UnitsTracker == null, MethodBase.GetCurrentMethod().Name + " - UnitsTracker not found in m_GameSystemsDirectory.");
     }
 
     private void InitEvents()
@@ -80,9 +76,9 @@ public class EnemyUnitsManager : MonoBehaviour
        UpdateMarker();
         m_EnemyList = new List<GameObject>(m_UnitsTracker.m_AllEnemyUnitGO);
 #if GOAP_AI
-        foreach (GameObject zeEnemy in m_EnemyList)
+        foreach (GameObject enemy in m_EnemyList)
         {
-            GoapPlanner zePlanner = zeEnemy.GetComponent<GoapPlanner>();
+            GoapPlanner zePlanner = enemy.GetComponent<GoapPlanner>();
             m_UpdateOfEnemy = StartCoroutine(zePlanner.StartPlanning());
             // wait till the update is finish then proceed to the next unit
             yield return m_UpdateOfEnemy;

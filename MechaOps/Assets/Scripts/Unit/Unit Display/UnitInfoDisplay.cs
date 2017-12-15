@@ -1,7 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif // UNITY_EDITOR
 
 /// <summary>
 /// meant to just display the stats UI only!
@@ -10,15 +15,21 @@ public class UnitInfoDisplay : TweenUI_Scale
 {
     [Header("Variables needed")]
     [SerializeField, Tooltip("The HP text of the unit!")]
-    protected TextMeshProUGUI m_HpTextUI;
+    protected TextMeshProUGUI m_HealthPointsText;
     [SerializeField, Tooltip("The action point text of the unit")]
-    protected TextMeshProUGUI m_ActionPtTextUI;
+    protected TextMeshProUGUI m_ActionPointsText;
     [SerializeField, Tooltip("The gameobj holds the text of HP")]
-    protected GameObject m_goHP;
+    protected Image m_HealthPointsImage;
     [SerializeField, Tooltip("The gameobj holds the text of action pt")]
-    protected GameObject m_goActPt;
+    protected Image m_ActionPointsImage;
     [Tooltip("The distance to from the target to the camera")]
-    public float m_Dist = 3.0f;
+    protected float m_CameraToTargetDistance = 3.0f;
+
+    public float CameraToTargetDistance
+    {
+        get { return m_CameraToTargetDistance; }
+        set { m_CameraToTargetDistance = Mathf.Max(0.0f, value); }
+    }
 
     private void OnEnable()
     {
@@ -28,16 +39,16 @@ public class UnitInfoDisplay : TweenUI_Scale
     /// <summary>
     /// Meant to just set the value of the text ui
     /// </summary>
-    public string HpText
+    public string HealthPointsText
     {
         set
         {
-            m_goHP.SetActive(true);
-            m_HpTextUI.text = value;
+            m_HealthPointsImage.gameObject.SetActive(true);
+            m_HealthPointsText.text = value;
         }
         get
         {
-            return m_HpTextUI.text;
+            return m_HealthPointsText.text;
         }
     }
     /// <summary>
@@ -47,12 +58,12 @@ public class UnitInfoDisplay : TweenUI_Scale
     {
         set
         {
-            m_goActPt.SetActive(true);
-            m_ActionPtTextUI.text = value;
+            m_ActionPointsImage.gameObject.SetActive(true);
+            m_ActionPointsText.text = value;
         }
         get
         {
-            return m_ActionPtTextUI.text;
+            return m_ActionPointsText.text;
         }
     }
 
@@ -65,7 +76,7 @@ public class UnitInfoDisplay : TweenUI_Scale
         // we will use the distance from the camera to the object and determine the position there. so we will need the direction vector and from there scale the distance of the point
         Vector3 zeDirFromTargetToCam = Camera.main.transform.position - _unitGo.position;
         zeDirFromTargetToCam.Normalize();
-        Vector3 zeTrackedUIPos = (zeDirFromTargetToCam * m_Dist) + _unitGo.position;
+        Vector3 zeTrackedUIPos = (zeDirFromTargetToCam * m_CameraToTargetDistance) + _unitGo.position;
         transform.position = zeTrackedUIPos;
     }
 
@@ -75,8 +86,16 @@ public class UnitInfoDisplay : TweenUI_Scale
     /// <param name="_unitStat">The Unit stats</param>
     public void SetThePosToUnit(UnitStats _unitStat)
     {
-        HpText = _unitStat.CurrentHealthPoints + "/" + _unitStat.MaxHealthPoints;
+        HealthPointsText = _unitStat.CurrentHealthPoints + "/" + _unitStat.MaxHealthPoints;
         ActPtText = _unitStat.CurrentActionPoints.ToString();
         SetThePosToUnit(_unitStat.transform);
     }
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        CameraToTargetDistance = m_CameraToTargetDistance;
+    }
+#endif // UNITY_EDITOR
+
 }
