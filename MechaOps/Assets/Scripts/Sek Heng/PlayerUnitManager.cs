@@ -80,7 +80,6 @@ public class PlayerUnitManager : MonoBehaviour
         GameEventSystem.GetInstance().SubscribeToEvent("EnemyAnnihilated", StopUpdate);
         GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("ClickedUnit", PlayerSelectUnit);
         GameEventSystem.GetInstance().SubscribeToEvent("ToggleSelectingUnit", ToggleThePlayerInput);
-        GameEventSystem.GetInstance().SubscribeToEvent("UnitFinishAction", PollingForPlayerInput);
     }
 
     private void DeinitEvents()
@@ -258,8 +257,8 @@ public class PlayerUnitManager : MonoBehaviour
     protected void SpawnActionUI(GameObject _unit)
     {
         m_SelectedPlayerUnit = _unit;
-
-        m_UnitNameTextUI.text = _unit.name;
+        UnitStats zeStat = _unit.GetComponent<UnitStats>();
+        m_UnitNameTextUI.text = zeStat.Name;
         m_ScrollRectUnitActionSelection.SetActive(true);
 
         if (!m_UnitDisplayUI.gameObject.activeSelf)
@@ -270,7 +269,7 @@ public class PlayerUnitManager : MonoBehaviour
         {
             m_UnitDisplayUI.AnimateUI();
         }
-        m_UnitDisplayUI.SetThePosToUnit(_unit.GetComponent<UnitStats>());
+        m_UnitDisplayUI.SetThePosToUnit(zeStat);
         
         #region Clear Old Buttons
         // Remove all of the previous unit's buttons.

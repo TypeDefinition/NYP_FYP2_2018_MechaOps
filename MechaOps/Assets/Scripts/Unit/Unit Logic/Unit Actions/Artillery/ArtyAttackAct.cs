@@ -91,7 +91,6 @@ public class ArtyAttackAct : UnitAttackAction {
         {
             return false;
         }
-
         return true;
     }
 }

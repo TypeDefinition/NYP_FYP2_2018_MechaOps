@@ -212,6 +212,7 @@ public class UnitStats : MonoBehaviour
         {
             m_UnitStatsJSON.m_Name = name;
         }
+        // This is needed otherwise CheckkEnemyInRange will not work. it appears that some systems has not been initialized
         yield return null;
         // check if there is any enemy in range when the game is starting!
         CheckEnemyInRange();

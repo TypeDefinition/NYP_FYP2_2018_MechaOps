@@ -44,7 +44,6 @@ public class WalkGoapAct : IGoapAction {
         m_TileDest = m_Planner.EnemiesManager.TilePlayerUnits;
         // so why not lets just cheat here to get to the closest tile!
         TileId[] zeTileToWalkTo = m_WalkAct.m_TileSys.GetPath(99999, m_Planner.m_Stats.CurrentTileID, m_TileDest, m_Planner.m_Stats.GetTileAttributeOverrides());
-        yield return null;
         // from here, we get the walkable tiles!
         int zeCounter = 0;
         //TODO, this will sometimes has null reference

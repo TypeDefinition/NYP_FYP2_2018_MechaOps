@@ -156,7 +156,6 @@ public class GoapPlanner : MonoBehaviour
                             m_CurrentGoal = m_DictGoapGoal["WalkGoal"];
                         }
                         // So we will have this list of actions!
-                        yield return null;
                         break;
                 }
                 zeCheapestActNode = GetTheCheapestAction(m_CurrentGoal);
@@ -173,6 +172,7 @@ public class GoapPlanner : MonoBehaviour
                 }
                 zeCheapestActNode = null;
             }
+            // here is to go the next loop! and wait till itself finished it's actions and finishes it's goal
             yield return null;
         }
         GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("UnitMakeMove", FinishMakingMove);

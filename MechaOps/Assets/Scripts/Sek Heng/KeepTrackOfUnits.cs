@@ -25,7 +25,7 @@ public class KeepTrackOfUnits : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void Awake () {
         m_AllPlayerUnitGO = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
         m_AllEnemyUnitGO = new List<GameObject>(GameObject.FindGameObjectsWithTag("EnemyUnit"));
     }

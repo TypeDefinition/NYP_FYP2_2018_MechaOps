@@ -91,7 +91,6 @@ public class GoapNearTarget : IGoapAction
         TileId[] zePathToEnemy = zeTileSys.GetPath(999, m_Planner.m_Stats.CurrentTileID, zeDestinationTileID, m_Planner.m_Stats.GetTileAttributeOverrides());
         // But we will just walk the shortest length of tile to get to the m_EnemyState. Maybe when there is Accuracy point then it will be added in!
         List<TileId> zeTileToWalk = new List<TileId>();
-        yield return null;
         foreach (TileId zeTile in zePathToEnemy)
         {
             zeTileToWalk.Add(zeTile);
@@ -101,7 +100,6 @@ public class GoapNearTarget : IGoapAction
                 break;
             }
         }
-        yield return null;
         m_WalkAct.m_TilePath = zeTileToWalk.ToArray();
         UnitActionScheduler zeScheduler = FindObjectOfType<UnitActionScheduler>();
         m_WalkAct.TurnOn();
