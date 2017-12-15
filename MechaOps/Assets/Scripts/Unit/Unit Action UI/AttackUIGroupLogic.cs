@@ -111,8 +111,8 @@ public class AttackUIGroupLogic : TweenUI_Scale {
     {
         UnitStats zeTargetStat = trackedTarget.GetComponent<UnitStats>();
         UnitInfoDisplay zeDisplayUI = m_TargetGO.GetComponent<UnitInfoDisplay>();
-        zeDisplayUI.SetThePosToUnit(trackedTarget.transform);
-        zeDisplayUI.HealthPointsText = zeTargetStat.CurrentHealthPoints + "/" + zeTargetStat.MaxHealthPoints;
+        //zeDisplayUI.SetThePosToUnit(trackedTarget.transform);
+        //zeDisplayUI.HealthPointsText = zeTargetStat.CurrentHealthPoints + "/" + zeTargetStat.MaxHealthPoints;
         zeDisplayUI.AnimateUI();
         m_OtherTarget = trackedTarget;
         // set the name and the HP there

@@ -283,7 +283,7 @@ public class PlayerUnitsManager : MonoBehaviour
         {
             m_UnitInfoDisplay.AnimateUI();
         }
-        m_UnitInfoDisplay.SetThePosToUnit(zeStat);
+        //m_UnitInfoDisplay.SetThePosToUnit(zeStat);
         
         #region Clear Old Buttons
         // Remove all of the previous unit's buttons.

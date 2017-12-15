@@ -5,10 +5,11 @@ using UnityEngine;
 /// <summary>
 /// Just tweening the scale of X-axis and uses LeanTween
 /// </summary>
-public class TweenUI_Scale : MonoBehaviour {
+public class TweenUI_Scale : MonoBehaviour
+{
     [Header("Variables for TweenUI_Scale")]
     [Tooltip("The animation time")]
-    public float m_AnimTime = 0.2f;
+    public float m_AnimationTime = 0.2f;
 
     [Header("Debugging for TweenUI_Scale")]
     [SerializeField, Tooltip("The original scale for the tween")]
@@ -27,6 +28,6 @@ public class TweenUI_Scale : MonoBehaviour {
         Vector3 zeLocalScale = transform.localScale;
         zeLocalScale.x = 0;
         transform.localScale = zeLocalScale;
-        LeanTween.scaleX(gameObject, m_OriginalScale.x, m_AnimTime);
+        LeanTween.scaleX(gameObject, m_OriginalScale.x, m_AnimationTime);
     }
 }

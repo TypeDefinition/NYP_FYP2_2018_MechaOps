@@ -122,7 +122,7 @@ public class ArtyAttackUI_Logic : TweenUI_Scale {
             m_TileSys.SetPathMarkers(m_AttackableTiles.ToArray(), zeSurroundTargetTiles);
             m_InstantUI.gameObject.SetActive(true);
             m_InstantUI.AnimateUI();
-            m_InstantUI.SetThePosToUnit(zeTile.transform);
+            //m_InstantUI.SetThePosToUnit(zeTile.transform);
         }
     }
 }
