@@ -148,7 +148,7 @@ public class GoapPlanner : MonoBehaviour
                         else
                         {
                             // this unit did not see any player units, so move to Before that, check whether is it near the marker
-                            if (m_Stats.CurrentTileID.Equals(m_EnemiesManager.TilePlayerUnits))
+                            if (m_Stats.CurrentTileID.Equals(m_EnemiesManager.PlayerUnitLocations))
                             {
                                 m_EnemiesManager.UpdateMarker();
                             }

@@ -5,8 +5,9 @@ using UnityEngine;
 /// <summary>
 /// A quick class to store an array of gameobject
 /// </summary>
-public class KeepTrackOfUnits : MonoBehaviour {
-    [Header("Debugging purpose")]
+public class UnitsTracker : MonoBehaviour
+{
+    [Header("Shown in Inspector for debugging purposes.")]
     [Tooltip("The list of player units!")]
     public List<GameObject> m_AllPlayerUnitGO;
     [Tooltip("The list of enemy units")]

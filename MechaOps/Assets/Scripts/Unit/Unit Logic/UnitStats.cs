@@ -56,13 +56,13 @@ public class UnitStats : MonoBehaviour
     [SerializeField, Tooltip("The list of animation handler which will be accessed through dictionary. No linking required")]
     protected MOAnimation[] m_AnimHandler;
     [Tooltip("The tile system!")]
-    public TileSystem m_TileSys;
+    public TileSystem m_TileSystem;
     [Tooltip("Death attack animation"), SerializeField]
     protected MOAnimation_UnitDestroy m_DeathAnim;
     [SerializeField, Tooltip("View Render Script")]
     protected ViewTileScript m_ViewTileScript;
     [SerializeField, Tooltip("Keep Track of units script")]
-    protected KeepTrackOfUnits m_TrackedUnits;
+    protected UnitsTracker m_TrackedUnits;
 
     /// <summary>
     /// A callback function will appear when ever the health point decreases
@@ -173,9 +173,9 @@ public class UnitStats : MonoBehaviour
             if (!value.Equals(m_UnitStatsJSON.m_CurrentTileID))
             {
                 // and then set the previous tile to have no units since it has moved towards a new tile
-                m_TileSys.GetTile(m_UnitStatsJSON.m_CurrentTileID).Unit = null;
+                m_TileSystem.GetTile(m_UnitStatsJSON.m_CurrentTileID).Unit = null;
                 m_UnitStatsJSON.m_CurrentTileID = value;
-                m_TileSys.GetTile(value).Unit = gameObject;
+                m_TileSystem.GetTile(value).Unit = gameObject;
             }
         }
     }
@@ -202,7 +202,7 @@ public class UnitStats : MonoBehaviour
     private void Awake()
     {
         if (!m_TrackedUnits)
-            m_TrackedUnits = FindObjectOfType<KeepTrackOfUnits>();
+            m_TrackedUnits = FindObjectOfType<UnitsTracker>();
     }
 
     protected IEnumerator Start()
@@ -217,9 +217,9 @@ public class UnitStats : MonoBehaviour
         // check if there is any enemy in range when the game is starting!
         CheckEnemyInRange();
         // And then we will need to register our tile top the tile system so that trespassing will happen!
-        if (!m_TileSys)
-            m_TileSys = FindObjectOfType<TileSystem>();
-        m_TileSys.GetTile(CurrentTileID).Unit = gameObject;
+        if (!m_TileSystem)
+            m_TileSystem = FindObjectOfType<TileSystem>();
+        m_TileSystem.GetTile(CurrentTileID).Unit = gameObject;
         if (tag == "Player" && !m_ViewTileScript)
             m_ViewTileScript = GetComponent<PlayerViewScript>();
         yield break;

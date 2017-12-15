@@ -20,7 +20,7 @@ public class PlayerUnitManager : MonoBehaviour
 
     // KeepTrackOfUnits keeps tracks of units that are still alive.
     [SerializeField, Tooltip("Keep Track of Unit Script")]
-    private KeepTrackOfUnits m_KeepTrackOfUnits;
+    private UnitsTracker m_UnitsTracker;
 
     // World Canvas
     [SerializeField, Tooltip("The world canvas transform")]
@@ -59,9 +59,9 @@ public class PlayerUnitManager : MonoBehaviour
 
     private void Start()
     {
-        if (!m_KeepTrackOfUnits)
+        if (!m_UnitsTracker)
         {
-            m_KeepTrackOfUnits = GetComponent<KeepTrackOfUnits>();
+            m_UnitsTracker = GetComponent<UnitsTracker>();
         }
         if (!m_WorldCanvasTransform)
         {
@@ -104,7 +104,7 @@ public class PlayerUnitManager : MonoBehaviour
     public IEnumerator BeginUpdateOfPlayerUnits()
     {
         // Get a shallow copy of the list of all available units!
-        m_UnitsYetToMakeMoves = new List<GameObject>(m_KeepTrackOfUnits.m_AllPlayerUnitGO);
+        m_UnitsYetToMakeMoves = new List<GameObject>(m_UnitsTracker.m_AllPlayerUnitGO);
         m_SelectedUnitIndex = 0;
         m_UnitSelectionUI.SetActive(true);
 

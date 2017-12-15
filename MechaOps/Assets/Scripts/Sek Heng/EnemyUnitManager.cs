@@ -7,16 +7,17 @@ using UnityEngine;
 /// <summary>
 /// Mainly to iterate and update all of the enemy units 1 by 1
 /// </summary>
-public class EnemyUnitManager : MonoBehaviour {
+public class EnemyUnitManager : MonoBehaviour
+{
     [Header("Debugging purposes")]
     [SerializeField, Tooltip("The list of available units when it begins")]
     protected List<GameObject> m_EnemyList;
     [SerializeField, Tooltip("Tile marker where all of the player units last gathered")]
-    protected TileId m_TilePlayerUnits;
+    protected TileId m_PlayerUnitsLocations; // This isn't an array?
     [SerializeField, Tooltip("The Tile system")]
-    protected TileSystem m_TileSys;
+    protected TileSystem m_TileSystem;
     [SerializeField, Tooltip("Keep Track Of Units script")]
-    protected KeepTrackOfUnits m_TrackedUnits;
+    protected UnitsTracker m_UnitsTracker;
 
     /// <summary>
     /// The Update of this manager
@@ -27,36 +28,47 @@ public class EnemyUnitManager : MonoBehaviour {
     /// </summary>
     Coroutine m_UpdateOfEnemy;
 
-    public TileId TilePlayerUnits
+    public TileId PlayerUnitLocations
     {
-        get
-        {
-            return m_TilePlayerUnits;
-        }
+        get { return m_PlayerUnitsLocations; }
     }
 
     private void Awake()
     {
-        if (!m_TrackedUnits)
-            m_TrackedUnits = FindObjectOfType<KeepTrackOfUnits>();
+        if (!m_UnitsTracker)
+        {
+            m_UnitsTracker = FindObjectOfType<UnitsTracker>();
+        }
     }
 
     private void Start()
     {
-        if (!m_TileSys)
-            m_TileSys = FindObjectOfType<TileSystem>();
+        if (!m_TileSystem)
+        {
+            m_TileSystem = FindObjectOfType<TileSystem>();
+        }
     }
 
-    private void OnEnable()
+    private void InitEvents()
     {
         GameEventSystem.GetInstance().SubscribeToEvent("PlayerAnnihilated", StopUpdate);
         GameEventSystem.GetInstance().SubscribeToEvent("EnemyAnnihilated", StopUpdate);
     }
 
-    private void OnDisable()
+    private void DeinitEvents()
     {
         GameEventSystem.GetInstance().UnsubscribeFromEvent("PlayerAnnihilated", StopUpdate);
         GameEventSystem.GetInstance().UnsubscribeFromEvent("EnemyAnnihilated", StopUpdate);
+    }
+
+    private void OnEnable()
+    {
+        InitEvents();
+    }
+
+    private void OnDisable()
+    {
+        DeinitEvents();
     }
 
     /// <summary>
@@ -66,7 +78,7 @@ public class EnemyUnitManager : MonoBehaviour {
     public IEnumerator IterateThroughEnemyUpdate()
     {
        UpdateMarker();
-        m_EnemyList = new List<GameObject>(m_TrackedUnits.m_AllEnemyUnitGO);
+        m_EnemyList = new List<GameObject>(m_UnitsTracker.m_AllEnemyUnitGO);
 #if GOAP_AI
         foreach (GameObject zeEnemy in m_EnemyList)
         {
@@ -103,20 +115,22 @@ public class EnemyUnitManager : MonoBehaviour {
     public void UpdateMarker()
     {
         // TODO: improve this function!
-        m_TilePlayerUnits = m_TrackedUnits.m_AllPlayerUnitGO[0].GetComponent<UnitStats>().CurrentTileID;
-        Tile zeTile = m_TileSys.GetTile(m_TilePlayerUnits);
+        m_PlayerUnitsLocations = m_UnitsTracker.m_AllPlayerUnitGO[0].GetComponent<UnitStats>().CurrentTileID;
+        Tile zeTile = m_TileSystem.GetTile(m_PlayerUnitsLocations);
         if (!zeTile.GetIsWalkable() || zeTile.HasUnit())
         {
             // we only need the 1 radius tile!
-            TileId []zeTiles = m_TileSys.GetSurroundingTiles(m_TilePlayerUnits, 1);
+            TileId []zeTiles = m_TileSystem.GetSurroundingTiles(m_PlayerUnitsLocations, 1);
             while (!zeTile.GetIsWalkable() || zeTile.HasUnit())
             {
                 foreach (TileId zeTileID in zeTiles)
                 {
-                    m_TilePlayerUnits = zeTileID;
-                    zeTile = m_TileSys.GetTile(m_TilePlayerUnits);
+                    m_PlayerUnitsLocations = zeTileID;
+                    zeTile = m_TileSystem.GetTile(m_PlayerUnitsLocations);
                     if (zeTile.GetIsWalkable() && !zeTile.HasUnit())
+                    {
                         break;
+                    }
                 }
             }
         }
