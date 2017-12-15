@@ -6,7 +6,7 @@ using TMPro;
 /// <summary>
 /// meant to just display the stats UI only!
 /// </summary>
-public class UnitDisplayUI : TweenUI_Scale
+public class UnitInfoDisplay : TweenUI_Scale
 {
     [Header("Variables needed")]
     [SerializeField, Tooltip("The HP text of the unit!")]

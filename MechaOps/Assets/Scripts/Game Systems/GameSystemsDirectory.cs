@@ -6,17 +6,18 @@ using UnityEngine;
 public class GameSystemsDirectory : MonoBehaviour
 {
     [SerializeField] private TileSystem m_TileSystem = null;
-    [SerializeField] private Canvas m_ScreenCanvas = null;
-    [SerializeField] private Canvas m_WorldCanvas = null;
+    [SerializeField] private Canvas m_ScreenSpaceCanvas = null;
+    [SerializeField] private Canvas m_WorldSpaceCanvas = null;
     [SerializeField] private UnitsTracker m_UnitsTracker = null;
-    [SerializeField] private EnemyUnitManager m_EnemyUnitManager = null;
-    [SerializeField] private PlayerUnitManager m_PlayerUnitManager = null;
+    [SerializeField] private EnemyUnitsManager m_EnemyUnitsManager = null;
+    [SerializeField] private PlayerUnitsManager m_PlayerUnitsManager = null;
+    [SerializeField] private UnitActionScheduler m_UnitActionScheduler = null;
 
     public TileSystem GetTileSystem() { return m_TileSystem; }
-    public Canvas GetScreenCanvas() { return m_ScreenCanvas; }
-    public Canvas GetWorldCanvas() { return m_WorldCanvas; }
+    public Canvas GetScreenSpaceCanvas() { return m_ScreenSpaceCanvas; }
+    public Canvas GetWorldSpaceCanvas() { return m_WorldSpaceCanvas; }
     public UnitsTracker GetUnitsTracker() { return m_UnitsTracker; }
-    public EnemyUnitManager GetEnemyUnitManager() { return m_EnemyUnitManager; }
-    public PlayerUnitManager GetPlayerUnitManager() { return m_PlayerUnitManager; }
-
+    public EnemyUnitsManager GetEnemyUnitsManager() { return m_EnemyUnitsManager; }
+    public PlayerUnitsManager GetPlayerUnitsManager() { return m_PlayerUnitsManager; }
+    public UnitActionScheduler GetUnitActionScheduler() { return m_UnitActionScheduler; }
 }

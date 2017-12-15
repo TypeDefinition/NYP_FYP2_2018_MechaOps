@@ -4,9 +4,10 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.Assertions;
 
+[DisallowMultipleComponent, RequireComponent(typeof(GameCameraMovement))]
 public class GameCameraController : MonoBehaviour
 {
-    [SerializeField] private GameCameraMovement m_GameCameraMovement = null;
+    private GameCameraMovement m_GameCameraMovement = null;
     private bool m_EventsInitialised = false;
 
     [SerializeField] private float m_ZoomSpeed = 50.0f;
@@ -32,10 +33,7 @@ public class GameCameraController : MonoBehaviour
     private void InitEvents()
     {
         // Check that we are not already initialised.
-        if (m_EventsInitialised == true)
-        {
-            return;
-        }
+        if (m_EventsInitialised) { return; }
 
         // Initialise events
         GameEventSystem.GetInstance().SubscribeToEvent<float>("Pinch Event", PinchCallback);
@@ -49,10 +47,7 @@ public class GameCameraController : MonoBehaviour
     private void DeinitEvents()
     {
         // Ensure that we are initialised.
-        if (m_EventsInitialised == false)
-        {
-            return;
-        }
+        if (!m_EventsInitialised) { return; }
 
         // Uninitialise events here.
         GameEventSystem.GetInstance().UnsubscribeFromEvent<float>("Pinch Event", PinchCallback);
@@ -85,18 +80,26 @@ public class GameCameraController : MonoBehaviour
 
     private void CircleGestureCallback(TouchGestureHandler.CircleGestureDirection _circleDirection)
     {
-        if (_circleDirection == TouchGestureHandler.CircleGestureDirection.AntiClockwise)
+        switch (_circleDirection)
         {
-            m_GameCameraMovement.RotateLeft();
-        }
-
-        if (_circleDirection == TouchGestureHandler.CircleGestureDirection.Clockwise)
-        {
-            m_GameCameraMovement.RotateRight();
+            case TouchGestureHandler.CircleGestureDirection.AntiClockwise:
+                m_GameCameraMovement.RotateLeft();
+                break;
+            case TouchGestureHandler.CircleGestureDirection.Clockwise:
+                m_GameCameraMovement.RotateRight();
+                break;
+            default:
+                // Do nothing.
+                break;
         }
     }
 
     private void Awake()
+    {
+        m_GameCameraMovement = gameObject.GetComponent<GameCameraMovement>();
+    }
+
+    private void Start()
     {
         InitEvents();
     }
@@ -105,5 +108,4 @@ public class GameCameraController : MonoBehaviour
     {
         DeinitEvents();
     }
-
 }

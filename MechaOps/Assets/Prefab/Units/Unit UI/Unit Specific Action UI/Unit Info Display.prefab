@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 114213622440544178}
   - component: {fileID: 114329953184238638}
   m_Layer: 0
-  m_Name: IndcateSelect Unit Placeholder
+  m_Name: Unit Info Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

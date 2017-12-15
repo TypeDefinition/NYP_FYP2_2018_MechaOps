@@ -61,14 +61,14 @@ public class GoapPlanner : MonoBehaviour
     [SerializeField, Tooltip("The Current goal it is working towards to!")]
     protected IGoapGoal m_CurrentGoal;
     [SerializeField, Tooltip("Enemy Unit Manager script")]
-    protected EnemyUnitManager m_EnemiesManager;
+    protected EnemyUnitsManager m_EnemiesManager;
 
-    public EnemyUnitManager EnemiesManager
+    public EnemyUnitsManager EnemiesManager
     {
         get
         {
             if (!m_EnemiesManager)
-                m_EnemiesManager = FindObjectOfType<EnemyUnitManager>();
+                m_EnemiesManager = FindObjectOfType<EnemyUnitsManager>();
             return m_EnemiesManager;
         }
     }
@@ -86,7 +86,7 @@ public class GoapPlanner : MonoBehaviour
     protected virtual void Start()
     {
         if (!m_EnemiesManager)
-            m_EnemiesManager = FindObjectOfType<EnemyUnitManager>();
+            m_EnemiesManager = FindObjectOfType<EnemyUnitsManager>();
         m_AllGoapActions = GetComponents<IGoapAction>();
         if (!m_Stats)
             m_Stats = GetComponent<UnitStats>();

@@ -12,9 +12,9 @@ public class GameHandler : MonoBehaviour
 {
     [Header("Linking references and values needed")]
     [Tooltip("The Player unit manager")]
-    public PlayerUnitManager m_PlayerManager;
+    public PlayerUnitsManager m_PlayerManager;
     [Tooltip("The Enemy unit manager")]
-    public EnemyUnitManager m_EnemyManager;
+    public EnemyUnitsManager m_EnemyManager;
     [Tooltip("The UI for Player winning display")]
     public GameObject m_PlayerWonDisplayGO;
     [Tooltip("The UI for Player losing display")]

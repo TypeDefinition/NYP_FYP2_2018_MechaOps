@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 /// <summary>
 /// This is responsible for checking for when the player clicks a unit.
 /// </summary>
+[DisallowMultipleComponent]
 public class GetPlayerInputUnit : MonoBehaviour
 {
     [Header("Debugging purposes!")]

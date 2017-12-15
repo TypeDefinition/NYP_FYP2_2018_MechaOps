@@ -22,13 +22,13 @@ public class ArtyAttackUI_Logic : TweenUI_Scale {
     [SerializeField, Tooltip("The world canvas UI")]
     protected GameObject m_WorldCanvas;
     [SerializeField, Tooltip("Instantiated UI")]
-    protected UnitDisplayUI m_InstantUI;
+    protected UnitInfoDisplay m_InstantUI;
 
     private void OnEnable()
     {
         m_TileSys = FindObjectOfType<TileSystem>();
         m_WorldCanvas = GameObject.FindGameObjectWithTag("WorldCanvas");
-        m_InstantUI = Instantiate(m_UIndicatorGO, m_WorldCanvas.transform, false).GetComponent<UnitDisplayUI>();
+        m_InstantUI = Instantiate(m_UIndicatorGO, m_WorldCanvas.transform, false).GetComponent<UnitInfoDisplay>();
         m_InstantUI.gameObject.SetActive(false);
         // Animate the UI when enabled
         AnimateUI();

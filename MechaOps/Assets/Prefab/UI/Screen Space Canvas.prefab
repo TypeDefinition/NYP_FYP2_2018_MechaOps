@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 222908336369388814}
   - component: {fileID: 114306470720269122}
   m_Layer: 5
-  m_Name: Game Lost
+  m_Name: Game Lose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -252,9 +252,9 @@ GameObject:
   - component: {fileID: 223258638914259688}
   - component: {fileID: 114281506489058570}
   - component: {fileID: 114392577743504920}
-  - component: {fileID: 114579472185793122}
+  - component: {fileID: 114986204338619836}
   m_Layer: 5
-  m_Name: Player Control Canvas
+  m_Name: Screen Space Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -286,6 +286,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224301291180765094}
+  - component: {fileID: 114107573853853630}
   m_Layer: 5
   m_Name: Unit Selection
   m_TagString: Untagged
@@ -398,6 +399,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114107573853853630
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1935769201650670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b498c84eba61254eb72cf715e2e409d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PreviousButton: {fileID: 114256319305709262}
+  m_NextButton: {fileID: 114041284382041982}
+  m_SelectedUnitNameText: {fileID: 114257643777311730}
 --- !u!114 &114155477784978618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -924,23 +939,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114579472185793122
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1730946030770242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aea0c27006be38546b4eda79c308f057, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_GameWinUI: {fileID: 1695317655983180}
-  m_GameLoseUI: {fileID: 1471311530506272}
-  m_EnemyActivityUI: {fileID: 1215982721497878}
-  m_UnitSelectionUI: {fileID: 1935769201650670}
-  m_UnitActionSelectionUI: {fileID: 1641869738026294}
-  m_SettingsButton: {fileID: 114825118176844128}
 --- !u!114 &114596597813071384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1327,6 +1325,23 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114986204338619836
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1730946030770242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aea0c27006be38546b4eda79c308f057, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GameWinTransform: {fileID: 224969012455147894}
+  m_GameLoseTransform: {fileID: 224067531962053260}
+  m_EnemyActivityTransform: {fileID: 224190443183954682}
+  m_UnitSelection: {fileID: 114107573853853630}
+  m_UnitActionSelectionScrollRect: {fileID: 114450162812503120}
+  m_SettingsButton: {fileID: 114825118176844128}
 --- !u!222 &222141034664672622
 CanvasRenderer:
   m_ObjectHideFlags: 1

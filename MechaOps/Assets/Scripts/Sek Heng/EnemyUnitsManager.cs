@@ -7,7 +7,7 @@ using UnityEngine;
 /// <summary>
 /// Mainly to iterate and update all of the enemy units 1 by 1
 /// </summary>
-public class EnemyUnitManager : MonoBehaviour
+public class EnemyUnitsManager : MonoBehaviour
 {
     [Header("Debugging purposes")]
     [SerializeField, Tooltip("The list of available units when it begins")]

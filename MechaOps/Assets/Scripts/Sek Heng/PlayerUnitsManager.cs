@@ -2,43 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Assertions;
 using TMPro;
 
-public class PlayerUnitManager : MonoBehaviour
+[RequireComponent(typeof(GetPlayerInputUnit)), DisallowMultipleComponent]
+public class PlayerUnitsManager : MonoBehaviour
 {
     [Header("Linking and variables required")]
 
+    [SerializeField] private GameSystemsDirectory m_GameSystemsDirectory = null;
+
     // Prefabs used for copy initialisation.
-    [SerializeField, Tooltip("UI Stats display script")]
-    private UnitDisplayUI m_UnitDisplayUI_Prefab;
     [SerializeField, Tooltip("The prefab holder for the unit's actions!")]
     private Image m_UnitActionIconImage_Prefab;
+    [SerializeField, Tooltip("UI Stats display script")]
+    private UnitInfoDisplay m_UnitInfoDisplay_Prefab;
 
-    // GetPlayerInputUnit checks for which unit is clicked on.
-    [SerializeField]
-    private GetPlayerInputUnit m_GetPlayerInputUnit;
+    [Header("Variables Shown For Debugging Purposes.")]
 
     // KeepTrackOfUnits keeps tracks of units that are still alive.
     [SerializeField, Tooltip("Keep Track of Unit Script")]
     private UnitsTracker m_UnitsTracker;
 
-    // World Canvas
-    [SerializeField, Tooltip("The world canvas transform")]
-    private Transform m_WorldCanvasTransform;
+    // Unit Info Display
+    [SerializeField, Tooltip("The instantiated Unit Info Display.")]
+    private UnitInfoDisplay m_UnitInfoDisplay;
 
-    // Objects in the Player Control Canvas.
+    // World Space Canvas
+    [SerializeField, Tooltip("The world canvas transform.")]
+    private Canvas m_WorldSpaceCanvas;
+
+    // Screen Space Canvas
+    [SerializeField, Tooltip("The screen canvas transform.")]
+    private ScreenSpaceCanvas m_ScreenSpaceCanvas;
     [SerializeField, Tooltip("The ScrollRect of the unit icons")]
-    private GameObject m_ScrollRectUnitActionSelection;
-    [SerializeField, Tooltip("The parent to contain all of these icons")]
-    private GameObject m_ScrollRectContent;
-    [SerializeField, Tooltip("The canvas transform that holds all of the action stuff")]
-    private Transform m_UICanvasTransform;
+    private ScrollRect m_UnitActionSelectionUIScrollRect;
     [SerializeField, Tooltip("The gameobject to toggle between selecting units")]
-    private GameObject m_UnitSelectionUI;
+    private UnitSelection m_UnitSelection;
     [SerializeField, Tooltip("The text UI to display the unit's name!")]
     private TextMeshProUGUI m_UnitNameTextUI;
 
-    [Header("Debugging References")]
+    // Game Logic
     [SerializeField, Tooltip("The array of how many units have yet to make their turn. Meant for debugging purpose")]
     private List<GameObject> m_UnitsYetToMakeMoves;
     [SerializeField, Tooltip("The index of the current selected unit for select between units")]
@@ -49,8 +53,6 @@ public class PlayerUnitManager : MonoBehaviour
     private List<Button> m_SelectedUnitActionButtons;
     [SerializeField, Tooltip("The current unit action that is clicked upon")]
     public IUnitAction m_CurrentSelectedAction;
-    [SerializeField, Tooltip("The instantiated unit display UI")]
-    private UnitDisplayUI m_UnitDisplayUI;
 
     /// <summary>
     /// The update of this manager. So that it can be controlled anytime.
@@ -59,19 +61,31 @@ public class PlayerUnitManager : MonoBehaviour
 
     private void Start()
     {
-        if (!m_UnitsTracker)
-        {
-            m_UnitsTracker = GetComponent<UnitsTracker>();
-        }
-        if (!m_WorldCanvasTransform)
-        {
-            m_WorldCanvasTransform = GameObject.FindGameObjectWithTag("WorldCanvas").transform;
-        }
-        if (!m_UnitDisplayUI)
-        {
-            m_UnitDisplayUI = Instantiate(m_UnitDisplayUI_Prefab.gameObject, m_WorldCanvasTransform).GetComponent<UnitDisplayUI>();
-            m_UnitDisplayUI.gameObject.SetActive(false);
-        }
+        // Ensure that m_GameSystemsDirectory is not null.
+        Assert.IsFalse(m_GameSystemsDirectory == null);
+
+        // Units Tracker
+        m_UnitsTracker = m_GameSystemsDirectory.GetUnitsTracker();
+        Assert.IsFalse(m_UnitsTracker == null);
+
+        // World Space Canvas
+        m_WorldSpaceCanvas = m_GameSystemsDirectory.GetWorldSpaceCanvas();
+        Assert.IsFalse(m_WorldSpaceCanvas == null);
+
+        // Screen Space Canvas
+        m_ScreenSpaceCanvas = m_GameSystemsDirectory.GetScreenSpaceCanvas().GetComponent<ScreenSpaceCanvas>();
+        Assert.IsFalse(m_ScreenSpaceCanvas == null);
+        m_UnitActionSelectionUIScrollRect = m_ScreenSpaceCanvas.GetComponent<ScreenSpaceCanvas>().GetUnitActionSelectionScrollRect();
+        Assert.IsFalse(m_UnitActionSelectionUIScrollRect == null);
+        m_UnitSelection = m_ScreenSpaceCanvas.GetComponent<ScreenSpaceCanvas>().GetUnitSelection();
+        Assert.IsFalse(m_UnitSelection == null);
+        m_UnitNameTextUI = m_UnitSelection.GetSelectedUnitNameText();
+        Assert.IsFalse(m_UnitNameTextUI == null);
+
+        // Unit Info Display
+        if (m_UnitInfoDisplay != null) { GameObject.Destroy(m_UnitInfoDisplay); }
+        m_UnitInfoDisplay = Instantiate(m_UnitInfoDisplay_Prefab.gameObject, m_WorldSpaceCanvas.transform).GetComponent<UnitInfoDisplay>();
+        m_UnitInfoDisplay.gameObject.SetActive(false);
     }
 
     private void InitEvents()
@@ -106,14 +120,14 @@ public class PlayerUnitManager : MonoBehaviour
         // Get a shallow copy of the list of all available units!
         m_UnitsYetToMakeMoves = new List<GameObject>(m_UnitsTracker.m_AllPlayerUnitGO);
         m_SelectedUnitIndex = 0;
-        m_UnitSelectionUI.SetActive(true);
+        m_UnitSelection.gameObject.SetActive(true);
 
         // Subscribe to Events.
         GameEventSystem.GetInstance().SubscribeToEvent("UnitFinishAction", PollingForPlayerInput);
         GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("UnitMakeMove", UnitHasMakeMove);
 
         // Wait for all units to make their move.
-        m_GetPlayerInputUnit.enabled = true;
+        GetComponent<GetPlayerInputUnit>().enabled = true;
         WaitForSecondsRealtime waitForSecondsRealtime = new WaitForSecondsRealtime(0.1f);
         while (m_UnitsYetToMakeMoves.Count > 0)
         {
@@ -125,10 +139,10 @@ public class PlayerUnitManager : MonoBehaviour
         GameEventSystem.GetInstance().UnsubscribeFromEvent("UnitFinishAction", PollingForPlayerInput);
 
         m_UpdateOfManager = null; // Is this even used?
-        
+
         // Player no longer needs to interact with the game so might as well turn off the polling.
-        m_GetPlayerInputUnit.enabled = false;
-        m_UnitSelectionUI.SetActive(false);
+        GetComponent<GetPlayerInputUnit>().enabled = false;
+        m_UnitSelection.gameObject.SetActive(false);
 
         GameEventSystem.GetInstance().TriggerEvent("TurnEnded");
         yield break;
@@ -174,17 +188,17 @@ public class PlayerUnitManager : MonoBehaviour
     /// </summary>
     protected void ToggleThePlayerInput()
     {
-        m_ScrollRectUnitActionSelection.SetActive(!m_ScrollRectUnitActionSelection.activeSelf);
-        if (m_ScrollRectUnitActionSelection.activeSelf)
+        m_UnitActionSelectionUIScrollRect.gameObject.SetActive(!m_UnitActionSelectionUIScrollRect.gameObject.activeSelf);
+        if (m_UnitActionSelectionUIScrollRect.gameObject.activeSelf)
         {
-            m_UnitDisplayUI.gameObject.SetActive(true);
-            m_UnitSelectionUI.SetActive(true);
+            m_UnitInfoDisplay.gameObject.SetActive(true);
+            m_UnitSelection.gameObject.SetActive(true);
 
             GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("ClickedUnit", PlayerSelectUnit);
         }
         else
         {
-            m_UnitDisplayUI.gameObject.SetActive(false);
+            m_UnitInfoDisplay.gameObject.SetActive(false);
 
             GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("ClickedUnit", PlayerSelectUnit);
         }
@@ -195,7 +209,7 @@ public class PlayerUnitManager : MonoBehaviour
     /// </summary>
     protected void PollingForPlayerInput()
     {
-        m_UnitSelectionUI.SetActive(true);
+        m_UnitSelection.gameObject.SetActive(true);
         GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("ClickedUnit", PlayerSelectUnit);
     }
 
@@ -206,10 +220,10 @@ public class PlayerUnitManager : MonoBehaviour
     /// <param name="_SelectedAction">The reference to that UI</param>
     public void ToInstantiateSpecificActionUI(GameObject _SpecificUIGO, IUnitAction _SelectedAction)
     {
-        m_UnitDisplayUI.gameObject.SetActive(false);
-        m_UnitSelectionUI.SetActive(false);
+        m_UnitInfoDisplay.gameObject.SetActive(false);
+        m_UnitSelection.gameObject.SetActive(false);
         m_CurrentSelectedAction = _SelectedAction;
-        Instantiate(_SpecificUIGO, m_UICanvasTransform).SetActive(true);
+        Instantiate(_SpecificUIGO, m_ScreenSpaceCanvas.transform).SetActive(true);
         GameEventSystem.GetInstance().TriggerEvent<IUnitAction>("SelectedAction", m_CurrentSelectedAction);
     }
 
@@ -259,17 +273,17 @@ public class PlayerUnitManager : MonoBehaviour
         m_SelectedPlayerUnit = _unit;
         UnitStats zeStat = _unit.GetComponent<UnitStats>();
         m_UnitNameTextUI.text = zeStat.Name;
-        m_ScrollRectUnitActionSelection.SetActive(true);
+        m_UnitActionSelectionUIScrollRect.gameObject.SetActive(true);
 
-        if (!m_UnitDisplayUI.gameObject.activeSelf)
+        if (!m_UnitInfoDisplay.gameObject.activeSelf)
         {
-            m_UnitDisplayUI.gameObject.SetActive(true);
+            m_UnitInfoDisplay.gameObject.SetActive(true);
         }
         else
         {
-            m_UnitDisplayUI.AnimateUI();
+            m_UnitInfoDisplay.AnimateUI();
         }
-        m_UnitDisplayUI.SetThePosToUnit(zeStat);
+        m_UnitInfoDisplay.SetThePosToUnit(zeStat);
         
         #region Clear Old Buttons
         // Remove all of the previous unit's buttons.
@@ -285,7 +299,8 @@ public class PlayerUnitManager : MonoBehaviour
         foreach (IUnitAction unitAction in unitActions)
         {
             // Create the new icon using m_UnitActionIcon_Prefab.
-            Image unitActionIconImage = Instantiate(m_UnitActionIconImage_Prefab, m_ScrollRectContent.transform);
+            Assert.IsFalse(m_UnitActionSelectionUIScrollRect.content == null);
+            Image unitActionIconImage = Instantiate(m_UnitActionIconImage_Prefab, m_UnitActionSelectionUIScrollRect.content.transform);
             unitActionIconImage.gameObject.SetActive(true);
 
             // Replace the icon sprite to be the icon needed for this action.

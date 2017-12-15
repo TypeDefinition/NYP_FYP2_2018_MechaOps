@@ -36,7 +36,7 @@ public class WalkGoapAct : IGoapAction {
     public override IEnumerator UpdateActRoutine()
     {
         // TODO!
-        // Set the destination from the EnemyUnitManager if it has already reaches the destination or if that area got occupied
+        // Set the destination from the EnemyUnitsManager if it has already reaches the destination or if that area got occupied
         if (m_Planner.m_Stats.CurrentTileID.Equals(m_Planner.EnemiesManager.PlayerUnitLocations) || m_WalkAct.m_TileSys.GetTile(m_Planner.EnemiesManager.PlayerUnitLocations).HasUnit())
             m_Planner.EnemiesManager.UpdateMarker();
         if (m_Planner.m_Stats.CurrentTileID.Equals(m_Planner.EnemiesManager.PlayerUnitLocations))

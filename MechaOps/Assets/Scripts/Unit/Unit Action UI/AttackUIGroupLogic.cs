@@ -9,7 +9,7 @@ using TMPro;
 public class AttackUIGroupLogic : TweenUI_Scale {
     [Header("Variables needed")]
     [Tooltip("The reference for target UI which the code should already be doing it for you. Will be expanded upon in the future!")]
-    public UnitDisplayUI m_TargetUIref;
+    public UnitInfoDisplay m_TargetUIref;
     [Tooltip("Text for tracked target")]
     public TextMeshProUGUI m_TargetNameTxt;
     [SerializeField, Tooltip("The distance from the tracked target to camera")]
@@ -110,7 +110,7 @@ public class AttackUIGroupLogic : TweenUI_Scale {
     protected void KeepTrackOfGameObj(GameObject trackedTarget)
     {
         UnitStats zeTargetStat = trackedTarget.GetComponent<UnitStats>();
-        UnitDisplayUI zeDisplayUI = m_TargetGO.GetComponent<UnitDisplayUI>();
+        UnitInfoDisplay zeDisplayUI = m_TargetGO.GetComponent<UnitInfoDisplay>();
         zeDisplayUI.SetThePosToUnit(trackedTarget.transform);
         zeDisplayUI.HpText = zeTargetStat.CurrentHealthPoints + "/" + zeTargetStat.MaxHealthPoints;
         zeDisplayUI.AnimateUI();

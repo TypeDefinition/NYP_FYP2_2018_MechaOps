@@ -4,6 +4,7 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.Assertions;
 
+[DisallowMultipleComponent, RequireComponent(typeof(Camera))]
 public class GameCameraMovement : MonoBehaviour
 {
     private const int m_NumDirections = 6;
