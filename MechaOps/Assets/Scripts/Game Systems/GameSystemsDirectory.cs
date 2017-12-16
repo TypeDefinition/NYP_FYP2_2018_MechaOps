@@ -12,6 +12,7 @@ public class GameSystemsDirectory : MonoBehaviour
     [SerializeField] private EnemyUnitsManager m_EnemyUnitsManager = null;
     [SerializeField] private PlayerUnitsManager m_PlayerUnitsManager = null;
     [SerializeField] private UnitActionScheduler m_UnitActionScheduler = null;
+    [SerializeField] private CineMachineHandler m_CineMachineHandler = null;
 
     public TileSystem GetTileSystem() { return m_TileSystem; }
     public Canvas GetScreenSpaceCanvas() { return m_ScreenSpaceCanvas; }
@@ -20,4 +21,5 @@ public class GameSystemsDirectory : MonoBehaviour
     public EnemyUnitsManager GetEnemyUnitsManager() { return m_EnemyUnitsManager; }
     public PlayerUnitsManager GetPlayerUnitsManager() { return m_PlayerUnitsManager; }
     public UnitActionScheduler GetUnitActionScheduler() { return m_UnitActionScheduler; }
+    public CineMachineHandler GetCineMachineHandler() { return m_CineMachineHandler; }
 }

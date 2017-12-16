@@ -28,6 +28,10 @@ public class PanzerAnimator : MOAnimator
     [SerializeField] private GameObject m_BulletSpawn;
     [SerializeField] private TankBullet m_BulletPrefab;
 
+    [SerializeField] private Transform m_TurretTransform;
+    [SerializeField] private Transform m_GunTransform;
+    [SerializeField] private CineMachineHandler m_CineHandler;
+
     // Shooting Animation
     private GameObject m_Target = null;
     private bool m_Hit = false; // Is the shot a hit or miss?
@@ -55,6 +59,12 @@ public class PanzerAnimator : MOAnimator
     {
         get { return m_MaxGunDepression; }
         set { m_MaxGunDepression = Mathf.Clamp(value, 0.0f, 90.0f); }
+    }
+
+    private void Start()
+    {
+        if (!m_CineHandler)
+            m_CineHandler = FindObjectOfType<CineMachineHandler>();
     }
 
     private void OnDestroy()
@@ -374,6 +384,9 @@ public class PanzerAnimator : MOAnimator
     // Tailored Animations
     public void StartShootAnimation()
     {
+        m_CineHandler.AttckStateCineCam.LookAt = m_GunTransform;
+        m_CineHandler.AttckStateCineCam.Follow = m_TurretTransform;
+        m_CineHandler.TriggerEventParam("Attack");
         m_ShootAnimationCoroutine = ShootAnimationCouroutine();
         StartCoroutine(m_ShootAnimationCoroutine);
     }
