@@ -92,6 +92,7 @@ public class CineMachineHandler : MonoBehaviour {
     {
         if (m_CineBrain.enabled != _toggleFlag)
         {
+            m_CineBrain.enabled = _toggleFlag;
             switch (_toggleFlag)
             {
                 case true:
@@ -105,7 +106,6 @@ public class CineMachineHandler : MonoBehaviour {
                     Camera.main.transform.localRotation = m_OriginalCamRotation;
                     break;
             }
-            m_CineBrain.enabled = _toggleFlag;
         }
     }
 

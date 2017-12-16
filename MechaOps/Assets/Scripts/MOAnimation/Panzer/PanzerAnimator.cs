@@ -28,9 +28,13 @@ public class PanzerAnimator : MOAnimator
     [SerializeField] private GameObject m_BulletSpawn;
     [SerializeField] private TankBullet m_BulletPrefab;
 
-    [SerializeField] private Transform m_TurretTransform;
-    [SerializeField] private Transform m_GunTransform;
-    [SerializeField] private CineMachineHandler m_CineHandler;
+    [SerializeField, Tooltip("Transform of the turret")] private Transform m_TurretTransform;
+    [SerializeField, Tooltip("Transform of the Gun")] private Transform m_GunTransform;
+    [SerializeField, Tooltip("CineMachine Handler")] private CineMachineHandler m_CineHandler;
+    [SerializeField, Tooltip("Time taken for delay in the animation from camera to the turret during camera cinematics")]
+    private float m_TimeDelayForCamToTurret = 3.0f;
+    [SerializeField, Tooltip("Time taken for the delay before camera goes back to normal from cinematics")]
+    private float m_TimeDelayForCamBackToNormal = 0.5f;
 
     // Shooting Animation
     private GameObject m_Target = null;
@@ -128,6 +132,8 @@ public class PanzerAnimator : MOAnimator
         bullet.transform.LookAt(_target.transform.position);
         bullet.CompletionCallback = _callback;
         bullet.Target = _target;
+        // Set the cinemachine here to show off the bullet!
+        Time.timeScale = 0.1f;
     }
 
     public void AnimateFireGun(GameObject _target, bool _bulletExplodeOnContact, Void_Void _callback)
@@ -328,6 +334,8 @@ public class PanzerAnimator : MOAnimator
     // Couroutines
     private IEnumerator ShootAnimationCouroutine()
     {
+        WaitForSeconds zeWait = new WaitForSeconds(m_TimeDelayForCamToTurret);
+        yield return zeWait;
         while (true)
         {
             RotateTurretTowardsTargetPosition(m_Target.transform.position);
@@ -345,7 +353,9 @@ public class PanzerAnimator : MOAnimator
             }
 
             yield return null;
-        }        
+        }
+        yield return new WaitForSeconds(m_TimeDelayForCamBackToNormal);
+        m_CineHandler.SetCineBrain(false);
     }
 
     private IEnumerator MoveAnimationCouroutine()
@@ -384,9 +394,12 @@ public class PanzerAnimator : MOAnimator
     // Tailored Animations
     public void StartShootAnimation()
     {
-        m_CineHandler.AttckStateCineCam.LookAt = m_GunTransform;
-        m_CineHandler.AttckStateCineCam.Follow = m_TurretTransform;
-        m_CineHandler.TriggerEventParam("Attack");
+        if (m_CineHandler)
+        {
+            m_CineHandler.AttckStateCineCam.LookAt = m_GunTransform;
+            m_CineHandler.AttckStateCineCam.Follow = m_TurretTransform;
+            m_CineHandler.TriggerEventParam("Attack");
+        }
         m_ShootAnimationCoroutine = ShootAnimationCouroutine();
         StartCoroutine(m_ShootAnimationCoroutine);
     }
