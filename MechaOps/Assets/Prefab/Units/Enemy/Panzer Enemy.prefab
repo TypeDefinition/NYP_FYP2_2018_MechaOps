@@ -1818,7 +1818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4ab873f68d900f4b9393e08eb7da93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Stats: {fileID: 0}
+  m_Stats: {fileID: 114879956254548028}
   m_TileSys: {fileID: 0}
   m_VisibilityCount: 0
   m_AllRenderers: []
@@ -1881,6 +1881,10 @@ MonoBehaviour:
   m_BulletSpawn: {fileID: 1662618653168702}
   m_BulletPrefab: {fileID: 114043521242476608, guid: 395c424eb347e834bb03c780aee2901b,
     type: 2}
+  m_HullTransform: {fileID: 4678192204071410}
+  m_CineHandler: {fileID: 0}
+  m_TimeDelayForCamToTurret: 3
+  m_TimeDelayForCamBackToNormal: 0.5
 --- !u!114 &114303736659755040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1960,6 +1964,7 @@ MonoBehaviour:
   m_CurrentGoal:
     m_Priority: 0
     m_GoapName: 
+  m_EnemiesManager: {fileID: 0}
 --- !u!114 &114605145088196580
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1989,7 +1994,6 @@ MonoBehaviour:
   m_ActionCost: 1
   m_EndsTurn: 0
   m_ActionState: 0
-  m_NameOfAnim: Attack
   m_UnitActionUI: {fileID: 1044431308409052, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
     type: 2}
   m_ActionIconUI: {fileID: 21300000, guid: 7fa2b56696c075f4eafe02c8cfd5df76, type: 3}
@@ -2082,9 +2086,10 @@ MonoBehaviour:
   m_EnemyInRange: []
   m_TileAttributeOverrides: []
   m_AnimHandler: []
-  m_TileSys: {fileID: 0}
+  m_TileSystem: {fileID: 0}
   m_DeathAnim: {fileID: 114982705508500524}
   m_ViewTileScript: {fileID: 114054195728922426}
+  m_TrackedUnits: {fileID: 0}
 --- !u!114 &114930548130969464
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2102,14 +2107,13 @@ MonoBehaviour:
   m_ActionCost: 1
   m_EndsTurn: 0
   m_ActionState: 0
-  m_NameOfAnim: Walk
   m_UnitActionUI: {fileID: 1134435258809106, guid: f60f06ef37015e14ba42bc5dad875b1c,
     type: 2}
   m_ActionIconUI: {fileID: 21300000, guid: d9d27dc5793e3d249b4bc573d0309805, type: 3}
   m_UnitStats: {fileID: 114879956254548028}
   m_AnimDone: 0
   m_MovementPoints: 5
-  m_AttackAnim: {fileID: 114605145088196580}
+  m_WalkAnim: {fileID: 114605145088196580}
   m_TilePath: []
   m_TileSys: {fileID: 0}
 --- !u!114 &114982705508500524

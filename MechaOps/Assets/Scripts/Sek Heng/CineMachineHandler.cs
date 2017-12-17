@@ -12,7 +12,7 @@ public class CineMachineHandler : MonoBehaviour {
     [SerializeField, Tooltip("Animator for controlling cinemachine state machine")]
     protected Animator m_CineAnimator;
     [SerializeField, Tooltip("CineMachine for attacking cinematics")]
-    protected CinemachineStateDrivenCamera m_AttckStateCineCam;
+    protected CinemachineStateDrivenCamera m_CineStateCam;
 
     [Header("Debugging for CineMachineHandler")]
     [SerializeField, Tooltip("CineMachine Brain Script. Thr should only be 1!")]
@@ -38,11 +38,11 @@ public class CineMachineHandler : MonoBehaviour {
         }
     }
 
-    public CinemachineStateDrivenCamera AttckStateCineCam
+    public CinemachineStateDrivenCamera CineStateCam
     {
         get
         {
-            return m_AttckStateCineCam;
+            return m_CineStateCam;
         }
     }
 

@@ -28,8 +28,7 @@ public class PanzerAnimator : MOAnimator
     [SerializeField] private GameObject m_BulletSpawn;
     [SerializeField] private TankBullet m_BulletPrefab;
 
-    [SerializeField, Tooltip("Transform of the turret")] private Transform m_TurretTransform;
-    [SerializeField, Tooltip("Transform of the Gun")] private Transform m_GunTransform;
+    [SerializeField, Tooltip("Hull of the panzer")] private Transform m_HullTransform;
     [SerializeField, Tooltip("CineMachine Handler")] private CineMachineHandler m_CineHandler;
     [SerializeField, Tooltip("Time taken for delay in the animation from camera to the turret during camera cinematics")]
     private float m_TimeDelayForCamToTurret = 3.0f;
@@ -42,6 +41,7 @@ public class PanzerAnimator : MOAnimator
     private float m_TurretRotationSpeed = 5.0f; // This speed is not in degrees. It's just by time cause I'm lazy.
     private float m_GunElevationSpeed = 60.0f; // This is the speed in degrees.
     private float m_AccuracyTolerance = 0.5f; // How small must the angle between where our gun is aiming and where the target is to be considered aimed.
+    private bool m_FinishShootAnimFlag = false;
     private Void_Void m_ShootAnimationCompleteCallback = null;
     IEnumerator m_ShootAnimationCoroutine;
 
@@ -67,8 +67,16 @@ public class PanzerAnimator : MOAnimator
 
     private void Start()
     {
-        if (!m_CineHandler)
-            m_CineHandler = FindObjectOfType<CineMachineHandler>();
+        switch (tag)
+        {
+            case "Player":
+                // TODO: Only the player's units get to do the cinematic shots for now
+                if (!m_CineHandler)
+                    m_CineHandler = FindObjectOfType<CineMachineHandler>();
+                break;
+            default:
+                break;
+        }
     }
 
     private void OnDestroy()
@@ -132,8 +140,7 @@ public class PanzerAnimator : MOAnimator
         bullet.transform.LookAt(_target.transform.position);
         bullet.CompletionCallback = _callback;
         bullet.Target = _target;
-        // Set the cinemachine here to show off the bullet!
-        Time.timeScale = 0.1f;
+        // TODO, maybe can show off the slow bullet animation
     }
 
     public void AnimateFireGun(GameObject _target, bool _bulletExplodeOnContact, Void_Void _callback)
@@ -354,8 +361,14 @@ public class PanzerAnimator : MOAnimator
 
             yield return null;
         }
-        yield return new WaitForSeconds(m_TimeDelayForCamBackToNormal);
-        m_CineHandler.SetCineBrain(false);
+        while (!m_FinishShootAnimFlag)
+            yield return null;
+        m_FinishShootAnimFlag = false;
+        if (m_CineHandler)
+        {
+            yield return new WaitForSeconds(m_TimeDelayForCamBackToNormal);
+            m_CineHandler.SetCineBrain(false);
+        }
     }
 
     private IEnumerator MoveAnimationCouroutine()
@@ -396,8 +409,8 @@ public class PanzerAnimator : MOAnimator
     {
         if (m_CineHandler)
         {
-            m_CineHandler.AttckStateCineCam.LookAt = m_GunTransform;
-            m_CineHandler.AttckStateCineCam.Follow = m_TurretTransform;
+            m_CineHandler.CineStateCam.LookAt = m_Gun.transform;
+            m_CineHandler.CineStateCam.Follow = m_Turret.transform;
             m_CineHandler.TriggerEventParam("Attack");
         }
         m_ShootAnimationCoroutine = ShootAnimationCouroutine();
@@ -411,6 +424,12 @@ public class PanzerAnimator : MOAnimator
 
     public void StartMoveAnimation()
     {
+        if (m_CineHandler)
+        {
+            m_CineHandler.CineStateCam.LookAt = m_HullTransform;
+            m_CineHandler.CineStateCam.Follow = m_HullTransform;
+            m_CineHandler.TriggerEventParam("Walk");
+        }
         m_MoveAnimationCoroutine = MoveAnimationCouroutine();
         StartCoroutine(m_MoveAnimationCoroutine);
     }
@@ -430,6 +449,7 @@ public class PanzerAnimator : MOAnimator
         {
             m_ShootAnimationCompleteCallback = _callback;
         }
+        m_ShootAnimationCompleteCallback += ShootAnimationComplete;
     }
 
     public void SetMoveAnimationParameters(Vector3 _destination, Void_Void _callback)
@@ -438,6 +458,22 @@ public class PanzerAnimator : MOAnimator
         if (_callback != null)
         {
             m_MoveAnimationCompleteCallback = _callback;
+        }
+    }
+
+    protected void ShootAnimationComplete()
+    {
+        m_FinishShootAnimFlag = true;
+    }
+
+    /// <summary>
+    /// Stopped the cinematic camera if there is any!
+    /// </summary>
+    public void StopCinematicCamera()
+    {
+        if (m_CineHandler)
+        {
+            m_CineHandler.SetCineBrain(false);
         }
     }
 
