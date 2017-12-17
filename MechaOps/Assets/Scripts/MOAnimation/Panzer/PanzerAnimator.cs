@@ -409,9 +409,21 @@ public class PanzerAnimator : MOAnimator
     {
         if (m_CineHandler)
         {
+            int zeRandNum = Random.Range(1, 3);
+            // unfortunately, need to hardcode the cinmatic abit
+            switch (zeRandNum)
+            {
+                case 2:
+                    // Number 2 refers to Following the target while aiming the cinematic camera at the Turret
+                    m_CineHandler.CineStateCam.Follow = m_Target.transform;
+                    break;
+                default:
+                    m_CineHandler.CineStateCam.Follow = m_Turret.transform;
+                    break;
+            }
             m_CineHandler.CineStateCam.LookAt = m_Gun.transform;
-            m_CineHandler.CineStateCam.Follow = m_Turret.transform;
-            m_CineHandler.TriggerEventParam("Attack");
+            // and then randomize between 1st and 2nd attack camera cinematics
+            m_CineHandler.TriggerEventParam("Attack" + zeRandNum);
         }
         m_ShootAnimationCoroutine = ShootAnimationCouroutine();
         StartCoroutine(m_ShootAnimationCoroutine);

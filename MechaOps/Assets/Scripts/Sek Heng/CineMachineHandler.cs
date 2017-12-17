@@ -104,6 +104,7 @@ public class CineMachineHandler : MonoBehaviour {
                     // set the camera back to normal
                     Camera.main.transform.position = m_OriginalCamPos;
                     Camera.main.transform.localRotation = m_OriginalCamRotation;
+                    CineStateCam.LiveChild.VirtualCameraGameObject.SetActive(false);
                     break;
             }
         }

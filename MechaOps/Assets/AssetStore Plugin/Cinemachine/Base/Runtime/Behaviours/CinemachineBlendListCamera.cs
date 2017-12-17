@@ -224,6 +224,15 @@ namespace Cinemachine
             mActiveBlend = null;
         }
 
+        /// <summary>
+        /// Making sure the instructions is being reset to 0
+        /// </summary>
+        protected override void OnDisable()
+        {
+            base.OnDisable();
+            mCurrentInstruction = -1;
+        }
+
         /// <summary>Makes sure the internal child cache is up to date</summary>
         public void OnTransformChildrenChanged()
         {

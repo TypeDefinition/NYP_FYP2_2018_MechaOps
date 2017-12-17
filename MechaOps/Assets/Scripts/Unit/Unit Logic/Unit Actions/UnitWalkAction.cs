@@ -63,7 +63,7 @@ public class UnitWalkAction : IUnitAction {
                 }
             }
         }
-        m_WalkAnim.Animator.StopCinematicCamera();
+        m_WalkAnim.PanzerAnimator.StopCinematicCamera();
         m_UpdateOfUnitAction = null;
         GetUnitStats().CurrentActionPoints--;
         switch (GetUnitStats().CurrentActionPoints)

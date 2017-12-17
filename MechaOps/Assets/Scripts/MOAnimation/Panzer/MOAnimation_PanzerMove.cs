@@ -10,7 +10,7 @@ public class MOAnimation_PanzerMove : MOAnimation
     [SerializeField] private PanzerAnimator m_Animator = null;
     private Vector3 m_Destination;
     
-    public PanzerAnimator Animator
+    public PanzerAnimator PanzerAnimator
     {
         get
         {
