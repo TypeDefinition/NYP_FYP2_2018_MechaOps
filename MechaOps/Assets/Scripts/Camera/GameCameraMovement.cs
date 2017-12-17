@@ -10,7 +10,7 @@ public class GameCameraMovement : MonoBehaviour
     private const int m_NumDirections = 6;
     private int m_CurrentDirection = 0;
 
-    [SerializeField] private Vector3 m_ViewAngle = new Vector3(30.0f, 90.0f, 0.0f);
+    [SerializeField] private Vector3 m_ViewAngle = new Vector3(45.0f, 90.0f, 0.0f);
     [SerializeField] private float m_RotationSpeed = 5.0f;
 
     [SerializeField] private Vector3 m_DefaultMovementForward = new Vector3(1.0f, 0.0f, 0.0f);

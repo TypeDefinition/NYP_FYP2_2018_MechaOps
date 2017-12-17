@@ -1818,8 +1818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4ab873f68d900f4b9393e08eb7da93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Stats: {fileID: 114879956254548028}
-  m_TileSys: {fileID: 0}
+  m_UnitStats: {fileID: 114879956254548028}
   m_VisibilityCount: 0
   m_AllRenderers: []
 --- !u!114 &114115438538414526
@@ -2068,6 +2067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 111465f2417784a499b0f4458b49061d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_GameSystemsDirectory: {fileID: 0}
   m_UnitStatsJSON:
     m_Name: Panzer
     m_MaxHealthPoints: 4
@@ -2082,14 +2082,14 @@ MonoBehaviour:
       m_X: 1
       m_Y: -1
       m_Z: 0
-  m_CurrentActiveAction: {fileID: 0}
-  m_EnemyInRange: []
   m_TileAttributeOverrides: []
-  m_AnimHandler: []
-  m_TileSystem: {fileID: 0}
-  m_DeathAnim: {fileID: 114982705508500524}
   m_ViewTileScript: {fileID: 114054195728922426}
-  m_TrackedUnits: {fileID: 0}
+  m_UnitInfoDisplay_Prefab: {fileID: 114423042521562832, guid: f6fdede1943ea6742858eefd80f3ded1,
+    type: 2}
+  m_CurrentActiveAction: {fileID: 0}
+  m_EnemiesInRange: []
+  m_AnimationHandler: []
+  m_DeathAnimation: {fileID: 114982705508500524}
 --- !u!114 &114930548130969464
 MonoBehaviour:
   m_ObjectHideFlags: 1

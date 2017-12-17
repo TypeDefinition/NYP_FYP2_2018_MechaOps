@@ -7,7 +7,7 @@ using UnityEngine;
 /// To be used only for testing out AI or different scene.
 /// Not to be used at actual gameplay!
 /// </summary>
-public class GameHandlerTest : GameHandler {
+public class GameHandlerTest : GameUIManager {
     [Header("Debugging for GameHandlerTest")]
     [Tooltip("How many times should the enemy unit manager runs before player unit manager")]
     public int m_EnemyUnitManagerRuns = 3;

@@ -5,6 +5,7 @@ using UnityEngine;
 /// <summary>
 /// This will be used to render this unit invisible! inherit from PlayerViewScript to be lazy
 /// </summary>
+[DisallowMultipleComponent]
 public class EnemyViewTile : ViewTileScript
 {
     [Header("Debugging for EnemyViewTile")]
@@ -53,12 +54,12 @@ public class EnemyViewTile : ViewTileScript
         m_AllRenderers = GetComponentsInChildren<MeshRenderer>();
     }
 
-    public override void DecreVisi()
+    public override void DecreaseVisibility()
     {
         --VisibilityCount;
     }
 
-    public override void IncreVisi()
+    public override void IncreaseVisibility()
     {
         ++VisibilityCount;
     }

@@ -15,7 +15,7 @@ public class UnitSkipAct : IUnitAction {
         GetUnitStats().CurrentActionPoints -= GetUnitStats().MaxActionPoints;
         GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitMakeMove", gameObject);
         GameEventSystem.GetInstance().TriggerEvent("UnitFinishAction");
-        GetUnitStats().ResetUnitStat();
+        GetUnitStats().ResetUnitStats();
         m_ActionState = ActionState.Completed;
         if (CompletedCallBack != null)
         {

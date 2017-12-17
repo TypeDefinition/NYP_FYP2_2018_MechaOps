@@ -67,7 +67,7 @@ public class GoapNearTarget : IGoapAction
         TileSystem zeTileSys = FindObjectOfType<TileSystem>();
         int zeEnemyIndex = 0;
         // Maybe we can randomize but we will just get the 1st unit!
-        UnitStats zeEnemyStat = m_Planner.m_Stats.EnemyInRange[zeEnemyIndex].GetComponent<UnitStats>();
+        UnitStats zeEnemyStat = m_Planner.m_Stats.EnemiesInRange[zeEnemyIndex].GetComponent<UnitStats>();
         TileId zeDestinationTileID = zeEnemyStat.CurrentTileID;
         Tile zeDestTile = zeTileSys.GetTile(zeDestinationTileID);
         // we will get the surrounding tiles and check whether they are available! 
@@ -85,7 +85,7 @@ public class GoapNearTarget : IGoapAction
             if (zeDestTile.HasUnit() || !zeDestTile.GetIsWalkable())
             {
                 // Then we will have to another target!
-                zeEnemyStat = m_Planner.m_Stats.EnemyInRange[++zeEnemyIndex].GetComponent<UnitStats>();
+                zeEnemyStat = m_Planner.m_Stats.EnemiesInRange[++zeEnemyIndex].GetComponent<UnitStats>();
             }
         }
         TileId[] zePathToEnemy = zeTileSys.GetPath(999, m_Planner.m_Stats.CurrentTileID, zeDestinationTileID, m_Planner.m_Stats.GetTileAttributeOverrides());
@@ -127,7 +127,7 @@ public class GoapNearTarget : IGoapAction
     protected virtual void UpdateEnemyInAttack()
     {
         m_EnemiesInAttack.Clear();
-        foreach (GameObject zeGO in m_Planner.m_Stats.EnemyInRange)
+        foreach (GameObject zeGO in m_Planner.m_Stats.EnemiesInRange)
         {
             UnitStats zeGoStat = zeGO.GetComponent<UnitStats>();
             if (CanHitTheEnemy(zeGoStat))

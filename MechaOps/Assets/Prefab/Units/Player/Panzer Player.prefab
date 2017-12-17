@@ -1785,8 +1785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7e9c6f646b03479e84ffce248edf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Stats: {fileID: 114811533488785636}
-  m_TileSys: {fileID: 0}
+  m_UnitStats: {fileID: 114811533488785636}
   m_ViewedTiles: []
 --- !u!114 &114191423135492830
 MonoBehaviour:
@@ -1982,6 +1981,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 111465f2417784a499b0f4458b49061d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_GameSystemsDirectory: {fileID: 0}
   m_UnitStatsJSON:
     m_Name: TestingUnit
     m_MaxHealthPoints: 6
@@ -1996,14 +1996,14 @@ MonoBehaviour:
       m_X: -2
       m_Y: 4
       m_Z: -2
-  m_CurrentActiveAction: {fileID: 0}
-  m_EnemyInRange: []
   m_TileAttributeOverrides: []
-  m_AnimHandler: []
-  m_TileSystem: {fileID: 0}
-  m_DeathAnim: {fileID: 114876947489221560}
   m_ViewTileScript: {fileID: 114076083858343404}
-  m_TrackedUnits: {fileID: 0}
+  m_UnitInfoDisplay_Prefab: {fileID: 114423042521562832, guid: 5de0e7aba41ddec4daa1972243bd5133,
+    type: 2}
+  m_CurrentActiveAction: {fileID: 0}
+  m_EnemiesInRange: []
+  m_AnimationHandler: []
+  m_DeathAnimation: {fileID: 114876947489221560}
 --- !u!114 &114876947489221560
 MonoBehaviour:
   m_ObjectHideFlags: 1

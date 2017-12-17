@@ -8,19 +8,17 @@ using UnityEngine;
 /// This will instead handle 2 different opposing factions for now.
 /// So now it will only be compatible with domination mode.
 /// </summary>
-public class GameHandler : MonoBehaviour
+[DisallowMultipleComponent]
+public class GameUIManager : MonoBehaviour
 {
-    [Header("Linking references and values needed")]
     [Tooltip("The Player unit manager")]
     public PlayerUnitsManager m_PlayerManager;
     [Tooltip("The Enemy unit manager")]
     public EnemyUnitsManager m_EnemyManager;
     [Tooltip("The UI for Player winning display")]
-    public GameObject m_PlayerWonDisplayGO;
+    public GameObject m_PlayerWonDisplay;
     [Tooltip("The UI for Player losing display")]
-    public GameObject m_PlayerLostDisplayGO;
-    [Tooltip("The UI to indicate player's turn")]
-    public GameObject[] m_PlayerTurnDisplay;
+    public GameObject m_PlayerLostDisplay;
     [Tooltip("The UI to indicate enemy's turn")]
     public GameObject m_EnemyTurnDisplay;
 
@@ -40,19 +38,11 @@ public class GameHandler : MonoBehaviour
             {
                 // This weird way of start coroutine is to make sure they only update themselves!
                 m_PlayerManager.StartCoroutine(m_PlayerManager.BeginUpdateOfPlayerUnits());
-                foreach (GameObject display in m_PlayerTurnDisplay)
-                {
-                    display.SetActive(true);
-                }
                 m_EnemyTurnDisplay.SetActive(false);
             }
             else
             {
                 m_EnemyManager.StartCoroutine(m_EnemyManager.IterateThroughEnemyUpdate());
-                foreach (GameObject display in m_PlayerTurnDisplay)
-                    {
-                        display.SetActive(false);
-                    }
                 m_EnemyTurnDisplay.SetActive(true);
             }
         }
@@ -106,21 +96,13 @@ public class GameHandler : MonoBehaviour
     /// </summary>
     protected void DisplayWinScreen()
     {
-        m_PlayerWonDisplayGO.SetActive(true);
-        foreach (GameObject zeDisplay in m_PlayerTurnDisplay)
-        {
-            zeDisplay.SetActive(false);
-        }
+        m_PlayerWonDisplay.SetActive(true);
         m_EnemyTurnDisplay.SetActive(false);
     }
 
     protected void DisplayLoseScreen()
     {
-        m_PlayerLostDisplayGO.SetActive(true);
-        foreach (GameObject zeDisplay in m_PlayerTurnDisplay)
-        {
-            zeDisplay.SetActive(false);
-        }
+        m_PlayerLostDisplay.SetActive(true);
         m_EnemyTurnDisplay.SetActive(false);
     }
 }

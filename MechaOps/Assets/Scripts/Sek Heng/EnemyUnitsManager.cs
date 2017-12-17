@@ -74,7 +74,7 @@ public class EnemyUnitsManager : MonoBehaviour
     public IEnumerator IterateThroughEnemyUpdate()
     {
        UpdateMarker();
-        m_EnemyList = new List<GameObject>(m_UnitsTracker.m_AllEnemyUnitGO);
+        m_EnemyList = new List<GameObject>(m_UnitsTracker.m_AliveEnemyUnits);
 #if GOAP_AI
         foreach (GameObject enemy in m_EnemyList)
         {
@@ -111,7 +111,7 @@ public class EnemyUnitsManager : MonoBehaviour
     public void UpdateMarker()
     {
         // TODO: improve this function!
-        m_PlayerUnitsLocations = m_UnitsTracker.m_AllPlayerUnitGO[0].GetComponent<UnitStats>().CurrentTileID;
+        m_PlayerUnitsLocations = m_UnitsTracker.m_AlivePlayerUnits[0].GetComponent<UnitStats>().CurrentTileID;
         Tile zeTile = m_TileSystem.GetTile(m_PlayerUnitsLocations);
         if (!zeTile.GetIsWalkable() || zeTile.HasUnit())
         {

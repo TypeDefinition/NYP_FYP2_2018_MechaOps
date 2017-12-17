@@ -22,7 +22,7 @@ public class TileDictionaryPair
 
 }
 
-[DisallowMultipleComponent]
+[DisallowMultipleComponent, RequireComponent(typeof(LineRenderer))]
 public class TileSystem : MonoBehaviour
 {
 

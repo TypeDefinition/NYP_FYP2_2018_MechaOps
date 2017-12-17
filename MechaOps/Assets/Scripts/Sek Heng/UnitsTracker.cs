@@ -8,10 +8,11 @@ using UnityEngine;
 public class UnitsTracker : MonoBehaviour
 {
     [Header("Shown in Inspector for debugging purposes.")]
-    [Tooltip("The list of player units!")]
-    public List<GameObject> m_AllPlayerUnitGO;
-    [Tooltip("The list of enemy units")]
-    public List<GameObject> m_AllEnemyUnitGO;
+
+    [Tooltip("The list of player units THAT ARE FUCKING ALIVE!")]
+    public List<GameObject> m_AlivePlayerUnits = null;
+    [Tooltip("The list of enemy units THAT ARE FUCKING ALIVE!")]
+    public List<GameObject> m_AliveEnemyUnits = null;
 
     private void OnEnable()
     {
@@ -26,9 +27,10 @@ public class UnitsTracker : MonoBehaviour
     }
 
     // Use this for initialization
-    void Awake () {
-        m_AllPlayerUnitGO = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
-        m_AllEnemyUnitGO = new List<GameObject>(GameObject.FindGameObjectsWithTag("EnemyUnit"));
+    void Awake ()
+    {
+        m_AlivePlayerUnits = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
+        m_AliveEnemyUnits = new List<GameObject>(GameObject.FindGameObjectsWithTag("EnemyUnit"));
     }
 
     /// <summary>
@@ -37,15 +39,11 @@ public class UnitsTracker : MonoBehaviour
     /// </summary>
     void SignalPlayerUnitDied(GameObject _deadGO)
     {
-        m_AllPlayerUnitGO.Remove(_deadGO);
+        m_AlivePlayerUnits.Remove(_deadGO);
         // Send a notification once all of the player's units die
-        switch (m_AllPlayerUnitGO.Count)
+        if (m_AlivePlayerUnits.Count == 0)
         {
-            case 0:
-                GameEventSystem.GetInstance().TriggerEvent("PlayerAnnihilated");
-                break;
-            default:
-                break;
+            GameEventSystem.GetInstance().TriggerEvent("PlayerAnnihilated");
         }
     }
 
@@ -55,15 +53,11 @@ public class UnitsTracker : MonoBehaviour
     /// </summary>
     void SignalAnEnemyDied(GameObject _deadGO)
     {
-        m_AllEnemyUnitGO.Remove(_deadGO);
+        m_AliveEnemyUnits.Remove(_deadGO);
         // Send a notification if all of the enemy units die.
-        switch (m_AllEnemyUnitGO.Count)
+        if (m_AliveEnemyUnits.Count == 0)
         {
-            case 0:
-                GameEventSystem.GetInstance().TriggerEvent("EnemyAnnihilated");
-                break;
-            default:
-                break;
+            GameEventSystem.GetInstance().TriggerEvent("EnemyAnnihilated");
         }
     }
 }

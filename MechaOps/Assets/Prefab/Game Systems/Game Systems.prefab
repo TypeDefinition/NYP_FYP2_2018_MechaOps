@@ -39,7 +39,7 @@ GameObject:
   m_Layer: 0
   m_Name: Game Systems
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -71,6 +71,22 @@ GameObject:
   - component: {fileID: 114501620522289274}
   m_Layer: 0
   m_Name: Player Units Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1945480496467598
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4495504740225168}
+  - component: {fileID: 114518543058706742}
+  m_Layer: 5
+  m_Name: Game Handler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,6 +134,19 @@ Transform:
   m_Father: {fileID: 4629530938230690}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4495504740225168
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1945480496467598}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4629530938230690}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4629530938230690
 Transform:
   m_ObjectHideFlags: 1
@@ -132,6 +161,7 @@ Transform:
   - {fileID: 4647407366942722}
   - {fileID: 4250968314522742}
   - {fileID: 4333202310601330}
+  - {fileID: 4495504740225168}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -174,11 +204,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TileSystem: {fileID: 0}
   m_ScreenSpaceCanvas: {fileID: 0}
-  m_WorldSpaceCanvas: {fileID: 0}
   m_UnitsTracker: {fileID: 114672490564443986}
   m_EnemyUnitsManager: {fileID: 114350018491506326}
   m_PlayerUnitsManager: {fileID: 114210778316198234}
   m_UnitActionScheduler: {fileID: 114685244373901584}
+  m_CineMachineHandler: {fileID: 0}
 --- !u!114 &114210778316198234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -193,15 +223,11 @@ MonoBehaviour:
   m_GameSystemsDirectory: {fileID: 114092306247629050}
   m_UnitActionIconImage_Prefab: {fileID: 114775635339453894, guid: b6f55b4b93d48eb448b16e21e160b186,
     type: 2}
-  m_UnitInfoDisplay_Prefab: {fileID: 114329953184238638, guid: 5ff687189fe473f40842dc3ea970b39a,
-    type: 2}
   m_UnitsTracker: {fileID: 0}
-  m_UnitInfoDisplay: {fileID: 0}
-  m_WorldSpaceCanvas: {fileID: 0}
   m_ScreenSpaceCanvas: {fileID: 0}
   m_UnitActionSelectionUIScrollRect: {fileID: 0}
   m_UnitSelection: {fileID: 0}
-  m_UnitNameTextUI: {fileID: 0}
+  m_UnitNameText: {fileID: 0}
   m_UnitsYetToMakeMoves: []
   m_SelectedUnitIndex: 0
   m_SelectedPlayerUnit: {fileID: 0}
@@ -239,6 +265,25 @@ MonoBehaviour:
   m_LayersToCheck:
   - Unit
   - Tile
+  m_PointerId: 0
+--- !u!114 &114518543058706742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1945480496467598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abb6e30d89842cb4da16fb6b0a341bf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PlayerManager: {fileID: 114210778316198234}
+  m_EnemyManager: {fileID: 114350018491506326}
+  m_PlayerWonDisplayGO: {fileID: 0}
+  m_PlayerLostDisplayGO: {fileID: 0}
+  m_PlayerTurnDisplay: []
+  m_EnemyTurnDisplay: {fileID: 0}
+  m_PlayerTurn: 1
 --- !u!114 &114672490564443986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -250,8 +295,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d40dad6135cdefd49a8c8bed96fdf376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AllPlayerUnitGO: []
-  m_AllEnemyUnitGO: []
+  m_AlivePlayerUnits: []
+  m_AliveEnemyUnits: []
 --- !u!114 &114685244373901584
 MonoBehaviour:
   m_ObjectHideFlags: 1

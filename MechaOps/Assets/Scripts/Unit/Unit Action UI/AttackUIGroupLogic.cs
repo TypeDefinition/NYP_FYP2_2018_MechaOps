@@ -141,7 +141,7 @@ public class AttackUIGroupLogic : TweenUI_Scale {
 
         int layerToCastThrough = 1 << LayerMask.NameToLayer("TileDisplay");
         // We will iterate through the list of units that this unit can see!
-        foreach (GameObject zeSeenUnit in m_UnitAttackActRef.m_UnitStats.EnemyInRange)
+        foreach (GameObject zeSeenUnit in m_UnitAttackActRef.m_UnitStats.EnemiesInRange)
         {
             // we get the unit stat and tile distance!
             UnitStats zeObjStat = zeSeenUnit.GetComponent<UnitStats>();

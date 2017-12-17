@@ -1,23 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.Assertions;
 
-public abstract class ViewTileScript : MonoBehaviour {
-    [Header("Variables needed for PlayerViewScript")]
-    [SerializeField, Tooltip("Unit stats. Link it!")]
-    protected UnitStats m_Stats;
-    [SerializeField, Tooltip("Tile system of the game. Linking not required")]
-    protected TileSystem m_TileSys;
+[DisallowMultipleComponent]
+public abstract class ViewTileScript : MonoBehaviour
+{
+    // Serialized Variable(s)
+    [SerializeField] protected UnitStats m_UnitStats = null;
 
-    public virtual void RenderSurroundingTiles()
+    // Non-Serialized Variable(s)
+    protected TileSystem m_TileSystem = null;
+    protected GameSystemsDirectory m_GameSystemsDirectory = null;
+
+    protected void Awake()
     {
+        Assert.IsTrue(m_UnitStats != null, MethodBase.GetCurrentMethod().Name + " - m_UnitStats must not be null!");
+        m_GameSystemsDirectory = m_UnitStats.GetGameSystemsDirectory();
+        Assert.IsTrue(m_GameSystemsDirectory != null, MethodBase.GetCurrentMethod().Name + " - m_GameSystemsDirectory must not be null!");
+        m_TileSystem = m_GameSystemsDirectory.GetTileSystem();
+        Assert.IsTrue(m_TileSystem != null, MethodBase.GetCurrentMethod().Name + " - m_TileSystem must not be null!");
     }
 
-    public virtual void IncreVisi()
-    {
-    }
+    public virtual void RenderSurroundingTiles() {}
 
-    public virtual void DecreVisi()
-    {
-    }
+    public virtual void IncreaseVisibility() {}
+
+    public virtual void DecreaseVisibility() {}
 }

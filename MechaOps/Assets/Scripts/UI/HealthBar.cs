@@ -25,7 +25,7 @@ public class HealthBar : MonoBehaviour
     [SerializeField] private Material m_LostHealthMaterial = null;
 
     private List<GameObject> m_HealthBars = new List<GameObject>();
-    private bool m_ValuesChanged = false; // Dirty Flag
+    private bool m_ValuesChanged = true; // Dirty Flag
 
     public int MaxColumnSize
     {
@@ -70,6 +70,8 @@ public class HealthBar : MonoBehaviour
     private void GenerateHealthBars()
     {
         ClearHealthBars();
+
+        Assert.IsTrue(m_HealthBarIcon != null, MethodBase.GetCurrentMethod().Name + " - m_HealthBar cannot be null!");
 
         for (int i = 0; i < m_MaxHealthPoints; ++i)
         {

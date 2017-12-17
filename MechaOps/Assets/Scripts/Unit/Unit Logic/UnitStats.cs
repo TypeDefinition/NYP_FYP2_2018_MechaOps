@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -7,7 +8,7 @@ using UnityEngine.Assertions;
 using UnityEditor;
 #endif // UNITY_EDITOR
 
-public delegate void Void_UnitStat(UnitStats _unitStat);
+public delegate void Void_UnitStats(UnitStats _unitStat);
 
 /// <summary>
 /// Created with JSON formatter in mind!
@@ -43,31 +44,37 @@ public class UnitStatsJSON
     public TileId m_CurrentTileID;
 }
 
+[DisallowMultipleComponent]
 public class UnitStats : MonoBehaviour
 {
-    [SerializeField]
-    private UnitStatsJSON m_UnitStatsJSON = new UnitStatsJSON();
+    // Serialized Variable(s)
+    [SerializeField] private GameSystemsDirectory m_GameSystemsDirectory = null;
+    [SerializeField] private UnitStatsJSON m_UnitStatsJSON = new UnitStatsJSON();
+    [SerializeField] private TileAttributeOverride[] m_TileAttributeOverrides = null;
+    [SerializeField] private ViewTileScript m_ViewTileScript = null;
+    [SerializeField] private UnitInfoDisplay m_UnitInfoDisplay_Prefab = null;
+
+    // Why are these all serialized?
     [SerializeField, Tooltip("The current active action so that it can be stopped")]
     private IUnitAction m_CurrentActiveAction;
     [SerializeField, Tooltip("The list of units that are in range")]
-    protected List<GameObject> m_EnemyInRange = new List<GameObject>();
-    [SerializeField, Tooltip("The array of tiles override")]
-    private TileAttributeOverride[] m_TileAttributeOverrides;
+    private List<GameObject> m_EnemiesInRange = new List<GameObject>();
     [SerializeField, Tooltip("The list of animation handler which will be accessed through dictionary. No linking required")]
-    protected MOAnimation[] m_AnimHandler;
-    [Tooltip("The tile system!")]
-    public TileSystem m_TileSystem;
+    private MOAnimation[] m_AnimationHandler;
     [Tooltip("Death attack animation"), SerializeField]
-    protected MOAnimation_UnitDestroy m_DeathAnim;
-    [SerializeField, Tooltip("View Render Script")]
-    protected ViewTileScript m_ViewTileScript;
-    [SerializeField, Tooltip("Keep Track of units script")]
-    protected UnitsTracker m_TrackedUnits;
+    private MOAnimation_UnitDestroy m_DeathAnimation;
+
+    // Non-Serialized Variable(s)
+    private TileSystem m_TileSystem = null;
+    private UnitsTracker m_UnitsTracker = null;
+    private UnitInfoDisplay m_UnitInfoDisplay = null;
 
     /// <summary>
     /// A callback function will appear when ever the health point decreases
     /// </summary>
-    public Void_UnitStat m_HealthDropCallback;
+    public Void_UnitStats m_HealthDropCallback;
+
+    public GameSystemsDirectory GetGameSystemsDirectory() { return m_GameSystemsDirectory; }
 
     public string Name
     {
@@ -76,14 +83,12 @@ public class UnitStats : MonoBehaviour
 
     public int MaxHealthPoints
     {
-        get
-        {
-            return m_UnitStatsJSON.m_MaxHealthPoints;
-        }
+        get { return m_UnitStatsJSON.m_MaxHealthPoints; }
         set
         {
             m_UnitStatsJSON.m_MaxHealthPoints = Mathf.Max(0, value);
             m_UnitStatsJSON.m_CurrentHealthPoints = Mathf.Min(m_UnitStatsJSON.m_CurrentHealthPoints, m_UnitStatsJSON.m_MaxHealthPoints);
+            UpdateUnitInfoDisplay();
         }
     }
 
@@ -102,14 +107,17 @@ public class UnitStats : MonoBehaviour
                 string zeEventName = tag + "IsDead";
                 //// Trigger an event when the unit died
                 GameEventSystem.GetInstance().TriggerEvent<GameObject>(zeEventName, gameObject);
-                m_DeathAnim.StartAnimation();
+                m_DeathAnimation.StartAnimation();
             }
+
+            UpdateUnitInfoDisplay();
         }
     }
 
     public void ResetHealthPoints()
     {
         CurrentHealthPoints = MaxHealthPoints;
+        UpdateUnitInfoDisplay();
     }
 
     public bool IsAlive()
@@ -127,42 +135,64 @@ public class UnitStats : MonoBehaviour
         {
             m_UnitStatsJSON.m_MaxActionPoints = Mathf.Max(0, value);
             m_UnitStatsJSON.m_CurrentActionPoints = Mathf.Min(m_UnitStatsJSON.m_CurrentActionPoints, m_UnitStatsJSON.m_MaxHealthPoints);
+            UpdateUnitInfoDisplay();
         }
     }
 
     public int CurrentActionPoints
     {
         get { return m_UnitStatsJSON.m_CurrentActionPoints; }
-        set { m_UnitStatsJSON.m_CurrentActionPoints = Mathf.Clamp(value, 0, m_UnitStatsJSON.m_MaxActionPoints); }
+        set
+        {
+            m_UnitStatsJSON.m_CurrentActionPoints = Mathf.Clamp(value, 0, m_UnitStatsJSON.m_MaxActionPoints);
+            UpdateUnitInfoDisplay();
+        }
     }
 
     public void ResetActionPoints()
     {
         CurrentActionPoints = MaxActionPoints;
+        UpdateUnitInfoDisplay();
     }
 
     public int DeploymentCost
     {
         get { return m_UnitStatsJSON.m_DeploymentCost; }
-        set { m_UnitStatsJSON.m_DeploymentCost = Mathf.Max(0, value); }
+        set
+        {
+            m_UnitStatsJSON.m_DeploymentCost = Mathf.Max(0, value);
+            UpdateUnitInfoDisplay();
+        }
     }
 
     public int ViewRange
     {
         get { return m_UnitStatsJSON.m_ViewRange; }
-        set { m_UnitStatsJSON.m_ViewRange = Mathf.Max(0, value); }
+        set
+        {
+            m_UnitStatsJSON.m_ViewRange = Mathf.Max(0, value);
+            UpdateUnitInfoDisplay();
+        }
     }
 
     public int ConcealmentPoints
     {
         get { return m_UnitStatsJSON.m_ConcealmentPoints; }
-        set { m_UnitStatsJSON.m_ConcealmentPoints = Mathf.Max(0, value); }
+        set
+        {
+            m_UnitStatsJSON.m_ConcealmentPoints = Mathf.Max(0, value);
+            UpdateUnitInfoDisplay();
+        }
     }
 
     public int EvasionPoints
     {
         get { return m_UnitStatsJSON.m_EvasionPoints; }
-        set { m_UnitStatsJSON.m_EvasionPoints = Mathf.Max(0, value); }
+        set
+        {
+            m_UnitStatsJSON.m_EvasionPoints = Mathf.Max(0, value);
+            UpdateUnitInfoDisplay();
+        }
     }
 
     public TileId CurrentTileID
@@ -176,6 +206,7 @@ public class UnitStats : MonoBehaviour
                 m_TileSystem.GetTile(m_UnitStatsJSON.m_CurrentTileID).Unit = null;
                 m_UnitStatsJSON.m_CurrentTileID = value;
                 m_TileSystem.GetTile(value).Unit = gameObject;
+                UpdateUnitInfoDisplay();
             }
         }
     }
@@ -183,7 +214,11 @@ public class UnitStats : MonoBehaviour
     public IUnitAction CurrentActiveAction
     {
         get { return m_CurrentActiveAction; }
-        set { m_CurrentActiveAction = value; }
+        set
+        {
+            m_CurrentActiveAction = value;
+            UpdateUnitInfoDisplay();
+        }
     }
 
     public TileAttributeOverride[] GetTileAttributeOverrides()
@@ -191,41 +226,45 @@ public class UnitStats : MonoBehaviour
         return m_TileAttributeOverrides;
     }
 
-    public List<GameObject> EnemyInRange
+    public List<GameObject> EnemiesInRange
     {
         get
         {
-            return m_EnemyInRange;
+            return m_EnemiesInRange;
         }
     }
 
     private void Awake()
     {
-        if (!m_TrackedUnits)
-            m_TrackedUnits = FindObjectOfType<UnitsTracker>();
+        // Ensure that we have the system(s) we require.
+        Assert.IsTrue(m_GameSystemsDirectory != null, MethodBase.GetCurrentMethod().Name + " - m_GameSystemsDirectory must not be null!");
+        m_TileSystem = m_GameSystemsDirectory.GetTileSystem();
+        Assert.IsTrue(m_TileSystem != null, MethodBase.GetCurrentMethod().Name + " - m_TileSystem must not be null!");
+        m_UnitsTracker = m_GameSystemsDirectory.GetUnitsTracker();
+        Assert.IsTrue(m_UnitsTracker != null, MethodBase.GetCurrentMethod().Name + " - m_UnitsTracker must not be null!");
+
+        Assert.IsTrue(m_ViewTileScript != null);
+        Assert.IsTrue(m_UnitStatsJSON.m_Name != null);
+
+        // Ensure that we have the prefab(s) we require.
+        Assert.IsTrue(m_UnitInfoDisplay_Prefab != null, MethodBase.GetCurrentMethod().Name + " - m_UnitInfoDisplay_Prefab must not be null!");
+
+        // Initialisation
+        m_UnitInfoDisplay = GameObject.Instantiate(m_UnitInfoDisplay_Prefab, m_GameSystemsDirectory.GetScreenSpaceCanvas().transform);
+        m_UnitInfoDisplay.SetUnitStats(this);
     }
 
-    protected IEnumerator Start()
+    private IEnumerator Start()
     {
-        // Assign the gameobject name to the unit if there is none for the unit stat!
-        if (m_UnitStatsJSON.m_Name == null)
-        {
-            m_UnitStatsJSON.m_Name = name;
-        }
-        // This is needed otherwise CheckkEnemyInRange will not work. it appears that some systems has not been initialized
-        yield return null;
         // check if there is any enemy in range when the game is starting!
         CheckEnemyInRange();
-        // And then we will need to register our tile top the tile system so that trespassing will happen!
-        if (!m_TileSystem)
-            m_TileSystem = FindObjectOfType<TileSystem>();
+
         m_TileSystem.GetTile(CurrentTileID).Unit = gameObject;
-        if (tag == "Player" && !m_ViewTileScript)
-            m_ViewTileScript = GetComponent<PlayerViewScript>();
+
         yield break;
     }
 
-    protected void OnEnable()
+    private void OnEnable()
     {
         GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("UnitMoveToTile", CheckEnemyInRange);
         switch (tag)
@@ -243,7 +282,7 @@ public class UnitStats : MonoBehaviour
         }
     }
 
-    protected void OnDisable()
+    private void OnDisable()
     {
         GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("UnitMoveToTile", CheckEnemyInRange);
         switch (tag)
@@ -264,7 +303,7 @@ public class UnitStats : MonoBehaviour
     /// <summary>
     /// TODO: expand these upon 
     /// </summary>
-    public void ResetUnitStat()
+    public void ResetUnitStats()
     {
         ResetHealthPoints();
         ResetActionPoints();
@@ -277,52 +316,59 @@ public class UnitStats : MonoBehaviour
     /// </summary>
     public void CheckEnemyInRange()
     {
-        List<GameObject> zeListOfUnits = null;
+        List<GameObject> unitsList = null;
         // TODO: Remove this hardcoding when it is done!
         switch (tag)
         {
             case "Player":
                 // so get the list of enemy units
-                zeListOfUnits = m_TrackedUnits.m_AllEnemyUnitGO;
+                unitsList = m_UnitsTracker.m_AliveEnemyUnits;
                 break;
             case "EnemyUnit":
-                zeListOfUnits = m_TrackedUnits.m_AllPlayerUnitGO;
+                unitsList = m_UnitsTracker.m_AlivePlayerUnits;
                 break;
             default:
                 Assert.IsTrue(false, "Make CheckEnemyInRange more robust so that there can be more factions!");
                 break;
         }
-        foreach (GameObject zeGO in zeListOfUnits)
+
+        foreach (GameObject zeGO in unitsList)
         {
             UnitStats zeGOState = zeGO.GetComponent<UnitStats>();
-            switch (zeGOState.IsAlive())
-            {
-                case false:
-                    continue;
-                default:
-                    break;
-            }
-            int zeTileDist = TileId.GetDistance(CurrentTileID, zeGOState.CurrentTileID) + zeGOState.ConcealmentPoints;
+            if (!zeGOState.IsAlive()) { continue; }
+
+            int tileDistance = TileId.GetDistance(CurrentTileID, zeGOState.CurrentTileID) + zeGOState.ConcealmentPoints;
             // if that list does not have the unit in range!
-            if (!m_EnemyInRange.Contains(zeGO))
+            if (!m_EnemiesInRange.Contains(zeGO))
             {
-                if (zeTileDist <= ViewRange && RaycastToOtherPos(zeGO.transform))
+                if (tileDistance <= ViewRange && RaycastToOtherPosition(zeGO.transform))
                 {
-                    m_EnemyInRange.Add(zeGO);
-                    zeGOState.m_ViewTileScript.IncreVisi();
+                    m_EnemiesInRange.Add(zeGO);
+                    zeGOState.m_ViewTileScript.IncreaseVisibility();
                 }
             }
             else
             {
-                if (zeTileDist > ViewRange || !RaycastToOtherPos(zeGO.transform))
+                if (tileDistance > ViewRange || !RaycastToOtherPosition(zeGO.transform))
                 {
                     // if the opposing unit is in range and 
-                    m_EnemyInRange.Remove(zeGO);
-                    zeGOState.m_ViewTileScript.DecreVisi();
+                    m_EnemiesInRange.Remove(zeGO);
+                    zeGOState.m_ViewTileScript.DecreaseVisibility();
                 }
             }
         }
         m_ViewTileScript.RenderSurroundingTiles();
+    }
+
+    private void UpdateUnitInfoDisplay()
+    {
+        // Update Health
+        m_UnitInfoDisplay.GetHealthBar().MaxHealthPoints = MaxHealthPoints;
+        m_UnitInfoDisplay.GetHealthBar().CurrentHealthPoints = CurrentHealthPoints;
+
+        // Update Action Points
+        m_UnitInfoDisplay.GetActionPointsCounter().MaxActionPoints = MaxActionPoints;
+        m_UnitInfoDisplay.GetActionPointsCounter().CurrentActionPoints = CurrentActionPoints;
     }
 
     /// <summary>
@@ -338,22 +384,22 @@ public class UnitStats : MonoBehaviour
                 UnitStats zeGOState = _movedUnit.GetComponent<UnitStats>();
                 int zeTileDist = TileId.GetDistance(CurrentTileID, zeGOState.CurrentTileID) + zeGOState.ConcealmentPoints;
                 // Need to make sure that the moveunit is not itself! and the tag is the opposing unit!
-                if (!m_EnemyInRange.Contains(_movedUnit))
+                if (!m_EnemiesInRange.Contains(_movedUnit))
                 {
-                    if (zeTileDist <= ViewRange && RaycastToOtherPos(_movedUnit.transform))
+                    if (zeTileDist <= ViewRange && RaycastToOtherPosition(_movedUnit.transform))
                     {
-                        m_EnemyInRange.Add(_movedUnit);
+                        m_EnemiesInRange.Add(_movedUnit);
                         // so we have to render the enemy unit if it belongs to the enemy
-                        zeGOState.m_ViewTileScript.IncreVisi();
+                        zeGOState.m_ViewTileScript.IncreaseVisibility();
                     }
                 }
                 else
                 {
-                    if (zeTileDist > ViewRange || !RaycastToOtherPos(_movedUnit.transform))
+                    if (zeTileDist > ViewRange || !RaycastToOtherPosition(_movedUnit.transform))
                     {
                         // if the opposing unit is in range and 
-                        m_EnemyInRange.Remove(_movedUnit);
-                        zeGOState.m_ViewTileScript.DecreVisi();
+                        m_EnemiesInRange.Remove(_movedUnit);
+                        zeGOState.m_ViewTileScript.DecreaseVisibility();
                     }
                 }
             }
@@ -370,24 +416,24 @@ public class UnitStats : MonoBehaviour
     /// <summary>
     /// To be called when the opposing unit died
     /// </summary>
-    protected void EnemyInRangeDead(GameObject _deadUnit)
+    private void EnemyInRangeDead(GameObject _deadUnit)
     {
         //if (m_EnemyInRange.Contains(_deadUnit))
         {
-            m_EnemyInRange.Remove(_deadUnit);
+            m_EnemiesInRange.Remove(_deadUnit);
         }
     }
 
-    public bool RaycastToOtherPos(Transform _otherTrans)
+    public bool RaycastToOtherPosition(Transform _otherTrans)
     {
         // do a raycast between this gamobject and other go
-        int zeRayMask = LayerMask.GetMask("TileDisplay");
-        Vector3 zeDirection = _otherTrans.position - transform.position;
-        return !Physics.Raycast(transform.position, zeDirection, zeDirection.magnitude, zeRayMask);
+        int layerMask = LayerMask.GetMask("TileDisplay");
+        Vector3 rayDirection = _otherTrans.position - transform.position;
+        return !Physics.Raycast(transform.position, rayDirection, rayDirection.magnitude, layerMask);
     }
 
 #if UNITY_EDITOR
-    private void OnValidate()
+    private void ValidateTileOverrides()
     {
         for (int i = 0; i < m_TileAttributeOverrides.Length; ++i)
         {
@@ -408,6 +454,11 @@ public class UnitStats : MonoBehaviour
                 overrideTypeValidator.Add(m_TileAttributeOverrides[i].Type);
             }
         }
+    }
+
+    private void OnValidate()
+    {
+        ValidateTileOverrides();
     }
 #endif // UNITY_EDITOR
 }

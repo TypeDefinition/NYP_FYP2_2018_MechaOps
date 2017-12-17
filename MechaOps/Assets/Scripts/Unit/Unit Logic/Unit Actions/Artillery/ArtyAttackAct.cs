@@ -69,7 +69,7 @@ public class ArtyAttackAct : UnitAttackAction {
         switch (GetUnitStats().CurrentActionPoints)
         {
             case 0:
-                GetUnitStats().ResetUnitStat();
+                GetUnitStats().ResetUnitStats();
                 GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitMakeMove", gameObject);
                 break;
             default:

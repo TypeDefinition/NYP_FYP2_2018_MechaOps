@@ -5,6 +5,8 @@ using UnityEngine;
 /// <summary>
 /// This will be used to render the tiles of this unit surrounding!
 /// </summary>
+
+[DisallowMultipleComponent]
 public class PlayerViewScript : ViewTileScript
 {
     [Header("Debugging purpose")]
@@ -18,15 +20,15 @@ public class PlayerViewScript : ViewTileScript
     {
         CheckSurroundingTiles();
         // find the tile system if there is none!
-        if (!m_TileSys)
-            m_TileSys = FindObjectOfType<TileSystem>();
-        TileId[] zeAllSurroundingTiles = m_TileSys.GetSurroundingTiles(m_Stats.CurrentTileID, m_Stats.ViewRange);
+        if (!m_TileSystem)
+            m_TileSystem = FindObjectOfType<TileSystem>();
+        TileId[] zeAllSurroundingTiles = m_TileSystem.GetSurroundingTiles(m_UnitStats.CurrentTileID, m_UnitStats.ViewRange);
         // And then iterate though the list and increase the tile range
         foreach (TileId zeTileID in zeAllSurroundingTiles)
         {
-            if (TileId.GetDistance(m_Stats.CurrentTileID, zeTileID) <= m_Stats.ViewRange)
+            if (TileId.GetDistance(m_UnitStats.CurrentTileID, zeTileID) <= m_UnitStats.ViewRange)
             {
-                Tile zeTile = m_TileSys.GetTile(zeTileID);
+                Tile zeTile = m_TileSystem.GetTile(zeTileID);
                 // then raycast to that tile to see if it works and get the id
                 int layerToCastThrough = 1 << LayerMask.NameToLayer("TileDisplay");
                 Vector3 zeDirection = zeTile.transform.position - transform.position;
@@ -57,12 +59,12 @@ public class PlayerViewScript : ViewTileScript
     /// </summary>
     public virtual void CheckSurroundingTiles()
     {
-        if (!m_TileSys)
-            m_TileSys = FindObjectOfType<TileSystem>();
+        if (!m_TileSystem)
+            m_TileSystem = FindObjectOfType<TileSystem>();
         List<Tile> zeTileNeedRemoved = new List<Tile>();
         foreach (Tile zeTile in m_ViewedTiles)
         {
-            if (TileId.GetDistance(m_Stats.CurrentTileID, zeTile.GetId()) > m_Stats.ViewRange)
+            if (TileId.GetDistance(m_UnitStats.CurrentTileID, zeTile.GetId()) > m_UnitStats.ViewRange)
             {
                 --zeTile.VisibleCounter;
                 zeTileNeedRemoved.Add(zeTile);
