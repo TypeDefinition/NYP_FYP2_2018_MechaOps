@@ -110,6 +110,67 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &46293599
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1344060725871210, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 46293601}
+  - component: {fileID: 46293600}
+  m_Layer: 0
+  m_Name: CM tank Death Blendlist Cam
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &46293600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114842476741683136, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 46293599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53258ad9ad6e71e48bb8643c9522112e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExcludedPropertiesInInspector:
+  - m_Script
+  m_LockStageInInspector: 
+  m_StreamingVersion: 20170927
+  m_Priority: 10
+  m_LookAt: {fileID: 798096285}
+  m_Follow: {fileID: 1934028053}
+  m_ShowDebugText: 1
+  m_EnableAllChildCameras: 0
+  m_ChildCameras:
+  - {fileID: 958592764}
+  m_Instructions:
+  - m_VirtualCamera: {fileID: 958592764}
+    m_Hold: 0.5
+    m_Blend:
+      m_Style: 2
+      m_Time: 0
+--- !u!4 &46293601
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4360260156924926, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 46293599}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 958592765}
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &403134324
 Prefab:
   m_ObjectHideFlags: 0
@@ -334,6 +395,17 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd067b265add8e740b434d9eb314a4a1, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &958592764 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114472916264793238, guid: bd067b265add8e740b434d9eb314a4a1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1219309642}
+  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
+--- !u!4 &958592765 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4236021860724184, guid: bd067b265add8e740b434d9eb314a4a1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1219309642}
 --- !u!1001 &1209179015
 Prefab:
   m_ObjectHideFlags: 0
@@ -396,8 +468,91 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1344060725871210, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1219309642
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 46293601}
+    m_Modifications:
+    - target: {fileID: 4236021860724184, guid: bd067b265add8e740b434d9eb314a4a1, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236021860724184, guid: bd067b265add8e740b434d9eb314a4a1, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.3239104
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236021860724184, guid: bd067b265add8e740b434d9eb314a4a1, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 3.0491264
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236021860724184, guid: bd067b265add8e740b434d9eb314a4a1, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.018452033
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236021860724184, guid: bd067b265add8e740b434d9eb314a4a1, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.98154753
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236021860724184, guid: bd067b265add8e740b434d9eb314a4a1, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.13504045
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236021860724184, guid: bd067b265add8e740b434d9eb314a4a1, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -0.13411942
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236021860724184, guid: bd067b265add8e740b434d9eb314a4a1, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114472916264793238, guid: bd067b265add8e740b434d9eb314a4a1,
+        type: 2}
+      propertyPath: m_LookAt
+      value: 
+      objectReference: {fileID: 798096286}
+    - target: {fileID: 114472916264793238, guid: bd067b265add8e740b434d9eb314a4a1,
+        type: 2}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 798096286}
+    - target: {fileID: 1242979846096684, guid: bd067b265add8e740b434d9eb314a4a1, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242979846096684, guid: bd067b265add8e740b434d9eb314a4a1, type: 2}
+      propertyPath: m_Name
+      value: CM tank death cam
+      objectReference: {fileID: 0}
+    - target: {fileID: 114216916855572284, guid: bd067b265add8e740b434d9eb314a4a1,
+        type: 2}
+      propertyPath: m_FollowOffset.x
+      value: 0.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 114216916855572284, guid: bd067b265add8e740b434d9eb314a4a1,
+        type: 2}
+      propertyPath: m_FollowOffset.z
+      value: 3.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 114216916855572284, guid: bd067b265add8e740b434d9eb314a4a1,
+        type: 2}
+      propertyPath: m_FollowOffset.y
+      value: 0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236021860724184, guid: bd067b265add8e740b434d9eb314a4a1, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: bd067b265add8e740b434d9eb314a4a1, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1424976857
 GameObject:
@@ -482,8 +637,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1424976857}
-  m_LocalRotation: {x: -0.08658868, y: 0.6467903, z: -0.074268065, w: -0.75408816}
-  m_LocalPosition: {x: 7.210001, y: 2.43, z: -1.9300001}
+  m_LocalRotation: {x: -0.018452033, y: 0.98154753, z: -0.13504045, w: -0.13411942}
+  m_LocalPosition: {x: 0.88, y: 1.3239104, z: 3.0491264}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -519,6 +674,25 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Cinemachine.CinemachineBrain+VcamEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1 &1514097061 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1775057084650506, guid: bd067b265add8e740b434d9eb314a4a1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1219309642}
+--- !u!114 &1514097063
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1514097061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: db950cea3db26414c97f2874c28d912e, type: 2}
+  m_AmplitudeGain: 1.39
+  m_FrequencyGain: 1.05
 --- !u!4 &1934028053 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4908295020009570, guid: 3859fceba308a22429a2d4168f836ae3,
