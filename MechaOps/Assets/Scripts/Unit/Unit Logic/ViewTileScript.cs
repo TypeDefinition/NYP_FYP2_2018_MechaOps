@@ -28,4 +28,6 @@ public abstract class ViewTileScript : MonoBehaviour
     public virtual void IncreaseVisibility() {}
 
     public virtual void DecreaseVisibility() {}
+
+    public abstract bool IsVisible();
 }

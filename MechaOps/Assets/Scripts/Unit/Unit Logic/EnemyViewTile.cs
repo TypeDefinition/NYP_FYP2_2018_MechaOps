@@ -71,4 +71,13 @@ public class EnemyViewTile : ViewTileScript
     {
         VisibilityCount = VisibilityCount;
     }
+
+    /// <summary>
+    /// Checks whether is the Enemy is visible or not
+    /// </summary>
+    /// <returns></returns>
+    public override bool IsVisible()
+    {
+        return VisibilityCount == 0;
+    }
 }

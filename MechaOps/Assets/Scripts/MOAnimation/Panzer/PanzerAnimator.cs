@@ -34,6 +34,7 @@ public class PanzerAnimator : MOAnimator
     private float m_TimeDelayForCamToTurret = 3.0f;
     [SerializeField, Tooltip("Time taken for the delay before camera goes back to normal from cinematics")]
     private float m_TimeDelayForCamBackToNormal = 0.5f;
+    [SerializeField, Tooltip("Time taken for the death cam animation")] private float m_TimeDelayForDeathCam = 2.0f;
 
     // Shooting Animation
     private GameObject m_Target = null;
@@ -193,7 +194,7 @@ public class PanzerAnimator : MOAnimator
         float angleToTarget = -Mathf.Asin(directionToTarget.y) * Mathf.Rad2Deg; // Negate this because a position rotation is downwards.
         float currentAngle = ConvertAngle(m_Gun.transform.localRotation.eulerAngles.x);
         float angleDifference = angleToTarget - currentAngle;
-        
+
         if (Mathf.Abs(angleDifference) <= m_AccuracyTolerance)
         {
             return true;
@@ -219,7 +220,7 @@ public class PanzerAnimator : MOAnimator
         _destination.y = gameObject.transform.position.y;
         return (_destination - gameObject.transform.position).sqrMagnitude < m_DistanceTolerance * m_DistanceTolerance;
     }
-    
+
     private bool IsTankFacingDestination(Vector3 _destination)
     {
         Vector3 directionToDestination = _destination - m_Turret.transform.position;
@@ -390,7 +391,7 @@ public class PanzerAnimator : MOAnimator
                 yield return null;
                 continue;
             }
-            
+
             if (tankFacingDestination && tankAtDestination)
             {
                 if (m_MoveAnimationCompleteCallback != null)
@@ -487,6 +488,28 @@ public class PanzerAnimator : MOAnimator
         {
             m_CineHandler.SetCineBrain(false);
         }
+    }
+
+    /// <summary>
+    /// For now, starts the death camera cinematics
+    /// </summary>
+    public void StartDeathAnimation()
+    {
+        // Regardless of the tag, show the death cinematic for both sides
+        if (!m_CineHandler)
+        {
+            m_CineHandler = FindObjectOfType<CineMachineHandler>();
+        }
+        m_CineHandler.TriggerEventParam("Die");
+        StartCoroutine(StartDeathCameraCoroutine());
+    }
+
+    private IEnumerator StartDeathCameraCoroutine()
+    {
+        yield return new WaitForSeconds(m_TimeDelayForDeathCam);
+        m_CineHandler.SetCineBrain(false);
+        yield return new WaitForSeconds(m_TimeDelayForCamBackToNormal);
+        yield break;
     }
 
 #if UNITY_EDITOR

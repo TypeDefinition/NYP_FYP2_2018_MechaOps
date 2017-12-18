@@ -76,4 +76,12 @@ public class PlayerViewScript : ViewTileScript
             m_ViewedTiles.Remove(zeTile);
         }
     }
+
+    /// <summary>
+    /// Since Player units will always be visible to the players!
+    /// </summary>
+    public override bool IsVisible()
+    {
+        return true;
+    }
 }
