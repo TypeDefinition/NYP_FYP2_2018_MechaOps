@@ -113,7 +113,7 @@ public class PlayerUnitsManager : MonoBehaviour
 
         // Subscribe to Events.
         GameEventSystem.GetInstance().SubscribeToEvent("UnitFinishAction", PollingForPlayerInput);
-        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("UnitMakeMove", UnitHasMakeMove);
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("UnitMakeMove", UnitHasMadeMove);
 
         // Wait for all units to make their move.
         GetComponent<DetectClickedPlayerUnit>().enabled = true;
@@ -124,7 +124,7 @@ public class PlayerUnitsManager : MonoBehaviour
         }
 
         // Now that all units have completed their moves, unsubscribe from the events.
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("UnitMakeMove", UnitHasMakeMove);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("UnitMakeMove", UnitHasMadeMove);
         GameEventSystem.GetInstance().UnsubscribeFromEvent("UnitFinishAction", PollingForPlayerInput);
 
         m_UpdateOfManager = null; // Is this even used?
@@ -143,7 +143,7 @@ public class PlayerUnitsManager : MonoBehaviour
     protected void StopUpdate()
     {
         // Unsubscribe from events.
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("UnitMakeMove", UnitHasMakeMove);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("UnitMakeMove", UnitHasMadeMove);
         GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("ClickedUnit", PlayerSelectUnit);
         GameEventSystem.GetInstance().UnsubscribeFromEvent("UnitFinishAction", PollingForPlayerInput);
 
@@ -158,7 +158,7 @@ public class PlayerUnitsManager : MonoBehaviour
     /// <summary>
     /// To recognize that the unit has already made a move and remove it from the list!
     /// </summary>
-    protected void UnitHasMakeMove(GameObject _unitGoFinished)
+    protected void UnitHasMadeMove(GameObject _unitGoFinished)
     {
         m_UnitsYetToMakeMoves.Remove(_unitGoFinished);
     }

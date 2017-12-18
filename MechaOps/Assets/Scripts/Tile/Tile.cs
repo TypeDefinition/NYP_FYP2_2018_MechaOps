@@ -110,8 +110,8 @@ public class Tile : MonoBehaviour
     public GameObject m_Unit = null;
 
     // For Fog Of War
-    private bool m_Known = false;
-    private int m_VisibleCounter = 0;
+    [SerializeField] private bool m_Known = false;
+    [SerializeField] private int m_VisibleCounter = 0;
 
     public bool HasUnit()
     {
@@ -142,7 +142,7 @@ public class Tile : MonoBehaviour
         return m_TileSystem;
     }
 
-    public TileId GetId()
+    public TileId GetTileId()
     {
         return m_Id;
     }
@@ -297,7 +297,7 @@ public class Tile : MonoBehaviour
 
     private void Start()
     {
-        m_DisplayObject.SetVisibleState(false, false);
+        m_DisplayObject.SetVisibleState(m_Known, (m_VisibleCounter > 0) ? true : false);
     }
 
 }

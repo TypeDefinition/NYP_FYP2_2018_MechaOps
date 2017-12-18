@@ -13,8 +13,8 @@ public class TileDisplay : MonoBehaviour
     [SerializeField, HideInInspector] private bool m_OwnerInitialized = false;
     [SerializeField, HideInInspector] private Tile m_Owner = null;
 
-    private bool m_Known = false;
-    private bool m_Visible = false;
+    [SerializeField] private bool m_Known = false;
+    [SerializeField] private bool m_Visible = false;
 
     public bool Known { get { return m_Known; } }
     public bool Visible { get { return m_Visible; } }
@@ -42,6 +42,11 @@ public class TileDisplay : MonoBehaviour
 
     public void SetVisibleState(bool _known, bool _visible)
     {
+        if (GetOwner().GetTileId().Equals(new TileId(0, 0)))
+        {
+            int i = 0;
+        }
+
         m_Known = _known;
         m_Visible = _visible;
 
@@ -54,14 +59,9 @@ public class TileDisplay : MonoBehaviour
         }
     }
 
-	// Use this for initialization
-	void Start ()
+    private void Update()
     {
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-	}
-
+        GetComponent<MeshRenderer>().enabled = m_Known;
+        GetComponent<MeshRenderer>().material = (m_Visible ? m_VisibleMaterial : m_NotVisibleMaterial);
+    }
 }

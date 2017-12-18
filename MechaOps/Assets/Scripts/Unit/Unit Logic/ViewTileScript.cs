@@ -23,7 +23,7 @@ public abstract class ViewTileScript : MonoBehaviour
         Assert.IsTrue(m_TileSystem != null, MethodBase.GetCurrentMethod().Name + " - m_TileSystem must not be null!");
     }
 
-    public virtual void RenderSurroundingTiles() {}
+    public virtual void SetVisibleTiles() {}
 
     public virtual void IncreaseVisibility() {}
 

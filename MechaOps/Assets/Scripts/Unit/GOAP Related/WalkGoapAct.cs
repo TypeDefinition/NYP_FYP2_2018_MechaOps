@@ -37,13 +37,13 @@ public class WalkGoapAct : IGoapAction {
     {
         // TODO!
         // Set the destination from the EnemyUnitsManager if it has already reaches the destination or if that area got occupied
-        if (m_Planner.m_Stats.CurrentTileID.Equals(m_Planner.EnemiesManager.PlayerUnitLocations) || m_WalkAct.m_TileSys.GetTile(m_Planner.EnemiesManager.PlayerUnitLocations).HasUnit())
+        if (m_Planner.m_Stats.CurrentTileID.Equals(m_Planner.EnemiesManager.PlayerUnitLocations) || m_WalkAct.GetTileSystem().GetTile(m_Planner.EnemiesManager.PlayerUnitLocations).HasUnit())
             m_Planner.EnemiesManager.UpdateMarker();
         if (m_Planner.m_Stats.CurrentTileID.Equals(m_Planner.EnemiesManager.PlayerUnitLocations))
             Assert.IsTrue(true == false, "Update of Tile coordinate has failed at UpdateActRoutine in WalkGoapAct.cs");
         m_TileDest = m_Planner.EnemiesManager.PlayerUnitLocations;
         // so why not lets just cheat here to get to the closest tile!
-        TileId[] zeTileToWalkTo = m_WalkAct.m_TileSys.GetPath(99999, m_Planner.m_Stats.CurrentTileID, m_TileDest, m_Planner.m_Stats.GetTileAttributeOverrides());
+        TileId[] zeTileToWalkTo = m_WalkAct.GetTileSystem().GetPath(99999, m_Planner.m_Stats.CurrentTileID, m_TileDest, m_Planner.m_Stats.GetTileAttributeOverrides());
         // from here, we get the walkable tiles!
         int zeCounter = 0;
         //TODO, this will sometimes has null reference
@@ -56,7 +56,7 @@ public class WalkGoapAct : IGoapAction {
             if (zeCounter == zeMaxTileNum)
                 break;
         }
-        m_WalkAct.m_TilePath = zeAvailablePaths;
+        m_WalkAct.SetTilePath(zeAvailablePaths);
         UnitActionScheduler zeActScheduler = FindObjectOfType<UnitActionScheduler>();
         m_WalkAct.TurnOn();
         zeActScheduler.ScheduleAction(m_WalkAct);

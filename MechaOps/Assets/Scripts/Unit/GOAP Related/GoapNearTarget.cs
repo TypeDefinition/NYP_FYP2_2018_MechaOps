@@ -95,12 +95,12 @@ public class GoapNearTarget : IGoapAction
         {
             zeTileToWalk.Add(zeTile);
             // Once that supposed tile is good enough for this unit to attack the enemy!
-            if (TileId.GetDistance(zeTileSys.GetTile(zeTile).GetId(), zeEnemyStat.CurrentTileID) <= m_AttackAct.MaxAttackRange)
+            if (TileId.GetDistance(zeTileSys.GetTile(zeTile).GetTileId(), zeEnemyStat.CurrentTileID) <= m_AttackAct.MaxAttackRange)
             {
                 break;
             }
         }
-        m_WalkAct.m_TilePath = zeTileToWalk.ToArray();
+        m_WalkAct.SetTilePath(zeTileToWalk.ToArray());
         UnitActionScheduler zeScheduler = FindObjectOfType<UnitActionScheduler>();
         m_WalkAct.TurnOn();
         zeScheduler.ScheduleAction(m_WalkAct);

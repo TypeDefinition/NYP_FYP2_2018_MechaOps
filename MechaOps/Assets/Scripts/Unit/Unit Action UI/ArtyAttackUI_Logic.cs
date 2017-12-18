@@ -76,10 +76,10 @@ public class ArtyAttackUI_Logic : TweenUI_Scale {
     {
         m_AttckAct = _act as ArtyAttackAct;
         // then we highlight all of the tiles from here
-        TileId []zeAllTile = m_TileSys.GetSurroundingTiles(m_AttckAct.m_UnitStats.CurrentTileID, m_AttckAct.MaxAttackRange);
+        TileId []zeAllTile = m_TileSys.GetSurroundingTiles(m_AttckAct.GetUnitStats().CurrentTileID, m_AttckAct.MaxAttackRange);
         foreach (TileId zeTileID in zeAllTile)
         {
-            int zeDist = TileId.GetDistance(m_AttckAct.m_UnitStats.CurrentTileID, zeTileID);
+            int zeDist = TileId.GetDistance(m_AttckAct.GetUnitStats().CurrentTileID, zeTileID);
             // check if it is within the range
             if (zeDist >= m_AttckAct.MinAttackRange && zeDist <= m_AttckAct.MaxAttackRange)
             {
@@ -114,11 +114,11 @@ public class ArtyAttackUI_Logic : TweenUI_Scale {
                 print("Not the correct gameobject");
                 break;
         }
-        if (m_AttackableTiles.Contains(zeTile.GetId()))
+        if (m_AttackableTiles.Contains(zeTile.GetTileId()))
         {
             m_TargetTile = zeTile;
             // and make sure the ID around it will be highlighted!
-            TileId[] zeSurroundTargetTiles = m_TileSys.GetSurroundingTiles(zeTile.GetId(), m_AttckAct.ExplodeRadius);
+            TileId[] zeSurroundTargetTiles = m_TileSys.GetSurroundingTiles(zeTile.GetTileId(), m_AttckAct.ExplodeRadius);
             m_TileSys.SetPathMarkers(m_AttackableTiles.ToArray(), zeSurroundTargetTiles);
             m_InstantUI.gameObject.SetActive(true);
             m_InstantUI.AnimateUI();

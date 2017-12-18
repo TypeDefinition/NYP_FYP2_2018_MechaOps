@@ -27,6 +27,11 @@ public class MOAnimation_UnitDestroy : MOAnimation
         }
     }
 
+    public override MOAnimator GetMOAnimator()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public override void StartAnimation()
     {
         Assert.IsTrue(m_ExplosionPrefab != null);

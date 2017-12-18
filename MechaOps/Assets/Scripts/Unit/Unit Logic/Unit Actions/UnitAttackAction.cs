@@ -6,7 +6,6 @@ using UnityEngine.Assertions;
 
 public class UnitAttackAction : IUnitAction
 {
-    [Header("Variables needed for Unit Attack")]
     [SerializeField, Tooltip("Minimum attack range of the unit")]
     protected int m_MinAttackRange;
     [SerializeField, Tooltip("Maximum attack range of the unit")]
@@ -15,22 +14,21 @@ public class UnitAttackAction : IUnitAction
     protected int m_AccuracyPoints;
     [SerializeField, Tooltip("The damage point it dealt")]
     protected int m_DamagePoints;
-    [SerializeField, Tooltip("Unit Attack Animation. TODO, make it more generic")]
-    protected MOAnimation_PanzerAttack m_AttackAnim;
-    [Header("Debugging purpose")]
-    [SerializeField, Tooltip("The unit stat of the target")]
+
+    [Header("These variables are shown in the Inspector for debugging purposes.")]
+
+    [SerializeField, Tooltip("The unit stats of the target")]
     protected UnitStats m_TargetUnitStats;
 
-    public int MinAttackRange {
+    public int MinAttackRange
+    {
         get { return m_MinAttackRange; }
         set { m_MinAttackRange = Mathf.Clamp(value, 0, MaxAttackRange); }
     }
 
-    public int MaxAttackRange {
-        get
-        {
-            return m_MaxAttackRange;
-        }
+    public int MaxAttackRange
+    {
+        get { return m_MaxAttackRange; }
         set
         {
             m_MaxAttackRange = Mathf.Max(0, value);
@@ -104,57 +102,6 @@ public class UnitAttackAction : IUnitAction
         base.OnTurnOff();
     }
 
-    /// <summary>
-    /// To do raycasting and calculation. Along with the animation required.
-    /// </summary>
-    /// <returns></returns>
-    public override IEnumerator UpdateActionRoutine()
-    {
-        m_ActionState = ActionState.Running;
-        // TODO: Do some complex calculation and animation for this
-        GetUnitStats().CurrentActionPoints -= ActionCost;
-        m_AttackAnim.Hit = CheckIfHit();
-        m_AttackAnim.Target = m_TargetUnitStats.gameObject;
-        m_AttackAnim.CompletionCallback = CallAnimDone;
-        WaitForFixedUpdate zeFixedWait = new WaitForFixedUpdate();
-        m_AttackAnim.StartAnimation();
-        while (!m_AnimDone)
-        {
-            yield return zeFixedWait;
-        }
-        switch (m_AttackAnim.Hit)
-        {
-            case true:
-                m_TargetUnitStats.CurrentHealthPoints -= m_DamagePoints;
-                break;
-            default:
-                break;
-        }
-        // if there is anyone calling for it, if there is no such function thr
-        if (m_TargetUnitStats.m_HealthDropCallback != null)
-            m_TargetUnitStats.m_HealthDropCallback.Invoke(m_UnitStats);
-        // Thinking of a way to implement it
-        switch (GetUnitStats().CurrentActionPoints)
-        {
-            case 0:
-                GetUnitStats().ResetUnitStats();
-                GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitMakeMove", gameObject);
-                break;
-            default:
-                break;
-        }
-        GameEventSystem.GetInstance().TriggerEvent("UnitFinishAction");
-        m_ActionState = ActionState.Completed;
-        m_AttackAnim.CompletionCallback -= CallAnimDone;
-        m_AnimDone = false;
-        m_UpdateOfUnitAction = null;
-        if (CompletedCallBack != null)
-        {
-            CompletedCallBack.Invoke();
-        }
-        yield break;
-    }
-
     // Use this for initialization
     void Start ()
     {
@@ -179,21 +126,11 @@ public class UnitAttackAction : IUnitAction
 
     public override bool VerifyRunCondition()
     {
-        if (m_TargetUnitStats == null)
-        {
-            return false;
-        }
-
-        if (m_TargetUnitStats.IsAlive() == false)
-        {
-            return false;
-        }
-
+        // Exit Checks
+        if (m_TargetUnitStats == null) { return false; }
+        if (m_TargetUnitStats.IsAlive() == false) { return false; }
         int distanceToTarget = TileId.GetDistance(m_TargetUnitStats.CurrentTileID, GetUnitStats().CurrentTileID);
-        if (distanceToTarget > m_MaxAttackRange)
-        {
-            return false;
-        }
+        if (distanceToTarget > m_MaxAttackRange) { return false; }
 
         // Check if can see enemy (Our View Range as well as teammate scouting)
 
