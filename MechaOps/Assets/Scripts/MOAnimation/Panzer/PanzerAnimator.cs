@@ -500,6 +500,8 @@ public class PanzerAnimator : MOAnimator
         {
             m_CineHandler = FindObjectOfType<CineMachineHandler>();
         }
+        m_CineHandler.CineStateCam.LookAt = m_HullTransform;
+        m_CineHandler.CineStateCam.Follow = m_HullTransform;
         m_CineHandler.TriggerEventParam("Die");
         StartCoroutine(StartDeathCameraCoroutine());
     }
