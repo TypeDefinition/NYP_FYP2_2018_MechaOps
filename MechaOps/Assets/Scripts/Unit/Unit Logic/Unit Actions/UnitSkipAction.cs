@@ -1,58 +1,40 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 /// <summary>
-/// Mainly to skip the unit's turn!
+/// Skip the unit's turn!
 /// </summary>
-public class UnitSkipAction : IUnitAction {
-
+public class UnitSkipAction : IUnitAction
+{
     /// <summary>
-    /// Just use up all of it's action points and send the event
+    /// Just use up all of it's action points and send the event.
     /// </summary>
     public override void StartAction()
     {
-        GetUnitStats().CurrentActionPoints -= GetUnitStats().MaxActionPoints;
-        GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitMakeMove", gameObject);
-        GameEventSystem.GetInstance().TriggerEvent("UnitFinishAction");
-        GetUnitStats().ResetUnitStats();
+        Assert.IsTrue(VerifyRunCondition(), MethodBase.GetCurrentMethod().Name + " - VerifyRunCondition() should always return true! I don't even know why I bother checking. I mean, how is it even possible to not be able to do nothing?");
+
+        GetUnitStats().CurrentActionPoints = 0;
         m_ActionState = ActionState.Completed;
-        if (CompletionCallBack != null)
-        {
-            CompletionCallBack.Invoke();
-        }
+        GameEventSystem.GetInstance().TriggerEvent("UnitFinishAction");
+        InvokeCompletionCallback();
+
+        CheckIfUnitFinishedTurn();
     }
 
     /// <summary>
-    /// This function can definitely be run unless the unit has run out of unit action points!
+    /// This function can definitely be run no matter what.
     /// </summary>
     /// <returns></returns>
-    public override bool VerifyRunCondition()
-    {
-        // need to make sure there are more than 1 action points. otherwise this is definitely a bug!
-        switch (m_UnitStats.CurrentActionPoints)
-        {
-            case 0:
-                return false;
-            default:
-                break;
-        }
-        return true;
-    }
+    public override bool VerifyRunCondition() { return true; }
 
-    protected override void DeinitializeEvents()
-    {
-    }
+    protected override void InitializeEvents() { throw new System.NotImplementedException(); }
 
-    protected override void EndTurnCallback()
-    {
-    }
+    protected override void DeinitializeEvents() { throw new System.NotImplementedException(); }
 
-    protected override void InitializeEvents()
-    {
-    }
+    protected override void StartTurnCallback() { throw new System.NotImplementedException(); }
 
-    protected override void StartTurnCallback()
-    {
-    }
+    protected override void EndTurnCallback() { throw new System.NotImplementedException(); }
 }

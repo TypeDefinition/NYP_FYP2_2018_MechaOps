@@ -56,7 +56,6 @@ public class UnitWalkAction : IUnitAction
     protected override void Awake()
     {
         base.Awake();
-        Assert.IsTrue(m_UnitActionName != null && m_UnitActionName != "", "No name is given to this action");
         m_TileSystem = GetComponent<UnitStats>().GetGameSystemsDirectory().GetTileSystem();
         Assert.IsNotNull(m_TileSystem, " - m_TileSystem must not be null!");
     }
@@ -66,28 +65,27 @@ public class UnitWalkAction : IUnitAction
     public override void StartAction()
     {
         base.StartAction();
-        GetUnitStats().CurrentActionPoints -= ActionCost;
         RegisterAnimationCompleteCallback();
         StartWalkAnimation();
     }
 
     public override void PauseAction()
     {
-        m_ActionState = ActionState.Paused;
+        base.PauseAction();
         UnregisterAnimationCompleteCallback();
         m_WalkAnimation.PauseAnimation();
     }
 
     public override void ResumeAction()
     {
-        m_ActionState = ActionState.Running;
+        base.ResumeAction();
         RegisterAnimationCompleteCallback();
         m_WalkAnimation.ResumeAnimation();
     }
 
     public override void StopAction()
     {
-        m_ActionState = ActionState.Completed;
+        base.StopAction();
         UnregisterAnimationCompleteCallback();
         m_WalkAnimation.StopAnimation();
     }
@@ -126,17 +124,7 @@ public class UnitWalkAction : IUnitAction
             GameEventSystem.GetInstance().TriggerEvent("UnitFinishAction");
             InvokeCompletionCallback();
 
-            // TODO: This needs to be moved away. It should not be done in the action as
-            // A) It would be repetitive code. Why does every action need to check this?
-            // B) Just because the CurrentActionPoints are > 0 does not mean that the turn has not ended for this unit.
-            // If I have 3 Action Points, and 2 actions, each costing 2 points, then the unit's turn should end when it has
-            // only 1 Action Point left.
-            if (GetUnitStats().CurrentActionPoints == 0)
-            {
-                GetUnitStats().ResetUnitStats();
-                // tell the player unit manager that it can no longer do any action
-                GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitMakeMove", gameObject);
-            }
+            CheckIfUnitFinishedTurn();
         }
     }
 

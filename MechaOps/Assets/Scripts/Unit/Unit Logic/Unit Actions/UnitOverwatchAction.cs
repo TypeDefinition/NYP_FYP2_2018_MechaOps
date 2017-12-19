@@ -53,26 +53,26 @@ public class UnitOverwatchAction : UnitAttackAction
 
     protected override void InitializeEvents()
     {
-        throw new System.NotImplementedException();
-
         // Subscribe to turn start event.
         // Subscribe to unit move event.
+        throw new System.NotImplementedException();
     }
 
     protected override void DeinitializeEvents()
     {
-        throw new System.NotImplementedException();
-
         // unsubscribe to turn start event.
         // unsubscribe to unit move event.
+        throw new System.NotImplementedException();
     }
 
     public override bool VerifyRunCondition()
     {
-        throw new System.NotImplementedException();
-
         // Check if can see enemy (Our View Range as well as teammate scouting)
+        throw new System.NotImplementedException();
+    }
 
-        return false;
+    protected override int CalculateHitChance()
+    {
+        throw new System.NotImplementedException();
     }
 }

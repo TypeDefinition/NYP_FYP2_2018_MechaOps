@@ -42,6 +42,7 @@ public class PanzerAnimator : MOAnimator
     private float m_GunElevationSpeed = 60.0f; // This is the speed in degrees.
     private float m_AccuracyTolerance = 0.5f; // How small must the angle between where our gun is aiming and where the target is to be considered aimed.
     private bool m_FinishShootAnimFlag = false;
+    private TankBullet m_Bullet = null;
     private Void_Void m_ShootAnimationCompleteCallback = null;
     IEnumerator m_ShootAnimationCoroutine;
 
@@ -135,11 +136,11 @@ public class PanzerAnimator : MOAnimator
     public void AnimateFireBullet(GameObject _target, bool _explodeOnContact, Void_Void _callback)
     {
         Assert.IsTrue(_target != null);
-        TankBullet bullet = GameObject.Instantiate(m_BulletPrefab.gameObject).GetComponent<TankBullet>();
-        bullet.transform.position = m_BulletSpawn.transform.position;
-        bullet.transform.LookAt(_target.transform.position);
-        bullet.CompletionCallback = _callback;
-        bullet.Target = _target;
+        m_Bullet = GameObject.Instantiate(m_BulletPrefab.gameObject).GetComponent<TankBullet>();
+        m_Bullet.transform.position = m_BulletSpawn.transform.position;
+        m_Bullet.transform.LookAt(_target.transform.position);
+        m_Bullet.CompletionCallback = _callback;
+        m_Bullet.Target = _target;
         // TODO, maybe can show off the slow bullet animation
     }
 
@@ -432,6 +433,35 @@ public class PanzerAnimator : MOAnimator
     public void StopShootAnimation()
     {
         StopCoroutine(m_ShootAnimationCoroutine);
+    }
+
+    public void PauseShootAnimation()
+    {
+        // If there is no bullet yet, then the gun has not fired. In that case, just stop the whole animation.
+        if (m_Bullet == null)
+        {
+            StopShootAnimation();
+        }
+        // If there is already a bullet, it is moving somewhere. Pause it so it stops moving.
+        else
+        {
+            m_Bullet.SetPaused(true);
+        }
+    }
+
+    public void ResumeShootAnimation()
+    {
+        // If there is no bullet yet, then the gun has not fired. In that case, just restart the whole animation,
+        // since it will just continue where it left off.
+        if (m_Bullet == null)
+        {
+            StartShootAnimation();
+        }
+        // If there is already a bullet, it is frozen somewhere. Unpause it so it can continue moving.
+        else
+        {
+            m_Bullet.SetPaused(false);
+        }
     }
 
     public void StartMoveAnimation()
