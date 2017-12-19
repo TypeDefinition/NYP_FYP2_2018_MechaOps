@@ -40,11 +40,6 @@ public abstract class IUnitAction : MonoBehaviour
     [SerializeField, Tooltip("The flag to check is the animation done")]
     protected bool m_AnimationCompleted = false;
 
-    /// <summary>
-    /// Most if not all, unit actions will need animation and some sort of delay
-    /// </summary>
-    protected Coroutine m_UpdateOfUnitAction;
-
     protected Void_Void m_CompletionCallBack;
 
     protected string UnitActionName
@@ -142,31 +137,6 @@ public abstract class IUnitAction : MonoBehaviour
         m_UnitStats = GetComponent<UnitStats>();
         Assert.IsNotNull(m_UnitStats, MethodBase.GetCurrentMethod().Name + " - The GameObject this script is attached to MUST have a UnitStats Component!");
         Assert.IsTrue(m_UnitActionName != null && m_UnitActionName != "", "No name is given to this action");
-    }
-
-    /// <summary>
-    /// The function to start the coroutine of updating.
-    /// It is virtual just in case it needs to be overridden.
-    /// </summary>
-    public virtual void StartUpdating()
-    {
-        m_UpdateOfUnitAction = StartCoroutine(UpdateActionRoutine());
-    }
-
-    /// <summary>
-    /// Since not all action needs to be stopped,
-    /// this will be a virtual function ready to be inherited
-    /// </summary>
-    public virtual void StopActionUpdate() {}
-
-    /// <summary>
-    /// The actual update of the unit action
-    /// </summary>
-    /// <returns></returns>
-    public virtual IEnumerator UpdateActionRoutine()
-    {
-        m_UpdateOfUnitAction = null;
-        yield break;
     }
 
     /// <summary>

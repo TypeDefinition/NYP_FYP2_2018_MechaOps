@@ -60,8 +60,6 @@ public class UnitWalkAction : IUnitAction
         Assert.IsNotNull(m_TileSystem, " - m_TileSystem must not be null!");
     }
 
-    public override void StopActionUpdate() {}
-
     public override void StartAction()
     {
         base.StartAction();
@@ -72,14 +70,12 @@ public class UnitWalkAction : IUnitAction
     public override void PauseAction()
     {
         base.PauseAction();
-        UnregisterAnimationCompleteCallback();
         m_WalkAnimation.PauseAnimation();
     }
 
     public override void ResumeAction()
     {
         base.ResumeAction();
-        RegisterAnimationCompleteCallback();
         m_WalkAnimation.ResumeAnimation();
     }
 
@@ -116,7 +112,7 @@ public class UnitWalkAction : IUnitAction
         else
         {
             // The unit has reached it's destination.
-            m_WalkAnimation.CompletionCallback -= this.OnAnimationCompleted;
+            UnregisterAnimationCompleteCallback();
             m_WalkAnimation.GetMOAnimator().StopCinematicCamera();
             m_ActionState = ActionState.Completed;
 

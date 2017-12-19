@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// Is to use the special attack helper in it's attack calculation
-public class PanzerAttackAction : UnitAttackAction
+public class PanzerShootAction : UnitAttackAction
 {
-    [SerializeField, Tooltip("Unit Attack Animation. TODO, make it more generic")]
     protected MOAnimation_PanzerAttack m_AttackAnimation;
 
     protected bool m_RegisteredAnimationCompleteCallback = false;
@@ -38,14 +36,12 @@ public class PanzerAttackAction : UnitAttackAction
     public override void PauseAction()
     {
         base.PauseAction();
-        UnregisterAnimationCompleteCallback();
         m_AttackAnimation.PauseAnimation();
     }
 
     public override void ResumeAction()
     {
         base.ResumeAction();
-        RegisterAnimationCompleteCallback();
         m_AttackAnimation.ResumeAnimation();
     }
 
@@ -69,7 +65,8 @@ public class PanzerAttackAction : UnitAttackAction
         int optimalDistance = (MaxAttackRange - MinAttackRange) >> 1;
         float hitChance = (float)Mathf.Abs(optimalDistance - distanceToTarget) / (float)optimalDistance;
         hitChance *= 100.0f;
-        hitChance -= (float)m_TargetUnitStats.EvasionPoints + (float)m_AccuracyPoints;
+        hitChance -= (float)m_TargetUnitStats.EvasionPoints;
+        hitChance += (float)m_AccuracyPoints;
 
         return Mathf.Clamp((int)hitChance, 1, 100);
     }
@@ -77,7 +74,7 @@ public class PanzerAttackAction : UnitAttackAction
     protected override void OnAnimationCompleted()
     {
         m_ActionState = ActionState.Completed;
-        m_AttackAnimation.CompletionCallback -= OnAnimationCompleted;
+        UnregisterAnimationCompleteCallback();
 
         if (m_AttackAnimation.Hit) { m_TargetUnitStats.CurrentHealthPoints -= m_DamagePoints; }
         // Invoke the Target's Unit Stat's HealthDropCallback.

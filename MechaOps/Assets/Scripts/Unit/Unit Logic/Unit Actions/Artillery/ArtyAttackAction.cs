@@ -5,7 +5,8 @@ using UnityEngine;
 /// <summary>
 /// For the artillery unit attack action logic
 /// </summary>
-public class ArtyAttackAct : UnitAttackAction {
+public class ArtyAttackAction : UnitAttackAction
+{
     [Header("Variables for ArtyAttackAct")]
     [SerializeField, Tooltip("The Exploding radius of attack")]
     protected int m_ExplodeRadius = 1;
@@ -45,7 +46,7 @@ public class ArtyAttackAct : UnitAttackAction {
     /// Since it will be different from the normal unit attack action!
     /// </summary>
     /// <returns></returns>
-    public override IEnumerator UpdateActionRoutine()
+    public virtual IEnumerator UpdateActionRoutine()
     {
         TileSystem zeTileSys = FindObjectOfType<TileSystem>();
         GetUnitStats().CurrentActionPoints -= ActionCost;
@@ -66,26 +67,24 @@ public class ArtyAttackAct : UnitAttackAction {
                     zeVictimStat.m_HealthDropCallback.Invoke(m_UnitStats);
             }
         }
-        switch (GetUnitStats().CurrentActionPoints)
+
+        if (GetUnitStats().CurrentActionPoints == 0)
         {
-            case 0:
-                GetUnitStats().ResetUnitStats();
-                GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitMakeMove", gameObject);
-                break;
-            default:
-                break;
+            GetUnitStats().ResetUnitStats();
+            GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitMakeMove", gameObject);
         }
         GameEventSystem.GetInstance().TriggerEvent("UnitFinishAction");
         m_ActionState = ActionState.Completed;
         m_AnimationCompleted = false;
-        m_UpdateOfUnitAction = null;
         yield break;
     }
 
     public override bool VerifyRunCondition()
     {
         if (m_TargetTile == null)
+        {
             return false;
+        }
         int distanceToTarget = TileId.GetDistance(m_TargetTile, GetUnitStats().CurrentTileID);
         if (distanceToTarget > m_MaxAttackRange || distanceToTarget < m_MinAttackRange)
         {

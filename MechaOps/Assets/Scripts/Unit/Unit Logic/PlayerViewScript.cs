@@ -8,7 +8,7 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class PlayerViewScript : ViewTileScript
 {
-    [Header("Debugging purpose")]
+    [Header("The variables below are shown in the Inspector for debugging purposes.")]
     [SerializeField, Tooltip("Surrounding Tiles that needed to change the ID")]
     protected List<Tile> m_ViewedTiles;
 
