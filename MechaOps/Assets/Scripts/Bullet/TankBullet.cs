@@ -10,6 +10,8 @@ public class TankBullet : MonoBehaviour
     [SerializeField] private GameObject m_Explosion;
     [SerializeField] private string[] m_CollisionLayers;
     [SerializeField] private GameObject m_Target;
+
+    private bool m_Paused = false;
     private Void_Void m_CompletionCallback = null;
 
     public Void_Void CompletionCallback
@@ -48,9 +50,15 @@ public class TankBullet : MonoBehaviour
         set { m_ExplodeOnContact = value; }
     }
 
+    public void SetPaused(bool _paused) { m_Paused = _paused; }
+
+    public bool GetPaused() { return m_Paused; }
+
     // Update is called once per frame
     void Update ()
     {
+        if (m_Paused) { return; }
+
         // Detect Hit
         RaycastHit hitInfo;
         if (m_ExplodeOnContact && Physics.Raycast(transform.position, transform.forward, out hitInfo, m_Speed * Time.deltaTime, LayerMask.GetMask(m_CollisionLayers)))

@@ -8,65 +8,84 @@ public class PanzerAttackAction : UnitAttackAction
     [SerializeField, Tooltip("Unit Attack Animation. TODO, make it more generic")]
     protected MOAnimation_PanzerAttack m_AttackAnimation;
 
-    public override IEnumerator UpdateActionRoutine()
+    protected bool m_RegisteredAnimationCompleteCallback = false;
+
+    protected virtual void RegisterAnimationCompleteCallback()
     {
-        m_ActionState = ActionState.Running;
-        // TODO: Do some complex calculation and animation for this
-        GetUnitStats().CurrentActionPoints -= ActionCost;
+        if (!m_RegisteredAnimationCompleteCallback)
+        {
+            m_AttackAnimation.CompletionCallback += OnAnimationCompleted;
+            m_RegisteredAnimationCompleteCallback = true;
+        }
+    }
+
+    protected virtual void UnregisterAnimationCompleteCallback()
+    {
+        if (m_RegisteredAnimationCompleteCallback)
+        {
+            m_AttackAnimation.CompletionCallback -= OnAnimationCompleted;
+            m_RegisteredAnimationCompleteCallback = false;
+        }
+    }
+
+    public override void StartAction()
+    {
+        base.StartAction();
+        RegisterAnimationCompleteCallback();
+        StartShootingAnimation();
+    }
+
+    public override void PauseAction()
+    {
+        base.PauseAction();
+        UnregisterAnimationCompleteCallback();
+        m_AttackAnimation.PauseAnimation();
+    }
+
+    public override void ResumeAction()
+    {
+        base.ResumeAction();
+        RegisterAnimationCompleteCallback();
+        m_AttackAnimation.ResumeAnimation();
+    }
+
+    public override void StopAction()
+    {
+        base.StopAction();
+        UnregisterAnimationCompleteCallback();
+        m_AttackAnimation.StopAnimation();
+    }
+
+    protected void StartShootingAnimation()
+    {
         m_AttackAnimation.Hit = CheckIfHit();
         m_AttackAnimation.Target = m_TargetUnitStats.gameObject;
-        m_AttackAnimation.CompletionCallback = OnAnimationCompleted;
-        WaitForFixedUpdate zeFixedWait = new WaitForFixedUpdate();
         m_AttackAnimation.StartAnimation();
-        while (!m_AnimationCompleted)
-        {
-            yield return zeFixedWait;
-        }
-        switch (m_AttackAnimation.Hit)
-        {
-            case true:
-                m_TargetUnitStats.CurrentHealthPoints -= m_DamagePoints;
-                break;
-            default:
-                break;
-        }
-        // if there is anyone calling for it, if there is no such function thr
-        if (m_TargetUnitStats.m_HealthDropCallback != null)
-            m_TargetUnitStats.m_HealthDropCallback.Invoke(m_UnitStats);
-        // Thinking of a way to implement it
-        switch (GetUnitStats().CurrentActionPoints)
-        {
-            case 0:
-                GetUnitStats().ResetUnitStats();
-                GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitMakeMove", gameObject);
-                break;
-            default:
-                break;
-        }
-        GameEventSystem.GetInstance().TriggerEvent("UnitFinishAction");
+    }
+
+    protected override int CalculateHitChance()
+    {
+        int distanceToTarget = TileId.GetDistance(m_TargetUnitStats.CurrentTileID, GetUnitStats().CurrentTileID);
+        int optimalDistance = (MaxAttackRange - MinAttackRange) >> 1;
+        float hitChance = (float)Mathf.Abs(optimalDistance - distanceToTarget) / (float)optimalDistance;
+        hitChance *= 100.0f;
+        hitChance -= (float)m_TargetUnitStats.EvasionPoints + (float)m_AccuracyPoints;
+
+        return Mathf.Clamp((int)hitChance, 1, 100);
+    }
+
+    protected override void OnAnimationCompleted()
+    {
         m_ActionState = ActionState.Completed;
         m_AttackAnimation.CompletionCallback -= OnAnimationCompleted;
-        m_AnimationCompleted = false;
-        m_UpdateOfUnitAction = null;
-        if (CompletionCallBack != null)
-        {
-            CompletionCallBack.Invoke();
-        }
-        yield break;
-    }
 
-    protected int CalculateHitChance()
-    {
-        return 0;
-    }
+        if (m_AttackAnimation.Hit) { m_TargetUnitStats.CurrentHealthPoints -= m_DamagePoints; }
+        // Invoke the Target's Unit Stat's HealthDropCallback.
+        if (m_TargetUnitStats.m_HealthDropCallback != null) { m_TargetUnitStats.m_HealthDropCallback(m_UnitStats); }
 
-    protected override bool CheckIfHit()
-    {
-        int zeHitChance = UnitGameHelper.CalculateAttackHitChance_Tank(TileId.GetDistance(m_UnitStats.CurrentTileID, m_TargetUnitStats.CurrentTileID), MinAttackRange, MaxAttackRange, m_TargetUnitStats.EvasionPoints);
-        //if (AccuracyPoints > )
-        // not sure about Accuracy points. and unsure if this works
-        if (zeHitChance > 50)
-            return true;
-        return false;
+        GameEventSystem.GetInstance().TriggerEvent("UnitFinishAction");
+        InvokeCompletionCallback();
+
+        CheckIfUnitFinishedTurn();
     }
 }

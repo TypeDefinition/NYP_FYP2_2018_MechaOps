@@ -42,12 +42,12 @@ public class MOAnimation_PanzerAttack : MOAnimation
 
     public override void PauseAnimation()
     {
-        m_Animator.StopShootAnimation();
+        m_Animator.PauseShootAnimation();
     }
 
     public override void ResumeAnimation()
     {
-        m_Animator.StartShootAnimation();
+        m_Animator.ResumeShootAnimation();
     }
 
     public override void StopAnimation()

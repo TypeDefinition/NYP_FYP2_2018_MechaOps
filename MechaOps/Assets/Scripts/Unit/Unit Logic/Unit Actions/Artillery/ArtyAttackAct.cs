@@ -93,4 +93,9 @@ public class ArtyAttackAct : UnitAttackAction {
         }
         return true;
     }
+
+    protected override int CalculateHitChance()
+    {
+        throw new System.NotImplementedException();
+    }
 }

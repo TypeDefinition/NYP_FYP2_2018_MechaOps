@@ -141,6 +141,7 @@ public abstract class IUnitAction : MonoBehaviour
         // If the unit stat is not linked, get the component of it!
         m_UnitStats = GetComponent<UnitStats>();
         Assert.IsNotNull(m_UnitStats, MethodBase.GetCurrentMethod().Name + " - The GameObject this script is attached to MUST have a UnitStats Component!");
+        Assert.IsTrue(m_UnitActionName != null && m_UnitActionName != "", "No name is given to this action");
     }
 
     /// <summary>
@@ -187,6 +188,7 @@ public abstract class IUnitAction : MonoBehaviour
     public virtual void StartAction()
     {
         m_ActionState = ActionState.Running;
+        GetUnitStats().CurrentActionPoints -= ActionCost;
         GetUnitStats().CurrentActiveAction = this;
     }
 
@@ -207,6 +209,7 @@ public abstract class IUnitAction : MonoBehaviour
     {
         m_ActionState = ActionState.Running;
     }
+
     /// <summary>
     /// The function that stops the update of the action.
     /// Not to be confused with PauseAction()!
@@ -219,6 +222,21 @@ public abstract class IUnitAction : MonoBehaviour
     protected virtual void OnAnimationCompleted()
     {
         m_AnimationCompleted = true;
+    }
+
+    protected void CheckIfUnitFinishedTurn()
+    {
+        // TODO: This needs to be moved away. It should not be done in the action as
+        // A) It would be repetitive code. Why does every action need to check this?
+        // B) Just because the CurrentActionPoints are > 0 does not mean that the turn has not ended for this unit.
+        // If I have 3 Action Points, and 2 actions, each costing 2 points, then the unit's turn should end when it has
+        // only 1 Action Point left.
+        if (GetUnitStats().CurrentActionPoints == 0)
+        {
+            GetUnitStats().ResetUnitStats();
+            // tell the player unit manager that it can no longer do any action
+            GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitMakeMove", gameObject);
+        }
     }
 
 #if UNITY_EDITOR

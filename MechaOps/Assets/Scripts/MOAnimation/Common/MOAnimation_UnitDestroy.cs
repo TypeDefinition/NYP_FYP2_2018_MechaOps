@@ -27,10 +27,7 @@ public class MOAnimation_UnitDestroy : MOAnimation
         }
     }
 
-    public override MOAnimator GetMOAnimator()
-    {
-        throw new System.NotImplementedException();
-    }
+    public override MOAnimator GetMOAnimator() { return null; }
 
     public override void StartAnimation()
     {

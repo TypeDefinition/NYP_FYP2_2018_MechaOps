@@ -4,7 +4,7 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class UnitAttackAction : IUnitAction
+public abstract class UnitAttackAction : IUnitAction
 {
     [SerializeField, Tooltip("Minimum attack range of the unit")]
     protected int m_MinAttackRange;
@@ -73,7 +73,6 @@ public class UnitAttackAction : IUnitAction
     public override void StartAction()
     {
         base.StartAction();
-        m_UpdateOfUnitAction = StartCoroutine(UpdateActionRoutine());
     }
 
     public override void StopAction()
@@ -94,7 +93,6 @@ public class UnitAttackAction : IUnitAction
     protected override void OnTurnOn()
     {
         Assert.IsTrue(VerifyRunCondition());
-        // m_ActionScheduler.ScheduleAction(this);
     }
 
     protected override void OnTurnOff()
@@ -102,27 +100,13 @@ public class UnitAttackAction : IUnitAction
         base.OnTurnOff();
     }
 
-    // Use this for initialization
-    void Start ()
-    {
-        Assert.IsTrue(m_UnitActionName != null, MethodBase.GetCurrentMethod().Name + " - m_UnitActionName is null!");
-    }
+    protected override void StartTurnCallback() {}
 
-    protected override void StartTurnCallback()
-    {
-    }
+    protected override void EndTurnCallback() {}
 
-    protected override void EndTurnCallback()
-    {
-    }
+    protected override void InitializeEvents() {}
 
-    protected override void InitializeEvents()
-    {
-    }
-
-    protected override void DeinitializeEvents()
-    {
-    }
+    protected override void DeinitializeEvents() {}
 
     public override bool VerifyRunCondition()
     {
@@ -130,20 +114,28 @@ public class UnitAttackAction : IUnitAction
         if (m_TargetUnitStats == null) { return false; }
         if (m_TargetUnitStats.IsAlive() == false) { return false; }
         int distanceToTarget = TileId.GetDistance(m_TargetUnitStats.CurrentTileID, GetUnitStats().CurrentTileID);
-        if (distanceToTarget > m_MaxAttackRange) { return false; }
+        if (distanceToTarget < MinAttackRange) { return false; }
+        if (distanceToTarget > MaxAttackRange) { return false; }
 
         // Check if can see enemy (Our View Range as well as teammate scouting)
+        if (distanceToTarget > GetUnitStats().ViewRange) { return false; }
 
         return true;
     }
 
     /// <summary>
-    /// This will always be true regardless since there is nothing to see the accuracy
+    /// 
+    /// </summary>
+    protected abstract int CalculateHitChance();
+
+    /// <summary>
+    /// This function rolls a random number between 1 (inclusive) to 100 (inclusive).
+    /// It returns true of the random number is lower or equal to CalculateHitChance().
     /// </summary>
     /// <returns></returns>
     protected virtual bool CheckIfHit()
     {
-        return true;
+        return Random.Range(1, 100) <= CalculateHitChance();
     }
 
 #if UNITY_EDITOR
