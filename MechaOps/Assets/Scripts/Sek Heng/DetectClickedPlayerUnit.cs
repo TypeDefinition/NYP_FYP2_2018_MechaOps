@@ -35,7 +35,7 @@ public class DetectClickedPlayerUnit : MonoBehaviour
         // Touch Input can also use GetMouseButton(0)!
         if (!Input.GetMouseButton(m_PointerId)) { return; }
         // Make sure that the pointer is not over some canvas UI!
-        if (EventSystem.current.IsPointerOverGameObject(m_PointerId)) { return; }
+        if (EventSystem.current.IsPointerOverGameObject()) { return; }
 
         RaycastHit hitInfo;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

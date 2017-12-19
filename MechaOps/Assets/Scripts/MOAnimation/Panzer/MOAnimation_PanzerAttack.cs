@@ -28,7 +28,12 @@ public class MOAnimation_PanzerAttack : MOAnimation
     {
         Assert.IsTrue(m_Animator != null, MethodBase.GetCurrentMethod().Name + " - PanzerAnimator is required for PanzerAnimationHandler to work!");
     }
-	
+
+    public override MOAnimator GetMOAnimator()
+    {
+        return m_Animator;
+    }
+
     public override void StartAnimation()
     {
         m_Animator.SetShootAnimationParameters(m_Target, m_Hit, m_CompletionCallback);

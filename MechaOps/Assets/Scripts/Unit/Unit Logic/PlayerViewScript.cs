@@ -5,7 +5,6 @@ using UnityEngine;
 /// <summary>
 /// This will be used to render the tiles of this unit surrounding!
 /// </summary>
-
 [DisallowMultipleComponent]
 public class PlayerViewScript : ViewTileScript
 {
@@ -16,65 +15,44 @@ public class PlayerViewScript : ViewTileScript
     /// <summary>
     /// This will help to render the tiles surrounding of this unit!
     /// </summary>
-    public override void RenderSurroundingTiles()
+    public override void SetVisibleTiles()
     {
-        CheckSurroundingTiles();
-        // find the tile system if there is none!
-        if (!m_TileSystem)
-            m_TileSystem = FindObjectOfType<TileSystem>();
-        TileId[] zeAllSurroundingTiles = m_TileSystem.GetSurroundingTiles(m_UnitStats.CurrentTileID, m_UnitStats.ViewRange);
+        ClearVisibleTiles();
+
+        TileId[] surroundingTiles = m_TileSystem.GetSurroundingTiles(m_UnitStats.CurrentTileID, m_UnitStats.ViewRange);
         // And then iterate though the list and increase the tile range
-        foreach (TileId zeTileID in zeAllSurroundingTiles)
+        foreach (TileId tileId in surroundingTiles)
         {
-            if (TileId.GetDistance(m_UnitStats.CurrentTileID, zeTileID) <= m_UnitStats.ViewRange)
+            if (TileId.GetDistance(m_UnitStats.CurrentTileID, tileId) > m_UnitStats.ViewRange)
             {
-                Tile zeTile = m_TileSystem.GetTile(zeTileID);
-                // then raycast to that tile to see if it works and get the id
-                int layerToCastThrough = 1 << LayerMask.NameToLayer("TileDisplay");
-                Vector3 zeDirection = zeTile.transform.position - transform.position;
-                zeDirection.y = transform.position.y;
-                RaycastHit zeHitCast;
-                // if it does not hit anything or ray has already reached it's destination
-                if (!Physics.Raycast(transform.position, zeDirection, out zeHitCast, zeDirection.magnitude, layerToCastThrough) || zeHitCast.collider.transform.parent.GetComponent<Tile>().GetId().Equals(zeTileID))
-                {
-                    // see if it is inside the viewedTiles
-                    if (!m_ViewedTiles.Contains(zeTile))
-                    {
-                        m_ViewedTiles.Add(zeTile);
-                        ++zeTile.VisibleCounter;
-                    }
-                }
-                else if (m_ViewedTiles.Contains(zeTile))
-                {
-                    // if the tile is inside the list and something is blocking the view
-                    --zeTile.VisibleCounter;
-                    m_ViewedTiles.Remove(zeTile);
-                }
+                continue;
+            }
+
+            Tile tile = m_TileSystem.GetTile(tileId);
+            // then raycast to that tile to see if it works and get the id
+            int layerMask = LayerMask.GetMask("TileDisplay");
+            Vector3 rayDirection = tile.transform.position - transform.position;
+            RaycastHit hitInfo;
+            // if it does not hit anything or ray has already reached it's destination
+            if (!Physics.Raycast(transform.position, rayDirection, out hitInfo, rayDirection.magnitude, layerMask) ||
+                hitInfo.collider.transform.parent.GetComponent<Tile>().GetTileId().Equals(tileId))
+            {
+                m_ViewedTiles.Add(tile);
+                ++tile.VisibleCounter;
             }
         }
     }
 
     /// <summary>
-    /// Check if the surrounding tiles is within the range
+    /// Decrease the visibility counter of the tiles that are out of range.
     /// </summary>
-    public virtual void CheckSurroundingTiles()
+    public virtual void ClearVisibleTiles()
     {
-        if (!m_TileSystem)
-            m_TileSystem = FindObjectOfType<TileSystem>();
-        List<Tile> zeTileNeedRemoved = new List<Tile>();
-        foreach (Tile zeTile in m_ViewedTiles)
+        foreach (Tile tile in m_ViewedTiles)
         {
-            if (TileId.GetDistance(m_UnitStats.CurrentTileID, zeTile.GetId()) > m_UnitStats.ViewRange)
-            {
-                --zeTile.VisibleCounter;
-                zeTileNeedRemoved.Add(zeTile);
-            }
+            --tile.VisibleCounter;
         }
-        // we have to do this loop twice otherwise there will be an error at the above!
-        foreach (Tile zeTile in zeTileNeedRemoved)
-        {
-            m_ViewedTiles.Remove(zeTile);
-        }
+        m_ViewedTiles.Clear();
     }
 
     /// <summary>

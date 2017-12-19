@@ -260,7 +260,9 @@ public class UnitStats : MonoBehaviour
     private IEnumerator Start()
     {
         // check if there is any enemy in range when the game is starting!
-        CheckEnemyInRange();
+        CheckEnemiesInViewRange();
+        m_ViewTileScript.SetVisibleTiles();
+        UpdateUnitInfoDisplay();
 
         m_TileSystem.GetTile(CurrentTileID).Unit = gameObject;
 
@@ -269,7 +271,7 @@ public class UnitStats : MonoBehaviour
 
     private void OnEnable()
     {
-        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("UnitMoveToTile", CheckEnemyInRange);
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("UnitMovedToTile", CheckEnemyInViewRange);
         switch (tag)
         {
             case "Player":
@@ -287,7 +289,7 @@ public class UnitStats : MonoBehaviour
 
     private void OnDisable()
     {
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("UnitMoveToTile", CheckEnemyInRange);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("UnitMovedToTile", CheckEnemyInViewRange);
         switch (tag)
         {
             case "Player":
@@ -317,7 +319,7 @@ public class UnitStats : MonoBehaviour
     /// Should be called every time a unit moves from it's tile!
     /// However, it will check all of the opposition units!
     /// </summary>
-    public void CheckEnemyInRange()
+    public void CheckEnemiesInViewRange()
     {
         List<GameObject> unitsList = null;
         // TODO: Remove this hardcoding when it is done!
@@ -335,32 +337,31 @@ public class UnitStats : MonoBehaviour
                 break;
         }
 
-        foreach (GameObject zeGO in unitsList)
+        foreach (GameObject unit in unitsList)
         {
-            UnitStats zeGOState = zeGO.GetComponent<UnitStats>();
-            if (!zeGOState.IsAlive()) { continue; }
+            UnitStats unitStats = unit.GetComponent<UnitStats>();
+            if (!unitStats.IsAlive()) { continue; }
 
-            int tileDistance = TileId.GetDistance(CurrentTileID, zeGOState.CurrentTileID) + zeGOState.ConcealmentPoints;
+            int tileDistance = TileId.GetDistance(CurrentTileID, unitStats.CurrentTileID) + unitStats.ConcealmentPoints;
             // if that list does not have the unit in range!
-            if (!m_EnemiesInRange.Contains(zeGO))
+            if (!m_EnemiesInRange.Contains(unit))
             {
-                if (tileDistance <= ViewRange && RaycastToOtherPosition(zeGO.transform))
+                if (tileDistance <= ViewRange && RaycastToOtherPosition(unit.transform))
                 {
-                    m_EnemiesInRange.Add(zeGO);
-                    zeGOState.m_ViewTileScript.IncreaseVisibility();
+                    m_EnemiesInRange.Add(unit);
+                    unitStats.m_ViewTileScript.IncreaseVisibility();
                 }
             }
             else
             {
-                if (tileDistance > ViewRange || !RaycastToOtherPosition(zeGO.transform))
+                if (tileDistance > ViewRange || !RaycastToOtherPosition(unit.transform))
                 {
                     // if the opposing unit is in range and 
-                    m_EnemiesInRange.Remove(zeGO);
-                    zeGOState.m_ViewTileScript.DecreaseVisibility();
+                    m_EnemiesInRange.Remove(unit);
+                    unitStats.m_ViewTileScript.DecreaseVisibility();
                 }
             }
         }
-        m_ViewTileScript.RenderSurroundingTiles();
     }
 
     private void UpdateUnitInfoDisplay()
@@ -378,7 +379,7 @@ public class UnitStats : MonoBehaviour
     /// A function call to be passed to when a unit has moved!
     /// </summary>
     /// <param name="_movedUnit"></param>
-    public void CheckEnemyInRange(GameObject _movedUnit)
+    public void CheckEnemyInViewRange(GameObject _movedUnit)
     {
         if (!CompareTag(_movedUnit.tag))
         {
@@ -412,7 +413,8 @@ public class UnitStats : MonoBehaviour
             // if u are the 1 moving, check for nearby enemies
             if (gameObject == _movedUnit)
             {
-                CheckEnemyInRange();
+                CheckEnemiesInViewRange();
+                m_ViewTileScript.SetVisibleTiles();
             }
         }
     }

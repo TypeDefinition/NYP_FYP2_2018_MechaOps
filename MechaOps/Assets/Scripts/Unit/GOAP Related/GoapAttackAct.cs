@@ -34,7 +34,7 @@ public class GoapAttackAct : IGoapAction {
         zeActScheduler.ScheduleAction(m_AttackAct);
         WaitForFixedUpdate zeFixedWait = new WaitForFixedUpdate();
         bool zeWaitForComplete = false;
-        m_AttackAct.CompletedCallBack += () => zeWaitForComplete = true;
+        m_AttackAct.CompletionCallBack += () => zeWaitForComplete = true;
         while (!zeWaitForComplete)
             yield return zeFixedWait;
         print("Finished Attacking");

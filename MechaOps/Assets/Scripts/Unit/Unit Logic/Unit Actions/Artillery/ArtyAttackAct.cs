@@ -38,7 +38,7 @@ public class ArtyAttackAct : UnitAttackAction {
 
     public override void SetTarget(GameObject _target)
     {
-        m_TargetTile = _target.GetComponent<Tile>().GetId();
+        m_TargetTile = _target.GetComponent<Tile>().GetTileId();
     }
 
     /// <summary>
@@ -77,7 +77,7 @@ public class ArtyAttackAct : UnitAttackAction {
         }
         GameEventSystem.GetInstance().TriggerEvent("UnitFinishAction");
         m_ActionState = ActionState.Completed;
-        m_AnimDone = false;
+        m_AnimationCompleted = false;
         m_UpdateOfUnitAction = null;
         yield break;
     }

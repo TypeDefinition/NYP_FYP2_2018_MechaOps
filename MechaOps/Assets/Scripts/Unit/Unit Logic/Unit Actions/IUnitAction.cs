@@ -1,13 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Assertions;
 
-/// <summary>
-/// To ensure that no one will inherit from it!
-/// Provide a base class for 
-/// </summary>
-[ExecuteInEditMode]
+[RequireComponent(typeof(UnitStats))]
 public abstract class IUnitAction : MonoBehaviour
 {
     public enum ActionState
@@ -24,7 +22,7 @@ public abstract class IUnitAction : MonoBehaviour
     private bool m_TurnedOn = false;
     [SerializeField, Tooltip("The priority number for this action")]
     private int m_Priority;
-    [SerializeField, Tooltip("The action cost. For now it will always be 1 but this will be for expandability sake")]
+    [SerializeField, Tooltip("The action cost.")]
     private int m_ActionCost = 1;
     [SerializeField, Tooltip("Does this action end the turn immediately?")]
     private bool m_EndsTurn = false;
@@ -37,20 +35,17 @@ public abstract class IUnitAction : MonoBehaviour
     [SerializeField, Tooltip("The sprite UI for unit's action!")]
     private Sprite m_ActionIconUI;
 
-    [Header("Debugging purpose")]
     [Tooltip("The unit stats")]
-    public UnitStats m_UnitStats;
-    //[SerializeField, Tooltip("The animation handler")]
-    //protected AnimationHandler m_AnimHandler;
+    protected UnitStats m_UnitStats;
     [SerializeField, Tooltip("The flag to check is the animation done")]
-    protected bool m_AnimDone = false;
+    protected bool m_AnimationCompleted = false;
 
     /// <summary>
     /// Most if not all, unit actions will need animation and some sort of delay
     /// </summary>
     protected Coroutine m_UpdateOfUnitAction;
 
-    protected Void_Void m_CompletedCallBack;
+    protected Void_Void m_CompletionCallBack;
 
     protected string UnitActionName
     {
@@ -69,7 +64,7 @@ public abstract class IUnitAction : MonoBehaviour
         OnTurnOff();
     }
 
-    protected virtual void OnTurnOn() { }
+    protected virtual void OnTurnOn() { m_ActionState = ActionState.None; }
 
     protected virtual void OnTurnOff() { m_ActionState = ActionState.None; }
 
@@ -111,16 +106,21 @@ public abstract class IUnitAction : MonoBehaviour
         return m_UnitStats;
     }
 
-    public Void_Void CompletedCallBack
+    public Void_Void CompletionCallBack
     {
         set
         {
-            m_CompletedCallBack = value;
+            m_CompletionCallBack = value;
         }
         get
         {
-            return m_CompletedCallBack;
+            return m_CompletionCallBack;
         }
+    }
+
+    protected void InvokeCompletionCallback()
+    {
+        if (m_CompletionCallBack != null) { m_CompletionCallBack(); }
     }
 
     /// <summary>
@@ -134,15 +134,13 @@ public abstract class IUnitAction : MonoBehaviour
     protected abstract void DeinitializeEvents();
 
     /// <summary>
-    /// Do note that if the Awake function is written anew at other children, U need to call this function or prepare to face annoying bug.
+    /// Do note that if the Awake function is overriden, you need to call this function or prepare to face annoying bugs.
     /// </summary>
     protected virtual void Awake()
     {
         // If the unit stat is not linked, get the component of it!
-        if (!m_UnitStats)
-        {
-            m_UnitStats = GetComponent<UnitStats>();
-        }
+        m_UnitStats = GetComponent<UnitStats>();
+        Assert.IsNotNull(m_UnitStats, MethodBase.GetCurrentMethod().Name + " - The GameObject this script is attached to MUST have a UnitStats Component!");
     }
 
     /// <summary>
@@ -189,7 +187,7 @@ public abstract class IUnitAction : MonoBehaviour
     public virtual void StartAction()
     {
         m_ActionState = ActionState.Running;
-        // Access the animation handler or crash and burn
+        GetUnitStats().CurrentActiveAction = this;
     }
 
     /// <summary>
@@ -218,9 +216,9 @@ public abstract class IUnitAction : MonoBehaviour
         m_ActionState = ActionState.Completed;
     }
 
-    protected virtual void CallAnimDone()
+    protected virtual void OnAnimationCompleted()
     {
-        m_AnimDone = true;
+        m_AnimationCompleted = true;
     }
 
 #if UNITY_EDITOR

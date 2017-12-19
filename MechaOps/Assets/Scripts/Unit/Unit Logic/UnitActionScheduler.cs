@@ -98,7 +98,6 @@ public class UnitActionScheduler : MonoBehaviour
                 break;
             case IUnitAction.ActionState.Completed:
                 Assert.IsTrue(false, MethodBase.GetCurrentMethod().Name + " - m_CurrentAction's Action State should not be Completed!");
-                // removes the action from the list
                 break;
             default:
                 Assert.IsTrue(false, MethodBase.GetCurrentMethod().Name + " - m_CurrentAction's Action State is unknown!");

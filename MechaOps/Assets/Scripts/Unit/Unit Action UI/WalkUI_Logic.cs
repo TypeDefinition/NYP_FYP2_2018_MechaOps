@@ -9,13 +9,13 @@ public class WalkUI_Logic : TweenUI_Scale
 {
     [Header("The linking and variables needed for WalkUI")]
     [Tooltip("The References to TileSystem")]
-    public TileSystem m_TileSys;
+    public TileSystem m_TileSystem;
 
     [Header("Debugging references")]
     [Tooltip("The array of tiles that the unit can reach")]
     public List<TileId> m_AllReachableTileHighlight;
     [SerializeField, Tooltip("The chosen path to walk to")]
-    protected TileId[] m_ReachablePath;
+    protected TileId[] m_MovementPath;
     [Tooltip("The Reference to unit walk action")]
     public UnitWalkAction m_UnitWalkRef;
 
@@ -24,17 +24,20 @@ public class WalkUI_Logic : TweenUI_Scale
         AnimateUI();
         // For now, it will just pick the 1st enemy in the array
         GameEventSystem.GetInstance().TriggerEvent("ToggleSelectingUnit");
-        // Since the tile system is not linked from the start, find it at the scene
-        m_TileSys = FindObjectOfType<TileSystem>();
+
         // And then access the tile stuff from the system and get reachable tiles
         GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("ClickedUnit", PlayerClickedTile);
         GameEventSystem.GetInstance().SubscribeToEvent<IUnitAction>("SelectedAction", PressedAction);
+
+        // Since the tile system is not linked from the start, find it at the scene
+        m_TileSystem = FindObjectOfType<TileSystem>();
     }
 
     private void OnDisable()
     {
         // This is the only way to remove that green line renderer!
-        m_TileSys.ClearPathMarkers();
+        m_TileSystem.ClearPathMarkers();
+
         GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("ClickedUnit", PlayerClickedTile);
         GameEventSystem.GetInstance().UnsubscribeFromEvent<IUnitAction>("SelectedAction", PressedAction);
     }
@@ -54,11 +57,11 @@ public class WalkUI_Logic : TweenUI_Scale
                     zeTileComponent = _clickedObj.GetComponent<Tile>();
                     break;
             }
-            if (m_AllReachableTileHighlight.Contains(zeTileComponent.GetId()))
+            if (m_AllReachableTileHighlight.Contains(zeTileComponent.GetTileId()))
             {
                 // Then we have to find the path for it!
-                m_ReachablePath = m_TileSys.GetPath(m_UnitWalkRef.m_MovementPoints, m_UnitWalkRef.GetUnitStats().CurrentTileID, zeTileComponent.GetId(), m_UnitWalkRef.GetUnitStats().GetTileAttributeOverrides());
-                m_TileSys.SetPathMarkers(m_AllReachableTileHighlight.ToArray(), m_ReachablePath);
+                m_MovementPath = m_TileSystem.GetPath(m_UnitWalkRef.m_MovementPoints, m_UnitWalkRef.GetUnitStats().CurrentTileID, zeTileComponent.GetTileId(), m_UnitWalkRef.GetUnitStats().GetTileAttributeOverrides());
+                m_TileSystem.SetPathMarkers(m_AllReachableTileHighlight.ToArray(), m_MovementPath);
             }
         }
     }
@@ -80,18 +83,16 @@ public class WalkUI_Logic : TweenUI_Scale
     public void PressedConfirm()
     {
         // then the unit will walk that path! if the path exists
-        switch (m_ReachablePath.Length)
+        if (m_MovementPath.Length == 0)
         {
-            case 0:
-                print("Player is trying to walk no path");
-                break;
-            default:
-                m_UnitWalkRef.m_TilePath = m_ReachablePath;
-                UnitActionScheduler zeActScheduler = FindObjectOfType<UnitActionScheduler>();
-                m_UnitWalkRef.TurnOn();
-                zeActScheduler.ScheduleAction(m_UnitWalkRef);
-                Destroy(gameObject);
-                break;
+            Debug.Log("Player is trying to walk no path");
+        }
+        else
+        {
+            m_UnitWalkRef.SetTilePath(m_MovementPath);
+            UnitActionScheduler zeActScheduler = FindObjectOfType<UnitActionScheduler>();
+            m_UnitWalkRef.TurnOn();
+            Destroy(gameObject);
         }
     }
 
@@ -102,9 +103,9 @@ public class WalkUI_Logic : TweenUI_Scale
     protected virtual void PressedAction(IUnitAction _action)
     {
         m_UnitWalkRef = (UnitWalkAction)_action;
-        TileId[] zeReachableTiles = m_TileSys.GetReachableTiles(m_UnitWalkRef.m_MovementPoints, m_UnitWalkRef.GetUnitStats().CurrentTileID, m_UnitWalkRef.GetUnitStats().GetTileAttributeOverrides());
+        TileId[] zeReachableTiles = m_TileSystem.GetReachableTiles(m_UnitWalkRef.m_MovementPoints, m_UnitWalkRef.GetUnitStats().CurrentTileID, m_UnitWalkRef.GetUnitStats().GetTileAttributeOverrides());
         m_AllReachableTileHighlight = new List<TileId>(zeReachableTiles);
-        m_AllReachableTileHighlight.Remove(m_UnitWalkRef.m_UnitStats.CurrentTileID);
-        m_TileSys.SetPathMarkers(m_AllReachableTileHighlight.ToArray(), null);
+        m_AllReachableTileHighlight.Remove(m_UnitWalkRef.GetUnitStats().CurrentTileID);
+        m_TileSystem.SetPathMarkers(m_AllReachableTileHighlight.ToArray(), null);
     }
 }

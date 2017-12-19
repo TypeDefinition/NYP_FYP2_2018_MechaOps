@@ -7,7 +7,7 @@ using UnityEngine.Assertions;
 [DisallowMultipleComponent]
 public class PanzerAnimator : MOAnimator
 {
-    // Gun Elevation (This has been removed due to time constraints. It works but I don't want to calculate elavation and depression when doing shooting animation.)
+    // Gun Elevation
     [SerializeField, Range(0, 90)] private float m_MaxGunElevation = 80.0f;
     [SerializeField, Range(0, 90)] private float m_MaxGunDepression = 20.0f;
 
@@ -29,7 +29,6 @@ public class PanzerAnimator : MOAnimator
     [SerializeField] private TankBullet m_BulletPrefab;
 
     [SerializeField, Tooltip("Hull of the panzer")] private Transform m_HullTransform;
-    [SerializeField, Tooltip("CineMachine Handler")] private CineMachineHandler m_CineHandler;
     [SerializeField, Tooltip("Time taken for delay in the animation from camera to the turret during camera cinematics")]
     private float m_TimeDelayForCamToTurret = 3.0f;
     [SerializeField, Tooltip("Time taken for the delay before camera goes back to normal from cinematics")]
@@ -72,8 +71,8 @@ public class PanzerAnimator : MOAnimator
         {
             case "Player":
                 // TODO: Only the player's units get to do the cinematic shots for now
-                if (!m_CineHandler)
-                    m_CineHandler = FindObjectOfType<CineMachineHandler>();
+                if (!m_CineMachineHandler)
+                    m_CineMachineHandler = FindObjectOfType<CineMachineHandler>();
                 break;
             default:
                 break;
@@ -365,10 +364,10 @@ public class PanzerAnimator : MOAnimator
         while (!m_FinishShootAnimFlag)
             yield return null;
         m_FinishShootAnimFlag = false;
-        if (m_CineHandler)
+        if (m_CineMachineHandler)
         {
             yield return new WaitForSeconds(m_TimeDelayForCamBackToNormal);
-            m_CineHandler.SetCineBrain(false);
+            m_CineMachineHandler.SetCineBrain(false);
         }
     }
 
@@ -408,7 +407,7 @@ public class PanzerAnimator : MOAnimator
     // Tailored Animations
     public void StartShootAnimation()
     {
-        if (m_CineHandler)
+        if (m_CineMachineHandler)
         {
             int zeRandNum = Random.Range(1, 3);
             // unfortunately, need to hardcode the cinmatic abit
@@ -416,15 +415,15 @@ public class PanzerAnimator : MOAnimator
             {
                 case 2:
                     // Number 2 refers to Following the target while aiming the cinematic camera at the Turret
-                    m_CineHandler.CineStateCam.Follow = m_Target.transform;
+                    m_CineMachineHandler.CineStateCam.Follow = m_Target.transform;
                     break;
                 default:
-                    m_CineHandler.CineStateCam.Follow = m_Turret.transform;
+                    m_CineMachineHandler.CineStateCam.Follow = m_Turret.transform;
                     break;
             }
-            m_CineHandler.CineStateCam.LookAt = m_Gun.transform;
+            m_CineMachineHandler.CineStateCam.LookAt = m_Gun.transform;
             // and then randomize between 1st and 2nd attack camera cinematics
-            m_CineHandler.TriggerEventParam("Attack" + zeRandNum);
+            m_CineMachineHandler.TriggerEventParam("Attack" + zeRandNum);
         }
         m_ShootAnimationCoroutine = ShootAnimationCouroutine();
         StartCoroutine(m_ShootAnimationCoroutine);
@@ -437,11 +436,11 @@ public class PanzerAnimator : MOAnimator
 
     public void StartMoveAnimation()
     {
-        if (m_CineHandler)
+        if (m_CineMachineHandler)
         {
-            m_CineHandler.CineStateCam.LookAt = m_HullTransform;
-            m_CineHandler.CineStateCam.Follow = m_HullTransform;
-            m_CineHandler.TriggerEventParam("Walk");
+            m_CineMachineHandler.CineStateCam.LookAt = m_HullTransform;
+            m_CineMachineHandler.CineStateCam.Follow = m_HullTransform;
+            m_CineMachineHandler.TriggerEventParam("Walk");
         }
         m_MoveAnimationCoroutine = MoveAnimationCouroutine();
         StartCoroutine(m_MoveAnimationCoroutine);
@@ -484,9 +483,9 @@ public class PanzerAnimator : MOAnimator
     /// </summary>
     public void StopCinematicCamera()
     {
-        if (m_CineHandler)
+        if (m_CineMachineHandler)
         {
-            m_CineHandler.SetCineBrain(false);
+            m_CineMachineHandler.SetCineBrain(false);
         }
     }
 
@@ -496,20 +495,20 @@ public class PanzerAnimator : MOAnimator
     public void StartDeathAnimation()
     {
         // Regardless of the tag, show the death cinematic for both sides
-        if (!m_CineHandler)
+        if (!m_CineMachineHandler)
         {
-            m_CineHandler = FindObjectOfType<CineMachineHandler>();
+            m_CineMachineHandler = FindObjectOfType<CineMachineHandler>();
         }
-        m_CineHandler.CineStateCam.LookAt = m_HullTransform;
-        m_CineHandler.CineStateCam.Follow = m_HullTransform;
-        m_CineHandler.TriggerEventParam("Die");
+        m_CineMachineHandler.CineStateCam.LookAt = m_HullTransform;
+        m_CineMachineHandler.CineStateCam.Follow = m_HullTransform;
+        m_CineMachineHandler.TriggerEventParam("Die");
         StartCoroutine(StartDeathCameraCoroutine());
     }
 
     private IEnumerator StartDeathCameraCoroutine()
     {
         yield return new WaitForSeconds(m_TimeDelayForDeathCam);
-        m_CineHandler.SetCineBrain(false);
+        m_CineMachineHandler.SetCineBrain(false);
         yield return new WaitForSeconds(m_TimeDelayForCamBackToNormal);
         yield break;
     }
@@ -517,8 +516,8 @@ public class PanzerAnimator : MOAnimator
 #if UNITY_EDITOR
     private void OnValidate()
     {
-        //MaxGunElevation = m_MaxGunElevation;
-        //MaxGunDepression = m_MaxGunDepression;
+        MaxGunElevation = m_MaxGunElevation;
+        MaxGunDepression = m_MaxGunDepression;
     }
 #endif // UNITY_EDTIOR
 

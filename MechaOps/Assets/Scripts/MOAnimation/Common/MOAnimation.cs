@@ -15,6 +15,7 @@ public abstract class MOAnimation : MonoBehaviour
         set { m_CompletionCallback = value; }
     }
 
+    public abstract MOAnimator GetMOAnimator();
     public abstract void StartAnimation();
     public abstract void PauseAnimation();
     public abstract void ResumeAnimation();

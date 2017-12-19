@@ -11,7 +11,7 @@ public class SkipUI_Logic : MonoBehaviour {
     protected float m_AnimTime = 0.3f;
     [Header("Debugging")]
     [SerializeField, Tooltip("The unit's skip action")]
-    protected UnitSkipAct m_UnitSkipAct;
+    protected UnitSkipAction m_UnitSkipAct;
 
     private void OnEnable()
     {
@@ -49,6 +49,6 @@ public class SkipUI_Logic : MonoBehaviour {
 
     public void PressedAction(IUnitAction _action)
     {
-        m_UnitSkipAct = (UnitSkipAct)_action;
+        m_UnitSkipAct = (UnitSkipAction)_action;
     }
 }

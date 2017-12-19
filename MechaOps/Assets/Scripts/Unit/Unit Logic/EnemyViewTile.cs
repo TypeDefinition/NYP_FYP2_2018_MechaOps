@@ -67,7 +67,7 @@ public class EnemyViewTile : ViewTileScript
     /// <summary>
     /// Need this to check whether it renders itself or not!
     /// </summary>
-    public override void RenderSurroundingTiles()
+    public override void SetVisibleTiles()
     {
         VisibilityCount = VisibilityCount;
     }

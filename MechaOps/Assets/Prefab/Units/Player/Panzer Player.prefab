@@ -1807,12 +1807,9 @@ MonoBehaviour:
   m_UnitActionUI: {fileID: 1134435258809106, guid: f60f06ef37015e14ba42bc5dad875b1c,
     type: 2}
   m_ActionIconUI: {fileID: 21300000, guid: d859645726494314ab2591c7384f7d53, type: 3}
-  m_UnitStats: {fileID: 114811533488785636}
-  m_AnimDone: 0
+  m_AnimationCompleted: 0
   m_MovementPoints: 5
-  m_WalkAnim: {fileID: 114313675222075914}
-  m_TilePath: []
-  m_TileSys: {fileID: 0}
+  m_WalkAnimation: {fileID: 114313675222075914}
 --- !u!114 &114257393696662072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1944,14 +1941,13 @@ MonoBehaviour:
   m_UnitActionUI: {fileID: 1044431308409052, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
     type: 2}
   m_ActionIconUI: {fileID: 21300000, guid: e392509062377594ab81881f16831a09, type: 3}
-  m_UnitStats: {fileID: 114811533488785636}
-  m_AnimDone: 0
+  m_AnimationCompleted: 0
   m_MinAttackRange: 0
   m_MaxAttackRange: 5
   m_AccuracyPoints: 0
   m_DamagePoints: 2
-  m_AttackAnim: {fileID: 114034170699782738}
   m_TargetUnitStats: {fileID: 0}
+  m_AttackAnimation: {fileID: 0}
 --- !u!114 &114724299080089450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2039,5 +2035,4 @@ MonoBehaviour:
   m_UnitActionUI: {fileID: 1612582933021620, guid: 10234cb69b925e14d9163d2556b7fb5b,
     type: 2}
   m_ActionIconUI: {fileID: 21300000, guid: 2701c9f4499a5f340a46e96aeba66a4e, type: 3}
-  m_UnitStats: {fileID: 114811533488785636}
-  m_AnimDone: 0
+  m_AnimationCompleted: 0

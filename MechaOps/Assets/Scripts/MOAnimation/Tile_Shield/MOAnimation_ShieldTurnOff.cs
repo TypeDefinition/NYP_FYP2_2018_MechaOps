@@ -14,6 +14,11 @@ public class MOAnimation_ShieldTurnOff : MOAnimation
         Assert.IsTrue(m_Animator != null, MethodBase.GetCurrentMethod().Name + " - An Animator is required for this to work!");
     }
 
+    public override MOAnimator GetMOAnimator()
+    {
+        return m_Animator;
+    }
+
     public override void StartAnimation()
     {
         m_Animator.StartTurnOffAnimation();

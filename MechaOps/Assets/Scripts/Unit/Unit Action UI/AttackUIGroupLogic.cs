@@ -141,11 +141,11 @@ public class AttackUIGroupLogic : TweenUI_Scale {
 
         int layerToCastThrough = 1 << LayerMask.NameToLayer("TileDisplay");
         // We will iterate through the list of units that this unit can see!
-        foreach (GameObject zeSeenUnit in m_UnitAttackActRef.m_UnitStats.EnemiesInRange)
+        foreach (GameObject zeSeenUnit in m_UnitAttackActRef.GetUnitStats().EnemiesInRange)
         {
             // we get the unit stat and tile distance!
             UnitStats zeObjStat = zeSeenUnit.GetComponent<UnitStats>();
-            int zeTileDist = TileId.GetDistance(zeObjStat.CurrentTileID, m_UnitAttackActRef.m_UnitStats.CurrentTileID);
+            int zeTileDist = TileId.GetDistance(zeObjStat.CurrentTileID, m_UnitAttackActRef.GetUnitStats().CurrentTileID);
             // if within range, then raycast to the target and check whether it works
             if (zeTileDist <= m_UnitAttackActRef.MaxAttackRange && zeTileDist >= m_UnitAttackActRef.MinAttackRange)
             {

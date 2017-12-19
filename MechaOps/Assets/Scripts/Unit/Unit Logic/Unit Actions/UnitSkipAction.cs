@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Mainly to skip the unit's turn!
 /// </summary>
-public class UnitSkipAct : IUnitAction {
+public class UnitSkipAction : IUnitAction {
 
     /// <summary>
     /// Just use up all of it's action points and send the event
@@ -17,9 +17,9 @@ public class UnitSkipAct : IUnitAction {
         GameEventSystem.GetInstance().TriggerEvent("UnitFinishAction");
         GetUnitStats().ResetUnitStats();
         m_ActionState = ActionState.Completed;
-        if (CompletedCallBack != null)
+        if (CompletionCallBack != null)
         {
-            CompletedCallBack.Invoke();
+            CompletionCallBack.Invoke();
         }
     }
 

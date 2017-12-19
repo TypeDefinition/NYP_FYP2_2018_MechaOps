@@ -4,25 +4,11 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-[DisallowMultipleComponent]
-public class MOAnimation_PanzerMove : MOAnimation
+public class MOAnimation_PanzerMove : MOAnimation_Move
 {
     [SerializeField] private PanzerAnimator m_Animator = null;
-    private Vector3 m_Destination;
-    
-    public PanzerAnimator PanzerAnimator
-    {
-        get
-        {
-            return m_Animator;
-        }
-    }
 
-    public Vector3 Destination
-    {
-        get { return m_Destination; }
-        set { m_Destination = value; }
-    }
+    public PanzerAnimator PanzerAnimator { get { return m_Animator; } }
 
 	// Use this for initialization
 	void Start ()
@@ -33,24 +19,30 @@ public class MOAnimation_PanzerMove : MOAnimation
 	// Update is called once per frame
 	void Update () {}
 
+    public override MOAnimator GetMOAnimator() { return m_Animator; }
+
     public override void StartAnimation()
     {
+        base.StartAnimation();
         m_Animator.SetMoveAnimationParameters(m_Destination, m_CompletionCallback);
         m_Animator.StartMoveAnimation();
     }
 
     public override void PauseAnimation()
     {
+        base.PauseAnimation();
         m_Animator.StopMoveAnimation();
     }
 
     public override void ResumeAnimation()
     {
+        base.ResumeAnimation();
         m_Animator.StartMoveAnimation();
     }
 
     public override void StopAnimation()
     {
+        base.StopAnimation();
         m_Animator.StopMoveAnimation();
     }
 }
