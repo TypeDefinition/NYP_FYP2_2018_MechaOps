@@ -18,6 +18,8 @@ public abstract class IUnitAction : MonoBehaviour
 
     [SerializeField, Tooltip("The component name which will be use to indicate what UI tag to be activated.")]
     protected string m_UnitActionName;
+    [SerializeField, Tooltip("This is the description of the action.")]
+    protected string m_UnitActionDescription = "<Placeholder Description>";
     [SerializeField, Tooltip("The flag to indicates whether is it turned on.")]
     private bool m_TurnedOn = false;
     [SerializeField, Tooltip("The priority number for this action")]
@@ -42,9 +44,14 @@ public abstract class IUnitAction : MonoBehaviour
 
     protected Void_Void m_CompletionCallBack;
 
-    protected string UnitActionName
+    public string UnitActionName
     {
         get { return m_UnitActionName; }
+    }
+
+    public string UnitActionDescription
+    {
+        get { return m_UnitActionDescription; }
     }
 
     public void TurnOn()

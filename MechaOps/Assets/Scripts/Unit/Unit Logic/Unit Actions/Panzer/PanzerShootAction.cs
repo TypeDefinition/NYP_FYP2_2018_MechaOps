@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class PanzerShootAction : UnitAttackAction
 {
-    protected MOAnimation_PanzerAttack m_AttackAnimation;
+    [SerializeField] protected MOAnimation_PanzerAttack m_AttackAnimation;
 
     protected bool m_RegisteredAnimationCompleteCallback = false;
 
@@ -84,5 +86,18 @@ public class PanzerShootAction : UnitAttackAction
         InvokeCompletionCallback();
 
         CheckIfUnitFinishedTurn();
+    }
+
+    // Even though we check Assert.IsTrue(VerifyRunCondition()); here,
+    // This is not the case for ALL actions. For an action like overwatch,
+    // it is perfectly okay for VerifyRunCondition() to return false, since we are not
+    // shooting any enemy now. Rather, we are WAITING for some point in time in the future
+    // when VerifyRunCondition() returns true. It is also possible for an action like Overwatch
+    // to never excecute because no enemies walked into the attack range of the unit.
+    protected override void OnTurnOn()
+    {
+        base.OnTurnOn();
+        Assert.IsTrue(VerifyRunCondition());
+        m_UnitStats.GetGameSystemsDirectory().GetUnitActionScheduler().ScheduleAction(this);
     }
 }

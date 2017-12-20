@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.Assertions;
+using TMPro;
 
 /// <summary>
 /// A simper unit action for walking!
@@ -130,6 +131,12 @@ public class UnitWalkAction : IUnitAction
 
     public override bool VerifyRunCondition() { return m_TilePath.Count > 0; }
 
+    // Even though we check Assert.IsTrue(VerifyRunCondition()); here,
+    // This is not the case for ALL actions. For an action like overwatch,
+    // it is perfectly okay for VerifyRunCondition() to return false, since we are not
+    // shooting any enemy now. Rather, we are WAITING for some point in time in the future
+    // when VerifyRunCondition() returns true. It is also possible for an action like Overwatch
+    // to never excecute because no enemies walked into the attack range of the unit.
     protected override void OnTurnOn()
     {
         base.OnTurnOn();
