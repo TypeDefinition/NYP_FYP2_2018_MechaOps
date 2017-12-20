@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.Assertions;
+using TMPro;
 
 /// <summary>
 /// Handles how the UI for unit walking works
@@ -19,6 +20,10 @@ public class WalkUI_Logic : TweenUI_Scale
     protected TileId[] m_MovementPath;
     [Tooltip("The Reference to unit walk action")]
     public UnitWalkAction m_UnitAction;
+
+    // Action Name & Description
+    [SerializeField] protected TextMeshProUGUI m_ActionNameText;
+    [SerializeField] protected TextMeshProUGUI m_ActionDescriptionText;
 
     private TileSystem m_TileSystem = null;
 
@@ -95,7 +100,7 @@ public class WalkUI_Logic : TweenUI_Scale
     /// <summary>
     /// When player pressed back button!
     /// </summary>
-    public void PressedBack()
+    public void PressedCancel()
     {
         // since the PlayerUnitSystem will gob back to normal
         GameEventSystem.GetInstance().TriggerEvent("ToggleSelectingUnit");
@@ -128,6 +133,11 @@ public class WalkUI_Logic : TweenUI_Scale
     protected virtual void SetUnitAction(IUnitAction _action)
     {
         m_UnitAction = (UnitWalkAction)_action;
+
+        // Set the name and description.
+        m_ActionNameText.text = _action.UnitActionName;
+        m_ActionDescriptionText.text = _action.UnitActionDescription;
+
         TileId[] reachableTiles = m_TileSystem.GetReachableTiles(m_UnitAction.m_MovementPoints, m_UnitAction.GetUnitStats().CurrentTileID, m_UnitAction.GetUnitStats().GetTileAttributeOverrides());
         m_AllReachableTileHighlight = new List<TileId>(reachableTiles);
         m_AllReachableTileHighlight.Remove(m_UnitAction.GetUnitStats().CurrentTileID);

@@ -15,6 +15,7 @@ public class UnitInfoDisplay : TweenUI_Scale
     [SerializeField] protected ActionPointsCounter m_ActionPointsCounter = null;
     [Tooltip("This offset is added to the unit's world space position when converting from the unit's world space to screen space position.")]
     [SerializeField] protected Vector3 m_UnitWorldPositionOffset = new Vector3(0.0f, 2.5f, 0.0f);
+    [SerializeField] protected float m_PositionZ = 0.0f;
 
     protected UnitStats m_UnitStats = null;
 
@@ -56,6 +57,7 @@ public class UnitInfoDisplay : TweenUI_Scale
             Canvas screenSpaceCanvas = m_UnitStats.GetGameSystemsDirectory().GetScreenSpaceCanvas();
             Camera gameCamera = m_UnitStats.GetGameSystemsDirectory().GetGameCamera();
             Vector3 screenPoint = gameCamera.WorldToScreenPoint(m_UnitStats.gameObject.transform.position + m_UnitWorldPositionOffset);
+            screenPoint.z = m_PositionZ;
             transform.position = screenPoint;
         }
     }

@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 4495504740225168}
   - component: {fileID: 114518543058706742}
   m_Layer: 5
-  m_Name: Game Handler
+  m_Name: Game UI Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -204,6 +204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TileSystem: {fileID: 0}
   m_ScreenSpaceCanvas: {fileID: 0}
+  m_GameCamera: {fileID: 0}
   m_UnitsTracker: {fileID: 114672490564443986}
   m_EnemyUnitsManager: {fileID: 114350018491506326}
   m_PlayerUnitsManager: {fileID: 114210778316198234}
@@ -279,9 +280,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PlayerManager: {fileID: 114210778316198234}
   m_EnemyManager: {fileID: 114350018491506326}
-  m_PlayerWonDisplayGO: {fileID: 0}
-  m_PlayerLostDisplayGO: {fileID: 0}
-  m_PlayerTurnDisplay: []
+  m_PlayerWonDisplay: {fileID: 0}
+  m_PlayerLostDisplay: {fileID: 0}
   m_EnemyTurnDisplay: {fileID: 0}
   m_PlayerTurn: 1
 --- !u!114 &114672490564443986

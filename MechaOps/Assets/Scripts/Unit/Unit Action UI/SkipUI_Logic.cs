@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 /// <summary>
 /// Should be used for skipping the unit's action
@@ -14,6 +15,10 @@ public class SkipUI_Logic : MonoBehaviour
     [SerializeField, Tooltip("The unit's skip action")]
     protected UnitSkipAction m_UnitSkipAct;
 
+    // Action Name & Description
+    [SerializeField] protected TextMeshProUGUI m_ActionNameText;
+    [SerializeField] protected TextMeshProUGUI m_ActionDescriptionText;
+
     private void OnEnable()
     {
         Vector3 zeScale = transform.localScale;
@@ -23,15 +28,15 @@ public class SkipUI_Logic : MonoBehaviour
         LeanTween.scaleX(gameObject, zeOriginalScaleX, m_AnimationTime);
         // making sure the player cannot pressed any other unit
         GameEventSystem.GetInstance().TriggerEvent("ToggleSelectingUnit");
-        GameEventSystem.GetInstance().SubscribeToEvent<IUnitAction>("SelectedAction", PressedAction);
+        GameEventSystem.GetInstance().SubscribeToEvent<IUnitAction>("SelectedAction", SetUnitAction);
     }
 
     private void OnDisable()
     {
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<IUnitAction>("SelectedAction", PressedAction);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<IUnitAction>("SelectedAction", SetUnitAction);
     }
 
-    public void PressedYes()
+    public void PressedConfirm()
     {
         UnitActionScheduler zeActScheduler = FindObjectOfType<UnitActionScheduler>();
         m_UnitSkipAct.TurnOn();
@@ -42,14 +47,18 @@ public class SkipUI_Logic : MonoBehaviour
     /// <summary>
     /// Pressing no is equivalent to back button
     /// </summary>
-    public void PressedNo()
+    public void PressedCancel()
     {
         GameEventSystem.GetInstance().TriggerEvent("ToggleSelectingUnit");
         Destroy(gameObject);
     }
 
-    public void PressedAction(IUnitAction _action)
+    public void SetUnitAction(IUnitAction _action)
     {
         m_UnitSkipAct = (UnitSkipAction)_action;
+
+        // Set the name and description.
+        m_ActionNameText.text = _action.UnitActionName;
+        m_ActionDescriptionText.text = _action.UnitActionDescription;
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.Assertions;
 using TMPro;
 
 /// <summary>
@@ -10,9 +12,13 @@ public class AttackUI_Logic : TweenUI_Scale
 {
     [Header("Variables needed")]
     [Tooltip("The prefab for target UI which the code should already be doing it for you. Will be expanded upon in the future!")]
-    public UnitInfoDisplay m_UnitInfoDisplay_Prefab;
+    [SerializeField] protected UnitInfoDisplay m_UnitInfoDisplay_Prefab;
     [Tooltip("Text for tracked target")]
-    public TextMeshProUGUI m_TargetNameText;
+    [SerializeField] protected TextMeshProUGUI m_TargetNameText;
+
+    // Action Name & Description
+    [SerializeField] protected TextMeshProUGUI m_ActionNameText;
+    [SerializeField] protected TextMeshProUGUI m_ActionDescriptionText;
 
     [Header("Shown in Inspector for debugging purposes.")]
     [Tooltip("The unit attack action reference. Player's Unit attack action is to be expected")]
@@ -48,7 +54,7 @@ public class AttackUI_Logic : TweenUI_Scale
     /// <summary>
     /// Use the base class action logic and allow it to be used by the button in the scene
     /// </summary>
-    public void DoTheAttackAction()
+    public void PressedConfirm()
     {
         // only press the button if the target is not null!
         if (m_OtherTarget)
@@ -63,7 +69,7 @@ public class AttackUI_Logic : TweenUI_Scale
     /// <summary>
     /// Cycle to the right in the array
     /// </summary>
-    public void GoRightOfTarget()
+    public void SelectPreviousTarget()
     {
         if (m_ListOfTargets.Count > 0)
         {
@@ -75,7 +81,7 @@ public class AttackUI_Logic : TweenUI_Scale
     /// <summary>
     /// Cycle to the left in the array
     /// </summary>
-    public void GoLeftOfTarget()
+    public void SelectNextTarget()
     {
         if (m_ListOfTargets.Count > 0)
         {
@@ -96,9 +102,9 @@ public class AttackUI_Logic : TweenUI_Scale
     }
 
     /// <summary>
-    /// if the player pressed the back button
+    /// if the player pressed the cancel button
     /// </summary>
-    public void PressBack()
+    public void PressedCancel()
     {
         // ensure that the player will be able to click on unit again!
         GameEventSystem.GetInstance().TriggerEvent("ToggleSelectingUnit");
@@ -114,6 +120,10 @@ public class AttackUI_Logic : TweenUI_Scale
     {
         // it should be the generic attack action
         m_UnitAttackAction = (UnitAttackAction)_action;
+
+        // Set the name and description.
+        m_ActionNameText.text = _action.UnitActionName;
+        m_ActionDescriptionText.text = _action.UnitActionDescription;
 
         int layerToCastThrough = 1 << LayerMask.NameToLayer("TileDisplay");
         // We will iterate through the list of units that this unit can see!

@@ -1799,6 +1799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UnitActionName: Walk
+  m_UnitActionDescription: <Placeholder Description>
   m_TurnedOn: 0
   m_Priority: 0
   m_ActionCost: 1
@@ -1933,6 +1934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UnitActionName: Shoot
+  m_UnitActionDescription: <Placeholder Description>
   m_TurnedOn: 0
   m_Priority: 0
   m_ActionCost: 1
@@ -1946,6 +1948,7 @@ MonoBehaviour:
   m_MaxAttackRange: 5
   m_AccuracyPoints: 0
   m_DamagePoints: 2
+  m_AttackAnimation: {fileID: 114034170699782738}
 --- !u!114 &114724299080089450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2025,6 +2028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UnitActionName: Skip
+  m_UnitActionDescription: Warning! This will skip the turn for this unit!
   m_TurnedOn: 0
   m_Priority: 0
   m_ActionCost: 2

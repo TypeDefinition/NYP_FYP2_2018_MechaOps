@@ -2000,6 +2000,7 @@ MonoBehaviour:
   m_MaxAttackRange: 0
   m_AccuracyPoints: 0
   m_DamagePoints: 0
+  m_AttackAnimation: {fileID: 114736098985811620}
 --- !u!114 &114719944890479642
 MonoBehaviour:
   m_ObjectHideFlags: 1
