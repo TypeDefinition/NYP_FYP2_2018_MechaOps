@@ -31,6 +31,8 @@ public class PanzerAnimator : MOAnimator
     [SerializeField, Tooltip("Hull of the panzer")] private Transform m_HullTransform;
     [SerializeField, Tooltip("Time taken for delay in the animation from camera to the turret during camera cinematics")]
     protected float m_TimeDelayForCamToTurret = 3.0f;
+    [SerializeField, Tooltip("Time taken for the death cam animation")]
+    protected float m_TimeDelayForDeathCam = 2.0f;
     [SerializeField, Tooltip("Time taken for the delay before camera goes back to normal from cinematics")]
     protected float m_TimeDelayForCamBackToNormal = 0.5f;
 
@@ -417,6 +419,28 @@ public class PanzerAnimator : MOAnimator
     public virtual void StopMoveAnimation()
     {
         StopCoroutine(m_MoveAnimationCoroutine);
+    }
+
+    // Death
+    public virtual void StartDeathAnimation()
+    {
+        // Regardless of the tag, show the death cinematic for both sides
+        if (!m_CineMachineHandler)
+        {
+            m_CineMachineHandler = FindObjectOfType<CineMachineHandler>();
+        }
+        m_CineMachineHandler.CineStateCam.LookAt = m_HullTransform;
+        m_CineMachineHandler.CineStateCam.Follow = m_HullTransform;
+        m_CineMachineHandler.TriggerEventParam("Die");
+        StartCoroutine(StartDeathCameraCoroutine());
+    }
+
+    private IEnumerator StartDeathCameraCoroutine()
+    {
+        yield return new WaitForSeconds(m_TimeDelayForDeathCam);
+        m_CineMachineHandler.SetCineBrain(false);
+        yield return new WaitForSeconds(m_TimeDelayForCamBackToNormal);
+        yield break;
     }
 
     // Once the animation is done, the callback is removed.
