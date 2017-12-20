@@ -30,6 +30,7 @@ public class WalkGoapAct : IGoapAction {
     public override void DoAction()
     {
         print("GOAP doing start walking");
+        m_ActionCompleted = false;
         m_UpdateRoutine = StartCoroutine(UpdateActRoutine());
     }
 
@@ -57,15 +58,15 @@ public class WalkGoapAct : IGoapAction {
                 break;
         }
         m_WalkAct.SetTilePath(zeAvailablePaths);
-        UnitActionScheduler zeActScheduler = FindObjectOfType<UnitActionScheduler>();
+        m_WalkAct.CompletionCallBack += InvokeActionCompleted;
         m_WalkAct.TurnOn();
-        zeActScheduler.ScheduleAction(m_WalkAct);
         // destination is reached maybe but there is nothing more it can do right now!
         m_TileDest = null;
         WaitForFixedUpdate zeFixedUp = new WaitForFixedUpdate();
-        while (m_WalkAct.GetActionState() != IUnitAction.ActionState.Completed)
+        while (!m_ActionCompleted)
             yield return zeFixedUp;
         print("Finished walk action");
+        m_WalkAct.CompletionCallBack -= InvokeActionCompleted;
         m_TileDest = null;
         yield break;
     }

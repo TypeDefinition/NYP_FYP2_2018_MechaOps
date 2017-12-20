@@ -29,9 +29,7 @@ public class GoapAttackAct : IGoapAction {
         // we picked the target which will be the 1st unit in the range at GoapNearTarget
         GameObject zeTarget = m_GOAPTargetAct.EnemiesInAttack[0];
         m_AttackAct.SetTarget(zeTarget);
-        UnitActionScheduler zeActScheduler = FindObjectOfType<UnitActionScheduler>();
         m_AttackAct.TurnOn();
-        zeActScheduler.ScheduleAction(m_AttackAct);
         WaitForFixedUpdate zeFixedWait = new WaitForFixedUpdate();
         bool zeWaitForComplete = false;
         m_AttackAct.CompletionCallBack += () => zeWaitForComplete = true;

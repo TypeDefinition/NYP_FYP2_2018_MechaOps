@@ -157,6 +157,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1928077
 Transform:
   m_ObjectHideFlags: 0
@@ -220,6 +222,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 744945391}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2969941
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -332,6 +336,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &3004080
 Transform:
   m_ObjectHideFlags: 0
@@ -406,6 +412,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &5303556
 Transform:
   m_ObjectHideFlags: 0
@@ -469,6 +477,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1396191594}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &9039401
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -643,6 +653,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 272589428}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &11245574
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -744,6 +756,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 2055536695}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &18881973
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -856,6 +870,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &19301956
 Transform:
   m_ObjectHideFlags: 0
@@ -930,6 +946,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &22982559
 Transform:
   m_ObjectHideFlags: 0
@@ -993,6 +1011,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 198128979}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &23721784
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1059,139 +1079,6 @@ Transform:
   m_Father: {fileID: 198128980}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &40197615
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1907982644}
-    m_Modifications:
-    - target: {fileID: 224099410270880492, guid: 5ff687189fe473f40842dc3ea970b39a,
-        type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224099410270880492, guid: 5ff687189fe473f40842dc3ea970b39a,
-        type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224099410270880492, guid: 5ff687189fe473f40842dc3ea970b39a,
-        type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -1.3054996
-      objectReference: {fileID: 0}
-    - target: {fileID: 224099410270880492, guid: 5ff687189fe473f40842dc3ea970b39a,
-        type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 224099410270880492, guid: 5ff687189fe473f40842dc3ea970b39a,
-        type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224099410270880492, guid: 5ff687189fe473f40842dc3ea970b39a,
-        type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224099410270880492, guid: 5ff687189fe473f40842dc3ea970b39a,
-        type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 224099410270880492, guid: 5ff687189fe473f40842dc3ea970b39a,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224099410270880492, guid: 5ff687189fe473f40842dc3ea970b39a,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: -348.63
-      objectReference: {fileID: 0}
-    - target: {fileID: 224099410270880492, guid: 5ff687189fe473f40842dc3ea970b39a,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 6.76
-      objectReference: {fileID: 0}
-    - target: {fileID: 224099410270880492, guid: 5ff687189fe473f40842dc3ea970b39a,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 3.967
-      objectReference: {fileID: 0}
-    - target: {fileID: 224099410270880492, guid: 5ff687189fe473f40842dc3ea970b39a,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 3.609
-      objectReference: {fileID: 0}
-    - target: {fileID: 224099410270880492, guid: 5ff687189fe473f40842dc3ea970b39a,
-        type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224099410270880492, guid: 5ff687189fe473f40842dc3ea970b39a,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224099410270880492, guid: 5ff687189fe473f40842dc3ea970b39a,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224099410270880492, guid: 5ff687189fe473f40842dc3ea970b39a,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224099410270880492, guid: 5ff687189fe473f40842dc3ea970b39a,
-        type: 2}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224099410270880492, guid: 5ff687189fe473f40842dc3ea970b39a,
-        type: 2}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114756513177226518, guid: 5ff687189fe473f40842dc3ea970b39a,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114756513177226518, guid: 5ff687189fe473f40842dc3ea970b39a,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114389548954127560, guid: 5ff687189fe473f40842dc3ea970b39a,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114389548954127560, guid: 5ff687189fe473f40842dc3ea970b39a,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1293721087050030, guid: 5ff687189fe473f40842dc3ea970b39a, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 5ff687189fe473f40842dc3ea970b39a, type: 2}
-  m_IsPrefabParent: 0
---- !u!4 &40197616 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 40197615}
---- !u!224 &40203307 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 224542146991573946, guid: fd65515792dd9b04f8c87b6ba9939191,
-    type: 2}
-  m_PrefabInternal: {fileID: 941310285}
 --- !u!1 &43587654
 GameObject:
   m_ObjectHideFlags: 0
@@ -1227,6 +1114,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1734453870}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &43587656
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1339,6 +1228,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &51915116
 Transform:
   m_ObjectHideFlags: 0
@@ -1402,6 +1293,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 918880301}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &56918678
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1503,6 +1396,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1651303202}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &57001791
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1615,6 +1510,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &57049023
 Transform:
   m_ObjectHideFlags: 0
@@ -1678,6 +1575,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1950073365}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &60372674
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1790,6 +1689,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &61413567
 Transform:
   m_ObjectHideFlags: 0
@@ -1864,6 +1765,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &62147343
 Transform:
   m_ObjectHideFlags: 0
@@ -1938,6 +1841,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &64831548
 Transform:
   m_ObjectHideFlags: 0
@@ -2012,6 +1917,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &66239586
 Transform:
   m_ObjectHideFlags: 0
@@ -2075,6 +1982,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1044604590}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &69931011
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2176,6 +2085,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1886928922}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &70137160
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2277,6 +2188,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1523777929}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &71338568
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2389,6 +2302,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &71833846
 Transform:
   m_ObjectHideFlags: 0
@@ -2463,6 +2378,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &81407814
 Transform:
   m_ObjectHideFlags: 0
@@ -2537,6 +2454,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &82826624
 Transform:
   m_ObjectHideFlags: 0
@@ -2600,6 +2519,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 928675477}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &83589845
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2816,6 +2737,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &87969051
 Transform:
   m_ObjectHideFlags: 0
@@ -2879,6 +2802,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 878539619}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &89616818
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2991,6 +2916,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &90643182
 Transform:
   m_ObjectHideFlags: 0
@@ -3065,6 +2992,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &92699006
 Transform:
   m_ObjectHideFlags: 0
@@ -3128,6 +3057,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1427015005}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &94526978
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3229,6 +3160,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1549011567}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &99452049
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3403,6 +3336,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &108879409
 Transform:
   m_ObjectHideFlags: 0
@@ -3477,6 +3412,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &111554976
 Transform:
   m_ObjectHideFlags: 0
@@ -3540,6 +3477,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 373596214}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &111979821
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3714,6 +3653,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &113774250
 Transform:
   m_ObjectHideFlags: 0
@@ -3777,6 +3718,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1923922926}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &114294532
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3878,6 +3821,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1076103041}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &121881180
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3979,6 +3924,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1532042747}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &142849201
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4163,6 +4110,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1060442196}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &157606592
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4275,6 +4224,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &162925901
 Transform:
   m_ObjectHideFlags: 0
@@ -4338,6 +4289,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1172386772}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &178040432
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4439,6 +4392,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 743434439}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &180673702
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4551,6 +4506,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &182563442
 Transform:
   m_ObjectHideFlags: 0
@@ -4614,6 +4571,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 900629728}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &184359445
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4868,6 +4827,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 51915115}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &189833519
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4980,6 +4941,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &191729923
 Transform:
   m_ObjectHideFlags: 0
@@ -5043,6 +5006,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1811352721}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &193925736
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5144,6 +5109,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 517793738}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &196308652
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5256,6 +5223,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &198128980
 Transform:
   m_ObjectHideFlags: 0
@@ -5319,6 +5288,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1438871708}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &199469628
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5431,6 +5402,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &202226862
 Transform:
   m_ObjectHideFlags: 0
@@ -5540,6 +5513,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 769757026}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &204231116
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5641,6 +5616,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1303444519}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &204813755
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5753,6 +5730,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1793329620}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &207607016
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5865,6 +5844,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &209508526
 Transform:
   m_ObjectHideFlags: 0
@@ -5939,6 +5920,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &213306511
 Transform:
   m_ObjectHideFlags: 0
@@ -6013,6 +5996,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &213447870
 Transform:
   m_ObjectHideFlags: 0
@@ -6087,6 +6072,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &219317902
 Transform:
   m_ObjectHideFlags: 0
@@ -6150,6 +6137,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1850780366}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &220663217
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6262,6 +6251,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &224958198
 Transform:
   m_ObjectHideFlags: 0
@@ -6336,6 +6327,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &230393286
 Transform:
   m_ObjectHideFlags: 0
@@ -6399,6 +6392,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1012029491}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &233417003
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6511,6 +6506,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &241369558
 Transform:
   m_ObjectHideFlags: 0
@@ -6574,6 +6571,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1703458391}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &241525655
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6686,6 +6685,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &241577837
 Transform:
   m_ObjectHideFlags: 0
@@ -6765,6 +6766,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &249739354
 Transform:
   m_ObjectHideFlags: 0
@@ -6828,6 +6831,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 793987752}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &250977588
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6929,6 +6934,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1703963056}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &251117491
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7030,6 +7037,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1627956263}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &252823752
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7142,6 +7151,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &254696328
 Transform:
   m_ObjectHideFlags: 0
@@ -7216,6 +7227,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &255639642
 Transform:
   m_ObjectHideFlags: 0
@@ -7290,6 +7303,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &265193722
 Transform:
   m_ObjectHideFlags: 0
@@ -7353,6 +7368,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 287585383}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &266589322
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7465,6 +7482,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &272589429
 Transform:
   m_ObjectHideFlags: 0
@@ -7528,6 +7547,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1921179131}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &272689020
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7629,6 +7650,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1953991293}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &274985863
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7730,6 +7753,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 66239585}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &278988417
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7842,6 +7867,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &282150966
 Transform:
   m_ObjectHideFlags: 0
@@ -7905,6 +7932,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 2013035241}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &285086833
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8017,6 +8046,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &287585384
 Transform:
   m_ObjectHideFlags: 0
@@ -8164,6 +8195,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &297227670
 Transform:
   m_ObjectHideFlags: 0
@@ -8227,6 +8260,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1801515660}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &299799021
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8328,6 +8363,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 744493289}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &300795973
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8502,6 +8539,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1230827380}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &303768073
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8619,6 +8658,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &306660200
 Transform:
   m_ObjectHideFlags: 0
@@ -8693,6 +8734,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &306900475
 Transform:
   m_ObjectHideFlags: 0
@@ -8767,6 +8810,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &307169557
 Transform:
   m_ObjectHideFlags: 0
@@ -8841,6 +8886,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &308129011
 Transform:
   m_ObjectHideFlags: 0
@@ -8904,6 +8951,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 254696327}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &309800195
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9005,6 +9054,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 585332482}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &315128180
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9199,6 +9250,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1749311622}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &324081717
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9300,6 +9353,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 2096872564}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &325344382
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9401,6 +9456,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1465441621}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &326591937
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9513,6 +9570,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &329127473
 Transform:
   m_ObjectHideFlags: 0
@@ -9576,6 +9635,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1077906501}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &329500709
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9642,11 +9703,6 @@ Transform:
   m_Father: {fileID: 1077906502}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!224 &333799485 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 224762864415983330, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
-    type: 2}
-  m_PrefabInternal: {fileID: 542699111}
 --- !u!1 &334788818
 GameObject:
   m_ObjectHideFlags: 0
@@ -9682,6 +9738,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 697703089}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &334788820
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9783,6 +9841,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 241577836}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &343897527
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9895,6 +9955,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &345456638
 Transform:
   m_ObjectHideFlags: 0
@@ -9958,6 +10020,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1381274454}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &347038248
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10059,6 +10123,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1718098099}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &352307932
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10181,6 +10247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UnitActionName: Skip
+  m_UnitActionDescription: <Placeholder Description>
   m_TurnedOn: 0
   m_Priority: 0
   m_ActionCost: 2
@@ -10189,8 +10256,7 @@ MonoBehaviour:
   m_UnitActionUI: {fileID: 1612582933021620, guid: 10234cb69b925e14d9163d2556b7fb5b,
     type: 2}
   m_ActionIconUI: {fileID: 21300000, guid: 2701c9f4499a5f340a46e96aeba66a4e, type: 3}
-  m_UnitStats: {fileID: 352312358}
-  m_AnimDone: 0
+  m_AnimationCompleted: 0
 --- !u!114 &352312355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10202,7 +10268,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5866b418d7713440a068b8de2e790f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UnitActionName: 
+  m_UnitActionName: ArtyAttack
+  m_UnitActionDescription: <Placeholder Description>
   m_TurnedOn: 0
   m_Priority: 0
   m_ActionCost: 1
@@ -10211,14 +10278,11 @@ MonoBehaviour:
   m_UnitActionUI: {fileID: 1709325544030846, guid: fd65515792dd9b04f8c87b6ba9939191,
     type: 2}
   m_ActionIconUI: {fileID: 21300000, guid: 9b2e2526308c0524eab722fe277acd2f, type: 3}
-  m_UnitStats: {fileID: 352312358}
-  m_AnimDone: 0
+  m_AnimationCompleted: 0
   m_MinAttackRange: 4
   m_MaxAttackRange: 8
   m_AccuracyPoints: 0
   m_DamagePoints: 3
-  m_AttackAnim: {fileID: 0}
-  m_TargetUnitStats: {fileID: 0}
   m_ExplodeRadius: 1
   m_TargetTile:
     m_X: 0
@@ -10238,6 +10302,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UnitActionName: Walk
+  m_UnitActionDescription: <Placeholder Description>
   m_TurnedOn: 0
   m_Priority: 0
   m_ActionCost: 1
@@ -10246,12 +10311,9 @@ MonoBehaviour:
   m_UnitActionUI: {fileID: 1134435258809106, guid: f60f06ef37015e14ba42bc5dad875b1c,
     type: 2}
   m_ActionIconUI: {fileID: 21300000, guid: d859645726494314ab2591c7384f7d53, type: 3}
-  m_UnitStats: {fileID: 352312358}
-  m_AnimDone: 0
+  m_AnimationCompleted: 0
   m_MovementPoints: 5
-  m_WalkAnim: {fileID: 352312360}
-  m_TilePath: []
-  m_TileSys: {fileID: 207445843}
+  m_WalkAnimation: {fileID: 0}
 --- !u!114 &352312357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10264,7 +10326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7e9c6f646b03479e84ffce248edf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UnitStats: {fileID: 0}
+  m_UnitStats: {fileID: 352312358}
   m_ViewedTiles: []
 --- !u!114 &352312358
 MonoBehaviour:
@@ -10278,7 +10340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 111465f2417784a499b0f4458b49061d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GameSystemsDirectory: {fileID: 0}
+  m_GameSystemsDirectory: {fileID: 1995284701}
   m_UnitStatsJSON:
     m_Name: Artillery Unit
     m_MaxHealthPoints: 6
@@ -10295,11 +10357,12 @@ MonoBehaviour:
       m_Z: -2
   m_TileAttributeOverrides: []
   m_ViewTileScript: {fileID: 352312357}
-  m_UnitInfoDisplay_Prefab: {fileID: 0}
+  m_UnitInfoDisplay_Prefab: {fileID: 114423042521562832, guid: 5de0e7aba41ddec4daa1972243bd5133,
+    type: 2}
   m_CurrentActiveAction: {fileID: 0}
   m_EnemiesInRange: []
   m_AnimationHandler: []
-  m_DeathAnimation: {fileID: 0}
+  m_DeathAnimation: {fileID: 352312353}
 --- !u!65 &352312359
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10351,6 +10414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1fa353a39c30e74eb9e7f58a0ddf3f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_CineMachineHandler: {fileID: 0}
   m_MaxGunElevation: 80
   m_MaxGunDepression: 20
   m_Turret: {fileID: 1124148539}
@@ -10382,9 +10446,9 @@ MonoBehaviour:
   m_BulletPrefab: {fileID: 114043521242476608, guid: 395c424eb347e834bb03c780aee2901b,
     type: 2}
   m_HullTransform: {fileID: 352312363}
-  m_CineHandler: {fileID: 1996600887}
   m_TimeDelayForCamToTurret: 2
   m_TimeDelayForCamBackToNormal: 0.5
+  m_TimeDelayForDeathCam: 2
 --- !u!4 &352312363
 Transform:
   m_ObjectHideFlags: 0
@@ -10402,7 +10466,7 @@ Transform:
   - {fileID: 980291493}
   - {fileID: 561939137}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &353770381
 GameObject:
@@ -10555,6 +10619,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 669767041}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &356128592
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10656,6 +10722,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 503954803}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &362592477
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10768,6 +10836,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &365579593
 Transform:
   m_ObjectHideFlags: 0
@@ -10842,6 +10912,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &371438377
 Transform:
   m_ObjectHideFlags: 0
@@ -10916,6 +10988,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &372097169
 Transform:
   m_ObjectHideFlags: 0
@@ -10990,6 +11064,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &373596215
 Transform:
   m_ObjectHideFlags: 0
@@ -11053,6 +11129,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1169744976}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &374703540
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11154,6 +11232,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1477375711}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &376036163
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11255,6 +11335,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1801872261}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &376043686
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11378,6 +11460,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &384616879
 Transform:
   m_ObjectHideFlags: 0
@@ -11452,6 +11536,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &385753094
 Transform:
   m_ObjectHideFlags: 0
@@ -11515,6 +11601,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 587079480}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &395314008
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11627,6 +11715,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &396047942
 Transform:
   m_ObjectHideFlags: 0
@@ -11701,6 +11791,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &398593928
 Transform:
   m_ObjectHideFlags: 0
@@ -11764,6 +11856,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1982646359}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &405955694
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11865,6 +11959,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 439950142}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &413208316
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11977,6 +12073,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &416351552
 Transform:
   m_ObjectHideFlags: 0
@@ -12051,6 +12149,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &417295165
 Transform:
   m_ObjectHideFlags: 0
@@ -12187,6 +12287,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 474660614}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &423240426
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12288,6 +12390,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1607328713}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &425004046
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12400,6 +12504,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &432360329
 Transform:
   m_ObjectHideFlags: 0
@@ -12463,6 +12569,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1156620606}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &436033706
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12564,6 +12672,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1138795640}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &438602272
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12676,6 +12786,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &439536796
 Transform:
   m_ObjectHideFlags: 0
@@ -12750,6 +12862,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &439950143
 Transform:
   m_ObjectHideFlags: 0
@@ -12813,6 +12927,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1155771586}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &440658972
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12914,6 +13030,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 743125841}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &450240085
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13015,6 +13133,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 213447869}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &451002703
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13127,6 +13247,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &452326872
 Transform:
   m_ObjectHideFlags: 0
@@ -13201,6 +13323,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &452368552
 Transform:
   m_ObjectHideFlags: 0
@@ -13392,6 +13516,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 306660199}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &456897320
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13493,6 +13619,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 2138906928}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &461318502
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13605,6 +13733,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &464518144
 Transform:
   m_ObjectHideFlags: 0
@@ -13663,7 +13793,7 @@ RectTransform:
   m_Children:
   - {fileID: 1647673449}
   m_Father: {fileID: 1020636871}
-  m_RootOrder: 9
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -13762,6 +13892,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &472223536
 Transform:
   m_ObjectHideFlags: 0
@@ -13836,6 +13968,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &474660615
 Transform:
   m_ObjectHideFlags: 0
@@ -13899,6 +14033,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 108879408}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &477574527
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14000,6 +14136,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 700716354}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &477590044
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14101,6 +14239,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 658592739}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &481376203
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14202,6 +14342,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 753637764}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &482832135
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14314,6 +14456,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &485291689
 Transform:
   m_ObjectHideFlags: 0
@@ -14388,6 +14532,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &486293842
 Transform:
   m_ObjectHideFlags: 0
@@ -14451,6 +14597,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1720115024}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &488917892
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14563,6 +14711,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &491123192
 Transform:
   m_ObjectHideFlags: 0
@@ -14637,6 +14787,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &491574346
 Transform:
   m_ObjectHideFlags: 0
@@ -14700,6 +14852,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1319385576}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &501548105
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14801,6 +14955,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1944739524}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &503243823
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14913,6 +15069,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &503954804
 Transform:
   m_ObjectHideFlags: 0
@@ -14976,6 +15134,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 2083468313}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &505803943
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15077,6 +15237,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 764959004}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &506630288
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15189,6 +15351,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &515919144
 Transform:
   m_ObjectHideFlags: 0
@@ -15263,6 +15427,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &516004756
 Transform:
   m_ObjectHideFlags: 0
@@ -15337,6 +15503,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &517793739
 Transform:
   m_ObjectHideFlags: 0
@@ -15400,6 +15568,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 224958197}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &526881667
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15501,6 +15671,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 416351551}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &530863754
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15602,6 +15774,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1327635805}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &534842103
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15703,6 +15877,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1928188403}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &540566887
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15769,130 +15945,6 @@ Transform:
   m_Father: {fileID: 1928188404}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &542699111
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1020636871}
-    m_Modifications:
-    - target: {fileID: 224762864415983330, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
-        type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224762864415983330, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
-        type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224762864415983330, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
-        type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224762864415983330, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
-        type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224762864415983330, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
-        type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224762864415983330, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
-        type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224762864415983330, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
-        type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224762864415983330, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 224762864415983330, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.000091553
-      objectReference: {fileID: 0}
-    - target: {fileID: 224762864415983330, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.0028229
-      objectReference: {fileID: 0}
-    - target: {fileID: 224762864415983330, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224762864415983330, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 0.51422
-      objectReference: {fileID: 0}
-    - target: {fileID: 224762864415983330, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
-        type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224762864415983330, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224762864415983330, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224762864415983330, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224762864415983330, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
-        type: 2}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224762864415983330, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
-        type: 2}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114877070671403516, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114877070671403516, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114347574570523778, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114347574570523778, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1044431308409052, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &548374348
 GameObject:
   m_ObjectHideFlags: 0
@@ -15928,6 +15980,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1692705814}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &548374350
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16029,6 +16083,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 2141290054}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &548986709
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16141,6 +16197,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &552854514
 Transform:
   m_ObjectHideFlags: 0
@@ -16204,6 +16262,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1558598547}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &559539225
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16342,6 +16402,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 491123191}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &564397100
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16536,6 +16598,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 61413566}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &565925073
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16637,6 +16701,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 638023802}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &566160889
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16738,6 +16804,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 255639641}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &570735949
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16839,6 +16907,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1022095344}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &572748696
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16951,6 +17021,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &578686961
 Transform:
   m_ObjectHideFlags: 0
@@ -17014,6 +17086,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 213306510}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &584200330
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17126,6 +17200,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &585332483
 Transform:
   m_ObjectHideFlags: 0
@@ -17200,6 +17276,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &587079481
 Transform:
   m_ObjectHideFlags: 0
@@ -17274,6 +17352,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &587957397
 Transform:
   m_ObjectHideFlags: 0
@@ -17348,6 +17428,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &589740029
 Transform:
   m_ObjectHideFlags: 0
@@ -17411,6 +17493,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1312533264}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &606034667
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17523,6 +17607,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &606250258
 Transform:
   m_ObjectHideFlags: 0
@@ -17586,6 +17672,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 417295164}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &613766678
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17698,6 +17786,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &617370206
 Transform:
   m_ObjectHideFlags: 0
@@ -17761,6 +17851,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 845126271}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &618148667
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17873,6 +17965,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &625489371
 Transform:
   m_ObjectHideFlags: 0
@@ -17947,6 +18041,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &625920494
 Transform:
   m_ObjectHideFlags: 0
@@ -18010,6 +18106,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 741687872}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &626052726
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18111,6 +18209,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 345456637}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &626183904
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18212,6 +18312,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1188797211}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &629384704
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18313,6 +18415,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1804360726}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &632093696
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18419,6 +18523,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 2000214426}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &636418468
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18531,6 +18637,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &638023803
 Transform:
   m_ObjectHideFlags: 0
@@ -18605,6 +18713,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &640397957
 Transform:
   m_ObjectHideFlags: 0
@@ -18679,6 +18789,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &647082701
 Transform:
   m_ObjectHideFlags: 0
@@ -18742,6 +18854,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 202226861}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &656150988
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18854,6 +18968,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &658592740
 Transform:
   m_ObjectHideFlags: 0
@@ -18928,6 +19044,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &659804317
 Transform:
   m_ObjectHideFlags: 0
@@ -18991,6 +19109,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1501389787}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &659814697
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19092,6 +19212,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 887440996}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &663032994
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19204,6 +19326,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &669767042
 Transform:
   m_ObjectHideFlags: 0
@@ -19267,6 +19391,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 62147342}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &671391854
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19379,6 +19505,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &675766517
 Transform:
   m_ObjectHideFlags: 0
@@ -19442,6 +19570,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1851921994}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &677891120
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19554,6 +19684,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &678407892
 Transform:
   m_ObjectHideFlags: 0
@@ -19617,6 +19749,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 19301955}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &691069820
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19718,6 +19852,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1031894349}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &691954107
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19830,6 +19966,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &693489158
 Transform:
   m_ObjectHideFlags: 0
@@ -19904,6 +20042,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &694030165
 Transform:
   m_ObjectHideFlags: 0
@@ -19967,6 +20107,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1504273865}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &696174311
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20079,6 +20221,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &696520227
 Transform:
   m_ObjectHideFlags: 0
@@ -20153,6 +20297,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &697703090
 Transform:
   m_ObjectHideFlags: 0
@@ -20216,6 +20362,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 999971645}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &698804481
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20328,6 +20476,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &699434161
 Transform:
   m_ObjectHideFlags: 0
@@ -20402,6 +20552,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &700716355
 Transform:
   m_ObjectHideFlags: 0
@@ -20476,6 +20628,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &708140076
 Transform:
   m_ObjectHideFlags: 0
@@ -20539,6 +20693,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 230393285}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &710126491
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20716,6 +20872,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &714924968
 Transform:
   m_ObjectHideFlags: 0
@@ -20853,6 +21011,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1805565347}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &719299234
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20954,6 +21114,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 329127472}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &720424164
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21055,6 +21217,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 989969622}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &734437182
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21156,6 +21320,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1028004446}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &734656946
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21257,6 +21423,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1432132317}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &735361081
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21358,6 +21526,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 182563441}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &735899024
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21470,6 +21640,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &741687873
 Transform:
   m_ObjectHideFlags: 0
@@ -21544,6 +21716,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &743125842
 Transform:
   m_ObjectHideFlags: 0
@@ -21618,6 +21792,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &743434440
 Transform:
   m_ObjectHideFlags: 0
@@ -21692,6 +21868,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &744493290
 Transform:
   m_ObjectHideFlags: 0
@@ -21766,6 +21944,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &744945392
 Transform:
   m_ObjectHideFlags: 0
@@ -21840,6 +22020,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &753637765
 Transform:
   m_ObjectHideFlags: 0
@@ -21914,6 +22096,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &753840342
 Transform:
   m_ObjectHideFlags: 0
@@ -21988,6 +22172,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &755782277
 Transform:
   m_ObjectHideFlags: 0
@@ -22045,7 +22231,7 @@ RectTransform:
   m_Children:
   - {fileID: 2093723720}
   m_Father: {fileID: 1020636871}
-  m_RootOrder: 7
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -22120,6 +22306,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 675766516}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &760024760
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22186,11 +22374,6 @@ Transform:
   m_Father: {fileID: 675766517}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!224 &760717053 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 224993884952491068, guid: 10234cb69b925e14d9163d2556b7fb5b,
-    type: 2}
-  m_PrefabInternal: {fileID: 1929148967}
 --- !u!1 &764616779
 GameObject:
   m_ObjectHideFlags: 0
@@ -22226,6 +22409,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 90643181}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &764616781
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22338,6 +22523,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &764959005
 Transform:
   m_ObjectHideFlags: 0
@@ -22412,6 +22599,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &765490585
 Transform:
   m_ObjectHideFlags: 0
@@ -22475,6 +22664,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 2014833724}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &769379950
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22587,6 +22778,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &769757027
 Transform:
   m_ObjectHideFlags: 0
@@ -22661,6 +22854,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &773046761
 Transform:
   m_ObjectHideFlags: 0
@@ -22735,6 +22930,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &773174275
 Transform:
   m_ObjectHideFlags: 0
@@ -22798,6 +22995,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 640397956}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &775011161
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22899,6 +23098,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1017010466}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &775915256
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23073,6 +23274,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1248700169}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &778355253
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23185,6 +23388,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &783388735
 Transform:
   m_ObjectHideFlags: 0
@@ -23248,6 +23453,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1316203569}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &789558677
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23360,6 +23567,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &793987753
 Transform:
   m_ObjectHideFlags: 0
@@ -23417,7 +23626,7 @@ RectTransform:
   m_Children:
   - {fileID: 185577456}
   m_Father: {fileID: 1020636871}
-  m_RootOrder: 8
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -23492,6 +23701,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 694030164}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &796689467
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23593,6 +23804,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1611101029}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &805428607
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23694,6 +23907,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1566017876}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &805836639
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23795,6 +24010,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1524717304}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &806147702
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23907,6 +24124,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &813553170
 Transform:
   m_ObjectHideFlags: 0
@@ -23981,6 +24200,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &824371018
 Transform:
   m_ObjectHideFlags: 0
@@ -24055,6 +24276,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &826496415
 Transform:
   m_ObjectHideFlags: 0
@@ -24118,6 +24341,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1339790615}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &828938648
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -24184,116 +24409,6 @@ Transform:
   m_Father: {fileID: 1339790616}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &830440925
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1020636871}
-    m_Modifications:
-    - target: {fileID: 224918869631979754, guid: f60f06ef37015e14ba42bc5dad875b1c,
-        type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224918869631979754, guid: f60f06ef37015e14ba42bc5dad875b1c,
-        type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224918869631979754, guid: f60f06ef37015e14ba42bc5dad875b1c,
-        type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224918869631979754, guid: f60f06ef37015e14ba42bc5dad875b1c,
-        type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224918869631979754, guid: f60f06ef37015e14ba42bc5dad875b1c,
-        type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224918869631979754, guid: f60f06ef37015e14ba42bc5dad875b1c,
-        type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224918869631979754, guid: f60f06ef37015e14ba42bc5dad875b1c,
-        type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224918869631979754, guid: f60f06ef37015e14ba42bc5dad875b1c,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224918869631979754, guid: f60f06ef37015e14ba42bc5dad875b1c,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.00015258789
-      objectReference: {fileID: 0}
-    - target: {fileID: 224918869631979754, guid: f60f06ef37015e14ba42bc5dad875b1c,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.0028381348
-      objectReference: {fileID: 0}
-    - target: {fileID: 224918869631979754, guid: f60f06ef37015e14ba42bc5dad875b1c,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224918869631979754, guid: f60f06ef37015e14ba42bc5dad875b1c,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 0.51416016
-      objectReference: {fileID: 0}
-    - target: {fileID: 224918869631979754, guid: f60f06ef37015e14ba42bc5dad875b1c,
-        type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224918869631979754, guid: f60f06ef37015e14ba42bc5dad875b1c,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224918869631979754, guid: f60f06ef37015e14ba42bc5dad875b1c,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224918869631979754, guid: f60f06ef37015e14ba42bc5dad875b1c,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224918869631979754, guid: f60f06ef37015e14ba42bc5dad875b1c,
-        type: 2}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224918869631979754, guid: f60f06ef37015e14ba42bc5dad875b1c,
-        type: 2}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114425598547219270, guid: f60f06ef37015e14ba42bc5dad875b1c,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114425598547219270, guid: f60f06ef37015e14ba42bc5dad875b1c,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: f60f06ef37015e14ba42bc5dad875b1c, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &831005159
 GameObject:
   m_ObjectHideFlags: 0
@@ -24329,6 +24444,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1142115759}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &831005161
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -24430,6 +24547,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 452368551}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &836400062
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -24542,6 +24661,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &837937846
 Transform:
   m_ObjectHideFlags: 0
@@ -24616,6 +24737,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &845126272
 Transform:
   m_ObjectHideFlags: 0
@@ -24690,6 +24813,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &845168216
 Transform:
   m_ObjectHideFlags: 0
@@ -24753,6 +24878,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 693489157}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &849321793
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -24854,6 +24981,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 485291688}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &852369830
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -24966,6 +25095,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &860421095
 Transform:
   m_ObjectHideFlags: 0
@@ -25029,6 +25160,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1414539971}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &860471985
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -25141,6 +25274,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &867234859
 Transform:
   m_ObjectHideFlags: 0
@@ -25204,6 +25339,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1466166914}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &873786237
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -25270,110 +25407,6 @@ Transform:
   m_Father: {fileID: 1466166915}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &876175402
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1020636871}
-    m_Modifications:
-    - target: {fileID: 224565121086626160, guid: ae3cc7ce27c0679429a78483021496c7,
-        type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224565121086626160, guid: ae3cc7ce27c0679429a78483021496c7,
-        type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224565121086626160, guid: ae3cc7ce27c0679429a78483021496c7,
-        type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224565121086626160, guid: ae3cc7ce27c0679429a78483021496c7,
-        type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224565121086626160, guid: ae3cc7ce27c0679429a78483021496c7,
-        type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224565121086626160, guid: ae3cc7ce27c0679429a78483021496c7,
-        type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224565121086626160, guid: ae3cc7ce27c0679429a78483021496c7,
-        type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224565121086626160, guid: ae3cc7ce27c0679429a78483021496c7,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 224565121086626160, guid: ae3cc7ce27c0679429a78483021496c7,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.00018310547
-      objectReference: {fileID: 0}
-    - target: {fileID: 224565121086626160, guid: ae3cc7ce27c0679429a78483021496c7,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.0028381348
-      objectReference: {fileID: 0}
-    - target: {fileID: 224565121086626160, guid: ae3cc7ce27c0679429a78483021496c7,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224565121086626160, guid: ae3cc7ce27c0679429a78483021496c7,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 0.51416016
-      objectReference: {fileID: 0}
-    - target: {fileID: 224565121086626160, guid: ae3cc7ce27c0679429a78483021496c7,
-        type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224565121086626160, guid: ae3cc7ce27c0679429a78483021496c7,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224565121086626160, guid: ae3cc7ce27c0679429a78483021496c7,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224565121086626160, guid: ae3cc7ce27c0679429a78483021496c7,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224565121086626160, guid: ae3cc7ce27c0679429a78483021496c7,
-        type: 2}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224565121086626160, guid: ae3cc7ce27c0679429a78483021496c7,
-        type: 2}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1981761544990868, guid: ae3cc7ce27c0679429a78483021496c7, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: ae3cc7ce27c0679429a78483021496c7, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &876263332
 GameObject:
   m_ObjectHideFlags: 0
@@ -25420,6 +25453,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &876263334
 Transform:
   m_ObjectHideFlags: 0
@@ -25494,6 +25529,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &878539620
 Transform:
   m_ObjectHideFlags: 0
@@ -25552,7 +25589,7 @@ RectTransform:
   - {fileID: 1218209029}
   - {fileID: 156530851}
   m_Father: {fileID: 1020636871}
-  m_RootOrder: 6
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -25619,6 +25656,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &880057886
 Transform:
   m_ObjectHideFlags: 0
@@ -25693,6 +25732,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &885737317
 Transform:
   m_ObjectHideFlags: 0
@@ -25767,6 +25808,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &887440997
 Transform:
   m_ObjectHideFlags: 0
@@ -25830,6 +25873,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1910931034}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &890727800
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -25931,6 +25976,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 2106731936}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &894294611
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -26032,6 +26079,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1620691582}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &896802108
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -26144,6 +26193,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &900629729
 Transform:
   m_ObjectHideFlags: 0
@@ -26218,6 +26269,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &904787717
 Transform:
   m_ObjectHideFlags: 0
@@ -26281,6 +26334,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1430639459}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &906597604
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -26393,6 +26448,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &906753702
 Transform:
   m_ObjectHideFlags: 0
@@ -26456,6 +26513,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 162925900}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &907309463
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -26557,6 +26616,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1861359595}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &911227113
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -26742,6 +26803,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &918880302
 Transform:
   m_ObjectHideFlags: 0
@@ -26805,6 +26868,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 2072183525}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &920440911
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -26906,6 +26971,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 714924967}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &920835787
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -27018,6 +27085,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &924161343
 Transform:
   m_ObjectHideFlags: 0
@@ -27092,6 +27161,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &924710457
 Transform:
   m_ObjectHideFlags: 0
@@ -27166,6 +27237,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &925194854
 Transform:
   m_ObjectHideFlags: 0
@@ -27229,6 +27302,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 2142067448}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &927007243
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -27330,6 +27405,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1122972802}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &927678605
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -27442,6 +27519,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &927870994
 Transform:
   m_ObjectHideFlags: 0
@@ -27516,6 +27595,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &928675478
 Transform:
   m_ObjectHideFlags: 0
@@ -27579,6 +27660,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 396047941}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &931208422
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -27680,6 +27763,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1964167185}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &932137002
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -27865,6 +27950,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &937285663
 Transform:
   m_ObjectHideFlags: 0
@@ -27939,6 +28026,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &940064728
 Transform:
   m_ObjectHideFlags: 0
@@ -27967,106 +28056,6 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
---- !u!1001 &941310285
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1020636871}
-    m_Modifications:
-    - target: {fileID: 224542146991573946, guid: fd65515792dd9b04f8c87b6ba9939191,
-        type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224542146991573946, guid: fd65515792dd9b04f8c87b6ba9939191,
-        type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224542146991573946, guid: fd65515792dd9b04f8c87b6ba9939191,
-        type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224542146991573946, guid: fd65515792dd9b04f8c87b6ba9939191,
-        type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224542146991573946, guid: fd65515792dd9b04f8c87b6ba9939191,
-        type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224542146991573946, guid: fd65515792dd9b04f8c87b6ba9939191,
-        type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224542146991573946, guid: fd65515792dd9b04f8c87b6ba9939191,
-        type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224542146991573946, guid: fd65515792dd9b04f8c87b6ba9939191,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224542146991573946, guid: fd65515792dd9b04f8c87b6ba9939191,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.000061035156
-      objectReference: {fileID: 0}
-    - target: {fileID: 224542146991573946, guid: fd65515792dd9b04f8c87b6ba9939191,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.0028381348
-      objectReference: {fileID: 0}
-    - target: {fileID: 224542146991573946, guid: fd65515792dd9b04f8c87b6ba9939191,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224542146991573946, guid: fd65515792dd9b04f8c87b6ba9939191,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 0.51416016
-      objectReference: {fileID: 0}
-    - target: {fileID: 224542146991573946, guid: fd65515792dd9b04f8c87b6ba9939191,
-        type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224542146991573946, guid: fd65515792dd9b04f8c87b6ba9939191,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224542146991573946, guid: fd65515792dd9b04f8c87b6ba9939191,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224542146991573946, guid: fd65515792dd9b04f8c87b6ba9939191,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224542146991573946, guid: fd65515792dd9b04f8c87b6ba9939191,
-        type: 2}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224542146991573946, guid: fd65515792dd9b04f8c87b6ba9939191,
-        type: 2}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: fd65515792dd9b04f8c87b6ba9939191, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &946759883
 GameObject:
   m_ObjectHideFlags: 0
@@ -28266,6 +28255,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &951136579
 Transform:
   m_ObjectHideFlags: 0
@@ -28329,6 +28320,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 2011482163}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &958806276
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -28441,6 +28434,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &961179945
 Transform:
   m_ObjectHideFlags: 0
@@ -28515,6 +28510,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &965253457
 Transform:
   m_ObjectHideFlags: 0
@@ -28580,27 +28577,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4393538622445380, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 114930548130969464, guid: d8eadb572c9988f4eb0b84df420422e5,
+    - target: {fileID: 114879956254548028, guid: d8eadb572c9988f4eb0b84df420422e5,
         type: 2}
-      propertyPath: m_TileSys
+      propertyPath: m_GameSystemsDirectory
       value: 
-      objectReference: {fileID: 207445843}
-    - target: {fileID: 114982705508500524, guid: d8eadb572c9988f4eb0b84df420422e5,
-        type: 2}
-      propertyPath: m_Animator
-      value: 
-      objectReference: {fileID: 965785000}
+      objectReference: {fileID: 1995284701}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &965785000 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114189902084662826, guid: d8eadb572c9988f4eb0b84df420422e5,
-    type: 2}
-  m_PrefabInternal: {fileID: 965784999}
-  m_Script: {fileID: 11500000, guid: a1fa353a39c30e74eb9e7f58a0ddf3f2, type: 3}
 --- !u!1 &980291492
 GameObject:
   m_ObjectHideFlags: 0
@@ -28668,7 +28654,7 @@ RectTransform:
   m_Children:
   - {fileID: 1409891930}
   m_Father: {fileID: 1020636871}
-  m_RootOrder: 10
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -28767,6 +28753,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &987189910
 Transform:
   m_ObjectHideFlags: 0
@@ -28841,6 +28829,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &988117639
 Transform:
   m_ObjectHideFlags: 0
@@ -28904,6 +28894,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1782890193}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &989891027
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -29016,6 +29008,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &989969623
 Transform:
   m_ObjectHideFlags: 0
@@ -29079,6 +29073,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1372710393}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &995834951
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -29180,6 +29176,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1463215889}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &997565644
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -29292,6 +29290,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &999971646
 Transform:
   m_ObjectHideFlags: 0
@@ -29389,6 +29389,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 64831547}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1001305834
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -29490,6 +29492,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1789058917}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1003890038
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -29602,6 +29606,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1006983510
 Transform:
   m_ObjectHideFlags: 0
@@ -29676,6 +29682,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1010402761
 Transform:
   m_ObjectHideFlags: 0
@@ -29750,6 +29758,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1012029492
 Transform:
   m_ObjectHideFlags: 0
@@ -29813,6 +29823,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1873105264}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1015168971
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -29925,6 +29937,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1017010467
 Transform:
   m_ObjectHideFlags: 0
@@ -29999,6 +30013,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1018005444
 Transform:
   m_ObjectHideFlags: 0
@@ -30114,11 +30130,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1374940855}
-  - {fileID: 1098848341}
-  - {fileID: 1453736073}
-  - {fileID: 333799485}
-  - {fileID: 760717053}
-  - {fileID: 40203307}
   - {fileID: 879365207}
   - {fileID: 756923721}
   - {fileID: 795883589}
@@ -30196,6 +30207,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1022095345
 Transform:
   m_ObjectHideFlags: 0
@@ -30259,6 +30272,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1062801799}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1023560532
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -30371,6 +30386,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1028004447
 Transform:
   m_ObjectHideFlags: 0
@@ -30518,6 +30535,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1031894350
 Transform:
   m_ObjectHideFlags: 0
@@ -30581,6 +30600,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1187869319}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1032417312
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -30682,6 +30703,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 432360328}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1036575118
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -30794,6 +30817,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1037948221
 Transform:
   m_ObjectHideFlags: 0
@@ -30868,6 +30893,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1038862536
 Transform:
   m_ObjectHideFlags: 0
@@ -30931,6 +30958,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 398593927}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1041820670
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -31043,6 +31072,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1044604591
 Transform:
   m_ObjectHideFlags: 0
@@ -31117,6 +31148,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1050850056
 Transform:
   m_ObjectHideFlags: 0
@@ -31191,6 +31224,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1053385982
 Transform:
   m_ObjectHideFlags: 0
@@ -31254,6 +31289,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1999813459}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1053399323
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -31355,6 +31392,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 625920493}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1055465331
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -31467,6 +31506,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1056914546
 Transform:
   m_ObjectHideFlags: 0
@@ -31541,6 +31582,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1060442197
 Transform:
   m_ObjectHideFlags: 0
@@ -31615,6 +31658,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1061509190
 Transform:
   m_ObjectHideFlags: 0
@@ -31689,6 +31734,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1062801800
 Transform:
   m_ObjectHideFlags: 0
@@ -31763,6 +31810,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1063714446
 Transform:
   m_ObjectHideFlags: 0
@@ -31837,6 +31886,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1066832149
 Transform:
   m_ObjectHideFlags: 0
@@ -31978,6 +32029,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1458600209}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1067910808
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32079,6 +32132,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 647082700}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1068393814
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32180,6 +32235,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1984914126}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1070580587
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32292,6 +32349,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1076103042
 Transform:
   m_ObjectHideFlags: 0
@@ -32355,6 +32414,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 924161342}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1077173929
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32467,6 +32528,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1077906502
 Transform:
   m_ObjectHideFlags: 0
@@ -32530,6 +32593,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1209609209}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1081305130
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32631,6 +32696,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 988117638}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1085037563
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32743,6 +32810,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1086280154
 Transform:
   m_ObjectHideFlags: 0
@@ -32806,6 +32875,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 765490584}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1093818109
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32907,6 +32978,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 587957396}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1098455168
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32973,11 +33046,6 @@ Transform:
   m_Father: {fileID: 587957397}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!224 &1098848341 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 224918869631979754, guid: f60f06ef37015e14ba42bc5dad875b1c,
-    type: 2}
-  m_PrefabInternal: {fileID: 830440925}
 --- !u!1 &1099848086
 GameObject:
   m_ObjectHideFlags: 0
@@ -33013,6 +33081,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 783388734}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1099848088
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -33114,6 +33184,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1444558969}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1102716822
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -33226,6 +33298,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1104218071
 Transform:
   m_ObjectHideFlags: 0
@@ -33300,6 +33374,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1105831444
 Transform:
   m_ObjectHideFlags: 0
@@ -33393,6 +33469,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 219317901}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1111841807
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -33505,6 +33583,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1113852034
 Transform:
   m_ObjectHideFlags: 0
@@ -33579,6 +33659,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1121927823
 Transform:
   m_ObjectHideFlags: 0
@@ -33653,6 +33735,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1122972803
 Transform:
   m_ObjectHideFlags: 0
@@ -33790,6 +33874,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 113774249}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1126371724
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -33891,6 +33977,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1897098873}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1131150756
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -33992,6 +34080,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 860421094}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1135565292
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -34104,6 +34194,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1138795641
 Transform:
   m_ObjectHideFlags: 0
@@ -34178,6 +34270,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1142115760
 Transform:
   m_ObjectHideFlags: 0
@@ -34252,6 +34346,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1144329057
 Transform:
   m_ObjectHideFlags: 0
@@ -34315,6 +34411,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1981384757}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1146314801
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -34427,6 +34525,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1152388130
 Transform:
   m_ObjectHideFlags: 0
@@ -34490,6 +34590,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 57049022}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1152541354
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -34591,6 +34693,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1121927822}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1154048915
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -34692,6 +34796,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1765280333}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1154195318
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -34804,6 +34910,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1155771587
 Transform:
   m_ObjectHideFlags: 0
@@ -34867,6 +34975,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 589740028}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1156268634
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -34979,6 +35089,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1156620607
 Transform:
   m_ObjectHideFlags: 0
@@ -35049,7 +35161,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4955655334718066, guid: e81f700211e6aa146bf4d45729d4cede, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114359914612082900, guid: e81f700211e6aa146bf4d45729d4cede,
         type: 2}
@@ -35183,6 +35295,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 486293841}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1161348355
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -35295,6 +35409,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1169744977
 Transform:
   m_ObjectHideFlags: 0
@@ -35358,6 +35474,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1053385981}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1169931773
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -35470,6 +35588,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1172386773
 Transform:
   m_ObjectHideFlags: 0
@@ -35533,6 +35653,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1104218070}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1175400086
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -35634,6 +35756,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 2007173730}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1175993753
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -35746,6 +35870,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1187869320
 Transform:
   m_ObjectHideFlags: 0
@@ -35820,6 +35946,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1188797212
 Transform:
   m_ObjectHideFlags: 0
@@ -35936,7 +36064,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1197582305
 GameObject:
@@ -35973,6 +36101,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 5303555}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1197582307
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -36167,6 +36297,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 249739353}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1204084956
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -36350,6 +36482,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1209609210
 Transform:
   m_ObjectHideFlags: 0
@@ -36413,6 +36547,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1923610277}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1210863594
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -36514,6 +36650,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1435669076}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1215891268
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -36761,6 +36899,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1224956316
 Transform:
   m_ObjectHideFlags: 0
@@ -36824,6 +36964,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 826496414}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1225973130
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -36936,6 +37078,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1225973378
 Transform:
   m_ObjectHideFlags: 0
@@ -37010,6 +37154,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1230827381
 Transform:
   m_ObjectHideFlags: 0
@@ -37084,6 +37230,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1230835312
 Transform:
   m_ObjectHideFlags: 0
@@ -37220,6 +37368,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1396061383}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1248650403
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -37332,6 +37482,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1248700170
 Transform:
   m_ObjectHideFlags: 0
@@ -37395,6 +37547,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1947186902}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1251299707
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -37579,7 +37733,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1257581013
 GameObject:
@@ -37627,6 +37781,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1257581015
 Transform:
   m_ObjectHideFlags: 0
@@ -37690,6 +37846,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 925194853}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1264463389
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -37791,6 +37949,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 111554975}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1265265288
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -37892,6 +38052,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1921638387}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1265361635
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -37993,6 +38155,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 241369557}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1266878586
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -38167,6 +38331,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 92699005}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1268737665
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -38361,6 +38527,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1284688324
 Transform:
   m_ObjectHideFlags: 0
@@ -38424,6 +38592,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1476438529}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1288597858
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -38536,6 +38706,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1291398012
 Transform:
   m_ObjectHideFlags: 0
@@ -38599,6 +38771,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 2107840472}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1293192473
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -38711,6 +38885,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1303444520
 Transform:
   m_ObjectHideFlags: 0
@@ -38774,6 +38950,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1460402549}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1306244754
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -38875,6 +39053,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 191729922}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1306916383
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -38976,6 +39156,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1680375028}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1307272554
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -39077,6 +39259,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1490217664}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1311821329
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -39189,6 +39373,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1312533265
 Transform:
   m_ObjectHideFlags: 0
@@ -39263,6 +39449,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1316203570
 Transform:
   m_ObjectHideFlags: 0
@@ -39337,6 +39525,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1319385577
 Transform:
   m_ObjectHideFlags: 0
@@ -39400,6 +39590,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1637361379}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1325769742
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -39512,6 +39704,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1327635806
 Transform:
   m_ObjectHideFlags: 0
@@ -39586,6 +39780,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1330974715
 Transform:
   m_ObjectHideFlags: 0
@@ -39660,6 +39856,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1331072354
 Transform:
   m_ObjectHideFlags: 0
@@ -39723,6 +39921,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 371438376}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1331566858
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -39835,6 +40035,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1335137037
 Transform:
   m_ObjectHideFlags: 0
@@ -39898,6 +40100,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1556239764}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1337126075
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -40010,6 +40214,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1339790616
 Transform:
   m_ObjectHideFlags: 0
@@ -40073,6 +40279,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1655248851}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1340913934
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -40185,6 +40393,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1346329910
 Transform:
   m_ObjectHideFlags: 0
@@ -40248,6 +40458,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1063714445}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1348636264
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -40360,6 +40572,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1350327583
 Transform:
   m_ObjectHideFlags: 0
@@ -40423,6 +40637,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1688061496}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1354265015
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -40535,6 +40751,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1331072353}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1362843978
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -40636,6 +40854,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 491574345}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1367284257
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -40737,6 +40957,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1759369661}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1371036311
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -40849,6 +41071,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1372710394
 Transform:
   m_ObjectHideFlags: 0
@@ -41039,6 +41263,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1381274455
 Transform:
   m_ObjectHideFlags: 0
@@ -41186,6 +41412,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1396061384
 Transform:
   m_ObjectHideFlags: 0
@@ -41260,6 +41488,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1396191595
 Transform:
   m_ObjectHideFlags: 0
@@ -41323,6 +41553,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1230835311}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1400057133
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -41424,6 +41656,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1923483236}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1402941513
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -41536,6 +41770,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1405267655
 Transform:
   m_ObjectHideFlags: 0
@@ -41599,6 +41835,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 927870993}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1405354540
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -41711,6 +41949,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1406693858
 Transform:
   m_ObjectHideFlags: 0
@@ -41927,6 +42167,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 880057885}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1411050986
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -42039,6 +42281,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1414539972
 Transform:
   m_ObjectHideFlags: 0
@@ -42102,6 +42346,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 924710456}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1417201970
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -42203,6 +42449,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1944702748}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1419474793
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -42304,6 +42552,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 516004755}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1419885126
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -42416,6 +42666,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1427015006
 Transform:
   m_ObjectHideFlags: 0
@@ -42490,6 +42742,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1430639460
 Transform:
   m_ObjectHideFlags: 0
@@ -42564,6 +42818,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1432132318
 Transform:
   m_ObjectHideFlags: 0
@@ -42638,6 +42894,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1433909749
 Transform:
   m_ObjectHideFlags: 0
@@ -42701,6 +42959,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 961179944}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1435120831
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -42813,6 +43073,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1435669077
 Transform:
   m_ObjectHideFlags: 0
@@ -42887,6 +43149,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1438871709
 Transform:
   m_ObjectHideFlags: 0
@@ -42950,6 +43214,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1928076}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1439587788
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -43062,6 +43328,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1444558970
 Transform:
   m_ObjectHideFlags: 0
@@ -43125,6 +43393,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1144329056}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1444981624
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -43226,6 +43496,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 699434160}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1450541238
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -43292,11 +43564,6 @@ Transform:
   m_Father: {fileID: 699434161}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!224 &1453736073 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 224565121086626160, guid: ae3cc7ce27c0679429a78483021496c7,
-    type: 2}
-  m_PrefabInternal: {fileID: 876175402}
 --- !u!1 &1457724017
 GameObject:
   m_ObjectHideFlags: 0
@@ -43343,6 +43610,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1457724019
 Transform:
   m_ObjectHideFlags: 0
@@ -43417,6 +43686,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1458600210
 Transform:
   m_ObjectHideFlags: 0
@@ -43480,6 +43751,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 659804316}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1459800697
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -43592,6 +43865,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1460402550
 Transform:
   m_ObjectHideFlags: 0
@@ -43666,6 +43941,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1463215890
 Transform:
   m_ObjectHideFlags: 0
@@ -43729,6 +44006,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1066832148}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1464205867
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -43824,7 +44103,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1020636871}
-  m_RootOrder: 11
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.94333225}
   m_AnchorMax: {x: 0.0725, y: 1}
@@ -43940,6 +44219,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 2017461536}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1465360687
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -44052,6 +44333,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1465441622
 Transform:
   m_ObjectHideFlags: 0
@@ -44126,6 +44409,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1466166915
 Transform:
   m_ObjectHideFlags: 0
@@ -44189,6 +44474,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1617756648}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1467015256
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -44290,6 +44577,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1917407526}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1469723511
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -44402,6 +44691,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1476438530
 Transform:
   m_ObjectHideFlags: 0
@@ -44476,6 +44767,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1477375712
 Transform:
   m_ObjectHideFlags: 0
@@ -44539,6 +44832,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 452326871}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1478649265
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -44640,6 +44935,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1922399923}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1479079396
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -44766,7 +45063,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1485419839
 GameObject:
@@ -44803,6 +45100,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 2041750473}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1485419841
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -44915,6 +45214,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1490217665
 Transform:
   m_ObjectHideFlags: 0
@@ -45051,6 +45352,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 464518143}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1501119040
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -45163,6 +45466,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1501389788
 Transform:
   m_ObjectHideFlags: 0
@@ -45237,6 +45542,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1504273866
 Transform:
   m_ObjectHideFlags: 0
@@ -45305,6 +45612,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 940064727}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1508779226
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -45371,73 +45680,6 @@ Transform:
   m_Father: {fileID: 940064728}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1523426419
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4393538622445380, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 6.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 4393538622445380, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4393538622445380, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -3.58
-      objectReference: {fileID: 0}
-    - target: {fileID: 4393538622445380, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4393538622445380, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4393538622445380, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4393538622445380, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4393538622445380, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1258380024048378, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
-      propertyPath: m_Name
-      value: Panzer Enemy (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114879956254548028, guid: d8eadb572c9988f4eb0b84df420422e5,
-        type: 2}
-      propertyPath: m_UnitStatsJSON.m_CurrentTileID.m_X
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114879956254548028, guid: d8eadb572c9988f4eb0b84df420422e5,
-        type: 2}
-      propertyPath: m_UnitStatsJSON.m_CurrentTileID.m_Y
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114982705508500524, guid: d8eadb572c9988f4eb0b84df420422e5,
-        type: 2}
-      propertyPath: m_Animator
-      value: 
-      objectReference: {fileID: 1523426420}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
-  m_IsPrefabParent: 0
---- !u!114 &1523426420 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114189902084662826, guid: d8eadb572c9988f4eb0b84df420422e5,
-    type: 2}
-  m_PrefabInternal: {fileID: 1523426419}
-  m_Script: {fileID: 11500000, guid: a1fa353a39c30e74eb9e7f58a0ddf3f2, type: 3}
 --- !u!1 &1523777928
 GameObject:
   m_ObjectHideFlags: 0
@@ -45484,6 +45726,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1523777930
 Transform:
   m_ObjectHideFlags: 0
@@ -45558,6 +45802,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1524717305
 Transform:
   m_ObjectHideFlags: 0
@@ -45621,6 +45867,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 755782276}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1530178701
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -45722,6 +45970,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1350327582}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1531799514
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -45834,6 +46084,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1532042748
 Transform:
   m_ObjectHideFlags: 0
@@ -45908,6 +46160,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1548395323
 Transform:
   m_ObjectHideFlags: 0
@@ -45982,6 +46236,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1549001299
 Transform:
   m_ObjectHideFlags: 0
@@ -46056,6 +46312,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1549011568
 Transform:
   m_ObjectHideFlags: 0
@@ -46130,6 +46388,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1552058450
 Transform:
   m_ObjectHideFlags: 0
@@ -46193,6 +46453,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1113852033}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1552982885
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -46294,6 +46556,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1877303749}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1553151853
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -46406,6 +46670,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1556239765
 Transform:
   m_ObjectHideFlags: 0
@@ -46469,6 +46735,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1433909748}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1556546978
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -46581,6 +46849,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1558598548
 Transform:
   m_ObjectHideFlags: 0
@@ -46644,6 +46914,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1549001298}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1561609442
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -46756,6 +47028,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1563029761
 Transform:
   m_ObjectHideFlags: 0
@@ -46819,6 +47093,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 617370205}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1564684463
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -46931,6 +47207,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1566017877
 Transform:
   m_ObjectHideFlags: 0
@@ -47005,6 +47283,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1569685788
 Transform:
   m_ObjectHideFlags: 0
@@ -47079,6 +47359,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1579455205
 Transform:
   m_ObjectHideFlags: 0
@@ -47262,6 +47544,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1592300628}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1589397412
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -47363,6 +47647,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1086280153}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1592127050
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -47464,6 +47750,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 937285662}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1592299372
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -47576,6 +47864,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1592300629
 Transform:
   m_ObjectHideFlags: 0
@@ -47639,6 +47929,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 515919143}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1594466918
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -47740,6 +48032,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 876263333}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1594941184
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -47841,6 +48135,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1406693857}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1603110199
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -47953,6 +48249,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1607328714
 Transform:
   m_ObjectHideFlags: 0
@@ -48027,6 +48325,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1611101030
 Transform:
   m_ObjectHideFlags: 0
@@ -48101,6 +48401,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1617756649
 Transform:
   m_ObjectHideFlags: 0
@@ -48175,6 +48477,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1620691583
 Transform:
   m_ObjectHideFlags: 0
@@ -48238,6 +48542,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1730111335}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1623040157
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -48350,6 +48656,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1627956264
 Transform:
   m_ObjectHideFlags: 0
@@ -48413,6 +48721,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 2051479892}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1635536222
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -48525,6 +48835,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1637361380
 Transform:
   m_ObjectHideFlags: 0
@@ -48588,6 +48900,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 2107406523}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1638139841
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -48689,6 +49003,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 773174274}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1641889177
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -49028,6 +49344,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1651303203
 Transform:
   m_ObjectHideFlags: 0
@@ -49102,6 +49420,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1655248852
 Transform:
   m_ObjectHideFlags: 0
@@ -49165,6 +49485,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 813553169}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1657788809
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -49359,6 +49681,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1010402760}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1664003077
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -49460,6 +49784,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1790214067}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1674772630
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -49561,6 +49887,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1225973377}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1676605750
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -49673,6 +50001,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1680375029
 Transform:
   m_ObjectHideFlags: 0
@@ -49736,6 +50066,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1056914545}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1685096980
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -49848,6 +50180,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1688061497
 Transform:
   m_ObjectHideFlags: 0
@@ -49911,6 +50245,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1038862535}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1692056731
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -50023,6 +50359,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1692705815
 Transform:
   m_ObjectHideFlags: 0
@@ -50097,6 +50435,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1703458392
 Transform:
   m_ObjectHideFlags: 0
@@ -50171,6 +50511,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1703963057
 Transform:
   m_ObjectHideFlags: 0
@@ -50234,6 +50576,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 2038699057}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1706151135
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -50335,6 +50679,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 906753701}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1708206850
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -50447,6 +50793,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1718098100
 Transform:
   m_ObjectHideFlags: 0
@@ -50521,6 +50869,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1718900799
 Transform:
   m_ObjectHideFlags: 0
@@ -50595,6 +50945,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1720115025
 Transform:
   m_ObjectHideFlags: 0
@@ -50658,6 +51010,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 209508525}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1722033369
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -50759,6 +51113,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 965253456}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1722920393
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -50862,47 +51218,21 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4633074402712596, guid: 525f4ac0fe7c38e4b8d0c7d5edd2a90e, type: 2}
       propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114415545089679648, guid: 525f4ac0fe7c38e4b8d0c7d5edd2a90e,
-        type: 2}
-      propertyPath: m_CineHandler
-      value: 
-      objectReference: {fileID: 1996600887}
-    - target: {fileID: 114191423135492830, guid: 525f4ac0fe7c38e4b8d0c7d5edd2a90e,
-        type: 2}
-      propertyPath: m_TileSys
-      value: 
-      objectReference: {fileID: 207445843}
-    - target: {fileID: 114415545089679648, guid: 525f4ac0fe7c38e4b8d0c7d5edd2a90e,
-        type: 2}
-      propertyPath: m_TimeDelayForCamToTurret
-      value: 2
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114811533488785636, guid: 525f4ac0fe7c38e4b8d0c7d5edd2a90e,
         type: 2}
-      propertyPath: m_UnitStatsJSON.m_MaxActionPoints
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114811533488785636, guid: 525f4ac0fe7c38e4b8d0c7d5edd2a90e,
-        type: 2}
-      propertyPath: m_UnitStatsJSON.m_CurrentActionPoints
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114876947489221560, guid: 525f4ac0fe7c38e4b8d0c7d5edd2a90e,
-        type: 2}
-      propertyPath: m_Animator
+      propertyPath: m_GameSystemsDirectory
       value: 
-      objectReference: {fileID: 1725460789}
+      objectReference: {fileID: 1995284701}
+    - target: {fileID: 114592857521324414, guid: 525f4ac0fe7c38e4b8d0c7d5edd2a90e,
+        type: 2}
+      propertyPath: m_AccuracyPoints
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 525f4ac0fe7c38e4b8d0c7d5edd2a90e, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &1725460789 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114415545089679648, guid: 525f4ac0fe7c38e4b8d0c7d5edd2a90e,
-    type: 2}
-  m_PrefabInternal: {fileID: 1725460788}
-  m_Script: {fileID: 11500000, guid: a1fa353a39c30e74eb9e7f58a0ddf3f2, type: 3}
 --- !u!1 &1727992507
 GameObject:
   m_ObjectHideFlags: 0
@@ -50949,6 +51279,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1727992509
 Transform:
   m_ObjectHideFlags: 0
@@ -51023,6 +51355,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1730111336
 Transform:
   m_ObjectHideFlags: 0
@@ -51086,6 +51420,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1889782409}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1732732512
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -51198,6 +51534,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1734453871
 Transform:
   m_ObjectHideFlags: 0
@@ -51261,6 +51599,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1061509189}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1739695821
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -51362,6 +51702,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1813885105}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1744231707
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -51474,6 +51816,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1749311623
 Transform:
   m_ObjectHideFlags: 0
@@ -51548,6 +51892,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1759369662
 Transform:
   m_ObjectHideFlags: 0
@@ -51622,6 +51968,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1765280334
 Transform:
   m_ObjectHideFlags: 0
@@ -51685,6 +52033,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 2021657297}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1772341455
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -51786,6 +52136,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 578686960}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1777670686
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -51887,6 +52239,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 696520226}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1778788444
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -51995,7 +52349,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4355928435855886, guid: 00b9322e7d21b114c8c2b05e00f5e754, type: 2}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 33770741073977870, guid: 00b9322e7d21b114c8c2b05e00f5e754,
         type: 2}
@@ -58361,6 +58715,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1782890194
 Transform:
   m_ObjectHideFlags: 0
@@ -58424,6 +58780,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 552854513}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1785226073
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -58536,6 +58894,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1789058918
 Transform:
   m_ObjectHideFlags: 0
@@ -58610,6 +58970,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1790214068
 Transform:
   m_ObjectHideFlags: 0
@@ -58673,6 +59035,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1291398011}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1791461839
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -58785,6 +59149,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1793329621
 Transform:
   m_ObjectHideFlags: 0
@@ -58848,6 +59214,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 282150965}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1796728253
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -58960,6 +59328,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1801515661
 Transform:
   m_ObjectHideFlags: 0
@@ -59034,6 +59404,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1801872262
 Transform:
   m_ObjectHideFlags: 0
@@ -59097,6 +59469,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 306900474}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1802789572
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -59209,6 +59583,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1804360727
 Transform:
   m_ObjectHideFlags: 0
@@ -59283,6 +59659,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1805565348
 Transform:
   m_ObjectHideFlags: 0
@@ -59346,6 +59724,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1718900798}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1805649552
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -59447,6 +59827,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 3004079}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1810500956
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -59559,6 +59941,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1811352722
 Transform:
   m_ObjectHideFlags: 0
@@ -59622,6 +60006,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 265193721}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1811988552
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -59734,6 +60120,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1813885106
 Transform:
   m_ObjectHideFlags: 0
@@ -59797,6 +60185,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1152388129}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1816122341
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -59909,6 +60299,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1817618793
 Transform:
   m_ObjectHideFlags: 0
@@ -59983,6 +60375,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1821432784
 Transform:
   m_ObjectHideFlags: 0
@@ -60046,6 +60440,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 2076868018}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1831976036
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -60147,6 +60543,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1563029760}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1833258632
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -60332,6 +60730,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1850269378
 Transform:
   m_ObjectHideFlags: 0
@@ -60406,6 +60806,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1850780367
 Transform:
   m_ObjectHideFlags: 0
@@ -60480,6 +60882,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1851921995
 Transform:
   m_ObjectHideFlags: 0
@@ -60543,6 +60947,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 71833845}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1855652917
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -60609,6 +61015,67 @@ Transform:
   m_Father: {fileID: 71833846}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1857665028
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4393538622445380, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 6.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393538622445380, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393538622445380, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -3.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393538622445380, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393538622445380, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393538622445380, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393538622445380, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4393538622445380, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114879956254548028, guid: d8eadb572c9988f4eb0b84df420422e5,
+        type: 2}
+      propertyPath: m_GameSystemsDirectory
+      value: 
+      objectReference: {fileID: 1995284701}
+    - target: {fileID: 1258380024048378, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
+      propertyPath: m_Name
+      value: Panzer Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114879956254548028, guid: d8eadb572c9988f4eb0b84df420422e5,
+        type: 2}
+      propertyPath: m_UnitStatsJSON.m_CurrentTileID.m_X
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114879956254548028, guid: d8eadb572c9988f4eb0b84df420422e5,
+        type: 2}
+      propertyPath: m_UnitStatsJSON.m_CurrentTileID.m_Y
+      value: -2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1860870741
 GameObject:
   m_ObjectHideFlags: 0
@@ -60644,6 +61111,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 307169556}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1860870743
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -60756,6 +61225,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1861359596
 Transform:
   m_ObjectHideFlags: 0
@@ -60819,6 +61290,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1821432783}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1864814489
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -60920,6 +61393,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 384616878}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1870108967
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -61032,6 +61507,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1873105265
 Transform:
   m_ObjectHideFlags: 0
@@ -61106,6 +61583,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1877303750
 Transform:
   m_ObjectHideFlags: 0
@@ -61169,6 +61648,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 82826623}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1883823718
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -61270,6 +61751,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 885737316}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1885242438
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -61382,6 +61865,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1886928923
 Transform:
   m_ObjectHideFlags: 0
@@ -61456,6 +61941,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1889782410
 Transform:
   m_ObjectHideFlags: 0
@@ -61530,6 +62017,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1897098874
 Transform:
   m_ObjectHideFlags: 0
@@ -61558,83 +62047,6 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
---- !u!1 &1907982640
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1907982644}
-  - component: {fileID: 1907982643}
-  - component: {fileID: 1907982642}
-  m_Layer: 0
-  m_Name: World Space Canvas
-  m_TagString: WorldCanvas
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1907982642
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1907982640}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 10
---- !u!223 &1907982643
-Canvas:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1907982640}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 1587401085}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 1
-  m_TargetDisplay: 0
---- !u!224 &1907982644
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1907982640}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 40197616}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 351.5, y: -3.4}
-  m_SizeDelta: {x: 703, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1908019770
 GameObject:
   m_ObjectHideFlags: 0
@@ -61670,6 +62082,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1346329909}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1908019772
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -61782,6 +62196,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1910931035
 Transform:
   m_ObjectHideFlags: 0
@@ -61845,6 +62261,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1224956315}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1912336123
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -61946,6 +62364,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1973617190}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1914489243
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -62047,6 +62467,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1929250033}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1916644307
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -62159,6 +62581,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1917407527
 Transform:
   m_ObjectHideFlags: 0
@@ -62233,6 +62657,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1921179132
 Transform:
   m_ObjectHideFlags: 0
@@ -62307,6 +62733,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1921638388
 Transform:
   m_ObjectHideFlags: 0
@@ -62370,6 +62798,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1006983509}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1921824824
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -62482,6 +62912,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1922399924
 Transform:
   m_ObjectHideFlags: 0
@@ -62556,6 +62988,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1923483237
 Transform:
   m_ObjectHideFlags: 0
@@ -62630,6 +63064,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1923610278
 Transform:
   m_ObjectHideFlags: 0
@@ -62704,6 +63140,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1923922927
 Transform:
   m_ObjectHideFlags: 0
@@ -62767,6 +63205,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1552058449}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1925172735
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -62868,6 +63308,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1943878951}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1925487616
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -62969,6 +63411,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 297227669}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1925613966
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -63081,6 +63525,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1928188404
 Transform:
   m_ObjectHideFlags: 0
@@ -63109,116 +63555,6 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
---- !u!1001 &1929148967
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1020636871}
-    m_Modifications:
-    - target: {fileID: 224993884952491068, guid: 10234cb69b925e14d9163d2556b7fb5b,
-        type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224993884952491068, guid: 10234cb69b925e14d9163d2556b7fb5b,
-        type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224993884952491068, guid: 10234cb69b925e14d9163d2556b7fb5b,
-        type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224993884952491068, guid: 10234cb69b925e14d9163d2556b7fb5b,
-        type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224993884952491068, guid: 10234cb69b925e14d9163d2556b7fb5b,
-        type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224993884952491068, guid: 10234cb69b925e14d9163d2556b7fb5b,
-        type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224993884952491068, guid: 10234cb69b925e14d9163d2556b7fb5b,
-        type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224993884952491068, guid: 10234cb69b925e14d9163d2556b7fb5b,
-        type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 224993884952491068, guid: 10234cb69b925e14d9163d2556b7fb5b,
-        type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.000061035156
-      objectReference: {fileID: 0}
-    - target: {fileID: 224993884952491068, guid: 10234cb69b925e14d9163d2556b7fb5b,
-        type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.0028381348
-      objectReference: {fileID: 0}
-    - target: {fileID: 224993884952491068, guid: 10234cb69b925e14d9163d2556b7fb5b,
-        type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224993884952491068, guid: 10234cb69b925e14d9163d2556b7fb5b,
-        type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 0.51416016
-      objectReference: {fileID: 0}
-    - target: {fileID: 224993884952491068, guid: 10234cb69b925e14d9163d2556b7fb5b,
-        type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224993884952491068, guid: 10234cb69b925e14d9163d2556b7fb5b,
-        type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224993884952491068, guid: 10234cb69b925e14d9163d2556b7fb5b,
-        type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224993884952491068, guid: 10234cb69b925e14d9163d2556b7fb5b,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 224993884952491068, guid: 10234cb69b925e14d9163d2556b7fb5b,
-        type: 2}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 224993884952491068, guid: 10234cb69b925e14d9163d2556b7fb5b,
-        type: 2}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114821946434667602, guid: 10234cb69b925e14d9163d2556b7fb5b,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114821946434667602, guid: 10234cb69b925e14d9163d2556b7fb5b,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 10234cb69b925e14d9163d2556b7fb5b, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1929250032
 GameObject:
   m_ObjectHideFlags: 0
@@ -63265,6 +63601,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1929250034
 Transform:
   m_ObjectHideFlags: 0
@@ -63328,6 +63666,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 708140075}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1936286500
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -63440,6 +63780,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1943878952
 Transform:
   m_ObjectHideFlags: 0
@@ -63514,6 +63856,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1944702749
 Transform:
   m_ObjectHideFlags: 0
@@ -63588,6 +63932,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1944739525
 Transform:
   m_ObjectHideFlags: 0
@@ -63651,6 +63997,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 824371017}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1944970729
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -63763,6 +64111,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1947186903
 Transform:
   m_ObjectHideFlags: 0
@@ -63837,6 +64187,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1950073366
 Transform:
   m_ObjectHideFlags: 0
@@ -63911,6 +64263,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1953991294
 Transform:
   m_ObjectHideFlags: 0
@@ -63974,6 +64328,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 845168215}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1955725961
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -64075,6 +64431,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 773046760}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1955977840
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -64187,6 +64545,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1964167186
 Transform:
   m_ObjectHideFlags: 0
@@ -64250,6 +64610,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1050850055}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1971659261
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -64362,6 +64724,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1973617191
 Transform:
   m_ObjectHideFlags: 0
@@ -64425,6 +64789,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1018005443}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1975218361
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -64526,6 +64892,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 625489370}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1980244998
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -64638,6 +65006,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1981384758
 Transform:
   m_ObjectHideFlags: 0
@@ -64701,6 +65071,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 439536795}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1982504064
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -64813,6 +65185,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1982646360
 Transform:
   m_ObjectHideFlags: 0
@@ -64887,6 +65261,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1984914127
 Transform:
   m_ObjectHideFlags: 0
@@ -64950,6 +65326,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 472223535}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1988889491
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -65133,7 +65511,7 @@ RectTransform:
   m_LocalScale: {x: 0.36615002, y: 0.36615002, z: 0.36615002}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -65240,7 +65618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TileSystem: {fileID: 207445843}
   m_ScreenSpaceCanvas: {fileID: 1020636870}
-  m_GameCamera: {fileID: 0}
+  m_GameCamera: {fileID: 1587401085}
   m_UnitsTracker: {fileID: 1995284696}
   m_EnemyUnitsManager: {fileID: 1995284697}
   m_PlayerUnitsManager: {fileID: 1995284698}
@@ -65275,7 +65653,7 @@ Transform:
   m_Children:
   - {fileID: 2004341139}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1996600886
 Animator:
@@ -65345,6 +65723,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1569685787}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &1997461135
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -65457,6 +65837,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &1999813460
 Transform:
   m_ObjectHideFlags: 0
@@ -65531,6 +65913,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &2000214427
 Transform:
   m_ObjectHideFlags: 0
@@ -65605,6 +65989,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &2000243422
 Transform:
   m_ObjectHideFlags: 0
@@ -65767,6 +66153,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &2007173731
 Transform:
   m_ObjectHideFlags: 0
@@ -65886,6 +66274,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 2079602860}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2007923930
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -65987,6 +66377,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 2120691334}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2008881186
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -66088,6 +66480,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1727992508}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2011135897
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -66200,6 +66594,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &2011482164
 Transform:
   m_ObjectHideFlags: 0
@@ -66274,6 +66670,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &2013035242
 Transform:
   m_ObjectHideFlags: 0
@@ -66348,6 +66746,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &2014833725
 Transform:
   m_ObjectHideFlags: 0
@@ -66422,6 +66822,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &2017461537
 Transform:
   m_ObjectHideFlags: 0
@@ -66485,6 +66887,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 372097168}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2019287438
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -66597,6 +67001,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &2021657298
 Transform:
   m_ObjectHideFlags: 0
@@ -66660,6 +67066,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 22982558}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2037447915
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -66772,6 +67180,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &2038699058
 Transform:
   m_ObjectHideFlags: 0
@@ -66835,6 +67245,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 365579592}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2041243773
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -66947,6 +67359,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &2041750474
 Transform:
   m_ObjectHideFlags: 0
@@ -67010,6 +67424,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 951136578}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2048922648
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -67111,6 +67527,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 2000243421}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2048926521
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -67223,6 +67641,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &2051479893
 Transform:
   m_ObjectHideFlags: 0
@@ -67297,6 +67717,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &2054042072
 Transform:
   m_ObjectHideFlags: 0
@@ -67371,6 +67793,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &2055536696
 Transform:
   m_ObjectHideFlags: 0
@@ -67436,7 +67860,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4633074402712596, guid: 525f4ac0fe7c38e4b8d0c7d5edd2a90e, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1411079469388966, guid: 525f4ac0fe7c38e4b8d0c7d5edd2a90e, type: 2}
       propertyPath: m_Name
@@ -67518,6 +67942,11 @@ Prefab:
       propertyPath: m_Animator
       value: 
       objectReference: {fileID: 2060111130}
+    - target: {fileID: 114811533488785636, guid: 525f4ac0fe7c38e4b8d0c7d5edd2a90e,
+        type: 2}
+      propertyPath: m_GameSystemsDirectory
+      value: 
+      objectReference: {fileID: 1995284701}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 525f4ac0fe7c38e4b8d0c7d5edd2a90e, type: 2}
   m_IsPrefabParent: 0
@@ -67562,6 +67991,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 87969050}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2062447053
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -67663,6 +68094,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 867234858}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2067276568
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -67764,6 +68197,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1850269377}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2069507737
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -67876,6 +68311,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &2072183526
 Transform:
   m_ObjectHideFlags: 0
@@ -67939,6 +68376,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1457724018}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2073497289
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -68051,6 +68490,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &2076868019
 Transform:
   m_ObjectHideFlags: 0
@@ -68125,6 +68566,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &2079602861
 Transform:
   m_ObjectHideFlags: 0
@@ -68188,6 +68631,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 308129010}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2079804170
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -68362,6 +68807,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1257581014}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2081350323
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -68474,6 +68921,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &2083468314
 Transform:
   m_ObjectHideFlags: 0
@@ -68537,6 +68986,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1105831443}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2084913048
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -68638,6 +69089,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1817618792}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2091426014
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -68739,6 +69192,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 81407813}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2093659457
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -68994,6 +69449,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1037948220}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2095409877
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -69106,6 +69563,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &2096872565
 Transform:
   m_ObjectHideFlags: 0
@@ -69169,6 +69628,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 678407891}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2098859580
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -69270,6 +69731,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1548395322}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2101734531
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -69371,6 +69834,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 987189909}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2106392043
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -69483,6 +69948,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &2106731937
 Transform:
   m_ObjectHideFlags: 0
@@ -69557,6 +70024,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &2107406524
 Transform:
   m_ObjectHideFlags: 0
@@ -69631,6 +70100,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &2107840473
 Transform:
   m_ObjectHideFlags: 0
@@ -69694,6 +70165,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1405267654}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2110517626
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -69795,6 +70268,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1330974714}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2113085937
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -69896,6 +70371,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1579455204}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2116748532
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -69997,6 +70474,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 753840341}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2117982605
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -70109,6 +70588,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &2120691335
 Transform:
   m_ObjectHideFlags: 0
@@ -70240,6 +70721,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 904787716}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2126242174
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -70341,6 +70824,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 606250257}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2127166212
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -70442,6 +70927,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 385753093}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2133393851
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -70554,6 +71041,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &2138906929
 Transform:
   m_ObjectHideFlags: 0
@@ -70752,6 +71241,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 837937845}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2140100520
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -70864,6 +71355,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &2141290055
 Transform:
   m_ObjectHideFlags: 0
@@ -70938,6 +71431,8 @@ MonoBehaviour:
   m_Hazard: {fileID: 0}
   m_HazardType: -1
   m_Unit: {fileID: 0}
+  m_Known: 0
+  m_VisibleCounter: 0
 --- !u!4 &2142067449
 Transform:
   m_ObjectHideFlags: 0
@@ -71001,6 +71496,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1284688323}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2142776515
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -71102,6 +71599,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 2054042071}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2143905712
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -71203,6 +71702,8 @@ MonoBehaviour:
     type: 2}
   m_OwnerInitialized: 1
   m_Owner: {fileID: 1335137036}
+  m_Known: 0
+  m_Visible: 0
 --- !u!64 &2146954400
 MeshCollider:
   m_ObjectHideFlags: 0

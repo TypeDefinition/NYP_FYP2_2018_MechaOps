@@ -1787,7 +1787,8 @@ MonoBehaviour:
   m_Planner: {fileID: 114592386915721966}
   m_resultsOfThisAct:
   - AttackGoal
-  m_AttackAct: {fileID: 0}
+  m_ActionCompleted: 0
+  m_AttackAct: {fileID: 114669511403171312}
   m_GOAPTargetAct: {fileID: 114525463778650170}
 --- !u!114 &114047148403502172
 MonoBehaviour:
@@ -1884,6 +1885,7 @@ MonoBehaviour:
   m_HullTransform: {fileID: 4678192204071410}
   m_TimeDelayForCamToTurret: 3
   m_TimeDelayForCamBackToNormal: 0.5
+  m_TimeDelayForDeathCam: 2
 --- !u!114 &114303736659755040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1934,6 +1936,7 @@ MonoBehaviour:
   m_Planner: {fileID: 114592386915721966}
   m_resultsOfThisAct:
   - TargetAttackInRange
+  m_ActionCompleted: 0
   m_AttackAct: {fileID: 0}
   m_WalkAct: {fileID: 114930548130969464}
   m_EnemiesInAttack: []
@@ -1988,6 +1991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UnitActionName: Shoot
+  m_UnitActionDescription: <Placeholder Description>
   m_TurnedOn: 0
   m_Priority: 0
   m_ActionCost: 1
@@ -1997,9 +2001,9 @@ MonoBehaviour:
   m_ActionIconUI: {fileID: 0}
   m_AnimationCompleted: 0
   m_MinAttackRange: 0
-  m_MaxAttackRange: 0
-  m_AccuracyPoints: 0
-  m_DamagePoints: 0
+  m_MaxAttackRange: 5
+  m_AccuracyPoints: 40
+  m_DamagePoints: 3
   m_AttackAnimation: {fileID: 114736098985811620}
 --- !u!114 &114719944890479642
 MonoBehaviour:
@@ -2048,6 +2052,7 @@ MonoBehaviour:
   m_Planner: {fileID: 114592386915721966}
   m_resultsOfThisAct:
   - WalkGoal
+  m_ActionCompleted: 0
   m_WalkAct: {fileID: 114930548130969464}
   m_TileDest:
     m_X: 0
@@ -2099,6 +2104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UnitActionName: Walk
+  m_UnitActionDescription: <Placeholder Description>
   m_TurnedOn: 0
   m_Priority: 0
   m_ActionCost: 1
@@ -2125,3 +2131,4 @@ MonoBehaviour:
     type: 2}
   m_FlamePrefab: {fileID: 198131241012019862, guid: d07da21434175a749bb97eebed0144f1,
     type: 2}
+  m_Animator: {fileID: 114189902084662826}

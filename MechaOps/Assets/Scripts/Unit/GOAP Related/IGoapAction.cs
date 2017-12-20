@@ -22,6 +22,10 @@ public abstract class IGoapAction : MonoBehaviour {
     [Tooltip("The result that will be given when this action is done!")]
     public List<string> m_resultsOfThisAct;
 
+    [Header("Debugging for IGoapAction")]
+    [SerializeField, Tooltip("Flag to check whether the action is completed")]
+    protected bool m_ActionCompleted = false;
+
     public Coroutine m_UpdateRoutine
     {
         protected set; get;
@@ -55,9 +59,12 @@ public abstract class IGoapAction : MonoBehaviour {
 
     public abstract IEnumerator UpdateActRoutine();
 
-    //public abstract bool CheckIfInCondition();
-
     public virtual void CheckCurrentState()
     {
+    }
+
+    protected virtual void InvokeActionCompleted()
+    {
+        m_ActionCompleted = true;
     }
 }

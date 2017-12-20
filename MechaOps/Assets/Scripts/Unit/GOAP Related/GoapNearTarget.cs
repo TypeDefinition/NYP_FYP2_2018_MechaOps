@@ -52,6 +52,7 @@ public class GoapNearTarget : IGoapAction
 
     public override void DoAction()
     {
+        m_ActionCompleted = false;
         UpdateEnemyInAttack();
         m_UpdateRoutine = StartCoroutine(UpdateActRoutine());
     }
@@ -101,13 +102,13 @@ public class GoapNearTarget : IGoapAction
             }
         }
         m_WalkAct.SetTilePath(zeTileToWalk.ToArray());
-        UnitActionScheduler zeScheduler = FindObjectOfType<UnitActionScheduler>();
+        m_WalkAct.CompletionCallBack += InvokeActionCompleted;
         m_WalkAct.TurnOn();
-        zeScheduler.ScheduleAction(m_WalkAct);
         WaitForFixedUpdate zeFixedWait = new WaitForFixedUpdate();
-        while (m_WalkAct.GetActionState() != IUnitAction.ActionState.Completed)
+        while (!m_ActionCompleted)
             yield return zeFixedWait;
         UpdateEnemyInAttack();
+        m_WalkAct.CompletionCallBack -= InvokeActionCompleted;
         print("Followed the target successfully");
         yield break;
     }

@@ -84,7 +84,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224031770567230524}
-  - component: {fileID: 33286546959249544}
   - component: {fileID: 222423588514333872}
   - component: {fileID: 114620908302850702}
   m_Layer: 5
@@ -111,13 +110,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!33 &33286546959249544
-MeshFilter:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1982175464942320}
-  m_Mesh: {fileID: 0}
 --- !u!114 &114310617239107496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -131,7 +123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: be04d6e488aa68e43a4dff0e7a7466ad, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -161,6 +153,7 @@ MonoBehaviour:
   m_HealthBar: {fileID: 114532112614808212}
   m_ActionPointsCounter: {fileID: 114528859191983310}
   m_UnitWorldPositionOffset: {x: 0, y: 2.5, z: 0}
+  m_PositionZ: 0
 --- !u!114 &114528859191983310
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -324,7 +317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: be04d6e488aa68e43a4dff0e7a7466ad, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
