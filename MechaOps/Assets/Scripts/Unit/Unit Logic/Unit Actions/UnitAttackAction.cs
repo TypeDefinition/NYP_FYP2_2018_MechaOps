@@ -6,6 +6,7 @@ using UnityEngine.Assertions;
 
 public abstract class UnitAttackAction : IUnitAction
 {
+    // Serialised Variable(s)
     [SerializeField, Tooltip("Minimum attack range of the unit")]
     protected int m_MinAttackRange;
     [SerializeField, Tooltip("Maximum attack range of the unit")]
@@ -15,9 +16,7 @@ public abstract class UnitAttackAction : IUnitAction
     [SerializeField, Tooltip("The damage point it dealt")]
     protected int m_DamagePoints;
 
-    [Header("These variables are shown in the Inspector for debugging purposes.")]
-
-    [SerializeField, Tooltip("The unit stats of the target")]
+    // Non-Serialised Variable(s)
     protected UnitStats m_TargetUnitStats;
 
     public int MinAttackRange
@@ -124,18 +123,19 @@ public abstract class UnitAttackAction : IUnitAction
     }
 
     /// <summary>
-    /// 
+    /// Calculate the hit percentage of this attack.
+    /// It should return an int between 1(Inclusive) and 100(Inclusive).
     /// </summary>
     protected abstract int CalculateHitChance();
 
     /// <summary>
-    /// This function rolls a random number between 1 (inclusive) to 100 (inclusive).
+    /// This function rolls a random number between 1 (inclusive) to 101 (exclusive).
     /// It returns true of the random number is lower or equal to CalculateHitChance().
     /// </summary>
     /// <returns></returns>
     protected virtual bool CheckIfHit()
     {
-        return Random.Range(1, 100) <= CalculateHitChance();
+        return Random.Range(1, 101) <= CalculateHitChance();
     }
 
 #if UNITY_EDITOR

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 /// <summary>
 /// Handles how the UI for unit walking works
@@ -8,8 +10,7 @@ using UnityEngine;
 public class WalkUI_Logic : TweenUI_Scale
 {
     [Header("The linking and variables needed for WalkUI")]
-    [Tooltip("The References to TileSystem")]
-    public TileSystem m_TileSystem;
+    protected GameSystemsDirectory m_GameSystemsDirectory = null;
 
     [Header("Debugging references")]
     [Tooltip("The array of tiles that the unit can reach")]
@@ -17,29 +18,54 @@ public class WalkUI_Logic : TweenUI_Scale
     [SerializeField, Tooltip("The chosen path to walk to")]
     protected TileId[] m_MovementPath;
     [Tooltip("The Reference to unit walk action")]
-    public UnitWalkAction m_UnitWalkRef;
+    public UnitWalkAction m_UnitAction;
+
+    private TileSystem m_TileSystem = null;
+
+    public void SetGameSystemsDirectory(GameSystemsDirectory _gameSystemDirectory)
+    {
+        m_GameSystemsDirectory = _gameSystemDirectory;
+        m_TileSystem = m_GameSystemsDirectory.GetTileSystem();
+    }
+
+    public GameSystemsDirectory GetGameSystemsDirectory() { return m_GameSystemsDirectory; }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        // Since the tile system is not linked from the start, find it at the scene.
+        m_GameSystemsDirectory = FindObjectOfType<GameSystemsDirectory>();
+        Assert.IsNotNull(m_GameSystemsDirectory);
+        m_TileSystem = m_GameSystemsDirectory.GetTileSystem();
+    }
+
+    private void InitEvents()
+    {
+        // And then access the tile stuff from the system and get reachable tiles
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("ClickedUnit", PlayerClickedTile);
+        GameEventSystem.GetInstance().SubscribeToEvent<IUnitAction>("SelectedAction", SetUnitAction);
+    }
+
+    private void DeinitEvents()
+    {
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("ClickedUnit", PlayerClickedTile);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<IUnitAction>("SelectedAction", SetUnitAction);
+    }
 
     private void OnEnable()
     {
         AnimateUI();
+        
         // For now, it will just pick the 1st enemy in the array
         GameEventSystem.GetInstance().TriggerEvent("ToggleSelectingUnit");
-
-        // And then access the tile stuff from the system and get reachable tiles
-        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("ClickedUnit", PlayerClickedTile);
-        GameEventSystem.GetInstance().SubscribeToEvent<IUnitAction>("SelectedAction", PressedAction);
-
-        // Since the tile system is not linked from the start, find it at the scene
-        m_TileSystem = FindObjectOfType<TileSystem>();
+        InitEvents();
     }
 
     private void OnDisable()
     {
         // This is the only way to remove that green line renderer!
         m_TileSystem.ClearPathMarkers();
-
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("ClickedUnit", PlayerClickedTile);
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<IUnitAction>("SelectedAction", PressedAction);
+        DeinitEvents();
     }
 
     void PlayerClickedTile(GameObject _clickedObj)
@@ -60,7 +86,7 @@ public class WalkUI_Logic : TweenUI_Scale
             if (m_AllReachableTileHighlight.Contains(zeTileComponent.GetTileId()))
             {
                 // Then we have to find the path for it!
-                m_MovementPath = m_TileSystem.GetPath(m_UnitWalkRef.m_MovementPoints, m_UnitWalkRef.GetUnitStats().CurrentTileID, zeTileComponent.GetTileId(), m_UnitWalkRef.GetUnitStats().GetTileAttributeOverrides());
+                m_MovementPath = m_TileSystem.GetPath(m_UnitAction.m_MovementPoints, m_UnitAction.GetUnitStats().CurrentTileID, zeTileComponent.GetTileId(), m_UnitAction.GetUnitStats().GetTileAttributeOverrides());
                 m_TileSystem.SetPathMarkers(m_AllReachableTileHighlight.ToArray(), m_MovementPath);
             }
         }
@@ -89,9 +115,8 @@ public class WalkUI_Logic : TweenUI_Scale
         }
         else
         {
-            m_UnitWalkRef.SetTilePath(m_MovementPath);
-            UnitActionScheduler zeActScheduler = FindObjectOfType<UnitActionScheduler>();
-            m_UnitWalkRef.TurnOn();
+            m_UnitAction.SetTilePath(m_MovementPath);
+            m_UnitAction.TurnOn();
             Destroy(gameObject);
         }
     }
@@ -100,12 +125,12 @@ public class WalkUI_Logic : TweenUI_Scale
     /// Called when the Player unit manager triggers this event!
     /// </summary>
     /// <param name="_action">The unit action that is supposed to pass in!</param>
-    protected virtual void PressedAction(IUnitAction _action)
+    protected virtual void SetUnitAction(IUnitAction _action)
     {
-        m_UnitWalkRef = (UnitWalkAction)_action;
-        TileId[] zeReachableTiles = m_TileSystem.GetReachableTiles(m_UnitWalkRef.m_MovementPoints, m_UnitWalkRef.GetUnitStats().CurrentTileID, m_UnitWalkRef.GetUnitStats().GetTileAttributeOverrides());
-        m_AllReachableTileHighlight = new List<TileId>(zeReachableTiles);
-        m_AllReachableTileHighlight.Remove(m_UnitWalkRef.GetUnitStats().CurrentTileID);
+        m_UnitAction = (UnitWalkAction)_action;
+        TileId[] reachableTiles = m_TileSystem.GetReachableTiles(m_UnitAction.m_MovementPoints, m_UnitAction.GetUnitStats().CurrentTileID, m_UnitAction.GetUnitStats().GetTileAttributeOverrides());
+        m_AllReachableTileHighlight = new List<TileId>(reachableTiles);
+        m_AllReachableTileHighlight.Remove(m_UnitAction.GetUnitStats().CurrentTileID);
         m_TileSystem.SetPathMarkers(m_AllReachableTileHighlight.ToArray(), null);
     }
 }

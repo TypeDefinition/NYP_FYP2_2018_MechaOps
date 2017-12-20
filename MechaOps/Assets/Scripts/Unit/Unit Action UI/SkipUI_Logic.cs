@@ -5,10 +5,11 @@ using UnityEngine;
 /// <summary>
 /// Should be used for skipping the unit's action
 /// </summary>
-public class SkipUI_Logic : MonoBehaviour {
+public class SkipUI_Logic : MonoBehaviour
+{
     [Header("Variables needed")]
     [SerializeField, Tooltip("The animation time for scaling of X")]
-    protected float m_AnimTime = 0.3f;
+    protected float m_AnimationTime = 0.3f;
     [Header("Debugging")]
     [SerializeField, Tooltip("The unit's skip action")]
     protected UnitSkipAction m_UnitSkipAct;
@@ -19,7 +20,7 @@ public class SkipUI_Logic : MonoBehaviour {
         float zeOriginalScaleX = zeScale.x;
         zeScale.x = 0;
         transform.localScale = zeScale;
-        LeanTween.scaleX(gameObject, zeOriginalScaleX, m_AnimTime);
+        LeanTween.scaleX(gameObject, zeOriginalScaleX, m_AnimationTime);
         // making sure the player cannot pressed any other unit
         GameEventSystem.GetInstance().TriggerEvent("ToggleSelectingUnit");
         GameEventSystem.GetInstance().SubscribeToEvent<IUnitAction>("SelectedAction", PressedAction);

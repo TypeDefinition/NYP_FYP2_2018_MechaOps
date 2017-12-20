@@ -5,31 +5,27 @@ using UnityEngine;
 /// <summary>
 /// The logic for artillery attack UI
 /// </summary>
-public class ArtyAttackUI_Logic : TweenUI_Scale {
+public class ArtyAttackUI_Logic : TweenUI_Scale
+{
     [Header("Variables for ArtyAttackUI_Logic")]
     [SerializeField, Tooltip("prefab UI indicator of the tile to be targeted")]
     protected GameObject m_UIndicatorGO;
 
     [Header("Debugging for ArtyAttackUI")]
     [SerializeField, Tooltip("Unit's attack action")]
-    protected ArtyAttackAct m_AttckAct;
+    protected ArtyAttackAction m_AttckAct;
     [SerializeField, Tooltip("The targeted Tile")]
     protected Tile m_TargetTile;
     [SerializeField, Tooltip("Tile System")]
     protected TileSystem m_TileSys;
     [SerializeField, Tooltip("List of Tiles that it can attack")]
     protected List<TileId> m_AttackableTiles;
-    [SerializeField, Tooltip("The world canvas UI")]
-    protected GameObject m_WorldCanvas;
     [SerializeField, Tooltip("Instantiated UI")]
     protected UnitInfoDisplay m_InstantUI;
 
     private void OnEnable()
     {
         m_TileSys = FindObjectOfType<TileSystem>();
-        m_WorldCanvas = GameObject.FindGameObjectWithTag("WorldCanvas");
-        m_InstantUI = Instantiate(m_UIndicatorGO, m_WorldCanvas.transform, false).GetComponent<UnitInfoDisplay>();
-        m_InstantUI.gameObject.SetActive(false);
         // Animate the UI when enabled
         AnimateUI();
         GameEventSystem.GetInstance().TriggerEvent("ToggleSelectingUnit");
@@ -74,7 +70,7 @@ public class ArtyAttackUI_Logic : TweenUI_Scale {
     /// <param name="_act"></param>
     public void PressedAction(IUnitAction _act)
     {
-        m_AttckAct = _act as ArtyAttackAct;
+        m_AttckAct = _act as ArtyAttackAction;
         // then we highlight all of the tiles from here
         TileId []zeAllTile = m_TileSys.GetSurroundingTiles(m_AttckAct.GetUnitStats().CurrentTileID, m_AttckAct.MaxAttackRange);
         foreach (TileId zeTileID in zeAllTile)

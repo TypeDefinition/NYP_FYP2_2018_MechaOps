@@ -1787,7 +1787,7 @@ MonoBehaviour:
   m_Planner: {fileID: 114592386915721966}
   m_resultsOfThisAct:
   - AttackGoal
-  m_AttackAct: {fileID: 114669511403171312}
+  m_AttackAct: {fileID: 0}
   m_GOAPTargetAct: {fileID: 114525463778650170}
 --- !u!114 &114047148403502172
 MonoBehaviour:
@@ -1934,7 +1934,7 @@ MonoBehaviour:
   m_Planner: {fileID: 114592386915721966}
   m_resultsOfThisAct:
   - TargetAttackInRange
-  m_AttackAct: {fileID: 114669511403171312}
+  m_AttackAct: {fileID: 0}
   m_WalkAct: {fileID: 114930548130969464}
   m_EnemiesInAttack: []
 --- !u!114 &114592386915721966
@@ -1984,24 +1984,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1258380024048378}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 078b10b2239b1494ea96266b728d0a90, type: 3}
+  m_Script: {fileID: 11500000, guid: 51dfc0bc3a817ac4a951b8a242a9681f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UnitActionName: Attack
+  m_UnitActionName: Shoot
   m_TurnedOn: 0
   m_Priority: 0
   m_ActionCost: 1
   m_EndsTurn: 0
   m_ActionState: 0
-  m_UnitActionUI: {fileID: 1044431308409052, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
-    type: 2}
-  m_ActionIconUI: {fileID: 21300000, guid: 7fa2b56696c075f4eafe02c8cfd5df76, type: 3}
+  m_UnitActionUI: {fileID: 0}
+  m_ActionIconUI: {fileID: 0}
   m_AnimationCompleted: 0
   m_MinAttackRange: 0
-  m_MaxAttackRange: 5
+  m_MaxAttackRange: 0
   m_AccuracyPoints: 0
-  m_DamagePoints: 1
-  m_TargetUnitStats: {fileID: 0}
+  m_DamagePoints: 0
 --- !u!114 &114719944890479642
 MonoBehaviour:
   m_ObjectHideFlags: 1

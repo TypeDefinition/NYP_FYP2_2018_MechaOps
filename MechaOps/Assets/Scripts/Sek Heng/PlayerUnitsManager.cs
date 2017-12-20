@@ -202,13 +202,13 @@ public class PlayerUnitsManager : MonoBehaviour
     /// <summary>
     /// Instantiating the specific action UI and keeping the reference to it!
     /// </summary>
-    /// <param name="_SpecificUIGO">The Specific Action UI GameObject</param>
-    /// <param name="_SelectedAction">The reference to that UI</param>
-    public void ToInstantiateSpecificActionUI(GameObject _SpecificUIGO, IUnitAction _SelectedAction)
+    /// <param name="_specificUIGO">The Specific Action UI GameObject</param>
+    /// <param name="_selectedAction">The reference to that UI</param>
+    public void ToInstantiateSpecificActionUI(GameObject _specificUIGO, IUnitAction _selectedAction)
     {
         m_UnitSelection.gameObject.SetActive(false);
-        m_CurrentSelectedAction = _SelectedAction;
-        Instantiate(_SpecificUIGO, m_ScreenSpaceCanvas.transform).SetActive(true);
+        m_CurrentSelectedAction = _selectedAction;
+        Instantiate(_specificUIGO, m_ScreenSpaceCanvas.transform).SetActive(true);
         GameEventSystem.GetInstance().TriggerEvent<IUnitAction>("SelectedAction", m_CurrentSelectedAction);
     }
 

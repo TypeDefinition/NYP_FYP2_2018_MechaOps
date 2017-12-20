@@ -1869,6 +1869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1fa353a39c30e74eb9e7f58a0ddf3f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_CineMachineHandler: {fileID: 0}
   m_MaxGunElevation: 80
   m_MaxGunDepression: 20
   m_Turret: {fileID: 1425321529424118}
@@ -1900,7 +1901,6 @@ MonoBehaviour:
   m_BulletPrefab: {fileID: 114043521242476608, guid: 395c424eb347e834bb03c780aee2901b,
     type: 2}
   m_HullTransform: {fileID: 4921449994092254}
-  m_CineHandler: {fileID: 0}
   m_TimeDelayForCamToTurret: 3
   m_TimeDelayForCamBackToNormal: 0.5
 --- !u!114 &114500691128078972
@@ -1932,7 +1932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51dfc0bc3a817ac4a951b8a242a9681f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UnitActionName: Attack
+  m_UnitActionName: Shoot
   m_TurnedOn: 0
   m_Priority: 0
   m_ActionCost: 1
@@ -1946,8 +1946,6 @@ MonoBehaviour:
   m_MaxAttackRange: 5
   m_AccuracyPoints: 0
   m_DamagePoints: 2
-  m_TargetUnitStats: {fileID: 0}
-  m_AttackAnimation: {fileID: 0}
 --- !u!114 &114724299080089450
 MonoBehaviour:
   m_ObjectHideFlags: 1
