@@ -9,45 +9,45 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1937030430803890}
+  m_RootGameObject: {fileID: 1043585834331834}
   m_IsPrefabParent: 1
---- !u!1 &1937030430803890
+--- !u!1 &1043585834331834
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4833244733321240}
-  - component: {fileID: 33157982096964236}
-  - component: {fileID: 23528924572306312}
-  - component: {fileID: 114043521242476608}
+  - component: {fileID: 4253585789744996}
+  - component: {fileID: 33180956044242140}
+  - component: {fileID: 23062515537400802}
+  - component: {fileID: 114258023559817586}
   m_Layer: 0
-  m_Name: TankBullet
+  m_Name: MuzzleFlash_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4833244733321240
+--- !u!4 &4253585789744996
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1937030430803890}
+  m_GameObject: {fileID: 1043585834331834}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23528924572306312
+--- !u!23 &23062515537400802
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1937030430803890}
+  m_GameObject: {fileID: 1043585834331834}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -55,7 +55,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: f26202c8bd3d8c34aafc4fc94184e640, type: 2}
+  - {fileID: 2100000, guid: e731ce67c7c8ab54baf2b0eedd6814a0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
+  m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_SelectedEditorRenderState: 3
@@ -74,29 +74,22 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33157982096964236
+--- !u!33 &33180956044242140
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1937030430803890}
-  m_Mesh: {fileID: 4300000, guid: 16779bbe73ffc0446986fb9856caa063, type: 3}
---- !u!114 &114043521242476608
+  m_GameObject: {fileID: 1043585834331834}
+  m_Mesh: {fileID: 4300000, guid: c584ef5c849d1d243967a44643401f45, type: 3}
+--- !u!114 &114258023559817586
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1937030430803890}
+  m_GameObject: {fileID: 1043585834331834}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85a6da2f5c430e24ca2a036cbed05258, type: 3}
+  m_Script: {fileID: 11500000, guid: 2eb8a76e585a938469486612ff83808e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Speed: 100
-  m_Lifetime: 0.5
-  m_ExplodeOnContact: 1
-  m_ExplosionPrefab: {fileID: 1239684297980618, guid: fabb59942e39c724f8e7e33417f0ff43,
-    type: 2}
-  m_CollisionLayers:
-  - Unit
-  - TileDisplay
+  m_LifeTime: 0.05

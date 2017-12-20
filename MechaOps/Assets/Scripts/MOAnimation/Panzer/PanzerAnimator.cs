@@ -8,52 +8,49 @@ using UnityEngine.Assertions;
 public class PanzerAnimator : MOAnimator
 {
     // Gun Elevation
-    [SerializeField, Range(0, 90)] private float m_MaxGunElevation = 80.0f;
-    [SerializeField, Range(0, 90)] private float m_MaxGunDepression = 20.0f;
+    [SerializeField, Range(0, 90)] protected float m_MaxGunElevation = 80.0f;
+    [SerializeField, Range(0, 90)] protected float m_MaxGunDepression = 20.0f;
 
     // Weapons
-    [SerializeField] private GameObject m_Turret;
-    [SerializeField] private GameObject m_Gun;
-    [SerializeField] private GameObject[] m_MuzzleFlashes;
+    [SerializeField] protected GameObject m_Turret;
+    [SerializeField] protected GameObject m_Gun;
+    [SerializeField] protected GameObject[] m_MuzzleFlashes;
 
     // Tracks & Wheels
-    [SerializeField] private GameObject m_LeftTracks;
-    [SerializeField] private GameObject m_RightTracks;
-    [SerializeField] private GameObject[] m_LeftWheels;
-    [SerializeField] private GameObject[] m_RightWheels;
+    [SerializeField] protected GameObject m_LeftTracks;
+    [SerializeField] protected GameObject m_RightTracks;
+    [SerializeField] protected GameObject[] m_LeftWheels;
+    [SerializeField] protected GameObject[] m_RightWheels;
     // How fast the wheels should turn relative to the tracks.
-    private float m_TracksToWheelsSpeedRatio = 800.0f;
+    protected float m_TracksToWheelsSpeedRatio = 800.0f;
 
     // Bullet
-    [SerializeField] private GameObject m_BulletSpawn;
-    [SerializeField] private TankBullet m_BulletPrefab;
+    [SerializeField] protected GameObject m_BulletSpawn;
+    [SerializeField] protected TankBullet m_BulletPrefab;
 
     [SerializeField, Tooltip("Hull of the panzer")] private Transform m_HullTransform;
     [SerializeField, Tooltip("Time taken for delay in the animation from camera to the turret during camera cinematics")]
-    private float m_TimeDelayForCamToTurret = 3.0f;
+    protected float m_TimeDelayForCamToTurret = 3.0f;
     [SerializeField, Tooltip("Time taken for the delay before camera goes back to normal from cinematics")]
-    private float m_TimeDelayForCamBackToNormal = 0.5f;
-    [SerializeField, Tooltip("Time taken for the death cam animation")] private float m_TimeDelayForDeathCam = 2.0f;
-
-    // Shooting Animation
-    private GameObject m_Target = null;
-    private bool m_Hit = false; // Is the shot a hit or miss?
-    private float m_TurretRotationSpeed = 5.0f; // This speed is not in degrees. It's just by time cause I'm lazy.
-    private float m_GunElevationSpeed = 60.0f; // This is the speed in degrees.
-    private float m_AccuracyTolerance = 0.5f; // How small must the angle between where our gun is aiming and where the target is to be considered aimed.
-    private bool m_FinishShootAnimFlag = false;
-    private TankBullet m_Bullet = null;
-    private Void_Void m_ShootAnimationCompleteCallback = null;
-    IEnumerator m_ShootAnimationCoroutine;
+    protected float m_TimeDelayForCamBackToNormal = 0.5f;
 
     // Moving Animation
-    private Vector3 m_Destination = new Vector3();
-    private float m_MovementSpeed = 10.0f;
-    private float m_TankRotationSpeed = 3.0f;
-    private float m_DistanceTolerance = 0.1f;
-    private float m_RotationTolerance = 0.5f;
-    private Void_Void m_MoveAnimationCompleteCallback = null;
-    IEnumerator m_MoveAnimationCoroutine;
+    protected Vector3 m_Destination = new Vector3();
+    protected float m_MovementSpeed = 10.0f;
+    protected float m_TankRotationSpeed = 3.0f;
+    protected Void_Void m_MoveAnimationCompleteCallback = null;
+    protected IEnumerator m_MoveAnimationCoroutine;
+
+    // Shooting Animation
+    protected GameObject m_Target = null;
+    protected bool m_Hit = false; // Is the shot a hit or miss?
+    protected float m_TurretRotationSpeed = 5.0f; // This speed is not in degrees. It's just by time cause I'm lazy.
+    protected float m_GunElevationSpeed = 60.0f; // This is the speed in degrees.
+    protected float m_AccuracyTolerance = 0.5f; // How small must the angle between where our gun is aiming and where the target is to be considered aimed.
+    protected bool m_FinishShootAnimationFlag = false;
+    protected TankBullet m_Bullet = null;
+    protected Void_Void m_ShootAnimationCompleteCallback = null;
+    IEnumerator m_ShootAnimationCoroutine;
 
     public float MaxGunElevation
     {
@@ -66,32 +63,13 @@ public class PanzerAnimator : MOAnimator
         set { m_MaxGunDepression = Mathf.Clamp(value, 0.0f, 90.0f); }
     }
 
-    private void Start()
-    {
-        switch (tag)
-        {
-            case "Player":
-                // TODO: Only the player's units get to do the cinematic shots for now
-                if (!m_CineMachineHandler)
-                    m_CineMachineHandler = FindObjectOfType<CineMachineHandler>();
-                break;
-            default:
-                break;
-        }
-    }
-
-    private void OnDestroy()
-    {
-        StopAllCoroutines();
-    }
-
-    public void AnimateTracks(float _leftSpeed, float _rightSpeed)
+    public virtual void AnimateTracks(float _leftSpeed, float _rightSpeed)
     {
         AnimateTracksLeft(_leftSpeed);
         AnimateTracksRight(_rightSpeed);
     }
 
-    public void AnimateTracksLeft(float _speed)
+    public virtual void AnimateTracksLeft(float _speed)
     {
         Material trackMaterial = m_LeftTracks.GetComponent<MeshRenderer>().material;
         Vector2 textureOffset = new Vector2(trackMaterial.mainTextureOffset.x, trackMaterial.mainTextureOffset.y);
@@ -105,7 +83,7 @@ public class PanzerAnimator : MOAnimator
         }
     }
 
-    public void AnimateTracksRight(float _speed)
+    public virtual void AnimateTracksRight(float _speed)
     {
         Material trackMaterial = m_RightTracks.GetComponent<MeshRenderer>().material;
         Vector2 textureOffset = trackMaterial.mainTextureOffset;
@@ -119,12 +97,12 @@ public class PanzerAnimator : MOAnimator
         }
     }
 
-    public void AnimateTurretRotate(float _angle)
+    public virtual void AnimateTurretRotate(float _angle)
     {
         m_Turret.transform.Rotate(new Vector3(0.0f, _angle, 0.0f));
     }
 
-    public void AnimateMuzzleFlash()
+    public virtual void AnimateMuzzleFlash()
     {
         for (int i = 0; i < m_MuzzleFlashes.Length; ++i)
         {
@@ -133,7 +111,7 @@ public class PanzerAnimator : MOAnimator
         }
     }
 
-    public void AnimateFireBullet(GameObject _target, bool _explodeOnContact, Void_Void _callback)
+    public virtual void AnimateFireBullet(GameObject _target, bool _explodeOnContact, Void_Void _callback)
     {
         Assert.IsTrue(_target != null);
         m_Bullet = GameObject.Instantiate(m_BulletPrefab.gameObject).GetComponent<TankBullet>();
@@ -144,13 +122,13 @@ public class PanzerAnimator : MOAnimator
         // TODO, maybe can show off the slow bullet animation
     }
 
-    public void AnimateFireGun(GameObject _target, bool _bulletExplodeOnContact, Void_Void _callback)
+    public virtual void AnimateFireGun(GameObject _target, bool _bulletExplodeOnContact, Void_Void _callback)
     {
         AnimateMuzzleFlash();
         AnimateFireBullet(_target, _bulletExplodeOnContact, _callback);
     }
 
-    public void AnimateElevateGun(float _angle)
+    public virtual void AnimateElevateGun(float _angle)
     {
         m_Gun.transform.Rotate(new Vector3(_angle, 0.0f, 0.0f));
 
@@ -165,7 +143,7 @@ public class PanzerAnimator : MOAnimator
 
     // Private Function(s)
     // _maximumAngle is in degrees not radians.
-    private bool IsTurretAimingAtTarget(Vector3 _targetPosition)
+    protected virtual bool IsTurretAimingAtTarget(Vector3 _targetPosition)
     {
         Vector3 directionToTarget = _targetPosition - m_Turret.transform.position;
         directionToTarget.y = 0.0f;
@@ -186,7 +164,7 @@ public class PanzerAnimator : MOAnimator
         return true;
     }
 
-    private bool IsGunAimingAtTarget(Vector3 _targetPosition)
+    protected virtual bool IsGunAimingAtTarget(Vector3 _targetPosition)
     {
         Vector3 directionToTarget = _targetPosition - m_Gun.transform.position;
         directionToTarget.Normalize();
@@ -194,7 +172,7 @@ public class PanzerAnimator : MOAnimator
         float angleToTarget = -Mathf.Asin(directionToTarget.y) * Mathf.Rad2Deg; // Negate this because a position rotation is downwards.
         float currentAngle = ConvertAngle(m_Gun.transform.localRotation.eulerAngles.x);
         float angleDifference = angleToTarget - currentAngle;
-
+        
         if (Mathf.Abs(angleDifference) <= m_AccuracyTolerance)
         {
             return true;
@@ -214,50 +192,8 @@ public class PanzerAnimator : MOAnimator
 
         return false;
     }
-
-    private bool IsTankAtDestination(Vector3 _destination)
-    {
-        _destination.y = gameObject.transform.position.y;
-        return (_destination - gameObject.transform.position).sqrMagnitude < m_DistanceTolerance * m_DistanceTolerance;
-    }
-
-    private bool IsTankFacingDestination(Vector3 _destination)
-    {
-        Vector3 directionToDestination = _destination - m_Turret.transform.position;
-        directionToDestination.y = 0.0f;
-        Vector3 forward = transform.forward;
-        forward.y = 0.0f;
-
-        // Check if the turret is facing the target.
-        if (Vector3.Dot(directionToDestination, forward) <= 0.0f)
-        {
-            return false;
-        }
-
-        if (Vector3.Angle(directionToDestination, forward) > m_RotationTolerance)
-        {
-            return false;
-        }
-
-        return true;
-    }
-
-    private float ConvertAngle(float _angle)
-    {
-        // Convert an angle to be between -180 and 180.
-        while (_angle > 180.0f)
-        {
-            _angle -= 360.0f;
-        }
-        while (_angle < -180.0f)
-        {
-            _angle += 360.0f;
-        }
-
-        return _angle;
-    }
-
-    private void RotateTurretTowardsTargetPosition(Vector3 _targetPosition)
+    
+    protected virtual void RotateTurretTowardsTargetPosition(Vector3 _targetPosition)
     {
         Vector3 directionToTarget = _targetPosition - m_Turret.transform.position;
         directionToTarget.y = 0.0f;
@@ -268,7 +204,7 @@ public class PanzerAnimator : MOAnimator
         m_Turret.transform.rotation = Quaternion.Slerp(currentRotation, desiredRotation, Time.deltaTime * m_TurretRotationSpeed);
     }
 
-    private void ElevateGunTowardsTargetPosition(Vector3 _targetPosition)
+    protected virtual void ElevateGunTowardsTargetPosition(Vector3 _targetPosition)
     {
         Vector3 directionToTarget = _targetPosition - m_Gun.transform.position;
         directionToTarget.Normalize();
@@ -289,7 +225,7 @@ public class PanzerAnimator : MOAnimator
         }
     }
 
-    private void RotateTankTowardsTargetPosition(Vector3 _targetPosition)
+    protected virtual void RotateTankTowardsTargetPosition(Vector3 _targetPosition)
     {
         Vector3 directionToTarget = _targetPosition - transform.position;
         directionToTarget.y = 0.0f;
@@ -311,7 +247,7 @@ public class PanzerAnimator : MOAnimator
         }
     }
 
-    private void TranslateTankTowardsTargetPosition(Vector3 _targetPosition)
+    protected virtual void TranslateTankTowardsTargetPosition(Vector3 _targetPosition)
     {
         Vector3 directionToTarget = _targetPosition - transform.position;
         directionToTarget.y = 0.0f;
@@ -340,10 +276,12 @@ public class PanzerAnimator : MOAnimator
     }
 
     // Couroutines
-    private IEnumerator ShootAnimationCouroutine()
+    protected virtual IEnumerator ShootAnimationCouroutine()
     {
-        WaitForSeconds zeWait = new WaitForSeconds(m_TimeDelayForCamToTurret);
-        yield return zeWait;
+        // Allow the camera to go to the turret.
+        yield return new WaitForSeconds(m_TimeDelayForCamToTurret);
+
+        // Shoot Animation
         while (true)
         {
             RotateTurretTowardsTargetPosition(m_Target.transform.position);
@@ -354,45 +292,28 @@ public class PanzerAnimator : MOAnimator
 
             if (gunAimed && turretAimed)
             {
-                AnimateFireGun(m_Target, m_Hit, m_ShootAnimationCompleteCallback);
-                // Once the animation is done, the callback is removed.
+                AnimateFireGun(m_Target, m_Hit, m_ShootAnimationCompleteCallback + ShootAnimationComplete);
+                // The callback has been passed on to the bullet.
                 m_ShootAnimationCompleteCallback = null;
                 break;
             }
 
             yield return null;
         }
-        while (!m_FinishShootAnimFlag)
-            yield return null;
-        m_FinishShootAnimFlag = false;
-        if (m_CineMachineHandler)
-        {
-            yield return new WaitForSeconds(m_TimeDelayForCamBackToNormal);
-            m_CineMachineHandler.SetCineBrain(false);
-        }
+
+        // CineMachineHandler
+        while (!m_FinishShootAnimationFlag) { yield return null; }
+        m_FinishShootAnimationFlag = false;
+
+        yield return new WaitForSeconds(m_TimeDelayForCamBackToNormal);
+        StopCinematicCamera();
     }
 
-    private IEnumerator MoveAnimationCouroutine()
+    protected virtual IEnumerator MoveAnimationCouroutine()
     {
         while (true)
         {
-            bool tankFacingDestination = IsTankFacingDestination(m_Destination);
-            if (!tankFacingDestination)
-            {
-                RotateTankTowardsTargetPosition(m_Destination);
-                yield return null;
-                continue;
-            }
-
-            bool tankAtDestination = IsTankAtDestination(m_Destination);
-            if (!tankAtDestination)
-            {
-                TranslateTankTowardsTargetPosition(m_Destination);
-                yield return null;
-                continue;
-            }
-
-            if (tankFacingDestination && tankAtDestination)
+            if (IsAtDestination(m_Destination))
             {
                 if (m_MoveAnimationCompleteCallback != null)
                 {
@@ -401,41 +322,57 @@ public class PanzerAnimator : MOAnimator
                 break;
             }
 
+            if (!IsFacingTargetPosition(m_Destination))
+            {
+                RotateTankTowardsTargetPosition(m_Destination);
+                yield return null;
+                continue;
+            }
+
+            TranslateTankTowardsTargetPosition(m_Destination);
             yield return null;
         }
     }
 
     // Tailored Animations
-    public void StartShootAnimation()
+
+    // Shoot
+    public virtual void StartShootAnimation()
     {
+        // CineMachineHandler
         if (m_CineMachineHandler)
         {
-            int zeRandNum = Random.Range(1, 3);
+            int randomNumber = Random.Range(1, 3);
             // unfortunately, need to hardcode the cinmatic abit
-            switch (zeRandNum)
+            switch (randomNumber)
             {
+                case 1:
+                    m_CineMachineHandler.CineStateCam.Follow = m_Turret.transform;
+                    break;
                 case 2:
                     // Number 2 refers to Following the target while aiming the cinematic camera at the Turret
                     m_CineMachineHandler.CineStateCam.Follow = m_Target.transform;
                     break;
                 default:
-                    m_CineMachineHandler.CineStateCam.Follow = m_Turret.transform;
+                    Assert.IsFalse(true, MethodBase.GetCurrentMethod().Name + " - Unhandled m_CineMachineHandler case.");
                     break;
             }
             m_CineMachineHandler.CineStateCam.LookAt = m_Gun.transform;
             // and then randomize between 1st and 2nd attack camera cinematics
-            m_CineMachineHandler.TriggerEventParam("Attack" + zeRandNum);
+            m_CineMachineHandler.TriggerEventParam("Attack" + randomNumber);
         }
+
+        // Panzer
         m_ShootAnimationCoroutine = ShootAnimationCouroutine();
         StartCoroutine(m_ShootAnimationCoroutine);
     }
 
-    public void StopShootAnimation()
+    public virtual void StopShootAnimation()
     {
         StopCoroutine(m_ShootAnimationCoroutine);
     }
 
-    public void PauseShootAnimation()
+    public virtual void PauseShootAnimation()
     {
         // If there is no bullet yet, then the gun has not fired. In that case, just stop the whole animation.
         if (m_Bullet == null)
@@ -449,7 +386,7 @@ public class PanzerAnimator : MOAnimator
         }
     }
 
-    public void ResumeShootAnimation()
+    public virtual void ResumeShootAnimation()
     {
         // If there is no bullet yet, then the gun has not fired. In that case, just restart the whole animation,
         // since it will just continue where it left off.
@@ -464,7 +401,8 @@ public class PanzerAnimator : MOAnimator
         }
     }
 
-    public void StartMoveAnimation()
+    // Move
+    public virtual void StartMoveAnimation()
     {
         if (m_CineMachineHandler)
         {
@@ -476,13 +414,13 @@ public class PanzerAnimator : MOAnimator
         StartCoroutine(m_MoveAnimationCoroutine);
     }
 
-    public void StopMoveAnimation()
+    public virtual void StopMoveAnimation()
     {
         StopCoroutine(m_MoveAnimationCoroutine);
     }
 
     // Once the animation is done, the callback is removed.
-    public void SetShootAnimationParameters(GameObject _target, bool _hit, Void_Void _callback)
+    public virtual void SetShootAnimationParameters(GameObject _target, bool _hit, Void_Void _callback)
     {
         Assert.IsTrue(_target != null);
         m_Target = _target;
@@ -491,10 +429,9 @@ public class PanzerAnimator : MOAnimator
         {
             m_ShootAnimationCompleteCallback = _callback;
         }
-        m_ShootAnimationCompleteCallback += ShootAnimationComplete;
     }
 
-    public void SetMoveAnimationParameters(Vector3 _destination, Void_Void _callback)
+    public virtual void SetMoveAnimationParameters(Vector3 _destination, Void_Void _callback)
     {
         m_Destination = _destination;
         if (_callback != null)
@@ -503,48 +440,13 @@ public class PanzerAnimator : MOAnimator
         }
     }
 
-    protected void ShootAnimationComplete()
+    protected virtual void ShootAnimationComplete()
     {
-        m_FinishShootAnimFlag = true;
-    }
-
-    /// <summary>
-    /// Stopped the cinematic camera if there is any!
-    /// </summary>
-    public void StopCinematicCamera()
-    {
-        if (m_CineMachineHandler)
-        {
-            m_CineMachineHandler.SetCineBrain(false);
-        }
-    }
-
-    /// <summary>
-    /// For now, starts the death camera cinematics
-    /// </summary>
-    public void StartDeathAnimation()
-    {
-        // Regardless of the tag, show the death cinematic for both sides
-        if (!m_CineMachineHandler)
-        {
-            m_CineMachineHandler = FindObjectOfType<CineMachineHandler>();
-        }
-        m_CineMachineHandler.CineStateCam.LookAt = m_HullTransform;
-        m_CineMachineHandler.CineStateCam.Follow = m_HullTransform;
-        m_CineMachineHandler.TriggerEventParam("Die");
-        StartCoroutine(StartDeathCameraCoroutine());
-    }
-
-    private IEnumerator StartDeathCameraCoroutine()
-    {
-        yield return new WaitForSeconds(m_TimeDelayForDeathCam);
-        m_CineMachineHandler.SetCineBrain(false);
-        yield return new WaitForSeconds(m_TimeDelayForCamBackToNormal);
-        yield break;
+        m_FinishShootAnimationFlag = true;
     }
 
 #if UNITY_EDITOR
-    private void OnValidate()
+    protected virtual void OnValidate()
     {
         MaxGunElevation = m_MaxGunElevation;
         MaxGunDepression = m_MaxGunDepression;

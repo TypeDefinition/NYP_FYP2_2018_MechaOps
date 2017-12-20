@@ -7,10 +7,10 @@ public class TankBullet : MonoBehaviour
     [SerializeField] private float m_Speed = 100.0f;
     [SerializeField] private float m_Lifetime = 0.5f;
     [SerializeField] private bool m_ExplodeOnContact = true;
-    [SerializeField] private GameObject m_Explosion;
+    [SerializeField] private GameObject m_ExplosionPrefab;
     [SerializeField] private string[] m_CollisionLayers;
-    [SerializeField] private GameObject m_Target;
 
+    private GameObject m_Target;
     private bool m_Paused = false;
     private Void_Void m_CompletionCallback = null;
 
@@ -18,6 +18,14 @@ public class TankBullet : MonoBehaviour
     {
         get { return m_CompletionCallback; }
         set { m_CompletionCallback = value; }
+    }
+
+    private void InvokeCompletionCallback()
+    {
+        if (m_CompletionCallback != null)
+        {
+            m_CompletionCallback();
+        }
     }
 
     public float Speed
@@ -72,7 +80,7 @@ public class TankBullet : MonoBehaviour
 
             if (hitInfo.collider.gameObject == m_Target)
             {
-                GameObject explosion = GameObject.Instantiate(m_Explosion);
+                GameObject explosion = GameObject.Instantiate(m_ExplosionPrefab);
                 explosion.transform.position = hitInfo.point;
                 m_Lifetime = 0.0f;
             }
@@ -84,12 +92,13 @@ public class TankBullet : MonoBehaviour
         // Destroy this bullet once it's lifetime is over.
         if ((m_Lifetime -= Time.deltaTime) < 0.0f)
         {
-            if (m_CompletionCallback != null)
-            {
-                m_CompletionCallback();
-            }
             GameObject.Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        InvokeCompletionCallback();
     }
 
 #if UNITY_EDITOR
