@@ -46,7 +46,7 @@ public class PlayerUnitsManager : MonoBehaviour
     [SerializeField, Tooltip("The number of image icons beneath it")]
     private List<Button> m_SelectedUnitActionButtons;
     [SerializeField, Tooltip("The current unit action that is clicked upon")]
-    public IUnitAction m_CurrentSelectedAction;
+    protected IUnitAction m_CurrentSelectedAction;
 
     /// <summary>
     /// The update of this manager. So that it can be controlled anytime.
@@ -270,23 +270,27 @@ public class PlayerUnitsManager : MonoBehaviour
         #endregion
 
         // When we will instantiate the button according to the amount of unit actions there are!
-        IUnitAction[] unitActions = _unit.GetComponentsInChildren<IUnitAction>();
-        foreach (IUnitAction unitAction in unitActions)
+        IUnitAction []zeAllActions = _unit.GetComponent<UnitActionHandler>().AllAvailableActions;
+        foreach (IUnitAction unitAction in zeAllActions)
         {
             // Create the new icon using m_UnitActionIcon_Prefab.
             Assert.IsFalse(m_UnitActionSelectionUIScrollRect.content == null);
-            Image unitActionIconImage = Instantiate(m_UnitActionIconImage_Prefab, m_UnitActionSelectionUIScrollRect.content.transform);
-            unitActionIconImage.gameObject.SetActive(true);
+            // if the action cost can still be used the unit, then it will instantiate the action
+            if (unitAction.GetUnitStats().CurrentActionPoints >= unitAction.ActionCost)
+            {
+                Image unitActionIconImage = Instantiate(m_UnitActionIconImage_Prefab, m_UnitActionSelectionUIScrollRect.content.transform);
+                unitActionIconImage.gameObject.SetActive(true);
 
-            // Replace the icon sprite to be the icon needed for this action.
-            unitActionIconImage.sprite = unitAction.ActionIconUI;
+                // Replace the icon sprite to be the icon needed for this action.
+                unitActionIconImage.sprite = unitAction.ActionIconUI;
 
-            // Add to the onclick event for Unity button!
-            Button unitActionButton = unitActionIconImage.GetComponent<Button>();
-            unitActionButton.onClick.AddListener(() => ToInstantiateSpecificActionUI(unitAction.UnitActionUI, unitAction));
+                // Add to the onclick event for Unity button!
+                Button unitActionButton = unitActionIconImage.GetComponent<Button>();
+                unitActionButton.onClick.AddListener(() => ToInstantiateSpecificActionUI(unitAction.UnitActionUI, unitAction));
 
-            // Add this button to m_SelectedUnitActionButtons.
-            m_SelectedUnitActionButtons.Add(unitActionButton);
+                // Add this button to m_SelectedUnitActionButtons.
+                m_SelectedUnitActionButtons.Add(unitActionButton);
+            }
         }
     }
 }

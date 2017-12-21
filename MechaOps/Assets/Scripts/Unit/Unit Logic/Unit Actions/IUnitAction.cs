@@ -36,6 +36,8 @@ public abstract class IUnitAction : MonoBehaviour
     [Header("[ Values for Unit Action ]")]
     [SerializeField, Tooltip("The sprite UI for unit's action!")]
     private Sprite m_ActionIconUI;
+    [SerializeField, Tooltip("Unit action handler")]
+    protected UnitActionHandler m_UnitActionHandler;
 
     [Tooltip("The unit stats")]
     protected UnitStats m_UnitStats;
@@ -142,7 +144,9 @@ public abstract class IUnitAction : MonoBehaviour
     {
         // If the unit stat is not linked, get the component of it!
         m_UnitStats = GetComponent<UnitStats>();
+        m_UnitActionHandler = GetComponent<UnitActionHandler>();
         Assert.IsNotNull(m_UnitStats, MethodBase.GetCurrentMethod().Name + " - The GameObject this script is attached to MUST have a UnitStats Component!");
+        Assert.IsNotNull(m_UnitActionHandler, MethodBase.GetCurrentMethod().Name + " - The GameObject this script is attached to MUST have a m_UnitActionHandler Component!");
         Assert.IsTrue(m_UnitActionName != null && m_UnitActionName != "", "No name is given to this action");
     }
 
@@ -203,12 +207,7 @@ public abstract class IUnitAction : MonoBehaviour
 
     protected void CheckIfUnitFinishedTurn()
     {
-        // TODO: This needs to be moved away. It should not be done in the action as
-        // A) It would be repetitive code. Why does every action need to check this?
-        // B) Just because the CurrentActionPoints are > 0 does not mean that the turn has not ended for this unit.
-        // If I have 3 Action Points, and 2 actions, each costing 2 points, then the unit's turn should end when it has
-        // only 1 Action Point left.
-        if (GetUnitStats().CurrentActionPoints == 0)
+        if (GetUnitStats().CurrentActionPoints == 0 || !m_UnitActionHandler.CheckIsUnitMakeMove(m_UnitStats))
         {
             GetUnitStats().ResetUnitStats();
             // tell the player unit manager that it can no longer do any action

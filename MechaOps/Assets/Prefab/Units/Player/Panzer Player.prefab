@@ -191,6 +191,7 @@ GameObject:
   - component: {fileID: 114034170699782738}
   - component: {fileID: 114313675222075914}
   - component: {fileID: 65646190498490294}
+  - component: {fileID: 114567416760824734}
   - component: {fileID: 114811533488785636}
   - component: {fileID: 114076083858343404}
   - component: {fileID: 114191423135492830}
@@ -1808,6 +1809,7 @@ MonoBehaviour:
   m_UnitActionUI: {fileID: 1134435258809106, guid: f60f06ef37015e14ba42bc5dad875b1c,
     type: 2}
   m_ActionIconUI: {fileID: 21300000, guid: d859645726494314ab2591c7384f7d53, type: 3}
+  m_UnitActionHandler: {fileID: 0}
   m_AnimationCompleted: 0
   m_MovementPoints: 5
   m_WalkAnimation: {fileID: 114313675222075914}
@@ -1903,8 +1905,8 @@ MonoBehaviour:
     type: 2}
   m_HullTransform: {fileID: 4921449994092254}
   m_TimeDelayForCamToTurret: 2
-  m_TimeDelayForCamBackToNormal: 0.5
   m_TimeDelayForDeathCam: 2
+  m_TimeDelayForCamBackToNormal: 0.5
 --- !u!114 &114500691128078972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1923,6 +1925,18 @@ MonoBehaviour:
   m_PlayOnStart: 0
   m_SetInactiveOnCompletion: 1
   m_DestroyOnCompletion: 0
+--- !u!114 &114567416760824734
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1411079469388966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3cef5841460e11469d89034ac0e4ea5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AllAvailableActions: []
 --- !u!114 &114592857521324414
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1944,10 +1958,11 @@ MonoBehaviour:
   m_UnitActionUI: {fileID: 1044431308409052, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
     type: 2}
   m_ActionIconUI: {fileID: 21300000, guid: e392509062377594ab81881f16831a09, type: 3}
+  m_UnitActionHandler: {fileID: 0}
   m_AnimationCompleted: 0
   m_MinAttackRange: 0
   m_MaxAttackRange: 5
-  m_AccuracyPoints: 20
+  m_AccuracyPoints: 50
   m_DamagePoints: 2
   m_AttackAnimation: {fileID: 114034170699782738}
 --- !u!114 &114724299080089450
@@ -2039,4 +2054,5 @@ MonoBehaviour:
   m_UnitActionUI: {fileID: 1612582933021620, guid: 10234cb69b925e14d9163d2556b7fb5b,
     type: 2}
   m_ActionIconUI: {fileID: 21300000, guid: 2701c9f4499a5f340a46e96aeba66a4e, type: 3}
+  m_UnitActionHandler: {fileID: 0}
   m_AnimationCompleted: 0
