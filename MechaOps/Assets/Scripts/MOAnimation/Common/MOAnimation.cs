@@ -20,5 +20,4 @@ public abstract class MOAnimation : MonoBehaviour
     public abstract void PauseAnimation();
     public abstract void ResumeAnimation();
     public abstract void StopAnimation();
-
 }

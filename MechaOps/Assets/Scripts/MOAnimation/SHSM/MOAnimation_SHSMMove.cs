@@ -4,18 +4,18 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class MOAnimation_PanzerMove : MOAnimation_Move
+public class MOAnimation_SHSMMove : MOAnimation_Move
 {
-    [SerializeField] private PanzerAnimator m_Animator = null;
+    [SerializeField] private SHSMAnimator m_Animator = null;
 
     public override MOAnimator GetMOAnimator() { return m_Animator; }
 
     // Use this for initialization
     protected virtual void Awake ()
     {
-        Assert.IsTrue(m_Animator != null, MethodBase.GetCurrentMethod().Name + " - PanzerAnimator is required for MOAnimation_PanzerMove to work!");
-	}
-    
+        Assert.IsNotNull(m_Animator, MethodBase.GetCurrentMethod().Name + " - SHSMAnimator is required for MOAnimation_SHSMMove to work!");
+    }
+
     public override void StartAnimation()
     {
         base.StartAnimation();
@@ -40,4 +40,5 @@ public class MOAnimation_PanzerMove : MOAnimation_Move
         base.StopAnimation();
         m_Animator.StopMoveAnimation();
     }
+
 }

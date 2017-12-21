@@ -1853,7 +1853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CineMachineHandler: {fileID: 0}
-  m_MaxGunElevation: 80
+  m_MaxGunElevation: -80
   m_MaxGunDepression: 20
   m_Turret: {fileID: 1513886606648980}
   m_Gun: {fileID: 1206618188654804}

@@ -40,7 +40,7 @@ public class WalkUI_Logic : TweenUI_Scale
         base.Awake();
         // Since the tile system is not linked from the start, find it at the scene.
         m_GameSystemsDirectory = FindObjectOfType<GameSystemsDirectory>();
-        Assert.IsNotNull(m_GameSystemsDirectory);
+        Assert.IsNotNull(m_GameSystemsDirectory, MethodBase.GetCurrentMethod().Name + " - m_GameSystemsDirectory must not be null!");
         m_TileSystem = m_GameSystemsDirectory.GetTileSystem();
     }
 

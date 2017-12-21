@@ -9,19 +9,13 @@ public class MOAnimation_UnitDestroy : MOAnimation
     // Prefabs
     [SerializeField] private SimpleSpriteAnimation m_ExplosionPrefab = null;
     [SerializeField] private ParticleSystem m_FlamePrefab = null;
-    [SerializeField, Tooltip("Panzer Animator")] private PanzerAnimator m_Animator;
+    [SerializeField] private MOAnimator m_Animator;
 
     // Runtime Created
     private SimpleSpriteAnimation m_Explosion = null;
     private ParticleSystem m_Flame = null;
 
-    public PanzerAnimator PanzerAnim
-    {
-        get
-        {
-            return m_Animator;
-        }
-    }
+    public override MOAnimator GetMOAnimator() { return m_Animator; }
 
     private void DeleteAnimationObjects()
     {
@@ -35,8 +29,6 @@ public class MOAnimation_UnitDestroy : MOAnimation
             GameObject.Destroy(m_Flame.gameObject);
         }
     }
-
-    public override MOAnimator GetMOAnimator() { return null; }
 
     private void OnEnable()
     {
