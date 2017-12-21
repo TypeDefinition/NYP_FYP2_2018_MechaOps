@@ -437,8 +437,8 @@ public class PanzerAnimator : MOAnimator
 
     private IEnumerator StartDeathCameraCoroutine()
     {
+        m_CineMachineHandler.DelayCinemachineSetActive(false, m_TimeDelayForDeathCam);
         yield return new WaitForSeconds(m_TimeDelayForDeathCam);
-        m_CineMachineHandler.SetCineBrain(false);
         yield return new WaitForSeconds(m_TimeDelayForCamBackToNormal);
         yield break;
     }

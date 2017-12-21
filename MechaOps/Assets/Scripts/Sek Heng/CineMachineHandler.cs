@@ -36,11 +36,6 @@ public class CineMachineHandler : MonoBehaviour {
     [SerializeField, Tooltip("Current string of the active cam holder")]
     protected string m_CamHolderString;
 
-    /// <summary>
-    /// To map the parameter name to hash so that the animator variable will be accessed faster!
-    /// </summary>
-    protected Dictionary<string, int> m_ParamNameKeyDict = new Dictionary<string, int>();
-
     public CinemachineStateDrivenCamera CineStateCam
     {
         get
@@ -58,6 +53,11 @@ public class CineMachineHandler : MonoBehaviour {
     }
 
     /// <summary>
+    /// The coroutine to be controlled to turn off cinemachine
+    /// </summary>
+    protected Coroutine m_CineshutdownCoroutine;
+
+    /// <summary>
     /// Try to get those missing variable when Awake()
     /// </summary>
     private void Awake()
@@ -72,7 +72,8 @@ public class CineMachineHandler : MonoBehaviour {
     /// <param name="_toggleFlag">true will set the CineBrain active. false will set the CineBrain inactive</param>
     public void SetCineBrain(bool _toggleFlag)
     {
-        if (m_CineBrain.enabled != _toggleFlag)
+        // and ensure that the coroutine is not null
+        if (m_CineBrain.enabled != _toggleFlag && m_CineshutdownCoroutine == null)
         {
             m_CineBrain.enabled = _toggleFlag;
             switch (_toggleFlag)
@@ -120,5 +121,32 @@ public class CineMachineHandler : MonoBehaviour {
                 m_ActiveCamBase.gameObject.SetActive(true);
             }
         }
+    }
+
+    /// <summary>
+    /// The function to start the coroutine in order to delay setting the cinemachine active/inactive
+    /// </summary>
+    /// <param name="_toggleFlag">flag to set the activeness of the cinemachine</param>
+    /// <param name="_delayTime">time to be delayed</param>
+    public void DelayCinemachineSetActive(bool _toggleFlag, float _delayTime)
+    {
+        if (m_CineshutdownCoroutine == null)
+        {
+            m_CineshutdownCoroutine = StartCoroutine(DelayCinemachineUpdate(_toggleFlag, _delayTime));
+        }
+    }
+
+    /// <summary>
+    /// The coroutine to delay the update of setting the cinebrain active/inactive
+    /// </summary>
+    /// <param name="_toggleFlag">What kind of flag to set</param>
+    /// <param name="_delayTime">Time to be delay</param>
+    /// <returns></returns>
+    protected IEnumerator DelayCinemachineUpdate(bool _toggleFlag, float _delayTime)
+    {
+        yield return new WaitForSeconds(_delayTime);
+        m_CineshutdownCoroutine = null;
+        SetCineBrain(_toggleFlag);
+        yield break;
     }
 }
