@@ -59,10 +59,6 @@ public class UnitStats : MonoBehaviour
     private IUnitAction m_CurrentActiveAction;
     [SerializeField, Tooltip("The list of units that are in range")]
     private List<GameObject> m_EnemiesInRange = new List<GameObject>();
-    [SerializeField, Tooltip("The list of animation handler which will be accessed through dictionary. No linking required")]
-    private MOAnimation[] m_AnimationHandler;
-    [Tooltip("Death attack animation"), SerializeField]
-    private MOAnimation_UnitDestroy m_DeathAnimation;
 
     // Non-Serialized Variable(s)
     private TileSystem m_TileSystem = null;
