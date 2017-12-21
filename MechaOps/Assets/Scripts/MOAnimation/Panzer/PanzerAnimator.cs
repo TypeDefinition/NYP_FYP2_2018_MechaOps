@@ -345,23 +345,23 @@ public class PanzerAnimator : MOAnimator
         if (m_CineMachineHandler)
         {
             int randomNumber = Random.Range(1, 3);
+            m_CineMachineHandler.SetPanzerCinematicCamActive("Attack" + randomNumber);
             // unfortunately, need to hardcode the cinmatic abit
             switch (randomNumber)
             {
                 case 1:
-                    m_CineMachineHandler.CineStateCam.Follow = m_Turret.transform;
+                    m_CineMachineHandler.ActiveCamBase.Follow = m_Turret.transform;
                     break;
                 case 2:
                     // Number 2 refers to Following the target while aiming the cinematic camera at the Turret
-                    m_CineMachineHandler.CineStateCam.Follow = m_Target.transform;
+                    m_CineMachineHandler.ActiveCamBase.Follow = m_Target.transform;
                     break;
                 default:
                     Assert.IsFalse(true, MethodBase.GetCurrentMethod().Name + " - Unhandled m_CineMachineHandler case.");
                     break;
             }
-            m_CineMachineHandler.CineStateCam.LookAt = m_Gun.transform;
+            m_CineMachineHandler.ActiveCamBase.LookAt = m_Gun.transform;
             // and then randomize between 1st and 2nd attack camera cinematics
-            m_CineMachineHandler.TriggerEventParam("Attack" + randomNumber);
         }
 
         // Panzer
@@ -408,9 +408,9 @@ public class PanzerAnimator : MOAnimator
     {
         if (m_CineMachineHandler)
         {
-            m_CineMachineHandler.CineStateCam.LookAt = m_HullTransform;
-            m_CineMachineHandler.CineStateCam.Follow = m_HullTransform;
-            m_CineMachineHandler.TriggerEventParam("Walk");
+            m_CineMachineHandler.SetPanzerCinematicCamActive("Walk");
+            m_CineMachineHandler.ActiveCamBase.LookAt = m_HullTransform;
+            m_CineMachineHandler.ActiveCamBase.Follow = m_HullTransform;
         }
         m_MoveAnimationCoroutine = MoveAnimationCouroutine();
         StartCoroutine(m_MoveAnimationCoroutine);
@@ -429,9 +429,9 @@ public class PanzerAnimator : MOAnimator
         {
             m_CineMachineHandler = FindObjectOfType<CineMachineHandler>();
         }
-        m_CineMachineHandler.CineStateCam.LookAt = m_HullTransform;
-        m_CineMachineHandler.CineStateCam.Follow = m_HullTransform;
-        m_CineMachineHandler.TriggerEventParam("Die");
+        m_CineMachineHandler.SetPanzerCinematicCamActive("Die");
+        m_CineMachineHandler.ActiveCamBase.LookAt = m_HullTransform;
+        m_CineMachineHandler.ActiveCamBase.Follow = m_Turret.transform;
         StartCoroutine(StartDeathCameraCoroutine());
     }
 

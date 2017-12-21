@@ -78,6 +78,6 @@ public class EnemyViewTile : ViewTileScript
     /// <returns></returns>
     public override bool IsVisible()
     {
-        return VisibilityCount == 0;
+        return VisibilityCount != 0;
     }
 }

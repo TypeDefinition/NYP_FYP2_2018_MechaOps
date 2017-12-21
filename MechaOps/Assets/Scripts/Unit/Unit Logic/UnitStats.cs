@@ -110,7 +110,9 @@ public class UnitStats : MonoBehaviour
                 m_DeathAnimation.StartAnimation();
                 // If the unit is visible, then start the death cinematic!
                 if (m_ViewTileScript.IsVisible())
+                {
                     m_DeathAnimation.PanzerAnim.StartDeathAnimation();
+                }
             }
 
             UpdateUnitInfoDisplay();

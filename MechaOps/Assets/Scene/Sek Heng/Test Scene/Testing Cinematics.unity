@@ -120,7 +120,7 @@ Prefab:
     - target: {fileID: 114260079088910834, guid: bda500c59e8c81749982a2026fe76412,
         type: 2}
       propertyPath: m_ChildCameras.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4645617868491756, guid: bda500c59e8c81749982a2026fe76412, type: 2}
       propertyPath: m_LocalPosition.x
@@ -173,7 +173,7 @@ Prefab:
         type: 2}
       propertyPath: m_Follow
       value: 
-      objectReference: {fileID: 1934028053}
+      objectReference: {fileID: 798096286}
     - target: {fileID: 114539605063764014, guid: bda500c59e8c81749982a2026fe76412,
         type: 2}
       propertyPath: m_LookAt

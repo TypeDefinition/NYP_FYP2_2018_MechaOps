@@ -8,11 +8,21 @@ using Cinemachine;
 /// It will handle the Cinemachine for this gameplay
 /// </summary>
 public class CineMachineHandler : MonoBehaviour {
+    [System.Serializable]
+    public class CinemachineDataHolder
+    {
+        public string m_HolderName;
+        public CinemachineVirtualCameraBase m_CinematicCam;
+    }
+
     [Header("Variables for CineMachineHandler")]
-    [SerializeField, Tooltip("Animator for controlling cinemachine state machine")]
-    protected Animator m_CineAnimator;
     [SerializeField, Tooltip("CineMachine for attacking cinematics")]
     protected CinemachineStateDrivenCamera m_CineStateCam;
+    [SerializeField, Tooltip("To turn on the the death cinematic camera")]
+    protected CinemachineVirtualCameraBase m_DeathCinemachine;
+
+    [SerializeField, Tooltip("Array of cinematic camera for panzer")]
+    protected CinemachineDataHolder[] m_ArrayOfCineCamPanzer;
 
     [Header("Debugging for CineMachineHandler")]
     [SerializeField, Tooltip("CineMachine Brain Script. Thr should only be 1!")]
@@ -21,22 +31,15 @@ public class CineMachineHandler : MonoBehaviour {
     protected Vector3 m_OriginalCamPos;
     [SerializeField, Tooltip("Original rotation of the camera")]
     protected Quaternion m_OriginalCamRotation;
+    [SerializeField, Tooltip("Current active Cinematic camera")]
+    protected CinemachineVirtualCameraBase m_ActiveCamBase;
+    [SerializeField, Tooltip("Current string of the active cam holder")]
+    protected string m_CamHolderString;
 
     /// <summary>
     /// To map the parameter name to hash so that the animator variable will be accessed faster!
     /// </summary>
     protected Dictionary<string, int> m_ParamNameKeyDict = new Dictionary<string, int>();
-
-    /// <summary>
-    /// Getter for the CineAnimator
-    /// </summary>
-    public Animator CineAnimator
-    {
-        get
-        {
-            return m_CineAnimator;
-        }
-    }
 
     public CinemachineStateDrivenCamera CineStateCam
     {
@@ -46,42 +49,21 @@ public class CineMachineHandler : MonoBehaviour {
         }
     }
 
+    public CinemachineVirtualCameraBase ActiveCamBase
+    {
+        get
+        {
+            return m_ActiveCamBase;
+        }
+    }
+
     /// <summary>
     /// Try to get those missing variable when Awake()
     /// </summary>
     private void Awake()
     {
-        if (!m_CineAnimator)
-            m_CineAnimator = GetComponent<Animator>();
         if (!m_CineBrain)
             m_CineBrain = FindObjectOfType<CinemachineBrain>();
-    }
-
-    /// <summary>
-    /// Trigger the event variable in the animator
-    /// </summary>
-    /// <param name="_paramName">Animator Parameter Name</param>
-    public void TriggerEventParam(string _paramName)
-    {
-        int zeAnimHash;
-        if (!m_ParamNameKeyDict.TryGetValue(_paramName, out zeAnimHash))
-        {
-            // if the param animation name has never exists, then instantiate the animhash
-            zeAnimHash = Animator.StringToHash(_paramName);
-            m_ParamNameKeyDict.Add(_paramName, zeAnimHash);
-        }
-        TriggerEventParam(zeAnimHash);
-    }
-
-    /// <summary>
-    /// Trigger the event variable in the animator
-    /// </summary>
-    /// <param name="_paramHash">Animator parameter hash</param>
-    public void TriggerEventParam(int _paramHash)
-    {
-        // Will need to make sure the CineBrain is active
-        SetCineBrain(true);
-        CineAnimator.SetTrigger(_paramHash);
     }
 
     /// <summary>
@@ -104,10 +86,39 @@ public class CineMachineHandler : MonoBehaviour {
                     // set the camera back to normal
                     Camera.main.transform.position = m_OriginalCamPos;
                     Camera.main.transform.localRotation = m_OriginalCamRotation;
-                    CineStateCam.LiveChild.VirtualCameraGameObject.SetActive(false);
+                    if (m_ActiveCamBase != null)
+                    {
+                        m_ActiveCamBase.gameObject.SetActive(false);
+                        m_ActiveCamBase = null;
+                        m_CamHolderString = "";
+                    }
                     break;
             }
         }
     }
 
+    public void SetPanzerCinematicCamActive(string _CamName)
+    {
+        SetCineBrain(true);
+        if (_CamName != m_CamHolderString)
+        {
+            if (m_ActiveCamBase != null)
+            {
+                m_ActiveCamBase.gameObject.SetActive(false);
+                m_ActiveCamBase = null;
+            }
+            foreach (CinemachineDataHolder zeCamHolder in m_ArrayOfCineCamPanzer)
+            {
+                if (zeCamHolder.m_HolderName == _CamName)
+                {
+                    m_ActiveCamBase = zeCamHolder.m_CinematicCam;
+                    m_CamHolderString = zeCamHolder.m_HolderName;
+                }
+            }
+            if (m_ActiveCamBase != null)
+            {
+                m_ActiveCamBase.gameObject.SetActive(true);
+            }
+        }
+    }
 }
