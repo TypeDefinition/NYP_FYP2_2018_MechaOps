@@ -85,4 +85,6 @@ public class MOAnimator : MonoBehaviour
         _destination.y = gameObject.transform.position.y;
         return (_destination - gameObject.transform.position).sqrMagnitude < m_DistanceTolerance * m_DistanceTolerance;
     }
+
+    public virtual void StartDeathAnimation() { }
 }

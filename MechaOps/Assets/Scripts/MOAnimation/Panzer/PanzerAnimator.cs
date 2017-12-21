@@ -8,7 +8,7 @@ using UnityEngine.Assertions;
 public class PanzerAnimator : MOAnimator
 {
     // Gun Elevation
-    [SerializeField, Range(0, 90)] protected float m_MaxGunElevation = 80.0f;
+    [SerializeField, Range(-90, 0)] protected float m_MaxGunElevation = -80.0f;
     [SerializeField, Range(0, 90)] protected float m_MaxGunDepression = 20.0f;
 
     // Weapons
@@ -57,7 +57,7 @@ public class PanzerAnimator : MOAnimator
     public float MaxGunElevation
     {
         get { return m_MaxGunElevation; }
-        set { m_MaxGunElevation = Mathf.Clamp(value, 0.0f, 90.0f); }
+        set { m_MaxGunElevation = Mathf.Clamp(value, -90.0f, 0.0f); }
     }
     public float MaxGunDepression
     {
@@ -137,7 +137,7 @@ public class PanzerAnimator : MOAnimator
         // Limit our angle. The possible angle we can get ranges from -360 Degrees to 360 Degrees.
         // We need to convert it to the  from -180 Degress to 180 Degress range.
         float currentAngle = ConvertAngle(m_Gun.transform.localRotation.eulerAngles.x);
-        currentAngle = Mathf.Clamp(currentAngle, -m_MaxGunElevation, m_MaxGunDepression);
+        currentAngle = Mathf.Clamp(currentAngle, m_MaxGunElevation, m_MaxGunDepression);
         Quaternion desiredRotation = new Quaternion();
         desiredRotation.eulerAngles = new Vector3(currentAngle, 0.0f, 0.0f);
         m_Gun.transform.localRotation = desiredRotation;
@@ -180,15 +180,13 @@ public class PanzerAnimator : MOAnimator
             return true;
         }
 
-        if (angleToTarget < -m_MaxGunElevation)
+        if (angleToTarget < m_MaxGunElevation)
         {
-            //Debug.Log("Angle To Target < -Max Gun Elevation");
             return (Mathf.Abs(currentAngle - m_MaxGunElevation) <= m_AccuracyTolerance);
         }
 
         if (angleToTarget > m_MaxGunDepression)
         {
-            //Debug.Log("Angle To Target > Max Gun Depression");
             return (Mathf.Abs(currentAngle - m_MaxGunDepression) <= m_AccuracyTolerance);
         }
 
@@ -372,6 +370,7 @@ public class PanzerAnimator : MOAnimator
     public virtual void StopShootAnimation()
     {
         StopCoroutine(m_ShootAnimationCoroutine);
+        m_ShootAnimationCoroutine = null;
     }
 
     public virtual void PauseShootAnimation()
@@ -419,10 +418,11 @@ public class PanzerAnimator : MOAnimator
     public virtual void StopMoveAnimation()
     {
         StopCoroutine(m_MoveAnimationCoroutine);
+        m_MoveAnimationCoroutine = null;
     }
 
     // Death
-    public virtual void StartDeathAnimation()
+    public override void StartDeathAnimation()
     {
         // Regardless of the tag, show the death cinematic for both sides
         if (!m_CineMachineHandler)
@@ -449,19 +449,13 @@ public class PanzerAnimator : MOAnimator
         Assert.IsTrue(_target != null);
         m_Target = _target;
         m_Hit = _hit;
-        if (_callback != null)
-        {
-            m_ShootAnimationCompleteCallback = _callback;
-        }
+        m_ShootAnimationCompleteCallback = _callback;
     }
 
     public virtual void SetMoveAnimationParameters(Vector3 _destination, Void_Void _callback)
     {
         m_Destination = _destination;
-        if (_callback != null)
-        {
-            m_MoveAnimationCompleteCallback = _callback;
-        }
+        m_MoveAnimationCompleteCallback = _callback;
     }
 
     protected virtual void ShootAnimationComplete()
