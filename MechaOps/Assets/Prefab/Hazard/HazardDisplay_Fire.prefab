@@ -130,6 +130,8 @@ MonoBehaviour:
   m_AnimationDuration: 1
   m_Loop: 1
   m_PlayOnStart: 1
+  m_SetInactiveOnCompletion: 0
+  m_DestroyOnCompletion: 0
 --- !u!114 &114888624789775684
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -90,7 +90,7 @@ public class TankBullet : MonoBehaviour
         transform.position += transform.forward * m_Speed * Time.deltaTime;
 
         // Destroy this bullet once it's lifetime is over.
-        if ((m_Lifetime -= Time.deltaTime) < 0.0f)
+        if ((m_Lifetime -= Time.deltaTime) <= 0.0f)
         {
             GameObject.Destroy(gameObject);
         }

@@ -71,6 +71,8 @@ public class ArtileryBullet : MonoBehaviour
 
     private void OnDestroy()
     {
+        GameObject explosion = GameObject.Instantiate(m_ExplosionPrefab);
+        explosion.transform.position = m_TargetTile.transform.position;
         InvokeCompletionCallback();
     }
 
@@ -78,7 +80,7 @@ public class ArtileryBullet : MonoBehaviour
     {
         if (m_Paused) { return; }
 
-        transform.position += m_CurrentVelocity;
+        transform.position += m_CurrentVelocity * Time.deltaTime;
         m_CurrentVelocity += (m_Gravity * Time.deltaTime);
         transform.rotation = Quaternion.LookRotation(m_CurrentVelocity);
 
@@ -93,17 +95,16 @@ public class ArtileryBullet : MonoBehaviour
                 shieldBreak.StartAnimation();
             }
 
-            if (hitInfo.collider.gameObject == m_TargetTile)
+            if (hitInfo.collider.gameObject == m_TargetTile.gameObject)
             {
-                GameObject explosion = GameObject.Instantiate(m_ExplosionPrefab);
-                explosion.transform.position = m_TargetTile.transform.position;
+                Debug.Log("UMR");
                 m_Lifetime = 0.0f;
             }
         }
 
         // Destroy this bullet once it's lifetime is over.
         m_Lifetime -= Time.deltaTime;
-        if (m_Lifetime < 0.0f)
+        if (m_Lifetime <= 0.0f)
         {
             GameObject.Destroy(gameObject);
         }

@@ -188,12 +188,12 @@ public class PanzerAnimator : MOAnimator
 
         if (angleToTarget < m_MaxGunElevation)
         {
-            return (Mathf.Abs(currentAngle - m_MaxGunElevation) <= m_AccuracyTolerance);
+            return (Mathf.Abs(m_MaxGunElevation - currentAngle) <= m_AccuracyTolerance);
         }
 
         if (angleToTarget > m_MaxGunDepression)
         {
-            return (Mathf.Abs(currentAngle - m_MaxGunDepression) <= m_AccuracyTolerance);
+            return (Mathf.Abs(m_MaxGunDepression - currentAngle) <= m_AccuracyTolerance);
         }
 
         return false;

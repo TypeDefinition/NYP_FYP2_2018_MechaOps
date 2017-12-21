@@ -72,6 +72,14 @@ public class UnitStats : MonoBehaviour
 
     public GameSystemsDirectory GetGameSystemsDirectory() { return m_GameSystemsDirectory; }
 
+    public void InvokeHealthDropCallback(UnitStats _unitStats)
+    {
+        if (m_HealthDropCallback != null)
+        {
+            m_HealthDropCallback(_unitStats);
+        }
+    }
+
     public string Name
     {
         get { return m_UnitStatsJSON.m_Name; }

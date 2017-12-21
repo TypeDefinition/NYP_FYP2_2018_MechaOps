@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Hazard_Fire : Hazard {
+public class Hazard_Fire : Hazard
+{
 
     private int m_Damage = 1;
 

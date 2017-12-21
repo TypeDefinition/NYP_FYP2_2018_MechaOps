@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 [DisallowMultipleComponent]
-public class MOAnimation_PanzerAttack : MOAnimation
+public class MOAnimation_PanzerShoot : MOAnimation
 {
     [SerializeField] private PanzerAnimator m_Animator = null;
     private GameObject m_Target;
@@ -24,9 +24,9 @@ public class MOAnimation_PanzerAttack : MOAnimation
     }
 
 	// Use this for initialization
-	void Start ()
+	void Awake ()
     {
-        Assert.IsTrue(m_Animator != null, MethodBase.GetCurrentMethod().Name + " - PanzerAnimator is required for PanzerAnimationHandler to work!");
+        Assert.IsTrue(m_Animator != null, MethodBase.GetCurrentMethod().Name + " - PanzerAnimator is required for MOAnimation_PanzerShoot to work!");
     }
 
     public override MOAnimator GetMOAnimator()

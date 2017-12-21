@@ -46,9 +46,9 @@ public class SHSMAnimator : MOAnimator
     // The gun will be at this elevation when not shooting.
     protected float m_GunNeutralElevation = 0.0f;
     // The gun will be at this elevation when shooting.
-    protected float m_GunShootingElevation = -60.0f;
+    protected float m_GunShootingElevation = -40.0f;
 
-    protected float m_BulletHorizontalVelocity = 50.0f;
+    protected float m_BulletHorizontalVelocity = 10.0f;
     protected float m_BulletGravityAcceleration = -9.8f;
     protected Void_Void m_ShootAnimationCompleteCallback = null;
     IEnumerator m_ShootAnimationCoroutine;
@@ -95,12 +95,12 @@ public class SHSMAnimator : MOAnimator
 
     public virtual void AnimateElevateGun(float _angle)
     {
-        m_Gun.transform.Rotate(new Vector3(_angle, 0.0f, 0.0f));
+        m_Gun.transform.Rotate(_angle, 0.0f, 0.0f);
 
         // Limit our angle. The possible angle we can get ranges from -360 Degrees to 360 Degrees.
         // We need to convert it to the  from -180 Degress to 180 Degress range.
         float currentAngle = ConvertAngle(m_Gun.transform.localRotation.eulerAngles.x);
-        currentAngle = Mathf.Clamp(currentAngle, -m_MaxGunElevation, m_MaxGunDepression);
+        currentAngle = Mathf.Clamp(currentAngle, m_MaxGunElevation, m_MaxGunDepression);
         Quaternion desiredRotation = new Quaternion();
         desiredRotation.eulerAngles = new Vector3(currentAngle, 0.0f, 0.0f);
         m_Gun.transform.localRotation = desiredRotation;
@@ -113,12 +113,10 @@ public class SHSMAnimator : MOAnimator
 
         if (angleDifference > 0.0f)
         {
-            //Debug.Log("Angle Difference > 0.0f (" + angleDifference + ")");
             AnimateElevateGun(Mathf.Min(angleDifference, m_GunElevationSpeed * Time.deltaTime));
         }
         else if (angleDifference < 0.0f)
         {
-            //Debug.Log("Angle Difference < 0.0f (" + angleDifference + ")");
             AnimateElevateGun(Mathf.Max(angleDifference, -m_GunElevationSpeed * Time.deltaTime));
         }
     }
@@ -135,12 +133,12 @@ public class SHSMAnimator : MOAnimator
 
         if (_desiredElevation < m_MaxGunElevation)
         {
-            return (Mathf.Abs(currentAngle - m_MaxGunElevation) <= m_AccuracyTolerance);
+            return (Mathf.Abs(m_MaxGunElevation - currentAngle) <= m_AccuracyTolerance);
         }
 
         if (_desiredElevation > m_MaxGunDepression)
         {
-            return (Mathf.Abs(currentAngle - m_MaxGunDepression) <= m_AccuracyTolerance);
+            return (Mathf.Abs(m_MaxGunDepression - currentAngle) <= m_AccuracyTolerance);
         }
 
         return false;
@@ -285,6 +283,9 @@ public class SHSMAnimator : MOAnimator
         CalculateBulletTrajectory(m_Bullet.transform.position, m_TargetTile.transform.position, out bulletVelocity, out bulletLifetime);
         m_Bullet.Lifetime = bulletLifetime + 1.0f;
         m_Bullet.InitialVelocity = bulletVelocity;
+
+        // Wait for a while.
+        yield return new WaitForSeconds(1.0f);
 
         // Lower our gun.
         while (true)

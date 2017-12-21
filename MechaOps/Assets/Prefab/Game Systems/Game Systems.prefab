@@ -69,6 +69,7 @@ GameObject:
   - component: {fileID: 4647407366942722}
   - component: {fileID: 114210778316198234}
   - component: {fileID: 114501620522289274}
+  - component: {fileID: 114020132949608308}
   m_Layer: 0
   m_Name: Player Units Manager
   m_TagString: Untagged
@@ -191,6 +192,22 @@ Transform:
   m_Father: {fileID: 4629530938230690}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114020132949608308
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1535395777124574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: facde880791e93e4bbf8e4c0abeb2bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PointerId: 0
+  m_IgnoreUI: 1
+  m_TriggeredEvent: ClickedTile
+  m_LayersToDetect:
+  - Tile
 --- !u!114 &114092306247629050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -262,11 +279,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: facde880791e93e4bbf8e4c0abeb2bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ClickedPlayerUnit: {fileID: 0}
-  m_LayersToCheck:
-  - Unit
-  - Tile
   m_PointerId: 0
+  m_IgnoreUI: 1
+  m_TriggeredEvent: ClickedUnit
+  m_LayersToDetect:
+  - Unit
 --- !u!114 &114518543058706742
 MonoBehaviour:
   m_ObjectHideFlags: 1

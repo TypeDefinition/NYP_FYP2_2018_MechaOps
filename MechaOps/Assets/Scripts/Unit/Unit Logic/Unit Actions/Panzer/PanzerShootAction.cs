@@ -6,7 +6,7 @@ using UnityEngine.Assertions;
 
 public class PanzerShootAction : UnitAttackAction
 {
-    [SerializeField] protected MOAnimation_PanzerAttack m_AttackAnimation;
+    [SerializeField] protected MOAnimation_PanzerShoot m_AttackAnimation;
 
     protected bool m_RegisteredAnimationCompleteCallback = false;
 

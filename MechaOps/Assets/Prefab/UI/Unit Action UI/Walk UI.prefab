@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 224918869631979754}
   - component: {fileID: 114662384954406756}
   m_Layer: 5
-  m_Name: Indicate Walk UI Group
+  m_Name: Walk UI
   m_TagString: Walk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

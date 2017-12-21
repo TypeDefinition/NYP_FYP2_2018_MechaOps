@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Assertions;
 using TMPro;
 
-[RequireComponent(typeof(DetectClickedPlayerUnit)), DisallowMultipleComponent]
+[RequireComponent(typeof(DetectPlayerClicks)), DisallowMultipleComponent]
 public class PlayerUnitsManager : MonoBehaviour
 {
     [Header("Linking and variables required")]
@@ -116,7 +116,7 @@ public class PlayerUnitsManager : MonoBehaviour
         GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("UnitMakeMove", UnitHasMadeMove);
 
         // Wait for all units to make their move.
-        GetComponent<DetectClickedPlayerUnit>().enabled = true;
+        GetComponent<DetectPlayerClicks>().enabled = true;
         WaitForSecondsRealtime waitForSecondsRealtime = new WaitForSecondsRealtime(0.1f);
         while (m_UnitsYetToMakeMoves.Count > 0)
         {
@@ -130,7 +130,7 @@ public class PlayerUnitsManager : MonoBehaviour
         m_UpdateOfManager = null; // Is this even used?
 
         // Player no longer needs to interact with the game so might as well turn off the polling.
-        GetComponent<DetectClickedPlayerUnit>().enabled = false;
+        GetComponent<DetectPlayerClicks>().enabled = false;
         m_UnitSelection.gameObject.SetActive(false);
 
         GameEventSystem.GetInstance().TriggerEvent("TurnEnded");

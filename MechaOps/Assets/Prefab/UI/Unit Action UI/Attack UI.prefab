@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224762864415983330}
   - component: {fileID: 114668755676894246}
   m_Layer: 5
-  m_Name: Indicate Attack UI Group
+  m_Name: Attack UI
   m_TagString: Attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

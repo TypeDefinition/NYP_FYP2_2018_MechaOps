@@ -209,6 +209,10 @@ GameObject:
   - component: {fileID: 114562202939941702}
   - component: {fileID: 114134766550012928}
   - component: {fileID: 65565776578362004}
+  - component: {fileID: 114686320717331432}
+  - component: {fileID: 114103122874567716}
+  - component: {fileID: 114241859383688450}
+  - component: {fileID: 114748458669652198}
   m_Layer: 8
   m_Name: SHSM
   m_TagString: Player
@@ -997,7 +1001,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CineMachineHandler: {fileID: 0}
-  m_MaxGunElevation: 0
+  m_MaxGunElevation: -80
   m_MaxGunDepression: 20
   m_Turret: {fileID: 0}
   m_Gun: {fileID: 1442651399732124}
@@ -1040,9 +1044,22 @@ MonoBehaviour:
   m_UnitActionUI: {fileID: 1134435258809106, guid: f60f06ef37015e14ba42bc5dad875b1c,
     type: 2}
   m_ActionIconUI: {fileID: 21300000, guid: d859645726494314ab2591c7384f7d53, type: 3}
+  m_UnitActionHandler: {fileID: 0}
   m_AnimationCompleted: 0
   m_MovementPoints: 3
   m_WalkAnimation: {fileID: 114996215870810178}
+--- !u!114 &114103122874567716
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1745666966088080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3cef5841460e11469d89034ac0e4ea5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AllAvailableActions: []
 --- !u!114 &114134766550012928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1058,6 +1075,18 @@ MonoBehaviour:
     type: 2}
   m_FlamePrefab: {fileID: 198131241012019862, guid: d07da21434175a749bb97eebed0144f1,
     type: 2}
+  m_Animator: {fileID: 114068528560751774}
+--- !u!114 &114241859383688450
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1745666966088080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87372144c0245814a983907020035739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   m_Animator: {fileID: 114068528560751774}
 --- !u!114 &114362241809985242
 MonoBehaviour:
@@ -1106,6 +1135,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UnitStats: {fileID: 114362241809985242}
   m_ViewedTiles: []
+--- !u!114 &114686320717331432
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1745666966088080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cab5ea8101800d4ab5f64c0b12f232e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UnitActionName: Skip
+  m_UnitActionDescription: <Placeholder Description>
+  m_TurnedOn: 0
+  m_Priority: 0
+  m_ActionCost: 1
+  m_EndsTurn: 0
+  m_ActionState: 0
+  m_UnitActionUI: {fileID: 1612582933021620, guid: 10234cb69b925e14d9163d2556b7fb5b,
+    type: 2}
+  m_ActionIconUI: {fileID: 21300000, guid: 2701c9f4499a5f340a46e96aeba66a4e, type: 3}
+  m_UnitActionHandler: {fileID: 0}
+  m_AnimationCompleted: 0
+--- !u!114 &114748458669652198
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1745666966088080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5866b418d7713440a068b8de2e790f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UnitActionName: Shoot
+  m_UnitActionDescription: <Placeholder Description>
+  m_TurnedOn: 0
+  m_Priority: 0
+  m_ActionCost: 1
+  m_EndsTurn: 0
+  m_ActionState: 0
+  m_UnitActionUI: {fileID: 1709325544030846, guid: fd65515792dd9b04f8c87b6ba9939191,
+    type: 2}
+  m_ActionIconUI: {fileID: 21300000, guid: 9b2e2526308c0524eab722fe277acd2f, type: 3}
+  m_UnitActionHandler: {fileID: 0}
+  m_AnimationCompleted: 0
+  m_MinAttackRange: 4
+  m_MaxAttackRange: 16
+  m_AccuracyPoints: 0
+  m_DamagePoints: 5
+  m_Animation: {fileID: 114241859383688450}
 --- !u!114 &114996215870810178
 MonoBehaviour:
   m_ObjectHideFlags: 1

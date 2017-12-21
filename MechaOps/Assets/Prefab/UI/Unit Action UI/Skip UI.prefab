@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 224993884952491068}
   - component: {fileID: 114610579002547102}
   m_Layer: 5
-  m_Name: Indicate Skip UI Group
+  m_Name: Skip UI
   m_TagString: Walk
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

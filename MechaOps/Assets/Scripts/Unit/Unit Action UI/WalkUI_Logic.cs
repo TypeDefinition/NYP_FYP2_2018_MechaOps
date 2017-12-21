@@ -47,13 +47,13 @@ public class WalkUI_Logic : TweenUI_Scale
     private void InitEvents()
     {
         // And then access the tile stuff from the system and get reachable tiles
-        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("ClickedUnit", PlayerClickedTile);
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("ClickedTile", PlayerClickedTile);
         GameEventSystem.GetInstance().SubscribeToEvent<IUnitAction>("SelectedAction", SetUnitAction);
     }
 
     private void DeinitEvents()
     {
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("ClickedUnit", PlayerClickedTile);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("ClickedTile", PlayerClickedTile);
         GameEventSystem.GetInstance().UnsubscribeFromEvent<IUnitAction>("SelectedAction", SetUnitAction);
     }
 
@@ -73,27 +73,18 @@ public class WalkUI_Logic : TweenUI_Scale
         DeinitEvents();
     }
 
-    void PlayerClickedTile(GameObject _clickedObj)
+    void PlayerClickedTile(GameObject _clickedTile)
     {
-        if (_clickedObj.tag == "TileDisplay" || _clickedObj.tag == "TileBase")
+        if (_clickedTile.tag != "TileBase") { return; }
+
+        Tile tileComponent = null;
+        tileComponent = _clickedTile.GetComponent<Tile>();
+        
+        if (m_AllReachableTileHighlight.Contains(tileComponent.GetTileId()))
         {
-            // We have to hardcode a bit since the tags will differ!
-            Tile zeTileComponent = null;
-            switch (_clickedObj.tag)
-            {
-                case "TileDisplay":
-                    zeTileComponent = _clickedObj.transform.parent.GetComponent<Tile>();
-                    break;
-                case "TileBase":
-                    zeTileComponent = _clickedObj.GetComponent<Tile>();
-                    break;
-            }
-            if (m_AllReachableTileHighlight.Contains(zeTileComponent.GetTileId()))
-            {
-                // Then we have to find the path for it!
-                m_MovementPath = m_TileSystem.GetPath(m_UnitAction.m_MovementPoints, m_UnitAction.GetUnitStats().CurrentTileID, zeTileComponent.GetTileId(), m_UnitAction.GetUnitStats().GetTileAttributeOverrides());
-                m_TileSystem.SetPathMarkers(m_AllReachableTileHighlight.ToArray(), m_MovementPath);
-            }
+            // Then we have to find the path for it!
+            m_MovementPath = m_TileSystem.GetPath(m_UnitAction.m_MovementPoints, m_UnitAction.GetUnitStats().CurrentTileID, tileComponent.GetTileId(), m_UnitAction.GetUnitStats().GetTileAttributeOverrides());
+            m_TileSystem.SetPathMarkers(m_AllReachableTileHighlight.ToArray(), m_MovementPath);
         }
     }
 

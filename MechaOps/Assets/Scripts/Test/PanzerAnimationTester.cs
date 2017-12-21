@@ -7,13 +7,13 @@ public class PanzerAnimationTester : MonoBehaviour
     [SerializeField] private GameObject m_Target = null;
     [SerializeField] private bool m_Hit = false;
 
-    private MOAnimation_PanzerAttack m_AnimationAttack;
+    private MOAnimation_PanzerShoot m_AnimationAttack;
     private MOAnimation_PanzerMove m_AnimationMove;
     private MOAnimation_UnitDestroy m_AnimationDestroy;
 
     // Use this for initialization
     void Start () {
-        m_AnimationAttack = gameObject.GetComponent<MOAnimation_PanzerAttack>();
+        m_AnimationAttack = gameObject.GetComponent<MOAnimation_PanzerShoot>();
         m_AnimationAttack.CompletionCallback = this.AttackCompletionCallback;
 
         m_AnimationMove = gameObject.GetComponent<MOAnimation_PanzerMove>();

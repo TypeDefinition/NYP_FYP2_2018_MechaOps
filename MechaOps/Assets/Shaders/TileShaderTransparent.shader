@@ -38,8 +38,8 @@
             Pass replace
         }
 
-        //Blend SrcAlpha, OneMinusSrcAlpha
-        Blend Off
+        // Blend SrcAlpha, OneMinusSrcAlpha
+        // Blend Off
 
 		CGPROGRAM
 		// Physically based Standard lighting model, and enable shadows on all light types
