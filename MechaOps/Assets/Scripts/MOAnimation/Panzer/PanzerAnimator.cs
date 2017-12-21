@@ -35,6 +35,12 @@ public class PanzerAnimator : MOAnimator
     protected float m_TimeDelayForDeathCam = 2.0f;
     [SerializeField, Tooltip("Time taken for the delay before camera goes back to normal from cinematics")]
     protected float m_TimeDelayForCamBackToNormal = 0.5f;
+    [SerializeField, Tooltip("Name for walking cinematic shot for panzer walk at CineMachineHandler")]
+    protected string m_PanzerWalkCinematicName = "Walk";
+    [SerializeField, Tooltip("Name for attack cinematic shot for panzer attack at CineMachineHandler")]
+    protected string m_PanzerAttackCinematicName = "Attack";
+    [SerializeField, Tooltip("Name for death cinematic shot for panzer death at CineMachineHandler")]
+    protected string m_PanzerDeathCinematicName = "Die";
 
     // Moving Animation
     protected Vector3 m_Destination = new Vector3();

@@ -38,6 +38,18 @@ public class MOAnimation_UnitDestroy : MOAnimation
 
     public override MOAnimator GetMOAnimator() { return null; }
 
+    private void OnEnable()
+    {
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>(tag + "IsDead", InvokeDeathAnimation);
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>(tag + "VisibleDead", InvokeDeathCinematic);
+    }
+
+    private void OnDisable()
+    {
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>(tag + "IsDead", InvokeDeathAnimation);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>(tag + "VisibleDead", InvokeDeathCinematic);
+    }
+
     public override void StartAnimation()
     {
         Assert.IsTrue(m_ExplosionPrefab != null);
@@ -80,4 +92,29 @@ public class MOAnimation_UnitDestroy : MOAnimation
         DeleteAnimationObjects();
     }
 
+    /// <summary>
+    /// Start the death particle!
+    /// </summary>
+    /// <param name="_go">The gameobject to check</param>
+    public void InvokeDeathAnimation(GameObject _go)
+    {
+        if (_go == gameObject)
+        {
+            StartAnimation();
+            GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>(tag + "IsDead", InvokeDeathAnimation);
+        }
+    }
+
+    /// <summary>
+    /// Start the death cinematic shot when the unit dies and only if it is visible!
+    /// </summary>
+    /// <param name="_go">The gameobject to check</param>
+    public void InvokeDeathCinematic(GameObject _go)
+    {
+        if (_go == gameObject)
+        {
+            m_Animator.StartDeathAnimation();
+            GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>(tag + "VisibleDead", InvokeDeathCinematic);
+        }
+    }
 }

@@ -1885,8 +1885,11 @@ MonoBehaviour:
     type: 2}
   m_HullTransform: {fileID: 4678192204071410}
   m_TimeDelayForCamToTurret: 3
-  m_TimeDelayForDeathCam: 2.1
+  m_TimeDelayForDeathCam: 1.6
   m_TimeDelayForCamBackToNormal: 0.5
+  m_PanzerWalkCinematicName: Walk
+  m_PanzerAttackCinematicName: Attack
+  m_PanzerDeathCinematicName: Die
 --- !u!114 &114303736659755040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2016,7 +2019,7 @@ MonoBehaviour:
   m_AnimationCompleted: 0
   m_MinAttackRange: 0
   m_MaxAttackRange: 5
-  m_AccuracyPoints: 40
+  m_AccuracyPoints: 75
   m_DamagePoints: 3
   m_AttackAnimation: {fileID: 114736098985811620}
 --- !u!114 &114719944890479642

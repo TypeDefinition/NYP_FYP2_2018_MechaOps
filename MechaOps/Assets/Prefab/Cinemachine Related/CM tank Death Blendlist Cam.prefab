@@ -26,7 +26,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1274911503711350
 GameObject:
   m_ObjectHideFlags: 1
@@ -210,9 +210,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_ShowDebugText: 1
   m_EnableAllChildCameras: 0
-  m_ChildCameras:
-  - {fileID: 114539605063764014}
-  - {fileID: 114009867209889568}
+  m_ChildCameras: []
   m_Instructions:
   - m_VirtualCamera: {fileID: 114539605063764014}
     m_Hold: 0.5
@@ -223,7 +221,7 @@ MonoBehaviour:
     m_Hold: 0.5
     m_Blend:
       m_Style: 1
-      m_Time: 1.5
+      m_Time: 1
 --- !u!114 &114539605063764014
 MonoBehaviour:
   m_ObjectHideFlags: 1

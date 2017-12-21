@@ -107,11 +107,10 @@ public class UnitStats : MonoBehaviour
                 string zeEventName = tag + "IsDead";
                 //// Trigger an event when the unit died
                 GameEventSystem.GetInstance().TriggerEvent<GameObject>(zeEventName, gameObject);
-                m_DeathAnimation.StartAnimation();
                 // If the unit is visible, then start the death cinematic!
                 if (m_ViewTileScript.IsVisible())
                 {
-                    m_DeathAnimation.PanzerAnim.StartDeathAnimation();
+                    GameEventSystem.GetInstance().TriggerEvent<GameObject>(tag + "VisibleDead", gameObject);
                 }
             }
 
