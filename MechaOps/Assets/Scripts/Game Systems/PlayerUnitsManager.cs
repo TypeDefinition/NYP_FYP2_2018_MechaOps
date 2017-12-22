@@ -9,23 +9,18 @@ using TMPro;
 public class PlayerUnitsManager : MonoBehaviour
 {
     [Header("Linking and variables required")]
-
     [SerializeField] private GameSystemsDirectory m_GameSystemsDirectory = null;
-
     // Prefabs used for copy initialisation.
     [SerializeField, Tooltip("The prefab holder for the unit's actions!")]
     private Image m_UnitActionIconImage_Prefab;
+    [SerializeField, Tooltip("The prefab for selecting unit indicator")]
+    private FollowUnitDisplay m_UnitIndicatorPrefab;
 
     [Header("Variables Shown For Debugging Purposes.")]
 
     // KeepTrackOfUnits keeps tracks of units that are still alive.
     [SerializeField, Tooltip("Keep Track of Unit Script")]
     private UnitsTracker m_UnitsTracker;
-
-    // World Space Canvas
-    // [SerializeField, Tooltip("The world canvas transform.")]
-    // private Canvas m_WorldSpaceCanvas;
-
     // Screen Space Canvas
     [SerializeField, Tooltip("The screen canvas transform.")]
     private ScreenSpaceCanvas m_ScreenSpaceCanvas;
@@ -35,6 +30,8 @@ public class PlayerUnitsManager : MonoBehaviour
     private UnitSelection m_UnitSelection;
     [SerializeField, Tooltip("The text UI to display the unit's name!")]
     private TextMeshProUGUI m_UnitNameText;
+    [SerializeField, Tooltip("Instantiated Unit Indicator")]
+    private FollowUnitDisplay m_InstantiateUnitIndicator;
 
     // Game Logic
     [SerializeField, Tooltip("The array of how many units have yet to make their turn. Meant for debugging purpose")]
@@ -195,7 +192,8 @@ public class PlayerUnitsManager : MonoBehaviour
         if (m_UnitActionSelectionUIScrollRect.gameObject.activeSelf)
         {
             m_UnitSelection.gameObject.SetActive(true);
-
+            m_InstantiateUnitIndicator.gameObject.SetActive(true);
+            m_InstantiateUnitIndicator.AnimateUI();
             GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("ClickedUnit", PlayerSelectUnit);
         }
         else
@@ -220,6 +218,7 @@ public class PlayerUnitsManager : MonoBehaviour
     /// <param name="_selectedAction">The reference to that UI</param>
     public void ToInstantiateSpecificActionUI(GameObject _specificUIGO, IUnitAction _selectedAction)
     {
+        m_InstantiateUnitIndicator.gameObject.SetActive(false);
         m_UnitSelection.gameObject.SetActive(false);
         m_CurrentSelectedAction = _selectedAction;
         Instantiate(_specificUIGO, m_ScreenSpaceCanvas.transform).SetActive(true);
@@ -306,8 +305,20 @@ public class PlayerUnitsManager : MonoBehaviour
                 m_SelectedUnitActionButtons.Add(unitActionButton);
             }
         }
+        if (!m_InstantiateUnitIndicator)
+        {
+            m_InstantiateUnitIndicator = Instantiate(m_UnitIndicatorPrefab.gameObject, m_ScreenSpaceCanvas.transform).GetComponent<FollowUnitDisplay>();
+        }
+        m_InstantiateUnitIndicator.gameObject.SetActive(true);
+        m_InstantiateUnitIndicator.m_UnitGO = _unit;
+        m_InstantiateUnitIndicator.m_GameSystemsDirectory = m_GameSystemsDirectory;
+        m_InstantiateUnitIndicator.AnimateUI();
     }
 
+    /// <summary>
+    /// To add the enemy gameobject to global visible enemy list which which will be used at the Attack_Logic
+    /// </summary>
+    /// <param name="_go">The enemy unit gameobject</param>
     void AddToGlobalVisibilityList(GameObject _go)
     {
         if (_go.tag != "Player")
@@ -316,7 +327,10 @@ public class PlayerUnitsManager : MonoBehaviour
             m_GlobalViewedEnemyInRange.Add(_go);
         }
     }
-
+    /// <summary>
+    /// To remove the enemy gameobject from the global visible enemy list
+    /// </summary>
+    /// <param name="_go">enemy unit gameobject</param>
     void RemoveFromGlobalVisibilityList(GameObject _go)
     {
         if (_go.tag != "Player")

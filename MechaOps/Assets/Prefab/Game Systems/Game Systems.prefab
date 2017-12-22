@@ -241,16 +241,20 @@ MonoBehaviour:
   m_GameSystemsDirectory: {fileID: 114092306247629050}
   m_UnitActionIconImage_Prefab: {fileID: 114775635339453894, guid: b6f55b4b93d48eb448b16e21e160b186,
     type: 2}
+  m_UnitIndicatorPrefab: {fileID: 114654854778776996, guid: deafc0be506719b408c10069eff89bc1,
+    type: 2}
   m_UnitsTracker: {fileID: 0}
   m_ScreenSpaceCanvas: {fileID: 0}
   m_UnitActionSelectionUIScrollRect: {fileID: 0}
   m_UnitSelection: {fileID: 0}
   m_UnitNameText: {fileID: 0}
+  m_InstantiateUnitIndicator: {fileID: 0}
   m_UnitsYetToMakeMoves: []
   m_SelectedUnitIndex: 0
   m_SelectedPlayerUnit: {fileID: 0}
   m_SelectedUnitActionButtons: []
   m_CurrentSelectedAction: {fileID: 0}
+  m_GlobalViewedEnemyInRange: []
 --- !u!114 &114350018491506326
 MonoBehaviour:
   m_ObjectHideFlags: 1
