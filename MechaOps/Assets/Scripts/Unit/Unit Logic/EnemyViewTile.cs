@@ -57,11 +57,19 @@ public class EnemyViewTile : ViewTileScript
     public override void DecreaseVisibility()
     {
         --VisibilityCount;
+        if (VisibilityCount == 0)
+        {
+            GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitUnseen", gameObject);
+        }
     }
 
     public override void IncreaseVisibility()
     {
         ++VisibilityCount;
+        if (VisibilityCount == 1)
+        {
+            GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitSeen", gameObject);
+        }
     }
 
     /// <summary>

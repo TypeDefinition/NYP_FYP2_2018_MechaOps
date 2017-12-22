@@ -126,8 +126,9 @@ public class AttackUI_Logic : TweenUI_Scale
         m_ActionDescriptionText.text = _action.UnitActionDescription;
 
         int layerToCastThrough = 1 << LayerMask.NameToLayer("TileDisplay");
-        // We will iterate through the list of units that this unit can see!
-        foreach (GameObject zeSeenUnit in m_UnitAttackAction.GetUnitStats().EnemiesInRange)
+        // We will iterate through the global list of visible enemies
+        PlayerUnitsManager zePlayerManager = FindObjectOfType<GameSystemsDirectory>().GetPlayerUnitsManager();
+        foreach (GameObject zeSeenUnit in zePlayerManager.GlobalViewedEnemyInRange)
         {
             // we get the unit stat and tile distance!
             UnitStats zeObjStat = zeSeenUnit.GetComponent<UnitStats>();

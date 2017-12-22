@@ -47,6 +47,16 @@ public class PlayerUnitsManager : MonoBehaviour
     private List<Button> m_SelectedUnitActionButtons;
     [SerializeField, Tooltip("The current unit action that is clicked upon")]
     protected IUnitAction m_CurrentSelectedAction;
+    [SerializeField, Tooltip("List of all Enemy unit gameobject that have been reported to be in range")]
+    protected List<GameObject> m_GlobalViewedEnemyInRange = new List<GameObject>();
+
+    public List<GameObject> GlobalViewedEnemyInRange
+    {
+        get
+        {
+            return m_GlobalViewedEnemyInRange;
+        }
+    }
 
     /// <summary>
     /// The update of this manager. So that it can be controlled anytime.
@@ -83,6 +93,8 @@ public class PlayerUnitsManager : MonoBehaviour
         GameEventSystem.GetInstance().SubscribeToEvent("EnemyAnnihilated", StopUpdate);
         GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("ClickedUnit", PlayerSelectUnit);
         GameEventSystem.GetInstance().SubscribeToEvent("ToggleSelectingUnit", ToggleThePlayerInput);
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("UnitSeen", AddToGlobalVisibilityList);
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("UnitUnseen", RemoveFromGlobalVisibilityList);
     }
 
     private void DeinitEvents()
@@ -92,6 +104,8 @@ public class PlayerUnitsManager : MonoBehaviour
         GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("ClickedUnit", PlayerSelectUnit);
         GameEventSystem.GetInstance().UnsubscribeFromEvent("ToggleSelectingUnit", ToggleThePlayerInput);
         GameEventSystem.GetInstance().UnsubscribeFromEvent("UnitFinishAction", PollingForPlayerInput);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("UnitSeen", AddToGlobalVisibilityList);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("UnitUnseen", RemoveFromGlobalVisibilityList);
     }
 
     private void OnEnable()
@@ -291,6 +305,24 @@ public class PlayerUnitsManager : MonoBehaviour
                 // Add this button to m_SelectedUnitActionButtons.
                 m_SelectedUnitActionButtons.Add(unitActionButton);
             }
+        }
+    }
+
+    void AddToGlobalVisibilityList(GameObject _go)
+    {
+        if (_go.tag != "Player")
+        {
+            Assert.IsTrue(!m_GlobalViewedEnemyInRange.Contains(_go), "Something is wrong with AddToGlobalVisibilityList");
+            m_GlobalViewedEnemyInRange.Add(_go);
+        }
+    }
+
+    void RemoveFromGlobalVisibilityList(GameObject _go)
+    {
+        if (_go.tag != "Player")
+        {
+            Assert.IsTrue(m_GlobalViewedEnemyInRange.Contains(_go), "Something is wrong with RemoveFromGlobalVisibilityList");
+            m_GlobalViewedEnemyInRange.Remove(_go);
         }
     }
 }

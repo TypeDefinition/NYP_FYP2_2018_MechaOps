@@ -116,8 +116,8 @@ public abstract class UnitAttackAction : IUnitAction
         if (distanceToTarget < MinAttackRange) { return false; }
         if (distanceToTarget > MaxAttackRange) { return false; }
 
-        // Check if can see enemy (Our View Range as well as teammate scouting)
-        if (distanceToTarget > GetUnitStats().ViewRange) { return false; }
+        // Check if can see enemy (Our View Range as well as teammate scouting) Have to remove this since teammate is scouting
+        //if (distanceToTarget > GetUnitStats().ViewRange) { return false; }
 
         return true;
     }

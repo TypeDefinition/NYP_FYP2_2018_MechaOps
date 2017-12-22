@@ -428,7 +428,17 @@ public class UnitStats : MonoBehaviour
     /// </summary>
     private void EnemyInRangeDead(GameObject _deadUnit)
     {
-        //if (m_EnemyInRange.Contains(_deadUnit))
+        // if the dead unit is itself, iterate through it's list and decrease the visibility of other units!
+        if (_deadUnit == gameObject)
+        {
+            foreach (GameObject zeEnemyGO in m_EnemiesInRange)
+            {
+                ViewTileScript zeEnemyView = zeEnemyGO.GetComponent<ViewTileScript>();
+                zeEnemyView.DecreaseVisibility();
+            }
+            m_EnemiesInRange.Clear();
+        }
+        else
         {
             m_EnemiesInRange.Remove(_deadUnit);
         }
