@@ -11,16 +11,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fab726da6e4acc64097b21276b3f7ce1, type: 3}
   m_Name: UnitDataAndCost
   m_EditorClassIdentifier: 
-  m_UnitsData:
+  m_ArrayOfUnitsData:
   - m_UnitStatsPrefab: {fileID: 0}
-    m_TypeName: 
-    m_Cost: 0
+    m_TypeName: Panzer
+    m_Cost: 100
+  m_ArrayOfEnemyUnits:
   - m_UnitStatsPrefab: {fileID: 0}
-    m_TypeName: 
+    m_TypeName: Panzer
     m_Cost: 0
-  - m_UnitStatsPrefab: {fileID: 0}
+  m_UnitUIDataArray:
+  - m_UnitSpriteUI: {fileID: 0}
     m_TypeName: 
-    m_Cost: 0
-  - m_UnitStatsPrefab: {fileID: 0}
+  - m_UnitSpriteUI: {fileID: 0}
     m_TypeName: 
-    m_Cost: 0
