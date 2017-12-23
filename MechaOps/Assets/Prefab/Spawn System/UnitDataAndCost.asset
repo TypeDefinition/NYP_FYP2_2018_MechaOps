@@ -20,7 +20,5 @@ MonoBehaviour:
     m_TypeName: Panzer
     m_Cost: 0
   m_UnitUIDataArray:
-  - m_UnitSpriteUI: {fileID: 0}
-    m_TypeName: 
-  - m_UnitSpriteUI: {fileID: 0}
-    m_TypeName: 
+  - m_UnitSpriteUI: {fileID: 21300000, guid: ddc1c000a147a3e488437154aea1d1d3, type: 3}
+    m_TypeName: Panzer
