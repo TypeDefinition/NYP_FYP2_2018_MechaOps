@@ -144,6 +144,12 @@ public class PlayerUnitsManager : MonoBehaviour
         GetComponent<DetectPlayerClicks>().enabled = false;
         m_UnitSelection.gameObject.SetActive(false);
 
+        // and then iterate though units that are still alive and reset their energy points
+        foreach (GameObject zePlayerGO in m_UnitsTracker.m_AlivePlayerUnits)
+        {
+            zePlayerGO.GetComponent<UnitStats>().ResetActionPoints();
+        }
+
         GameEventSystem.GetInstance().TriggerEvent("TurnEnded");
         yield break;
     }

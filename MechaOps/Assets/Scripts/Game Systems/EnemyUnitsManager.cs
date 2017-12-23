@@ -86,6 +86,12 @@ public class EnemyUnitsManager : MonoBehaviour
 #else
 #endif
         m_UpdateOfManager = null;
+        // reset all of alive enemy unit's action points!
+        foreach (GameObject zeEnemyGO in m_UnitsTracker.m_AliveEnemyUnits)
+        {
+            zeEnemyGO.GetComponent<UnitStats>().ResetActionPoints();
+        }
+
         GameEventSystem.GetInstance().TriggerEvent("TurnEnded");
         print("Finish Enemy Manager turn");
         yield break;

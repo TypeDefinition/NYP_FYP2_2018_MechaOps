@@ -27641,12 +27641,12 @@ Prefab:
     - target: {fileID: 114811533488785636, guid: 525f4ac0fe7c38e4b8d0c7d5edd2a90e,
         type: 2}
       propertyPath: m_UnitStatsJSON.m_MaxActionPoints
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114811533488785636, guid: 525f4ac0fe7c38e4b8d0c7d5edd2a90e,
         type: 2}
       propertyPath: m_UnitStatsJSON.m_CurrentActionPoints
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114592857521324414, guid: 525f4ac0fe7c38e4b8d0c7d5edd2a90e,
         type: 2}

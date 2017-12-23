@@ -209,7 +209,6 @@ public abstract class IUnitAction : MonoBehaviour
     {
         if (GetUnitStats().CurrentActionPoints == 0 || !m_UnitActionHandler.CheckIsUnitMakeMove(m_UnitStats))
         {
-            GetUnitStats().ResetUnitStats();
             // tell the player unit manager that it can no longer do any action
             GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitMakeMove", gameObject);
         }
