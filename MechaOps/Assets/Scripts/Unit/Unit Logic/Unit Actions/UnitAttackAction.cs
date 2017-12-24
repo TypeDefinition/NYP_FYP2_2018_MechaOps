@@ -8,13 +8,13 @@ public abstract class UnitAttackAction : IUnitAction
 {
     // Serialised Variable(s)
     [SerializeField, Tooltip("Minimum attack range of the unit")]
-    protected int m_MinAttackRange;
+    protected int m_MinAttackRange = 0;
     [SerializeField, Tooltip("Maximum attack range of the unit")]
-    protected int m_MaxAttackRange;
+    protected int m_MaxAttackRange = 6;
     [SerializeField, Tooltip("The accuracy points of the unit")]
-    protected int m_AccuracyPoints;
+    protected int m_AccuracyPoints = 50;
     [SerializeField, Tooltip("The damage point it dealt")]
-    protected int m_DamagePoints;
+    protected int m_DamagePoints = 2;
 
     // Non-Serialised Variable(s)
     protected UnitStats m_TargetUnitStats;

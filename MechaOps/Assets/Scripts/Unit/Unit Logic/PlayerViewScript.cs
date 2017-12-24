@@ -6,7 +6,7 @@ using UnityEngine;
 /// This will be used to render the tiles of this unit surrounding!
 /// </summary>
 [DisallowMultipleComponent]
-public class PlayerViewScript : ViewTileScript
+public class PlayerViewScript : ViewScript
 {
     [Header("The variables below are shown in the Inspector for debugging purposes.")]
     [SerializeField, Tooltip("Surrounding Tiles that needed to change the ID")]

@@ -1,27 +1,53 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.Assertions;
 
-public abstract class MOAnimation_Move : MOAnimation
+public class MOAnimation_Move : MOAnimation
 {
-    protected Vector3 m_Destination;
+    [SerializeField] MOAnimator m_Animator = null;
 
-    public Vector3 Destination
+    protected TileId[] m_MovementPath = null;
+    protected Void_Int m_ReachedTileCallback = null;
+
+    public override MOAnimator GetMOAnimator() { return m_Animator; }
+
+    public TileId[] MovementPath
     {
-        get { return m_Destination; }
-        set { m_Destination = value; }
+        get { return m_MovementPath; }
+        set { m_MovementPath = value; }
     }
 
-    public override MOAnimator GetMOAnimator()
+    public Void_Int ReachedTileCallback
     {
-        throw new System.NotImplementedException();
+        get { return m_ReachedTileCallback; }
+        set { m_ReachedTileCallback = value; }
     }
 
-    public override void StartAnimation() {}
+    // Use this for initialization
+    void Awake()
+    {
+        Assert.IsTrue(m_Animator != null, MethodBase.GetCurrentMethod().Name + " - No MOAnimator found!");
+    }
 
-    public override void PauseAnimation() {}
+    public override void StartAnimation()
+    {
+        m_Animator.StartMoveAnimation(m_MovementPath, m_ReachedTileCallback, m_CompletionCallback);
+    }
 
-    public override void ResumeAnimation() {}
+    public override void PauseAnimation()
+    {
+        m_Animator.StopMoveAnimation();
+    }
 
-    public override void StopAnimation() {}
+    public override void ResumeAnimation()
+    {
+        m_Animator.ResumeMoveAnimation();
+    }
+
+    public override void StopAnimation()
+    {
+        m_Animator.StopMoveAnimation();
+    }
 }

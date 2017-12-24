@@ -212,6 +212,11 @@ public class MOAnimator_Shield : MOAnimator
         StopAllCoroutines();
     }
 
+    protected override IEnumerator MoveAnimationCouroutine()
+    {
+        throw new System.NotImplementedException();
+    }
+
 #if UNITY_EDITOR
     private void OnValidate()
     {

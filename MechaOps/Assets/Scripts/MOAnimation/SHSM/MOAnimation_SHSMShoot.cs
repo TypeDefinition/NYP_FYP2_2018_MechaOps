@@ -7,7 +7,7 @@ using UnityEngine.Assertions;
 [DisallowMultipleComponent]
 public class MOAnimation_SHSMShoot : MOAnimation
 {
-    [SerializeField] private SHSMAnimator m_Animator = null;
+    [SerializeField] private MOAnimator_SHSM m_Animator = null;
     private Tile m_TargetTile;
 
     public Tile TargetTile
@@ -16,20 +16,16 @@ public class MOAnimation_SHSMShoot : MOAnimation
         set { m_TargetTile = value; }
     }
 
-    public override MOAnimator GetMOAnimator()
-    {
-        return m_Animator;
-    }
+    public override MOAnimator GetMOAnimator() { return m_Animator; }
 
     void Awake()
     {
-        Assert.IsTrue(m_Animator != null, MethodBase.GetCurrentMethod().Name + " - SHSMAnimator is required for MOAnimation_SHSMShoot to work!");
+        Assert.IsTrue(m_Animator != null, MethodBase.GetCurrentMethod().Name + " - No MOAnimator found!");
     }
 
     public override void StartAnimation()
     {
-        m_Animator.SetShootAnimationParameters(m_TargetTile, m_CompletionCallback);
-        m_Animator.StartShootAnimation();
+        m_Animator.StartShootAnimation(m_TargetTile, m_CompletionCallback);
     }
 
     public override void PauseAnimation()

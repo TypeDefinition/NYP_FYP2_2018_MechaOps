@@ -12,7 +12,7 @@ public class GoapNearTarget : IGoapAction
     [SerializeField, Tooltip("Unit Attack Action reference")]
     protected UnitAttackAction m_AttackAct;
     [SerializeField, Tooltip("Unit walk act ref")]
-    protected UnitWalkAction m_WalkAct;
+    protected UnitMoveAction m_WalkAct;
 
     [Header("Debugging purpose")]
     [SerializeField, Tooltip("The list of units that are within the attackin range")]
@@ -32,7 +32,7 @@ public class GoapNearTarget : IGoapAction
         if (!m_AttackAct)
             m_AttackAct = GetComponent<UnitAttackAction>();
         if (!m_WalkAct)
-            m_WalkAct = GetComponent<UnitWalkAction>();
+            m_WalkAct = GetComponent<UnitMoveAction>();
     }
 
     protected virtual void OnEnable()

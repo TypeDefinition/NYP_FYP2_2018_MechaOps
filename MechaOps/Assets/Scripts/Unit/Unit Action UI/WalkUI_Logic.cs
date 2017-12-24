@@ -19,7 +19,7 @@ public class WalkUI_Logic : TweenUI_Scale
     [SerializeField, Tooltip("The chosen path to walk to")]
     protected TileId[] m_MovementPath;
     [Tooltip("The Reference to unit walk action")]
-    public UnitWalkAction m_UnitAction;
+    public UnitMoveAction m_UnitAction;
 
     // Action Name & Description
     [SerializeField] protected TextMeshProUGUI m_ActionNameText;
@@ -83,7 +83,7 @@ public class WalkUI_Logic : TweenUI_Scale
         if (m_AllReachableTileHighlight.Contains(tileComponent.GetTileId()))
         {
             // Then we have to find the path for it!
-            m_MovementPath = m_TileSystem.GetPath(m_UnitAction.m_MovementPoints, m_UnitAction.GetUnitStats().CurrentTileID, tileComponent.GetTileId(), m_UnitAction.GetUnitStats().GetTileAttributeOverrides());
+            m_MovementPath = m_TileSystem.GetPath(m_UnitAction.MovementPoints, m_UnitAction.GetUnitStats().CurrentTileID, tileComponent.GetTileId(), m_UnitAction.GetUnitStats().GetTileAttributeOverrides());
             m_TileSystem.SetPathMarkers(m_AllReachableTileHighlight.ToArray(), m_MovementPath);
         }
     }
@@ -123,13 +123,13 @@ public class WalkUI_Logic : TweenUI_Scale
     /// <param name="_action">The unit action that is supposed to pass in!</param>
     protected virtual void SetUnitAction(IUnitAction _action)
     {
-        m_UnitAction = (UnitWalkAction)_action;
+        m_UnitAction = (UnitMoveAction)_action;
 
         // Set the name and description.
         m_ActionNameText.text = _action.UnitActionName;
         m_ActionDescriptionText.text = _action.UnitActionDescription;
 
-        TileId[] reachableTiles = m_TileSystem.GetReachableTiles(m_UnitAction.m_MovementPoints, m_UnitAction.GetUnitStats().CurrentTileID, m_UnitAction.GetUnitStats().GetTileAttributeOverrides());
+        TileId[] reachableTiles = m_TileSystem.GetReachableTiles(m_UnitAction.MovementPoints, m_UnitAction.GetUnitStats().CurrentTileID, m_UnitAction.GetUnitStats().GetTileAttributeOverrides());
         m_AllReachableTileHighlight = new List<TileId>(reachableTiles);
         m_AllReachableTileHighlight.Remove(m_UnitAction.GetUnitStats().CurrentTileID);
         m_TileSystem.SetPathMarkers(m_AllReachableTileHighlight.ToArray(), null);
