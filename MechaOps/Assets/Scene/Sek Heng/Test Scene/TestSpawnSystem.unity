@@ -19700,11 +19700,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 1020636871}
     m_Modifications:
-    - target: {fileID: 114346559841206310, guid: eae6ad47659ec9643864ccd154a0eabe,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 224064930537173644, guid: eae6ad47659ec9643864ccd154a0eabe,
         type: 2}
       propertyPath: m_LocalPosition.x
@@ -19795,73 +19790,9 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 114470869183739438, guid: eae6ad47659ec9643864ccd154a0eabe,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114470869183739438, guid: eae6ad47659ec9643864ccd154a0eabe,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114151604928578584, guid: eae6ad47659ec9643864ccd154a0eabe,
-        type: 2}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114151604928578584, guid: eae6ad47659ec9643864ccd154a0eabe,
-        type: 2}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114346559841206310, guid: eae6ad47659ec9643864ccd154a0eabe,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 703593443}
-    - target: {fileID: 114346559841206310, guid: eae6ad47659ec9643864ccd154a0eabe,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetTrigger
-      objectReference: {fileID: 0}
-    - target: {fileID: 114346559841206310, guid: eae6ad47659ec9643864ccd154a0eabe,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114346559841206310, guid: eae6ad47659ec9643864ccd154a0eabe,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 114346559841206310, guid: eae6ad47659ec9643864ccd154a0eabe,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114346559841206310, guid: eae6ad47659ec9643864ccd154a0eabe,
-        type: 2}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: ToggleWindow
-      objectReference: {fileID: 0}
-    - target: {fileID: 1803746275465508, guid: eae6ad47659ec9643864ccd154a0eabe, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1833981575112010, guid: eae6ad47659ec9643864ccd154a0eabe, type: 2}
-      propertyPath: m_TagString
-      value: GroupingImage
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114063114664114656, guid: eae6ad47659ec9643864ccd154a0eabe, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eae6ad47659ec9643864ccd154a0eabe, type: 2}
   m_IsPrefabParent: 0
---- !u!95 &703593443 stripped
-Animator:
-  m_PrefabParentObject: {fileID: 95579841388225976, guid: eae6ad47659ec9643864ccd154a0eabe,
-    type: 2}
-  m_PrefabInternal: {fileID: 703593442}
 --- !u!1 &708140074
 GameObject:
   m_ObjectHideFlags: 0
@@ -41948,10 +41879,10 @@ MonoBehaviour:
     type: 2}
   m_SelectUnitButtonPrefab: {fileID: 114712180975089206, guid: 2086bc49585a0ea43b80511a30f8d1eb,
     type: 2}
-  m_TagOfLayout: GroupingImage
   m_PlayerCredits: 1000
   m_CurrentSelectedUnitName: 
   m_InstantiateSelectUnitUI: {fileID: 0}
+  m_SpawnUI_Logic: {fileID: 0}
   m_ListOfSpawnUnits: []
 --- !u!1 &1457724017
 GameObject:
