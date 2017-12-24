@@ -15,31 +15,28 @@ public class MOAnimation_UnitDestroy : MOAnimation
     private SimpleSpriteAnimation m_Explosion = null;
     private ParticleSystem m_Flame = null;
 
+    // Other Variable(s)
+    private bool m_UnitVisible = false;
+
+    public bool UnitVisible
+    {
+        get { return m_UnitVisible; }
+        set { m_UnitVisible = value; }
+    }
+
     public override MOAnimator GetMOAnimator() { return m_Animator; }
 
     private void DeleteAnimationObjects()
     {
         if (m_Explosion != null)
         {
-            GameObject.Destroy(m_Explosion.gameObject);
+            Destroy(m_Explosion.gameObject);
         }
 
         if (m_Flame != null)
         {
-            GameObject.Destroy(m_Flame.gameObject);
+            Destroy(m_Flame.gameObject);
         }
-    }
-
-    private void OnEnable()
-    {
-        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>(tag + "IsDead", InvokeDeathAnimation);
-        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>(tag + "VisibleDead", InvokeDeathCinematic);
-    }
-
-    private void OnDisable()
-    {
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>(tag + "IsDead", InvokeDeathAnimation);
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>(tag + "VisibleDead", InvokeDeathCinematic);
     }
 
     public override void StartAnimation()
@@ -51,6 +48,8 @@ public class MOAnimation_UnitDestroy : MOAnimation
 
         m_Explosion = GameObject.Instantiate(m_ExplosionPrefab.gameObject, gameObject.transform, false).GetComponent<SimpleSpriteAnimation>();
         m_Flame = GameObject.Instantiate(m_FlamePrefab.gameObject, gameObject.transform, false).GetComponent<ParticleSystem>();
+
+        if (m_UnitVisible) { m_Animator.StartDeathAnimation(CompletionCallback); }
     }
 
     public override void PauseAnimation()
@@ -64,6 +63,8 @@ public class MOAnimation_UnitDestroy : MOAnimation
         {
             m_Flame.Pause();
         }
+
+        m_Animator.PauseDeathAnimation();
     }
 
     public override void ResumeAnimation()
@@ -77,36 +78,14 @@ public class MOAnimation_UnitDestroy : MOAnimation
         {
             m_Flame.Play();
         }
+
+        m_Animator.ResumeDeathAnimation();
     }
 
     public override void StopAnimation()
     {
         DeleteAnimationObjects();
-    }
 
-    /// <summary>
-    /// Start the death particle!
-    /// </summary>
-    /// <param name="_go">The gameobject to check</param>
-    public void InvokeDeathAnimation(GameObject _go)
-    {
-        if (_go == gameObject)
-        {
-            StartAnimation();
-            GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>(tag + "IsDead", InvokeDeathAnimation);
-        }
-    }
-
-    /// <summary>
-    /// Start the death cinematic shot when the unit dies and only if it is visible!
-    /// </summary>
-    /// <param name="_go">The gameobject to check</param>
-    public void InvokeDeathCinematic(GameObject _go)
-    {
-        if (_go == gameObject)
-        {
-            m_Animator.StartDeathAnimation();
-            GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>(tag + "VisibleDead", InvokeDeathCinematic);
-        }
+        m_Animator.StopDeathAnimation();
     }
 }

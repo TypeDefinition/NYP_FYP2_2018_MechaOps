@@ -4,11 +4,12 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class PanzerShootAction : UnitAttackAction
+public class WaspShootAction : UnitAttackAction
 {
-    [SerializeField] protected MOAnimation_PanzerShoot m_Animation;
+    [SerializeField] protected MOAnimation_WaspShoot m_Animation;
 
     protected bool m_RegisteredAnimationCompleteCallback = false;
+    protected bool m_Hit = false;
 
     protected virtual void RegisterAnimationCompleteCallback()
     {
@@ -32,7 +33,9 @@ public class PanzerShootAction : UnitAttackAction
     {
         base.StartAction();
         RegisterAnimationCompleteCallback();
-        StartShootingAnimation();
+        m_Hit = CheckIfHit();
+        m_Animation.Target = m_TargetUnitStats.gameObject;
+        m_Animation.StartAnimation();
     }
 
     public override void PauseAction()
@@ -54,18 +57,11 @@ public class PanzerShootAction : UnitAttackAction
         m_Animation.StopAnimation();
     }
 
-    protected void StartShootingAnimation()
-    {
-        m_Animation.Hit = CheckIfHit();
-        m_Animation.Target = m_TargetUnitStats.gameObject;
-        m_Animation.StartAnimation();
-    }
-
     protected override int CalculateHitChance()
     {
         int distanceToTarget = TileId.GetDistance(m_TargetUnitStats.CurrentTileID, GetUnitStats().CurrentTileID);
-        int optimalDistance = (MaxAttackRange - MinAttackRange) >> 1;
-        float hitChance = (float)Mathf.Abs(optimalDistance - distanceToTarget) / (float)optimalDistance;
+        int optimalDistance = MinAttackRange;
+        float hitChance = 1.0f - (distanceToTarget - optimalDistance) / (MaxAttackRange - optimalDistance);
         hitChance *= 100.0f;
         hitChance -= (float)m_TargetUnitStats.EvasionPoints;
         hitChance += (float)m_AccuracyPoints;
@@ -78,7 +74,7 @@ public class PanzerShootAction : UnitAttackAction
         m_ActionState = ActionState.Completed;
         UnregisterAnimationCompleteCallback();
 
-        if (m_Animation.Hit) { m_TargetUnitStats.CurrentHealthPoints -= m_DamagePoints; }
+        if (m_Hit) { m_TargetUnitStats.CurrentHealthPoints -= m_DamagePoints; }
         // Invoke the Target's Unit Stat's HealthDropCallback.
         if (m_TargetUnitStats.m_HealthDropCallback != null) { m_TargetUnitStats.m_HealthDropCallback(m_UnitStats); }
 

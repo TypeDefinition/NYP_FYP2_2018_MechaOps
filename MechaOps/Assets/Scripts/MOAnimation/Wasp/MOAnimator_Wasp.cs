@@ -16,6 +16,13 @@ public class MOAnimator_Wasp : MOAnimator
     [SerializeField] protected GunshipBullet m_Bullet_Prefab;
     [SerializeField] protected GameObject m_MuzzleFlash_Prefab;
 
+    // Death Animation
+    protected float m_HullDeathElevation = -40.0f;
+    protected float m_DeathSpinSpeed = 360.0f;
+    [SerializeField] protected float m_DeathHeight = 0.0f;
+    [SerializeField, Tooltip("During the death animation, the Wasp will fall to the ground. It will either fall to Death Height, or stop when it collides with something with these layers.")]
+    protected string[] m_DeathAnimationGroundLayers = { "TileDisplay" };
+
     // Shooting Animation
     protected GameObject m_Target = null;
     protected List<GunshipBullet> m_Bullets = new List<GunshipBullet>();
@@ -25,6 +32,9 @@ public class MOAnimator_Wasp : MOAnimator
     protected float m_FireRate = 20.0f;
 
     // Moving Animation
+    [SerializeField] protected float m_FlightHeight = 3.0f;
+    protected float m_VerticalSpeed = 5.0f;
+    protected float m_HeightTolerance = 0.1f;
     protected Vector3 m_Destination = new Vector3();
     protected float m_HullMovingElevation = 20.0f;
 
@@ -103,8 +113,10 @@ public class MOAnimator_Wasp : MOAnimator
         m_Hull.transform.localRotation = desiredRotation;
     }
 
-    protected virtual void ElevateHullTowardsAngle(float _angle)
+    protected virtual bool ElevateHullTowardsAngle(float _angle)
     {
+        if (IsHullAtElevation(_angle)) { return true; }
+
         float currentAngle = WrapAngle(m_Hull.transform.localRotation.eulerAngles.x);
         float angleDifference = _angle - currentAngle;
 
@@ -116,6 +128,46 @@ public class MOAnimator_Wasp : MOAnimator
         {
             AnimateElevateHull(Mathf.Max(angleDifference, -m_HullElevationSpeed * Time.deltaTime));
         }
+
+        return IsHullAtElevation(_angle);
+    }
+
+    // Death Animation
+    protected virtual bool HitGround(out float _groundHeight)
+    {
+        _groundHeight = 0.0f;
+        RaycastHit hitInfo;
+        bool hitGround = Physics.Raycast(transform.position, -transform.up, out hitInfo, m_VerticalSpeed * Time.deltaTime);
+        if (hitGround)
+        {
+            _groundHeight = hitInfo.point.y;
+        }
+
+        return hitGround;
+    }
+
+    protected override IEnumerator DeathAnimationCoroutine()
+    {
+        while (true)
+        {
+            // Do nothing while paused.
+            while (m_DeathAnimationPaused) { yield return null; }
+
+            float groundHeight;
+            if (HitGround(out groundHeight))
+            {
+                transform.position = new Vector3(transform.position.x, groundHeight, transform.position.z); ;
+                break;
+            }
+            if (FlyToHeight(m_DeathHeight)) { break; }
+
+            ElevateHullTowardsAngle(m_HullDeathElevation);
+            transform.Rotate(0.0f, m_DeathSpinSpeed * Time.deltaTime, 0.0f);
+
+            yield return null;
+        }
+
+        InvokeCallback(m_DeathAnimationCompletionCallback);
     }
 
     // Move Animation
@@ -142,16 +194,40 @@ public class MOAnimator_Wasp : MOAnimator
         return false;
     }
 
+    protected virtual bool FlyToHeight(float _desiredHeight)
+    {
+        float currentHeight = transform.position.y;
+        float heightDifference = _desiredHeight - currentHeight;
+        if (heightDifference > 0.0f)
+        {
+            transform.position += new Vector3(0.0f, Mathf.Min(heightDifference, m_VerticalSpeed * Time.deltaTime), 0.0f);
+        }
+        else
+        {
+            transform.position += new Vector3(0.0f, Mathf.Max(heightDifference, -m_VerticalSpeed * Time.deltaTime), 0.0f);
+        }
+
+        return (Mathf.Abs(transform.position.y - _desiredHeight) < m_HeightTolerance);
+    }
+
     protected override IEnumerator MoveAnimationCouroutine()
     {
+        while (true)
+        {
+            // Do nothing while paused.
+            while (m_ShootAnimationPaused) { yield return null; }
+
+            if (FlyToHeight(m_FlightHeight)) { break; }
+            yield return null;
+        }
+
         // Rotate our hull to Moving Elevation.
         while (true)
         {
             // Do nothing if it is paused.
             while (m_MoveAnimationPaused) { yield return null; }
 
-            if (IsHullAtElevation(m_HullMovingElevation)) { break; }
-            ElevateHullTowardsAngle(m_HullMovingElevation);
+            if (ElevateHullTowardsAngle(m_HullMovingElevation)) { break; }
             yield return null;
         }
 
@@ -193,8 +269,7 @@ public class MOAnimator_Wasp : MOAnimator
             // Do nothing if it is paused.
             while (m_MoveAnimationPaused) { yield return null; }
 
-            if (IsHullAtElevation(m_HullNeutralElevation)) { break; }
-            ElevateHullTowardsAngle(m_HullNeutralElevation);
+            if (ElevateHullTowardsAngle(m_HullNeutralElevation)) { break; }
             yield return null;
             continue;
         }
@@ -245,6 +320,16 @@ public class MOAnimator_Wasp : MOAnimator
 
     protected override IEnumerator ShootAnimationCouroutine()
     {
+        // Take Off
+        while (true)
+        {
+            // Do nothing while paused.
+            while (m_ShootAnimationPaused) { yield return null; }
+
+            if (FlyToHeight(m_FlightHeight)) { break; }
+            yield return null;
+        }
+
         // Turn towards the target.
         while (true)
         {

@@ -125,20 +125,29 @@ public class MOAnimator_Panzer : MOAnimator
     }
 
     // Death Animation
-    private IEnumerator DeathCameraCoroutine()
+    protected override IEnumerator DeathAnimationCoroutine()
     {
-        m_CineMachineHandler.DelayCinemachineSetActive(false, m_TimeDelayForDeathCam);
-        yield return new WaitForSeconds(m_TimeDelayForDeathCam);
-        yield return new WaitForSeconds(m_TimeDelayForCamBackToNormal);
+        if (m_CineMachineHandler)
+        {
+            m_CineMachineHandler.DelayCinemachineSetActive(false, m_TimeDelayForDeathCam);
+            yield return new WaitForSeconds(m_TimeDelayForDeathCam);
+            yield return new WaitForSeconds(m_TimeDelayForCamBackToNormal);
+        }
+
+        InvokeCallback(m_DeathAnimationCompletionCallback);
     }
 
-    public override void StartDeathAnimation()
+    public override void StartDeathAnimation(Void_Void _completionCallback)
     {
         // Regardless of the tag, show the death cinematic for both sides
-        m_CineMachineHandler.SetPanzerCinematicCamActive("Die");
-        m_CineMachineHandler.ActiveCamBase.LookAt = m_Hull;
-        m_CineMachineHandler.ActiveCamBase.Follow = m_Turret.transform;
-        StartCoroutine(DeathCameraCoroutine());
+        if (m_CineMachineHandler)
+        {
+            m_CineMachineHandler.SetPanzerCinematicCamActive("Die");
+            m_CineMachineHandler.ActiveCamBase.LookAt = m_Hull;
+            m_CineMachineHandler.ActiveCamBase.Follow = m_Turret.transform;
+        }
+
+        base.StartDeathAnimation(_completionCallback);
     }
 
     // Move Animation

@@ -66,7 +66,10 @@ public class UnitStats : MonoBehaviour
     private UnitInfoDisplay m_UnitInfoDisplay = null;
 
     /// <summary>
-    /// A callback function will appear when ever the health point decreases
+    /// A callback function will appear when ever the health point decreases.
+    /// 
+    /// Terry: I really don't like this. Can we have a way for it to automagically be called
+    /// when the health drops? Eg. implement a DamageUnit(int _damage) function. Or switch to using GameEventSystem.
     /// </summary>
     public Void_UnitStats m_HealthDropCallback;
 
@@ -109,13 +112,9 @@ public class UnitStats : MonoBehaviour
             if (m_UnitStatsJSON.m_CurrentHealthPoints <= 0)
             {
                 string zeEventName = tag + "IsDead";
-                //// Trigger an event when the unit died
-                GameEventSystem.GetInstance().TriggerEvent<GameObject>(zeEventName, gameObject);
+                // Trigger an event when the unit died
                 // If the unit is visible, then start the death cinematic!
-                if (m_ViewTileScript.IsVisible())
-                {
-                    GameEventSystem.GetInstance().TriggerEvent<GameObject>(tag + "VisibleDead", gameObject);
-                }
+                GameEventSystem.GetInstance().TriggerEvent<GameObject, bool>(zeEventName, gameObject, m_ViewTileScript.IsVisible());
             }
 
             UpdateUnitInfoDisplay();
@@ -281,10 +280,10 @@ public class UnitStats : MonoBehaviour
         {
             case "Player":
                 // so get the list of enemy units
-                GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("EnemyUnitIsDead", EnemyInRangeDead);
+                GameEventSystem.GetInstance().SubscribeToEvent<GameObject, bool>("EnemyUnitIsDead", EnemyInRangeDead);
                 break;
             case "EnemyUnit":
-                GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("PlayerIsDead", EnemyInRangeDead);
+                GameEventSystem.GetInstance().SubscribeToEvent<GameObject, bool>("PlayerIsDead", EnemyInRangeDead);
                 break;
             default:
                 Assert.IsTrue(false, "Make CheckEnemyInRange more robust so that there can be more factions!");
@@ -299,10 +298,10 @@ public class UnitStats : MonoBehaviour
         {
             case "Player":
                 // so get the list of enemy units
-                GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("EnemyUnitIsDead", EnemyInRangeDead);
+                GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject, bool>("EnemyUnitIsDead", EnemyInRangeDead);
                 break;
             case "EnemyUnit":
-                GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("PlayerIsDead", EnemyInRangeDead);
+                GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject, bool>("PlayerIsDead", EnemyInRangeDead);
                 break;
             default:
                 Assert.IsTrue(false, "Make CheckEnemyInRange more robust so that there can be more factions!");
@@ -426,7 +425,7 @@ public class UnitStats : MonoBehaviour
     /// <summary>
     /// To be called when the opposing unit died
     /// </summary>
-    private void EnemyInRangeDead(GameObject _deadUnit)
+    private void EnemyInRangeDead(GameObject _deadUnit, bool _destroyedUnitVisible)
     {
         // if the dead unit is itself, iterate through it's list and decrease the visibility of other units!
         if (_deadUnit == gameObject)

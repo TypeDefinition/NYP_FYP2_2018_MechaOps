@@ -6,10 +6,8 @@ using UnityEngine.Assertions;
 
 public class UnitMoveAction : IUnitAction
 {
-    [SerializeField]
-    protected int m_MovementPoints = 1;
-    [SerializeField, Tooltip("The walking animation handler")]
-    protected MOAnimation_Move m_Animation;
+    [SerializeField] protected int m_MovementPoints = 1;
+    [SerializeField] protected MOAnimation_Move m_Animation;
 
     protected List<TileId> m_TilePath = new List<TileId>();
     protected TileSystem m_TileSystem = null;
@@ -80,7 +78,9 @@ public class UnitMoveAction : IUnitAction
     public override void StartAction()
     {
         base.StartAction();
-        StartWalkAnimation();
+        RegisterAnimationCallbacks();
+        m_Animation.MovementPath = m_TilePath.ToArray();
+        m_Animation.StartAnimation();
     }
 
     public override void PauseAction()
@@ -100,13 +100,6 @@ public class UnitMoveAction : IUnitAction
         base.StopAction();
         UnregisterAnimationCallbacks();
         m_Animation.StopAnimation();
-    }
-
-    protected void StartWalkAnimation()
-    {
-        RegisterAnimationCallbacks();
-        m_Animation.MovementPath = m_TilePath.ToArray();
-        m_Animation.StartAnimation();
     }
 
     protected virtual void OnReachTile(int _reachedTileIndex)

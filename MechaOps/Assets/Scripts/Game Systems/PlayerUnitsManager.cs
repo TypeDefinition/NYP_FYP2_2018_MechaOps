@@ -292,6 +292,8 @@ public class PlayerUnitsManager : MonoBehaviour
         IUnitAction []zeAllActions = _unit.GetComponent<UnitActionHandler>().AllAvailableActions;
         foreach (IUnitAction unitAction in zeAllActions)
         {
+            if (unitAction.ControllableAction == false) { continue; }
+
             // Create the new icon using m_UnitActionIcon_Prefab.
             Assert.IsFalse(m_UnitActionSelectionUIScrollRect.content == null);
             // if the action cost can still be used the unit, then it will instantiate the action

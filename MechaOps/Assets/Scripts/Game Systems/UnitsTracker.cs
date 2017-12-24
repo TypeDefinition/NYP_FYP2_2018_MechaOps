@@ -16,14 +16,14 @@ public class UnitsTracker : MonoBehaviour
 
     private void OnEnable()
     {
-        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("EnemyUnitIsDead", SignalAnEnemyDied);
-        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("PlayerIsDead", SignalAnEnemyDied);
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject, bool>("EnemyUnitIsDead", SignalEnemyUnitDestroyed);
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject, bool>("PlayerIsDead", SignalPlayerUnitDestroyed);
     }
 
     private void OnDisable()
     {
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("EnemyUnitIsDead", SignalAnEnemyDied);
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("PlayerIsDead", SignalAnEnemyDied);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject, bool>("EnemyUnitIsDead", SignalEnemyUnitDestroyed);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject, bool>("PlayerIsDead", SignalPlayerUnitDestroyed);
     }
 
     // Use this for initialization
@@ -37,7 +37,7 @@ public class UnitsTracker : MonoBehaviour
     /// A quick function that iterates and keep track of any player units died.
     /// Removes the player unit from the list.
     /// </summary>
-    void SignalPlayerUnitDied(GameObject _deadGO)
+    void SignalPlayerUnitDestroyed(GameObject _deadGO, bool _destroyedUnitVisible)
     {
         m_AlivePlayerUnits.Remove(_deadGO);
         // Send a notification once all of the player's units die
@@ -51,7 +51,7 @@ public class UnitsTracker : MonoBehaviour
     /// A quick function that iterates and keep track of any enemy units died.
     /// Removes the enemy unit from the list.
     /// </summary>
-    void SignalAnEnemyDied(GameObject _deadGO)
+    void SignalEnemyUnitDestroyed(GameObject _deadGO, bool _destroyedUnitVisible)
     {
         m_AliveEnemyUnits.Remove(_deadGO);
         // Send a notification if all of the enemy units die.

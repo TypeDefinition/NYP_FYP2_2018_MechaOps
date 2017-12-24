@@ -4,13 +4,11 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-[DisallowMultipleComponent]
-public class MOAnimation_PanzerShoot : MOAnimation
+public class MOAnimation_WaspShoot : MOAnimation
 {
-    [SerializeField] private MOAnimator_Panzer m_Animator = null;
+    [SerializeField] private MOAnimator_Wasp m_Animator = null;
 
     private GameObject m_Target = null;
-    private bool m_Hit = false; // Is this attack a hit or miss?
 
     public override MOAnimator GetMOAnimator() { return m_Animator; }
 
@@ -20,12 +18,7 @@ public class MOAnimation_PanzerShoot : MOAnimation
         set { m_Target = value; }
     }
 
-    public bool Hit
-    {
-        get { return m_Hit; }
-        set { m_Hit = value; }
-    }
-
+    // Use this for initialization
     protected virtual void Awake ()
     {
         Assert.IsTrue(m_Animator != null, MethodBase.GetCurrentMethod().Name + " - No MOAnimator found!");
@@ -33,7 +26,7 @@ public class MOAnimation_PanzerShoot : MOAnimation
 
     public override void StartAnimation()
     {
-        m_Animator.StartShootAnimation(m_Target, m_Hit, m_CompletionCallback);
+        m_Animator.StartShootAnimation(m_Target, m_CompletionCallback);
     }
 
     public override void PauseAnimation()

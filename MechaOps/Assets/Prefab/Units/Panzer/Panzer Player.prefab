@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 114750456944338704}
   - component: {fileID: 114718164003450294}
   - component: {fileID: 114151812129271352}
+  - component: {fileID: 114490250740152704}
   - component: {fileID: 114712672434394876}
   - component: {fileID: 114660440782542020}
   - component: {fileID: 114997096915532080}
@@ -581,8 +582,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1301121624703766}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 14.999999, y: 0, z: 8.6602545}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4813961791516552}
@@ -1562,6 +1563,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AllAvailableActions: []
+--- !u!114 &114490250740152704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1301121624703766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94936a6ab46458b42ae30701083d0fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ControllableAction: 0
+  m_UnitActionName: Destroyed
+  m_UnitActionDescription: <Placeholder Description>
+  m_TurnedOn: 0
+  m_Priority: 50
+  m_ActionCost: 0
+  m_EndsTurn: 0
+  m_ActionState: 0
+  m_UnitActionUI: {fileID: 0}
+  m_ActionIconUI: {fileID: 0}
+  m_UnitActionHandler: {fileID: 114151812129271352}
+  m_Animation: {fileID: 114522144874979662}
 --- !u!114 &114522144874979662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1589,6 +1613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c88f8e9033dd44880244eae61eb940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ControllableAction: 1
   m_UnitActionName: Move
   m_UnitActionDescription: <Placeholder Description>
   m_TurnedOn: 0
@@ -1613,6 +1638,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cab5ea8101800d4ab5f64c0b12f232e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ControllableAction: 1
   m_UnitActionName: Skip
   m_UnitActionDescription: <Placeholder Description>
   m_TurnedOn: 0
@@ -1647,9 +1673,9 @@ MonoBehaviour:
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
     m_CurrentTileID:
-      m_X: 0
+      m_X: 5
       m_Y: 0
-      m_Z: 0
+      m_Z: -5
   m_TileAttributeOverrides: []
   m_ViewTileScript: {fileID: 114750456944338704}
   m_UnitInfoDisplay_Prefab: {fileID: 114423042521562832, guid: 5de0e7aba41ddec4daa1972243bd5133,
@@ -1680,6 +1706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51dfc0bc3a817ac4a951b8a242a9681f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ControllableAction: 1
   m_UnitActionName: Shoot
   m_UnitActionDescription: <Placeholder Description>
   m_TurnedOn: 0

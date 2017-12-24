@@ -4,11 +4,34 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.Assertions;
 
+/*
+ * NOTE ABOUT COMPLETION CALLBACK!
+ * 
+ * An MOAnimation's CompletionCallback is to signal that the ANIMATION has finished.
+ * Therefore we pass MOAnimation's CompletionCallback into the Animator.
+ * This is because an MOAnimation is pretty much tied to a MOAnimator.
+ * 
+ * An IUnitAction's CompletionCallback is to signal that the ACTION has finished.
+ * Therefore we DO NOT pass IUnitAction's CompletionCallback to the MOAnimation!
+ * Just because an ANIMATION has finished, it does not mean that the IUnitAction has finished!
+ * What IUnitAction passes to MOAnimation is its OnAnimationCompleted() function!
+*/
 public abstract class MOAnimator : MonoBehaviour
 {
     protected GameSystemsDirectory m_GameSystemsDirectory = null;
     protected TileSystem m_TileSystem = null;
     protected CineMachineHandler m_CineMachineHandler = null;
+
+    // Death Animation Variable(s)
+
+    // Non-Serialized Fields
+    protected bool m_DeathAnimationPaused = false;
+
+    // Death Animation Callbacks
+    protected Void_Void m_DeathAnimationCompletionCallback = null;
+
+    // Death Animation Coroutine(s)
+    protected IEnumerator m_DeathAnimationCoroutine = null;
 
     // Movement Animation Variable(s)
 
@@ -278,13 +301,37 @@ public abstract class MOAnimator : MonoBehaviour
     }
 
     // Death Animation
-    public virtual void StartDeathAnimation() { throw new System.NotImplementedException(); }
+    protected virtual IEnumerator DeathAnimationCoroutine()
+    {
+        InvokeCallback(m_DeathAnimationCompletionCallback);
+        yield break;
+    }
 
-    public virtual void PauseDeathAnimation() { throw new System.NotImplementedException(); }
+    public virtual void StartDeathAnimation(Void_Void _completionCallback)
+    {
+        m_DeathAnimationPaused = false;
+        m_DeathAnimationCompletionCallback = _completionCallback;
+        m_DeathAnimationCoroutine = DeathAnimationCoroutine();
+        StartCoroutine(m_DeathAnimationCoroutine);
+    }
 
-    public virtual void ResumeDeathAnimation() { throw new System.NotImplementedException(); }
+    public virtual void PauseDeathAnimation()
+    {
+        m_DeathAnimationPaused = true;
+    }
 
-    public virtual void StopDeathAnimation() { throw new System.NotImplementedException(); }
+    public virtual void ResumeDeathAnimation()
+    {
+        m_DeathAnimationPaused = false;
+    }
+
+    public virtual void StopDeathAnimation()
+    {
+        m_DeathAnimationPaused = false;
+
+        StopCoroutine(m_DeathAnimationCoroutine);
+        m_DeathAnimationCoroutine = null;
+    }
 
     // Move Animation
     protected virtual bool FaceTowardsTile(int _movementPathIndex)
@@ -374,7 +421,7 @@ public abstract class MOAnimator : MonoBehaviour
     {
         m_MoveAnimationPaused = false;
 
-        StartCoroutine(m_MoveAnimationCoroutine);
+        StopCoroutine(m_MoveAnimationCoroutine);
         m_MoveAnimationCoroutine = null;
     }
 
@@ -400,5 +447,13 @@ public abstract class MOAnimator : MonoBehaviour
 
         StopCoroutine(m_ShootAnimationCoroutine);
         m_ShootAnimationCoroutine = null;
+    }
+
+    // All Action(s)
+    public virtual void StopAllAnimations()
+    {
+        StopDeathAnimation();
+        StopMoveAnimation();
+        StopShootAnimation();
     }
 }

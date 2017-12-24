@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 16779bbe73ffc0446986fb9856caa063
-timeCreated: 1510539138
+guid: 4eb90df23a8fb854aad9997a1e71ccd5
+timeCreated: 1514135185
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Bullet
+    4300000: GunshipBullet
     9500000: //RootNode
   materials:
     importMaterials: 1

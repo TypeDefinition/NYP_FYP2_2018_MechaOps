@@ -5,6 +5,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Assertions;
 
+/*
+ * NOTE ABOUT COMPLETION CALLBACK!
+ * 
+ * An MOAnimation's CompletionCallback is to signal that the ANIMATION has finished.
+ * Therefore we pass MOAnimation's CompletionCallback into the Animator.
+ * This is because an MOAnimation is pretty much tied to a MOAnimator.
+ * 
+ * An IUnitAction's CompletionCallback is to signal that the ACTION has finished.
+ * Therefore we DO NOT pass IUnitAction's CompletionCallback to the MOAnimation!
+ * Just because an ANIMATION has finished, it does not mean that the IUnitAction has finished!
+ * What IUnitAction passes to MOAnimation is its OnAnimationCompleted() function!
+*/
 [RequireComponent(typeof(UnitStats))]
 public abstract class IUnitAction : MonoBehaviour
 {
@@ -15,6 +27,8 @@ public abstract class IUnitAction : MonoBehaviour
         Paused,
         Completed,
     }
+
+    [SerializeField] private bool m_ControllableAction = true;
 
     [SerializeField, Tooltip("The component name which will be use to indicate what UI tag to be activated.")]
     protected string m_UnitActionName;
@@ -42,7 +56,12 @@ public abstract class IUnitAction : MonoBehaviour
     [Tooltip("The unit stats")]
     protected UnitStats m_UnitStats;
 
-    protected Void_Void m_CompletionCallBack;
+    private Void_Void m_CompletionCallBack;
+
+    public bool ControllableAction
+    {
+        get { return m_ControllableAction; }
+    }
 
     public string UnitActionName
     {

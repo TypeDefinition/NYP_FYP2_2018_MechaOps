@@ -68,10 +68,14 @@ GameObject:
   - component: {fileID: 114824476157301608}
   - component: {fileID: 114809387758883690}
   - component: {fileID: 114881584929758932}
+  - component: {fileID: 114663015870586048}
   - component: {fileID: 114589910494827546}
   - component: {fileID: 114928630273676992}
+  - component: {fileID: 114321516086233292}
   - component: {fileID: 114461541154308928}
   - component: {fileID: 114807732359028796}
+  - component: {fileID: 114734858264194274}
+  - component: {fileID: 114640826300165538}
   m_Layer: 8
   m_Name: Wasp
   m_TagString: Player
@@ -164,7 +168,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1535336270683784}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -30, y: 3, z: -17.320509}
+  m_LocalPosition: {x: -30, y: 0, z: -17.320509}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4755024220214940}
@@ -347,6 +351,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RotationSpeed: 3600
   m_RotationAxis: 1
+--- !u!114 &114321516086233292
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1535336270683784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f84d1dc43a8d484e917a809ab01b0c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ControllableAction: 1
+  m_UnitActionName: Shoot
+  m_UnitActionDescription: <Placeholder Description>
+  m_TurnedOn: 0
+  m_Priority: 0
+  m_ActionCost: 1
+  m_EndsTurn: 0
+  m_ActionState: 0
+  m_UnitActionUI: {fileID: 1044431308409052, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
+    type: 2}
+  m_ActionIconUI: {fileID: 21300000, guid: e392509062377594ab81881f16831a09, type: 3}
+  m_UnitActionHandler: {fileID: 114881584929758932}
+  m_MinAttackRange: 0
+  m_MaxAttackRange: 6
+  m_AccuracyPoints: 50
+  m_DamagePoints: 2
+  m_Animation: {fileID: 114640826300165538}
 --- !u!114 &114461541154308928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -368,9 +400,14 @@ MonoBehaviour:
   - {fileID: 4284637338344952}
   - {fileID: 4367884794251444}
   - {fileID: 4944090923415584}
-  m_Bullet_Prefab: {fileID: 0}
+  m_Bullet_Prefab: {fileID: 114228746935391040, guid: 9454ef01f14b18c4e9e85fd2bb04c048,
+    type: 2}
   m_MuzzleFlash_Prefab: {fileID: 1043585834331834, guid: cb2f4057b7599d247b11df13f93627ce,
     type: 2}
+  m_DeathHeight: 0
+  m_DeathAnimationGroundLayers:
+  - TileDisplay
+  m_FlightHeight: 3
 --- !u!114 &114589910494827546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -382,6 +419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cab5ea8101800d4ab5f64c0b12f232e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ControllableAction: 1
   m_UnitActionName: Skip
   m_UnitActionDescription: <Placeholder Description>
   m_TurnedOn: 0
@@ -393,6 +431,57 @@ MonoBehaviour:
     type: 2}
   m_ActionIconUI: {fileID: 21300000, guid: 2701c9f4499a5f340a46e96aeba66a4e, type: 3}
   m_UnitActionHandler: {fileID: 0}
+--- !u!114 &114640826300165538
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1535336270683784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65b61e43c7fab524e823e27de9fba1c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 114461541154308928}
+--- !u!114 &114663015870586048
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1535336270683784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94936a6ab46458b42ae30701083d0fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ControllableAction: 0
+  m_UnitActionName: Destroyed
+  m_UnitActionDescription: <Placeholder Description>
+  m_TurnedOn: 0
+  m_Priority: 50
+  m_ActionCost: 0
+  m_EndsTurn: 0
+  m_ActionState: 0
+  m_UnitActionUI: {fileID: 0}
+  m_ActionIconUI: {fileID: 0}
+  m_UnitActionHandler: {fileID: 114881584929758932}
+  m_Animation: {fileID: 114734858264194274}
+--- !u!114 &114734858264194274
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1535336270683784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eace8087c840f149ae7f5976dfe421a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExplosionPrefab: {fileID: 114307173407176006, guid: 6f9635063d6c86b408a2ce1d3157a189,
+    type: 2}
+  m_FlamePrefab: {fileID: 198131241012019862, guid: d07da21434175a749bb97eebed0144f1,
+    type: 2}
+  m_Animator: {fileID: 114461541154308928}
 --- !u!114 &114807732359028796
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -431,7 +520,17 @@ MonoBehaviour:
       m_X: -10
       m_Y: 0
       m_Z: 10
-  m_TileAttributeOverrides: []
+  m_TileAttributeOverrides:
+  - m_Type: 3
+    m_Walkable: 1
+    m_MovementCost: 3
+    m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
+  - m_Type: 1
+    m_Walkable: 1
+    m_MovementCost: 2
+    m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
   m_ViewTileScript: {fileID: 114824476157301608}
   m_UnitInfoDisplay_Prefab: {fileID: 114423042521562832, guid: f6fdede1943ea6742858eefd80f3ded1,
     type: 2}
@@ -473,6 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c88f8e9033dd44880244eae61eb940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_ControllableAction: 1
   m_UnitActionName: Move
   m_UnitActionDescription: <Placeholder Description>
   m_TurnedOn: 0
@@ -495,7 +595,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.3
+  m_Radius: 0.4
   m_Height: 2.5
   m_Direction: 2
   m_Center: {x: 0, y: 0.1, z: 0}
