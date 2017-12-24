@@ -51,7 +51,7 @@ public class UnitStats : MonoBehaviour
     [SerializeField] private GameSystemsDirectory m_GameSystemsDirectory = null;
     [SerializeField] private UnitStatsJSON m_UnitStatsJSON = new UnitStatsJSON();
     [SerializeField] private TileAttributeOverride[] m_TileAttributeOverrides = null;
-    [SerializeField] private ViewTileScript m_ViewTileScript = null;
+    [SerializeField] private ViewScript m_ViewTileScript = null;
     [SerializeField] private UnitInfoDisplay m_UnitInfoDisplay_Prefab = null;
 
     // Why are these all serialized?
@@ -433,7 +433,7 @@ public class UnitStats : MonoBehaviour
         {
             foreach (GameObject zeEnemyGO in m_EnemiesInRange)
             {
-                ViewTileScript zeEnemyView = zeEnemyGO.GetComponent<ViewTileScript>();
+                ViewScript zeEnemyView = zeEnemyGO.GetComponent<ViewScript>();
                 zeEnemyView.DecreaseVisibility();
             }
             m_EnemiesInRange.Clear();

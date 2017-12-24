@@ -7,7 +7,8 @@ using UnityEngine.Assertions;
 [DisallowMultipleComponent]
 public class MOAnimation_PanzerShoot : MOAnimation
 {
-    [SerializeField] private PanzerAnimator m_Animator = null;
+    [SerializeField] private MOAnimator_Panzer m_Animator = null;
+
     private GameObject m_Target;
     private bool m_Hit = true; // Is this attack a hit or miss?
     
@@ -26,7 +27,7 @@ public class MOAnimation_PanzerShoot : MOAnimation
 	// Use this for initialization
 	void Awake ()
     {
-        Assert.IsTrue(m_Animator != null, MethodBase.GetCurrentMethod().Name + " - PanzerAnimator is required for MOAnimation_PanzerShoot to work!");
+        Assert.IsTrue(m_Animator != null, MethodBase.GetCurrentMethod().Name + " - No MOAnimator found!");
     }
 
     public override MOAnimator GetMOAnimator()
@@ -36,8 +37,7 @@ public class MOAnimation_PanzerShoot : MOAnimation
 
     public override void StartAnimation()
     {
-        m_Animator.SetShootAnimationParameters(m_Target, m_Hit, m_CompletionCallback);
-        m_Animator.StartShootAnimation();
+        m_Animator.StartShootAnimation(m_Target, m_Hit, m_CompletionCallback);
     }
 
     public override void PauseAnimation()
@@ -54,5 +54,4 @@ public class MOAnimation_PanzerShoot : MOAnimation
     {
         m_Animator.StopShootAnimation();
     }
-
 }

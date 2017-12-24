@@ -6,7 +6,7 @@ using UnityEngine.Assertions;
 public class WalkGoapAct : IGoapAction {
     [Header("References for WalkGoapAct")]
     [SerializeField, Tooltip("The Walk Unit Action that is needed to link")]
-    protected UnitWalkAction m_WalkAct;
+    protected UnitMoveAction m_WalkAct;
 
     [Header("Debugging purpose for WalkGoapAct")]
     [SerializeField, Tooltip("The Tile to move to")]
@@ -24,7 +24,7 @@ public class WalkGoapAct : IGoapAction {
     {
         base.Start();
         if (!m_WalkAct)
-            m_WalkAct = GetComponent<UnitWalkAction>();
+            m_WalkAct = GetComponent<UnitMoveAction>();
     }
 
     public override void DoAction()
@@ -48,7 +48,7 @@ public class WalkGoapAct : IGoapAction {
         // from here, we get the walkable tiles!
         int zeCounter = 0;
         //TODO, this will sometimes has null reference
-        int zeMaxTileNum = Mathf.Min(zeTileToWalkTo.Length, m_WalkAct.m_MovementPoints);
+        int zeMaxTileNum = Mathf.Min(zeTileToWalkTo.Length, m_WalkAct.MovementPoints);
         TileId[] zeAvailablePaths = new TileId[zeMaxTileNum];
         foreach (TileId zeTile in zeTileToWalkTo)
         {

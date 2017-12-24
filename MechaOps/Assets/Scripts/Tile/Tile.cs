@@ -65,6 +65,11 @@ public class TileId
         // return Mathf.Max(Mathf.Abs(_origin.x - _destination.x), Mathf.Abs(_origin.y - _destination.y), Mathf.Abs(_origin.z - _destination.z));
     }
 
+    public string GetAsString()
+    {
+        return ("[" + m_X.ToString() + ", " + m_Y.ToString() + ", " + m_Z.ToString() + "]");
+    }
+
     public void PrintDebug()
     {
         Debug.Log("[" + m_X.ToString() + ", " + m_Y.ToString() + ", " + m_Z.ToString() + "]");

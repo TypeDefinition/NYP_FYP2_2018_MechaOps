@@ -6,7 +6,7 @@ using UnityEngine.Assertions;
 
 public class PanzerShootAction : UnitAttackAction
 {
-    [SerializeField] protected MOAnimation_PanzerShoot m_AttackAnimation;
+    [SerializeField] protected MOAnimation_PanzerShoot m_Animation;
 
     protected bool m_RegisteredAnimationCompleteCallback = false;
 
@@ -14,7 +14,7 @@ public class PanzerShootAction : UnitAttackAction
     {
         if (!m_RegisteredAnimationCompleteCallback)
         {
-            m_AttackAnimation.CompletionCallback += OnAnimationCompleted;
+            m_Animation.CompletionCallback += OnAnimationCompleted;
             m_RegisteredAnimationCompleteCallback = true;
         }
     }
@@ -23,7 +23,7 @@ public class PanzerShootAction : UnitAttackAction
     {
         if (m_RegisteredAnimationCompleteCallback)
         {
-            m_AttackAnimation.CompletionCallback -= OnAnimationCompleted;
+            m_Animation.CompletionCallback -= OnAnimationCompleted;
             m_RegisteredAnimationCompleteCallback = false;
         }
     }
@@ -38,27 +38,27 @@ public class PanzerShootAction : UnitAttackAction
     public override void PauseAction()
     {
         base.PauseAction();
-        m_AttackAnimation.PauseAnimation();
+        m_Animation.PauseAnimation();
     }
 
     public override void ResumeAction()
     {
         base.ResumeAction();
-        m_AttackAnimation.ResumeAnimation();
+        m_Animation.ResumeAnimation();
     }
 
     public override void StopAction()
     {
         base.StopAction();
         UnregisterAnimationCompleteCallback();
-        m_AttackAnimation.StopAnimation();
+        m_Animation.StopAnimation();
     }
 
     protected void StartShootingAnimation()
     {
-        m_AttackAnimation.Hit = CheckIfHit();
-        m_AttackAnimation.Target = m_TargetUnitStats.gameObject;
-        m_AttackAnimation.StartAnimation();
+        m_Animation.Hit = CheckIfHit();
+        m_Animation.Target = m_TargetUnitStats.gameObject;
+        m_Animation.StartAnimation();
     }
 
     protected override int CalculateHitChance()
@@ -78,7 +78,7 @@ public class PanzerShootAction : UnitAttackAction
         m_ActionState = ActionState.Completed;
         UnregisterAnimationCompleteCallback();
 
-        if (m_AttackAnimation.Hit) { m_TargetUnitStats.CurrentHealthPoints -= m_DamagePoints; }
+        if (m_Animation.Hit) { m_TargetUnitStats.CurrentHealthPoints -= m_DamagePoints; }
         // Invoke the Target's Unit Stat's HealthDropCallback.
         if (m_TargetUnitStats.m_HealthDropCallback != null) { m_TargetUnitStats.m_HealthDropCallback(m_UnitStats); }
 

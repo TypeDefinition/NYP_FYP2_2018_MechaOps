@@ -41,8 +41,6 @@ public abstract class IUnitAction : MonoBehaviour
 
     [Tooltip("The unit stats")]
     protected UnitStats m_UnitStats;
-    [SerializeField, Tooltip("The flag to check is the animation done")]
-    protected bool m_AnimationCompleted = false;
 
     protected Void_Void m_CompletionCallBack;
 
@@ -147,7 +145,7 @@ public abstract class IUnitAction : MonoBehaviour
         m_UnitActionHandler = GetComponent<UnitActionHandler>();
         Assert.IsNotNull(m_UnitStats, MethodBase.GetCurrentMethod().Name + " - The GameObject this script is attached to MUST have a UnitStats Component!");
         Assert.IsNotNull(m_UnitActionHandler, MethodBase.GetCurrentMethod().Name + " - The GameObject this script is attached to MUST have a m_UnitActionHandler Component!");
-        Assert.IsTrue(m_UnitActionName != null && m_UnitActionName != "", "No name is given to this action");
+        Assert.IsTrue(m_UnitActionName != null && m_UnitActionName != "", "No name is given to this action. GameObject Name: " + gameObject.name);
     }
 
     /// <summary>
@@ -200,14 +198,11 @@ public abstract class IUnitAction : MonoBehaviour
         m_ActionState = ActionState.Completed;
     }
 
-    protected virtual void OnAnimationCompleted()
-    {
-        m_AnimationCompleted = true;
-    }
+    protected virtual void OnAnimationCompleted() {}
 
     protected void CheckIfUnitFinishedTurn()
     {
-        if (GetUnitStats().CurrentActionPoints == 0 || !m_UnitActionHandler.CheckIsUnitMakeMove(m_UnitStats))
+        if (GetUnitStats().CurrentActionPoints == 0 || !m_UnitActionHandler.CheckIsUnitMakeMove(m_UnitStats) || m_EndsTurn)
         {
             GetUnitStats().ResetUnitStats();
             // tell the player unit manager that it can no longer do any action
@@ -216,7 +211,7 @@ public abstract class IUnitAction : MonoBehaviour
     }
 
 #if UNITY_EDITOR
-    private void OnValidate()
+    protected virtual void OnValidate()
     {
         Priority = m_Priority;
         ActionCost = m_ActionCost;

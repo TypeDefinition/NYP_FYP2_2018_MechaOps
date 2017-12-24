@@ -127,21 +127,23 @@ public class AttackUI_Logic : TweenUI_Scale
 
         int layerToCastThrough = 1 << LayerMask.NameToLayer("TileDisplay");
         // We will iterate through the global list of visible enemies
-        PlayerUnitsManager zePlayerManager = FindObjectOfType<GameSystemsDirectory>().GetPlayerUnitsManager();
-        foreach (GameObject zeSeenUnit in zePlayerManager.GlobalViewedEnemyInRange)
+        PlayerUnitsManager playerUnitsManager = GameSystemsDirectory.GetSceneInstance().GetPlayerUnitsManager();
+        foreach (GameObject seenUnit in playerUnitsManager.GlobalViewedEnemyInRange)
         {
             // we get the unit stat and tile distance!
-            UnitStats zeObjStat = zeSeenUnit.GetComponent<UnitStats>();
-            int zeTileDist = TileId.GetDistance(zeObjStat.CurrentTileID, m_UnitAttackAction.GetUnitStats().CurrentTileID);
+            UnitStats unitStats = seenUnit.GetComponent<UnitStats>();
+            int tileDistance = TileId.GetDistance(unitStats.CurrentTileID, m_UnitAttackAction.GetUnitStats().CurrentTileID);
             // if within range, then raycast to the target and check whether it works
-            if (zeTileDist <= m_UnitAttackAction.MaxAttackRange && zeTileDist >= m_UnitAttackAction.MinAttackRange)
+            if (tileDistance <= m_UnitAttackAction.MaxAttackRange && tileDistance >= m_UnitAttackAction.MinAttackRange)
             {
                 // we need the direction
-                Vector3 zeDirection = zeSeenUnit.transform.position - m_UnitAttackAction.transform.position;
-                zeDirection.y = 1;
+                Vector3 direction = seenUnit.transform.position - m_UnitAttackAction.transform.position;
+                direction.y = 1.0f;
                 // if no obstacle is within the raycast which will be the tileDisplay layer
-                if (!Physics.Raycast(m_UnitAttackAction.transform.position, zeDirection, zeDirection.magnitude, layerToCastThrough))
-                    m_ListOfTargets.Add(zeSeenUnit);
+                if (!Physics.Raycast(m_UnitAttackAction.transform.position, direction, direction.magnitude, layerToCastThrough))
+                {
+                    m_ListOfTargets.Add(seenUnit);
+                }
             }
         }
         if (m_ListOfTargets.Count > 0)
