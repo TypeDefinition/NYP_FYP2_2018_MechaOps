@@ -11,6 +11,8 @@ public class SpawnUnitUI_Logic : MonoBehaviour {
     [Header("Variable for SpawnUnitUI_Logic")]
     [SerializeField, Tooltip("Text UI of the unit type name")]
     protected TextMeshProUGUI m_TMProTextUI;
+    [SerializeField, Tooltip("Text UI of the unit cost")]
+    protected TextMeshProUGUI m_TMProTextCostUI;
     [SerializeField, Tooltip("Text for the player credits")]
     protected TextMeshProUGUI m_TMProCreditText;
     [SerializeField, Tooltip("Image of the unit")]
@@ -53,6 +55,14 @@ public class SpawnUnitUI_Logic : MonoBehaviour {
         get
         {
             return m_TMProTextUI.text;
+        }
+    }
+
+    public string UnitCostText
+    {
+        set
+        {
+            m_TMProTextCostUI.text = "Cost : " + value;
         }
     }
 

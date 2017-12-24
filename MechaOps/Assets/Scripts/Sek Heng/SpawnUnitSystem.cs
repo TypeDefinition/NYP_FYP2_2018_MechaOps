@@ -154,6 +154,7 @@ public class SpawnUnitSystem : MonoBehaviour {
         m_CurrentSelectedUnitName = _UnitTypeName;
         m_SpawnUI_Logic.UnitTypenameText = _UnitTypeName;
         m_SpawnUI_Logic.UnitUI_ImageSprite = _UnitUI_Sprite;
+        m_SpawnUI_Logic.UnitCostText = m_UnitsDataAsset.GetUnitCost(_UnitTypeName).ToString();
     }
 
     /// <summary>
