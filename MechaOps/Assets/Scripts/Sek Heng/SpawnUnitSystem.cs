@@ -6,16 +6,8 @@ using UnityEngine.UI;
 /// <summary>
 /// The system that handles the spawning of units
 /// </summary>
+[RequireComponent(typeof(DetectPlayerClicks))]
 public class SpawnUnitSystem : MonoBehaviour {
-    /// <summary>
-    /// To record down where will the units be spawning
-    /// </summary>
-    [System.Serializable]
-    public struct UnitSpawnData
-    {
-        public TileId m_UnitSpawnArea;
-        public string m_TypeName;
-    }
     [Header("Variables for SpawnUnitSystem")]
     [SerializeField, Tooltip("GameSystemDirectory")]
     protected GameSystemsDirectory m_GameSystem;
@@ -25,6 +17,8 @@ public class SpawnUnitSystem : MonoBehaviour {
     protected GameObject m_SelectUnitUIPrefab;
     [SerializeField, Tooltip("Button prefab for selecting the unit")]
     protected Button m_SelectUnitButtonPrefab;
+    [SerializeField, Tooltip("Indicator prefab for spawning of the units")]
+    protected GameObject m_UnitSpawnIndicatorPrefab;
     [SerializeField, Tooltip("Amount of credit for the player to spend")]
     protected int m_PlayerCredits;
 
@@ -36,10 +30,43 @@ public class SpawnUnitSystem : MonoBehaviour {
     [SerializeField, Tooltip("Script that handles the spawn UI logic. Should be attached to m_InstantiateSelectUnitUI")]
     protected SpawnUnitUI_Logic m_SpawnUI_Logic;
     [SerializeField, Tooltip("List of player units that will be spawn later")]
-    protected List<UnitSpawnData> m_ListOfSpawnUnits = new List<UnitSpawnData>();
+    protected List<SpawnIndicator_Logic> m_ListOfSpawnUnits = new List<SpawnIndicator_Logic>();
 
-	// Use this for initialization
-	void Start () {
+    protected HashSet<TileId> m_TileSets = new HashSet<TileId>();
+
+    public int PlayerCredits
+    {
+        set
+        {
+            m_PlayerCredits = value;
+            m_SpawnUI_Logic.PlayerCreditText = m_PlayerCredits.ToString();
+        }
+        get
+        {
+            return m_PlayerCredits;
+        }
+    }
+
+    /// <summary>
+    /// To subscribe to these events
+    /// </summary>
+    private void OnEnable()
+    {
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("ClickedTile", SetUnitPosition);
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("ClickedSpawnIndicator", RemoveUnitFromSpawn);
+    }
+
+    /// <summary>
+    /// To unsubscribe from the events
+    /// </summary>
+    private void OnDisable()
+    {
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("ClickedTile", SetUnitPosition);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("ClickedSpawnIndicator", RemoveUnitFromSpawn);
+    }
+
+    // Use this for initialization
+    void Start () {
         m_InstantiateSelectUnitUI = Instantiate(m_SelectUnitUIPrefab, m_GameSystem.GetScreenSpaceCanvas().transform);
         // Need to make sure it will always be active
         m_InstantiateSelectUnitUI.SetActive(true);
@@ -55,15 +82,66 @@ public class SpawnUnitSystem : MonoBehaviour {
         }
         // Make sure the finished button has the startspawning units function
         m_SpawnUI_Logic.FinishedButton.onClick.AddListener(StartSpawningUnits);
-	}
+        m_SpawnUI_Logic.PlayerCreditText = m_PlayerCredits.ToString();
+    }
 
     /// <summary>
     /// When the tile is clicked, it will record down
     /// </summary>
-    /// <param name="_go"></param>
+    /// <param name="_go">Clicked tile gameobject</param>
     void SetUnitPosition(GameObject _go)
     {
+        // need to ensure that the tiles and it is the correct layer
+        if (m_CurrentSelectedUnitName == "" || LayerMask.NameToLayer("SpawnIndicator") == _go.layer)
+            return;
+        Tile zeTile = _go.GetComponent<Tile>();
+        // ensure it will not duplicate the spawn indicator on the same tiles
+        if (m_TileSets.Contains(zeTile.GetTileId()))
+            return;
+        int zeUnitCost = m_UnitsDataAsset.GetUnitCost(m_CurrentSelectedUnitName);
+        if (m_PlayerCredits < zeUnitCost)
+        {
+            m_SpawnUI_Logic.SetInsufficientUI_Active();
+            return;
+        }
+        PlayerCredits -= zeUnitCost;
+        m_TileSets.Add(zeTile.GetTileId());
+        SpawnIndicator_Logic zeNewData;
+        zeNewData = Instantiate(m_UnitSpawnIndicatorPrefab.gameObject, _go.transform, true).GetComponent<SpawnIndicator_Logic>();
+        zeNewData.gameObject.SetActive(true);
+        // set the position of this UI there
+        Vector3 zePositionOfGO = _go.transform.position;
+        zePositionOfGO.y = zeNewData.transform.position.y;
+        zeNewData.transform.position = zePositionOfGO;
 
+        m_ListOfSpawnUnits.Add(zeNewData);
+        zeNewData.TileID = zeTile.GetTileId();
+        zeNewData.TypeNameTextString = m_CurrentSelectedUnitName;
+        zeNewData.GetComponent<TweenUI_Scale>().AnimateUI();
+    }
+
+    /// <summary>
+    /// To remove the units from the tile spawn
+    /// </summary>
+    /// <param name="_go">The tile that will be spawn</param>
+    void RemoveUnitFromSpawn(GameObject _go)
+    {
+        SpawnIndicator_Logic zeSpawnLogic = _go.GetComponent<SpawnIndicator_Logic>();
+        if (zeSpawnLogic)
+        {
+            zeSpawnLogic.RemovedUnitSpawnUI.gameObject.SetActive(!zeSpawnLogic.RemovedUnitSpawnUI.gameObject.activeSelf);
+        }
+        else
+        {
+            // if it is the cancel object
+            zeSpawnLogic = _go.transform.parent.GetComponent<SpawnIndicator_Logic>();
+            // remove the data completely and the tile id
+            m_ListOfSpawnUnits.Remove(zeSpawnLogic);
+            m_TileSets.Remove(zeSpawnLogic.TileID);
+            // then destroy that game object
+            Destroy(zeSpawnLogic.gameObject);
+            PlayerCredits += m_UnitsDataAsset.GetUnitCost(zeSpawnLogic.TypeNameTextString);
+        }
     }
 
     /// <summary>
@@ -83,6 +161,10 @@ public class SpawnUnitSystem : MonoBehaviour {
     /// </summary>
     void StartSpawningUnits()
     {
+        foreach (SpawnIndicator_Logic zeSpawnData in m_ListOfSpawnUnits)
+        {
+            Destroy(zeSpawnData.gameObject);
+        }
         // destroy the gameobject that this is attached to when it is done
         Destroy(gameObject);
     }

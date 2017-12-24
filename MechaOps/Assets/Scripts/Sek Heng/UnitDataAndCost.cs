@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Assertions;
 
 /// <summary>
 /// The container to contain the unit's prefab and the cost to spawn those units!
@@ -88,5 +88,20 @@ public class UnitDataAndCost : ScriptableObject {
             }
         }
         return null;
+    }
+
+    public int GetUnitCost(string _name)
+    {
+        int zeCost = -1;
+        foreach (UnitsPrefabData zeUnitData in m_ArrayOfUnitsData)
+        {
+            if (zeUnitData.m_TypeName == _name)
+            {
+                zeCost = zeUnitData.m_Cost;
+                break;
+            }
+        }
+        Assert.IsFalse(zeCost < 0, "Something is wrong with GetUnitCost as it shouldnt be less that 0");
+        return zeCost;
     }
 }

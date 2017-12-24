@@ -41,7 +41,7 @@ public class DetectPlayerClicks : MonoBehaviour
     void Update ()
     {
         // Touch Input can also use GetMouseButton(0)!
-        if (!Input.GetMouseButton(m_PointerId)) { return; }
+        if (!Input.GetMouseButtonDown(m_PointerId)) { return; }
         // Make sure that the pointer is not over some canvas UI!
         if (m_IgnoreUI && EventSystem.current.IsPointerOverGameObject()) { return; }
 

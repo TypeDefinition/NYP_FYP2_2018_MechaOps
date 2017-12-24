@@ -1722,6 +1722,67 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
+--- !u!1001 &63504605
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4954751184244864, guid: f3f6e05bca54679438ea528dfe93c7ce, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4954751184244864, guid: f3f6e05bca54679438ea528dfe93c7ce, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4954751184244864, guid: f3f6e05bca54679438ea528dfe93c7ce, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4954751184244864, guid: f3f6e05bca54679438ea528dfe93c7ce, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4954751184244864, guid: f3f6e05bca54679438ea528dfe93c7ce, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4954751184244864, guid: f3f6e05bca54679438ea528dfe93c7ce, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4954751184244864, guid: f3f6e05bca54679438ea528dfe93c7ce, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4954751184244864, guid: f3f6e05bca54679438ea528dfe93c7ce, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 33399311778342862, guid: f3f6e05bca54679438ea528dfe93c7ce,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114262740923928526, guid: f3f6e05bca54679438ea528dfe93c7ce,
+        type: 2}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114262740923928526, guid: f3f6e05bca54679438ea528dfe93c7ce,
+        type: 2}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1906623605048230, guid: f3f6e05bca54679438ea528dfe93c7ce, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: f3f6e05bca54679438ea528dfe93c7ce, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &64831546
 GameObject:
   m_ObjectHideFlags: 0
@@ -41842,6 +41903,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1452188841}
   - component: {fileID: 1452188842}
+  - component: {fileID: 1452188843}
+  - component: {fileID: 1452188845}
+  - component: {fileID: 1452188844}
   m_Layer: 0
   m_Name: SpawnSystem
   m_TagString: Untagged
@@ -41879,11 +41943,61 @@ MonoBehaviour:
     type: 2}
   m_SelectUnitButtonPrefab: {fileID: 114712180975089206, guid: 2086bc49585a0ea43b80511a30f8d1eb,
     type: 2}
+  m_UnitSpawnIndicatorPrefab: {fileID: 1906623605048230, guid: f3f6e05bca54679438ea528dfe93c7ce,
+    type: 2}
   m_PlayerCredits: 1000
   m_CurrentSelectedUnitName: 
   m_InstantiateSelectUnitUI: {fileID: 0}
   m_SpawnUI_Logic: {fileID: 0}
   m_ListOfSpawnUnits: []
+--- !u!114 &1452188843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1452188840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: facde880791e93e4bbf8e4c0abeb2bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PointerId: 0
+  m_IgnoreUI: 1
+  m_TriggeredEvent: ClickedTile
+  m_LayersToDetect:
+  - Tile
+  - SpawnIndicator
+--- !u!114 &1452188844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1452188840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9643156d4263ff478062bae7546b7f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CenterTile:
+    m_X: 0
+    m_Y: 0
+    m_Z: 0
+--- !u!114 &1452188845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1452188840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: facde880791e93e4bbf8e4c0abeb2bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PointerId: 0
+  m_IgnoreUI: 1
+  m_TriggeredEvent: ClickedSpawnIndicator
+  m_LayersToDetect:
+  - SpawnIndicator
 --- !u!1 &1457724017
 GameObject:
   m_ObjectHideFlags: 0
