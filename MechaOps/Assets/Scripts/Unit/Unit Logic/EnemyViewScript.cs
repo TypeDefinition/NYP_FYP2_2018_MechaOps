@@ -49,8 +49,9 @@ public class EnemyViewScript : ViewScript
         }
     }
 
-    protected void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         m_AllRenderers = GetComponentsInChildren<MeshRenderer>();
     }
 

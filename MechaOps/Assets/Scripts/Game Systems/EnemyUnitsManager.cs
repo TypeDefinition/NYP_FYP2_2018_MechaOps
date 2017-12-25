@@ -20,6 +20,8 @@ public class EnemyUnitsManager : MonoBehaviour
     private List<GameObject> m_EnemyList;
     [SerializeField, Tooltip("Tile marker where all of the player units last gathered")]
     private TileId m_PlayerUnitsLocations; // This isn't an array?
+    [SerializeField, Tooltip("List of all player or opposing units that all of the units have seen")]
+    protected List<GameObject> m_GlobalListOfOpposingUnits;
 
     /// <summary>
     /// The Update of this manager
@@ -33,6 +35,11 @@ public class EnemyUnitsManager : MonoBehaviour
     public TileId PlayerUnitLocations
     {
         get { return m_PlayerUnitsLocations; }
+    }
+
+    public List<GameObject> GlobalListOfOpposingUnits
+    {
+        get { return m_GlobalListOfOpposingUnits; }
     }
 
     private void Awake()
@@ -49,12 +56,16 @@ public class EnemyUnitsManager : MonoBehaviour
     {
         GameEventSystem.GetInstance().SubscribeToEvent("PlayerAnnihilated", StopUpdate);
         GameEventSystem.GetInstance().SubscribeToEvent("EnemyAnnihilated", StopUpdate);
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("UnitSeen", AddToGlobalVisibilityList);
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("UnitUnseen", RemoveFromGlobalVisibilityList);
     }
 
     private void DeinitEvents()
     {
         GameEventSystem.GetInstance().UnsubscribeFromEvent("PlayerAnnihilated", StopUpdate);
         GameEventSystem.GetInstance().UnsubscribeFromEvent("EnemyAnnihilated", StopUpdate);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("UnitSeen", AddToGlobalVisibilityList);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("UnitUnseen", RemoveFromGlobalVisibilityList);
     }
 
     private void OnEnable()
@@ -135,6 +146,24 @@ public class EnemyUnitsManager : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    protected void AddToGlobalVisibilityList(GameObject _go)
+    {
+        if (_go.tag != "EnemyUnit")
+        {
+            Assert.IsTrue(!m_GlobalListOfOpposingUnits.Contains(_go), "Something is wrong with AddToGlobalVisibilityList");
+            m_GlobalListOfOpposingUnits.Add(_go);
+        }
+    }
+
+    protected void RemoveFromGlobalVisibilityList(GameObject _go)
+    {
+        if (_go.tag != "EnemyUnit")
+        {
+            Assert.IsTrue(!m_GlobalListOfOpposingUnits.Contains(_go), "Something is wrong with AddToGlobalVisibilityList");
+            m_GlobalListOfOpposingUnits.Add(_go);
         }
     }
 }

@@ -128,12 +128,19 @@ public class GoapNearTarget : IGoapAction
     protected virtual void UpdateEnemyInAttack()
     {
         m_EnemiesInAttack.Clear();
-        foreach (GameObject zeGO in m_Planner.m_Stats.EnemiesInRange)
+        //foreach (GameObject zeGO in m_Planner.m_Stats.EnemiesInRange)
+        //{
+        //    UnitStats zeGoStat = zeGO.GetComponent<UnitStats>();
+        //    if (CanHitTheEnemy(zeGoStat))
+        //        m_EnemiesInAttack.Add(zeGO);
+        // }
+        // check through the global list of units at the EnemyUnitsManager!
+        foreach (GameObject zeGO in m_Planner.m_Stats.GetGameSystemsDirectory().GetEnemyUnitsManager().GlobalListOfOpposingUnits)
         {
             UnitStats zeGoStat = zeGO.GetComponent<UnitStats>();
             if (CanHitTheEnemy(zeGoStat))
                 m_EnemiesInAttack.Add(zeGO);
-         }
+        }
         if (m_EnemiesInAttack.Count > 0)
             m_Planner.m_StateData.CurrentStates.Add("TargetAttackInRange");
         else

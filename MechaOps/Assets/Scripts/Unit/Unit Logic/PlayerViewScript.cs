@@ -11,6 +11,8 @@ public class PlayerViewScript : ViewScript
     [Header("The variables below are shown in the Inspector for debugging purposes.")]
     [SerializeField, Tooltip("Surrounding Tiles that needed to change the ID")]
     protected List<Tile> m_ViewedTiles;
+    [SerializeField, Tooltip("Visibility counter of this player unit")]
+    protected int m_VisibilityCounter = 0;
 
     /// <summary>
     /// This will help to render the tiles surrounding of this unit!
@@ -60,6 +62,28 @@ public class PlayerViewScript : ViewScript
     /// </summary>
     public override bool IsVisible()
     {
+        if (m_VisibilityCounter == 0)
+        {
+            return false;
+        }
         return true;
+    }
+
+    public override void IncreaseVisibility()
+    {
+        ++m_VisibilityCounter;
+        if (m_VisibilityCounter == 1)
+        {
+            GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitSeen", gameObject);
+        }
+    }
+
+    public override void DecreaseVisibility()
+    {
+        m_VisibilityCounter = Mathf.Max(m_VisibilityCounter - 1, 0);
+        if (m_VisibilityCounter == 0)
+        {
+            GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitUnseen", gameObject);
+        }
     }
 }

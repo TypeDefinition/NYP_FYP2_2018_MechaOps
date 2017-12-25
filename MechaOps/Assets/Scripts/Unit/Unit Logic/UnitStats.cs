@@ -261,20 +261,23 @@ public class UnitStats : MonoBehaviour
         m_UnitInfoDisplay.SetUnitStats(this);
     }
 
-    private IEnumerator Start()
+    /// <summary>
+    /// Initialize the variables of unit stats. meant to replace Start()
+    /// </summary>
+    void Initialise()
     {
-        // check if there is any enemy in range when the game is starting!
         CheckEnemiesInViewRange();
         m_ViewTileScript.SetVisibleTiles();
         UpdateUnitInfoDisplay();
 
         m_TileSystem.GetTile(CurrentTileID).Unit = gameObject;
-
-        yield break;
+        // unsubscribe from the event since initializing is not needed anymore
+        GameEventSystem.GetInstance().UnsubscribeFromEvent("GameStart", Initialise);
     }
 
     private void OnEnable()
     {
+        GameEventSystem.GetInstance().SubscribeToEvent("GameStart", Initialise);
         GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("UnitMovedToTile", CheckEnemyInViewRange);
         switch (tag)
         {
@@ -293,6 +296,8 @@ public class UnitStats : MonoBehaviour
 
     private void OnDisable()
     {
+        // just in case it nevers get to be initialized
+        GameEventSystem.GetInstance().UnsubscribeFromEvent("GameStart", Initialise);
         GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("UnitMovedToTile", CheckEnemyInViewRange);
         switch (tag)
         {

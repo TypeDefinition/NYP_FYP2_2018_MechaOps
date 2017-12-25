@@ -14,7 +14,7 @@ public abstract class ViewScript : MonoBehaviour
     protected TileSystem m_TileSystem = null;
     protected GameSystemsDirectory m_GameSystemsDirectory = null;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
         if (!m_UnitStats)
         {
