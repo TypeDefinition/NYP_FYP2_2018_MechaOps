@@ -164,8 +164,16 @@ public class SpawnUnitSystem : MonoBehaviour {
     {
         foreach (SpawnIndicator_Logic zeSpawnData in m_ListOfSpawnUnits)
         {
+            // spawn / instantiate the unit accordingly
+            GameObject zeUnitGO = Instantiate(m_UnitsDataAsset.GetUnitGO(zeSpawnData.TypeNameTextString));
+            // then set the unit's stats accordingly
+            UnitStats zeUnitStat = zeUnitGO.GetComponent<UnitStats>();
+            zeUnitStat.CurrentTileID = zeSpawnData.TileID;
+            zeUnitGO.transform.position = new Vector3(zeSpawnData.transform.position.x, zeUnitGO.transform.position.y, zeSpawnData.transform.position.z);
             Destroy(zeSpawnData.gameObject);
         }
+        // and then set the gamesystem to be active
+        m_GameSystem.gameObject.SetActive(true);
         // destroy the gameobject that this is attached to when it is done
         Destroy(gameObject);
     }

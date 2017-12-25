@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1334520002180800}
+  m_IsPrefabParent: 1
+--- !u!1 &1334520002180800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4640568492485234}
+  - component: {fileID: 114588400793566240}
+  - component: {fileID: 114381132492256020}
+  - component: {fileID: 114939121232145656}
+  - component: {fileID: 114846657096935028}
+  m_Layer: 0
+  m_Name: SpawnSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4640568492485234
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1334520002180800}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 657.5545, y: 65.80051, z: -6.440735}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114381132492256020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1334520002180800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: facde880791e93e4bbf8e4c0abeb2bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PointerId: 0
+  m_IgnoreUI: 1
+  m_TriggeredEvent: ClickedTile
+  m_LayersToDetect:
+  - Tile
+  - SpawnIndicator
+--- !u!114 &114588400793566240
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1334520002180800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03909d224d4c8d14184f567b81d0bf84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GameSystem: {fileID: 0}
+  m_UnitsDataAsset: {fileID: 11400000, guid: 60b59b66f8b7ebb46a177909b1cb4233, type: 2}
+  m_SelectUnitUIPrefab: {fileID: 1803746275465508, guid: eae6ad47659ec9643864ccd154a0eabe,
+    type: 2}
+  m_SelectUnitButtonPrefab: {fileID: 114712180975089206, guid: 2086bc49585a0ea43b80511a30f8d1eb,
+    type: 2}
+  m_UnitSpawnIndicatorPrefab: {fileID: 1906623605048230, guid: f3f6e05bca54679438ea528dfe93c7ce,
+    type: 2}
+  m_PlayerCredits: 1000
+  m_CurrentSelectedUnitName: 
+  m_InstantiateSelectUnitUI: {fileID: 0}
+  m_SpawnUI_Logic: {fileID: 0}
+  m_ListOfSpawnUnits: []
+--- !u!114 &114846657096935028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1334520002180800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9643156d4263ff478062bae7546b7f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CenterTile:
+    m_X: 0
+    m_Y: 0
+    m_Z: 0
+--- !u!114 &114939121232145656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1334520002180800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: facde880791e93e4bbf8e4c0abeb2bbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PointerId: 0
+  m_IgnoreUI: 1
+  m_TriggeredEvent: ClickedSpawnIndicator
+  m_LayersToDetect:
+  - SpawnIndicator

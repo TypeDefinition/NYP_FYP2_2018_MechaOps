@@ -16,6 +16,10 @@ public abstract class ViewScript : MonoBehaviour
 
     protected void Awake()
     {
+        if (!m_UnitStats)
+        {
+            m_UnitStats = GetComponent<UnitStats>();
+        }
         Assert.IsTrue(m_UnitStats != null, MethodBase.GetCurrentMethod().Name + " - m_UnitStats must not be null!");
         m_GameSystemsDirectory = m_UnitStats.GetGameSystemsDirectory();
         Assert.IsTrue(m_GameSystemsDirectory != null, MethodBase.GetCurrentMethod().Name + " - m_GameSystemsDirectory must not be null!");
