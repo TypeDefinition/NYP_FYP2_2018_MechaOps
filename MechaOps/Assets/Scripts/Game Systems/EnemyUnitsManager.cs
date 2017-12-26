@@ -162,8 +162,8 @@ public class EnemyUnitsManager : MonoBehaviour
     {
         if (_go.tag != "EnemyUnit")
         {
-            Assert.IsTrue(!m_GlobalListOfOpposingUnits.Contains(_go), "Something is wrong with AddToGlobalVisibilityList");
-            m_GlobalListOfOpposingUnits.Add(_go);
+            Assert.IsTrue(m_GlobalListOfOpposingUnits.Contains(_go), "Something is wrong with RemoveFromGlobalVisibilityList");
+            m_GlobalListOfOpposingUnits.Remove(_go);
         }
     }
 }
