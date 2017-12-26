@@ -25,6 +25,25 @@ ModelImporter:
     100034: Wheel_R5
     100036: Wheel_R6
     100038: Wheel_R7
+    100040: Panzer_Gun
+    100042: Panzer_Hull
+    100044: Panzer_Tracks_L
+    100046: Panzer_Tracks_R
+    100048: Panzer_Turret
+    100050: Panzer_Wheel_L1
+    100052: Panzer_Wheel_L2
+    100054: Panzer_Wheel_L3
+    100056: Panzer_Wheel_L4
+    100058: Panzer_Wheel_L5
+    100060: Panzer_Wheel_L6
+    100062: Panzer_Wheel_L7
+    100064: Panzer_Wheel_R1
+    100066: Panzer_Wheel_R2
+    100068: Panzer_Wheel_R3
+    100070: Panzer_Wheel_R4
+    100072: Panzer_Wheel_R5
+    100074: Panzer_Wheel_R6
+    100076: Panzer_Wheel_R7
     400000: Gun
     400002: Hull
     400004: //RootNode
@@ -45,6 +64,25 @@ ModelImporter:
     400034: Wheel_R5
     400036: Wheel_R6
     400038: Wheel_R7
+    400040: Panzer_Gun
+    400042: Panzer_Hull
+    400044: Panzer_Tracks_L
+    400046: Panzer_Tracks_R
+    400048: Panzer_Turret
+    400050: Panzer_Wheel_L1
+    400052: Panzer_Wheel_L2
+    400054: Panzer_Wheel_L3
+    400056: Panzer_Wheel_L4
+    400058: Panzer_Wheel_L5
+    400060: Panzer_Wheel_L6
+    400062: Panzer_Wheel_L7
+    400064: Panzer_Wheel_R1
+    400066: Panzer_Wheel_R2
+    400068: Panzer_Wheel_R3
+    400070: Panzer_Wheel_R4
+    400072: Panzer_Wheel_R5
+    400074: Panzer_Wheel_R6
+    400076: Panzer_Wheel_R7
     2300000: Gun
     2300002: Hull
     2300004: Tracks_L
@@ -64,6 +102,25 @@ ModelImporter:
     2300032: Wheel_R5
     2300034: Wheel_R6
     2300036: Wheel_R7
+    2300038: Panzer_Gun
+    2300040: Panzer_Hull
+    2300042: Panzer_Tracks_L
+    2300044: Panzer_Tracks_R
+    2300046: Panzer_Turret
+    2300048: Panzer_Wheel_L1
+    2300050: Panzer_Wheel_L2
+    2300052: Panzer_Wheel_L3
+    2300054: Panzer_Wheel_L4
+    2300056: Panzer_Wheel_L5
+    2300058: Panzer_Wheel_L6
+    2300060: Panzer_Wheel_L7
+    2300062: Panzer_Wheel_R1
+    2300064: Panzer_Wheel_R2
+    2300066: Panzer_Wheel_R3
+    2300068: Panzer_Wheel_R4
+    2300070: Panzer_Wheel_R5
+    2300072: Panzer_Wheel_R6
+    2300074: Panzer_Wheel_R7
     3300000: Gun
     3300002: Hull
     3300004: Tracks_L
@@ -83,6 +140,25 @@ ModelImporter:
     3300032: Wheel_R5
     3300034: Wheel_R6
     3300036: Wheel_R7
+    3300038: Panzer_Gun
+    3300040: Panzer_Hull
+    3300042: Panzer_Tracks_L
+    3300044: Panzer_Tracks_R
+    3300046: Panzer_Turret
+    3300048: Panzer_Wheel_L1
+    3300050: Panzer_Wheel_L2
+    3300052: Panzer_Wheel_L3
+    3300054: Panzer_Wheel_L4
+    3300056: Panzer_Wheel_L5
+    3300058: Panzer_Wheel_L6
+    3300060: Panzer_Wheel_L7
+    3300062: Panzer_Wheel_R1
+    3300064: Panzer_Wheel_R2
+    3300066: Panzer_Wheel_R3
+    3300068: Panzer_Wheel_R4
+    3300070: Panzer_Wheel_R5
+    3300072: Panzer_Wheel_R6
+    3300074: Panzer_Wheel_R7
     4300000: Wheel_L1
     4300002: Wheel_L7
     4300004: Wheel_L6
@@ -102,6 +178,25 @@ ModelImporter:
     4300032: Wheel_R2
     4300034: Wheel_R1
     4300036: Tracks_L
+    4300038: Panzer_Wheel_L1
+    4300040: Panzer_Wheel_L7
+    4300042: Panzer_Wheel_L6
+    4300044: Panzer_Hull
+    4300046: Panzer_Turret
+    4300048: Panzer_Tracks_R
+    4300050: Panzer_Gun
+    4300052: Panzer_Wheel_L5
+    4300054: Panzer_Wheel_L4
+    4300056: Panzer_Wheel_L3
+    4300058: Panzer_Wheel_L2
+    4300060: Panzer_Wheel_R7
+    4300062: Panzer_Wheel_R6
+    4300064: Panzer_Wheel_R5
+    4300066: Panzer_Wheel_R4
+    4300068: Panzer_Wheel_R3
+    4300070: Panzer_Wheel_R2
+    4300072: Panzer_Wheel_R1
+    4300074: Panzer_Tracks_L
     9500000: //RootNode
   materials:
     importMaterials: 1
