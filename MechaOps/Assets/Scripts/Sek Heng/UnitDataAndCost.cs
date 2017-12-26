@@ -14,8 +14,7 @@ public class UnitDataAndCost : ScriptableObject {
     [System.Serializable]
     public struct UnitsPrefabData
     {
-        public GameObject m_UnitStatsPrefab;
-        public string m_TypeName;
+        public UnitStats m_UnitStatsPrefab;
         public int m_Cost;
 
         public int Cost
@@ -25,14 +24,7 @@ public class UnitDataAndCost : ScriptableObject {
                 return m_Cost;
             }
         }
-        public string TypeName
-        {
-            get
-            {
-                return m_TypeName;
-            }
-        }
-        public GameObject UnitStatsPrefab
+        public UnitStats UnitStatsPrefab
         {
             get
             {
@@ -70,9 +62,9 @@ public class UnitDataAndCost : ScriptableObject {
     {
         foreach (UnitsPrefabData zeUnitData in m_ArrayOfUnitsData)
         {
-            if (zeUnitData.TypeName == _name)
+            if (zeUnitData.m_UnitStatsPrefab.Name == _name)
             {
-                return zeUnitData.UnitStatsPrefab;
+                return zeUnitData.UnitStatsPrefab.gameObject;
             }
         }
         return null;
@@ -82,9 +74,9 @@ public class UnitDataAndCost : ScriptableObject {
     {
         foreach (UnitsPrefabData zeUnitData in m_ArrayOfEnemyUnits)
         {
-            if (zeUnitData.TypeName == _name)
+            if (zeUnitData.m_UnitStatsPrefab.Name == _name)
             {
-                return zeUnitData.UnitStatsPrefab;
+                return zeUnitData.UnitStatsPrefab.gameObject;
             }
         }
         return null;
@@ -95,7 +87,7 @@ public class UnitDataAndCost : ScriptableObject {
         int zeCost = -1;
         foreach (UnitsPrefabData zeUnitData in m_ArrayOfUnitsData)
         {
-            if (zeUnitData.m_TypeName == _name)
+            if (zeUnitData.m_UnitStatsPrefab.Name == _name)
             {
                 zeCost = zeUnitData.m_Cost;
                 break;

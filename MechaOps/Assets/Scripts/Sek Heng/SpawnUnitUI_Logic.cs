@@ -9,14 +9,8 @@ using UnityEngine.UI;
 /// </summary>
 public class SpawnUnitUI_Logic : MonoBehaviour {
     [Header("Variable for SpawnUnitUI_Logic")]
-    [SerializeField, Tooltip("Text UI of the unit type name")]
-    protected TextMeshProUGUI m_TMProTextUI;
-    [SerializeField, Tooltip("Text UI of the unit cost")]
-    protected TextMeshProUGUI m_TMProTextCostUI;
     [SerializeField, Tooltip("Text for the player credits")]
     protected TextMeshProUGUI m_TMProCreditText;
-    [SerializeField, Tooltip("Image of the unit")]
-    protected Image m_UnitUI_Image;
     [SerializeField, Tooltip("Layout group of the unit's UI")]
     protected VerticalLayoutGroup m_UnitLayoutUI;
     [SerializeField, Tooltip("Finished button")]
@@ -27,44 +21,6 @@ public class SpawnUnitUI_Logic : MonoBehaviour {
     protected float m_TimeToDisableInsufficientUI = 2.0f;
 
     Coroutine m_InsufficientUICoroutine;
-
-    public Sprite UnitUI_ImageSprite
-    {
-        set
-        {
-            // need to ensure that the image color is normal
-            if (m_UnitUI_Image.color.a < 255)
-            {
-                // change the alpha to be 255
-                m_UnitUI_Image.color = new Color(m_UnitUI_Image.color.r, m_UnitUI_Image.color.g, m_UnitUI_Image.color.b, 255);
-            }
-            m_UnitUI_Image.sprite = value;
-        }
-        get
-        {
-            return m_UnitUI_Image.sprite;
-        }
-    }
-
-    public string UnitTypenameText
-    {
-        set
-        {
-            m_TMProTextUI.text = value;
-        }
-        get
-        {
-            return m_TMProTextUI.text;
-        }
-    }
-
-    public string UnitCostText
-    {
-        set
-        {
-            m_TMProTextCostUI.text = "Cost : " + value;
-        }
-    }
 
     public string PlayerCreditText
     {

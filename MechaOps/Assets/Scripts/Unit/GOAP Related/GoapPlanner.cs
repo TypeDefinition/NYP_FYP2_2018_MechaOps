@@ -62,6 +62,8 @@ public class GoapPlanner : MonoBehaviour
     protected IGoapGoal m_CurrentGoal;
     [SerializeField, Tooltip("Enemy Unit Manager script")]
     protected EnemyUnitsManager m_EnemiesManager;
+    [SerializeField, Tooltip("Tile system script")]
+    protected TileSystem m_TileSystem;
 
     public EnemyUnitsManager EnemiesManager
     {
@@ -70,6 +72,18 @@ public class GoapPlanner : MonoBehaviour
             if (!m_EnemiesManager)
                 m_EnemiesManager = FindObjectOfType<EnemyUnitsManager>();
             return m_EnemiesManager;
+        }
+    }
+
+    public TileSystem GameTileSystem
+    {
+        get
+        {
+            if (!m_TileSystem)
+            {
+                m_TileSystem = m_Stats.GetGameSystemsDirectory().GetTileSystem();
+            }
+            return m_TileSystem;
         }
     }
 

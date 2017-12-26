@@ -34,4 +34,24 @@ public abstract class ViewScript : MonoBehaviour
     public virtual void DecreaseVisibility() {}
 
     public abstract bool IsVisible();
+
+    public virtual bool RaycastToTile(Tile _tile)
+    {
+        // do a raycast between this gamobject and other go
+        int layerMask = LayerMask.GetMask("TileDisplay");
+        Vector3 rayDirection = _tile.transform.position - transform.position;
+        Ray ray = new Ray(transform.position, rayDirection);
+        RaycastHit[] hitInfo = Physics.RaycastAll(ray, rayDirection.magnitude, layerMask);
+        Tile currentTile = m_GameSystemsDirectory.GetTileSystem().GetTile(m_UnitStats.CurrentTileID);
+        foreach (RaycastHit hit in hitInfo)
+        {
+            TileDisplay tileDisplay = hit.collider.GetComponent<TileDisplay>();
+            Assert.IsNotNull(tileDisplay, MethodBase.GetCurrentMethod().Name + " - Hit GameObject does not have a TileDisplay Component.");
+            if (currentTile != tileDisplay.GetOwner() && _tile != tileDisplay.GetOwner())
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 }

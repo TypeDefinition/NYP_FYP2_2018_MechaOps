@@ -1645,6 +1645,7 @@ MonoBehaviour:
     m_Priority: 0
     m_GoapName: 
   m_EnemiesManager: {fileID: 0}
+  m_TileSystem: {fileID: 0}
 --- !u!114 &114653984288070966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1756,12 +1757,13 @@ MonoBehaviour:
   m_GameSystemsDirectory: {fileID: 0}
   m_UnitStatsJSON:
     m_Name: Panzer
+    m_Description: 
     m_MaxHealthPoints: 4
     m_CurrentHealthPoints: 4
     m_MaxActionPoints: 2
     m_CurrentActionPoints: 2
     m_DeploymentCost: 0
-    m_ViewRange: 10
+    m_ViewRange: 5
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
     m_CurrentTileID:
@@ -1773,7 +1775,7 @@ MonoBehaviour:
   m_UnitInfoDisplay_Prefab: {fileID: 114423042521562832, guid: f6fdede1943ea6742858eefd80f3ded1,
     type: 2}
   m_CurrentActiveAction: {fileID: 0}
-  m_EnemiesInRange: []
+  m_EnemiesInViewRange: []
 --- !u!114 &114930548130969464
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -8,6 +8,8 @@ public class GoapAttackAct : IGoapAction {
     protected UnitAttackAction m_AttackAct;
     [SerializeField, Tooltip("It needs the GoapNearTarget")]
     protected GoapNearTarget m_GOAPTargetAct;
+    [SerializeField, Tooltip("Walk action that needs to be refactored soon")]
+    protected UnitMoveAction m_MoveAct;
 
     protected override void Start()
     {
@@ -18,6 +20,10 @@ public class GoapAttackAct : IGoapAction {
 
     public override void DoAction()
     {
+        if (!m_MoveAct)
+        {
+            m_MoveAct = GetComponent<UnitMoveAction>();
+        }
         m_UpdateRoutine = StartCoroutine(UpdateActRoutine());
     }
 
@@ -28,13 +34,27 @@ public class GoapAttackAct : IGoapAction {
             yield break;
         // we picked the target which will be the 1st unit in the range at GoapNearTarget
         GameObject zeTarget = m_GOAPTargetAct.EnemiesInAttack[0];
-        m_AttackAct.SetTarget(zeTarget);
-        m_AttackAct.TurnOn();
-        WaitForFixedUpdate zeFixedWait = new WaitForFixedUpdate();
-        bool zeWaitForComplete = false;
-        m_AttackAct.CompletionCallBack += () => zeWaitForComplete = true;
-        while (!zeWaitForComplete)
-            yield return zeFixedWait;
+        // TODO: resolve this quick fix
+        // get the actual tile distance
+        //int zeTileDistance = TileId.GetDistance(zeTarget.GetComponent<UnitStats>().CurrentTileID, m_Planner.m_Stats.CurrentTileID);
+        //// if it is not within the attack range
+        //if (m_AttackAct.MaxAttackRange < zeTileDistance)
+        //{
+        //    // get the tiles furthest away from the unit
+            
+        //m_Planner.remove
+        //}
+        //else
+        {
+            m_AttackAct.SetTarget(zeTarget);
+            m_AttackAct.TurnOn();
+            WaitForFixedUpdate zeFixedWait = new WaitForFixedUpdate();
+            bool zeWaitForComplete = false;
+            m_AttackAct.CompletionCallBack += () => zeWaitForComplete = true;
+            while (!zeWaitForComplete)
+                yield return zeFixedWait;
+            m_AttackAct.CompletionCallBack = null;
+        }
         print("Finished Attacking");
         m_UpdateRoutine = null;
         yield break;

@@ -77,6 +77,9 @@ public class TileSystem : MonoBehaviour
     [SerializeField] private MeshFilter m_UnknownTilesMeshSecond = null;
     [SerializeField] private float m_UnknownTileMeshDiameter = 4.0f;
 
+    [SerializeField] private TileId[] m_PlayerSpawnTiles = null;
+    [SerializeField] private TileId[] m_EnemySpawnTiles = null;
+
     public int MapRadius
     {
         get { return m_MapRadius; }
@@ -100,6 +103,16 @@ public class TileSystem : MonoBehaviour
     public Tile GetDefaultTile()
     {
         return m_DefaultTile;
+    }
+
+    public TileId[] GetPlayerSpawnTiles()
+    {
+        return m_PlayerSpawnTiles;
+    }
+
+    public TileId[] GetEnemySpawnTiles()
+    {
+        return m_EnemySpawnTiles;
     }
 
 #if UNITY_EDITOR

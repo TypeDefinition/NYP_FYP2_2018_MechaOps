@@ -32,12 +32,7 @@ public class PlayerViewScript : ViewScript
 
             Tile tile = m_TileSystem.GetTile(tileId);
             // then raycast to that tile to see if it works and get the id
-            int layerMask = LayerMask.GetMask("TileDisplay");
-            Vector3 rayDirection = tile.transform.position - transform.position;
-            RaycastHit hitInfo;
-            // if it does not hit anything or ray has already reached it's destination
-            if (!Physics.Raycast(transform.position, rayDirection, out hitInfo, rayDirection.magnitude, layerMask) ||
-                hitInfo.collider.transform.parent.GetComponent<Tile>().GetTileId().Equals(tileId))
+            if (RaycastToTile(tile))
             {
                 m_ViewedTiles.Add(tile);
                 ++tile.VisibleCounter;

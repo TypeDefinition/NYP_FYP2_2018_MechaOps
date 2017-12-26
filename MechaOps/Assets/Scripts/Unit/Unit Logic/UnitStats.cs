@@ -19,6 +19,9 @@ public class UnitStatsJSON
     [SerializeField, Tooltip("The name of the unit")]
     public string m_Name;
 
+    [SerializeField, Tooltip("Description of the unit")]
+    public string m_Description;
+
     [SerializeField, Tooltip("The max healthpoint of the unit")]
     public int m_MaxHealthPoints;
     [SerializeField, Tooltip("The health points of the unit.")]
@@ -86,6 +89,11 @@ public class UnitStats : MonoBehaviour
     public string Name
     {
         get { return m_UnitStatsJSON.m_Name; }
+    }
+
+    public string Description
+    {
+        get { return m_UnitStatsJSON.m_Description; }
     }
 
     public int MaxHealthPoints
@@ -241,6 +249,11 @@ public class UnitStats : MonoBehaviour
         }
     }
 
+    public ViewScript ViewTileScript
+    {
+        get { return m_ViewTileScript; }
+    }
+
     private void Awake()
     {
         // Ensure that we have the system(s) we require.
@@ -356,7 +369,7 @@ public class UnitStats : MonoBehaviour
             // if that list does not have the unit in range!
             if (!m_EnemiesInViewRange.Contains(unit))
             {
-                if (tileDistance <= ViewRange && RaycastToTile(m_TileSystem.GetTile(unitStats.CurrentTileID)))
+                if (tileDistance <= ViewRange && m_ViewTileScript.RaycastToTile(m_TileSystem.GetTile(unitStats.CurrentTileID)))
                 {
                     m_EnemiesInViewRange.Add(unit);
                     unitStats.m_ViewTileScript.IncreaseVisibility();
@@ -364,7 +377,7 @@ public class UnitStats : MonoBehaviour
             }
             else
             {
-                if (tileDistance > ViewRange || !RaycastToTile(m_TileSystem.GetTile(unitStats.CurrentTileID)))
+                if (tileDistance > ViewRange || !m_ViewTileScript.RaycastToTile(m_TileSystem.GetTile(unitStats.CurrentTileID)))
                 {
                     // if the opposing unit is in range and 
                     m_EnemiesInViewRange.Remove(unit);
@@ -400,7 +413,7 @@ public class UnitStats : MonoBehaviour
                 // Need to make sure that the moveunit is not itself! and the tag is the opposing unit!
                 if (!m_EnemiesInViewRange.Contains(_movedUnit))
                 {
-                    if (tileDistance <= ViewRange && RaycastToTile(m_TileSystem.GetTile(unitStats.CurrentTileID)))
+                    if (tileDistance <= ViewRange && m_ViewTileScript.RaycastToTile(m_TileSystem.GetTile(unitStats.CurrentTileID)))
                     {
                         m_EnemiesInViewRange.Add(_movedUnit);
                         // so we have to render the enemy unit if it belongs to the enemy
@@ -409,7 +422,7 @@ public class UnitStats : MonoBehaviour
                 }
                 else
                 {
-                    if (tileDistance > ViewRange || !RaycastToTile(m_TileSystem.GetTile(unitStats.CurrentTileID)))
+                    if (tileDistance > ViewRange || !m_ViewTileScript.RaycastToTile(m_TileSystem.GetTile(unitStats.CurrentTileID)))
                     {
                         // if the opposing unit is in range and 
                         m_EnemiesInViewRange.Remove(_movedUnit);
@@ -447,27 +460,6 @@ public class UnitStats : MonoBehaviour
         {
             m_EnemiesInViewRange.Remove(_deadUnit);
         }
-    }
-
-    public bool RaycastToTile(Tile _tile)
-    {
-        // do a raycast between this gamobject and other go
-        int layerMask = LayerMask.GetMask("TileDisplay");
-        Vector3 rayDirection = _tile.transform.position - transform.position;
-        Ray ray = new Ray(transform.position, rayDirection);
-        RaycastHit[] hitInfo = Physics.RaycastAll(ray, rayDirection.magnitude, layerMask);
-        Tile currentTile = m_GameSystemsDirectory.GetTileSystem().GetTile(CurrentTileID);
-        foreach (RaycastHit hit in hitInfo)
-        {
-            TileDisplay tileDisplay = hit.collider.GetComponent<TileDisplay>();
-            Assert.IsNotNull(tileDisplay, MethodBase.GetCurrentMethod().Name + " - Hit GameObject does not have a TileDisplay Component.");
-            if (currentTile != tileDisplay.GetOwner() && _tile != tileDisplay.GetOwner())
-            {
-                return false;
-            }
-        }
-        return true;
-        //return !Physics.Raycast(transform.position, rayDirection, rayDirection.magnitude, layerMask);
     }
 
 #if UNITY_EDITOR
