@@ -58,7 +58,7 @@ public class UnitStats : MonoBehaviour
     [SerializeField, Tooltip("The current active action so that it can be stopped")]
     private IUnitAction m_CurrentActiveAction;
     [SerializeField, Tooltip("The list of units that are in range")]
-    private List<GameObject> m_EnemiesInRange = new List<GameObject>();
+    private List<GameObject> m_EnemiesInViewRange = new List<GameObject>();
 
     // Non-Serialized Variable(s)
     private TileSystem m_TileSystem = null;
@@ -237,7 +237,7 @@ public class UnitStats : MonoBehaviour
     {
         get
         {
-            return m_EnemiesInRange;
+            return m_EnemiesInViewRange;
         }
     }
 
@@ -259,6 +259,7 @@ public class UnitStats : MonoBehaviour
         // Initialisation
         m_UnitInfoDisplay = GameObject.Instantiate(m_UnitInfoDisplay_Prefab, m_GameSystemsDirectory.GetScreenSpaceCanvas().transform);
         m_UnitInfoDisplay.SetUnitStats(this);
+        m_UnitInfoDisplay.transform.SetAsFirstSibling();
     }
 
     /// <summary>
@@ -330,43 +331,43 @@ public class UnitStats : MonoBehaviour
     /// </summary>
     public void CheckEnemiesInViewRange()
     {
-        List<GameObject> unitsList = null;
+        List<GameObject> aliveUnits = null;
         // TODO: Remove this hardcoding when it is done!
         switch (tag)
         {
             case "Player":
                 // so get the list of enemy units
-                unitsList = m_UnitsTracker.m_AliveEnemyUnits;
+                aliveUnits = m_UnitsTracker.m_AliveEnemyUnits;
                 break;
             case "EnemyUnit":
-                unitsList = m_UnitsTracker.m_AlivePlayerUnits;
+                aliveUnits = m_UnitsTracker.m_AlivePlayerUnits;
                 break;
             default:
                 Assert.IsTrue(false, "Make CheckEnemyInRange more robust so that there can be more factions!");
                 break;
         }
 
-        foreach (GameObject unit in unitsList)
+        foreach (GameObject unit in aliveUnits)
         {
             UnitStats unitStats = unit.GetComponent<UnitStats>();
-            if (!unitStats.IsAlive()) { continue; }
+            Assert.IsTrue(unitStats.IsAlive(), MethodBase.GetCurrentMethod().Name + " - There should not be destroyed units!");
 
             int tileDistance = TileId.GetDistance(CurrentTileID, unitStats.CurrentTileID) + unitStats.ConcealmentPoints;
             // if that list does not have the unit in range!
-            if (!m_EnemiesInRange.Contains(unit))
+            if (!m_EnemiesInViewRange.Contains(unit))
             {
-                if (tileDistance <= ViewRange && RaycastToOtherPosition(unit.transform))
+                if (tileDistance <= ViewRange && RaycastToTile(m_TileSystem.GetTile(unitStats.CurrentTileID)))
                 {
-                    m_EnemiesInRange.Add(unit);
+                    m_EnemiesInViewRange.Add(unit);
                     unitStats.m_ViewTileScript.IncreaseVisibility();
                 }
             }
             else
             {
-                if (tileDistance > ViewRange || !RaycastToOtherPosition(unit.transform))
+                if (tileDistance > ViewRange || !RaycastToTile(m_TileSystem.GetTile(unitStats.CurrentTileID)))
                 {
                     // if the opposing unit is in range and 
-                    m_EnemiesInRange.Remove(unit);
+                    m_EnemiesInViewRange.Remove(unit);
                     unitStats.m_ViewTileScript.DecreaseVisibility();
                 }
             }
@@ -394,25 +395,25 @@ public class UnitStats : MonoBehaviour
         {
             if (_movedUnit != gameObject)
             {
-                UnitStats zeGOState = _movedUnit.GetComponent<UnitStats>();
-                int zeTileDist = TileId.GetDistance(CurrentTileID, zeGOState.CurrentTileID) + zeGOState.ConcealmentPoints;
+                UnitStats unitStats = _movedUnit.GetComponent<UnitStats>();
+                int tileDistance = TileId.GetDistance(CurrentTileID, unitStats.CurrentTileID) + unitStats.ConcealmentPoints;
                 // Need to make sure that the moveunit is not itself! and the tag is the opposing unit!
-                if (!m_EnemiesInRange.Contains(_movedUnit))
+                if (!m_EnemiesInViewRange.Contains(_movedUnit))
                 {
-                    if (zeTileDist <= ViewRange && RaycastToOtherPosition(_movedUnit.transform))
+                    if (tileDistance <= ViewRange && RaycastToTile(m_TileSystem.GetTile(unitStats.CurrentTileID)))
                     {
-                        m_EnemiesInRange.Add(_movedUnit);
+                        m_EnemiesInViewRange.Add(_movedUnit);
                         // so we have to render the enemy unit if it belongs to the enemy
-                        zeGOState.m_ViewTileScript.IncreaseVisibility();
+                        unitStats.m_ViewTileScript.IncreaseVisibility();
                     }
                 }
                 else
                 {
-                    if (zeTileDist > ViewRange || !RaycastToOtherPosition(_movedUnit.transform))
+                    if (tileDistance > ViewRange || !RaycastToTile(m_TileSystem.GetTile(unitStats.CurrentTileID)))
                     {
                         // if the opposing unit is in range and 
-                        m_EnemiesInRange.Remove(_movedUnit);
-                        zeGOState.m_ViewTileScript.DecreaseVisibility();
+                        m_EnemiesInViewRange.Remove(_movedUnit);
+                        unitStats.m_ViewTileScript.DecreaseVisibility();
                     }
                 }
             }
@@ -435,25 +436,38 @@ public class UnitStats : MonoBehaviour
         // if the dead unit is itself, iterate through it's list and decrease the visibility of other units!
         if (_deadUnit == gameObject)
         {
-            foreach (GameObject zeEnemyGO in m_EnemiesInRange)
+            foreach (GameObject zeEnemyGO in m_EnemiesInViewRange)
             {
                 ViewScript zeEnemyView = zeEnemyGO.GetComponent<ViewScript>();
                 zeEnemyView.DecreaseVisibility();
             }
-            m_EnemiesInRange.Clear();
+            m_EnemiesInViewRange.Clear();
         }
         else
         {
-            m_EnemiesInRange.Remove(_deadUnit);
+            m_EnemiesInViewRange.Remove(_deadUnit);
         }
     }
 
-    public bool RaycastToOtherPosition(Transform _otherTrans)
+    public bool RaycastToTile(Tile _tile)
     {
         // do a raycast between this gamobject and other go
         int layerMask = LayerMask.GetMask("TileDisplay");
-        Vector3 rayDirection = _otherTrans.position - transform.position;
-        return !Physics.Raycast(transform.position, rayDirection, rayDirection.magnitude, layerMask);
+        Vector3 rayDirection = _tile.transform.position - transform.position;
+        Ray ray = new Ray(transform.position, rayDirection);
+        RaycastHit[] hitInfo = Physics.RaycastAll(ray, rayDirection.magnitude, layerMask);
+        Tile currentTile = m_GameSystemsDirectory.GetTileSystem().GetTile(CurrentTileID);
+        foreach (RaycastHit hit in hitInfo)
+        {
+            TileDisplay tileDisplay = hit.collider.GetComponent<TileDisplay>();
+            Assert.IsNotNull(tileDisplay, MethodBase.GetCurrentMethod().Name + " - Hit GameObject does not have a TileDisplay Component.");
+            if (currentTile != tileDisplay.GetOwner() && _tile != tileDisplay.GetOwner())
+            {
+                return false;
+            }
+        }
+        return true;
+        //return !Physics.Raycast(transform.position, rayDirection, rayDirection.magnitude, layerMask);
     }
 
 #if UNITY_EDITOR

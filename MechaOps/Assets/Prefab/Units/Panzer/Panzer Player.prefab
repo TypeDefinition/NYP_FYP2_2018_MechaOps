@@ -1695,6 +1695,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UnitStats: {fileID: 114718164003450294}
   m_ViewedTiles: []
+  m_VisibilityCounter: 0
 --- !u!114 &114997096915532080
 MonoBehaviour:
   m_ObjectHideFlags: 1
