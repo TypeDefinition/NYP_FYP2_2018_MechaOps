@@ -1,22 +1,15 @@
 fileFormatVersion: 2
-guid: 644ddfdc47fdb3049814c97d71ef30d9
-timeCreated: 1513922222
+guid: 96649cba09bba19428a87f8d9632da6f
+timeCreated: 1514265290
 licenseType: Free
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
-    100000: Hull
-    100002: Propeller
-    100004: //RootNode
-    400000: Hull
-    400002: Propeller
-    400004: //RootNode
-    2300000: Hull
-    2300002: Propeller
-    3300000: Hull
-    3300002: Propeller
-    4300000: Hull
-    4300002: Propeller
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: GunshipBullet
     9500000: //RootNode
   materials:
     importMaterials: 1
