@@ -26,7 +26,11 @@ public class MOAnimator_SHSM : MOAnimator
     [SerializeField] protected ArtileryBullet m_Bullet_Prefab;
     [SerializeField] protected GameObject m_MuzzleFlash_Prefab;
 
-    // Shooting Animation
+    // Audio
+    [SerializeField] protected AudioSource m_AudioSource = null;
+    [SerializeField] protected AudioClip m_ShootGunfireSFX = null;
+
+    // Shoot Animation
     /* The shooting animation is nowhere near realistic etc.
     I'm not going to bother calculating the correct elevation for the gun etc.
     We'll just fix it at this values and fake it.*/
@@ -181,7 +185,13 @@ public class MOAnimator_SHSM : MOAnimator
 
     protected virtual void FireGun(Tile _targetTile, Void_Void _callback)
     {
+        // Spawn Muzzle Flash
         AnimateMuzzleFlash();
+
+        // Play Audio
+        m_AudioSource.PlayOneShot(m_ShootGunfireSFX);
+
+        // Spawn Bullet
         m_Bullet = Instantiate(m_Bullet_Prefab.gameObject).GetComponent<ArtileryBullet>();
         m_Bullet.transform.position = m_BulletSpawnPoint.transform.position;
         m_Bullet.TargetTile = _targetTile;
