@@ -13,6 +13,7 @@ public class MainMenuManager : MonoBehaviour
         Settings,
         LevelSelection,
         UnitsSelection,
+        StartGame,
         QuitApplication,
     }
 
@@ -66,6 +67,9 @@ public class MainMenuManager : MonoBehaviour
                 m_StartScreenCanvas.gameObject.SetActive(false);
                 m_LevelSelectionCanvas.gameObject.SetActive(false);
                 m_UnitsSelectionCanvas.gameObject.SetActive(true);
+                break;
+            case MenuState.StartGame:
+                LoadSelectedLevel();
                 break;
             case MenuState.QuitApplication:
                 Application.Quit();
