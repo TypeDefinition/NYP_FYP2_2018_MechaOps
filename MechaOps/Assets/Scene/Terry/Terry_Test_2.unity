@@ -1360,16 +1360,6 @@ Prefab:
       propertyPath: m_Name
       value: Wasp Player
       objectReference: {fileID: 0}
-    - target: {fileID: 33232718109588342, guid: 23358323a1d85644cab99d718d1cd54e,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: 1b87392929ee30f4393cec97b3eb0e1a, type: 3}
-    - target: {fileID: 33561656275541168, guid: 23358323a1d85644cab99d718d1cd54e,
-        type: 2}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300002, guid: 1b87392929ee30f4393cec97b3eb0e1a, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 23358323a1d85644cab99d718d1cd54e, type: 2}
   m_IsPrefabParent: 0
