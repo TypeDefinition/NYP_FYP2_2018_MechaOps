@@ -67,6 +67,14 @@ public abstract class MOAnimator : MonoBehaviour
     // Shoot Animation Coroutine(s)
     protected IEnumerator m_ShootAnimationCoroutine = null;
 
+    // Ambient Audio
+    [SerializeField] protected AudioSource m_AmbientAudioSource = null;
+    [SerializeField] protected AudioClip m_AmbientSound = null;
+
+    // SFX Audio
+    [SerializeField] protected AudioSource[] m_SFXAudioSources = null;
+    [SerializeField] protected AudioClip m_MoveSFX = null;
+
     public CineMachineHandler GetCineMachineHandler() { return m_CineMachineHandler; }
 
     protected void InvokeCallback(Void_Void _callback)
@@ -89,7 +97,23 @@ public abstract class MOAnimator : MonoBehaviour
         if (m_CineMachineHandler) { m_CineMachineHandler.SetCineBrain(false); }
     }
 
-    protected virtual void OnDestroy() { StopAllCoroutines(); }
+    protected virtual void OnDestroy()
+    {
+        DeinitialiseEvents();
+        StopAllCoroutines();
+    }
+
+    protected virtual void InitialiseEvents()
+    {
+        string volumeChangedEventName = m_GameSystemsDirectory.GetGameAudioSettings().GetVolumeChangedEventName();
+        GameEventSystem.GetInstance().SubscribeToEvent(volumeChangedEventName, OnVolumeChanged);
+    }
+
+    protected virtual void DeinitialiseEvents()
+    {
+        string volumeChangedEventName = m_GameSystemsDirectory.GetGameAudioSettings().GetVolumeChangedEventName();
+        GameEventSystem.GetInstance().UnsubscribeFromEvent(volumeChangedEventName, OnVolumeChanged);
+    }
 
     protected virtual void Awake()
     {
@@ -99,6 +123,13 @@ public abstract class MOAnimator : MonoBehaviour
         // Get the Systems required fromGame Systems Directory.
         m_TileSystem = m_GameSystemsDirectory.GetTileSystem();
         m_CineMachineHandler = m_GameSystemsDirectory.GetCineMachineHandler();
+
+        InitialiseEvents();
+    }
+
+    protected virtual void Start()
+    {
+        PlayAmbientAudioSource();
     }
 
     // Helper Function(s)
@@ -300,9 +331,97 @@ public abstract class MOAnimator : MonoBehaviour
         m_MovementPath.Clear();
     }
 
+    protected virtual void OnVolumeChanged()
+    {
+        m_AmbientAudioSource.volume = m_GameSystemsDirectory.GetGameAudioSettings().GetVolume(VolumeType.Ambient);
+        for (int i = 0; i < m_SFXAudioSources.Length; ++i)
+        {
+            m_SFXAudioSources[i].volume = m_GameSystemsDirectory.GetGameAudioSettings().GetVolume(VolumeType.SFX);
+        }
+    }
+
+    protected void PlayAmbientAudioSource()
+    {
+        m_AmbientAudioSource.clip = m_AmbientSound;
+        m_AmbientAudioSource.loop = true;
+        m_AmbientAudioSource.volume = GameSystemsDirectory.GetSceneInstance().GetGameAudioSettings().GetVolume(VolumeType.Ambient);
+        m_AmbientAudioSource.Play();
+    }
+
+    protected void StopAmbientAudioSource()
+    {
+        m_AmbientAudioSource.Stop();
+    }
+
+    protected void PlaySFXAudioSource(AudioClip _audioClip, bool _loop, int _audioSourceIndex = 0)
+    {
+        m_SFXAudioSources[_audioSourceIndex].clip = _audioClip;
+        m_SFXAudioSources[_audioSourceIndex].loop = _loop;
+        m_SFXAudioSources[_audioSourceIndex].volume = GameSystemsDirectory.GetSceneInstance().GetGameAudioSettings().GetVolume(VolumeType.SFX);
+        m_SFXAudioSources[_audioSourceIndex].Play();
+    }
+
+    protected void PlayOneShotSFXAudioSource(AudioClip _audioClip, int _audioSourceIndex = 0)
+    {
+        m_SFXAudioSources[_audioSourceIndex].PlayOneShot(_audioClip);
+    }
+
+    protected void PauseAllSFXAudioSources()
+    {
+        for (int i = 0; i < m_SFXAudioSources.Length; ++i)
+        {
+            if (m_SFXAudioSources[i].isPlaying)
+            {
+                m_SFXAudioSources[i].Pause();
+            }
+        }
+    }
+
+    protected void PauseSFXAudioSource(int _audioSourceIndex = 0)
+    {
+        if (m_SFXAudioSources[_audioSourceIndex].isPlaying)
+        {
+            m_SFXAudioSources[_audioSourceIndex].Pause();
+        }
+    }
+
+    protected void ResumeSFXAudioSource(int _audioSourceIndex = 0)
+    {
+        if (!m_SFXAudioSources[_audioSourceIndex].isPlaying)
+        {
+            m_SFXAudioSources[_audioSourceIndex].UnPause();
+        }
+    }
+
+    protected void ResumeAllSFXAudioSources()
+    {
+        for (int i = 0; i < m_SFXAudioSources.Length; ++i)
+        {
+            if (m_SFXAudioSources[i].isPlaying)
+            {
+                m_SFXAudioSources[i].Pause();
+            }
+        }
+    }
+
+    protected void StopSFXAudioSource(int _audioSourceIndex = 0)
+    {
+        m_SFXAudioSources[_audioSourceIndex].Stop();
+    }
+
+    protected void StopAllSFXAudioSource()
+    {
+        for (int i = 0; i < m_SFXAudioSources.Length; ++i)
+        {
+            m_SFXAudioSources[i].Stop();
+        }
+    }
+
     // Death Animation
     protected virtual IEnumerator DeathAnimationCoroutine()
     {
+        StopAmbientAudioSource();
+
         InvokeCallback(m_DeathAnimationCompletionCallback);
         yield break;
     }
@@ -357,6 +476,9 @@ public abstract class MOAnimator : MonoBehaviour
 
     protected virtual IEnumerator MoveAnimationCouroutine()
     {
+        // Start the audio.
+        PlaySFXAudioSource(m_MoveSFX, true);
+
         // Move along the path.
         int movementPathIndex = 0;
         while (movementPathIndex < m_MovementPath.Count)
@@ -367,7 +489,10 @@ public abstract class MOAnimator : MonoBehaviour
                 while (true)
                 {
                     // Do nothing if it is paused.
-                    while (m_MoveAnimationPaused) { yield return null; }
+                    while (m_MoveAnimationPaused)
+                    {
+                        yield return null;
+                    }
 
                     if (FaceTowardsTile(movementPathIndex)) { break; }
 
@@ -391,6 +516,9 @@ public abstract class MOAnimator : MonoBehaviour
             ++movementPathIndex;
         }
 
+        // Stop the audio.
+        StopSFXAudioSource();
+
         // We've reached the end of the path.
         InvokeCallback(m_MoveAnimationCompletionCallback);
     }
@@ -410,11 +538,13 @@ public abstract class MOAnimator : MonoBehaviour
     public virtual void PauseMoveAnimation()
     {
         m_MoveAnimationPaused = true;
+        PauseAllSFXAudioSources();
     }
     
     public virtual void ResumeMoveAnimation()
     {
         m_MoveAnimationPaused = false;
+        ResumeAllSFXAudioSources();
     }
     
     public virtual void StopMoveAnimation()
@@ -434,11 +564,13 @@ public abstract class MOAnimator : MonoBehaviour
     public virtual void PauseShootAnimation()
     {
         m_ShootAnimationPaused = true;
+        PauseAllSFXAudioSources();
     }
 
     public virtual void ResumeShootAnimation()
     {
         m_ShootAnimationPaused = false;
+        ResumeAllSFXAudioSources();
     }
 
     public virtual void StopShootAnimation()
@@ -455,5 +587,9 @@ public abstract class MOAnimator : MonoBehaviour
         StopDeathAnimation();
         StopMoveAnimation();
         StopShootAnimation();
+    }
+
+    private void Update()
+    {
     }
 }

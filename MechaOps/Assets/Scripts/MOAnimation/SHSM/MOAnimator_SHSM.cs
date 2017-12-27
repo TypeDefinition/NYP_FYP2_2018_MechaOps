@@ -27,7 +27,6 @@ public class MOAnimator_SHSM : MOAnimator
     [SerializeField] protected GameObject m_MuzzleFlash_Prefab;
 
     // Audio
-    [SerializeField] protected AudioSource m_AudioSource = null;
     [SerializeField] protected AudioClip m_ShootGunfireSFX = null;
 
     // Shoot Animation
@@ -189,7 +188,7 @@ public class MOAnimator_SHSM : MOAnimator
         AnimateMuzzleFlash();
 
         // Play Audio
-        m_AudioSource.PlayOneShot(m_ShootGunfireSFX);
+        PlayOneShotSFXAudioSource(m_ShootGunfireSFX);
 
         // Spawn Bullet
         m_Bullet = Instantiate(m_Bullet_Prefab.gameObject).GetComponent<ArtileryBullet>();

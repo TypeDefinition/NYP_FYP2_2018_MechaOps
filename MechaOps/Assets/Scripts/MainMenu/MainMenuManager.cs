@@ -21,6 +21,7 @@ public class MainMenuManager : MonoBehaviour
     private string m_SelectedLevelSceneName = null;
 
     [SerializeField] Canvas m_StartScreenCanvas = null;
+    [SerializeField] Canvas m_SettingsCanvas = null;
     [SerializeField] Canvas m_LevelSelectionCanvas = null;
     [SerializeField] Canvas m_UnitsSelectionCanvas = null;
 
@@ -51,14 +52,19 @@ public class MainMenuManager : MonoBehaviour
             case MenuState.StartScreen:
                 m_StartScreenCanvas.gameObject.SetActive(true);
                 m_LevelSelectionCanvas.gameObject.SetActive(false);
+                m_SettingsCanvas.gameObject.SetActive(false);
                 //m_UnitsSelectionCanvas.gameObject.SetActive(false);
                 break;
             case MenuState.Settings:
-                Assert.IsTrue(false, MethodBase.GetCurrentMethod().Name + " - Unhandled Menu State!");
+                m_StartScreenCanvas.gameObject.SetActive(false);
+                m_LevelSelectionCanvas.gameObject.SetActive(false);
+                m_SettingsCanvas.gameObject.SetActive(true);
+                //m_UnitsSelectionCanvas.gameObject.SetActive(false);
                 break;
             case MenuState.LevelSelection:
                 m_StartScreenCanvas.gameObject.SetActive(false);
                 m_LevelSelectionCanvas.gameObject.SetActive(true);
+                m_SettingsCanvas.gameObject.SetActive(false);
                 //m_UnitsSelectionCanvas.gameObject.SetActive(false);
                 break;
             case MenuState.UnitsSelection:
@@ -66,6 +72,7 @@ public class MainMenuManager : MonoBehaviour
 
                 m_StartScreenCanvas.gameObject.SetActive(false);
                 m_LevelSelectionCanvas.gameObject.SetActive(false);
+                m_SettingsCanvas.gameObject.SetActive(false);
                 m_UnitsSelectionCanvas.gameObject.SetActive(true);
                 break;
             case MenuState.StartGame:

@@ -16,6 +16,10 @@ public class MOAnimator_Wasp : MOAnimator
     [SerializeField] protected GunshipBullet m_Bullet_Prefab;
     [SerializeField] protected GameObject m_MuzzleFlash_Prefab;
 
+    // Audio
+    [SerializeField] protected AudioClip m_ShootGunfireSFX = null;
+    [SerializeField] protected AudioClip m_CrashingSFX = null;
+
     // Death Animation
     protected float m_HullDeathElevation = -40.0f;
     protected float m_DeathSpinSpeed = 360.0f;
@@ -148,6 +152,9 @@ public class MOAnimator_Wasp : MOAnimator
 
     protected override IEnumerator DeathAnimationCoroutine()
     {
+        StopAmbientAudioSource();
+        PlaySFXAudioSource(m_CrashingSFX, false);
+
         while (true)
         {
             // Do nothing while paused.
@@ -212,6 +219,8 @@ public class MOAnimator_Wasp : MOAnimator
 
     protected override IEnumerator MoveAnimationCouroutine()
     {
+        PlaySFXAudioSource(m_MoveSFX, true);
+
         while (true)
         {
             // Do nothing while paused.
@@ -273,6 +282,8 @@ public class MOAnimator_Wasp : MOAnimator
             yield return null;
             continue;
         }
+
+        StopSFXAudioSource();
 
         // We've reached the end of the path.
         InvokeCallback(m_MoveAnimationCompletionCallback);
@@ -350,6 +361,9 @@ public class MOAnimator_Wasp : MOAnimator
             yield return null;
         }
 
+        // Start the audio.
+        PlaySFXAudioSource(m_ShootGunfireSFX, true);
+
         // Fire!
         int bulletsLeft = m_NumBulletsToShoot;
         int spawnPointIndex = 0;
@@ -370,6 +384,9 @@ public class MOAnimator_Wasp : MOAnimator
 
             yield return null;
         }
+
+        // Stop the audio.
+        StopSFXAudioSource();
 
         // Rotate our hull back to Neutral Elevation.
         while (true)

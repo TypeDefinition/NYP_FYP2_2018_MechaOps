@@ -71,6 +71,8 @@ public class GameSystemsDirectory : MonoBehaviour
     [SerializeField] private UnitActionScheduler m_UnitActionScheduler = null;
     [SerializeField] private CineMachineHandler m_CineMachineHandler = null;
 
+    [SerializeField] private GameAudioSettings m_GameAudioSettings = null;
+
     public TileSystem GetTileSystem() { return m_TileSystem; }
     public Canvas GetScreenSpaceCanvas() { return m_ScreenSpaceCanvas; }
     public Camera GetGameCamera() { return m_GameCamera; }
@@ -80,4 +82,6 @@ public class GameSystemsDirectory : MonoBehaviour
     public PlayerUnitsManager GetPlayerUnitsManager() { return m_PlayerUnitsManager; }
     public UnitActionScheduler GetUnitActionScheduler() { return m_UnitActionScheduler; }
     public CineMachineHandler GetCineMachineHandler() { return m_CineMachineHandler; }
+
+    public GameAudioSettings GetGameAudioSettings() { return m_GameAudioSettings; }
 }

@@ -15,6 +15,7 @@ public class SimpleSpriteAnimation : MonoBehaviour
     [SerializeField] private bool m_PlayOnStart = false;
     [SerializeField] private bool m_SetInactiveOnCompletion = false;
     [SerializeField] private bool m_DestroyOnCompletion = false;
+    [SerializeField] private AudioSource m_SynchroniseAnimationWithAudioSource = null;
 
     private bool m_PlayAnimation = false;
     private int m_NumFrames = 0;
@@ -57,27 +58,34 @@ public class SimpleSpriteAnimation : MonoBehaviour
         set { m_SetInactiveOnCompletion = value; }
     }
 
-    public bool DestroyOnComplettion
+    public bool DestroyOnCompletion
     {
         get { return m_DestroyOnCompletion; }
         set { m_DestroyOnCompletion = value; }
     }
 
-    // Use this for initialization
-    void Start ()
+    private void Awake()
     {
+        if (m_SynchroniseAnimationWithAudioSource != null)
+        {
+            m_PlayOnStart = m_SynchroniseAnimationWithAudioSource.playOnAwake;
+            m_Loop = m_SynchroniseAnimationWithAudioSource.loop;
+            m_AnimationDuration = m_SynchroniseAnimationWithAudioSource.clip.length;
+        }
+
         MeshRenderer meshRenderer = gameObject.GetComponent<MeshRenderer>();
         Assert.AreNotEqual(meshRenderer, null, MethodBase.GetCurrentMethod().Name + " - SimpleSpriteAnimation cannot work without a MeshRenderer!");
         m_SpriteMaterial = gameObject.GetComponent<MeshRenderer>().material;
         Assert.AreNotEqual(m_SpriteMaterial, null, MethodBase.GetCurrentMethod().Name + " - SimpleSpriteAnimation cannot work without a material!");
+    }
 
+    // Use this for initialization
+    void Start ()
+    {
         ResetAnimation();
         CalculateFrame();
 
-        if (m_PlayOnStart)
-        {
-            StartAnimation();
-        }
+        if (m_PlayOnStart) { StartAnimation(); }
     }
 	
     private void ResetAnimation()
@@ -142,7 +150,7 @@ public class SimpleSpriteAnimation : MonoBehaviour
             {
                 StopAnimation();
 
-                if (DestroyOnComplettion)
+                if (DestroyOnCompletion)
                 {
                     GameObject.Destroy(gameObject);
                 }

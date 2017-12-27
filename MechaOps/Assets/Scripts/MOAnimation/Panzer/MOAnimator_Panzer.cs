@@ -31,6 +31,9 @@ public class MOAnimator_Panzer : MOAnimator
     // How fast the wheels should turn relative to the tracks.
     protected float m_TracksToWheelsSpeedRatio = 800.0f;
 
+    // Audio
+    [SerializeField] protected AudioClip m_ShootGunfireSFX = null;
+
     // Shoot Animation
     protected GameObject m_Target = null;
     protected bool m_Hit = false; // Is the shot a hit or miss?
@@ -127,6 +130,8 @@ public class MOAnimator_Panzer : MOAnimator
     // Death Animation
     protected override IEnumerator DeathAnimationCoroutine()
     {
+        StopAmbientAudioSource();
+
         if (m_CineMachineHandler)
         {
             m_CineMachineHandler.DelayCinemachineSetActive(false, m_TimeDelayForDeathCam);
@@ -195,8 +200,13 @@ public class MOAnimator_Panzer : MOAnimator
     // Shoot Animation
     protected virtual void FireGun(GameObject _target, bool _explodeOnContact, Void_Void _callback)
     {
+        // Spawn Muzzle Flash
         AnimateMuzzleFlash();
 
+        // Play Audio
+        PlayOneShotSFXAudioSource(m_ShootGunfireSFX);
+
+        // Spawn Bullet
         Assert.IsTrue(_target != null);
         m_Bullet = Instantiate(m_Bullet_Prefab.gameObject).GetComponent<TankBullet>();
         m_Bullet.transform.position = m_BulletSpawnPoint.transform.position;

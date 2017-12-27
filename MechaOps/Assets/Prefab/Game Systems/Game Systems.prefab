@@ -227,6 +227,8 @@ MonoBehaviour:
   m_PlayerUnitsManager: {fileID: 114210778316198234}
   m_UnitActionScheduler: {fileID: 114685244373901584}
   m_CineMachineHandler: {fileID: 0}
+  m_GameAudioSettings: {fileID: 11400000, guid: 7661fa5d75f3f464bb18461c47ac4643,
+    type: 2}
 --- !u!114 &114210778316198234
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -272,6 +274,7 @@ MonoBehaviour:
     m_X: 0
     m_Y: 0
     m_Z: 0
+  m_GlobalListOfOpposingUnits: []
 --- !u!114 &114501620522289274
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,10 +1,20 @@
 fileFormatVersion: 2
 guid: a8f2835b7cdd5454abed195d5dc06498
-timeCreated: 1513327547
+timeCreated: 1514390383
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - m_TileSystem: {instanceID: 0}
+  - m_ScreenSpaceCanvas: {instanceID: 0}
+  - m_GameCamera: {instanceID: 0}
+  - m_UnitsTracker: {instanceID: 0}
+  - m_EnemyUnitsManager: {instanceID: 0}
+  - m_PlayerUnitsManager: {instanceID: 0}
+  - m_UnitActionScheduler: {instanceID: 0}
+  - m_CineMachineHandler: {instanceID: 0}
+  - m_GameAudioSettings: {fileID: 11400000, guid: 7661fa5d75f3f464bb18461c47ac4643,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
