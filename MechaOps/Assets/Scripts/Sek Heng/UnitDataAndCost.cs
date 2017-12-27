@@ -40,7 +40,7 @@ public class UnitDataAndCost : ScriptableObject {
     public struct UnitUI_Data
     {
         public Sprite m_UnitSpriteUI;
-        public string m_TypeName;
+        public UnitsPrefabData m_UnitPrefabDataReference;
     }
 
     [SerializeField, Tooltip("The array of unit data")]

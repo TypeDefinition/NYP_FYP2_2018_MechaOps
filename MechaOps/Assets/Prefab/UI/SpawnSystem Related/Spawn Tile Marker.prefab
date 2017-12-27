@@ -40,7 +40,6 @@ GameObject:
   - component: {fileID: 4954751184244864}
   - component: {fileID: 212881237955323818}
   - component: {fileID: 114809046171055028}
-  - component: {fileID: 114234296164555558}
   - component: {fileID: 65430945947658854}
   m_Layer: 11
   m_Name: Spawn Tile Marker
@@ -158,23 +157,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.95, y: 4.6000004, z: 0.20000005}
   m_Center: {x: 0, y: 0.00000023841858, z: -0.00000047683716}
---- !u!114 &114234296164555558
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1906623605048230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04960d33f8d778949850d1a3ec237446, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RemovedUnitSpawnUI: {fileID: 114501833711858550}
-  m_TypeNameText: {fileID: 114262740923928526}
-  m_TileID:
-    m_X: 0
-    m_Y: 0
-    m_Z: 0
 --- !u!114 &114262740923928526
 MonoBehaviour:
   m_ObjectHideFlags: 1

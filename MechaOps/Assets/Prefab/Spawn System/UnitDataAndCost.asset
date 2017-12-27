@@ -24,6 +24,12 @@ MonoBehaviour:
     m_Cost: 0
   m_UnitUIDataArray:
   - m_UnitSpriteUI: {fileID: 21300000, guid: ddc1c000a147a3e488437154aea1d1d3, type: 3}
-    m_TypeName: Panzer
+    m_UnitPrefabDataReference:
+      m_UnitStatsPrefab: {fileID: 114718164003450294, guid: 08d48d711bd8ebb4c8ef4c4dbe590b67,
+        type: 2}
+      m_Cost: 100
   - m_UnitSpriteUI: {fileID: 21300000, guid: 6d20560ad46f8744a812d7925a0ca372, type: 3}
-    m_TypeName: SHSM
+    m_UnitPrefabDataReference:
+      m_UnitStatsPrefab: {fileID: 114088806880344424, guid: 6d5268ff15a2cc34da1a79ac3e69557e,
+        type: 2}
+      m_Cost: 300
