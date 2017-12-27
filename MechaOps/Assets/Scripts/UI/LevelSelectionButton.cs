@@ -6,19 +6,23 @@ using UnityEngine.UI;
 using UnityEngine.Assertions;
 using TMPro;
 
-[RequireComponent(typeof(Toggle))]
+[RequireComponent(typeof(Toggle)), RequireComponent(typeof(AudioSource))]
 public class LevelSelectionButton : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI m_LevelName;
-    [SerializeField] private TextMeshProUGUI m_LevelDescription;
-    [SerializeField] private Image m_LevelIcon;
+    [SerializeField] private TextMeshProUGUI m_LevelName = null;
+    [SerializeField] private TextMeshProUGUI m_LevelDescription = null;
+    [SerializeField] private Image m_LevelIcon = null;
+    [SerializeField] private AudioClip m_OnClickSFX = null;
 
+    private AudioSource m_AudioSource = null;
     private LevelSelectionCanvas m_LevelSelectionCanvas = null;
     private MainMenuManager m_MainMenuManager = null;
     private LevelSelectionData m_LevelSelectionData = null;
 
     private void Awake()
     {
+        m_AudioSource = gameObject.GetComponent<AudioSource>();
+        Assert.IsNotNull(m_LevelName, MethodBase.GetCurrentMethod().Name + " - LevelSelectionButton requires an AudioSource!");
         Assert.IsNotNull(m_LevelName, MethodBase.GetCurrentMethod().Name + " - Level Name must not be null!");
         Assert.IsNotNull(m_LevelDescription, MethodBase.GetCurrentMethod().Name + " - Level Description must not be null!");
         Assert.IsNotNull(m_LevelIcon, MethodBase.GetCurrentMethod().Name + " - Level Icon must not be null!");
@@ -60,6 +64,7 @@ public class LevelSelectionButton : MonoBehaviour
         Toggle toggle = gameObject.GetComponent<Toggle>();
         if (toggle.isOn)
         {
+            m_AudioSource.PlayOneShot(m_OnClickSFX);
             m_LevelSelectionCanvas.ToggleAllButtonsOff(this);
             m_MainMenuManager.SetSelectedLevelSceneName(m_LevelSelectionData.GetSceneName());
         }
