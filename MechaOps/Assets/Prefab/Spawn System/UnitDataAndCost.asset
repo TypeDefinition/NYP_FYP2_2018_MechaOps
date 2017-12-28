@@ -33,3 +33,4 @@ MonoBehaviour:
       m_UnitStatsPrefab: {fileID: 114088806880344424, guid: 6d5268ff15a2cc34da1a79ac3e69557e,
         type: 2}
       m_Cost: 300
+  m_SpawnDataList: []

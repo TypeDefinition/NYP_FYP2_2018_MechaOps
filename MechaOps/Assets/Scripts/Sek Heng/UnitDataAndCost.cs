@@ -49,6 +49,20 @@ public class UnitDataAndCost : ScriptableObject {
     protected UnitsPrefabData[] m_ArrayOfEnemyUnits;
     [SerializeField, Tooltip("Array of unit icon UI")]
     protected UnitUI_Data[] m_UnitUIDataArray;
+    [SerializeField, Tooltip("Array of UnitSpawns that will get from the SpawnUnitSystem")]
+    protected UnitsPrefabData[] m_SpawnDataList;
+
+    public UnitsPrefabData[] SpawnDataList
+    {
+        set
+        {
+            m_SpawnDataList = value;
+        }
+        get
+        {
+            return m_SpawnDataList;
+        }
+    }
 
     public UnitUI_Data[] UnitUIDataArray
     {
@@ -95,5 +109,18 @@ public class UnitDataAndCost : ScriptableObject {
         }
         Assert.IsFalse(zeCost < 0, "Something is wrong with GetUnitCost as it shouldnt be less that 0");
         return zeCost;
+    }
+
+    public UnitUI_Data GetUnitIconSprite(string _UnitName)
+    {
+        foreach (UnitUI_Data zeUnitUI in m_UnitUIDataArray)
+        {
+            if (zeUnitUI.m_UnitPrefabDataReference.m_UnitStatsPrefab.Name == _UnitName)
+            {
+                return zeUnitUI;
+            }
+        }
+        Assert.IsTrue(true == false, "GetUnitIconSprite is false");
+        return new UnitUI_Data();
     }
 }

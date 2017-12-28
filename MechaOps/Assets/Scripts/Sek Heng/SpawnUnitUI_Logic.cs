@@ -164,7 +164,7 @@ public class SpawnUnitUI_Logic : MonoBehaviour {
             // we need to take account of the previous unit data!
             m_CurrentSelectedSlot.UnitData = _UnitData;
             m_SpawnSystem.PlayerCredits -= _UnitData.m_UnitPrefabDataReference.Cost;
-            m_TMProCreditText.text = "Cost: " + m_SpawnSystem.PlayerCredits.ToString();
+            m_TMProCreditText.text = m_SpawnSystem.PlayerCredits.ToString();
         }
     }
 
@@ -174,7 +174,7 @@ public class SpawnUnitUI_Logic : MonoBehaviour {
     public void ClearUnit(UnitSlotUI _slotUI)
     {
         m_SpawnSystem.PlayerCredits += _slotUI.UnitData.m_UnitPrefabDataReference.Cost;
-        m_TMProCreditText.text = "Cost: " + m_SpawnSystem.PlayerCredits.ToString();
+        m_TMProCreditText.text = m_SpawnSystem.PlayerCredits.ToString();
         _slotUI.UnitData = new UnitDataAndCost.UnitUI_Data();
     }
 

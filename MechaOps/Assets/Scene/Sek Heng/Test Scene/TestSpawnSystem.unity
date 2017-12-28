@@ -10936,39 +10936,12 @@ Prefab:
       propertyPath: m_GameSystem
       value: 
       objectReference: {fileID: 224638103}
-    - target: {fileID: 114381132492256020, guid: 544711987032c9b43a0645660874c1be,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114939121232145656, guid: 544711987032c9b43a0645660874c1be,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114846657096935028, guid: 544711987032c9b43a0645660874c1be,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1334520002180800, guid: 544711987032c9b43a0645660874c1be, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 114588400793566240, guid: 544711987032c9b43a0645660874c1be,
         type: 2}
-      propertyPath: m_UnitSpawnIndicatorPrefab
+      propertyPath: m_ScreenCanvas
       value: 
-      objectReference: {fileID: 114487821686078690, guid: dd641059324e098439523b1b4b7d6726,
-        type: 2}
-    - target: {fileID: 114588400793566240, guid: 544711987032c9b43a0645660874c1be,
-        type: 2}
-      propertyPath: m_CapacityOfUnits
-      value: 8
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114846657096935028, guid: 544711987032c9b43a0645660874c1be, type: 2}
-    - {fileID: 114381132492256020, guid: 544711987032c9b43a0645660874c1be, type: 2}
+      objectReference: {fileID: 1020636870}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 544711987032c9b43a0645660874c1be, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &384616877
