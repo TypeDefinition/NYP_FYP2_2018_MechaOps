@@ -54,4 +54,34 @@ public abstract class ViewScript : MonoBehaviour
         }
         return true;
     }
+
+    /// <summary>
+    /// It doesn't depends on it's own tile. it will simulate this unit is at the Origin Tile!
+    /// </summary>
+    /// <param name="_TargetTile">Target tile</param>
+    /// <param name="_OriginTile">Origin tile!</param>
+    /// <returns></returns>
+    public virtual bool RaycastToTile(Tile _TargetTile, Tile _OriginTile)
+    {
+        int layerMask = LayerMask.GetMask("TileDisplay");
+        // Simulate if the unit is at that tile!
+        Vector3 UnitTileAtTile = _OriginTile.transform.position;
+        UnitTileAtTile.y = transform.position.y;
+        Vector3 rayDirection = _TargetTile.transform.position - UnitTileAtTile;
+        Ray ray = new Ray(UnitTileAtTile, rayDirection);
+        RaycastHit[] hitInfo = Physics.RaycastAll(ray, rayDirection.magnitude, layerMask);
+        Tile currentTile = m_GameSystemsDirectory.GetTileSystem().GetTile(m_UnitStats.CurrentTileID);
+        foreach (RaycastHit hit in hitInfo)
+        {
+            TileDisplay tileDisplay = hit.collider.GetComponent<TileDisplay>();
+            Assert.IsNotNull(tileDisplay, MethodBase.GetCurrentMethod().Name + " - Hit GameObject does not have a TileDisplay Component.");
+            if (currentTile != tileDisplay.GetOwner() && _TargetTile != tileDisplay.GetOwner())
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public virtual void Initialise() {}
 }

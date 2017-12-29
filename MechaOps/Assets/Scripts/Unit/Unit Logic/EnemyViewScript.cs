@@ -60,6 +60,7 @@ public class EnemyViewScript : ViewScript
         --VisibilityCount;
         if (VisibilityCount == 0)
         {
+            m_UnitStats.UnitInfoDisplayUI.gameObject.SetActive(false);
             GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitUnseen", gameObject);
         }
     }
@@ -69,6 +70,7 @@ public class EnemyViewScript : ViewScript
         ++VisibilityCount;
         if (VisibilityCount == 1)
         {
+            m_UnitStats.UnitInfoDisplayUI.gameObject.SetActive(true);
             GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitSeen", gameObject);
         }
     }
@@ -88,5 +90,13 @@ public class EnemyViewScript : ViewScript
     public override bool IsVisible()
     {
         return VisibilityCount != 0;
+    }
+
+    public override void Initialise()
+    {
+        if (VisibilityCount == 0)
+        {
+            m_UnitStats.UnitInfoDisplayUI.gameObject.SetActive(false);
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 /// <summary>
 /// So that the AI will be attack the opposing unit in range.
@@ -59,43 +60,46 @@ public class GoapNearTarget : IGoapAction
 
     public override IEnumerator UpdateActRoutine()
     {
-        if (m_EnemiesInAttack.Count > 0)
-            yield break;
+        Assert.IsTrue(m_EnemiesInAttack.Count == 0, "GoapNearTarget has a bug at UpdateActRoutine");
         // we will need to check through the units that are in range then move near to that unit!
         // this got to be the most headache part
         // TODO: Improve this part as we dont have time to do some of the amazing AI and stick to this shitty AI instead
         // We will get the shortest path to the 1st player unit
         int zeEnemyIndex = 0;
         // Maybe we can randomize but we will just get the 1st unit!
-        UnitStats zeEnemyStat = m_Planner.m_Stats.EnemiesInRange[zeEnemyIndex].GetComponent<UnitStats>();
+        UnitStats zeEnemyStat = m_Planner.m_Stats.GetGameSystemsDirectory().GetEnemyUnitsManager().GlobalListOfOpposingUnits[zeEnemyIndex].GetComponent<UnitStats>();
         TileId zeDestinationTileID = zeEnemyStat.CurrentTileID;
-        Tile zeDestTile = m_Planner.GameTileSystem.GetTile(zeDestinationTileID);
+        Tile EnemyTile = m_Planner.GameTileSystem.GetTile(zeDestinationTileID);
+        Tile DestTile = m_Planner.GameTileSystem.GetTile(zeDestinationTileID);
         // we will get the surrounding tiles and check whether they are available! 
         TileId[] zeTiles = m_Planner.GameTileSystem.GetSurroundingTiles(zeEnemyStat.CurrentTileID, m_AttackAct.MaxAttackRange);
-        while (zeDestTile.HasUnit() || !zeDestTile.GetIsWalkable())
+        while (DestTile.HasUnit() || !DestTile.GetIsWalkable())
         {
             foreach (TileId zeTileCheck in zeTiles)
             {
                 zeDestinationTileID = zeTileCheck;
-                zeDestTile = m_Planner.GameTileSystem.GetTile(zeDestinationTileID);
-                if (zeDestTile.GetIsWalkable() && !zeDestTile.HasUnit())
+                DestTile = m_Planner.GameTileSystem.GetTile(zeDestinationTileID);
+                // check is it can be walked as well as getting a direct target to there!
+                if (DestTile.GetIsWalkable() && !DestTile.HasUnit() && m_Planner.m_Stats.ViewTileScript.RaycastToTile(EnemyTile, DestTile))
                     break;
             }
             // if still cannot find any tile
-            if (zeDestTile.HasUnit() || !zeDestTile.GetIsWalkable())
+            if (DestTile.HasUnit() || !DestTile.GetIsWalkable())
             {
                 // Then we will have to another target!
-                zeEnemyStat = m_Planner.m_Stats.EnemiesInRange[++zeEnemyIndex].GetComponent<UnitStats>();
+                zeEnemyStat = m_Planner.m_Stats.GetGameSystemsDirectory().GetEnemyUnitsManager().GlobalListOfOpposingUnits[++zeEnemyIndex].GetComponent<UnitStats>();
             }
         }
+
         TileId[] zePathToEnemy = m_Planner.GameTileSystem.GetPath(999, m_Planner.m_Stats.CurrentTileID, zeDestinationTileID, m_Planner.m_Stats.GetTileAttributeOverrides());
         // But we will just walk the shortest length of tile to get to the m_EnemyState. Maybe when there is Accuracy point then it will be added in!
         List<TileId> zeTileToWalk = new List<TileId>();
         foreach (TileId zeTile in zePathToEnemy)
         {
             zeTileToWalk.Add(zeTile);
+            Tile TileOfTileID = m_Planner.GameTileSystem.GetTile(zeTile);
             // Once that supposed tile is good enough for this unit to attack the enemy!
-            if (TileId.GetDistance(m_Planner.GameTileSystem.GetTile(zeTile).GetTileId(), zeEnemyStat.CurrentTileID) <= m_AttackAct.MaxAttackRange)
+            if (TileId.GetDistance(m_Planner.GameTileSystem.GetTile(zeTile).GetTileId(), zeEnemyStat.CurrentTileID) <= m_AttackAct.MaxAttackRange && m_Planner.m_Stats.ViewTileScript.RaycastToTile(TileOfTileID, EnemyTile))
             {
                 break;
             }
@@ -132,7 +136,7 @@ public class GoapNearTarget : IGoapAction
         {
             UnitStats zeGoStat = zeGO.GetComponent<UnitStats>();
             int zeTileDistance = TileId.GetDistance(zeGoStat.CurrentTileID, m_Planner.m_Stats.CurrentTileID);
-            if (zeTileDistance <= m_AttackAct.MaxAttackRange && m_Planner.m_Stats.ViewTileScript.RaycastToTile(m_Planner.GameTileSystem.GetTile(m_Planner.m_Stats.CurrentTileID)))
+            if (zeTileDistance <= m_AttackAct.MaxAttackRange && m_Planner.m_Stats.ViewTileScript.RaycastToTile(m_Planner.GameTileSystem.GetTile(zeGoStat.CurrentTileID)))
             {
                 m_EnemiesInAttack.Add(zeGO);
             }

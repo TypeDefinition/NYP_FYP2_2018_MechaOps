@@ -254,6 +254,11 @@ public class UnitStats : MonoBehaviour
         get { return m_ViewTileScript; }
     }
 
+    public UnitInfoDisplay UnitInfoDisplayUI
+    {
+        get { return m_UnitInfoDisplay; }
+    }
+
     private void Awake()
     {
         // Ensure that we have the system(s) we require.
@@ -281,6 +286,7 @@ public class UnitStats : MonoBehaviour
     void Initialise()
     {
         CheckEnemiesInViewRange();
+        m_ViewTileScript.Initialise();
         m_ViewTileScript.SetVisibleTiles();
         UpdateUnitInfoDisplay();
 

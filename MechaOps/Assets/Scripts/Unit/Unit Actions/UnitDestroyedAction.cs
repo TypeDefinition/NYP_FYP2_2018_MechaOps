@@ -94,6 +94,8 @@ public class UnitDestroyedAction : IUnitAction
 
     protected override void OnAnimationCompleted()
     {
+        m_ActionState = ActionState.Completed;
+        UnregisterAnimationCompletionCallback();
         InvokeCompletionCallback();
     }
 

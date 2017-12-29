@@ -59254,6 +59254,10 @@ Prefab:
       propertyPath: m_UnitStatsJSON.m_CurrentHealthPoints
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1258380024048378, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
   m_IsPrefabParent: 0
@@ -63472,6 +63476,46 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
+--- !u!1 &1986379710
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1986379712}
+  - component: {fileID: 1986379711}
+  m_Layer: 0
+  m_Name: Testing scripts
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1986379711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1986379710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32c0e711174d6ae46ad4b8215dfc5545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1986379712
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1986379710}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.0433226, y: 0.5377026, z: -1.8825815}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1988889489
 GameObject:
   m_ObjectHideFlags: 0
