@@ -107,15 +107,15 @@ public class GameUIManager : MonoBehaviour
     /// </summary>
     protected void DisplayWinScreen()
     {
-        Instantiate(m_PlayerWonDisplay, m_GameSystemDirectory.GetScreenSpaceCanvas().transform);
+        Instantiate(m_PlayerWonDisplay, m_GameSystemDirectory.GetScreenSpaceCanvas().transform).SetActive(true);
         m_EnemyTurnDisplay.SetActive(false);
-        Instantiate(m_GameOverDisplay, m_GameSystemDirectory.GetScreenSpaceCanvas().transform);
+        Instantiate(m_GameOverDisplay, m_GameSystemDirectory.GetScreenSpaceCanvas().transform).SetActive(true);
     }
 
     protected void DisplayLoseScreen()
     {
-        Instantiate(m_PlayerLostDisplay, m_GameSystemDirectory.GetScreenSpaceCanvas().transform);
+        Instantiate(m_PlayerLostDisplay, m_GameSystemDirectory.GetScreenSpaceCanvas().transform).SetActive(true);
         m_EnemyTurnDisplay.SetActive(false);
-        Instantiate(m_GameOverDisplay, m_GameSystemDirectory.GetScreenSpaceCanvas().transform);
+        Instantiate(m_GameOverDisplay, m_GameSystemDirectory.GetScreenSpaceCanvas().transform).SetActive(true);
     }
 }
