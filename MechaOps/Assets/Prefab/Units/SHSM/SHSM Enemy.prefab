@@ -1440,6 +1440,7 @@ MonoBehaviour:
   m_AttackAct: {fileID: 114048793003934562}
   m_GOAPTargetAct: {fileID: 114714950352527536}
   m_MoveAct: {fileID: 114428603780392550}
+  m_SkipAction: {fileID: 114529699096323604}
 --- !u!114 &114714950352527536
 MonoBehaviour:
   m_ObjectHideFlags: 1

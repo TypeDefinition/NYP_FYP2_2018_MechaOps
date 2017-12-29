@@ -10,6 +10,8 @@ public class GoapAttackAct : IGoapAction {
     protected GoapNearTarget m_GOAPTargetAct;
     [SerializeField, Tooltip("Walk action that needs to be refactored soon")]
     protected UnitMoveAction m_MoveAct;
+    [SerializeField, Tooltip("Skip actiopn")]
+    protected UnitSkipAction m_SkipAction;
 
     protected override void Start()
     {
@@ -24,14 +26,28 @@ public class GoapAttackAct : IGoapAction {
         {
             m_MoveAct = GetComponent<UnitMoveAction>();
         }
+        if (!m_SkipAction)
+        {
+            m_SkipAction = GetComponent<UnitSkipAction>();
+        }
+        m_ActionCompleted = false;
         m_UpdateRoutine = StartCoroutine(UpdateActRoutine());
     }
 
     public override IEnumerator UpdateActRoutine()
     {
+        WaitForFixedUpdate FixedWait = new WaitForFixedUpdate();
         // If there is no unit, might as well, quit this action!
         if (m_GOAPTargetAct.EnemiesInAttack.Count == 0)
+        {
+            // it means the unit is not able to attack it!
+            m_SkipAction.CompletionCallBack += InvokeActionCompleted;
+            m_SkipAction.TurnOn();
+            while (!m_ActionCompleted)
+                yield return FixedWait;
+            m_SkipAction.CompletionCallBack -= InvokeActionCompleted;
             yield break;
+        }
         // we picked the target which will be the 1st unit in the range at GoapNearTarget
         GameObject zeTarget = m_GOAPTargetAct.EnemiesInAttack[0];
         // TODO: resolve this quick fix
@@ -47,10 +63,8 @@ public class GoapAttackAct : IGoapAction {
         //else
         {
             m_AttackAct.SetTarget(zeTarget);
-            m_AttackAct.TurnOn();
-            WaitForFixedUpdate FixedWait = new WaitForFixedUpdate();
-            m_ActionCompleted = false;
             m_AttackAct.CompletionCallBack += InvokeActionCompleted;
+            m_AttackAct.TurnOn();
             while (!m_ActionCompleted)
                 yield return FixedWait;
             m_AttackAct.CompletionCallBack -= InvokeActionCompleted;
