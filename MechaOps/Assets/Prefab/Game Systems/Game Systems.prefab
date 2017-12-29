@@ -304,10 +304,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PlayerManager: {fileID: 114210778316198234}
   m_EnemyManager: {fileID: 114350018491506326}
-  m_PlayerWonDisplay: {fileID: 0}
-  m_PlayerLostDisplay: {fileID: 0}
-  m_EnemyTurnDisplay: {fileID: 0}
+  m_PlayerWonDisplay: {fileID: 1340652212449704, guid: b8400546c5ca32c44b77542b2687c5a3,
+    type: 2}
+  m_PlayerLostDisplay: {fileID: 1219414303167620, guid: 85d077349c1087d46a381752e9d6af94,
+    type: 2}
+  m_EnemyTurnDisplay: {fileID: 1082769455872240, guid: e97a4752bb49f70478203e6977c94504,
+    type: 2}
+  m_GameOverDisplay: {fileID: 1233162744124890, guid: 1ec63ba1da036854c853ea0eae79500c,
+    type: 2}
+  m_GameSystemDirectory: {fileID: 114092306247629050}
   m_PlayerTurn: 1
+  m_InstantiateEnemyTurnGO: {fileID: 0}
 --- !u!114 &114672490564443986
 MonoBehaviour:
   m_ObjectHideFlags: 1

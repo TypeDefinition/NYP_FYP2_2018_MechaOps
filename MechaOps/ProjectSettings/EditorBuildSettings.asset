@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scene/MechaOps/MainMenu.unity
+    guid: 9549380e74f20034caad30dceb06b98b
+  - enabled: 1
     path: Assets/Scene/Sek Heng/Testing Unit Logic.unity
     guid: 4b81dbb69070c6148aaff00e4744403b
   - enabled: 0

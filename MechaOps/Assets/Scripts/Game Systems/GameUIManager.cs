@@ -11,20 +11,27 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class GameUIManager : MonoBehaviour
 {
-    [Tooltip("The Player unit manager")]
-    public PlayerUnitsManager m_PlayerManager;
-    [Tooltip("The Enemy unit manager")]
-    public EnemyUnitsManager m_EnemyManager;
-    [Tooltip("The UI for Player winning display")]
-    public GameObject m_PlayerWonDisplay;
-    [Tooltip("The UI for Player losing display")]
-    public GameObject m_PlayerLostDisplay;
-    [Tooltip("The UI to indicate enemy's turn")]
-    public GameObject m_EnemyTurnDisplay;
+    [Header("Variables required")]
+    [SerializeField, Tooltip("The Player unit manager")]
+    protected PlayerUnitsManager m_PlayerManager;
+    [SerializeField, Tooltip("The Enemy unit manager")]
+    protected EnemyUnitsManager m_EnemyManager;
+    [SerializeField, Tooltip("The UI for Player winning display prefab")]
+    protected GameObject m_PlayerWonDisplay;
+    [SerializeField, Tooltip("The UI for Player losing display prefab")]
+    protected GameObject m_PlayerLostDisplay;
+    [SerializeField, Tooltip("The UI to indicate enemy's turn prefab")]
+    protected GameObject m_EnemyTurnDisplay;
+    [SerializeField, Tooltip("Game Over Display UI to go back to main menu or retry prefab")]
+    protected GameObject m_GameOverDisplay;
+    [SerializeField, Tooltip("Game System Directory")]
+    protected GameSystemsDirectory m_GameSystemDirectory;
 
     [Header("Shown In Inspector For Debugging Purposes.")]
     [SerializeField, Tooltip("To see whose turn it is. The initial variable can be changed to decide who starts first.")]
     protected bool m_PlayerTurn = true;
+    [SerializeField, Tooltip("Instantiated Enemy Turn Display")]
+    protected GameObject m_InstantiateEnemyTurnGO;
 
     /// <summary>
     /// So that the setter can used easily.
@@ -84,6 +91,9 @@ public class GameUIManager : MonoBehaviour
 
     protected IEnumerator Start()
     {
+        // Instantiate the variables of the displays!
+        m_InstantiateEnemyTurnGO = Instantiate(m_EnemyTurnDisplay, m_GameSystemDirectory.GetScreenSpaceCanvas().transform);
+        m_InstantiateEnemyTurnGO.SetActive(false);
         yield return null;
         GameEventSystem.GetInstance().TriggerEvent("GameStart");
         // Maybe there will be a introduction or something thus this is a coroutine to delay the start
@@ -97,13 +107,15 @@ public class GameUIManager : MonoBehaviour
     /// </summary>
     protected void DisplayWinScreen()
     {
-        m_PlayerWonDisplay.SetActive(true);
+        Instantiate(m_PlayerWonDisplay, m_GameSystemDirectory.GetScreenSpaceCanvas().transform);
         m_EnemyTurnDisplay.SetActive(false);
+        Instantiate(m_GameOverDisplay, m_GameSystemDirectory.GetScreenSpaceCanvas().transform);
     }
 
     protected void DisplayLoseScreen()
     {
-        m_PlayerLostDisplay.SetActive(true);
+        Instantiate(m_PlayerLostDisplay, m_GameSystemDirectory.GetScreenSpaceCanvas().transform);
         m_EnemyTurnDisplay.SetActive(false);
+        Instantiate(m_GameOverDisplay, m_GameSystemDirectory.GetScreenSpaceCanvas().transform);
     }
 }

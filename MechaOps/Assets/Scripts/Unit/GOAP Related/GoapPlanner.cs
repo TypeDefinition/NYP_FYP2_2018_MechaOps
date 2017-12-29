@@ -96,6 +96,18 @@ public class GoapPlanner : MonoBehaviour
     /// </summary>
     public Void_Void m_CallbackStartPlan;
 
+    protected void OnEnable()
+    {
+        GameEventSystem.GetInstance().SubscribeToEvent("PlayerAnnihilated", StopUpdate);
+        GameEventSystem.GetInstance().SubscribeToEvent("EnemyAnnihilated", StopUpdate);
+    }
+
+    protected void OnDisable()
+    {
+        GameEventSystem.GetInstance().UnsubscribeFromEvent("PlayerAnnihilated", StopUpdate);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent("EnemyAnnihilated", StopUpdate);
+    }
+
     // Use this for initialization
     protected virtual void Start()
     {
@@ -315,5 +327,13 @@ public class GoapPlanner : MonoBehaviour
             zeRefNode = zeRefNode.m_parent;
         }
         return zeNewList;
+    }
+
+    /// <summary>
+    /// Stopped all updates when the game is over!
+    /// </summary>
+    protected void StopUpdate()
+    {
+        StopAllCoroutines();
     }
 }
