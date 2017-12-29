@@ -39220,25 +39220,6 @@ Prefab:
       propertyPath: m_GameSystemsDirectory
       value: 
       objectReference: {fileID: 1508517823}
-    - target: {fileID: 1270927856641450, guid: fe04e115bedb3a04c9248416d0b6ab82, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114686418102639456, guid: fe04e115bedb3a04c9248416d0b6ab82,
-        type: 2}
-      propertyPath: m_UnitStatsJSON.m_CurrentTileID.m_X
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114686418102639456, guid: fe04e115bedb3a04c9248416d0b6ab82,
-        type: 2}
-      propertyPath: m_UnitStatsJSON.m_CurrentTileID.m_Y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114686418102639456, guid: fe04e115bedb3a04c9248416d0b6ab82,
-        type: 2}
-      propertyPath: m_UnitStatsJSON.m_CurrentTileID.m_Z
-      value: -1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fe04e115bedb3a04c9248416d0b6ab82, type: 2}
   m_IsPrefabParent: 0

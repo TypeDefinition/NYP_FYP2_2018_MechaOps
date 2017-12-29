@@ -414,7 +414,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1270927856641450}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.863567, y: 0, z: -5.5232472}
+  m_LocalPosition: {x: -2.81, y: 0, z: 4.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4774917427898366}
@@ -1406,12 +1406,12 @@ MonoBehaviour:
     m_ConcealmentPoints: 3
     m_EvasionPoints: 0
     m_CurrentTileID:
-      m_X: 3
-      m_Y: -3
-      m_Z: 0
+      m_X: -1
+      m_Y: 2
+      m_Z: -1
   m_TileAttributeOverrides: []
   m_ViewTileScript: {fileID: 114307235735154440}
-  m_UnitInfoDisplay_Prefab: {fileID: 114423042521562832, guid: 5de0e7aba41ddec4daa1972243bd5133,
+  m_UnitInfoDisplay_Prefab: {fileID: 114423042521562832, guid: f6fdede1943ea6742858eefd80f3ded1,
     type: 2}
   m_CurrentActiveAction: {fileID: 0}
   m_EnemiesInViewRange: []
