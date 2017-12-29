@@ -98,8 +98,9 @@ public class GoapNearTarget : IGoapAction
         {
             zeTileToWalk.Add(zeTile);
             Tile TileOfTileID = m_Planner.GameTileSystem.GetTile(zeTile);
+            int TileDistance = TileId.GetDistance(m_Planner.GameTileSystem.GetTile(zeTile).GetTileId(), zeEnemyStat.CurrentTileID);
             // Once that supposed tile is good enough for this unit to attack the enemy!
-            if (TileId.GetDistance(m_Planner.GameTileSystem.GetTile(zeTile).GetTileId(), zeEnemyStat.CurrentTileID) <= m_AttackAct.MaxAttackRange && m_Planner.m_Stats.ViewTileScript.RaycastToTile(TileOfTileID, EnemyTile))
+            if (TileDistance <= m_AttackAct.MaxAttackRange && TileDistance >= m_AttackAct.MinAttackRange && m_Planner.m_Stats.ViewTileScript.RaycastToTile(TileOfTileID, EnemyTile))
             {
                 break;
             }
@@ -136,7 +137,7 @@ public class GoapNearTarget : IGoapAction
         {
             UnitStats zeGoStat = zeGO.GetComponent<UnitStats>();
             int zeTileDistance = TileId.GetDistance(zeGoStat.CurrentTileID, m_Planner.m_Stats.CurrentTileID);
-            if (zeTileDistance <= m_AttackAct.MaxAttackRange && m_Planner.m_Stats.ViewTileScript.RaycastToTile(m_Planner.GameTileSystem.GetTile(zeGoStat.CurrentTileID)))
+            if (zeTileDistance <= m_AttackAct.MaxAttackRange && zeTileDistance >= m_AttackAct.MinAttackRange && m_Planner.m_Stats.ViewTileScript.RaycastToTile(m_Planner.GameTileSystem.GetTile(zeGoStat.CurrentTileID)))
             {
                 m_EnemiesInAttack.Add(zeGO);
             }
