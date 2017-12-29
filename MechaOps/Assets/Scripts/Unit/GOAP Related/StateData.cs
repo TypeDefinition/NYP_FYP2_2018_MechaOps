@@ -48,7 +48,7 @@ public class StateData : MonoBehaviour {
 
     public void StartInitState()
     {
-        if (m_Stat.EnemiesInRange.Count > 0)
+        if (m_Stat.GetGameSystemsDirectory().GetEnemyUnitsManager().GlobalListOfOpposingUnits.Count > 0)
         {
             m_CurrentStates.Add("TargetInView");
         }

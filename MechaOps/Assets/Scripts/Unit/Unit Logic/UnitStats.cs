@@ -458,7 +458,11 @@ public class UnitStats : MonoBehaviour
         }
         else
         {
-            m_EnemiesInViewRange.Remove(_deadUnit);
+            if (m_EnemiesInViewRange.Contains(_deadUnit))
+            {
+                m_EnemiesInViewRange.Remove(_deadUnit);
+                _deadUnit.GetComponent<ViewScript>().DecreaseVisibility();
+            }
         }
     }
 

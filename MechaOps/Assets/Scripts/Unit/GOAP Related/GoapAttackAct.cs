@@ -48,12 +48,12 @@ public class GoapAttackAct : IGoapAction {
         {
             m_AttackAct.SetTarget(zeTarget);
             m_AttackAct.TurnOn();
-            WaitForFixedUpdate zeFixedWait = new WaitForFixedUpdate();
-            bool zeWaitForComplete = false;
-            m_AttackAct.CompletionCallBack += () => zeWaitForComplete = true;
-            while (!zeWaitForComplete)
-                yield return zeFixedWait;
-            m_AttackAct.CompletionCallBack = null;
+            WaitForFixedUpdate FixedWait = new WaitForFixedUpdate();
+            m_ActionCompleted = false;
+            m_AttackAct.CompletionCallBack += InvokeActionCompleted;
+            while (!m_ActionCompleted)
+                yield return FixedWait;
+            m_AttackAct.CompletionCallBack -= InvokeActionCompleted;
         }
         print("Finished Attacking");
         m_UpdateRoutine = null;
