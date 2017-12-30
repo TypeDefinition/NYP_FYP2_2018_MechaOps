@@ -9,7 +9,7 @@ using Cinemachine;
 /// </summary>
 public class CineMachineHandler : MonoBehaviour {
     [System.Serializable]
-    public class CinemachineDataHolder
+    public class CinematicData
     {
         public string m_HolderName;
         public CinemachineVirtualCameraBase m_CinematicCam;
@@ -22,7 +22,7 @@ public class CineMachineHandler : MonoBehaviour {
     protected CinemachineVirtualCameraBase m_DeathCinemachine;
 
     [SerializeField, Tooltip("Array of cinematic camera for panzer")]
-    protected CinemachineDataHolder[] m_ArrayOfCineCamPanzer;
+    protected CinematicData[] m_ArrayOfCineCamPanzer;
 
     [Header("Debugging for CineMachineHandler")]
     [SerializeField, Tooltip("CineMachine Brain Script. Thr should only be 1!")]
@@ -108,7 +108,7 @@ public class CineMachineHandler : MonoBehaviour {
                 m_ActiveCamBase.gameObject.SetActive(false);
                 m_ActiveCamBase = null;
             }
-            foreach (CinemachineDataHolder zeCamHolder in m_ArrayOfCineCamPanzer)
+            foreach (CinematicData zeCamHolder in m_ArrayOfCineCamPanzer)
             {
                 if (zeCamHolder.m_HolderName == _CamName)
                 {
