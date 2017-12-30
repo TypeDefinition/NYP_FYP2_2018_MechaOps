@@ -23,6 +23,11 @@ public class UnitSelectionSlot : MonoBehaviour
 
     public void SetUnitType(UnitType _unitType)
     {
+        if (m_UnitType != UnitType.None)
+        {
+            m_UnitsSelectionCanvas.RemoveSelectedUnit(m_UnitType);
+        }
+
         m_UnitType = _unitType;
         if (m_UnitType == UnitType.None)
         {
