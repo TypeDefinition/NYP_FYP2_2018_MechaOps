@@ -13,6 +13,7 @@ public class LevelSelectionCanvas : MonoBehaviour
     [SerializeField] private LevelSelectionButton m_LevelSelectionButton_Prefab = null;
     [SerializeField] private RectTransform m_ScrollViewContent = null;
     [SerializeField] private float m_ButtonHeightPadding = 10.0f;
+    [SerializeField] private Button m_ConfirmButton = null;
 
     private List<LevelSelectionButton> m_Buttons = new List<LevelSelectionButton>();
 
@@ -23,10 +24,16 @@ public class LevelSelectionCanvas : MonoBehaviour
         SpawnLevelSelectionButtons();
     }
 
+    private void OnEnable()
+    {
+        m_ConfirmButton.gameObject.SetActive(false);
+    }
+
     private void SpawnLevelSelectionButtons()
     {
         LevelSelectionData[] levelSelectionDatas = m_LevelSelectionLibrary.GetLevelSelectionData();
         if (levelSelectionDatas == null) { return; }
+        Assert.IsTrue(levelSelectionDatas.Length > 0, MethodBase.GetCurrentMethod().Name + " - levelSelectionDatas.Length must be > 0.");
         for (int i = 0; i < levelSelectionDatas.Length; ++i)
         {
             LevelSelectionButton button = Instantiate(m_LevelSelectionButton_Prefab.gameObject, m_ScrollViewContent).GetComponent<LevelSelectionButton>();
@@ -45,8 +52,12 @@ public class LevelSelectionCanvas : MonoBehaviour
         }
     }
 
-    public void ToggleAllButtonsOff(LevelSelectionButton _ignoredButton)
+    public void OnLevelSelectionButtonClick(LevelSelectionButton _ignoredButton)
     {
+        // Allow the user to click the Confirm Button.
+        m_ConfirmButton.gameObject.SetActive(true);
+
+        // Toggle off the other levels.
         for (int i = 0; i < m_Buttons.Count; ++i)
         {
             if (m_Buttons[i] == _ignoredButton) { continue; }

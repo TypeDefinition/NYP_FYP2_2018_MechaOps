@@ -65,7 +65,7 @@ public class LevelSelectionButton : MonoBehaviour
         if (toggle.isOn)
         {
             m_AudioSource.PlayOneShot(m_OnClickSFX);
-            m_LevelSelectionCanvas.ToggleAllButtonsOff(this);
+            m_LevelSelectionCanvas.OnLevelSelectionButtonClick(this);
             m_MainMenuManager.SetSelectedLevelSceneName(m_LevelSelectionData.GetSceneName());
         }
     }

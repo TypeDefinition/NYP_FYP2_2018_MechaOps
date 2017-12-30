@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 03909d224d4c8d14184f567b81d0bf84
+timeCreated: 1514627000
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - m_MainMenuManager: {instanceID: 0}
+  - m_UnitLibrary: {instanceID: 0}
+  - m_CreditsLeftText: {instanceID: 0}
+  - m_SelectedUnitsScrollView: {instanceID: 0}
+  - m_SelectedUnitsScrollViewContent: {instanceID: 0}
+  - m_UnitSelectionScrollView: {instanceID: 0}
+  - m_UnitSelectionScrollViewContent: {instanceID: 0}
+  - m_ConfirmButton: {instanceID: 0}
+  - m_UnitSelectionButtonPrefab: {instanceID: 0}
+  - m_UnitSelectionSlotPrefab: {instanceID: 0}
+  - m_PlayableUnits: {fileID: 11400000, guid: 1667c0aad83a55e4e9bcf1bc1a92aee4, type: 2}
+  - m_UnitsToSpawn: {fileID: 11400000, guid: 97b5c534055f0284e89a18b433d717b2, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 114006940085896276}
   - component: {fileID: 120010443292654190}
   m_Layer: 9
-  m_Name: TileSystem
+  m_Name: Tile System
   m_TagString: TileSystem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -209,6 +209,8 @@ MonoBehaviour:
   m_UnknownTilesMeshFirst: {fileID: 33770741073977870}
   m_UnknownTilesMeshSecond: {fileID: 33434311670442320}
   m_UnknownTileMeshDiameter: 4
+  m_PlayerSpawnTiles: []
+  m_EnemySpawnTiles: []
 --- !u!120 &120010443292654190
 LineRenderer:
   m_ObjectHideFlags: 1
