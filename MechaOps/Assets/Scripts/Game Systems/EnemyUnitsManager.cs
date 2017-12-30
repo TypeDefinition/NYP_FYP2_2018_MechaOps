@@ -19,7 +19,7 @@ public class EnemyUnitsManager : MonoBehaviour
     [SerializeField, Tooltip("The list of available units when it begins")]
     private List<GameObject> m_EnemyList;
     [SerializeField, Tooltip("Tile marker where all of the player units last gathered")]
-    private TileId m_PlayerUnitsLocations; // This isn't an array?
+    private List<TileId> m_PlayerUnitsLocations = new List<TileId>(); // This isn't an array?
     [SerializeField, Tooltip("List of all player or opposing units that all of the units have seen")]
     protected List<GameObject> m_GlobalListOfOpposingUnits;
 
@@ -32,7 +32,7 @@ public class EnemyUnitsManager : MonoBehaviour
     /// </summary>
     Coroutine m_UpdateOfEnemy;
 
-    public TileId PlayerUnitLocations
+    public List<TileId> PlayerUnitLocations
     {
         get { return m_PlayerUnitsLocations; }
     }
@@ -128,24 +128,50 @@ public class EnemyUnitsManager : MonoBehaviour
     public void UpdateMarker()
     {
         // TODO: improve this function!
-        m_PlayerUnitsLocations = m_UnitsTracker.m_AlivePlayerUnits[0].GetComponent<UnitStats>().CurrentTileID;
-        Tile zeTile = m_TileSystem.GetTile(m_PlayerUnitsLocations);
-        if (!zeTile.GetIsWalkable() || zeTile.HasUnit())
+        //m_PlayerUnitsLocations = m_UnitsTracker.m_AlivePlayerUnits[0].GetComponent<UnitStats>().CurrentTileID;
+        //Tile zeTile = m_TileSystem.GetTile(m_PlayerUnitsLocations);
+        //if (!zeTile.GetIsWalkable() || zeTile.HasUnit())
+        //{
+        //    // we only need the 1 radius tile!
+        //    TileId []zeTiles = m_TileSystem.GetSurroundingTiles(m_PlayerUnitsLocations, 1);
+        //    while (!zeTile.GetIsWalkable() || zeTile.HasUnit())
+        //    {
+        //        foreach (TileId zeTileID in zeTiles)
+        //        {
+        //            m_PlayerUnitsLocations = zeTileID;
+        //            zeTile = m_TileSystem.GetTile(m_PlayerUnitsLocations);
+        //            if (zeTile.GetIsWalkable() && !zeTile.HasUnit())
+        //            {
+        //                break;
+        //            }
+        //        }
+        //    }
+        //}
+
+        // A new Array of tile ids!
+        m_PlayerUnitsLocations.Clear();
+        foreach (GameObject PlayerUnitGO in m_UnitsTracker.m_AlivePlayerUnits)
         {
-            // we only need the 1 radius tile!
-            TileId []zeTiles = m_TileSystem.GetSurroundingTiles(m_PlayerUnitsLocations, 1);
-            while (!zeTile.GetIsWalkable() || zeTile.HasUnit())
+            UnitStats PlayerUnitStat = PlayerUnitGO.GetComponent<UnitStats>();
+            #region Ensure Empty Tile
+            Tile PlayerGoToTile = m_TileSystem.GetTile(PlayerUnitStat.CurrentTileID);
+            if (!PlayerGoToTile.GetIsWalkable() || PlayerGoToTile.HasUnit())
             {
-                foreach (TileId zeTileID in zeTiles)
+                // we only need the 1 radius tile!
+                TileId[] SurroundingTiles = m_TileSystem.GetSurroundingTiles(PlayerUnitStat.CurrentTileID, 1);
+                while (!PlayerGoToTile.GetIsWalkable() || PlayerGoToTile.HasUnit())
                 {
-                    m_PlayerUnitsLocations = zeTileID;
-                    zeTile = m_TileSystem.GetTile(m_PlayerUnitsLocations);
-                    if (zeTile.GetIsWalkable() && !zeTile.HasUnit())
+                    foreach (TileId TileID in SurroundingTiles)
                     {
-                        break;
+                        PlayerGoToTile = m_TileSystem.GetTile(TileID);
+                        if (PlayerGoToTile.GetIsWalkable() && !PlayerGoToTile.HasUnit())
+                        {
+                            m_PlayerUnitsLocations.Add(TileID);
+                        }
                     }
                 }
             }
+            #endregion
         }
     }
 

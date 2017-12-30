@@ -73,6 +73,7 @@ public class GoapNearTarget : IGoapAction
         Tile DestTile = m_Planner.GameTileSystem.GetTile(zeDestinationTileID);
         // we will get the surrounding tiles and check whether they are available! 
         TileId[] zeTiles = m_Planner.GameTileSystem.GetSurroundingTiles(zeEnemyStat.CurrentTileID, m_AttackAct.MaxAttackRange);
+        TileId[] zePathToEnemy = null;
         while (DestTile.HasUnit() || !DestTile.GetIsWalkable())
         {
             foreach (TileId zeTileCheck in zeTiles)
@@ -81,7 +82,14 @@ public class GoapNearTarget : IGoapAction
                 DestTile = m_Planner.GameTileSystem.GetTile(zeDestinationTileID);
                 // check is it can be walked as well as getting a direct target to there!
                 if (DestTile.GetIsWalkable() && !DestTile.HasUnit() && m_Planner.m_Stats.ViewTileScript.RaycastToTile(EnemyTile, DestTile))
-                    break;
+                {
+                    // find the path to the enemy 
+                    zePathToEnemy = m_Planner.GameTileSystem.GetPath(999, m_Planner.m_Stats.CurrentTileID, zeDestinationTileID, m_Planner.m_Stats.GetTileAttributeOverrides());
+                    if (zePathToEnemy != null)
+                    {
+                        break;
+                    }
+                }
             }
             // if still cannot find any tile
             if (DestTile.HasUnit() || !DestTile.GetIsWalkable())
@@ -90,8 +98,7 @@ public class GoapNearTarget : IGoapAction
                 zeEnemyStat = m_Planner.m_Stats.GetGameSystemsDirectory().GetEnemyUnitsManager().GlobalListOfOpposingUnits[++zeEnemyIndex].GetComponent<UnitStats>();
             }
         }
-
-        TileId[] zePathToEnemy = m_Planner.GameTileSystem.GetPath(999, m_Planner.m_Stats.CurrentTileID, zeDestinationTileID, m_Planner.m_Stats.GetTileAttributeOverrides());
+        Assert.IsNotNull(zePathToEnemy, "Path cannot be found at UpdateRoutine GoapNearTarget!");
         // But we will just walk the shortest length of tile to get to the m_EnemyState. Maybe when there is Accuracy point then it will be added in!
         List<TileId> zeTileToWalk = new List<TileId>();
         foreach (TileId zeTile in zePathToEnemy)

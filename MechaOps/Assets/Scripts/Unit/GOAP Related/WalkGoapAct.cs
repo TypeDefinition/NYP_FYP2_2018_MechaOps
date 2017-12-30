@@ -36,15 +36,37 @@ public class WalkGoapAct : IGoapAction {
 
     public override IEnumerator UpdateActRoutine()
     {
+        //Tile locatedLocation = null;
+        
         // TODO!
-        // Set the destination from the EnemyUnitsManager if it has already reaches the destination or if that area got occupied
-        if (m_Planner.m_Stats.CurrentTileID.Equals(m_Planner.EnemiesManager.PlayerUnitLocations) || m_WalkAct.GetTileSystem().GetTile(m_Planner.EnemiesManager.PlayerUnitLocations).HasUnit())
-            m_Planner.EnemiesManager.UpdateMarker();
-        if (m_Planner.m_Stats.CurrentTileID.Equals(m_Planner.EnemiesManager.PlayerUnitLocations))
-            Assert.IsTrue(true == false, "Update of Tile coordinate has failed at UpdateActRoutine in WalkGoapAct.cs");
-        m_TileDest = m_Planner.EnemiesManager.PlayerUnitLocations;
+        //foreach (TileId TileLocation in m_Planner.EnemiesManager.PlayerUnitLocations)
+        //{
+        //    locatedLocation = m_WalkAct.GetTileSystem().GetTile(TileLocation);
+        //    if (!m_Planner.m_Stats.CurrentTileID.Equals(m_Planner.EnemiesManager.PlayerUnitLocations) && !locatedLocation.HasUnit())
+        //    {
+        //        m_TileDest = TileLocation;
+        //        break;
+        //    }
+        //    else
+        //    {
+        //        locatedLocation = null;
+        //    }
+        //}
+        //Assert.IsNotNull(locatedLocation, "Update of Tile coordinate has failed at UpdateActRoutine in WalkGoapAct.cs");
+        //if (m_Planner.m_Stats.CurrentTileID.Equals(m_Planner.EnemiesManager.PlayerUnitLocations))
+        //    Assert.IsTrue(true == false, "Update of Tile coordinate has failed at UpdateActRoutine in WalkGoapAct.cs");
         // so why not lets just cheat here to get to the closest tile!
-        TileId[] zeTileToWalkTo = m_WalkAct.GetTileSystem().GetPath(99999, m_Planner.m_Stats.CurrentTileID, m_TileDest, m_Planner.m_Stats.GetTileAttributeOverrides());
+        TileId[] zeTileToWalkTo = null;
+        foreach (TileId TileLocation in m_Planner.EnemiesManager.PlayerUnitLocations)
+        {
+            Assert.IsFalse(m_Planner.m_Stats.CurrentTileID.Equals(TileLocation), "Update of Tile coordinate has failed at UpdateActRoutine in WalkGoapAct.cs");
+            zeTileToWalkTo = m_WalkAct.GetTileSystem().GetPath(99999, m_Planner.m_Stats.CurrentTileID, TileLocation, m_Planner.m_Stats.GetTileAttributeOverrides());
+            if (zeTileToWalkTo != null)
+            {
+                m_TileDest = TileLocation;
+                break;
+            }
+        }
         // from here, we get the walkable tiles!
         int zeCounter = 0;
         //TODO, this will sometimes has null reference
