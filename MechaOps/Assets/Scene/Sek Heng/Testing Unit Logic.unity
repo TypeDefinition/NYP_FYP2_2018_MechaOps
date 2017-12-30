@@ -25257,7 +25257,7 @@ Prefab:
     - target: {fileID: 114518543058706742, guid: 7e13055f398213b47a0faf2f4d1d089a,
         type: 2}
       propertyPath: m_PlayerTurn
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e13055f398213b47a0faf2f4d1d089a, type: 2}
