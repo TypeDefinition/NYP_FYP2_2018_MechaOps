@@ -35,10 +35,8 @@ public class GoapPlanner : MonoBehaviour
             // We can compare the cost of the nodes to see if they are the same but it will not do them justice! but certainly the fastest way!
             if (m_fCost != _other.m_fCost)
                 return false;
-            // So we will have to compare parent with parent and check! Need the number of parents are there!
-            int zeTotalChildCount = 0;
             // since thr can be duplicates
-            List<string> m_ActName = new List<string>();
+            //List<string> m_ActName = new List<string>();
             return true;
         }
     }

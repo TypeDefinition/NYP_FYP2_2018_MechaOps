@@ -131,27 +131,13 @@ public class MOAnimator_Panzer : MOAnimator
     protected override IEnumerator DeathAnimationCoroutine()
     {
         StopAmbientAudioSource();
-
-        if (m_CineMachineHandler)
-        {
-            m_CineMachineHandler.DelayCinemachineSetActive(false, m_TimeDelayForDeathCam);
-            yield return new WaitForSeconds(m_TimeDelayForDeathCam);
-            yield return new WaitForSeconds(m_TimeDelayForCamBackToNormal);
-        }
+        yield return new WaitForSeconds(m_TimeDelayForDeathCam);
 
         InvokeCallback(m_DeathAnimationCompletionCallback);
     }
 
     public override void StartDeathAnimation(Void_Void _completionCallback)
     {
-        // Regardless of the tag, show the death cinematic for both sides
-        if (m_CineMachineHandler)
-        {
-            m_CineMachineHandler.SetPanzerCinematicCamActive("Die");
-            m_CineMachineHandler.ActiveCamBase.LookAt = m_Hull;
-            m_CineMachineHandler.ActiveCamBase.Follow = m_Turret.transform;
-        }
-
         base.StartDeathAnimation(_completionCallback);
     }
 
@@ -187,13 +173,6 @@ public class MOAnimator_Panzer : MOAnimator
 
     public override void StartMoveAnimation(TileId[] _movementPath, Void_Int _perTileCallback, Void_Void _completionCallback)
     {
-        if (m_CineMachineHandler)
-        {
-            m_CineMachineHandler.SetPanzerCinematicCamActive("Walk");
-            m_CineMachineHandler.ActiveCamBase.LookAt = m_Hull;
-            m_CineMachineHandler.ActiveCamBase.Follow = m_Hull;
-        }
-
         base.StartMoveAnimation(_movementPath, _perTileCallback, _completionCallback);
     }
 
@@ -286,29 +265,6 @@ public class MOAnimator_Panzer : MOAnimator
         m_Target = _target;
         m_Hit = _hit;
         m_ShootAnimationCompletionCallback = _callback;
-
-        // CineMachineHandler
-        if (m_CineMachineHandler)
-        {
-            int randomNumber = Random.Range(1, 3);
-            m_CineMachineHandler.SetPanzerCinematicCamActive("Attack" + randomNumber);
-            // unfortunately, need to hardcode the cinmatic abit
-            switch (randomNumber)
-            {
-                case 1:
-                    m_CineMachineHandler.ActiveCamBase.Follow = m_Turret.transform;
-                    break;
-                case 2:
-                    // Number 2 refers to Following the target while aiming the cinematic camera at the Turret
-                    m_CineMachineHandler.ActiveCamBase.Follow = m_Target.transform;
-                    break;
-                default:
-                    Assert.IsFalse(true, MethodBase.GetCurrentMethod().Name + " - Unhandled m_CineMachineHandler case.");
-                    break;
-            }
-            m_CineMachineHandler.ActiveCamBase.LookAt = m_Gun.transform;
-            // and then randomize between 1st and 2nd attack camera cinematics
-        }
 
         // Panzer
         m_ShootAnimationCoroutine = ShootAnimationCouroutine();
