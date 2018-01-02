@@ -6,20 +6,15 @@ using UnityEngine.Assertions;
 
 public enum HazardType
 {
+    Fire,
+
+    Num_HazardType,
     None = -1,
-
-    Fire = 0,
-
-    Num_HazardType
 }
 
-public class HazardLibrary : MonoBehaviour {
+public class HazardLibrary : MonoBehaviour
+{
+    [SerializeField] private Hazard[] m_Library = new Hazard[(int)HazardType.Num_HazardType];
 
-    [SerializeField] private Hazard[] m_Library = new Hazard[(uint)HazardType.Num_HazardType];
-    
-    public Hazard GetHazard(HazardType _type)
-    {
-        return m_Library[(uint)_type];
-    }
-
+    public Hazard GetHazard(HazardType _type) { return m_Library[(int)_type]; }
 }

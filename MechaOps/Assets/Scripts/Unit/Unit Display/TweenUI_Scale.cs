@@ -7,15 +7,21 @@ using UnityEngine;
 /// </summary>
 public class TweenUI_Scale : MonoBehaviour
 {
-    [Header("Variables for TweenUI_Scale")]
-    [Tooltip("The animation time")]
-    public float m_AnimationTime = 0.2f;
+    [SerializeField] public float m_TweenAnimationDuration = 0.2f;
 
-    [Header("Debugging for TweenUI_Scale")]
-    [SerializeField, Tooltip("The original scale for the tween")]
     protected Vector3 m_OriginalScale;
 
     protected virtual void Awake()
+    {
+        UpdateOriginalScale();
+    }
+
+    public virtual void OnEnable()
+    {
+        AnimateUI();
+    }
+
+    public void UpdateOriginalScale()
     {
         m_OriginalScale = transform.localScale;
     }
@@ -25,9 +31,7 @@ public class TweenUI_Scale : MonoBehaviour
     /// </summary>
     public virtual void AnimateUI()
     {
-        Vector3 zeLocalScale = transform.localScale;
-        zeLocalScale.x = 0;
-        transform.localScale = zeLocalScale;
-        LeanTween.scaleX(gameObject, m_OriginalScale.x, m_AnimationTime);
+        transform.localScale = new Vector3(0.0f, transform.localScale.y, transform.localScale.z);
+        LeanTween.scaleX(gameObject, m_OriginalScale.x, m_TweenAnimationDuration);
     }
 }

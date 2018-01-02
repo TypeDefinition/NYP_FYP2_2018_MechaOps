@@ -17,7 +17,7 @@ using UnityEngine.Assertions;
  * Just because an ANIMATION has finished, it does not mean that the IUnitAction has finished!
  * What IUnitAction passes to MOAnimation is its OnAnimationCompleted() function!
 */
-[RequireComponent(typeof(UnitStats))]
+[RequireComponent(typeof(UnitStats)), RequireComponent(typeof(UnitActionHandler))]
 public abstract class IUnitAction : MonoBehaviour
 {
     public enum ActionState
@@ -28,33 +28,30 @@ public abstract class IUnitAction : MonoBehaviour
         Completed,
     }
 
-    [SerializeField] private bool m_ControllableAction = true;
-
+    // Serialised Variable(s)
     [SerializeField, Tooltip("The component name which will be use to indicate what UI tag to be activated.")]
     protected string m_UnitActionName;
     [SerializeField, Tooltip("This is the description of the action.")]
     protected string m_UnitActionDescription = "<Placeholder Description>";
-    [SerializeField, Tooltip("The flag to indicates whether is it turned on.")]
-    private bool m_TurnedOn = false;
+    [SerializeField] private bool m_ControllableAction = true;
     [SerializeField, Tooltip("The priority number for this action")]
-    private int m_Priority;
+    private int m_Priority = 0;
     [SerializeField, Tooltip("The action cost.")]
     private int m_ActionCost = 1;
     [SerializeField, Tooltip("Does this action end the turn immediately?")]
     private bool m_EndsTurn = false;
-    [SerializeField, Tooltip("The current state that this action update is in")]
-    protected ActionState m_ActionState = ActionState.None;
 
-    [SerializeField, Tooltip("The specific action UI")]
-    private GameObject m_UnitActionUI;
-    [Header("[ Values for Unit Action ]")]
+    [SerializeField, Tooltip("The Unit Action UI Prefab")]
+    private UnitActionUI m_UnitActionUIPrefab = null;
     [SerializeField, Tooltip("The sprite UI for unit's action!")]
-    private Sprite m_ActionIconUI;
-    [SerializeField, Tooltip("Unit action handler")]
-    protected UnitActionHandler m_UnitActionHandler;
+    private Sprite m_UnitActionButtonSprite = null;
 
-    [Tooltip("The unit stats")]
-    protected UnitStats m_UnitStats;
+    // Non-Serialised Variable(s)
+    protected UnitActionHandler m_UnitActionHandler = null;
+    private bool m_TurnedOn = false;
+    protected UnitStats m_UnitStats = null;
+    protected GameEventNames m_GameEventNames = null;
+    protected ActionState m_ActionState = ActionState.None;
 
     private Void_Void m_CompletionCallBack;
 
@@ -113,14 +110,9 @@ public abstract class IUnitAction : MonoBehaviour
     // They should only be set in the inspector. If I am wrong and they do need to be changed, add the setters.
     public ActionState GetActionState() { return m_ActionState; }
 
-    public GameObject UnitActionUI { get { return m_UnitActionUI; } }
+    public UnitActionUI GetUnitActionUI() { return m_UnitActionUIPrefab; }
 
-    public Sprite ActionIconUI { get { return m_ActionIconUI; } }
-
-    public void SetUnitStats(UnitStats _unitStats)
-    {
-        m_UnitStats = _unitStats;
-    }
+    public Sprite ActionIconUI { get { return m_UnitActionButtonSprite; } }
 
     public UnitStats GetUnitStats()
     {
@@ -160,9 +152,11 @@ public abstract class IUnitAction : MonoBehaviour
     protected virtual void Awake()
     {
         // If the unit stat is not linked, get the component of it!
+        m_GameEventNames = GameSystemsDirectory.GetSceneInstance().GetGameEventNames();
+        Assert.IsNotNull(m_GameEventNames);
         m_UnitStats = GetComponent<UnitStats>();
-        m_UnitActionHandler = GetComponent<UnitActionHandler>();
         Assert.IsNotNull(m_UnitStats, MethodBase.GetCurrentMethod().Name + " - The GameObject this script is attached to MUST have a UnitStats Component!");
+        m_UnitActionHandler = GetComponent<UnitActionHandler>();
         Assert.IsNotNull(m_UnitActionHandler, MethodBase.GetCurrentMethod().Name + " - The GameObject this script is attached to MUST have a m_UnitActionHandler Component!");
         Assert.IsTrue(m_UnitActionName != null && m_UnitActionName != "", "No name is given to this action. GameObject Name: " + gameObject.name);
     }
@@ -221,10 +215,10 @@ public abstract class IUnitAction : MonoBehaviour
 
     protected void CheckIfUnitFinishedTurn()
     {
-        if (GetUnitStats().CurrentActionPoints == 0 || !m_UnitActionHandler.CheckIsUnitMakeMove(m_UnitStats) || m_EndsTurn)
+        if (GetUnitStats().CurrentActionPoints == 0 || !m_UnitActionHandler.CheckCanUnitDoAction(m_UnitStats) || m_EndsTurn)
         {
             // tell the player unit manager that it can no longer do any action
-            GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitMakeMove", gameObject);
+            GameEventSystem.GetInstance().TriggerEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitFinishedTurn), m_UnitStats);
         }
     }
 

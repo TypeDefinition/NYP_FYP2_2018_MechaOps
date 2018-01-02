@@ -128,7 +128,7 @@ public class SHSMShootAction : UnitAttackAction
             hitUnitStats.InvokeHealthDropCallback(m_UnitStats);
         }
 
-        GameEventSystem.GetInstance().TriggerEvent("UnitFinishAction");
+        GameEventSystem.GetInstance().TriggerEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitFinishedAction), m_UnitStats);
         InvokeCompletionCallback();
 
         CheckIfUnitFinishedTurn();

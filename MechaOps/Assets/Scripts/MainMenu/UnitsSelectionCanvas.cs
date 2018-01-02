@@ -40,13 +40,18 @@ public class UnitsSelectionCanvas : MonoBehaviour
     protected UnitSelectionSlot[] m_UnitSelectionSlots = null;
     protected UnitSelectionButton[] m_UnitSelectionButtons = null;
 
+    private void UpdateCreditsLeftText()
+    {
+        m_CreditsLeftText.text = "Credits Left: " + m_PlayerCredits.ToString();
+        m_CreditsLeftText.color = (m_PlayerCredits >= 0) ? m_SufficientCreditTextColor : m_InsufficientCreditTextColor;
+    }
+
     public int PlayerCredits
     {
         set
         {
             m_PlayerCredits = value;
-            m_CreditsLeftText.text = "Credits Left: " + m_PlayerCredits.ToString();
-            m_CreditsLeftText.color = (m_PlayerCredits >= 0) ? m_SufficientCreditTextColor : m_InsufficientCreditTextColor;
+            UpdateCreditsLeftText();
         }
         get { return m_PlayerCredits; }
     }
@@ -58,6 +63,8 @@ public class UnitsSelectionCanvas : MonoBehaviour
 
     private void Awake()
     {
+        UpdateCreditsLeftText();
+
         m_SelectedUnitsScrollView.gameObject.SetActive(true);
         m_UnitSelectionScrollView.gameObject.SetActive(false);
         m_ConfirmButton.gameObject.SetActive(false);
@@ -130,7 +137,7 @@ public class UnitsSelectionCanvas : MonoBehaviour
     public void SelectUnit(UnitType _unitType)
     {
         UnitLibrary.UnitLibraryData unitLibraryData = m_UnitLibrary.GetUnitLibraryData(_unitType);
-        PlayerCredits -= unitLibraryData.GetUnitStats().DeploymentCost;
+        PlayerCredits -= unitLibraryData.GetUnitPrefab().DeploymentCost;
         m_CurrentlySelectedSlot.SetUnitType(_unitType);
 
         m_ConfirmButton.gameObject.SetActive(PlayerCredits >= 0 && HasSelectedUnit());
@@ -139,7 +146,7 @@ public class UnitsSelectionCanvas : MonoBehaviour
     public void RemoveSelectedUnit(UnitType _unitType)
     {
         UnitLibrary.UnitLibraryData unitLibraryData = m_UnitLibrary.GetUnitLibraryData(_unitType);
-        PlayerCredits += unitLibraryData.GetUnitStats().DeploymentCost;
+        PlayerCredits += unitLibraryData.GetUnitPrefab().DeploymentCost;
 
         m_ConfirmButton.gameObject.SetActive(PlayerCredits >= 0 && HasSelectedUnit());
     }

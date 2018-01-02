@@ -5,22 +5,15 @@ using UnityEngine;
 /// <summary>
 /// To get all of the actions and check whether the unit will be able to make another move by comparing against the all of the actions
 /// </summary>
-public class UnitActionHandler : MonoBehaviour {
-    [Header("Debugging for UnitActionHandler")]
-    [SerializeField, Tooltip("All of the actions of this unit")]
-    protected IUnitAction[] m_AllAvailableActions;
+public class UnitActionHandler : MonoBehaviour
+{
+    protected IUnitAction[] m_AllActions;
 
-    public IUnitAction[] AllAvailableActions
+    public IUnitAction[] AllActions { get { return m_AllActions; } }
+
+	void Awake ()
     {
-        get
-        {
-            return m_AllAvailableActions;
-        }
-    }
-
-	// Use this for initialization
-	void Awake () {
-        m_AllAvailableActions = GetComponentsInChildren<IUnitAction>();
+        m_AllActions = GetComponentsInChildren<IUnitAction>();
     }
 
     /// <summary>
@@ -28,15 +21,14 @@ public class UnitActionHandler : MonoBehaviour {
     /// </summary>
     /// <param name="_UnitStat">Unit Stat to check for the actions points</param>
     /// <returns>true when 1 of the actions can be used</returns>
-    public bool CheckIsUnitMakeMove(UnitStats _UnitStat)
+    public bool CheckCanUnitDoAction(UnitStats _UnitStat)
     {
-        foreach (IUnitAction zeAction in m_AllAvailableActions)
+        foreach (IUnitAction action in m_AllActions)
         {
-            if (zeAction.ActionCost <= _UnitStat.CurrentActionPoints)
-            {
-                return true;
-            }
+            if (action.ControllableAction == false) { continue; }
+            if (action.ActionCost <= _UnitStat.CurrentActionPoints) { return true; }
         }
+
         return false;
     }
 }

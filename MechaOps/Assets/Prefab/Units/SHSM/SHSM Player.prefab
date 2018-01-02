@@ -162,6 +162,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4356117139883502}
   - component: {fileID: 82272952087381140}
+  - component: {fileID: 114560271820377396}
   m_Layer: 8
   m_Name: Ambient Audio Source
   m_TagString: Untagged
@@ -278,6 +279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4985669230463494}
   - component: {fileID: 82834791891908384}
+  - component: {fileID: 114831591699755062}
   m_Layer: 8
   m_Name: SFX Audio Source
   m_TagString: Untagged
@@ -1221,18 +1223,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5866b418d7713440a068b8de2e790f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControllableAction: 1
   m_UnitActionName: Artilery Strike
   m_UnitActionDescription: <Placeholder Description>
-  m_TurnedOn: 0
+  m_ControllableAction: 1
   m_Priority: 0
   m_ActionCost: 1
   m_EndsTurn: 1
-  m_ActionState: 0
-  m_UnitActionUI: {fileID: 1709325544030846, guid: fd65515792dd9b04f8c87b6ba9939191,
+  m_UnitActionUIPrefab: {fileID: 114448129290028506, guid: fd65515792dd9b04f8c87b6ba9939191,
     type: 2}
-  m_ActionIconUI: {fileID: 21300000, guid: 9b2e2526308c0524eab722fe277acd2f, type: 3}
-  m_UnitActionHandler: {fileID: 114633497871986434}
+  m_UnitActionButtonSprite: {fileID: 21300000, guid: e392509062377594ab81881f16831a09,
+    type: 3}
   m_MinAttackRange: 4
   m_MaxAttackRange: 16
   m_AccuracyPoints: 0
@@ -1249,18 +1249,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c88f8e9033dd44880244eae61eb940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControllableAction: 1
   m_UnitActionName: Move
   m_UnitActionDescription: <Placeholder Description>
-  m_TurnedOn: 0
+  m_ControllableAction: 1
   m_Priority: 0
   m_ActionCost: 1
   m_EndsTurn: 0
-  m_ActionState: 0
-  m_UnitActionUI: {fileID: 1134435258809106, guid: f60f06ef37015e14ba42bc5dad875b1c,
+  m_UnitActionUIPrefab: {fileID: 114662384954406756, guid: f60f06ef37015e14ba42bc5dad875b1c,
     type: 2}
-  m_ActionIconUI: {fileID: 21300000, guid: d859645726494314ab2591c7384f7d53, type: 3}
-  m_UnitActionHandler: {fileID: 114633497871986434}
+  m_UnitActionButtonSprite: {fileID: 21300000, guid: d859645726494314ab2591c7384f7d53,
+    type: 3}
   m_MovementPoints: 4
   m_Animation: {fileID: 114635177697091550}
 --- !u!114 &114088806880344424
@@ -1274,9 +1272,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 111465f2417784a499b0f4458b49061d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GameSystemsDirectory: {fileID: 0}
   m_UnitStatsJSON:
-    m_Name: SHSM
+    m_UnitName: Primus
+    m_UnitDescription: Long Range Artilery
+    m_FactionType: 0
     m_MaxHealthPoints: 3
     m_CurrentHealthPoints: 3
     m_MaxActionPoints: 2
@@ -1288,13 +1287,10 @@ MonoBehaviour:
     m_CurrentTileID:
       m_X: 0
       m_Y: 0
-      m_Z: 0
   m_TileAttributeOverrides: []
   m_ViewTileScript: {fileID: 114488719646846322}
   m_UnitInfoDisplay_Prefab: {fileID: 114423042521562832, guid: 5de0e7aba41ddec4daa1972243bd5133,
     type: 2}
-  m_CurrentActiveAction: {fileID: 0}
-  m_EnemiesInViewRange: []
 --- !u!114 &114292346527977848
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1318,18 +1314,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cab5ea8101800d4ab5f64c0b12f232e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControllableAction: 1
   m_UnitActionName: Skip
   m_UnitActionDescription: <Placeholder Description>
-  m_TurnedOn: 0
+  m_ControllableAction: 1
   m_Priority: 0
   m_ActionCost: 1
   m_EndsTurn: 1
-  m_ActionState: 0
-  m_UnitActionUI: {fileID: 1612582933021620, guid: 10234cb69b925e14d9163d2556b7fb5b,
+  m_UnitActionUIPrefab: {fileID: 114610579002547102, guid: 10234cb69b925e14d9163d2556b7fb5b,
     type: 2}
-  m_ActionIconUI: {fileID: 21300000, guid: 2701c9f4499a5f340a46e96aeba66a4e, type: 3}
-  m_UnitActionHandler: {fileID: 114633497871986434}
+  m_UnitActionButtonSprite: {fileID: 21300000, guid: 2701c9f4499a5f340a46e96aeba66a4e,
+    type: 3}
 --- !u!114 &114488719646846322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1342,8 +1336,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UnitStats: {fileID: 114088806880344424}
-  m_ViewedTiles: []
-  m_VisibilityCounter: 0
+--- !u!114 &114560271820377396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1410146530768512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5412d4f3aa2c445a400005fc737f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
+  m_GameAudioSettings: {fileID: 11400000, guid: 7661fa5d75f3f464bb18461c47ac4643,
+    type: 2}
+  m_AudioSources:
+  - {fileID: 82272952087381140}
+  m_VolumeType: 1
 --- !u!114 &114576374041413126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1355,17 +1364,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94936a6ab46458b42ae30701083d0fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControllableAction: 0
   m_UnitActionName: Destroyed
   m_UnitActionDescription: <Placeholder Description>
-  m_TurnedOn: 0
+  m_ControllableAction: 0
   m_Priority: 50
   m_ActionCost: 0
   m_EndsTurn: 0
-  m_ActionState: 0
-  m_UnitActionUI: {fileID: 0}
-  m_ActionIconUI: {fileID: 0}
-  m_UnitActionHandler: {fileID: 114633497871986434}
+  m_UnitActionUIPrefab: {fileID: 0}
+  m_UnitActionButtonSprite: {fileID: 0}
   m_Animation: {fileID: 114744567534324916}
 --- !u!114 &114627662253056148
 MonoBehaviour:
@@ -1418,7 +1424,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3cef5841460e11469d89034ac0e4ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AllAvailableActions: []
 --- !u!114 &114635177697091550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1447,3 +1452,20 @@ MonoBehaviour:
   m_FlamePrefab: {fileID: 198131241012019862, guid: d07da21434175a749bb97eebed0144f1,
     type: 2}
   m_Animator: {fileID: 114627662253056148}
+--- !u!114 &114831591699755062
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1869497673033924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5412d4f3aa2c445a400005fc737f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
+  m_GameAudioSettings: {fileID: 11400000, guid: 7661fa5d75f3f464bb18461c47ac4643,
+    type: 2}
+  m_AudioSources:
+  - {fileID: 82834791891908384}
+  m_VolumeType: 2

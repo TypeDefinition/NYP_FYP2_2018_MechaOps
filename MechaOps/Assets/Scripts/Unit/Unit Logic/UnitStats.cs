@@ -17,10 +17,13 @@ public delegate void Void_UnitStats(UnitStats _unitStat);
 public class UnitStatsJSON
 {
     [SerializeField, Tooltip("The name of the unit")]
-    public string m_Name;
+    public string m_UnitName;
 
     [SerializeField, Tooltip("Description of the unit")]
-    public string m_Description;
+    public string m_UnitDescription;
+
+    [SerializeField, Tooltip("The faction that this unit belongs to.")]
+    public FactionType m_FactionType = FactionType.None;
 
     [SerializeField, Tooltip("The max healthpoint of the unit")]
     public int m_MaxHealthPoints;
@@ -44,29 +47,25 @@ public class UnitStatsJSON
     public int m_EvasionPoints;
 
     [Tooltip("The current tile that the unit is at. Currently needs to be manually linked as the TileSystem cant identify current tile is at world space")]
-    public TileId m_CurrentTileID;
+    public TileId m_CurrentTileID = new TileId(0, 0);
 }
 
 [DisallowMultipleComponent]
 public class UnitStats : MonoBehaviour
 {
     // Serialized Variable(s)
-    [SerializeField] private GameSystemsDirectory m_GameSystemsDirectory = null;
     [SerializeField] private UnitStatsJSON m_UnitStatsJSON = new UnitStatsJSON();
     [SerializeField] private TileAttributeOverride[] m_TileAttributeOverrides = null;
     [SerializeField] private ViewScript m_ViewTileScript = null;
     [SerializeField] private UnitInfoDisplay m_UnitInfoDisplay_Prefab = null;
 
-    // Why are these all serialized?
-    [SerializeField, Tooltip("The current active action so that it can be stopped")]
-    private IUnitAction m_CurrentActiveAction;
-    [SerializeField, Tooltip("The list of units that are in range")]
-    private List<GameObject> m_EnemiesInViewRange = new List<GameObject>();
-
     // Non-Serialized Variable(s)
+    private GameEventNames m_GameEventNames = null;
     private TileSystem m_TileSystem = null;
     private UnitsTracker m_UnitsTracker = null;
     private UnitInfoDisplay m_UnitInfoDisplay = null;
+    private IUnitAction m_CurrentActiveAction;
+    private List<UnitStats> m_EnemiesInViewRange = new List<UnitStats>();
 
     /// <summary>
     /// A callback function will appear when ever the health point decreases.
@@ -76,7 +75,7 @@ public class UnitStats : MonoBehaviour
     /// </summary>
     public Void_UnitStats m_HealthDropCallback;
 
-    public GameSystemsDirectory GetGameSystemsDirectory() { return m_GameSystemsDirectory; }
+    public GameSystemsDirectory GetGameSystemsDirectory() { return GameSystemsDirectory.GetSceneInstance(); }
 
     public void InvokeHealthDropCallback(UnitStats _unitStats)
     {
@@ -86,14 +85,19 @@ public class UnitStats : MonoBehaviour
         }
     }
 
-    public string Name
+    public string UnitName
     {
-        get { return m_UnitStatsJSON.m_Name; }
+        get { return m_UnitStatsJSON.m_UnitName; }
     }
 
-    public string Description
+    public string UnitDescription
     {
-        get { return m_UnitStatsJSON.m_Description; }
+        get { return m_UnitStatsJSON.m_UnitDescription; }
+    }
+
+    public FactionType UnitFaction
+    {
+        get { return m_UnitStatsJSON.m_FactionType; }
     }
 
     public int MaxHealthPoints
@@ -109,22 +113,19 @@ public class UnitStats : MonoBehaviour
 
     public int CurrentHealthPoints
     {
-        get
-        {
-            return m_UnitStatsJSON.m_CurrentHealthPoints;
-        }
+        get { return m_UnitStatsJSON.m_CurrentHealthPoints; }
         set
         {
+            if (m_UnitStatsJSON.m_CurrentHealthPoints == value) { return; }
+
             m_UnitStatsJSON.m_CurrentHealthPoints = Mathf.Clamp(value, 0, m_UnitStatsJSON.m_MaxHealthPoints);
             // Send the event that this unit is dead!
             if (m_UnitStatsJSON.m_CurrentHealthPoints <= 0)
             {
-                string zeEventName = tag + "IsDead";
                 // Trigger an event when the unit died
                 // If the unit is visible, then start the death cinematic!
-                GameEventSystem.GetInstance().TriggerEvent<GameObject, bool>(zeEventName, gameObject, m_ViewTileScript.IsVisible());
+                GameEventSystem.GetInstance().TriggerEvent<UnitStats, bool>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitDead), this, m_ViewTileScript.IsVisible());
             }
-
             UpdateUnitInfoDisplay();
         }
     }
@@ -192,7 +193,10 @@ public class UnitStats : MonoBehaviour
 
     public int ConcealmentPoints
     {
-        get { return m_UnitStatsJSON.m_ConcealmentPoints; }
+        get
+        {
+            return m_UnitStatsJSON.m_ConcealmentPoints;
+        }
         set
         {
             m_UnitStatsJSON.m_ConcealmentPoints = Mathf.Max(0, value);
@@ -218,9 +222,15 @@ public class UnitStats : MonoBehaviour
             if (!value.Equals(m_UnitStatsJSON.m_CurrentTileID))
             {
                 // and then set the previous tile to have no units since it has moved towards a new tile
-                m_TileSystem.GetTile(m_UnitStatsJSON.m_CurrentTileID).Unit = null;
+                Tile currentTile = m_TileSystem.GetTile(m_UnitStatsJSON.m_CurrentTileID);
+                Assert.IsNotNull(currentTile);
+                currentTile.Unit = null;
+
+                // m_TileSystem.GetTile(m_UnitStatsJSON.m_CurrentTileID).Unit = null;
                 m_UnitStatsJSON.m_CurrentTileID = value;
-                m_TileSystem.GetTile(value).Unit = gameObject;
+                Tile newTile = m_TileSystem.GetTile(m_UnitStatsJSON.m_CurrentTileID);
+                Assert.IsNotNull(newTile);
+                newTile.Unit = gameObject;
                 UpdateUnitInfoDisplay();
             }
         }
@@ -236,111 +246,88 @@ public class UnitStats : MonoBehaviour
         }
     }
 
-    public TileAttributeOverride[] GetTileAttributeOverrides()
-    {
-        return m_TileAttributeOverrides;
-    }
+    public TileAttributeOverride[] GetTileAttributeOverrides() { return m_TileAttributeOverrides; }
 
-    public List<GameObject> EnemiesInRange
-    {
-        get
-        {
-            return m_EnemiesInViewRange;
-        }
-    }
+    public List<UnitStats> GetEnemiesInViewRange() { return m_EnemiesInViewRange; }
 
-    public ViewScript ViewTileScript
-    {
-        get { return m_ViewTileScript; }
-    }
+    public ViewScript GetViewScript() { return m_ViewTileScript; }
 
-    public UnitInfoDisplay UnitInfoDisplayUI
-    {
-        get { return m_UnitInfoDisplay; }
-    }
-
-    private void Awake()
-    {
-        // Ensure that we have the system(s) we require.
-        Assert.IsTrue(m_GameSystemsDirectory != null, MethodBase.GetCurrentMethod().Name + " - m_GameSystemsDirectory must not be null!");
-        m_TileSystem = m_GameSystemsDirectory.GetTileSystem();
-        Assert.IsTrue(m_TileSystem != null, MethodBase.GetCurrentMethod().Name + " - m_TileSystem must not be null!");
-        m_UnitsTracker = m_GameSystemsDirectory.GetUnitsTracker();
-        Assert.IsTrue(m_UnitsTracker != null, MethodBase.GetCurrentMethod().Name + " - m_UnitsTracker must not be null!");
-
-        Assert.IsTrue(m_ViewTileScript != null);
-        Assert.IsTrue(m_UnitStatsJSON.m_Name != null);
-
-        // Ensure that we have the prefab(s) we require.
-        Assert.IsTrue(m_UnitInfoDisplay_Prefab != null, MethodBase.GetCurrentMethod().Name + " - m_UnitInfoDisplay_Prefab must not be null!");
-
-        // Initialisation
-        m_UnitInfoDisplay = GameObject.Instantiate(m_UnitInfoDisplay_Prefab, m_GameSystemsDirectory.GetScreenSpaceCanvas().transform);
-        m_UnitInfoDisplay.SetUnitStats(this);
-        m_UnitInfoDisplay.transform.SetAsFirstSibling();
-    }
+    public UnitInfoDisplay GetUnitInfoDisplay() { return m_UnitInfoDisplay; }
 
     /// <summary>
-    /// Initialize the variables of unit stats. meant to replace Start()
-    /// </summary>
-    void Initialise()
-    {
-        CheckEnemiesInViewRange();
-        m_ViewTileScript.Initialise();
-        m_ViewTileScript.SetVisibleTiles();
-        UpdateUnitInfoDisplay();
-
-        m_TileSystem.GetTile(CurrentTileID).Unit = gameObject;
-        // unsubscribe from the event since initializing is not needed anymore
-        GameEventSystem.GetInstance().UnsubscribeFromEvent("GameStart", Initialise);
-    }
-
-    private void OnEnable()
-    {
-        GameEventSystem.GetInstance().SubscribeToEvent("GameStart", Initialise);
-        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("UnitMovedToTile", CheckEnemyInViewRange);
-        switch (tag)
-        {
-            case "Player":
-                // so get the list of enemy units
-                GameEventSystem.GetInstance().SubscribeToEvent<GameObject, bool>("EnemyUnitIsDead", EnemyInRangeDead);
-                break;
-            case "EnemyUnit":
-                GameEventSystem.GetInstance().SubscribeToEvent<GameObject, bool>("PlayerIsDead", EnemyInRangeDead);
-                break;
-            default:
-                Assert.IsTrue(false, "Make CheckEnemyInRange more robust so that there can be more factions!");
-                break;
-        }
-    }
-
-    private void OnDisable()
-    {
-        // just in case it nevers get to be initialized
-        GameEventSystem.GetInstance().UnsubscribeFromEvent("GameStart", Initialise);
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("UnitMovedToTile", CheckEnemyInViewRange);
-        switch (tag)
-        {
-            case "Player":
-                // so get the list of enemy units
-                GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject, bool>("EnemyUnitIsDead", EnemyInRangeDead);
-                break;
-            case "EnemyUnit":
-                GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject, bool>("PlayerIsDead", EnemyInRangeDead);
-                break;
-            default:
-                Assert.IsTrue(false, "Make CheckEnemyInRange more robust so that there can be more factions!");
-                break;
-        }
-    }
-
-    /// <summary>
-    /// TODO: expand these upon 
+    /// TODO: expand these upon
+    /// (Terry: Naisu Engalishu, very the descriptive, 最佳 commment, Sek Heng.)
     /// </summary>
     public void ResetUnitStats()
     {
         ResetHealthPoints();
         ResetActionPoints();
+    }
+
+    private void InitEvents()
+    {
+        GameEventSystem.GetInstance().SubscribeToEvent(m_GameEventNames.GetEventName(GameEventNames.SpawnSystemNames.UnitsSpawned), OnUnitsSpawned);
+        GameEventSystem.GetInstance().SubscribeToEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitMovedToTile), OnUnitMovedToTile);
+        GameEventSystem.GetInstance().SubscribeToEvent<UnitStats, bool>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitDead), OnUnitDead);
+    }
+
+    private void DeinitEvents()
+    {
+        GameEventSystem.GetInstance().UnsubscribeFromEvent(m_GameEventNames.GetEventName(GameEventNames.SpawnSystemNames.UnitsSpawned), OnUnitsSpawned);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitMovedToTile), OnUnitMovedToTile);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats, bool>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitDead), OnUnitDead);
+    }
+
+    private void Awake()
+    {
+        // Ensure that we have the system(s) we require.
+        m_GameEventNames = GameSystemsDirectory.GetSceneInstance().GetGameEventNames();
+        Assert.IsTrue(m_GameEventNames != null, MethodBase.GetCurrentMethod().Name + " - m_GameEventNames must not be null!");
+        m_TileSystem = GameSystemsDirectory.GetSceneInstance().GetTileSystem();
+        Assert.IsTrue(m_TileSystem != null, MethodBase.GetCurrentMethod().Name + " - m_TileSystem must not be null!");
+        m_UnitsTracker = GameSystemsDirectory.GetSceneInstance().GetUnitsTracker();
+        Assert.IsTrue(m_UnitsTracker != null, MethodBase.GetCurrentMethod().Name + " - m_UnitsTracker must not be null!");
+
+        // Ensure that we have the variable(s) we require.
+        Assert.IsTrue(m_ViewTileScript != null);
+        Assert.IsTrue(m_UnitStatsJSON.m_UnitName != null);
+
+        // Ensure that we have the prefab(s) we require.
+        Assert.IsTrue(m_UnitInfoDisplay_Prefab != null, MethodBase.GetCurrentMethod().Name + " - m_UnitInfoDisplay_Prefab must not be null!");
+
+        // Initialisation of Unit Info Display
+        m_UnitInfoDisplay = GameObject.Instantiate(m_UnitInfoDisplay_Prefab, GameSystemsDirectory.GetSceneInstance().GetScreenSpaceCanvas().transform);
+        m_UnitInfoDisplay.SetUnitStats(this);
+        m_UnitInfoDisplay.transform.SetAsFirstSibling(); // Such a shitty hack.
+
+        // Subscribe to events.
+        InitEvents();
+    }
+
+    private void OnDestroy()
+    {
+        // Unsubscribe From events.
+        DeinitEvents();
+    }
+
+    // Event Callbacks
+    private void OnUnitsSpawned()
+    {
+        CheckEnemiesInViewRange();
+        UpdateUnitInfoDisplay();
+
+        m_TileSystem.GetTile(CurrentTileID).Unit = gameObject;
+    }
+
+    private void OnUnitMovedToTile(UnitStats _movedUnit)
+    {
+        if (!IsAlive()) { return; }
+        CheckEnemyInViewRange(_movedUnit);
+    }
+
+    private void OnUnitDead(UnitStats _deadUnit, bool _isUnitVisible)
+    {
+        EnemyInRangeDead(_deadUnit, _isUnitVisible);
     }
 
     /// <summary>
@@ -350,34 +337,30 @@ public class UnitStats : MonoBehaviour
     /// </summary>
     public void CheckEnemiesInViewRange()
     {
-        List<GameObject> aliveUnits = null;
-        // TODO: Remove this hardcoding when it is done!
-        switch (tag)
+        List<UnitStats> aliveEnemies = new List<UnitStats>();
+        for (int i = 0; i < (int)FactionType.Num_FactionType; ++i)
         {
-            case "Player":
-                // so get the list of enemy units
-                aliveUnits = m_UnitsTracker.m_AliveEnemyUnits;
-                break;
-            case "EnemyUnit":
-                aliveUnits = m_UnitsTracker.m_AlivePlayerUnits;
-                break;
-            default:
-                Assert.IsTrue(false, "Make CheckEnemyInRange more robust so that there can be more factions!");
-                break;
+            if ((FactionType)i == UnitFaction) { continue; }
+
+            UnitStats[] aliveUnits = m_UnitsTracker.GetAliveUnits((FactionType)i);
+            for (int j = 0; j < aliveUnits.Length; ++j)
+            {
+                aliveEnemies.Add(aliveUnits[j]);
+            }
         }
 
-        foreach (GameObject unit in aliveUnits)
+        foreach (UnitStats unitStats in aliveEnemies)
         {
-            UnitStats unitStats = unit.GetComponent<UnitStats>();
-            Assert.IsTrue(unitStats.IsAlive(), MethodBase.GetCurrentMethod().Name + " - There should not be destroyed units!");
+            Assert.IsTrue(unitStats.IsAlive(), MethodBase.GetCurrentMethod().Name + " - There should not be dead units!");
 
-            int tileDistance = TileId.GetDistance(CurrentTileID, unitStats.CurrentTileID) + unitStats.ConcealmentPoints;
+            Tile enemyTile = m_TileSystem.GetTile(unitStats.CurrentTileID);
+            int tileDistance = TileId.GetDistance(CurrentTileID, unitStats.CurrentTileID) + unitStats.ConcealmentPoints + enemyTile.GetTotalConcealmentPoints();
             // if that list does not have the unit in range!
-            if (!m_EnemiesInViewRange.Contains(unit))
+            if (!m_EnemiesInViewRange.Contains(unitStats))
             {
                 if (tileDistance <= ViewRange && m_ViewTileScript.RaycastToTile(m_TileSystem.GetTile(unitStats.CurrentTileID)))
                 {
-                    m_EnemiesInViewRange.Add(unit);
+                    m_EnemiesInViewRange.Add(unitStats);
                     unitStats.m_ViewTileScript.IncreaseVisibility();
                 }
             }
@@ -386,7 +369,7 @@ public class UnitStats : MonoBehaviour
                 if (tileDistance > ViewRange || !m_ViewTileScript.RaycastToTile(m_TileSystem.GetTile(unitStats.CurrentTileID)))
                 {
                     // if the opposing unit is in range and 
-                    m_EnemiesInViewRange.Remove(unit);
+                    m_EnemiesInViewRange.Remove(unitStats);
                     unitStats.m_ViewTileScript.DecreaseVisibility();
                 }
             }
@@ -408,57 +391,46 @@ public class UnitStats : MonoBehaviour
     /// A function call to be passed to when a unit has moved!
     /// </summary>
     /// <param name="_movedUnit"></param>
-    public void CheckEnemyInViewRange(GameObject _movedUnit)
+    private void CheckEnemyInViewRange(UnitStats _movedUnit)
     {
-        if (!CompareTag(_movedUnit.tag))
+        if (_movedUnit == this)
         {
-            if (_movedUnit != gameObject)
+            CheckEnemiesInViewRange();
+            return;
+        }
+
+        if (_movedUnit.UnitFaction == UnitFaction) { return; }
+
+        int tileDistance = TileId.GetDistance(CurrentTileID, _movedUnit.CurrentTileID) + _movedUnit.ConcealmentPoints;
+        if (m_EnemiesInViewRange.Contains(_movedUnit))
+        {
+            if (tileDistance > ViewRange || !m_ViewTileScript.RaycastToTile(m_TileSystem.GetTile(_movedUnit.CurrentTileID)))
             {
-                UnitStats unitStats = _movedUnit.GetComponent<UnitStats>();
-                int tileDistance = TileId.GetDistance(CurrentTileID, unitStats.CurrentTileID) + unitStats.ConcealmentPoints;
-                // Need to make sure that the moveunit is not itself! and the tag is the opposing unit!
-                if (!m_EnemiesInViewRange.Contains(_movedUnit))
-                {
-                    if (tileDistance <= ViewRange && m_ViewTileScript.RaycastToTile(m_TileSystem.GetTile(unitStats.CurrentTileID)))
-                    {
-                        m_EnemiesInViewRange.Add(_movedUnit);
-                        // so we have to render the enemy unit if it belongs to the enemy
-                        unitStats.m_ViewTileScript.IncreaseVisibility();
-                    }
-                }
-                else
-                {
-                    if (tileDistance > ViewRange || !m_ViewTileScript.RaycastToTile(m_TileSystem.GetTile(unitStats.CurrentTileID)))
-                    {
-                        // if the opposing unit is in range and 
-                        m_EnemiesInViewRange.Remove(_movedUnit);
-                        unitStats.m_ViewTileScript.DecreaseVisibility();
-                    }
-                }
+                m_EnemiesInViewRange.Remove(_movedUnit);
+                _movedUnit.m_ViewTileScript.DecreaseVisibility();
             }
         }
         else
         {
-            // if u are the 1 moving, check for nearby enemies
-            if (gameObject == _movedUnit)
+            if (tileDistance <= ViewRange && m_ViewTileScript.RaycastToTile(m_TileSystem.GetTile(_movedUnit.CurrentTileID)))
             {
-                CheckEnemiesInViewRange();
-                m_ViewTileScript.SetVisibleTiles();
+                m_EnemiesInViewRange.Add(_movedUnit);
+                _movedUnit.m_ViewTileScript.IncreaseVisibility();
             }
         }
     }
     /// <summary>
     /// To be called when the opposing unit died
     /// </summary>
-    private void EnemyInRangeDead(GameObject _deadUnit, bool _destroyedUnitVisible)
+    private void EnemyInRangeDead(UnitStats _deadUnit, bool _destroyedUnitVisible)
     {
         // if the dead unit is itself, iterate through it's list and decrease the visibility of other units!
-        if (_deadUnit == gameObject)
+        if (_deadUnit == this)
         {
-            foreach (GameObject zeEnemyGO in m_EnemiesInViewRange)
+            foreach (UnitStats enemy in m_EnemiesInViewRange)
             {
-                ViewScript zeEnemyView = zeEnemyGO.GetComponent<ViewScript>();
-                zeEnemyView.DecreaseVisibility();
+                ViewScript enemyViewScript = enemy.gameObject.GetComponent<ViewScript>();
+                enemyViewScript.DecreaseVisibility();
             }
             m_EnemiesInViewRange.Clear();
         }
@@ -483,7 +455,7 @@ public class UnitStats : MonoBehaviour
         HashSet<TileType> overrideTypeValidator = new HashSet<TileType>();
         for (int i = 0; i < m_TileAttributeOverrides.Length; ++i)
         {
-            if (overrideTypeValidator.Contains(m_TileAttributeOverrides[i].Type))
+            if (overrideTypeValidator.Contains(m_TileAttributeOverrides[i].GetTileType()))
             {
                 string message = "More than 1 TileAttributeOverride has the same tile type!";
                 EditorUtility.DisplayDialog("Duplicate TileType!", message, "OK");
@@ -491,7 +463,7 @@ public class UnitStats : MonoBehaviour
             }
             else
             {
-                overrideTypeValidator.Add(m_TileAttributeOverrides[i].Type);
+                overrideTypeValidator.Add(m_TileAttributeOverrides[i].GetTileType());
             }
         }
     }

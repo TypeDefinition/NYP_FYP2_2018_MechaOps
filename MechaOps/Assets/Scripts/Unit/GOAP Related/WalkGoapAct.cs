@@ -57,7 +57,7 @@ public class WalkGoapAct : IGoapAction {
         //    Assert.IsTrue(true == false, "Update of Tile coordinate has failed at UpdateActRoutine in WalkGoapAct.cs");
         // so why not lets just cheat here to get to the closest tile!
         TileId[] zeTileToWalkTo = null;
-        foreach (TileId TileLocation in m_Planner.EnemiesManager.PlayerUnitLocations)
+        foreach (TileId TileLocation in m_Planner.EnemiesManager.GetOneTileAwayFromEnemyWithoutAGauranteeOfAWalkableTileAtAll())
         {
             Assert.IsFalse(m_Planner.m_Stats.CurrentTileID.Equals(TileLocation), "Update of Tile coordinate has failed at UpdateActRoutine in WalkGoapAct.cs");
             zeTileToWalkTo = m_WalkAct.GetTileSystem().GetPath(99999, m_Planner.m_Stats.CurrentTileID, TileLocation, m_Planner.m_Stats.GetTileAttributeOverrides());

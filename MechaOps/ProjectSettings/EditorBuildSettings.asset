@@ -6,11 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scene/MechaOps/MainMenu.unity
+    path: Assets/Scene/MechaOps/Main_Menu.unity
     guid: 9549380e74f20034caad30dceb06b98b
   - enabled: 1
-    path: Assets/Scene/Sek Heng/level_2.unity
-    guid: 4b81dbb69070c6148aaff00e4744403b
-  - enabled: 0
-    path: Assets/Scene/Terry/Terry_Test.unity
-    guid: 5c212abf2e421ec47b3b8eb9e737499f
+    path: Assets/Scene/MechaOps/Demo_Level.unity
+    guid: 27f5ac219484dcd489a6be8a16a7a6b3

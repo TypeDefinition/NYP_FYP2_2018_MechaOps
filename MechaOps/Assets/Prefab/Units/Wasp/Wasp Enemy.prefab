@@ -37,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4404152325087380}
   - component: {fileID: 82617599343438596}
+  - component: {fileID: 114364075826001790}
   m_Layer: 8
   m_Name: Ambient Audio Source
   m_TagString: Untagged
@@ -163,6 +164,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4263378301964042}
   - component: {fileID: 82748993205126494}
+  - component: {fileID: 114802166239068262}
   m_Layer: 8
   m_Name: SFX Audio Source
   m_TagString: Untagged
@@ -688,6 +690,23 @@ MonoBehaviour:
     m_GoapName: 
   m_EnemiesManager: {fileID: 0}
   m_TileSystem: {fileID: 0}
+--- !u!114 &114364075826001790
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1263705637359296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5412d4f3aa2c445a400005fc737f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GameAudioSettings: {fileID: 11400000, guid: 7661fa5d75f3f464bb18461c47ac4643,
+    type: 2}
+  m_AudioSources:
+  - {fileID: 82617599343438596}
+  m_VolumeType: 1
+  m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
 --- !u!114 &114466626019781564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -829,6 +848,23 @@ MonoBehaviour:
   m_DeathAnimationGroundLayers:
   - TileDisplay
   m_FlightHeight: 3
+--- !u!114 &114802166239068262
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1889584274934586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5412d4f3aa2c445a400005fc737f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GameAudioSettings: {fileID: 11400000, guid: 7661fa5d75f3f464bb18461c47ac4643,
+    type: 2}
+  m_AudioSources:
+  - {fileID: 82748993205126494}
+  m_VolumeType: 2
+  m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
 --- !u!114 &114844506063650792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -890,6 +926,7 @@ MonoBehaviour:
   m_UnitStats: {fileID: 114919808184283194}
   m_VisibilityCount: 0
   m_AllRenderers: []
+  m_AlwayRender: 0
 --- !u!114 &114919808184283194
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -5,9 +5,20 @@ using UnityEngine.UI;
 
 public enum UnitType
 {
+    // Player
     Player_Panzer = 0,
     Player_Wasp,
     Player_SHSM,
+
+    // Enemy
+    Enemy_Panzer,
+    Enemy_Wasp,
+    Enemy_SHSM,
+
+    // Dummy
+    Dummy_Panzer,
+    Dummy_Wasp,
+    Dummy_SHSM,
 
     Num_UnitType,
     None = -1
@@ -20,10 +31,11 @@ public class UnitLibrary : ScriptableObject
     public class UnitLibraryData
     {
         [SerializeField] private Sprite m_UnitIconSprite = null;
-        [SerializeField] private UnitStats m_UnitStats = null;
+        [SerializeField, Tooltip("The prefab of the unit.")]
+        private UnitStats m_UnitPrefab = null;
 
         public Sprite GetUnitIconSprite() { return m_UnitIconSprite; }
-        public UnitStats GetUnitStats() { return m_UnitStats; }
+        public UnitStats GetUnitPrefab() { return m_UnitPrefab; }
     }
 
     [SerializeField] private UnitLibraryData[] m_Library = new UnitLibraryData[(uint)UnitType.Num_UnitType];
@@ -39,13 +51,13 @@ public class UnitLibrary : ScriptableObject
     {
         if (m_Library == null)
         {
-            m_Library = new UnitLibraryData[(uint)UnitType.Num_UnitType];
+            m_Library = new UnitLibraryData[(int)UnitType.Num_UnitType];
         }
 
-        if (m_Library.Length != (uint)UnitType.Num_UnitType)
+        if (m_Library.Length != (int)UnitType.Num_UnitType)
         {
             UnitLibraryData[] currentLibrary = m_Library;
-            m_Library = new UnitLibraryData[(uint)UnitType.Num_UnitType];
+            m_Library = new UnitLibraryData[(int)UnitType.Num_UnitType];
             for (int i = 0; i < currentLibrary.Length && i < m_Library.Length; ++i)
             {
                 m_Library[i] = currentLibrary[i];

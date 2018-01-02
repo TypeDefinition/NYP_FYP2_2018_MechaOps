@@ -22,7 +22,6 @@ public enum TileType
 [System.Serializable]
 public class TileAttributes
 {
-
     [SerializeField] private bool m_Walkable = true;
     [SerializeField] private int m_MovementCost = 1;
     [SerializeField] private int m_ConcealmentPoints = 0;
@@ -62,17 +61,12 @@ public class TileAttributeOverride
     [SerializeField] private int m_ConcealmentPoints = 0;
     [SerializeField] private int m_EvasionPoints = 0;
 
-    public TileType Type
+    public TileType GetTileType() { return m_Type; }
+
+    public void SetTileType(TileType _tileType)
     {
-        get
-        {
-            return m_Type;
-        }
-        set
-        {
-            Assert.IsFalse(value == TileType.Num_TileType, "TileAttributeOverride.Type - Invalid value for m_Type!");
-            m_Type = value;
-        }
+        Assert.IsFalse(_tileType == TileType.Num_TileType, "TileAttributeOverride.Type - Invalid value for m_Type!");
+        m_Type = _tileType;
     }
 
     public bool Walkable { get { return m_Walkable; } }
@@ -102,7 +96,6 @@ public class TileAttributeOverride
 [DisallowMultipleComponent]
 public class TileLibrary : MonoBehaviour
 {
-
     [SerializeField] private TileAttributes[] m_Library = new TileAttributes[(uint)TileType.Num_TileType];
 
     public TileAttributes GetAttribute(TileType _type)

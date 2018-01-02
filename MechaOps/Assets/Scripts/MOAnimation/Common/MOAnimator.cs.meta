@@ -1,10 +1,14 @@
 fileFormatVersion: 2
 guid: d06eb37ebc652914492e97971c653ef8
-timeCreated: 1511110673
+timeCreated: 1514702704
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - m_AmbientAudioSource: {instanceID: 0}
+  - m_AmbientSound: {instanceID: 0}
+  - m_MoveSFX: {instanceID: 0}
+  - m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

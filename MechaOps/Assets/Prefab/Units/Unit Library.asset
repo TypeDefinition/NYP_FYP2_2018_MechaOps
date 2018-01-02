@@ -13,11 +13,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Library:
   - m_UnitIconSprite: {fileID: 0}
-    m_UnitStats: {fileID: 114718164003450294, guid: 08d48d711bd8ebb4c8ef4c4dbe590b67,
+    m_UnitPrefab: {fileID: 114718164003450294, guid: 08d48d711bd8ebb4c8ef4c4dbe590b67,
       type: 2}
   - m_UnitIconSprite: {fileID: 0}
-    m_UnitStats: {fileID: 114809387758883690, guid: 7ddecae09b46e0a438c6a0b2d44be7ee,
+    m_UnitPrefab: {fileID: 114809387758883690, guid: 7ddecae09b46e0a438c6a0b2d44be7ee,
       type: 2}
   - m_UnitIconSprite: {fileID: 0}
-    m_UnitStats: {fileID: 114088806880344424, guid: 6d5268ff15a2cc34da1a79ac3e69557e,
+    m_UnitPrefab: {fileID: 114088806880344424, guid: 6d5268ff15a2cc34da1a79ac3e69557e,
+      type: 2}
+  - m_UnitIconSprite: {fileID: 0}
+    m_UnitPrefab: {fileID: 114879956254548028, guid: d8eadb572c9988f4eb0b84df420422e5,
+      type: 2}
+  - m_UnitIconSprite: {fileID: 0}
+    m_UnitPrefab: {fileID: 114919808184283194, guid: d1605c333d90d674bb1a1d5188289650,
+      type: 2}
+  - m_UnitIconSprite: {fileID: 0}
+    m_UnitPrefab: {fileID: 114686418102639456, guid: fe04e115bedb3a04c9248416d0b6ab82,
+      type: 2}
+  - m_UnitIconSprite: {fileID: 0}
+    m_UnitPrefab: {fileID: 114718164003450294, guid: a8d1bb2bc49467f409fffef2d47d7468,
+      type: 2}
+  - m_UnitIconSprite: {fileID: 0}
+    m_UnitPrefab: {fileID: 114809387758883690, guid: 2ed7a9fd9145a5847a2d689cdd1bffa5,
+      type: 2}
+  - m_UnitIconSprite: {fileID: 0}
+    m_UnitPrefab: {fileID: 114088806880344424, guid: 458656443e22f1d46a9cb80ffe6ac541,
       type: 2}

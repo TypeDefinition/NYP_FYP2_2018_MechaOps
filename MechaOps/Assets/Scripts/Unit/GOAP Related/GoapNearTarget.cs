@@ -67,7 +67,7 @@ public class GoapNearTarget : IGoapAction
         // We will get the shortest path to the 1st player unit
         int zeEnemyIndex = 0;
         // Maybe we can randomize but we will just get the 1st unit!
-        UnitStats zeEnemyStat = m_Planner.m_Stats.GetGameSystemsDirectory().GetEnemyUnitsManager().GlobalListOfOpposingUnits[zeEnemyIndex].GetComponent<UnitStats>();
+        UnitStats zeEnemyStat = m_Planner.m_Stats.GetGameSystemsDirectory().GetAIUnitsManager()[0].GetSeenEnemies()[zeEnemyIndex].GetComponent<UnitStats>();
         TileId zeDestinationTileID = zeEnemyStat.CurrentTileID;
         Tile EnemyTile = m_Planner.GameTileSystem.GetTile(zeDestinationTileID);
         Tile DestTile = m_Planner.GameTileSystem.GetTile(zeDestinationTileID);
@@ -81,7 +81,7 @@ public class GoapNearTarget : IGoapAction
                 zeDestinationTileID = zeTileCheck;
                 DestTile = m_Planner.GameTileSystem.GetTile(zeDestinationTileID);
                 // check is it can be walked as well as getting a direct target to there!
-                if (DestTile.GetIsWalkable() && !DestTile.HasUnit() && m_Planner.m_Stats.ViewTileScript.RaycastToTile(EnemyTile, DestTile))
+                if (DestTile.GetIsWalkable() && !DestTile.HasUnit() && m_Planner.m_Stats.GetViewScript().RaycastToTile(EnemyTile, DestTile))
                 {
                     // find the path to the enemy 
                     zePathToEnemy = m_Planner.GameTileSystem.GetPath(999, m_Planner.m_Stats.CurrentTileID, zeDestinationTileID, m_Planner.m_Stats.GetTileAttributeOverrides());
@@ -95,7 +95,7 @@ public class GoapNearTarget : IGoapAction
             if (DestTile.HasUnit() || !DestTile.GetIsWalkable())
             {
                 // Then we will have to another target!
-                zeEnemyStat = m_Planner.m_Stats.GetGameSystemsDirectory().GetEnemyUnitsManager().GlobalListOfOpposingUnits[++zeEnemyIndex].GetComponent<UnitStats>();
+                zeEnemyStat = m_Planner.m_Stats.GetGameSystemsDirectory().GetAIUnitsManager()[0].GetSeenEnemies()[++zeEnemyIndex].GetComponent<UnitStats>();
             }
         }
         Assert.IsNotNull(zePathToEnemy, "Path cannot be found at UpdateRoutine GoapNearTarget!");
@@ -107,7 +107,7 @@ public class GoapNearTarget : IGoapAction
             Tile TileOfTileID = m_Planner.GameTileSystem.GetTile(zeTile);
             int TileDistance = TileId.GetDistance(m_Planner.GameTileSystem.GetTile(zeTile).GetTileId(), zeEnemyStat.CurrentTileID);
             // Once that supposed tile is good enough for this unit to attack the enemy!
-            if (TileDistance <= m_AttackAct.MaxAttackRange && TileDistance >= m_AttackAct.MinAttackRange && m_Planner.m_Stats.ViewTileScript.RaycastToTile(TileOfTileID, EnemyTile))
+            if (TileDistance <= m_AttackAct.MaxAttackRange && TileDistance >= m_AttackAct.MinAttackRange && m_Planner.m_Stats.GetViewScript().RaycastToTile(TileOfTileID, EnemyTile))
             {
                 break;
             }
@@ -140,13 +140,12 @@ public class GoapNearTarget : IGoapAction
     {
         m_EnemiesInAttack.Clear();
         // check through the global list of units at the EnemyUnitsManager!
-        foreach (GameObject zeGO in m_Planner.m_Stats.GetGameSystemsDirectory().GetEnemyUnitsManager().GlobalListOfOpposingUnits)
+        foreach (UnitStats zeGoStat in m_Planner.m_Stats.GetGameSystemsDirectory().GetAIUnitsManager()[0].GetSeenEnemies())
         {
-            UnitStats zeGoStat = zeGO.GetComponent<UnitStats>();
             int zeTileDistance = TileId.GetDistance(zeGoStat.CurrentTileID, m_Planner.m_Stats.CurrentTileID);
-            if (zeTileDistance <= m_AttackAct.MaxAttackRange && zeTileDistance >= m_AttackAct.MinAttackRange && m_Planner.m_Stats.ViewTileScript.RaycastToTile(m_Planner.GameTileSystem.GetTile(zeGoStat.CurrentTileID)))
+            if (zeTileDistance <= m_AttackAct.MaxAttackRange && zeTileDistance >= m_AttackAct.MinAttackRange && m_Planner.m_Stats.GetViewScript().RaycastToTile(m_Planner.GameTileSystem.GetTile(zeGoStat.CurrentTileID)))
             {
-                m_EnemiesInAttack.Add(zeGO);
+                m_EnemiesInAttack.Add(zeGoStat.gameObject);
             }
         }
         if (m_EnemiesInAttack.Count > 0)

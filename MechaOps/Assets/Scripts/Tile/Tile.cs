@@ -16,7 +16,7 @@ Their sides are labels from 0 to 6, with 0 being the top, and increasing in the 
 [System.Serializable]
 public class TileId
 {
-    [SerializeField] private int m_X, m_Y, m_Z;
+    [SerializeField] private int m_X, m_Y;
 
     public TileId(int _x = 0, int _y = 0) { Set(_x, _y); }
     public TileId(TileId _other) { Set(_other.m_X, _other.m_Y); }
@@ -24,10 +24,10 @@ public class TileId
 
     public int GetX() { return m_X; }
     public int GetY() { return m_Y; }
-    public int GetZ() { return m_Z; }
+    public int GetZ() { return -(m_X + m_Y); }
 
     // Do not allow the TileId to be changed once created.
-    private void Set(int _x, int _y) { m_X = _x; m_Y = _y; m_Z = -(_x + _y); }
+    private void Set(int _x, int _y) { m_X = _x; m_Y = _y; }
 
     public TileId[] GetNeighbors()
     {
@@ -54,7 +54,7 @@ public class TileId
         In a cube grid, Manhattan distances are abs(dx) + abs(dy) + abs(dz).
         The distance on a hex grid is half that.
         */
-        return (Mathf.Abs(_origin.m_X - _destination.m_X) + Mathf.Abs(_origin.m_Y - _destination.m_Y) + Mathf.Abs(_origin.m_Z - _destination.m_Z)) >> 1;
+        return (Mathf.Abs(_origin.m_X - _destination.m_X) + Mathf.Abs(_origin.m_Y - _destination.m_Y) + Mathf.Abs(_origin.GetZ() - _destination.GetZ())) >> 1;
 
         /*
         An equivalent way to write this is by noting that one of the three coordinates
@@ -67,18 +67,18 @@ public class TileId
 
     public string GetAsString()
     {
-        return ("[" + m_X.ToString() + ", " + m_Y.ToString() + ", " + m_Z.ToString() + "]");
+        return ("[" + m_X.ToString() + ", " + m_Y.ToString() + ", " + GetZ().ToString() + "]");
     }
 
     public void PrintDebug()
     {
-        Debug.Log("[" + m_X.ToString() + ", " + m_Y.ToString() + ", " + m_Z.ToString() + "]");
+        Debug.Log("[" + m_X.ToString() + ", " + m_Y.ToString() + ", " + GetZ().ToString() + "]");
     }
 
     // It is necessary to override these functions to be able to use TileId as a Key in a HashMap or Dictionary.
     public override int GetHashCode()
     {
-        string combined = m_X.ToString() + m_Y.ToString() + m_Z.ToString();
+        string combined = m_X.ToString() + m_Y.ToString() + GetZ().ToString();
         return combined.GetHashCode();
     }
 
@@ -89,9 +89,8 @@ public class TileId
 
     public bool Equals(TileId _other)
     {
-        return (_other != null) && (m_X == _other.m_X) && (m_Y == _other.m_Y) && (m_Z == _other.m_Z);
+        return (_other != null) && (m_X == _other.m_X) && (m_Y == _other.m_Y);
     }
-
 }
 
 [DisallowMultipleComponent]
@@ -175,6 +174,8 @@ public class Tile : MonoBehaviour
             m_DisplayObject.SetVisibleState(m_Known, (m_VisibleCounter > 0) ? true : false);
         }
     }
+
+    public TileAttributes GetTileAttributes() { return m_Attributes; }
 
 #if UNITY_EDITOR
     public void SetTileType(TileType _type)
@@ -280,6 +281,11 @@ public class Tile : MonoBehaviour
         {
             return m_Attributes.MovementCost + m_Hazard.Attributes.MovementCost;
         }
+    }
+
+    public int GetTotalConcealmentPoints()
+    {
+        return m_Attributes.ConcealmentPoints;
     }
 
 #if UNITY_EDITOR

@@ -12,8 +12,10 @@ public class DetectPlayerClicks : MonoBehaviour
     private int m_PointerId = 0;
     [SerializeField]
     private bool m_IgnoreUI = true;
+    [SerializeField]
+    private GameEventNames m_GameEventNames = null;
     [SerializeField, Tooltip("The event that is triggered when an object is clicked on.")]
-    private string m_TriggeredEvent;
+    private GameEventNames.GameUINames m_TriggeredEvent = GameEventNames.GameUINames.ClickedUnit;
     [SerializeField]
     private string[] m_LayersToDetect = { "Unit" };
 
@@ -25,11 +27,6 @@ public class DetectPlayerClicks : MonoBehaviour
     public bool IgnoreUI
     {
         get { return m_IgnoreUI; }
-    }
-
-    public string TriggeredEvent
-    {
-        get { return m_TriggeredEvent; }
     }
 
     public string[] LayersToDetect
@@ -49,7 +46,7 @@ public class DetectPlayerClicks : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, LayerMask.GetMask(m_LayersToDetect)))
         {
-            GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_TriggeredEvent, hitInfo.collider.gameObject);
+            GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_GameEventNames.GetEventName(m_TriggeredEvent), hitInfo.collider.gameObject);
         }
 	}
 }

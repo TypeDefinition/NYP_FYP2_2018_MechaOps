@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 180a2a21c4d76ee4385a290f7871afe6, type: 3}
   m_Name: Game Audio Settings
   m_EditorClassIdentifier: 
+  m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
   m_Volumes:
   - 0.1
   - 0.2

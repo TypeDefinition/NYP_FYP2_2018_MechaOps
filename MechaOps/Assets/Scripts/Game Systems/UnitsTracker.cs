@@ -1,63 +1,158 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 /// <summary>
 /// A quick class to store an array of gameobject
 /// </summary>
 public class UnitsTracker : MonoBehaviour
 {
-    [Header("Shown in Inspector for debugging purposes.")]
+    private Dictionary<FactionType, List<UnitStats>> m_Units = new Dictionary<FactionType, List<UnitStats>>();
+    private GameEventNames m_GameEventNames = null;
 
-    [Tooltip("The list of player units THAT ARE FUCKING ALIVE!")]
-    public List<GameObject> m_AlivePlayerUnits = null;
-    [Tooltip("The list of enemy units THAT ARE FUCKING ALIVE!")]
-    public List<GameObject> m_AliveEnemyUnits = null;
-
-    private void OnEnable()
+    public void SetUnits(FactionType _factionType, UnitStats[] _units)
     {
-        GameEventSystem.GetInstance().SubscribeToEvent<GameObject, bool>("EnemyUnitIsDead", SignalEnemyUnitDestroyed);
-        GameEventSystem.GetInstance().SubscribeToEvent<GameObject, bool>("PlayerIsDead", SignalPlayerUnitDestroyed);
-    }
-
-    private void OnDisable()
-    {
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject, bool>("EnemyUnitIsDead", SignalEnemyUnitDestroyed);
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject, bool>("PlayerIsDead", SignalPlayerUnitDestroyed);
-    }
-
-    // Use this for initialization
-    void Awake ()
-    {
-        m_AlivePlayerUnits = new List<GameObject>(GameObject.FindGameObjectsWithTag("Player"));
-        m_AliveEnemyUnits = new List<GameObject>(GameObject.FindGameObjectsWithTag("EnemyUnit"));
-    }
-
-    /// <summary>
-    /// A quick function that iterates and keep track of any player units died.
-    /// Removes the player unit from the list.
-    /// </summary>
-    void SignalPlayerUnitDestroyed(GameObject _deadGO, bool _destroyedUnitVisible)
-    {
-        m_AlivePlayerUnits.Remove(_deadGO);
-        // Send a notification once all of the player's units die
-        if (m_AlivePlayerUnits.Count == 0)
+        // Clear the current alive list.
+        if (m_Units.ContainsKey(_factionType))
         {
-            GameEventSystem.GetInstance().TriggerEvent("PlayerAnnihilated");
+            List<UnitStats> currentUnits;
+            m_Units.TryGetValue(_factionType, out currentUnits);
+            currentUnits.Clear();
+        }
+        else
+        {
+            m_Units.Add(_factionType, new List<UnitStats>());
+        }
+
+        List<UnitStats> factionUnits;
+        m_Units.TryGetValue(_factionType, out factionUnits);
+        for (int i = 0; i < _units.Length; ++i)
+        {
+            factionUnits.Add(_units[i]);
         }
     }
 
-    /// <summary>
-    /// A quick function that iterates and keep track of any enemy units died.
-    /// Removes the enemy unit from the list.
-    /// </summary>
-    void SignalEnemyUnitDestroyed(GameObject _deadGO, bool _destroyedUnitVisible)
+    public bool HasAliveUnits(FactionType _factionType)
     {
-        m_AliveEnemyUnits.Remove(_deadGO);
-        // Send a notification if all of the enemy units die.
-        if (m_AliveEnemyUnits.Count == 0)
+        return GetAliveUnits(_factionType).Length > 0;
+    }
+
+    /// <summary>
+    /// This is a simple unoptimised implementation which is only suitable for a small number of units.
+    /// It is done for simplicity of implementation over processing speed.
+    /// </summary>
+    /// <param name="_factionType"></param>
+    /// <returns></returns>
+    public UnitStats[] GetAliveUnits(FactionType _factionType)
+    {
+        if (!m_Units.ContainsKey(_factionType))
         {
-            GameEventSystem.GetInstance().TriggerEvent("EnemyAnnihilated");
+            return new UnitStats[0];
+        }
+
+        List<UnitStats> result = new List<UnitStats>();
+        List<UnitStats> factionUnits;
+        m_Units.TryGetValue(_factionType, out factionUnits);
+        for (int i = 0; i < factionUnits.Count; ++i)
+        {
+            if (factionUnits[i].IsAlive())
+            {
+                result.Add(factionUnits[i]);
+            }
+        }
+
+        return result.ToArray();
+    }
+
+    public bool HasDeadUnits(FactionType _factionType)
+    {
+        return GetDeadUnits(_factionType).Length > 0;
+    }
+
+    /// <summary>
+    /// This is a simple unoptimised implementation which is only suitable for a small number of units.
+    /// It is done for simplicity of implementation over processing speed.
+    /// </summary>
+    /// <param name="_factionType"></param>
+    /// <returns></returns>
+    public UnitStats[] GetDeadUnits(FactionType _factionType)
+    {
+        if (!m_Units.ContainsKey(_factionType))
+        {
+            return new UnitStats[0];
+        }
+
+        List<UnitStats> result = new List<UnitStats>();
+        List<UnitStats> factionUnits;
+        m_Units.TryGetValue(_factionType, out factionUnits);
+        for (int i = 0; i < factionUnits.Count; ++i)
+        {
+            if (!factionUnits[i].IsAlive())
+            {
+                result.Add(factionUnits[i]);
+            }
+        }
+
+        return result.ToArray();
+    }
+
+    public bool HasFactionUnits(FactionType _factionType)
+    {
+        if (!m_Units.ContainsKey(_factionType)) { return false; }
+
+        List<UnitStats> factionUnits;
+        m_Units.TryGetValue(_factionType, out factionUnits);
+        return factionUnits.Count > 0;
+    }
+
+    public FactionType[] GetAliveFactions()
+    {
+        List<FactionType> aliveFactions = new List<FactionType>();
+        foreach (KeyValuePair<FactionType, List<UnitStats>> unitList in m_Units)
+        {
+            if (HasAliveUnits(unitList.Key))
+            {
+                aliveFactions.Add(unitList.Key);
+            }
+        }
+
+        return aliveFactions.ToArray();
+    }
+
+    private void InitEvents()
+    {
+        GameEventSystem.GetInstance().SubscribeToEvent<UnitStats, bool>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitDead), OnUnitDead);
+    }
+
+    private void DeinitEvents()
+    {
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats, bool>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitDead), OnUnitDead);
+    }
+
+    private void Awake()
+    {
+        m_GameEventNames = GameSystemsDirectory.GetSceneInstance().GetGameEventNames();
+        InitEvents();
+    }
+
+    private void OnDestroy()
+    {
+        DeinitEvents();
+    }
+
+    // Callbacks
+    void OnUnitDead(UnitStats _deadUnit, bool _isVisible)
+    {
+        FactionType factionType = _deadUnit.UnitFaction;
+        FactionNames factionNames = GameSystemsDirectory.GetSceneInstance().GetFactionNames();
+        Assert.IsTrue(HasFactionUnits(factionType), MethodBase.GetCurrentMethod().Name + " - No units found for faction " + factionNames.GetFactionName(factionType) + "!");
+
+        GameEventNames gameEventNames = GameSystemsDirectory.GetSceneInstance().GetGameEventNames();
+        if (!HasAliveUnits(factionType))
+        {
+            GameEventSystem.GetInstance().TriggerEvent<FactionType>(gameEventNames.GetEventName(GameEventNames.GameplayNames.FactionDead), factionType);
         }
     }
 }

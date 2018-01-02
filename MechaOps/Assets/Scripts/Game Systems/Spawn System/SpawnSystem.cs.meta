@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: d012b00e27975b24aa223ad47721f784
+timeCreated: 1514711303
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - m_UnitLibrary: {fileID: 11400000, guid: 60f7ce9ba08de1049a082f8bd6d5ca28, type: 2}
+  - m_TileSystem: {instanceID: 0}
+  - m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
+  - m_UnitsTracker: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

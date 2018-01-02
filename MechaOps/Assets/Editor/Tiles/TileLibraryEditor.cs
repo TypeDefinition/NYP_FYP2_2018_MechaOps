@@ -20,7 +20,7 @@ public class TileLibraryEditor : Editor
         for (int i = 0; i < m_LibraryProperty.arraySize; ++i)
         {
             SerializedProperty property = m_LibraryProperty.GetArrayElementAtIndex(i);
-            string propertyName = ((TileType)i).ToString();            
+            string propertyName = ((TileType)i).ToString();
             EditorGUILayout.PropertyField(property, new GUIContent(propertyName), true);
         }
 

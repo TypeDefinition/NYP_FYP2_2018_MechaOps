@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 /// <summary>
 /// This will be used to render the tiles of this unit surrounding!
@@ -8,16 +10,38 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class PlayerViewScript : ViewScript
 {
-    [Header("The variables below are shown in the Inspector for debugging purposes.")]
-    [SerializeField, Tooltip("Surrounding Tiles that needed to change the ID")]
-    protected List<Tile> m_ViewedTiles;
-    [SerializeField, Tooltip("Visibility counter of this player unit")]
-    protected int m_VisibilityCounter = 0;
+    protected List<Tile> m_ViewedTiles = new List<Tile>();
+
+    protected override void InitEvents()
+    {
+        base.InitEvents();
+        GameEventSystem.GetInstance().SubscribeToEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitMovedToTile), OnUnitMovedToTile);
+    }
+
+    protected override void DeinitEvents()
+    {
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitMovedToTile), OnUnitMovedToTile);
+        base.DeinitEvents();
+    }
+
+    // Callbacks
+    protected override void OnUnitsSpawned()
+    {
+        CheckVisibleTiles();
+    }
+
+    protected virtual void OnUnitMovedToTile(UnitStats _movedUnit)
+    {
+        if (_movedUnit == m_UnitStats)
+        {
+            CheckVisibleTiles();
+        }
+    }
 
     /// <summary>
     /// This will help to render the tiles surrounding of this unit!
     /// </summary>
-    public override void SetVisibleTiles()
+    protected virtual void CheckVisibleTiles()
     {
         ClearVisibleTiles();
 
@@ -43,7 +67,7 @@ public class PlayerViewScript : ViewScript
     /// <summary>
     /// Decrease the visibility counter of the tiles that are out of range.
     /// </summary>
-    public virtual void ClearVisibleTiles()
+    protected virtual void ClearVisibleTiles()
     {
         foreach (Tile tile in m_ViewedTiles)
         {
@@ -52,33 +76,23 @@ public class PlayerViewScript : ViewScript
         m_ViewedTiles.Clear();
     }
 
-    /// <summary>
-    /// Since Player units will always be visible to the players!
-    /// </summary>
-    public override bool IsVisible()
-    {
-        if (m_VisibilityCounter == 0)
-        {
-            return false;
-        }
-        return true;
-    }
-
     public override void IncreaseVisibility()
     {
-        ++m_VisibilityCounter;
-        if (m_VisibilityCounter == 1)
+        ++m_VisibilityCount;
+        Assert.IsTrue(m_VisibilityCount >= 0);
+        if (m_VisibilityCount == 1)
         {
-            GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitSeen", gameObject);
+            GameEventSystem.GetInstance().TriggerEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitSeen), m_UnitStats);
         }
     }
 
     public override void DecreaseVisibility()
     {
-        m_VisibilityCounter = Mathf.Max(m_VisibilityCounter - 1, 0);
-        if (m_VisibilityCounter == 0)
+        --m_VisibilityCount;
+        Assert.IsTrue(m_VisibilityCount >= 0);
+        if (m_VisibilityCount == 0)
         {
-            GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitUnseen", gameObject);
+            GameEventSystem.GetInstance().TriggerEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitUnseen), m_UnitStats);
         }
     }
 }
