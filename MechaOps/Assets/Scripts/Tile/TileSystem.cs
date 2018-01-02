@@ -77,8 +77,7 @@ public class TileSystem : MonoBehaviour
     [SerializeField] private MeshFilter m_UnknownTilesMeshSecond = null;
     [SerializeField] private float m_UnknownTileMeshDiameter = 4.0f;
 
-    [SerializeField] private TileId[] m_PlayerSpawnTiles = null;
-    [SerializeField] private TileId[] m_EnemySpawnTiles = null;
+    [SerializeField] private SpawnTiles m_SpawnTiles = null;
 
     public int MapRadius
     {
@@ -105,15 +104,7 @@ public class TileSystem : MonoBehaviour
         return m_DefaultTile;
     }
 
-    public TileId[] GetPlayerSpawnTiles()
-    {
-        return m_PlayerSpawnTiles;
-    }
-
-    public TileId[] GetEnemySpawnTiles()
-    {
-        return m_EnemySpawnTiles;
-    }
+    public SpawnTiles GetSpawnTiles() { return m_SpawnTiles; }
 
 #if UNITY_EDITOR
     // Generate Mesh for unknown tiles.
@@ -372,7 +363,7 @@ public class TileSystem : MonoBehaviour
         {
             for (int i = 0; i < _overrides.Length; ++i)
             {
-                overrideDictionary.Add(_overrides[i].Type, _overrides[i]);
+                overrideDictionary.Add(_overrides[i].GetTileType(), _overrides[i]);
             }
         }
 
@@ -435,7 +426,7 @@ public class TileSystem : MonoBehaviour
     {
         if (_movementPoints <= 0)
         {
-            return null;
+            return new TileId[0];
         }
 
         // Get our search area so that we do not have to search the whole map.
@@ -576,7 +567,7 @@ public class TileSystem : MonoBehaviour
         // Return a null if there are no walkable tiles.
         if (walkableList.Count == 0)
         {
-            return null;
+            return new TileId[0];
         }
 
         // Convert the result to an array.
@@ -596,7 +587,7 @@ public class TileSystem : MonoBehaviour
         if (_start.Equals(_end))
         {
             Debug.Log(MethodBase.GetCurrentMethod().Name + " - Start == End.");
-            return null;
+            return new TileId[0];
         }
 
         // 查看到底有没有达到目的地的这个可能。
@@ -604,14 +595,14 @@ public class TileSystem : MonoBehaviour
         if (minDistance > _movementPoints)
         {
             Debug.Log(MethodBase.GetCurrentMethod().Name + " - Insufficient Movement Points.");
-            return null;
+            return new TileId[0];
         }
 
         // Check that both tiles are valid.
         if (GetTile(_start) == null || GetTile(_end) == null)
         {
             Debug.Log(MethodBase.GetCurrentMethod().Name + " - Invalid Tile.");
-            return null;
+            return new TileId[0];
         }
 
         // Get our search area so that we do not have to search the whole map.
@@ -634,7 +625,7 @@ public class TileSystem : MonoBehaviour
             if (cheapestNode.FCost > _movementPoints)
             {
                 Debug.Log(MethodBase.GetCurrentMethod().Name + " - Insufficient Speed. Needed: " + cheapestNode.FCost.ToString() + "(Or More) Have: " + _movementPoints.ToString());
-                return null;
+                return new TileId[0];
             }
 
             // 到达了目的地吗？
@@ -745,7 +736,7 @@ public class TileSystem : MonoBehaviour
         }
 
         Debug.Log(MethodBase.GetCurrentMethod().Name + " - No path found.");
-        return null;
+        return new TileId[0];
     }
 
     public int GetNumTiles()
@@ -796,7 +787,7 @@ public class TileSystem : MonoBehaviour
         m_PathMarkers = new List<GameObject>();
         HashSet<TileId> pathTiles = new HashSet<TileId>();
         
-        if (_path != null)
+        if (_path != null && _path.Length > 0)
         {
             LineRenderer lineRenderer = gameObject.GetComponent<LineRenderer>();
             Assert.IsTrue(lineRenderer != null, MethodBase.GetCurrentMethod().Name + " - LineRenderer required to work!");
@@ -819,7 +810,7 @@ public class TileSystem : MonoBehaviour
             lineRenderer.SetPositions(linePositions.ToArray());
         }
 
-        if (_reachableTiles != null)
+        if (_reachableTiles != null && _reachableTiles.Length > 0)
         {
             for (int i = 0; i < _reachableTiles.Length; ++i)
             {

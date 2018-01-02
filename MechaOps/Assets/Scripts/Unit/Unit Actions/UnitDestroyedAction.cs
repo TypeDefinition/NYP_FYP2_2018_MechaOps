@@ -31,14 +31,14 @@ public class UnitDestroyedAction : IUnitAction
     protected override void InitializeEvents()
     {
         if (m_EventsInitialized) { return; }
-        GameEventSystem.GetInstance().SubscribeToEvent<GameObject, bool>(tag + "IsDead", OnUnitDestroyed);
+        GameEventSystem.GetInstance().SubscribeToEvent<UnitStats, bool>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitDead), OnUnitDead);
         m_EventsInitialized = true;
     }
 
     protected override void DeinitializeEvents()
     {
         if (!m_EventsInitialized) { return; }
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject, bool>(tag + "IsDead", OnUnitDestroyed);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats, bool>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitDead), OnUnitDead);
         m_EventsInitialized = false;
     }
 
@@ -99,12 +99,12 @@ public class UnitDestroyedAction : IUnitAction
         InvokeCompletionCallback();
     }
 
-    public void OnUnitDestroyed(GameObject _go, bool _destroyedUnitVisible)
+    public void OnUnitDead(UnitStats _deadUnit, bool _dead)
     {
-        if (_go != gameObject) { return; }
+        if (_deadUnit != m_UnitStats) { return; }
 
         DeinitializeEvents();
-        m_Animation.UnitVisible = _destroyedUnitVisible;
+        m_Animation.UnitVisible = _dead;
         m_RunCondition = true;
         Assert.IsTrue(VerifyRunCondition());
         m_UnitStats.GetGameSystemsDirectory().GetUnitActionScheduler().ScheduleAction(this);

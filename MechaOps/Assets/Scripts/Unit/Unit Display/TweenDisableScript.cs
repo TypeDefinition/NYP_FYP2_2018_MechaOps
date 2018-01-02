@@ -9,7 +9,7 @@ public class TweenDisableScript : TweenUI_Scale {
     public override void AnimateUI()
     {
         // it will set the UI to be inactive when AnimateUI
-        LeanTween.scaleX(gameObject, 0, m_AnimationTime).setOnComplete(SetGameObjInactive);
+        LeanTween.scaleX(gameObject, 0, m_TweenAnimationDuration).setOnComplete(SetGameObjInactive);
     }
 
     protected void SetGameObjInactive()

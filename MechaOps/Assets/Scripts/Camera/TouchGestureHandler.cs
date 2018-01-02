@@ -16,6 +16,7 @@ public class TouchGestureHandler : MonoBehaviour
         AntiClockwise
     };
 
+    [SerializeField] GameEventNames m_GameEventNames = null;
     // For a gesture to be considered a pinch, the direction of the 2 swipes must be between these 2 angles.
     [SerializeField] private float m_MinPinchAngle = 150.0f;
     private const float m_MaxPinchAngle = 180.0f;
@@ -95,7 +96,7 @@ public class TouchGestureHandler : MonoBehaviour
 
         float magnitude = (previousDistance - currentDistance) / (float)Screen.height;
 
-        GameEventSystem.GetInstance().TriggerEvent<float>("Pinch Event", magnitude);
+        GameEventSystem.GetInstance().TriggerEvent<float>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.Pinch), magnitude);
 
         return true;
     }
@@ -127,7 +128,7 @@ public class TouchGestureHandler : MonoBehaviour
         Vector2 averageVector = (touchA.deltaPosition + touchB.deltaPosition) * 0.5f;
         Vector2 result = averageVector / (float)Screen.height;
 
-        GameEventSystem.GetInstance().TriggerEvent<Vector2>("Scroll Event", result);
+        GameEventSystem.GetInstance().TriggerEvent<Vector2>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.Scroll), result);
 
         return true;
     }
@@ -142,7 +143,7 @@ public class TouchGestureHandler : MonoBehaviour
 
         Touch touchA = Input.GetTouch(0);
 
-        GameEventSystem.GetInstance().TriggerEvent<Vector2>("Swipe Event", touchA.deltaPosition / (float)Screen.height);
+        GameEventSystem.GetInstance().TriggerEvent<Vector2>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.Swipe), touchA.deltaPosition / (float)Screen.height);
 
         return true;
     }
@@ -277,11 +278,11 @@ public class TouchGestureHandler : MonoBehaviour
         Assert.IsTrue(circleDirection == -1 || circleDirection == 1);
         if (circleDirection == -1)
         {
-            GameEventSystem.GetInstance().TriggerEvent<CircleGestureDirection>("Circle Gesture Event", CircleGestureDirection.AntiClockwise);
+            GameEventSystem.GetInstance().TriggerEvent<CircleGestureDirection>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.CircleGesture), CircleGestureDirection.AntiClockwise);
         }
         else
         {
-            GameEventSystem.GetInstance().TriggerEvent<CircleGestureDirection>("Circle Gesture Event", CircleGestureDirection.Clockwise);
+            GameEventSystem.GetInstance().TriggerEvent<CircleGestureDirection>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.CircleGesture), CircleGestureDirection.Clockwise);
         }
 
         DebugOutput("Circle Gesture Event Ended");

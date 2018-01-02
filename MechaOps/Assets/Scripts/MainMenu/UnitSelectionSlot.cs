@@ -40,7 +40,7 @@ public class UnitSelectionSlot : MonoBehaviour
             m_SelectedUnitDisplay.SetActive(true);
             m_AddUnitButton.gameObject.SetActive(false);
             m_UnitIcon.sprite = unitLibraryData.GetUnitIconSprite();
-            m_UnitCostText.text = "Cost: " + unitLibraryData.GetUnitStats().DeploymentCost.ToString();
+            m_UnitCostText.text = "Cost: " + unitLibraryData.GetUnitPrefab().DeploymentCost.ToString();
         }
     }
 
@@ -61,7 +61,6 @@ public class UnitSelectionSlot : MonoBehaviour
         m_AddUnitButton.gameObject.SetActive(true);
         m_SelectedUnitDisplay.SetActive(false);
 
-        m_UnitsSelectionCanvas.RemoveSelectedUnit(m_UnitType);
         SetUnitType(UnitType.None);
     }
 

@@ -7,7 +7,6 @@ using UnityEngine.Assertions;
 [System.Serializable]
 public class HazardAttributes
 {
-
     [SerializeField] private bool m_Walkable = true;
     [SerializeField] private int m_MovementCost = 0;
 
@@ -20,12 +19,10 @@ public class HazardAttributes
     {
         m_MovementCost = Mathf.Max(m_MovementCost, 0);
     }
-
 }
 
 public abstract class Hazard : MonoBehaviour
 {
-
     [SerializeField, HideInInspector] private bool m_OwnerInitialized = false;
     [SerializeField, HideInInspector] private Tile m_Owner = null;
     [SerializeField] private HazardAttributes m_Attributes = new HazardAttributes();
@@ -33,10 +30,7 @@ public abstract class Hazard : MonoBehaviour
     [SerializeField] private int m_TurnsToDecay = 3;
     private int m_CurrentTurnsToDecay;
 
-    public Tile Owner
-    {
-        get { return m_Owner; }
-    }
+    public Tile Owner { get { return m_Owner; } }
 
     public bool Decay
     {
@@ -85,9 +79,4 @@ public abstract class Hazard : MonoBehaviour
         m_Owner = _owner;
         m_OwnerInitialized = true;
     }
-    
-    private void Start()
-    {
-    }
-
 }

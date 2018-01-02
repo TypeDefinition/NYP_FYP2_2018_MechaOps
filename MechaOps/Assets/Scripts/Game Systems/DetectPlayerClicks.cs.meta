@@ -1,10 +1,11 @@
 fileFormatVersion: 2
 guid: facde880791e93e4bbf8e4c0abeb2bbf
-timeCreated: 1508425470
+timeCreated: 1514815206
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

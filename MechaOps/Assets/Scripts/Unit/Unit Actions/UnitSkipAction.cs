@@ -18,10 +18,17 @@ public class UnitSkipAction : IUnitAction
 
         GetUnitStats().CurrentActionPoints = 0;
         m_ActionState = ActionState.Completed;
-        GameEventSystem.GetInstance().TriggerEvent("UnitFinishAction");
+        GameEventSystem.GetInstance().TriggerEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitFinishedAction), m_UnitStats);
         InvokeCompletionCallback();
 
         CheckIfUnitFinishedTurn();
+    }
+
+    protected override void OnTurnOn()
+    {
+        base.OnTurnOn();
+        Assert.IsTrue(VerifyRunCondition());
+        m_UnitStats.GetGameSystemsDirectory().GetUnitActionScheduler().ScheduleAction(this);
     }
 
     /// <summary>

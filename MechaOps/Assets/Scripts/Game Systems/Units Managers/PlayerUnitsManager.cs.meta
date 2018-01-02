@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: fd43ec47068063942bc35d15b47b02b9
+timeCreated: 1514816745
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - m_UnitActionButtonPrefab: {fileID: 114775635339453894, guid: b6f55b4b93d48eb448b16e21e160b186,
+      type: 2}
+  - m_SelectedUnitIndicatorPrefab: {fileID: 114654854778776996, guid: deafc0be506719b408c10069eff89bc1,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

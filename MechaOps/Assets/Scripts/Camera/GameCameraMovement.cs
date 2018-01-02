@@ -19,7 +19,7 @@ public class GameCameraMovement : MonoBehaviour
     [SerializeField] private float m_MinHeight = 3.0f;
     [SerializeField] private float m_MaxHeight = 15.0f;
 
-    [SerializeField] private GameSystemsDirectory m_GameSystemsDirectory = null;
+    private GameSystemsDirectory m_GameSystemsDirectory = null;
     private TileSystem m_TileSystem = null;
     private Vector3 m_CentrePosition = new Vector3();
     private float m_MaxDistanceFromCentre = 50.0f;
@@ -137,6 +137,7 @@ public class GameCameraMovement : MonoBehaviour
 
     private void Awake()
     {
+        m_GameSystemsDirectory = GameSystemsDirectory.GetSceneInstance();
         Assert.IsTrue(m_GameSystemsDirectory != null);
         m_TileSystem = m_GameSystemsDirectory.GetTileSystem();
         Assert.IsTrue(m_TileSystem != null);

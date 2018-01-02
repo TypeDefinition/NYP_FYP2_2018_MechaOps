@@ -7,11 +7,14 @@ using UnityEngine.Assertions;
 [DisallowMultipleComponent, RequireComponent(typeof(GameCameraMovement))]
 public class GameCameraController : MonoBehaviour
 {
-    private GameCameraMovement m_GameCameraMovement = null;
-    private bool m_EventsInitialised = false;
-
+    // Serialised Variable(s)
+    [SerializeField] private GameEventNames m_GameEventNames = null;
     [SerializeField] private float m_ZoomSpeed = 50.0f;
     [SerializeField] private float m_MovementSpeed = 10.0f;
+
+    // Non-Serialised Variable(s)
+    private GameCameraMovement m_GameCameraMovement = null;
+    private bool m_EventsInitialised = false;
 
     public GameCameraMovement GetGameCameraMovement()
     {
@@ -36,10 +39,10 @@ public class GameCameraController : MonoBehaviour
         if (m_EventsInitialised) { return; }
 
         // Initialise events
-        GameEventSystem.GetInstance().SubscribeToEvent<float>("Pinch Event", PinchCallback);
-        GameEventSystem.GetInstance().SubscribeToEvent<Vector2>("Scroll Event", ScrollCallback);
-        GameEventSystem.GetInstance().SubscribeToEvent<Vector2>("Swipe Event", SwipeCallback);
-        GameEventSystem.GetInstance().SubscribeToEvent<TouchGestureHandler.CircleGestureDirection>("Circle Gesture Event", CircleGestureCallback);
+        GameEventSystem.GetInstance().SubscribeToEvent<float>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.Pinch), PinchCallback);
+        GameEventSystem.GetInstance().SubscribeToEvent<Vector2>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.Scroll), ScrollCallback);
+        GameEventSystem.GetInstance().SubscribeToEvent<Vector2>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.Swipe), SwipeCallback);
+        GameEventSystem.GetInstance().SubscribeToEvent<TouchGestureHandler.CircleGestureDirection>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.CircleGesture), CircleGestureCallback);
 
         m_EventsInitialised = true;
     }
@@ -50,10 +53,10 @@ public class GameCameraController : MonoBehaviour
         if (!m_EventsInitialised) { return; }
 
         // Uninitialise events here.
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<float>("Pinch Event", PinchCallback);
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<Vector2>("Scroll Event", ScrollCallback);
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<Vector2>("Swipe Event", SwipeCallback);
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<TouchGestureHandler.CircleGestureDirection>("Circle Gesture Event", CircleGestureCallback);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<float>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.Pinch), PinchCallback);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<Vector2>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.Scroll), ScrollCallback);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<Vector2>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.Swipe), SwipeCallback);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<TouchGestureHandler.CircleGestureDirection>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.CircleGesture), CircleGestureCallback);
 
         m_EventsInitialised = false;
     }
@@ -124,11 +127,10 @@ public class GameCameraController : MonoBehaviour
     private void Awake()
     {
         m_GameCameraMovement = gameObject.GetComponent<GameCameraMovement>();
-    }
+        Assert.IsNotNull(m_GameCameraMovement);
+        Assert.IsNotNull(m_GameEventNames);
 
-    private void Update()
-    {
-        HandleKeyboardInput();
+        InitEvents();
     }
 
     private void OnDestroy()
@@ -136,14 +138,8 @@ public class GameCameraController : MonoBehaviour
         DeinitEvents();
     }
 
-    private void OnEnable()
+    private void Update()
     {
-        InitEvents();
+        HandleKeyboardInput();
     }
-
-    private void OnDisable()
-    {
-        DeinitEvents();
-    }
-
 }

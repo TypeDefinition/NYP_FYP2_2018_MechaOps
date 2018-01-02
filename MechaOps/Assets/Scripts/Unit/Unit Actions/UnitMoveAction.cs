@@ -106,7 +106,7 @@ public class UnitMoveAction : IUnitAction
     {
         // Signal that we have moved to a tile.
         GetUnitStats().CurrentTileID = m_TilePath[_reachedTileIndex];
-        GameEventSystem.GetInstance().TriggerEvent<GameObject>("UnitMovedToTile", gameObject);
+        GameEventSystem.GetInstance().TriggerEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitMovedToTile), m_UnitStats);
     }
 
     protected override void OnAnimationCompleted()
@@ -120,7 +120,7 @@ public class UnitMoveAction : IUnitAction
         m_ActionState = ActionState.Completed;
 
         // Sending out an event that this action has ended.
-        GameEventSystem.GetInstance().TriggerEvent("UnitFinishAction");
+        GameEventSystem.GetInstance().TriggerEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitFinishedAction), m_UnitStats);
         InvokeCompletionCallback();
 
         CheckIfUnitFinishedTurn();

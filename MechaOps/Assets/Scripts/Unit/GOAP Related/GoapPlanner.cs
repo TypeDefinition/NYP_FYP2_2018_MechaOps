@@ -61,16 +61,16 @@ public class GoapPlanner : MonoBehaviour
     [SerializeField, Tooltip("The Current goal it is working towards to!")]
     protected IGoapGoal m_CurrentGoal;
     [SerializeField, Tooltip("Enemy Unit Manager script")]
-    protected EnemyUnitsManager m_EnemiesManager;
+    protected AIUnitsManager m_EnemiesManager;
     [SerializeField, Tooltip("Tile system script")]
     protected TileSystem m_TileSystem;
 
-    public EnemyUnitsManager EnemiesManager
+    public AIUnitsManager EnemiesManager
     {
         get
         {
             if (!m_EnemiesManager)
-                m_EnemiesManager = FindObjectOfType<EnemyUnitsManager>();
+                m_EnemiesManager = FindObjectOfType<AIUnitsManager>();
             return m_EnemiesManager;
         }
     }
@@ -112,7 +112,7 @@ public class GoapPlanner : MonoBehaviour
     protected virtual void Start()
     {
         if (!m_EnemiesManager)
-            m_EnemiesManager = FindObjectOfType<EnemyUnitsManager>();
+            m_EnemiesManager = FindObjectOfType<AIUnitsManager>();
         m_AllGoapActions = GetComponents<IGoapAction>();
         if (!m_Stats)
             m_Stats = GetComponent<UnitStats>();
@@ -174,9 +174,9 @@ public class GoapPlanner : MonoBehaviour
                         else
                         {
                             // this unit did not see any player units, so move to Before that, check whether is it near the marker
-                            if (m_Stats.CurrentTileID.Equals(m_EnemiesManager.PlayerUnitLocations))
+                            if (m_Stats.CurrentTileID.Equals(m_EnemiesManager.GetOneTileAwayFromEnemyWithoutAGauranteeOfAWalkableTileAtAll()))
                             {
-                                m_EnemiesManager.UpdateMarker();
+                                m_EnemiesManager.UpdateMarkers();
                             }
                             // Then move towards there!
                             m_CurrentGoal = m_DictGoapGoal["WalkGoal"];

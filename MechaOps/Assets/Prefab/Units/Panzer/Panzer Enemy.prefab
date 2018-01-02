@@ -318,6 +318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4747330411662764}
   - component: {fileID: 82418634400931514}
+  - component: {fileID: 114283408678398602}
   m_Layer: 8
   m_Name: Ambient Audio Source
   m_TagString: Untagged
@@ -351,6 +352,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4015942311744006}
   - component: {fileID: 82395203855276670}
+  - component: {fileID: 114022106599911676}
   m_Layer: 8
   m_Name: SFX Audio Source
   m_TagString: Untagged
@@ -1705,6 +1707,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114022106599911676
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1844259557388920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5412d4f3aa2c445a400005fc737f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GameAudioSettings: {fileID: 11400000, guid: 7661fa5d75f3f464bb18461c47ac4643,
+    type: 2}
+  m_AudioSources:
+  - {fileID: 82395203855276670}
+  m_VolumeType: 2
+  m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
 --- !u!114 &114025086661032776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1745,6 +1764,7 @@ MonoBehaviour:
   m_UnitStats: {fileID: 114879956254548028}
   m_VisibilityCount: 0
   m_AllRenderers: []
+  m_AlwayRender: 0
 --- !u!114 &114189902084662826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1798,6 +1818,23 @@ MonoBehaviour:
   m_PanzerWalkCinematicName: Walk
   m_PanzerAttackCinematicName: Attack
   m_PanzerDeathCinematicName: Die
+--- !u!114 &114283408678398602
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1794389633036302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5412d4f3aa2c445a400005fc737f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GameAudioSettings: {fileID: 11400000, guid: 7661fa5d75f3f464bb18461c47ac4643,
+    type: 2}
+  m_AudioSources:
+  - {fileID: 82418634400931514}
+  m_VolumeType: 1
+  m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
 --- !u!114 &114294379893822220
 MonoBehaviour:
   m_ObjectHideFlags: 1

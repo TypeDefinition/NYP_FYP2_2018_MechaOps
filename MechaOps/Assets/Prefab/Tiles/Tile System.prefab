@@ -209,8 +209,7 @@ MonoBehaviour:
   m_UnknownTilesMeshFirst: {fileID: 33770741073977870}
   m_UnknownTilesMeshSecond: {fileID: 33434311670442320}
   m_UnknownTileMeshDiameter: 4
-  m_PlayerSpawnTiles: []
-  m_EnemySpawnTiles: []
+  m_SpawnTiles: {fileID: 11400000, guid: ce8fd73c8266528428ee9a57bb72a113, type: 2}
 --- !u!120 &120010443292654190
 LineRenderer:
   m_ObjectHideFlags: 1

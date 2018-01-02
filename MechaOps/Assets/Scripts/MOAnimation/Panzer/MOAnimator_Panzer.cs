@@ -209,6 +209,7 @@ public class MOAnimator_Panzer : MOAnimator
         // Spawn Bullet
         Assert.IsTrue(_target != null);
         m_Bullet = Instantiate(m_Bullet_Prefab.gameObject).GetComponent<TankBullet>();
+        m_Bullet.Hit = m_Hit;
         m_Bullet.transform.position = m_BulletSpawnPoint.transform.position;
         m_Bullet.transform.LookAt(_target.transform.position);
         m_Bullet.CompletionCallback = _callback;

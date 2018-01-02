@@ -79,7 +79,7 @@ public class PanzerShootAction : UnitAttackAction
         // Invoke the Target's Unit Stat's HealthDropCallback.
         if (m_TargetUnitStats.m_HealthDropCallback != null) { m_TargetUnitStats.m_HealthDropCallback(m_UnitStats); }
 
-        GameEventSystem.GetInstance().TriggerEvent("UnitFinishAction");
+        GameEventSystem.GetInstance().TriggerEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitFinishedAction), m_UnitStats);
         InvokeCompletionCallback();
 
         CheckIfUnitFinishedTurn();

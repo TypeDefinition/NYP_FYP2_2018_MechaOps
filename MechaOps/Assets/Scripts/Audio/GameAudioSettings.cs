@@ -11,19 +11,29 @@ public enum VolumeType
     Num_VolumeType
 };
 
-[CreateAssetMenu]
+[System.Serializable, CreateAssetMenu(fileName = "GameAudioSettings", menuName = "Audio/Game Audio Settings")]
 public class GameAudioSettings : ScriptableObject
 {
-    private string m_VolumeChangedEventName = "VolumeChanged";
+    [SerializeField] private GameEventNames m_GameEventNames = null;
     [SerializeField] private float[] m_Volumes = new float[(int)VolumeType.Num_VolumeType];
 
-    public string GetVolumeChangedEventName() { return m_VolumeChangedEventName; }
+#if UNITY_EDITOR
+    public void SetGameEventNames(GameEventNames _gameEventNames)
+    {
+        m_GameEventNames = _gameEventNames;
+    }
+
+    public GameEventNames GetGameEventNames()
+    {
+        return m_GameEventNames;
+    }
+#endif
 
     public void SetVolume(VolumeType _volumeType, float _volume)
     {
         m_Volumes[(int)_volumeType] = Mathf.Clamp(_volume, 0.0f, 1.0f);
 
-        GameEventSystem.GetInstance().TriggerEvent(m_VolumeChangedEventName);
+        GameEventSystem.GetInstance().TriggerEvent(m_GameEventNames.GetEventName(GameEventNames.GameAudioNames.VolumeUpdated));
     }
 
     public float GetVolume(VolumeType _volumeType) { return m_Volumes[(int)_volumeType]; }

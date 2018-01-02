@@ -65,7 +65,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4324667317270710}
   - component: {fileID: 136628383095931804}
-  - component: {fileID: 114824476157301608}
+  - component: {fileID: 114097250834631704}
   - component: {fileID: 114809387758883690}
   - component: {fileID: 114881584929758932}
   - component: {fileID: 114663015870586048}
@@ -125,6 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4507640437586240}
   - component: {fileID: 82162032362694052}
+  - component: {fileID: 114892805914076188}
   m_Layer: 8
   m_Name: SFX Audio Source
   m_TagString: Untagged
@@ -173,6 +174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4222238610155830}
   - component: {fileID: 82014064273596784}
+  - component: {fileID: 114684025676750962}
   m_Layer: 8
   m_Name: Ambient Audio Source
   m_TagString: Untagged
@@ -212,8 +214,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1535336270683784}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -30, y: 0, z: -17.320509}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4755024220214940}
@@ -571,6 +573,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_RotationSpeed: 3600
   m_RotationAxis: 1
+--- !u!114 &114097250834631704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1535336270683784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44d7e9c6f646b03479e84ffce248edf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UnitStats: {fileID: 114809387758883690}
 --- !u!114 &114321516086233292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -582,18 +596,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f84d1dc43a8d484e917a809ab01b0c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControllableAction: 1
   m_UnitActionName: Shoot
   m_UnitActionDescription: <Placeholder Description>
-  m_TurnedOn: 0
+  m_ControllableAction: 1
   m_Priority: 0
   m_ActionCost: 1
   m_EndsTurn: 0
-  m_ActionState: 0
-  m_UnitActionUI: {fileID: 1044431308409052, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
+  m_UnitActionUIPrefab: {fileID: 114668755676894246, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
     type: 2}
-  m_ActionIconUI: {fileID: 21300000, guid: e392509062377594ab81881f16831a09, type: 3}
-  m_UnitActionHandler: {fileID: 114881584929758932}
+  m_UnitActionButtonSprite: {fileID: 21300000, guid: e392509062377594ab81881f16831a09,
+    type: 3}
   m_MinAttackRange: 0
   m_MaxAttackRange: 6
   m_AccuracyPoints: 50
@@ -646,18 +658,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cab5ea8101800d4ab5f64c0b12f232e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControllableAction: 1
   m_UnitActionName: Skip
   m_UnitActionDescription: <Placeholder Description>
-  m_TurnedOn: 0
+  m_ControllableAction: 1
   m_Priority: 0
   m_ActionCost: 1
   m_EndsTurn: 0
-  m_ActionState: 0
-  m_UnitActionUI: {fileID: 1612582933021620, guid: 10234cb69b925e14d9163d2556b7fb5b,
+  m_UnitActionUIPrefab: {fileID: 114610579002547102, guid: 10234cb69b925e14d9163d2556b7fb5b,
     type: 2}
-  m_ActionIconUI: {fileID: 21300000, guid: 2701c9f4499a5f340a46e96aeba66a4e, type: 3}
-  m_UnitActionHandler: {fileID: 0}
+  m_UnitActionButtonSprite: {fileID: 21300000, guid: 2701c9f4499a5f340a46e96aeba66a4e,
+    type: 3}
 --- !u!114 &114640826300165538
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -681,18 +691,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94936a6ab46458b42ae30701083d0fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControllableAction: 0
   m_UnitActionName: Destroyed
   m_UnitActionDescription: <Placeholder Description>
-  m_TurnedOn: 0
+  m_ControllableAction: 0
   m_Priority: 50
   m_ActionCost: 0
   m_EndsTurn: 0
-  m_ActionState: 0
-  m_UnitActionUI: {fileID: 0}
-  m_ActionIconUI: {fileID: 0}
-  m_UnitActionHandler: {fileID: 114881584929758932}
+  m_UnitActionUIPrefab: {fileID: 0}
+  m_UnitActionButtonSprite: {fileID: 0}
   m_Animation: {fileID: 114734858264194274}
+--- !u!114 &114684025676750962
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1889472167237670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5412d4f3aa2c445a400005fc737f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
+  m_GameAudioSettings: {fileID: 11400000, guid: 7661fa5d75f3f464bb18461c47ac4643,
+    type: 2}
+  m_AudioSources:
+  - {fileID: 82014064273596784}
+  m_VolumeType: 1
 --- !u!114 &114734858264194274
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -732,9 +756,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 111465f2417784a499b0f4458b49061d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GameSystemsDirectory: {fileID: 0}
   m_UnitStatsJSON:
-    m_Name: Wasp
+    m_UnitName: Wasp
+    m_UnitDescription: Attack Helicopter Gunship
+    m_FactionType: 0
     m_MaxHealthPoints: 4
     m_CurrentHealthPoints: 4
     m_MaxActionPoints: 4
@@ -746,7 +771,6 @@ MonoBehaviour:
     m_CurrentTileID:
       m_X: -10
       m_Y: 0
-      m_Z: 10
   m_TileAttributeOverrides:
   - m_Type: 3
     m_Walkable: 1
@@ -758,25 +782,9 @@ MonoBehaviour:
     m_MovementCost: 2
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
-  m_ViewTileScript: {fileID: 114824476157301608}
+  m_ViewTileScript: {fileID: 114097250834631704}
   m_UnitInfoDisplay_Prefab: {fileID: 114423042521562832, guid: f6fdede1943ea6742858eefd80f3ded1,
     type: 2}
-  m_CurrentActiveAction: {fileID: 0}
-  m_EnemiesInViewRange: []
---- !u!114 &114824476157301608
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1535336270683784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44d7e9c6f646b03479e84ffce248edf9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UnitStats: {fileID: 114809387758883690}
-  m_ViewedTiles: []
-  m_VisibilityCounter: 0
 --- !u!114 &114881584929758932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -788,7 +796,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3cef5841460e11469d89034ac0e4ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AllAvailableActions: []
+--- !u!114 &114892805914076188
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1721396675096990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5412d4f3aa2c445a400005fc737f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
+  m_GameAudioSettings: {fileID: 11400000, guid: 7661fa5d75f3f464bb18461c47ac4643,
+    type: 2}
+  m_AudioSources:
+  - {fileID: 82162032362694052}
+  m_VolumeType: 2
 --- !u!114 &114928630273676992
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -800,18 +824,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c88f8e9033dd44880244eae61eb940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControllableAction: 1
   m_UnitActionName: Move
   m_UnitActionDescription: <Placeholder Description>
-  m_TurnedOn: 0
+  m_ControllableAction: 1
   m_Priority: 0
   m_ActionCost: 1
   m_EndsTurn: 0
-  m_ActionState: 0
-  m_UnitActionUI: {fileID: 1134435258809106, guid: f60f06ef37015e14ba42bc5dad875b1c,
+  m_UnitActionUIPrefab: {fileID: 114662384954406756, guid: f60f06ef37015e14ba42bc5dad875b1c,
     type: 2}
-  m_ActionIconUI: {fileID: 21300000, guid: d859645726494314ab2591c7384f7d53, type: 3}
-  m_UnitActionHandler: {fileID: 0}
+  m_UnitActionButtonSprite: {fileID: 21300000, guid: d859645726494314ab2591c7384f7d53,
+    type: 3}
   m_MovementPoints: 8
   m_Animation: {fileID: 114807732359028796}
 --- !u!136 &136628383095931804

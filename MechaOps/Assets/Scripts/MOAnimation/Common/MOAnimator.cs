@@ -99,20 +99,7 @@ public abstract class MOAnimator : MonoBehaviour
 
     protected virtual void OnDestroy()
     {
-        DeinitialiseEvents();
         StopAllCoroutines();
-    }
-
-    protected virtual void InitialiseEvents()
-    {
-        string volumeChangedEventName = m_GameSystemsDirectory.GetGameAudioSettings().GetVolumeChangedEventName();
-        GameEventSystem.GetInstance().SubscribeToEvent(volumeChangedEventName, OnVolumeChanged);
-    }
-
-    protected virtual void DeinitialiseEvents()
-    {
-        string volumeChangedEventName = m_GameSystemsDirectory.GetGameAudioSettings().GetVolumeChangedEventName();
-        GameEventSystem.GetInstance().UnsubscribeFromEvent(volumeChangedEventName, OnVolumeChanged);
     }
 
     protected virtual void Awake()
@@ -123,8 +110,6 @@ public abstract class MOAnimator : MonoBehaviour
         // Get the Systems required fromGame Systems Directory.
         m_TileSystem = m_GameSystemsDirectory.GetTileSystem();
         m_CineMachineHandler = m_GameSystemsDirectory.GetCineMachineHandler();
-
-        InitialiseEvents();
     }
 
     protected virtual void Start()
@@ -329,15 +314,6 @@ public abstract class MOAnimator : MonoBehaviour
     protected void ClearMovementPath()
     {
         m_MovementPath.Clear();
-    }
-
-    protected virtual void OnVolumeChanged()
-    {
-        m_AmbientAudioSource.volume = m_GameSystemsDirectory.GetGameAudioSettings().GetVolume(VolumeType.Ambient);
-        for (int i = 0; i < m_SFXAudioSources.Length; ++i)
-        {
-            m_SFXAudioSources[i].volume = m_GameSystemsDirectory.GetGameAudioSettings().GetVolume(VolumeType.SFX);
-        }
     }
 
     protected void PlayAmbientAudioSource()

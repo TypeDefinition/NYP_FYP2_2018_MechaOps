@@ -38,10 +38,10 @@ public class UnitSelectionButton : MonoBehaviour
         UnitLibrary.UnitLibraryData unitLibraryData = m_UnitLibrary.GetUnitLibraryData(m_UnitType);
 
         m_UnitIcon.sprite = unitLibraryData.GetUnitIconSprite();
-        m_UnitNameText.SetText(unitLibraryData.GetUnitStats().Name);
-        m_UnitDescriptionText.SetText(unitLibraryData.GetUnitStats().Description);
+        m_UnitNameText.SetText(unitLibraryData.GetUnitPrefab().UnitName);
+        m_UnitDescriptionText.SetText(unitLibraryData.GetUnitPrefab().UnitDescription);
         //m_UnitStatsText.text = string.Format("HP: {0}\nAttack: {1}\nView Range: {2}\nEvasion: {3}\nConcealment: {4}", m_UnitLibraryData.MaxHealthPoints, m_UnitLibraryData.GetUnitStats().ViewRange, m_UnitLibraryData.GetUnitStats().EvasionPoints, m_UnitLibraryData.GetUnitStats().ConcealmentPoints);
-        m_UnitCostText.SetText("Deployment Cost: {0}", unitLibraryData.GetUnitStats().DeploymentCost);
+        m_UnitCostText.SetText("Deployment Cost: {0}", unitLibraryData.GetUnitPrefab().DeploymentCost);
     }
 
     public UnitType GetUnitType() { return m_UnitType; }

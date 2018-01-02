@@ -11,29 +11,47 @@ public abstract class ViewScript : MonoBehaviour
     [SerializeField] protected UnitStats m_UnitStats = null;
 
     // Non-Serialized Variable(s)
+    protected int m_VisibilityCount = 0; // This is the counter for the number of units spotting this unit.
     protected TileSystem m_TileSystem = null;
     protected GameSystemsDirectory m_GameSystemsDirectory = null;
+    protected GameEventNames m_GameEventNames = null;
+
+    public int GetVisibilityCount() { return m_VisibilityCount; }
+
+    protected virtual void InitEvents()
+    {
+        GameEventSystem.GetInstance().SubscribeToEvent(m_GameEventNames.GetEventName(GameEventNames.SpawnSystemNames.UnitsSpawned), OnUnitsSpawned);
+    }
+
+    protected virtual void DeinitEvents()
+    {
+        GameEventSystem.GetInstance().UnsubscribeFromEvent(m_GameEventNames.GetEventName(GameEventNames.SpawnSystemNames.UnitsSpawned), OnUnitsSpawned);
+    }
 
     protected virtual void Awake()
     {
-        if (!m_UnitStats)
-        {
-            m_UnitStats = GetComponent<UnitStats>();
-        }
         Assert.IsTrue(m_UnitStats != null, MethodBase.GetCurrentMethod().Name + " - m_UnitStats must not be null!");
-        m_GameSystemsDirectory = m_UnitStats.GetGameSystemsDirectory();
+        m_GameSystemsDirectory = GameSystemsDirectory.GetSceneInstance();
         Assert.IsTrue(m_GameSystemsDirectory != null, MethodBase.GetCurrentMethod().Name + " - m_GameSystemsDirectory must not be null!");
         m_TileSystem = m_GameSystemsDirectory.GetTileSystem();
         Assert.IsTrue(m_TileSystem != null, MethodBase.GetCurrentMethod().Name + " - m_TileSystem must not be null!");
+        m_GameEventNames = m_GameSystemsDirectory.GetGameEventNames();
+
+        InitEvents();
     }
 
-    public virtual void SetVisibleTiles() {}
+    protected virtual void OnDestroy()
+    {
+        DeinitEvents();
+    }
 
-    public virtual void IncreaseVisibility() {}
+    protected abstract void OnUnitsSpawned();
 
-    public virtual void DecreaseVisibility() {}
+    public abstract void IncreaseVisibility();
 
-    public abstract bool IsVisible();
+    public abstract void DecreaseVisibility();
+
+    public virtual bool IsVisible() { return m_VisibilityCount > 0; }
 
     public virtual bool RaycastToTile(Tile _tile)
     {
@@ -82,6 +100,4 @@ public abstract class ViewScript : MonoBehaviour
         }
         return true;
     }
-
-    public virtual void Initialise() {}
 }
