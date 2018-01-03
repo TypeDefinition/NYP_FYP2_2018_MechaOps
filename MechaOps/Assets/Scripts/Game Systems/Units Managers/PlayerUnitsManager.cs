@@ -10,20 +10,20 @@ public class PlayerUnitsManager : UnitsManager
 {
     // Serialised Variable(s)
     [SerializeField, Tooltip("The prefab holder for the unit's actions!")]
-    private Image m_UnitActionButtonPrefab;
+    protected Image m_UnitActionButtonPrefab;
     [SerializeField, Tooltip("The prefab for selecting unit indicator")]
-    private SelectedUnitIndicator m_SelectedUnitIndicatorPrefab;
+    protected SelectedUnitIndicator m_SelectedUnitIndicatorPrefab;
 
     // Non-Serialised Variable(s)
-    private ScreenSpaceCanvas m_ScreenSpaceCanvas;
-    private ScrollRect m_UnitActionSelectionUIScrollRect;
-    private UnitSelection m_UnitSelection;
-    private TextMeshProUGUI m_UnitNameText;
-    private SelectedUnitIndicator m_SelectedUnitIndicator;
-    private int m_SelectedUnitIndex = 0;
-    private List<Button> m_SelectedUnitActionButtons = new List<Button>();
+    protected ScreenSpaceCanvas m_ScreenSpaceCanvas;
+    protected ScrollRect m_UnitActionSelectionUIScrollRect;
+    protected UnitSelection m_UnitSelection;
+    protected TextMeshProUGUI m_UnitNameText;
+    protected SelectedUnitIndicator m_SelectedUnitIndicator;
+    protected int m_SelectedUnitIndex = 0;
+    protected List<Button> m_SelectedUnitActionButtons = new List<Button>();
     IEnumerator m_UpdateCoroutine = null;
-    private bool m_IsPlayerTurn = false;
+    protected bool m_IsPlayerTurn = false;
 
     protected override void InitEvents()
     {
@@ -85,7 +85,7 @@ public class PlayerUnitsManager : UnitsManager
         StartCoroutine(m_UpdateCoroutine);
     }
 
-    private IEnumerator UpdateCoroutine()
+    protected virtual IEnumerator UpdateCoroutine()
     {
         // Get all alive player units.
         GetManagedUnitsFromUnitTracker();

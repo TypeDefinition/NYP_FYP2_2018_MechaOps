@@ -52,6 +52,7 @@ public abstract class IUnitAction : MonoBehaviour
     protected UnitStats m_UnitStats = null;
     protected GameEventNames m_GameEventNames = null;
     protected ActionState m_ActionState = ActionState.None;
+    protected bool m_IsUnitTurn = false;
 
     private Void_Void m_CompletionCallBack;
 
@@ -139,12 +140,20 @@ public abstract class IUnitAction : MonoBehaviour
     /// <summary>
     /// To subscribe to some of the events with the ObserverSystem
     /// </summary>
-    protected abstract void InitializeEvents();
+    protected virtual void InitEvents()
+    {
+        GameEventSystem.GetInstance().SubscribeToEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.TurnStart), OnTurnStart);
+        GameEventSystem.GetInstance().SubscribeToEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.TurnEnd), OnTurnEnd);
+    }
 
     /// <summary>
     /// To unsubscribe from some of the events with the ObserverSystem
     /// </summary>
-    protected abstract void DeinitializeEvents();
+    protected virtual void DeinitEvents()
+    {
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.TurnStart), OnTurnStart);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.TurnEnd), OnTurnEnd);
+    }
 
     /// <summary>
     /// Do note that if the Awake function is overriden, you need to call this function or prepare to face annoying bugs.
@@ -159,18 +168,14 @@ public abstract class IUnitAction : MonoBehaviour
         m_UnitActionHandler = GetComponent<UnitActionHandler>();
         Assert.IsNotNull(m_UnitActionHandler, MethodBase.GetCurrentMethod().Name + " - The GameObject this script is attached to MUST have a m_UnitActionHandler Component!");
         Assert.IsTrue(m_UnitActionName != null && m_UnitActionName != "", "No name is given to this action. GameObject Name: " + gameObject.name);
+
+        InitEvents();
     }
 
-    /// <summary>
-    /// The function should do when turn has started
-    /// </summary>
-    protected abstract void StartTurnCallback();
-
-    /// <summary>
-    /// The function that this should be doing when turn has ended
-    /// </summary>
-    protected abstract void EndTurnCallback();
-
+    protected virtual void OnDestroy()
+    {
+        DeinitEvents();
+    }
     /// <summary>
     /// Check if the condition for this action to run is met.
     /// </summary>
@@ -213,8 +218,27 @@ public abstract class IUnitAction : MonoBehaviour
 
     protected virtual void OnAnimationCompleted() {}
 
+    protected virtual void OnTurnStart(FactionType _factionType)
+    {
+        if (_factionType == m_UnitStats.UnitFaction)
+        {
+            m_IsUnitTurn = true;
+        }
+    }
+
+    protected virtual void OnTurnEnd(FactionType _factionType)
+    {
+        if (_factionType == m_UnitStats.UnitFaction)
+        {
+            m_IsUnitTurn = false;
+        }
+    }
+
     protected void CheckIfUnitFinishedTurn()
     {
+        // We cannot finish the turn if it isn't even our turn to begin with.
+        if (!m_IsUnitTurn) { return; }
+
         if (GetUnitStats().CurrentActionPoints == 0 || !m_UnitActionHandler.CheckCanUnitDoAction(m_UnitStats) || m_EndsTurn)
         {
             // tell the player unit manager that it can no longer do any action

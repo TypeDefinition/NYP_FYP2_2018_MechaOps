@@ -296,7 +296,7 @@ public class UnitStats : MonoBehaviour
         Assert.IsTrue(m_UnitInfoDisplay_Prefab != null, MethodBase.GetCurrentMethod().Name + " - m_UnitInfoDisplay_Prefab must not be null!");
 
         // Initialisation of Unit Info Display
-        m_UnitInfoDisplay = GameObject.Instantiate(m_UnitInfoDisplay_Prefab, GameSystemsDirectory.GetSceneInstance().GetScreenSpaceCanvas().transform);
+        m_UnitInfoDisplay = Instantiate(m_UnitInfoDisplay_Prefab.gameObject, GameSystemsDirectory.GetSceneInstance().GetScreenSpaceCanvas().transform).GetComponent<UnitInfoDisplay>();
         m_UnitInfoDisplay.SetUnitStats(this);
         m_UnitInfoDisplay.transform.SetAsFirstSibling(); // Such a shitty hack.
 

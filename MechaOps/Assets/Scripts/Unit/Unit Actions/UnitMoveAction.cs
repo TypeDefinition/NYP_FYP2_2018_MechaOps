@@ -34,10 +34,6 @@ public class UnitMoveAction : IUnitAction
 
     public TileSystem GetTileSystem() { return m_TileSystem; }
 
-    protected override void InitializeEvents() { throw new System.NotImplementedException(); }
-
-    protected override void DeinitializeEvents() { throw new System.NotImplementedException(); }
-
     protected virtual void RegisterAnimationCallbacks()
     {
         if (!m_RegisteredAnimationCompleteCallback)
@@ -125,10 +121,6 @@ public class UnitMoveAction : IUnitAction
 
         CheckIfUnitFinishedTurn();
     }
-
-    protected override void StartTurnCallback() { throw new System.NotImplementedException(); }
-
-    protected override void EndTurnCallback() { throw new System.NotImplementedException(); }
 
     public override bool VerifyRunCondition() { return m_TilePath.Count > 0; }
 

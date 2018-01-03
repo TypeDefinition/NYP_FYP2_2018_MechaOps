@@ -27,20 +27,15 @@ public class AIViewScript : ViewScript
 
     protected override void Awake()
     {
-        base.Awake();
-    }
-
-    protected virtual void Start()
-    {
         m_AllRenderers = GetComponentsInChildren<MeshRenderer>();
-        foreach (MeshRenderer renderer in m_AllRenderers) { renderer.enabled = false; }
-        m_UnitStats.GetUnitInfoDisplay().gameObject.SetActive(false);
+        base.Awake();
     }
 
     // Callbacks
     protected override void OnUnitsSpawned()
     {
-        m_UnitStats.GetUnitInfoDisplay().gameObject.SetActive(m_VisibilityCount > 0);
+        m_UnitStats.GetUnitInfoDisplay().gameObject.SetActive(IsVisible());
+        foreach (MeshRenderer renderer in m_AllRenderers) { renderer.enabled = IsVisible(); }
     }
 
     protected virtual void OnUnitDead(UnitStats _deadUnit, bool _deadUnitVisible)
