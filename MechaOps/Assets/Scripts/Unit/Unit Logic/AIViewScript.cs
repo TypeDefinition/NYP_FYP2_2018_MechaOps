@@ -32,6 +32,13 @@ public class AIViewScript : ViewScript
         foreach (MeshRenderer renderer in m_AllRenderers) { renderer.enabled = false; }
     }
 
+    protected virtual void Start()
+    {
+        m_AllRenderers = GetComponentsInChildren<MeshRenderer>();
+        foreach (MeshRenderer renderer in m_AllRenderers) { renderer.enabled = false; }
+        m_UnitStats.GetUnitInfoDisplay().gameObject.SetActive(false);
+    }
+
     // Callbacks
     protected override void OnUnitsSpawned()
     {
@@ -44,12 +51,9 @@ public class AIViewScript : ViewScript
 
         m_AlwaysRender = true;
         // ensuring that the renderer will be set from inactive to active
-        if (!m_AllRenderers[0].enabled)
+        if (m_AlwaysRender)
         {
-            foreach (MeshRenderer renderer in m_AllRenderers)
-            {
-                renderer.enabled = true;
-            }
+            foreach (MeshRenderer renderer in m_AllRenderers) { renderer.enabled = true; }
         }
     }
 
