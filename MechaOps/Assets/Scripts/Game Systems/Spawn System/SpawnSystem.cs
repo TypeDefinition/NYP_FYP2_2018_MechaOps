@@ -50,6 +50,8 @@ public class SpawnSystem : MonoBehaviour
                 UnitStats unitPrefab = libraryData.GetUnitPrefab();
                 UnitStats spawnedUnit = Instantiate(unitPrefab);
 
+                Assert.IsTrue(spawnedUnit.UnitFaction == m_UnitsToSpawn[i].GetFactionType(), MethodBase.GetCurrentMethod().Name + " - A Unit is spawned in the wrong faction!");
+
                 // Set the spawned unit's TileId.
                 spawnedUnit.CurrentTileID = tileList[j];
                 Tile spawnTile = m_TileSystem.GetTile(spawnedUnit.CurrentTileID);
