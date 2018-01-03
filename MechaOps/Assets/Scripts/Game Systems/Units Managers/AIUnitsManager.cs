@@ -28,8 +28,9 @@ public class AIUnitsManager : UnitsManager
     }
 
     // Gameplay
-    protected override void GameOver(FactionType _winner)
+    protected override void OnGameOver(FactionType _winner)
     {
+        base.OnGameOver(_winner);
         if (m_UpdateCoroutine != null)
         {
             StopCoroutine(m_UpdateCoroutine);

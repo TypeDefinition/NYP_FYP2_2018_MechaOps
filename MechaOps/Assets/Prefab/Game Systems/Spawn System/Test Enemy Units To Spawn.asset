@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 155c5e9b0022b1b46b207f1e2e69a693, type: 3}
   m_Name: Test Enemy Units To Spawn
   m_EditorClassIdentifier: 
-  m_FactionType: 2
-  m_UnitList: 070000000600000008000000
+  m_FactionType: 1
+  m_UnitList: 050000000400000003000000

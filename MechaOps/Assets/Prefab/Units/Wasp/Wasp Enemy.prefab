@@ -774,6 +774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Stat: {fileID: 0}
   m_AttackerStat: {fileID: 0}
+  m_Planner: {fileID: 0}
 --- !u!114 &114737823929242180
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -909,7 +910,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UnitStats: {fileID: 114919808184283194}
-  m_AllRenderers: []
 --- !u!114 &114919808184283194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -922,7 +922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UnitStatsJSON:
-    m_UnitName: 
+    m_UnitName: Wasp Enemy
     m_UnitDescription: 
     m_FactionType: 1
     m_MaxHealthPoints: 4
@@ -950,6 +950,7 @@ MonoBehaviour:
   m_ViewTileScript: {fileID: 114906196630865626}
   m_UnitInfoDisplay_Prefab: {fileID: 114423042521562832, guid: f6fdede1943ea6742858eefd80f3ded1,
     type: 2}
+  m_EnemiesInViewRange: []
 --- !u!136 &136535640069596984
 CapsuleCollider:
   m_ObjectHideFlags: 1

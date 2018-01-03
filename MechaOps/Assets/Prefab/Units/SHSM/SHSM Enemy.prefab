@@ -1265,6 +1265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Stat: {fileID: 0}
   m_AttackerStat: {fileID: 0}
+  m_Planner: {fileID: 0}
 --- !u!114 &114307235735154440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1277,7 +1278,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UnitStats: {fileID: 114686418102639456}
-  m_AllRenderers: []
 --- !u!114 &114382056858472062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1418,7 +1418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UnitStatsJSON:
-    m_UnitName: 
+    m_UnitName: Primus Enemy
     m_UnitDescription: 
     m_FactionType: 1
     m_MaxHealthPoints: 3
@@ -1436,6 +1436,7 @@ MonoBehaviour:
   m_ViewTileScript: {fileID: 114307235735154440}
   m_UnitInfoDisplay_Prefab: {fileID: 114423042521562832, guid: f6fdede1943ea6742858eefd80f3ded1,
     type: 2}
+  m_EnemiesInViewRange: []
 --- !u!114 &114710153389955922
 MonoBehaviour:
   m_ObjectHideFlags: 1

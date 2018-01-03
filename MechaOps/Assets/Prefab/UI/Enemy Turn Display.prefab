@@ -54,11 +54,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1082769455872240}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0d6ecfec7e3b384696724bd7f2143f1, type: 3}
+  m_Script: {fileID: 11500000, guid: 078512eb4ce70e242aebd4694d7aa8a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AnimationTime: 0.2
-  m_OriginalScale: {x: 0, y: 0, z: 0}
+  m_TweenAnimationDuration: 0.2
 --- !u!114 &114329723985767838
 MonoBehaviour:
   m_ObjectHideFlags: 1

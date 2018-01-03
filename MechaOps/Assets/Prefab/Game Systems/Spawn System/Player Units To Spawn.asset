@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: Player Units To Spawn
   m_EditorClassIdentifier: 
   m_FactionType: 0
-  m_UnitList: 
+  m_UnitList: 01000000
