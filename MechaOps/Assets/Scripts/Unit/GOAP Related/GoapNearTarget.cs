@@ -121,6 +121,7 @@ public class GoapNearTarget : IGoapAction
         UpdateEnemyInAttack();
         m_WalkAct.CompletionCallBack -= InvokeActionCompleted;
         print("Followed the target successfully");
+        m_UpdateRoutine = null;
         yield break;
     }
 
@@ -140,7 +141,7 @@ public class GoapNearTarget : IGoapAction
     {
         m_EnemiesInAttack.Clear();
         // check through the global list of units at the EnemyUnitsManager!
-        foreach (UnitStats zeGoStat in m_Planner.m_Stats.GetGameSystemsDirectory().GetAIUnitsManager()[0].GetSeenEnemies())
+        foreach (UnitStats zeGoStat in m_Planner.EnemiesManager.GetSeenEnemies())
         {
             int zeTileDistance = TileId.GetDistance(zeGoStat.CurrentTileID, m_Planner.m_Stats.CurrentTileID);
             if (zeTileDistance <= m_AttackAct.MaxAttackRange && zeTileDistance >= m_AttackAct.MinAttackRange && m_Planner.m_Stats.GetViewScript().RaycastToTile(m_Planner.GameTileSystem.GetTile(zeGoStat.CurrentTileID)))

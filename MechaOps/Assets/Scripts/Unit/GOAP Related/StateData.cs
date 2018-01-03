@@ -10,6 +10,8 @@ public class StateData : MonoBehaviour {
     protected UnitStats m_Stat;
     [SerializeField, Tooltip("The Attacker stats")]
     protected UnitStats m_AttackerStat;
+    [SerializeField, Tooltip("Goap Planner")]
+    protected GoapPlanner m_Planner;
 
     protected HashSet<string> m_CurrentStates = new HashSet<string>();
 
@@ -19,6 +21,11 @@ public class StateData : MonoBehaviour {
         {
             return m_CurrentStates;
         }
+    }
+
+    protected virtual void Awake()
+    {
+        m_Planner = GetComponent<GoapPlanner>();
     }
 
     protected virtual void OnEnable()
@@ -48,7 +55,7 @@ public class StateData : MonoBehaviour {
 
     public void StartInitState()
     {
-        if (m_Stat.GetGameSystemsDirectory().GetAIUnitsManager()[0].GetSeenEnemies().Count > 0)
+        if (m_Planner.EnemiesManager.GetSeenEnemies().Count > 0)
         {
             m_CurrentStates.Add("TargetInView");
         }

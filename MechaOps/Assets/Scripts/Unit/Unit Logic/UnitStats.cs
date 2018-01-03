@@ -65,7 +65,7 @@ public class UnitStats : MonoBehaviour
     private UnitsTracker m_UnitsTracker = null;
     private UnitInfoDisplay m_UnitInfoDisplay = null;
     private IUnitAction m_CurrentActiveAction;
-    private List<UnitStats> m_EnemiesInViewRange = new List<UnitStats>();
+    [SerializeField] private List<UnitStats> m_EnemiesInViewRange = new List<UnitStats>();
 
     /// <summary>
     /// A callback function will appear when ever the health point decreases.

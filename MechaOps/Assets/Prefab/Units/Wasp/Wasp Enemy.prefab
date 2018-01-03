@@ -576,18 +576,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cab5ea8101800d4ab5f64c0b12f232e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControllableAction: 1
   m_UnitActionName: Skip
   m_UnitActionDescription: <Placeholder Description>
-  m_TurnedOn: 0
+  m_ControllableAction: 1
   m_Priority: 0
   m_ActionCost: 1
   m_EndsTurn: 0
-  m_ActionState: 0
-  m_UnitActionUI: {fileID: 1612582933021620, guid: 10234cb69b925e14d9163d2556b7fb5b,
-    type: 2}
-  m_ActionIconUI: {fileID: 21300000, guid: 2701c9f4499a5f340a46e96aeba66a4e, type: 3}
-  m_UnitActionHandler: {fileID: 0}
+  m_UnitActionUIPrefab: {fileID: 0}
+  m_UnitActionButtonSprite: {fileID: 0}
 --- !u!114 &114149621354156038
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -648,18 +644,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c88f8e9033dd44880244eae61eb940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControllableAction: 1
   m_UnitActionName: Move
   m_UnitActionDescription: <Placeholder Description>
-  m_TurnedOn: 0
+  m_ControllableAction: 1
   m_Priority: 0
   m_ActionCost: 1
   m_EndsTurn: 0
-  m_ActionState: 0
-  m_UnitActionUI: {fileID: 1134435258809106, guid: f60f06ef37015e14ba42bc5dad875b1c,
-    type: 2}
-  m_ActionIconUI: {fileID: 21300000, guid: d859645726494314ab2591c7384f7d53, type: 3}
-  m_UnitActionHandler: {fileID: 0}
+  m_UnitActionUIPrefab: {fileID: 0}
+  m_UnitActionButtonSprite: {fileID: 0}
   m_MovementPoints: 8
   m_Animation: {fileID: 114851379634724980}
 --- !u!114 &114327513648936132
@@ -683,6 +675,8 @@ MonoBehaviour:
   m_AllGoapActions: []
   m_Stats: {fileID: 114919808184283194}
   m_StateData: {fileID: 114711850977891524}
+  m_GameEventNamesAsset: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18,
+    type: 2}
   m_FinishMoving: 0
   m_UnderAttack: 0
   m_CurrentGoal:
@@ -701,12 +695,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5412d4f3aa2c445a400005fc737f2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
   m_GameAudioSettings: {fileID: 11400000, guid: 7661fa5d75f3f464bb18461c47ac4643,
     type: 2}
   m_AudioSources:
   - {fileID: 82617599343438596}
   m_VolumeType: 1
-  m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
 --- !u!114 &114466626019781564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -718,17 +712,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94936a6ab46458b42ae30701083d0fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControllableAction: 0
   m_UnitActionName: Destroyed
   m_UnitActionDescription: <Placeholder Description>
-  m_TurnedOn: 0
+  m_ControllableAction: 0
   m_Priority: 50
   m_ActionCost: 0
   m_EndsTurn: 0
-  m_ActionState: 0
-  m_UnitActionUI: {fileID: 0}
-  m_ActionIconUI: {fileID: 0}
-  m_UnitActionHandler: {fileID: 114467498092037774}
+  m_UnitActionUIPrefab: {fileID: 0}
+  m_UnitActionButtonSprite: {fileID: 0}
   m_Animation: {fileID: 114613066354012256}
 --- !u!114 &114467498092037774
 MonoBehaviour:
@@ -741,7 +732,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3cef5841460e11469d89034ac0e4ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AllAvailableActions: []
 --- !u!114 &114589605877509294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -795,18 +785,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f84d1dc43a8d484e917a809ab01b0c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControllableAction: 1
   m_UnitActionName: Shoot
   m_UnitActionDescription: <Placeholder Description>
-  m_TurnedOn: 0
+  m_ControllableAction: 1
   m_Priority: 0
   m_ActionCost: 1
   m_EndsTurn: 0
-  m_ActionState: 0
-  m_UnitActionUI: {fileID: 1044431308409052, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
-    type: 2}
-  m_ActionIconUI: {fileID: 21300000, guid: e392509062377594ab81881f16831a09, type: 3}
-  m_UnitActionHandler: {fileID: 114467498092037774}
+  m_UnitActionUIPrefab: {fileID: 0}
+  m_UnitActionButtonSprite: {fileID: 0}
   m_MinAttackRange: 0
   m_MaxAttackRange: 6
   m_AccuracyPoints: 50
@@ -859,12 +845,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5412d4f3aa2c445a400005fc737f2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
   m_GameAudioSettings: {fileID: 11400000, guid: 7661fa5d75f3f464bb18461c47ac4643,
     type: 2}
   m_AudioSources:
   - {fileID: 82748993205126494}
   m_VolumeType: 2
-  m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
 --- !u!114 &114844506063650792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -887,7 +873,6 @@ MonoBehaviour:
   m_TileDest:
     m_X: 0
     m_Y: 0
-    m_Z: 0
 --- !u!114 &114851379634724980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -924,9 +909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UnitStats: {fileID: 114919808184283194}
-  m_VisibilityCount: 0
   m_AllRenderers: []
-  m_AlwayRender: 0
 --- !u!114 &114919808184283194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -938,10 +921,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 111465f2417784a499b0f4458b49061d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GameSystemsDirectory: {fileID: 0}
   m_UnitStatsJSON:
-    m_Name: Wasp
-    m_Description: 
+    m_UnitName: 
+    m_UnitDescription: 
+    m_FactionType: 1
     m_MaxHealthPoints: 4
     m_CurrentHealthPoints: 4
     m_MaxActionPoints: 4
@@ -953,7 +936,6 @@ MonoBehaviour:
     m_CurrentTileID:
       m_X: 2
       m_Y: -3
-      m_Z: 1
   m_TileAttributeOverrides:
   - m_Type: 3
     m_Walkable: 1
@@ -968,8 +950,6 @@ MonoBehaviour:
   m_ViewTileScript: {fileID: 114906196630865626}
   m_UnitInfoDisplay_Prefab: {fileID: 114423042521562832, guid: f6fdede1943ea6742858eefd80f3ded1,
     type: 2}
-  m_CurrentActiveAction: {fileID: 0}
-  m_EnemiesInViewRange: []
 --- !u!136 &136535640069596984
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -46,10 +46,8 @@ public class GoapAttackAct : IGoapAction {
             while (!m_ActionCompleted)
                 yield return FixedWait;
             m_SkipAction.CompletionCallBack -= InvokeActionCompleted;
-            yield break;
         }
         // we picked the target which will be the 1st unit in the range at GoapNearTarget
-        GameObject zeTarget = m_GOAPTargetAct.EnemiesInAttack[0];
         // TODO: resolve this quick fix
         // get the actual tile distance
         //int zeTileDistance = TileId.GetDistance(zeTarget.GetComponent<UnitStats>().CurrentTileID, m_Planner.m_Stats.CurrentTileID);
@@ -57,11 +55,12 @@ public class GoapAttackAct : IGoapAction {
         //if (m_AttackAct.MaxAttackRange < zeTileDistance)
         //{
         //    // get the tiles furthest away from the unit
-            
+
         //m_Planner.remove
         //}
-        //else
+        else
         {
+            GameObject zeTarget = m_GOAPTargetAct.EnemiesInAttack[0];
             m_AttackAct.SetTarget(zeTarget);
             m_AttackAct.CompletionCallBack += InvokeActionCompleted;
             m_AttackAct.TurnOn();

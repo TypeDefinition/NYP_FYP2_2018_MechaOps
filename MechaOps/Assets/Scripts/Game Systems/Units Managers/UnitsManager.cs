@@ -21,6 +21,16 @@ public abstract class UnitsManager : MonoBehaviour
 
     public List<UnitStats> GetSeenEnemies() { return m_SeenEnemies; }
 
+    public FactionType ManagedFaction
+    {
+        get { return m_ManagedFaction; }
+    }
+
+    public GameEventNames GameEventNamesAsset
+    {
+        get { return m_GameEventNames; }
+    }
+
     protected virtual void InitEvents()
     {
         // Gameplay

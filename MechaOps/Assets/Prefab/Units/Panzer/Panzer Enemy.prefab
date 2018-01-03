@@ -1718,12 +1718,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5412d4f3aa2c445a400005fc737f2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
   m_GameAudioSettings: {fileID: 11400000, guid: 7661fa5d75f3f464bb18461c47ac4643,
     type: 2}
   m_AudioSources:
   - {fileID: 82395203855276670}
   m_VolumeType: 2
-  m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
 --- !u!114 &114025086661032776
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1762,9 +1762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UnitStats: {fileID: 114879956254548028}
-  m_VisibilityCount: 0
   m_AllRenderers: []
-  m_AlwayRender: 0
 --- !u!114 &114189902084662826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1829,12 +1827,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5412d4f3aa2c445a400005fc737f2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
   m_GameAudioSettings: {fileID: 11400000, guid: 7661fa5d75f3f464bb18461c47ac4643,
     type: 2}
   m_AudioSources:
   - {fileID: 82418634400931514}
   m_VolumeType: 1
-  m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
 --- !u!114 &114294379893822220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1904,6 +1902,8 @@ MonoBehaviour:
   m_AllGoapActions: []
   m_Stats: {fileID: 114879956254548028}
   m_StateData: {fileID: 114320079545034956}
+  m_GameEventNamesAsset: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18,
+    type: 2}
   m_FinishMoving: 0
   m_UnderAttack: 0
   m_CurrentGoal:
@@ -1922,7 +1922,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3cef5841460e11469d89034ac0e4ea5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AllAvailableActions: []
 --- !u!114 &114669511403171312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1934,17 +1933,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51dfc0bc3a817ac4a951b8a242a9681f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControllableAction: 1
   m_UnitActionName: Shoot
   m_UnitActionDescription: <Placeholder Description>
-  m_TurnedOn: 0
+  m_ControllableAction: 1
   m_Priority: 0
   m_ActionCost: 1
   m_EndsTurn: 0
-  m_ActionState: 0
-  m_UnitActionUI: {fileID: 0}
-  m_ActionIconUI: {fileID: 0}
-  m_UnitActionHandler: {fileID: 0}
+  m_UnitActionUIPrefab: {fileID: 0}
+  m_UnitActionButtonSprite: {fileID: 0}
   m_MinAttackRange: 0
   m_MaxAttackRange: 5
   m_AccuracyPoints: 75
@@ -1984,7 +1980,6 @@ MonoBehaviour:
   m_TileDest:
     m_X: 0
     m_Y: 0
-    m_Z: 0
 --- !u!114 &114856521220186888
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1996,18 +1991,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cab5ea8101800d4ab5f64c0b12f232e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControllableAction: 1
   m_UnitActionName: Skip
   m_UnitActionDescription: <Placeholder Description>
-  m_TurnedOn: 0
+  m_ControllableAction: 1
   m_Priority: 0
   m_ActionCost: 1
   m_EndsTurn: 0
-  m_ActionState: 0
-  m_UnitActionUI: {fileID: 1612582933021620, guid: 10234cb69b925e14d9163d2556b7fb5b,
-    type: 2}
-  m_ActionIconUI: {fileID: 21300000, guid: 2701c9f4499a5f340a46e96aeba66a4e, type: 3}
-  m_UnitActionHandler: {fileID: 0}
+  m_UnitActionUIPrefab: {fileID: 0}
+  m_UnitActionButtonSprite: {fileID: 0}
 --- !u!114 &114879956254548028
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2019,10 +2010,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 111465f2417784a499b0f4458b49061d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GameSystemsDirectory: {fileID: 0}
   m_UnitStatsJSON:
-    m_Name: Panzer
-    m_Description: 
+    m_UnitName: 
+    m_UnitDescription: 
+    m_FactionType: 1
     m_MaxHealthPoints: 4
     m_CurrentHealthPoints: 4
     m_MaxActionPoints: 2
@@ -2034,13 +2025,10 @@ MonoBehaviour:
     m_CurrentTileID:
       m_X: 1
       m_Y: -1
-      m_Z: 0
   m_TileAttributeOverrides: []
   m_ViewTileScript: {fileID: 114054195728922426}
   m_UnitInfoDisplay_Prefab: {fileID: 114423042521562832, guid: f6fdede1943ea6742858eefd80f3ded1,
     type: 2}
-  m_CurrentActiveAction: {fileID: 0}
-  m_EnemiesInViewRange: []
 --- !u!114 &114930548130969464
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2052,18 +2040,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7c88f8e9033dd44880244eae61eb940, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControllableAction: 1
   m_UnitActionName: Move
   m_UnitActionDescription: <Placeholder Description>
-  m_TurnedOn: 0
+  m_ControllableAction: 1
   m_Priority: 0
   m_ActionCost: 1
   m_EndsTurn: 0
-  m_ActionState: 0
-  m_UnitActionUI: {fileID: 1134435258809106, guid: f60f06ef37015e14ba42bc5dad875b1c,
-    type: 2}
-  m_ActionIconUI: {fileID: 21300000, guid: d859645726494314ab2591c7384f7d53, type: 3}
-  m_UnitActionHandler: {fileID: 0}
+  m_UnitActionUIPrefab: {fileID: 0}
+  m_UnitActionButtonSprite: {fileID: 0}
   m_MovementPoints: 5
   m_Animation: {fileID: 114294379893822220}
 --- !u!114 &114942262607342162
@@ -2077,17 +2061,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94936a6ab46458b42ae30701083d0fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ControllableAction: 0
   m_UnitActionName: Destroyed
   m_UnitActionDescription: <Placeholder Description>
-  m_TurnedOn: 0
+  m_ControllableAction: 0
   m_Priority: 50
   m_ActionCost: 0
   m_EndsTurn: 0
-  m_ActionState: 0
-  m_UnitActionUI: {fileID: 0}
-  m_ActionIconUI: {fileID: 0}
-  m_UnitActionHandler: {fileID: 114653984288070966}
+  m_UnitActionUIPrefab: {fileID: 0}
+  m_UnitActionButtonSprite: {fileID: 0}
   m_Animation: {fileID: 114982705508500524}
 --- !u!114 &114982705508500524
 MonoBehaviour:

@@ -50,6 +50,8 @@ public class GoapPlanner : MonoBehaviour
     public UnitStats m_Stats;
     [Tooltip("The StateData of this current unit")]
     public StateData m_StateData;
+    [SerializeField, Tooltip("Asset for game events")]
+    protected GameEventNames m_GameEventNamesAsset;
 
     [Header("Debugging Purpose for GoapPlanning")]
     [SerializeField, Tooltip("The indicator to check if it has finished making a move!")]
@@ -96,21 +98,17 @@ public class GoapPlanner : MonoBehaviour
 
     protected void OnEnable()
     {
-        GameEventSystem.GetInstance().SubscribeToEvent("PlayerAnnihilated", StopUpdate);
-        GameEventSystem.GetInstance().SubscribeToEvent("EnemyAnnihilated", StopUpdate);
+        GameEventSystem.GetInstance().SubscribeToEvent<FactionType>(m_GameEventNamesAsset.GetEventName(GameEventNames.GameplayNames.GameOver), StopUpdate);
     }
 
     protected void OnDisable()
     {
-        GameEventSystem.GetInstance().UnsubscribeFromEvent("PlayerAnnihilated", StopUpdate);
-        GameEventSystem.GetInstance().UnsubscribeFromEvent("EnemyAnnihilated", StopUpdate);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<FactionType>(m_GameEventNamesAsset.GetEventName(GameEventNames.GameplayNames.GameOver), StopUpdate);
     }
 
     // Use this for initialization
-    protected virtual void Start()
+    protected void Awake()
     {
-        if (!m_EnemiesManager)
-            m_EnemiesManager = FindObjectOfType<AIUnitsManager>();
         m_AllGoapActions = GetComponents<IGoapAction>();
         if (!m_Stats)
             m_Stats = GetComponent<UnitStats>();
@@ -139,9 +137,28 @@ public class GoapPlanner : MonoBehaviour
         m_FinishMoving = true;
     }
 
+    protected void FinishMakingMove(UnitStats _UnitStat)
+    {
+        m_FinishMoving = true;
+    }
+
     public virtual IEnumerator StartPlanning()
     {
-        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>("UnitMakeMove", FinishMakingMove);
+        if (!m_EnemiesManager)
+        {
+            // get Manager through the GameSystemsDirection
+            AIUnitsManager[] ArrayOfAIUnitsManager = m_Stats.GetGameSystemsDirectory().GetAIUnitsManager();
+            foreach (AIUnitsManager AIManager in ArrayOfAIUnitsManager)
+            {
+                // need to ensure that the faction is the same
+                if (m_Stats.UnitFaction == AIManager.ManagedFaction)
+                {
+                    m_EnemiesManager = AIManager;
+                    break;
+                }
+            }
+        }
+        GameEventSystem.GetInstance().SubscribeToEvent<UnitStats>(m_GameEventNamesAsset.GetEventName(GameEventNames.GameplayNames.UnitFinishedTurn), FinishMakingMove);
         m_FinishMoving = false;
         // TODO: Probably need coroutine but not now
         GoapNode zeCheapestActNode = null;
@@ -171,8 +188,9 @@ public class GoapPlanner : MonoBehaviour
                         }
                         else
                         {
+                            List<TileId> ListOfWalkableTiles = m_EnemiesManager.GetOneTileAwayFromEnemyWithoutAGauranteeOfAWalkableTileAtAll();
                             // this unit did not see any player units, so move to Before that, check whether is it near the marker
-                            if (m_Stats.CurrentTileID.Equals(m_EnemiesManager.GetOneTileAwayFromEnemyWithoutAGauranteeOfAWalkableTileAtAll()))
+                            if (ListOfWalkableTiles.Count == 1 && ListOfWalkableTiles.Contains(m_Stats.CurrentTileID))
                             {
                                 m_EnemiesManager.UpdateMarkers();
                             }
@@ -190,16 +208,24 @@ public class GoapPlanner : MonoBehaviour
                 foreach (IGoapAction zeAct in zeListOfActToDo)
                 {
                     zeAct.DoAction();
+                    // Have no idea why yield return coroutine is not working anymore
                     yield return zeAct.m_UpdateRoutine;
+                    while (zeAct.m_UpdateRoutine != null)
+                    {
+                        yield return null;
+                    }
                     if (m_FinishMoving)
+                    {
+                        print("Unit cannot move anymore!");
                         break;
+                    }
                 }
                 zeCheapestActNode = null;
             }
             // here is to go the next loop! and wait till itself finished it's actions and finishes it's goal
             yield return null;
         }
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>("UnitMakeMove", FinishMakingMove);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats>(m_GameEventNamesAsset.GetEventName(GameEventNames.GameplayNames.UnitFinishedTurn), FinishMakingMove);
         yield break;
     }
 
@@ -330,7 +356,7 @@ public class GoapPlanner : MonoBehaviour
     /// <summary>
     /// Stopped all updates when the game is over!
     /// </summary>
-    protected void StopUpdate()
+    protected void StopUpdate(FactionType _faction)
     {
         StopAllCoroutines();
     }

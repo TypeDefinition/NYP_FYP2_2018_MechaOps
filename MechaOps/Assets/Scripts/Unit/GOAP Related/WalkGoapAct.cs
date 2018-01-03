@@ -31,6 +31,7 @@ public class WalkGoapAct : IGoapAction {
     {
         print("GOAP doing start walking");
         m_ActionCompleted = false;
+        Assert.IsNull(m_UpdateRoutine, "Walk Goap Act is still updating!!!");
         m_UpdateRoutine = StartCoroutine(UpdateActRoutine());
     }
 
@@ -86,10 +87,13 @@ public class WalkGoapAct : IGoapAction {
         m_TileDest = null;
         WaitForFixedUpdate zeFixedUp = new WaitForFixedUpdate();
         while (!m_ActionCompleted)
+        {
             yield return zeFixedUp;
+        }
         print("Finished walk action");
         m_WalkAct.CompletionCallBack -= InvokeActionCompleted;
         m_TileDest = null;
+        m_UpdateRoutine = null;
         yield break;
     }
 }
