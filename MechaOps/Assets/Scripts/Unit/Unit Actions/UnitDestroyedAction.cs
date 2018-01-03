@@ -6,11 +6,12 @@ using UnityEngine.Assertions;
 
 public class UnitDestroyedAction : IUnitAction
 {
+    // Serialised Variable(s)
     [SerializeField] protected MOAnimation_UnitDestroy m_Animation;
 
-    bool m_RunCondition = false;
-    bool m_RegisteredAnimationCompleteCallback = false;
-    bool m_EventsInitialized = false;
+    // Non-Serialised Variable(s)
+    protected bool m_RunCondition = false;
+    protected bool m_RegisteredAnimationCompleteCallback = false;
 
     protected virtual void RegisterAnimationCompletionCallback()
     {
@@ -28,18 +29,16 @@ public class UnitDestroyedAction : IUnitAction
         }
     }
 
-    protected override void InitializeEvents()
+    protected override void InitEvents()
     {
-        if (m_EventsInitialized) { return; }
+        base.InitEvents();
         GameEventSystem.GetInstance().SubscribeToEvent<UnitStats, bool>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitDead), OnUnitDead);
-        m_EventsInitialized = true;
     }
 
-    protected override void DeinitializeEvents()
+    protected override void DeinitEvents()
     {
-        if (!m_EventsInitialized) { return; }
+        base.DeinitEvents();
         GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats, bool>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitDead), OnUnitDead);
-        m_EventsInitialized = false;
     }
 
     protected override void Awake()
@@ -51,20 +50,6 @@ public class UnitDestroyedAction : IUnitAction
         // Turn on this action immediately.
         TurnOn();
     }
-
-    protected override void OnTurnOn()
-    {
-        base.OnTurnOn();
-        InitializeEvents();
-    }
-
-    protected override void OnTurnOff()
-    {
-        base.OnTurnOff();
-        DeinitializeEvents();
-    }
-
-    protected virtual void OnDestroy() { DeinitializeEvents(); }
 
     public override void StartAction()
     {
@@ -99,11 +84,11 @@ public class UnitDestroyedAction : IUnitAction
         InvokeCompletionCallback();
     }
 
-    public void OnUnitDead(UnitStats _deadUnit, bool _dead)
+    protected void OnUnitDead(UnitStats _deadUnit, bool _dead)
     {
+        if (!TurnedOn) { return; }
         if (_deadUnit != m_UnitStats) { return; }
 
-        DeinitializeEvents();
         m_Animation.UnitVisible = _dead;
         m_RunCondition = true;
         Assert.IsTrue(VerifyRunCondition());
@@ -111,8 +96,4 @@ public class UnitDestroyedAction : IUnitAction
     }
 
     public override bool VerifyRunCondition() { return m_RunCondition; }
-
-    protected override void StartTurnCallback() { throw new System.NotImplementedException(); }
-
-    protected override void EndTurnCallback() { throw new System.NotImplementedException(); }
 }

@@ -51,7 +51,7 @@ public class AIUnitsManager : UnitsManager
     /// The coroutine to update the manager!
     /// </summary>
     /// <returns></returns>
-    public IEnumerator UpdateCoroutine()
+    protected IEnumerator UpdateCoroutine()
     {
         UpdateMarkers();
         GetManagedUnitsFromUnitTracker();
@@ -82,7 +82,7 @@ public class AIUnitsManager : UnitsManager
         yield break;
     }
 
-    private bool CheckIsTileWalkable(TileAttributeOverride[] _tileAttributeOverrides, TileType _tileType, ref bool _result)
+    protected bool CheckIsTileWalkable(TileAttributeOverride[] _tileAttributeOverrides, TileType _tileType, ref bool _result)
     {
         for (int i = 0; i < _tileAttributeOverrides.Length; ++i)
         {

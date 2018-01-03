@@ -53,12 +53,11 @@ public class SpawnSystem : MonoBehaviour
                 Assert.IsTrue(spawnedUnit.UnitFaction == m_UnitsToSpawn[i].GetFactionType(), MethodBase.GetCurrentMethod().Name + " - A Unit is spawned in the wrong faction!");
 
                 // Set the spawned unit's TileId.
-                spawnedUnit.CurrentTileID = tileList[j];
-                Tile spawnTile = m_TileSystem.GetTile(spawnedUnit.CurrentTileID);
+                Tile spawnTile = m_TileSystem.GetTile(tileList[j]);
                 Assert.IsNotNull(spawnTile, MethodBase.GetCurrentMethod().Name + " - Spawn Tile not found!");
-
                 // Set the spawned unit's position to the spawn tile's position.
                 spawnedUnit.gameObject.transform.position = spawnTile.transform.position;
+                spawnedUnit.CurrentTileID = tileList[j];
 
                 // Add the spawned units to spawnedUnits.
                 spawnedUnits.Add(spawnedUnit);

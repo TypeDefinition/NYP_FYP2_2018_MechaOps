@@ -10,7 +10,7 @@ using UnityEngine.Assertions;
 [DisallowMultipleComponent]
 public class AIViewScript : ViewScript
 {
-    [SerializeField, Tooltip("The array of mesh renderer")] protected MeshRenderer[] m_AllRenderers; // The array of MeshRenderer inside this unit.
+    protected MeshRenderer[] m_AllRenderers = null; // The array of MeshRenderer inside this unit.
     protected bool m_AlwaysRender = false;
 
     protected override void InitEvents()
@@ -27,22 +27,15 @@ public class AIViewScript : ViewScript
 
     protected override void Awake()
     {
+        m_AllRenderers = GetComponentsInChildren<MeshRenderer>();
         base.Awake();
-        m_AllRenderers = GetComponentsInChildren<MeshRenderer>();
-        foreach (MeshRenderer renderer in m_AllRenderers) { renderer.enabled = false; }
-    }
-
-    protected virtual void Start()
-    {
-        m_AllRenderers = GetComponentsInChildren<MeshRenderer>();
-        foreach (MeshRenderer renderer in m_AllRenderers) { renderer.enabled = false; }
-        m_UnitStats.GetUnitInfoDisplay().gameObject.SetActive(false);
     }
 
     // Callbacks
     protected override void OnUnitsSpawned()
     {
-        m_UnitStats.GetUnitInfoDisplay().gameObject.SetActive(m_VisibilityCount > 0);
+        m_UnitStats.GetUnitInfoDisplay().gameObject.SetActive(IsVisible());
+        foreach (MeshRenderer renderer in m_AllRenderers) { renderer.enabled = IsVisible(); }
     }
 
     protected virtual void OnUnitDead(UnitStats _deadUnit, bool _deadUnitVisible)

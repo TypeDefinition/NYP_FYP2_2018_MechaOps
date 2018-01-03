@@ -37,11 +37,7 @@ public class UnitInfoDisplay : TweenUI_Scale
         m_ActionPointsCounter.MaxActionPoints = _unitStats.MaxActionPoints;
         m_ActionPointsCounter.CurrentActionPoints = _unitStats.CurrentActionPoints;
     }
-
-    private void OnEnable() { AnimateUI(); }
-
-    private void OnDisable() {}
-
+ 
     protected override void Awake()
     {
         base.Awake();
@@ -61,9 +57,4 @@ public class UnitInfoDisplay : TweenUI_Scale
             transform.position = screenPoint;
         }
     }
-
-#if UNITY_EDITOR
-    private void OnValidate() {}
-#endif // UNITY_EDITOR
-
 }

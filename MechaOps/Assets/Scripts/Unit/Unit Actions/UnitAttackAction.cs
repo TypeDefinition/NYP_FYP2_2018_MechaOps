@@ -99,14 +99,6 @@ public abstract class UnitAttackAction : IUnitAction
         base.OnTurnOff();
     }
 
-    protected override void StartTurnCallback() {}
-
-    protected override void EndTurnCallback() {}
-
-    protected override void InitializeEvents() {}
-
-    protected override void DeinitializeEvents() {}
-
     public override bool VerifyRunCondition()
     {
         // Exit Checks

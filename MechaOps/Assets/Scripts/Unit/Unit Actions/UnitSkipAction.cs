@@ -36,12 +36,4 @@ public class UnitSkipAction : IUnitAction
     /// </summary>
     /// <returns></returns>
     public override bool VerifyRunCondition() { return true; }
-
-    protected override void InitializeEvents() { throw new System.NotImplementedException(); }
-
-    protected override void DeinitializeEvents() { throw new System.NotImplementedException(); }
-
-    protected override void StartTurnCallback() { throw new System.NotImplementedException(); }
-
-    protected override void EndTurnCallback() { throw new System.NotImplementedException(); }
 }
