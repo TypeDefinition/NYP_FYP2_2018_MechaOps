@@ -23,6 +23,7 @@ public class PlayerUnitsManager : UnitsManager
     private int m_SelectedUnitIndex = 0;
     private List<Button> m_SelectedUnitActionButtons = new List<Button>();
     IEnumerator m_UpdateCoroutine = null;
+    private bool m_IsPlayerTurn = false;
 
     protected override void InitEvents()
     {
@@ -79,6 +80,7 @@ public class PlayerUnitsManager : UnitsManager
     protected override void TurnStart(FactionType _factionType)
     {
         if (_factionType != m_ManagedFaction) { return; }
+        m_IsPlayerTurn = true;
         m_UpdateCoroutine = UpdateCoroutine();
         StartCoroutine(m_UpdateCoroutine);
     }
@@ -111,6 +113,7 @@ public class PlayerUnitsManager : UnitsManager
         }
 
         m_UpdateCoroutine = null;
+        m_IsPlayerTurn = false;
         GameEventSystem.GetInstance().TriggerEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.TurnEnd), m_ManagedFaction);
         yield break;
     }
@@ -120,7 +123,15 @@ public class PlayerUnitsManager : UnitsManager
     /// </summary>
     protected override void UnitFinishedTurn(UnitStats _unit)
     {
-        m_ManagedUnits.Remove(_unit);
+        if (_unit.UnitFaction != m_ManagedFaction) { return; }
+
+        // m_ManagedUnits might not contain the unit as this might be an action that is done during
+        // the opponent turn, and m_ManagedUnits might not have been updated if it was the start of
+        // the match.
+        if (m_ManagedUnits.Contains(_unit))
+        {
+            m_ManagedUnits.Remove(_unit);
+        }
     }
 
     /// <summary>
@@ -128,7 +139,12 @@ public class PlayerUnitsManager : UnitsManager
     /// </summary>
     protected override void UnitFinishedAction(UnitStats _unit)
     {
-        m_UnitSelection.gameObject.SetActive(true);
+        if (_unit.UnitFaction != m_ManagedFaction) { return; }
+        // A unit can finish an action when it isn't the player's turn. Such as Dying and Overwatch.
+        if (m_IsPlayerTurn)
+        {
+            m_UnitSelection.gameObject.SetActive(true);
+        }
     }
 
     // Game UI
