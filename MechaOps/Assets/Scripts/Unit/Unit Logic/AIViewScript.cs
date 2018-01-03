@@ -27,8 +27,14 @@ public class AIViewScript : ViewScript
 
     protected override void Awake()
     {
-        m_AllRenderers = GetComponentsInChildren<MeshRenderer>();
         base.Awake();
+    }
+
+    protected virtual void Start()
+    {
+        m_AllRenderers = GetComponentsInChildren<MeshRenderer>();
+        foreach (MeshRenderer renderer in m_AllRenderers) { renderer.enabled = false; }
+        m_UnitStats.GetUnitInfoDisplay().gameObject.SetActive(false);
     }
 
     // Callbacks
@@ -43,12 +49,9 @@ public class AIViewScript : ViewScript
 
         m_AlwaysRender = true;
         // ensuring that the renderer will be set from inactive to active
-        if (!m_AllRenderers[0].enabled)
+        if (m_AlwaysRender)
         {
-            foreach (MeshRenderer renderer in m_AllRenderers)
-            {
-                renderer.enabled = true;
-            }
+            foreach (MeshRenderer renderer in m_AllRenderers) { renderer.enabled = true; }
         }
     }
 
