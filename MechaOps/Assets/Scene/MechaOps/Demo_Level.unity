@@ -41289,6 +41289,11 @@ Prefab:
       propertyPath: m_GameCamera
       value: 
       objectReference: {fileID: 1832322749}
+    - target: {fileID: 114249428071637902, guid: 7e13055f398213b47a0faf2f4d1d089a,
+        type: 2}
+      propertyPath: m_CurrentTurnFaction
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e13055f398213b47a0faf2f4d1d089a, type: 2}
   m_IsPrefabParent: 0
