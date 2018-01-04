@@ -57,7 +57,7 @@ public class WaspShootAction : UnitAttackAction
         m_Animation.StopAnimation();
     }
 
-    protected override int CalculateHitChance()
+    public override int CalculateHitChance()
     {
         int distanceToTarget = TileId.GetDistance(m_TargetUnitStats.CurrentTileID, GetUnitStats().CurrentTileID);
         int optimalDistance = MinAttackRange;

@@ -54,7 +54,7 @@ public abstract class UnitActionUI : TweenUI_Scale
         Destroy(gameObject);
     }
 
-    protected void UpdateActionInfo(IUnitAction _action)
+    protected virtual void UpdateActionInfo(IUnitAction _action)
     {
         // Set the name and description.
         m_ActionNameText.text = _action.UnitActionName;

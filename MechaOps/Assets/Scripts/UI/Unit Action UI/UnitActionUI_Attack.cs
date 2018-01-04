@@ -146,4 +146,20 @@ public class UnitActionUI_Attack : UnitActionUI
 
         UpdateActionInfo(_action);
     }
+
+    protected override void UpdateActionInfo(IUnitAction _action)
+    {
+        m_ActionNameText.text = _action.UnitActionName;
+        // If not target, then make it not applicable
+       if (!m_OtherTarget)
+        {
+            m_ActionDescriptionText.SetText("Hit Chance: NA");
+        }
+        else
+        {
+            // have to set target otherwise calculate hit chance will crash
+            m_UnitAttackAction.SetTarget(m_OtherTarget.gameObject);
+            m_ActionDescriptionText.SetText("Hit Chance: {0}%", m_UnitAttackAction.CalculateHitChance());
+        }
+    }
 }

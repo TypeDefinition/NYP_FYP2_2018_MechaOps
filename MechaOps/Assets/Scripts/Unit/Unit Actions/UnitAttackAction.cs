@@ -118,7 +118,7 @@ public abstract class UnitAttackAction : IUnitAction
     /// Calculate the hit percentage of this attack.
     /// It should return an int between 1(Inclusive) and 100(Inclusive).
     /// </summary>
-    protected abstract int CalculateHitChance();
+    public abstract int CalculateHitChance();
 
     /// <summary>
     /// This function rolls a random number between 1 (inclusive) to 101 (exclusive).

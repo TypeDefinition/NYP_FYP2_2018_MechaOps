@@ -163,7 +163,7 @@ public class GoapPlanner : MonoBehaviour
         // TODO: Probably need coroutine but not now
         GoapNode zeCheapestActNode = null;
         List<IGoapAction> zeListOfActToDo = null;
-        WaitForSeconds zeAmountOfTimeWait = new WaitForSeconds(0.5f);
+        WaitForSeconds zeAmountOfTimeWait = new WaitForSeconds(0.1f);
         // We check it's current state
         while (m_Stats.CurrentActionPoints > 0 && !m_FinishMoving)
         {

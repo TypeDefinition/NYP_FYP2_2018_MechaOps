@@ -58,7 +58,7 @@ public class PanzerShootAction : UnitAttackAction
         m_Animation.StopAnimation();
     }
 
-    protected override int CalculateHitChance()
+    public override int CalculateHitChance()
     {
         int distanceToTarget = TileId.GetDistance(m_TargetUnitStats.CurrentTileID, GetUnitStats().CurrentTileID);
         int optimalDistance = (MaxAttackRange - MinAttackRange) >> 1;

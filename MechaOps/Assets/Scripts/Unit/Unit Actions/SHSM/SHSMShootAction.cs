@@ -142,7 +142,7 @@ public class SHSMShootAction : UnitAttackAction
         return possibleHitTiles[Random.Range(0, possibleHitTiles.Length)];
     }
 
-    protected override int CalculateHitChance()
+    public override int CalculateHitChance()
     {
         throw new System.NotImplementedException();
     }
