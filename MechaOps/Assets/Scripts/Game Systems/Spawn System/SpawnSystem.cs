@@ -12,8 +12,8 @@ public class SpawnSystem : MonoBehaviour
 
     // Non-Serialised Variable(s)
     private TileSystem m_TileSystem = null;
-    private UnitsTracker m_UnitsTracker = null;
-    private GameEventNames m_GameEventNames = null;
+    protected UnitsTracker m_UnitsTracker = null;
+    protected GameEventNames m_GameEventNames = null;
 
     private void Awake()
     {

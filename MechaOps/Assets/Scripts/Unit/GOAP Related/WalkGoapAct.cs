@@ -62,7 +62,8 @@ public class WalkGoapAct : IGoapAction {
         {
             Assert.IsFalse(m_Planner.m_Stats.CurrentTileID.Equals(TileLocation), "Update of Tile coordinate has failed at UpdateActRoutine in WalkGoapAct.cs");
             zeTileToWalkTo = m_WalkAct.GetTileSystem().GetPath(99999, m_Planner.m_Stats.CurrentTileID, TileLocation, m_Planner.m_Stats.GetTileAttributeOverrides());
-            if (zeTileToWalkTo != null)
+            // have to ensure it is not null and the length is more than 0!
+            if (zeTileToWalkTo != null && zeTileToWalkTo.Length > 0)
             {
                 m_TileDest = TileLocation;
                 break;

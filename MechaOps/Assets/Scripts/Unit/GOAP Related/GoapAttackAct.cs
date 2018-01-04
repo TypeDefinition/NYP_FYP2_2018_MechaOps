@@ -38,15 +38,15 @@ public class GoapAttackAct : IGoapAction {
     {
         WaitForFixedUpdate FixedWait = new WaitForFixedUpdate();
         // If there is no unit, might as well, quit this action!
-        if (m_GOAPTargetAct.EnemiesInAttack.Count == 0)
-        {
-            // it means the unit is not able to attack it!
-            m_SkipAction.CompletionCallBack += InvokeActionCompleted;
-            m_SkipAction.TurnOn();
-            while (!m_ActionCompleted)
-                yield return FixedWait;
-            m_SkipAction.CompletionCallBack -= InvokeActionCompleted;
-        }
+        //if (m_GOAPTargetAct.EnemiesInAttack.Count == 0)
+        //{
+        //    // it means the unit is not able to attack it!
+        //    m_SkipAction.CompletionCallBack += InvokeActionCompleted;
+        //    m_SkipAction.TurnOn();
+        //    while (!m_ActionCompleted)
+        //        yield return FixedWait;
+        //    m_SkipAction.CompletionCallBack -= InvokeActionCompleted;
+        //}
         // we picked the target which will be the 1st unit in the range at GoapNearTarget
         // TODO: resolve this quick fix
         // get the actual tile distance
@@ -58,7 +58,8 @@ public class GoapAttackAct : IGoapAction {
 
         //m_Planner.remove
         //}
-        else
+        //else
+        if (m_GOAPTargetAct.EnemiesInAttack.Count != 0)
         {
             GameObject zeTarget = m_GOAPTargetAct.EnemiesInAttack[0];
             m_AttackAct.SetTarget(zeTarget);

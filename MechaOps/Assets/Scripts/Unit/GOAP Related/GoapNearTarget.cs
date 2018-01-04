@@ -85,7 +85,7 @@ public class GoapNearTarget : IGoapAction
                 {
                     // find the path to the enemy 
                     zePathToEnemy = m_Planner.GameTileSystem.GetPath(999, m_Planner.m_Stats.CurrentTileID, zeDestinationTileID, m_Planner.m_Stats.GetTileAttributeOverrides());
-                    if (zePathToEnemy != null)
+                    if (zePathToEnemy != null && zePathToEnemy.Length > 0)
                     {
                         break;
                     }

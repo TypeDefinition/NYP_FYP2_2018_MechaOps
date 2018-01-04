@@ -10,6 +10,8 @@ using UnityEngine.Assertions;
 /// </summary>
 public class AIUnitsManager : UnitsManager
 {
+    [SerializeField, Tooltip("Help to check the surrounding tiles of the array. The larger the value, the longer it searches!")]
+    int m_CheckSurroundingUnitRadius = 2;
     // Non-Serialised Variable(s)
     List<TileId> m_OneTileAwayFromEnemyLocation = new List<TileId>();
     IEnumerator m_UpdateCoroutine = null;
@@ -122,7 +124,7 @@ public class AIUnitsManager : UnitsManager
             TileAttributeOverride[] tileAttributeOverrides = enemy.GetTileAttributeOverrides();
 
             // we only need the 1 radius tile!
-            TileId[] surroundingTiles = m_TileSystem.GetSurroundingTiles(enemy.CurrentTileID, 1);
+            TileId[] surroundingTiles = m_TileSystem.GetSurroundingTiles(enemy.CurrentTileID, m_CheckSurroundingUnitRadius);
             for (int i = 0; i < surroundingTiles.Length; ++i)
             {
                 Tile tile = m_TileSystem.GetTile(surroundingTiles[i]);
@@ -132,7 +134,6 @@ public class AIUnitsManager : UnitsManager
                 if (tile.GetIsWalkable() && !tile.HasUnit())
                 {
                     m_OneTileAwayFromEnemyLocation.Add(surroundingTiles[i]);
-                    break;
                 }
             }
         }
