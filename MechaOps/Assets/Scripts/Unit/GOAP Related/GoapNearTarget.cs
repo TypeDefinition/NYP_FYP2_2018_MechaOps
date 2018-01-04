@@ -67,7 +67,7 @@ public class GoapNearTarget : IGoapAction
         // We will get the shortest path to the 1st player unit
         int zeEnemyIndex = 0;
         // Maybe we can randomize but we will just get the 1st unit!
-        UnitStats zeEnemyStat = m_Planner.m_Stats.GetGameSystemsDirectory().GetAIUnitsManager()[0].GetSeenEnemies()[zeEnemyIndex].GetComponent<UnitStats>();
+        UnitStats zeEnemyStat = m_Planner.EnemiesManager.GetSeenEnemies()[zeEnemyIndex].GetComponent<UnitStats>();
         TileId zeDestinationTileID = zeEnemyStat.CurrentTileID;
         Tile EnemyTile = m_Planner.GameTileSystem.GetTile(zeDestinationTileID);
         Tile DestTile = m_Planner.GameTileSystem.GetTile(zeDestinationTileID);
@@ -95,7 +95,7 @@ public class GoapNearTarget : IGoapAction
             if (DestTile.HasUnit() || !DestTile.GetIsWalkable())
             {
                 // Then we will have to another target!
-                zeEnemyStat = m_Planner.m_Stats.GetGameSystemsDirectory().GetAIUnitsManager()[0].GetSeenEnemies()[++zeEnemyIndex].GetComponent<UnitStats>();
+                zeEnemyStat = m_Planner.EnemiesManager.GetSeenEnemies()[++zeEnemyIndex].GetComponent<UnitStats>();
             }
         }
         Assert.IsNotNull(zePathToEnemy, "Path cannot be found at UpdateRoutine GoapNearTarget!");
