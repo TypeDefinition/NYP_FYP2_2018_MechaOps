@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ArtileryBullet : Bullet
 {
-    [SerializeField] private GameObject m_ExplosionPrefab;
+    [SerializeField] private GameObject m_ExplosionPrefab = null;
 
     private Vector3 m_InitialVelocity = new Vector3();
     private Vector3 m_CurrentVelocity = new Vector3();
@@ -58,10 +58,7 @@ public class ArtileryBullet : Bullet
                 shieldBreak.StartAnimation();
             }*/
 
-            if (hitInfo.collider.gameObject == m_TargetTile.gameObject)
-            {
-                m_Lifetime = 0.0f;
-            }
+            m_Lifetime = 0.0f;
         }
 
         transform.position += m_CurrentVelocity * Time.deltaTime;
