@@ -93,6 +93,7 @@ public class UnitActionUI_Attack : UnitActionUI
         m_OtherTarget = _target;
         // Update the target name.
         m_TargetNameText.text = m_OtherTarget.UnitName;
+        GameEventSystem.GetInstance().TriggerEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FocusOnTarget), m_OtherTarget);
     }
 
     protected virtual void Update()

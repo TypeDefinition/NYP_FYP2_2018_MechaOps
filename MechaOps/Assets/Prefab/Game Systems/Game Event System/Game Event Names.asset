@@ -31,6 +31,7 @@ MonoBehaviour:
   - Clicked Tile
   - Toggle Selecting Unit
   - Selected Action
+  - Focus On Target
   m_TouchGestureNames:
   - Pinch
   - Swipe

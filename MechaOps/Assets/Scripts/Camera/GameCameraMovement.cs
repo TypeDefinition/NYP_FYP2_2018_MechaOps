@@ -22,10 +22,13 @@ public class GameCameraMovement : MonoBehaviour
     private GameSystemsDirectory m_GameSystemsDirectory = null;
     private TileSystem m_TileSystem = null;
     private Vector3 m_CentrePosition = new Vector3();
-    private float m_MaxDistanceFromCentre = 50.0f;
+    private float m_MaxDistanceFromCentre = 0.0f;
+    [SerializeField] private float m_MaxDistanceFromMapEdge = 20.0f;
 
     [SerializeField] private float m_MinFOV = 10.0f;
     [SerializeField] private float m_MaxFOV = 80.0f;
+
+    public TileSystem GetTileSystem() { return m_TileSystem; }
 
     public float MinHeight
     {
@@ -45,12 +48,6 @@ public class GameCameraMovement : MonoBehaviour
         set { m_RotationSpeed = Mathf.Max(0.0f, value); }
     }
 
-    public float MaxDistanceFromCentre
-    {
-        get { return m_MaxDistanceFromCentre; }
-        set { m_MaxDistanceFromCentre = Mathf.Max(0.0f, value); }
-    }
-
     public float MinFOV
     {
         get { return m_MinFOV; }
@@ -61,6 +58,17 @@ public class GameCameraMovement : MonoBehaviour
     {
         get { return m_MaxFOV; }
         set { m_MaxFOV = Mathf.Clamp(value, m_MinFOV, 179.0f); }
+    }
+
+    public void LerpToPosition(Vector3 _position, float _time)
+    {
+        Vector3 currentPosition = new Vector3();
+
+        currentPosition.x = Mathf.Lerp(transform.position.x, _position.x, _time);
+        currentPosition.y = Mathf.Lerp(transform.position.y, _position.y, _time);
+        currentPosition.z = Mathf.Lerp(transform.position.z, _position.z, _time);
+
+        transform.position = currentPosition;
     }
 
     // 前へ行く
@@ -150,6 +158,7 @@ public class GameCameraMovement : MonoBehaviour
         m_MaxDistanceFromCentre =
             (m_TileSystem.TileDiameter * 0.5f) + // The first tile.
             (m_TileSystem.MapRadius * m_TileSystem.TileDiameter * 0.75f); // Every subsequent tile.
+        m_MaxDistanceFromCentre += m_MaxDistanceFromMapEdge;
         m_CentrePosition = m_TileSystem.transform.position;
 
         LimitHeight(m_MinHeight, m_MaxHeight);
@@ -217,9 +226,9 @@ public class GameCameraMovement : MonoBehaviour
         MaxHeight = m_MaxHeight;
         MinHeight = m_MinHeight;
         RotationSpeed = m_RotationSpeed;
-        MaxDistanceFromCentre = m_MaxDistanceFromCentre;
         MinFOV = m_MinFOV;
         MaxFOV = m_MaxFOV;
+        m_MaxDistanceFromMapEdge = Mathf.Max(m_MaxDistanceFromMapEdge, 0.0f);
     }
 #endif
 

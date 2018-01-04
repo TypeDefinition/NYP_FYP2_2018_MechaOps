@@ -11,10 +11,15 @@ public class GameCameraController : MonoBehaviour
     [SerializeField] private GameEventNames m_GameEventNames = null;
     [SerializeField] private float m_ZoomSpeed = 50.0f;
     [SerializeField] private float m_MovementSpeed = 10.0f;
+    [SerializeField] private Vector3 m_FocusPosition = new Vector3(0.0f, 0.0f, 0.0f);
 
     // Non-Serialised Variable(s)
     private GameCameraMovement m_GameCameraMovement = null;
     private bool m_EventsInitialised = false;
+
+    // The GameCameraController will attempt to move the GameCamera to the m_SelectedUnitPosition for this amound of time.
+    private float m_MoveToUnitDuration = 0.3f;
+    private float m_MoveToUnitTimeLeft = 0.0f;
 
     public GameCameraMovement GetGameCameraMovement()
     {
@@ -43,6 +48,7 @@ public class GameCameraController : MonoBehaviour
         GameEventSystem.GetInstance().SubscribeToEvent<Vector2>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.Scroll), ScrollCallback);
         GameEventSystem.GetInstance().SubscribeToEvent<Vector2>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.Swipe), SwipeCallback);
         GameEventSystem.GetInstance().SubscribeToEvent<TouchGestureHandler.CircleGestureDirection>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.CircleGesture), CircleGestureCallback);
+        GameEventSystem.GetInstance().SubscribeToEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FocusOnTarget), CameraFocusCallback);
 
         m_EventsInitialised = true;
     }
@@ -57,6 +63,7 @@ public class GameCameraController : MonoBehaviour
         GameEventSystem.GetInstance().UnsubscribeFromEvent<Vector2>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.Scroll), ScrollCallback);
         GameEventSystem.GetInstance().UnsubscribeFromEvent<Vector2>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.Swipe), SwipeCallback);
         GameEventSystem.GetInstance().UnsubscribeFromEvent<TouchGestureHandler.CircleGestureDirection>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.CircleGesture), CircleGestureCallback);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FocusOnTarget), CameraFocusCallback);
 
         m_EventsInitialised = false;
     }
@@ -64,6 +71,8 @@ public class GameCameraController : MonoBehaviour
     // I did not multiply by Time.deltaTime since the magnitude is already only the magnitude for this frame.
     private void PinchCallback(float _magnitude)
     {
+        if (m_MoveToUnitTimeLeft > 0.0f) { return; }
+
         Assert.IsTrue(m_GameCameraMovement != null);
         m_GameCameraMovement.Zoom(_magnitude * m_ZoomSpeed);
     }
@@ -71,18 +80,24 @@ public class GameCameraController : MonoBehaviour
     // I did not multiply by Time.deltaTime since the magnitude is already only the magnitude for this frame.
     private void ScrollCallback(Vector2 _scroll)
     {
+        if (m_MoveToUnitTimeLeft > 0.0f) { return; }
+
         m_GameCameraMovement.MoveDown(_scroll.y * m_MovementSpeed);
     }
 
     // I did not multiply by Time.deltaTime since the magnitude is already only the magnitude for this frame.
     private void SwipeCallback(Vector2 _swipe)
     {
+        if (m_MoveToUnitTimeLeft > 0.0f) { return; }
+
         m_GameCameraMovement.MoveBackwards(_swipe.y * m_MovementSpeed);
         m_GameCameraMovement.MoveLeft(_swipe.x * m_MovementSpeed);
     }
 
     private void CircleGestureCallback(TouchGestureHandler.CircleGestureDirection _circleDirection)
     {
+        if (m_MoveToUnitTimeLeft > 0.0f) { return; }
+
         switch (_circleDirection)
         {
             case TouchGestureHandler.CircleGestureDirection.AntiClockwise:
@@ -97,9 +112,37 @@ public class GameCameraController : MonoBehaviour
         }
     }
 
+    private void CameraFocusCallback(UnitStats _unit)
+    {
+        // Get the plane that the TileSystem is on.
+        Plane horizontalPlane = new Plane(Vector3.up, m_GameCameraMovement.GetTileSystem().transform.position);
+
+        // Raycast from the GameCamera to the TileSystem's plane.
+        Ray ray = new Ray(m_GameCameraMovement.transform.position, m_GameCameraMovement.transform.forward);
+        float distanceToPlane = 0.0f;
+
+        // If the camera is not looking at the TileSystem's plane, we cannot proceed.
+        if (!horizontalPlane.Raycast(ray, out distanceToPlane)) { return; }
+
+        // Find the point where that camera raycast hits the plane.
+        // This means that this is the position which the camera is looking at.
+        Vector3 cameraLookingPosition = ray.GetPoint(distanceToPlane);
+
+        // When we move the camera, we want it to end up looking at the selected unit's tile.
+        Vector3 offset = m_GameCameraMovement.transform.position - cameraLookingPosition;
+
+        // Get the tile position of the unit.
+        m_FocusPosition = m_GameCameraMovement.GetTileSystem().GetTile(_unit.CurrentTileID).transform.position;
+        m_FocusPosition += offset;
+
+        m_MoveToUnitTimeLeft = m_MoveToUnitDuration;
+    }
+
     // Very basic Handling of Keyboard Input for development purposes.
     private void HandleKeyboardInput()
     {
+        if (m_MoveToUnitTimeLeft > 0.0f) { return; }
+
         // We need a multiplier because the zoom speed on PC is too high.
         float zoomMultiplier = 0.01f;
         m_GameCameraMovement.Zoom(Input.GetAxis("Zoom") * zoomMultiplier * m_ZoomSpeed * Time.deltaTime);
@@ -124,6 +167,11 @@ public class GameCameraController : MonoBehaviour
         }
     }
 
+    private void MoveToUnitUpdate()
+    {
+        m_GameCameraMovement.LerpToPosition(m_FocusPosition, m_MoveToUnitDuration);
+    }
+
     private void Awake()
     {
         m_GameCameraMovement = gameObject.GetComponent<GameCameraMovement>();
@@ -140,6 +188,11 @@ public class GameCameraController : MonoBehaviour
 
     private void Update()
     {
+        if (m_MoveToUnitTimeLeft > 0.0f)
+        {
+            MoveToUnitUpdate();
+            m_MoveToUnitTimeLeft = Mathf.Max(0.0f, m_MoveToUnitTimeLeft - Time.deltaTime);
+        }
         HandleKeyboardInput();
     }
 }

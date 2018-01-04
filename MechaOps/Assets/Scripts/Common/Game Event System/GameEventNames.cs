@@ -51,6 +51,7 @@ public class GameEventNames : ScriptableObject
         ClickedTile,
         ToggleSelectingUnit,
         SelectedAction,
+        FocusOnTarget,
 
         Num_GameUINames
     }

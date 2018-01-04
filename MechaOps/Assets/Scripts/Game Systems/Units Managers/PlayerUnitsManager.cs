@@ -211,6 +211,7 @@ public class PlayerUnitsManager : UnitsManager
 
         m_SelectedUnitIndex = (m_SelectedUnitIndex + 1) % m_ManagedUnits.Count;
         SpawnActionSelectionUI(m_ManagedUnits[m_SelectedUnitIndex]);
+        GameEventSystem.GetInstance().TriggerEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FocusOnTarget), m_ManagedUnits[m_SelectedUnitIndex]);
     }
 
     /// <summary>
@@ -233,6 +234,7 @@ public class PlayerUnitsManager : UnitsManager
             --m_SelectedUnitIndex;
         }
         SpawnActionSelectionUI(m_ManagedUnits[m_SelectedUnitIndex]);
+        GameEventSystem.GetInstance().TriggerEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FocusOnTarget), m_ManagedUnits[m_SelectedUnitIndex]);
     }
 
     public void SpawnSelectedActionUI(IUnitAction _selectedAction)
