@@ -30,9 +30,9 @@ public abstract class IUnitAction : MonoBehaviour
 
     // Serialised Variable(s)
     [SerializeField, Tooltip("The component name which will be use to indicate what UI tag to be activated.")]
-    protected string m_UnitActionName;
+    private string m_UnitActionName;
     [SerializeField, Tooltip("This is the description of the action.")]
-    protected string m_UnitActionDescription = "<Placeholder Description>";
+    private string m_UnitActionDescription = "<Placeholder Description>";
     [SerializeField] private bool m_ControllableAction = true;
     [SerializeField, Tooltip("The priority number for this action")]
     private int m_Priority = 0;
@@ -40,6 +40,8 @@ public abstract class IUnitAction : MonoBehaviour
     private int m_ActionCost = 1;
     [SerializeField, Tooltip("Does this action end the turn immediately?")]
     private bool m_EndsTurn = false;
+    [SerializeField, Tooltip("How many turns this cooldown has after being turned on.")]
+    private int m_CooldownTurns = 0;
 
     [SerializeField, Tooltip("The Unit Action UI Prefab")]
     private UnitActionUI m_UnitActionUIPrefab = null;
@@ -53,6 +55,11 @@ public abstract class IUnitAction : MonoBehaviour
     protected GameEventNames m_GameEventNames = null;
     protected ActionState m_ActionState = ActionState.None;
     protected bool m_IsUnitTurn = false;
+
+    protected int m_CooldownTurnsLeft = 0;
+    // I could just +1 to m_CooldownTurnsLeft in OnTurnOn, but I feel like
+    // this is clearer. I understand that his is fully debatable.
+    protected bool m_IsFirstTurnSinceTurnedOn = false;
 
     private Void_Void m_CompletionCallBack;
 
@@ -71,6 +78,16 @@ public abstract class IUnitAction : MonoBehaviour
         get { return m_UnitActionDescription; }
     }
 
+    public int CooldownTurns
+    {
+        get { return m_CooldownTurns; }
+    }
+
+    public int CooldownTurnsLeft
+    {
+        get { return m_CooldownTurnsLeft; }
+    }
+
     public void TurnOn()
     {
         m_TurnedOn = true;
@@ -83,7 +100,12 @@ public abstract class IUnitAction : MonoBehaviour
         OnTurnOff();
     }
 
-    protected virtual void OnTurnOn() { m_ActionState = ActionState.None; }
+    protected virtual void OnTurnOn()
+    {
+        m_ActionState = ActionState.None;
+        m_CooldownTurnsLeft = m_CooldownTurns;
+        m_IsFirstTurnSinceTurnedOn = true;
+    }
 
     protected virtual void OnTurnOff() { m_ActionState = ActionState.None; }
 
@@ -176,6 +198,7 @@ public abstract class IUnitAction : MonoBehaviour
     {
         DeinitEvents();
     }
+    
     /// <summary>
     /// Check if the condition for this action to run is met.
     /// </summary>
@@ -231,6 +254,11 @@ public abstract class IUnitAction : MonoBehaviour
         if (_factionType == m_UnitStats.UnitFaction)
         {
             m_IsUnitTurn = false;
+            if (!m_IsFirstTurnSinceTurnedOn)
+            {
+                m_CooldownTurnsLeft = Mathf.Max(0, m_CooldownTurnsLeft - 1);
+            }
+            m_IsFirstTurnSinceTurnedOn = false;
         }
     }
 
@@ -251,6 +279,7 @@ public abstract class IUnitAction : MonoBehaviour
     {
         Priority = m_Priority;
         ActionCost = m_ActionCost;
+        m_CooldownTurns = Mathf.Max(0, m_CooldownTurns);
     }
 #endif // UNITY_EDITOR
 

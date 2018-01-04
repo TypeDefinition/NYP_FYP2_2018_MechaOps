@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Assertions;
 using TMPro;
 
@@ -10,6 +11,10 @@ public abstract class UnitActionUI : TweenUI_Scale
     // Action Name & Description
     [SerializeField] protected TextMeshProUGUI m_ActionNameText;
     [SerializeField] protected TextMeshProUGUI m_ActionDescriptionText;
+
+    // Confirm and Cancel Button
+    [SerializeField] protected Button m_ConfirmButton = null;
+    [SerializeField] protected Button m_CancelButton = null;
 
     // Non-Serialised Variable(s)
     protected GameEventNames m_GameEventNames = null;

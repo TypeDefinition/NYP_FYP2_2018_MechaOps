@@ -241,6 +241,8 @@ MonoBehaviour:
   m_TweenAnimationDuration: 0.2
   m_ActionNameText: {fileID: 114235117523497544}
   m_ActionDescriptionText: {fileID: 114990568197659506}
+  m_ConfirmButton: {fileID: 114716539039021398}
+  m_CancelButton: {fileID: 114991673467873694}
 --- !u!114 &114680054052167610
 MonoBehaviour:
   m_ObjectHideFlags: 1
