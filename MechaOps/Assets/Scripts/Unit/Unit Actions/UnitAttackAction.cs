@@ -91,6 +91,7 @@ public abstract class UnitAttackAction : IUnitAction
 
     protected override void OnTurnOn()
     {
+        base.OnTurnOn();
         Assert.IsTrue(VerifyRunCondition());
     }
 
@@ -107,9 +108,6 @@ public abstract class UnitAttackAction : IUnitAction
         int distanceToTarget = TileId.GetDistance(m_TargetUnitStats.CurrentTileID, GetUnitStats().CurrentTileID);
         if (distanceToTarget < MinAttackRange) { return false; }
         if (distanceToTarget > MaxAttackRange) { return false; }
-
-        // Check if can see enemy (Our View Range as well as teammate scouting) Have to remove this since teammate is scouting
-        //if (distanceToTarget > GetUnitStats().ViewRange) { return false; }
 
         return true;
     }
@@ -131,8 +129,10 @@ public abstract class UnitAttackAction : IUnitAction
     }
 
 #if UNITY_EDITOR
-    protected void OnValidate()
+    protected override void OnValidate()
     {
+        base.OnValidate();
+
         MinAttackRange = m_MinAttackRange;
         MaxAttackRange = m_MaxAttackRange;
         AccuracyPoints = m_AccuracyPoints;

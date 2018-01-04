@@ -635,6 +635,8 @@ MonoBehaviour:
   m_TweenAnimationDuration: 0.2
   m_ActionNameText: {fileID: 114573416262301870}
   m_ActionDescriptionText: {fileID: 114877070671403516}
+  m_ConfirmButton: {fileID: 114690579002968396}
+  m_CancelButton: {fileID: 114153976356172072}
   m_TargetNameText: {fileID: 114347574570523778}
   m_CrosshairPrefab: {fileID: 114081859093200222, guid: da368523f0ec84d4da0082dc31b5de5e,
     type: 2}

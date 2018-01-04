@@ -643,6 +643,10 @@ MonoBehaviour:
   m_ManagedFaction: 0
   m_UnitActionButtonPrefab: {fileID: 114775635339453894, guid: b6f55b4b93d48eb448b16e21e160b186,
     type: 2}
+  m_BlockedUnitActionButtonPrefab: {fileID: 114301614792835742, guid: 1fb24fe32819f254ca88911829d4e42e,
+    type: 2}
+  m_UnitActionCooldownIndicatorPrefab: {fileID: 114304355114859548, guid: edac68723c02a9749b67e8f20b3ba628,
+    type: 2}
   m_SelectedUnitIndicatorPrefab: {fileID: 114654854778776996, guid: deafc0be506719b408c10069eff89bc1,
     type: 2}
 --- !u!114 &114104125196554718
@@ -902,7 +906,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PlayerFaction: 0
   m_FactionsInPlay: 000000000100000002000000
-  m_CurrentTurnFaction: 1
+  m_CurrentTurnFaction: 0
   m_PlayerWonDisplay: {fileID: 1340652212449704, guid: b8400546c5ca32c44b77542b2687c5a3,
     type: 2}
   m_PlayerLostDisplay: {fileID: 1219414303167620, guid: 85d077349c1087d46a381752e9d6af94,

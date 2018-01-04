@@ -10,7 +10,11 @@ public class PlayerUnitsManager : UnitsManager
 {
     // Serialised Variable(s)
     [SerializeField, Tooltip("The prefab holder for the unit's actions!")]
-    protected Image m_UnitActionButtonPrefab;
+    protected Image m_UnitActionButtonPrefab = null;
+    [SerializeField]
+    protected Image m_BlockedUnitActionButtonPrefab = null;
+    [SerializeField]
+    protected TextMeshProUGUI m_UnitActionCooldownIndicatorPrefab = null;
     [SerializeField, Tooltip("The prefab for selecting unit indicator")]
     protected SelectedUnitIndicator m_SelectedUnitIndicatorPrefab;
 
@@ -239,6 +243,11 @@ public class PlayerUnitsManager : UnitsManager
         GameEventSystem.GetInstance().TriggerEvent<IUnitAction>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.SelectedAction), _selectedAction);
     }
 
+    protected bool CanSelectAction(IUnitAction _action)
+    {
+        return (_action.CooldownTurnsLeft == 0) && (_action.ActionCost <= _action.GetUnitStats().CurrentActionPoints);
+    }
+
     /// <summary>
     /// Spawn Action UI Icons to allow player to select the unit action.
     /// </summary>
@@ -265,22 +274,33 @@ public class PlayerUnitsManager : UnitsManager
             // Skip the action if it is not a controllable action.
             if (unitAction.ControllableAction == false) { continue; }
 
+            // Create the new icon using m_UnitActionIcon_Prefab.
+            Image unitActionIconImage = Instantiate(m_UnitActionButtonPrefab, m_UnitActionSelectionUIScrollRect.content.transform);
+            unitActionIconImage.gameObject.SetActive(true);
+
+            // Replace the icon sprite to be the icon needed for this action.
+            unitActionIconImage.sprite = unitAction.ActionIconUI;
+
+            // Add to the onclick event for Unity button!
+            Button unitActionButton = unitActionIconImage.GetComponent<Button>();
+
+            // Add this button to m_SelectedUnitActionButtons.
+            m_SelectedUnitActionButtons.Add(unitActionButton);
+
             // if the action cost can still be used the unit, then it will instantiate the action
-            if (unitAction.GetUnitStats().CurrentActionPoints >= unitAction.ActionCost)
+            // Skip this action if it cannot be selected.
+            if (CanSelectAction(unitAction))
             {
-                // Create the new icon using m_UnitActionIcon_Prefab.
-                Image unitActionIconImage = Instantiate(m_UnitActionButtonPrefab, m_UnitActionSelectionUIScrollRect.content.transform);
-                unitActionIconImage.gameObject.SetActive(true);
-
-                // Replace the icon sprite to be the icon needed for this action.
-                unitActionIconImage.sprite = unitAction.ActionIconUI;
-
-                // Add to the onclick event for Unity button!
-                Button unitActionButton = unitActionIconImage.GetComponent<Button>();
                 unitActionButton.onClick.AddListener(() => SpawnSelectedActionUI(unitAction));
-
-                // Add this button to m_SelectedUnitActionButtons.
-                m_SelectedUnitActionButtons.Add(unitActionButton);
+            }
+            else
+            {
+                Instantiate(m_BlockedUnitActionButtonPrefab.gameObject, unitActionButton.transform);
+                if (unitAction.CooldownTurnsLeft > 0)
+                {
+                    TextMeshProUGUI cooldownIndicator = Instantiate(m_UnitActionCooldownIndicatorPrefab.gameObject, unitActionButton.transform).GetComponent<TextMeshProUGUI>();
+                    cooldownIndicator.text = unitAction.CooldownTurnsLeft.ToString();
+                }
             }
         }
 

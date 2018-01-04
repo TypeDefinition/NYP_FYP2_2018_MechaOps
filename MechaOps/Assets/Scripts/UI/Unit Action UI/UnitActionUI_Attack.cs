@@ -143,6 +143,11 @@ public class UnitActionUI_Attack : UnitActionUI
         {
             SetTarget(m_ListOfTargets[m_IndexOfTarget]);
         }
+        else
+        {
+            m_ConfirmButton.gameObject.SetActive(false);
+            m_TargetNameText.text = "No Targets In Range";
+        }
 
         UpdateActionInfo(_action);
     }

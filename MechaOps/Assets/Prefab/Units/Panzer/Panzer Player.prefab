@@ -1841,6 +1841,7 @@ MonoBehaviour:
   m_Priority: 50
   m_ActionCost: 0
   m_EndsTurn: 0
+  m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 0}
   m_UnitActionButtonSprite: {fileID: 0}
   m_Animation: {fileID: 114522144874979662}
@@ -1877,6 +1878,7 @@ MonoBehaviour:
   m_Priority: 0
   m_ActionCost: 1
   m_EndsTurn: 0
+  m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 114662384954406756, guid: f60f06ef37015e14ba42bc5dad875b1c,
     type: 2}
   m_UnitActionButtonSprite: {fileID: 21300000, guid: d859645726494314ab2591c7384f7d53,
@@ -1900,6 +1902,7 @@ MonoBehaviour:
   m_Priority: 0
   m_ActionCost: 1
   m_EndsTurn: 0
+  m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 114610579002547102, guid: 10234cb69b925e14d9163d2556b7fb5b,
     type: 2}
   m_UnitActionButtonSprite: {fileID: 21300000, guid: 2701c9f4499a5f340a46e96aeba66a4e,
@@ -1934,6 +1937,7 @@ MonoBehaviour:
   m_ViewTileScript: {fileID: 114750456944338704}
   m_UnitInfoDisplay_Prefab: {fileID: 114423042521562832, guid: 5de0e7aba41ddec4daa1972243bd5133,
     type: 2}
+  m_EnemiesInViewRange: []
 --- !u!114 &114750456944338704
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1961,8 +1965,9 @@ MonoBehaviour:
   m_UnitActionDescription: <Placeholder Description>
   m_ControllableAction: 1
   m_Priority: 0
-  m_ActionCost: 1
+  m_ActionCost: 2
   m_EndsTurn: 1
+  m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 114668755676894246, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
     type: 2}
   m_UnitActionButtonSprite: {fileID: 21300000, guid: e392509062377594ab81881f16831a09,

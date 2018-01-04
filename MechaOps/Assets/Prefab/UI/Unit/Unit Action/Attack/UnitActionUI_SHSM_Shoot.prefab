@@ -406,6 +406,8 @@ MonoBehaviour:
   m_TweenAnimationDuration: 0.2
   m_ActionNameText: {fileID: 114178613041121614}
   m_ActionDescriptionText: {fileID: 114225448256770318}
+  m_ConfirmButton: {fileID: 114140114037792782}
+  m_CancelButton: {fileID: 114636313936231224}
   m_TargetTilesMarker_Prefab: {fileID: 1737029962012610, guid: 779bc601c1751864cba9717e0bf3bf2e,
     type: 2}
 --- !u!114 &114636313936231224
