@@ -19,6 +19,8 @@ public abstract class UnitsManager : MonoBehaviour
     protected List<UnitStats> m_ManagedUnits = new List<UnitStats>();
     protected List<UnitStats> m_SeenEnemies = new List<UnitStats>();
 
+    protected bool m_IsGameOver = false;
+
     public List<UnitStats> GetSeenEnemies() { return m_SeenEnemies; }
 
     public FactionType ManagedFaction
@@ -35,7 +37,7 @@ public abstract class UnitsManager : MonoBehaviour
     {
         // Gameplay
         GameEventSystem.GetInstance().SubscribeToEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.TurnStart), TurnStart);
-        GameEventSystem.GetInstance().SubscribeToEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.GameOver), GameOver);
+        GameEventSystem.GetInstance().SubscribeToEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.GameOver), OnGameOver);
 
         GameEventSystem.GetInstance().SubscribeToEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitSeen), AddToSeenEnemies);
         GameEventSystem.GetInstance().SubscribeToEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitUnseen), RemoveFromSeenEnemies);
@@ -48,7 +50,7 @@ public abstract class UnitsManager : MonoBehaviour
     {
         // Gameplay
         GameEventSystem.GetInstance().UnsubscribeFromEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.TurnStart), TurnStart);
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.GameOver), GameOver);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.GameOver), OnGameOver);
 
         GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitSeen), AddToSeenEnemies);
         GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitUnseen), RemoveFromSeenEnemies);
@@ -77,7 +79,10 @@ public abstract class UnitsManager : MonoBehaviour
     }
 
     // Gameplay
-    protected abstract void GameOver(FactionType _winner);
+    protected virtual void OnGameOver(FactionType _winner)
+    {
+        m_IsGameOver = true;
+    }
 
     protected abstract void TurnStart(FactionType _factionType);
 

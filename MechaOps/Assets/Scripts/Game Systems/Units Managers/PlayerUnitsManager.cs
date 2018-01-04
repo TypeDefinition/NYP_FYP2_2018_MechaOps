@@ -30,7 +30,7 @@ public class PlayerUnitsManager : UnitsManager
         base.InitEvents();
 
         // Game UI
-        GameEventSystem.GetInstance().SubscribeToEvent<bool>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.ToggleSelectingUnit), ToggleUnitSelection);
+        GameEventSystem.GetInstance().SubscribeToEvent<bool>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.ToggleSelectingUnit), TogglePlayerControls);
         GameEventSystem.GetInstance().SubscribeToEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.ClickedUnit), PlayerSelectedUnit);
     }
 
@@ -39,7 +39,7 @@ public class PlayerUnitsManager : UnitsManager
         base.DeinitEvents();
 
         // Game UI
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<bool>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.ToggleSelectingUnit), ToggleUnitSelection);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<bool>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.ToggleSelectingUnit), TogglePlayerControls);
         GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.ClickedUnit), PlayerSelectedUnit);
     }
 
@@ -69,19 +69,23 @@ public class PlayerUnitsManager : UnitsManager
     }
 
     // Gaemplay
-    protected override void GameOver(FactionType _winner)
+    protected override void OnGameOver(FactionType _winner)
     {
+        base.OnGameOver(_winner);
+
         if (m_UpdateCoroutine != null)
         {
             StopCoroutine(m_UpdateCoroutine);
         }
 
-        ToggleUnitSelection(false);
+        TogglePlayerControls(false);
     }
 
     protected override void TurnStart(FactionType _factionType)
     {
+        if (m_IsGameOver) { return; };
         if (_factionType != m_ManagedFaction) { return; }
+
         m_IsPlayerTurn = true;
         m_UpdateCoroutine = UpdateCoroutine();
         StartCoroutine(m_UpdateCoroutine);
@@ -92,26 +96,27 @@ public class PlayerUnitsManager : UnitsManager
         // Get all alive player units.
         GetManagedUnitsFromUnitTracker();
 
-        // Set the default selected unit.
-        m_SelectedUnitIndex = 0;
-        m_UnitSelection.gameObject.SetActive(true);
-
-        // Wait for all units to make their move.
-        GetComponent<DetectPlayerClicks>().enabled = true;
-        while (m_ManagedUnits.Count > 0)
+        if (m_ManagedUnits.Count > 0)
         {
-            yield return null;
-        }
+            // Set the default selected unit.
+            m_UnitSelection.gameObject.SetActive(true);
+            m_SelectedUnitIndex = 0;
+            SpawnActionSelectionUI(m_ManagedUnits[m_SelectedUnitIndex]);
 
-        // Player no longer needs to interact with the game so might as well turn off the polling.
-        GetComponent<DetectPlayerClicks>().enabled = false;
-        m_UnitSelection.gameObject.SetActive(false);
+            // Wait for all units to make their move.
+            GetComponent<DetectPlayerClicks>().enabled = true;
+            while (m_ManagedUnits.Count > 0) { yield return null; }
 
-        // and then iterate though units that are still alive and reset their energy points
-        GetManagedUnitsFromUnitTracker();
-        foreach (UnitStats unit in m_ManagedUnits)
-        {
-            unit.ResetActionPoints();
+            // Player no longer needs to interact with the game so might as well turn off the polling.
+            GetComponent<DetectPlayerClicks>().enabled = false;
+            TogglePlayerControls(false);
+
+            // and then iterate though units that are still alive and reset their energy points
+            GetManagedUnitsFromUnitTracker();
+            foreach (UnitStats unit in m_ManagedUnits)
+            {
+                unit.ResetActionPoints();
+            }
         }
 
         m_UpdateCoroutine = null;
@@ -134,6 +139,14 @@ public class PlayerUnitsManager : UnitsManager
         {
             m_ManagedUnits.Remove(_unit);
         }
+        if (m_SelectedUnitIndex >= m_ManagedUnits.Count)
+        {
+            SelectNextUnit();
+        }
+        if (m_ManagedUnits.Count > 0)
+        {
+            SpawnActionSelectionUI(m_ManagedUnits[m_SelectedUnitIndex]);
+        }
     }
 
     /// <summary>
@@ -141,11 +154,21 @@ public class PlayerUnitsManager : UnitsManager
     /// </summary>
     protected override void UnitFinishedAction(UnitStats _unit)
     {
+        if (m_IsGameOver) { return; };
         if (_unit.UnitFaction != m_ManagedFaction) { return; }
         // A unit can finish an action when it isn't the player's turn. Such as Dying and Overwatch.
         if (m_IsPlayerTurn)
         {
             m_UnitSelection.gameObject.SetActive(true);
+
+            if (m_SelectedUnitIndex >= m_ManagedUnits.Count)
+            {
+                SelectNextUnit();
+            }
+            if (m_ManagedUnits.Count > 0)
+            {
+                SpawnActionSelectionUI(m_ManagedUnits[m_SelectedUnitIndex]);
+            }
         }
     }
 
@@ -164,7 +187,7 @@ public class PlayerUnitsManager : UnitsManager
         }
     }
 
-    protected void ToggleUnitSelection(bool _on)
+    protected void TogglePlayerControls(bool _on)
     {
         m_SelectedUnitIndicator.gameObject.SetActive(_on);
         m_UnitSelection.gameObject.SetActive(_on);

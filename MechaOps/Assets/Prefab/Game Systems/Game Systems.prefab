@@ -672,6 +672,7 @@ MonoBehaviour:
   m_UnitsTracker: {fileID: 114538370514917290}
   m_AIUnitManagers:
   - {fileID: 114373422892012444}
+  - {fileID: 114427785471425424}
   m_PlayerUnitsManager: {fileID: 114050078852836360}
   m_GameFlowManager: {fileID: 114249428071637902}
   m_UnitActionScheduler: {fileID: 114247842419953258}
@@ -901,7 +902,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PlayerFaction: 0
   m_FactionsInPlay: 000000000100000002000000
-  m_CurrentTurnFaction: 0
+  m_CurrentTurnFaction: 1
   m_PlayerWonDisplay: {fileID: 1340652212449704, guid: b8400546c5ca32c44b77542b2687c5a3,
     type: 2}
   m_PlayerLostDisplay: {fileID: 1219414303167620, guid: 85d077349c1087d46a381752e9d6af94,

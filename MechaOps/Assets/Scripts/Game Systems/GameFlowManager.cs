@@ -15,6 +15,7 @@ public class GameFlowManager : MonoBehaviour
 {
     // Non-Serialised Variable(s)
     protected GameObject m_EnemyTurnDisplay;
+    protected bool m_IsGameOver = false;
 
     // Serialised Variable(s)
     [SerializeField]
@@ -32,8 +33,7 @@ public class GameFlowManager : MonoBehaviour
     protected GameObject m_EnemyTurnDisplayPrefab;
     [SerializeField, Tooltip("Game Over Display UI to go back to main menu or retry prefab")]
     protected GameObject m_GameOverDisplayPrefab;
-    [SerializeField]
-    protected GameEventNames m_GameEventNames = null;
+    [SerializeField] protected GameEventNames m_GameEventNames = null;
 
     /// <summary>
     /// So that the setter can used easily.
@@ -44,18 +44,25 @@ public class GameFlowManager : MonoBehaviour
         get { return m_FactionsInPlay[m_CurrentTurnFaction]; }
     }
 
+    public bool IsGameOver()
+    {
+        return m_IsGameOver;
+    }
+
     protected virtual void InitEvents()
     {
         GameEventSystem.GetInstance().SubscribeToEvent(m_GameEventNames.GetEventName(GameEventNames.SpawnSystemNames.UnitsSpawned), OnUnitsSpawned);
         GameEventSystem.GetInstance().SubscribeToEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.FactionDead), OnFactionDead);
-        GameEventSystem.GetInstance().SubscribeToEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.TurnEnd), TurnEnded);
+        GameEventSystem.GetInstance().SubscribeToEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.TurnStart), OnTurnStart);
+        GameEventSystem.GetInstance().SubscribeToEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.TurnEnd), OnTurnEnd);
     }
 
     protected virtual void DeinitEvents()
     {
         GameEventSystem.GetInstance().UnsubscribeFromEvent(m_GameEventNames.GetEventName(GameEventNames.SpawnSystemNames.UnitsSpawned), OnUnitsSpawned);
         GameEventSystem.GetInstance().UnsubscribeFromEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.FactionDead), OnFactionDead);
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.TurnEnd), TurnEnded);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.TurnStart), OnTurnStart);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.TurnEnd), OnTurnEnd);
     }
 
     protected virtual void Awake()
@@ -82,14 +89,18 @@ public class GameFlowManager : MonoBehaviour
         GameEventSystem.GetInstance().TriggerEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.TurnStart), CurrentTurnFaction);
     }
 
+    protected virtual void OnTurnStart(FactionType _factionType)
+    {
+        m_EnemyTurnDisplay.SetActive(CurrentTurnFaction != m_PlayerFaction);
+    }
+
     /// <summary>
     /// This function signals the end of the turn, and to begin the next turn.
     /// </summary>
     /// <param name="_factionType"></param>
-    protected virtual void TurnEnded(FactionType _factionType)
+    protected virtual void OnTurnEnd(FactionType _factionType)
     {
         SetNextTurnFaction();
-        m_EnemyTurnDisplay.SetActive(CurrentTurnFaction != m_PlayerFaction);
         GameEventSystem.GetInstance().TriggerEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.TurnStart), CurrentTurnFaction);
     }
 
@@ -105,6 +116,7 @@ public class GameFlowManager : MonoBehaviour
         // It's a draw. Nobody is alive.
         if (aliveFactions.Length == 0)
         {
+            m_IsGameOver = true;
             // Treat a draw as a lost.
             DisplayLoseScreen();
             GameEventSystem.GetInstance().TriggerEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.GameOver), FactionType.None);
@@ -112,6 +124,7 @@ public class GameFlowManager : MonoBehaviour
         // Only 1 faction is left alive. It is the winner.
         if (aliveFactions.Length == 1)
         {
+            m_IsGameOver = true;
             if (aliveFactions[0] == m_PlayerFaction)
             {
                 DisplayWinScreen();

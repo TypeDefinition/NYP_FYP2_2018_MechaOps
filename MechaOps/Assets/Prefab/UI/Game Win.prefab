@@ -21,13 +21,14 @@ GameObject:
   - component: {fileID: 224168212686086282}
   - component: {fileID: 222589128301488078}
   - component: {fileID: 114219411685806182}
+  - component: {fileID: 114403947089407800}
   m_Layer: 5
   m_Name: Game Win
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1578524092096712
 GameObject:
   m_ObjectHideFlags: 0
@@ -72,6 +73,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114403947089407800
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1340652212449704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078512eb4ce70e242aebd4694d7aa8a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TweenAnimationDuration: 0.2
 --- !u!114 &114821760491925646
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,7 +115,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4293905185
-  m_fontColor: {r: 0.12941177, g: 0.7960785, b: 0.93725497, a: 1}
+  m_fontColor: {r: 0, g: 1, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}
@@ -211,11 +224,11 @@ RectTransform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -64}
   m_SizeDelta: {x: 800, y: 200}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!224 &224903767692963528
 RectTransform:
   m_ObjectHideFlags: 1
@@ -231,6 +244,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1.8999939, y: 3.7999992}
+  m_AnchoredPosition: {x: -1.8999939, y: 3.800003}
   m_SizeDelta: {x: -36.099976, y: -34.399994}
   m_Pivot: {x: 0.5, y: 0.5}
