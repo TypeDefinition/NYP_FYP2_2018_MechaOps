@@ -75,6 +75,8 @@ public class PlayerUnitsManager : UnitsManager
         {
             StopCoroutine(m_UpdateCoroutine);
         }
+
+        ToggleUnitSelection(false);
     }
 
     protected override void TurnStart(FactionType _factionType)
