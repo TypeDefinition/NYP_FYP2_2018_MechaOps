@@ -11,7 +11,6 @@ public enum TileType
 {
     Normal = 0,
     Cover,
-    Shield,
     Obstacle,
     Swirl,
     Stealth,
@@ -93,8 +92,8 @@ public class TileAttributeOverride
 
 }
 
-[DisallowMultipleComponent]
-public class TileLibrary : MonoBehaviour
+[System.Serializable, CreateAssetMenu(fileName = "TileLibrary", menuName = "Tile/Tile Library")]
+public class TileLibrary : ScriptableObject
 {
     [SerializeField] private TileAttributes[] m_Library = new TileAttributes[(uint)TileType.Num_TileType];
 

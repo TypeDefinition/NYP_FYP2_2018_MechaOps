@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b740b62eb9163ac449d5182d89a25129, type: 3}
+  m_Name: Tile Library
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Walkable: 1
+    m_MovementCost: 1
+    m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
+    m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
+      type: 2}
+  - m_Walkable: 0
+    m_MovementCost: 1
+    m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
+    m_DisplayObject: {fileID: 114603814530369432, guid: 47faf5f328908d94fb1b9f46271e457a,
+      type: 2}
+  - m_Walkable: 0
+    m_MovementCost: 1
+    m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
+    m_DisplayObject: {fileID: 114834877568814252, guid: 2475c95dfce60604f88284d2b063d5f5,
+      type: 2}
+  - m_Walkable: 1
+    m_MovementCost: 3
+    m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
+    m_DisplayObject: {fileID: 114831931147255818, guid: df66c0ee4c67adc4c9effe4d389cfcd2,
+      type: 2}
+  - m_Walkable: 1
+    m_MovementCost: 2
+    m_ConcealmentPoints: 4
+    m_EvasionPoints: 0
+    m_DisplayObject: {fileID: 114621463578543154, guid: b4df40f7061a13a4787dcd6c92147014,
+      type: 2}
