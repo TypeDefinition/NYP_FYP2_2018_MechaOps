@@ -63,7 +63,11 @@ public abstract class UnitActionUI : TweenUI_Scale
     {
         // Set the name and description.
         m_ActionNameText.text = _action.UnitActionName;
-        m_ActionDescriptionText.text = _action.UnitActionDescription;
+
+        string actionCostText = string.Format("Action Cost: {0}", _action.ActionCost);
+        string endsTurnText = _action.EndsTurn ? "Ends Turn: Yes" : "Ends Turn: No";
+
+        m_ActionDescriptionText.text = actionCostText + " " + endsTurnText + "\n" + _action.UnitActionDescription;
     }
 
 #if UNITY_EDITOR

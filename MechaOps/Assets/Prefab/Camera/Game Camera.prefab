@@ -109,7 +109,6 @@ MonoBehaviour:
   m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
   m_ZoomSpeed: 50
   m_MovementSpeed: 10
-  m_FocusPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &114789354129003924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,7 +126,7 @@ MonoBehaviour:
   m_MinHeight: 3
   m_MaxHeight: 15
   m_MaxDistanceFromMapEdge: 20
-  m_MinFOV: 5
+  m_MinFOV: 20
   m_MaxFOV: 80
 --- !u!124 &124763215133911558
 Behaviour:

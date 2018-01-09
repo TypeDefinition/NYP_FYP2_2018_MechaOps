@@ -66,6 +66,7 @@ public class GameEventNames : ScriptableObject
         Swipe,
         Scroll,
         CircleGesture,
+        DoubleTap,
 
         Num_TouchNames
     }

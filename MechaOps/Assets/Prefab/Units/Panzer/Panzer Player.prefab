@@ -1873,7 +1873,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UnitActionName: Move
-  m_UnitActionDescription: <Placeholder Description>
+  m_UnitActionDescription: Move the unit.
   m_ControllableAction: 1
   m_Priority: 0
   m_ActionCost: 1
@@ -1897,7 +1897,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UnitActionName: Skip
-  m_UnitActionDescription: <Placeholder Description>
+  m_UnitActionDescription: Skips this unit's turn.
   m_ControllableAction: 1
   m_Priority: 0
   m_ActionCost: 1
@@ -1924,8 +1924,8 @@ MonoBehaviour:
     m_FactionType: 0
     m_MaxHealthPoints: 5
     m_CurrentHealthPoints: 5
-    m_MaxActionPoints: 3
-    m_CurrentActionPoints: 3
+    m_MaxActionPoints: 2
+    m_CurrentActionPoints: 2
     m_DeploymentCost: 2000
     m_ViewRange: 10
     m_ConcealmentPoints: 0
@@ -1962,7 +1962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UnitActionName: Shoot
-  m_UnitActionDescription: <Placeholder Description>
+  m_UnitActionDescription: Shoot an enemy.
   m_ControllableAction: 1
   m_Priority: 0
   m_ActionCost: 1

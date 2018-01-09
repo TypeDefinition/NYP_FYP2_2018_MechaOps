@@ -156,16 +156,22 @@ public class UnitActionUI_Attack : UnitActionUI
     protected override void UpdateActionInfo(IUnitAction _action)
     {
         m_ActionNameText.text = _action.UnitActionName;
+        string actionCostText = string.Format("Action Cost: {0}", _action.ActionCost);
+        string endsTurnText = _action.EndsTurn ? "Ends Turn: Yes" : "Ends Turn: No";
+
+        string hitChanceText;
         // If not target, then make it not applicable
-       if (!m_OtherTarget)
+        if (!m_OtherTarget)
         {
-            m_ActionDescriptionText.SetText("Hit Chance: NA");
+            hitChanceText = "Hit Chance: NA";
         }
         else
         {
             // have to set target otherwise calculate hit chance will crash
             m_UnitAttackAction.SetTarget(m_OtherTarget.gameObject);
-            m_ActionDescriptionText.SetText("Hit Chance: {0}%", m_UnitAttackAction.CalculateHitChance());
+            hitChanceText = string.Format("Hit Chance: {0}%", m_UnitAttackAction.CalculateHitChance());
         }
+
+        m_ActionDescriptionText.text = actionCostText + " " + endsTurnText + "\n" + hitChanceText + "\n" + _action.UnitActionDescription;
     }
 }

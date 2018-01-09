@@ -1161,7 +1161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PointerId: 0
-  m_IgnoreUI: 1
+  m_IgnoreClicksOnUI: 1
   m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
   m_TriggeredEvent: 1
   m_LayersToDetect:
@@ -1219,7 +1219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PointerId: 0
-  m_IgnoreUI: 1
+  m_IgnoreClicksOnUI: 1
   m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
   m_TriggeredEvent: 0
   m_LayersToDetect:

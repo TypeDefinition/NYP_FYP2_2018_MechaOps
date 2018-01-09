@@ -582,6 +582,7 @@ MonoBehaviour:
   m_Priority: 0
   m_ActionCost: 1
   m_EndsTurn: 0
+  m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 0}
   m_UnitActionButtonSprite: {fileID: 0}
 --- !u!114 &114149621354156038
@@ -650,6 +651,7 @@ MonoBehaviour:
   m_Priority: 0
   m_ActionCost: 1
   m_EndsTurn: 0
+  m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 0}
   m_UnitActionButtonSprite: {fileID: 0}
   m_MovementPoints: 8
@@ -718,6 +720,7 @@ MonoBehaviour:
   m_Priority: 50
   m_ActionCost: 0
   m_EndsTurn: 0
+  m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 0}
   m_UnitActionButtonSprite: {fileID: 0}
   m_Animation: {fileID: 114613066354012256}
@@ -792,12 +795,13 @@ MonoBehaviour:
   m_Priority: 0
   m_ActionCost: 1
   m_EndsTurn: 0
+  m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 0}
   m_UnitActionButtonSprite: {fileID: 0}
   m_MinAttackRange: 0
   m_MaxAttackRange: 6
   m_AccuracyPoints: 50
-  m_DamagePoints: 2
+  m_DamagePoints: 1
   m_Animation: {fileID: 114853131596053402}
 --- !u!114 &114756056872728986
 MonoBehaviour:
@@ -927,8 +931,8 @@ MonoBehaviour:
     m_FactionType: 1
     m_MaxHealthPoints: 4
     m_CurrentHealthPoints: 4
-    m_MaxActionPoints: 4
-    m_CurrentActionPoints: 4
+    m_MaxActionPoints: 2
+    m_CurrentActionPoints: 2
     m_DeploymentCost: 2000
     m_ViewRange: 16
     m_ConcealmentPoints: -3

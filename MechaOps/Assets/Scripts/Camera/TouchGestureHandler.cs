@@ -27,6 +27,12 @@ public class TouchGestureHandler : MonoBehaviour
     private IEnumerator m_DetectCircleGestureCoroutine;
     private bool m_DetectCircleGestureCoroutineStarted = false;
 
+    // Double Tap
+    private float m_MaxTimeBetweenTaps = 0.2f;
+    private float m_TimeBetweenTapsCounter = 0.0f;
+    private Vector2 m_FirstTapPosition = new Vector2();
+    private Vector2 m_SecondTapPosition = new Vector2();
+
     [SerializeField] private GUIText m_DebugTextOutput = null;
 
     public float MaxPinchAngle
@@ -289,6 +295,32 @@ public class TouchGestureHandler : MonoBehaviour
         m_DetectCircleGestureCoroutineStarted = false;
     }
 
+    private void DetectDoubleTap()
+    {
+        // Ensure that there is only 1 touch on the screen.
+        if (Input.touchCount == 1)
+        {
+            Touch touch = Input.GetTouch(0);
+            Vector2 touchPosition = touch.position / (float)Screen.height;
+
+            // It is only the first tap.
+            if (m_TimeBetweenTapsCounter <= 0.0f)
+            {
+                m_FirstTapPosition = touchPosition;
+            }
+            else
+            {
+                // It is the second tap.
+                m_SecondTapPosition = touchPosition;
+                GameEventSystem.GetInstance().TriggerEvent<Vector2, Vector2>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.DoubleTap), m_FirstTapPosition, m_SecondTapPosition);
+            }
+
+            m_TimeBetweenTapsCounter = 0.0f;
+        }
+
+        m_TimeBetweenTapsCounter = Mathf.Max(0.0f, m_TimeBetweenTapsCounter - Time.unscaledDeltaTime);
+    }
+
     private void OnDestroy()
     {
         StopAllCoroutines();
@@ -301,6 +333,7 @@ public class TouchGestureHandler : MonoBehaviour
         DetectScroll();
         DetectSwipe();
         DetectCircleGesture();
+        DetectDoubleTap();
 	}
 
 #if UNITY_EDITOR

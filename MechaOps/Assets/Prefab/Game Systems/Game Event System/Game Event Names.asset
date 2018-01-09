@@ -33,9 +33,9 @@ MonoBehaviour:
   - Selected Action
   - Focus On Target
   - Follow Target
-  - Follow Target Stop
   m_TouchGestureNames:
   - Pinch
   - Swipe
   - Scroll
   - Circle Gesture
+  - Double Tap

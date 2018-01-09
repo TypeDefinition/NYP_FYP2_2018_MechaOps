@@ -80,10 +80,6 @@ public class UnitActionUI_SHSM_Shoot : UnitActionUI
     {
         m_UnitAction = _action as SHSMShootAction;
 
-        // Set the name and description.
-        m_ActionNameText.text = _action.UnitActionName;
-        m_ActionDescriptionText.text = _action.UnitActionDescription;
-
         // then we highlight all of the tiles from here
         TileId[] tilesInRange = m_TileSystem.GetSurroundingTiles(m_UnitAction.GetUnitStats().CurrentTileID, m_UnitAction.MaxAttackRange);
         foreach (TileId tileId in tilesInRange)
@@ -97,6 +93,8 @@ public class UnitActionUI_SHSM_Shoot : UnitActionUI
         }
 
         m_TileSystem.SetPathMarkers(m_AttackableTiles.ToArray(), null);
+
+        UpdateActionInfo(_action);
     }
 
     /// <summary>

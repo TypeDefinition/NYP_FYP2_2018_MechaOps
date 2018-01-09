@@ -8,10 +8,12 @@ using UnityEngine.Assertions;
 public class GameCameraController : MonoBehaviour
 {
     /*
-     * Note: Order of control priority
+     * Note: Order of movement control priority
      * 1. Camera Follow Target
      * 2. Camera Focus on Target
      * 3. Player Input
+     * 
+     * Player Input Zoom, Rotate etc. are not affected by priority and can be done at the same time.
      */
 
     // Serialised Variable(s)
@@ -61,7 +63,7 @@ public class GameCameraController : MonoBehaviour
         return (!CanFollowTarget()) && (m_FocusOnTargetTimeLeft > 0.0f);
     }
 
-    private bool PlayerCanControl()
+    private bool PlayerCanMove()
     {
         return (!CanFollowTarget()) && (!CanFocusOnTarget());
     }
@@ -78,7 +80,8 @@ public class GameCameraController : MonoBehaviour
         GameEventSystem.GetInstance().SubscribeToEvent<float>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.Pinch), PinchCallback);
         GameEventSystem.GetInstance().SubscribeToEvent<Vector2>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.Scroll), ScrollCallback);
         GameEventSystem.GetInstance().SubscribeToEvent<Vector2>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.Swipe), SwipeCallback);
-        GameEventSystem.GetInstance().SubscribeToEvent<TouchGestureHandler.CircleGestureDirection>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.CircleGesture), CircleGestureCallback);
+        //GameEventSystem.GetInstance().SubscribeToEvent<TouchGestureHandler.CircleGestureDirection>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.CircleGesture), CircleGestureCallback);
+        GameEventSystem.GetInstance().SubscribeToEvent<Vector2, Vector2>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.DoubleTap), DoubleTapCallback);
 
         m_EventsInitialised = true;
     }
@@ -94,7 +97,8 @@ public class GameCameraController : MonoBehaviour
         GameEventSystem.GetInstance().UnsubscribeFromEvent<float>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.Pinch), PinchCallback);
         GameEventSystem.GetInstance().UnsubscribeFromEvent<Vector2>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.Scroll), ScrollCallback);
         GameEventSystem.GetInstance().UnsubscribeFromEvent<Vector2>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.Swipe), SwipeCallback);
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<TouchGestureHandler.CircleGestureDirection>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.CircleGesture), CircleGestureCallback);
+        //GameEventSystem.GetInstance().UnsubscribeFromEvent<TouchGestureHandler.CircleGestureDirection>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.CircleGesture), CircleGestureCallback);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<Vector2, Vector2>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.DoubleTap), DoubleTapCallback);
 
         m_EventsInitialised = false;
     }
@@ -139,8 +143,6 @@ public class GameCameraController : MonoBehaviour
     // I did not multiply by Time.deltaTime since the magnitude is already only the magnitude for this frame.
     private void PinchCallback(float _magnitude)
     {
-        if (!PlayerCanControl()) { return; }
-
         Assert.IsTrue(m_GameCameraMovement != null);
         m_GameCameraMovement.Zoom(_magnitude * m_ZoomSpeed);
     }
@@ -148,15 +150,13 @@ public class GameCameraController : MonoBehaviour
     // I did not multiply by Time.deltaTime since the magnitude is already only the magnitude for this frame.
     private void ScrollCallback(Vector2 _scroll)
     {
-        if (!PlayerCanControl()) { return; }
-
         m_GameCameraMovement.MoveDown(_scroll.y * m_MovementSpeed);
     }
 
     // I did not multiply by Time.deltaTime since the magnitude is already only the magnitude for this frame.
     private void SwipeCallback(Vector2 _swipe)
     {
-        if (!PlayerCanControl()) { return; }
+        if (!PlayerCanMove()) { return; }
 
         m_GameCameraMovement.MoveBackwards(_swipe.y * m_MovementSpeed);
         m_GameCameraMovement.MoveLeft(_swipe.x * m_MovementSpeed);
@@ -164,8 +164,6 @@ public class GameCameraController : MonoBehaviour
 
     private void CircleGestureCallback(TouchGestureHandler.CircleGestureDirection _circleDirection)
     {
-        if (!PlayerCanControl()) { return; }
-
         switch (_circleDirection)
         {
             case TouchGestureHandler.CircleGestureDirection.AntiClockwise:
@@ -177,6 +175,21 @@ public class GameCameraController : MonoBehaviour
             default:
                 // Do nothing.
                 break;
+        }
+    }
+
+    private void DoubleTapCallback(Vector2 _firstTap, Vector2 _secondTap)
+    {
+        // Check if both taps are on the left
+        if (_firstTap.x < 0.5f && _secondTap.x < 0.5f)
+        {
+            m_GameCameraMovement.RotateLeft();
+        }
+
+        // Check if both taps are on the right.
+        if (_firstTap.x > 0.5f && _secondTap.x > 0.5f)
+        {
+            m_GameCameraMovement.RotateRight();
         }
     }
 
@@ -199,13 +212,9 @@ public class GameCameraController : MonoBehaviour
     // Very basic Handling of Keyboard Input for development purposes.
     private void HandleKeyboardInput()
     {
-        if (!PlayerCanControl()) { return; }
-
         // We need a multiplier because the zoom speed on PC is too high.
         float zoomMultiplier = 0.01f;
         m_GameCameraMovement.Zoom(Input.GetAxis("Zoom") * zoomMultiplier * m_ZoomSpeed * Time.deltaTime);
-        m_GameCameraMovement.MoveRight(Input.GetAxis("Horizontal") * m_MovementSpeed * Time.deltaTime);
-        m_GameCameraMovement.MoveForward(Input.GetAxis("Vertical") * m_MovementSpeed * Time.deltaTime);
 
         if (Input.GetButtonDown("RotateLeft"))
         {
@@ -223,6 +232,10 @@ public class GameCameraController : MonoBehaviour
         {
             m_GameCameraMovement.MoveUp(m_MovementSpeed * Time.deltaTime);
         }
+
+        if (!PlayerCanMove()) { return; }
+        m_GameCameraMovement.MoveRight(Input.GetAxis("Horizontal") * m_MovementSpeed * Time.deltaTime);
+        m_GameCameraMovement.MoveForward(Input.GetAxis("Vertical") * m_MovementSpeed * Time.deltaTime);
     }
 
     private void Awake()
