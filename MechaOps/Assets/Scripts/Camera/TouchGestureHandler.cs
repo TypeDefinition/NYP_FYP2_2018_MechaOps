@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.EventSystems;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -28,6 +29,7 @@ public class TouchGestureHandler : MonoBehaviour
     private bool m_DetectCircleGestureCoroutineStarted = false;
 
     // Double Tap
+    private bool m_PreviousFrameHasTouch = false;
     private float m_MaxTimeBetweenTaps = 0.2f;
     private float m_TimeBetweenTapsCounter = 0.0f;
     private Vector2 m_FirstTapPosition = new Vector2();
@@ -298,26 +300,30 @@ public class TouchGestureHandler : MonoBehaviour
     private void DetectDoubleTap()
     {
         // Ensure that there is only 1 touch on the screen.
-        if (Input.touchCount == 1)
+        if (Input.touchCount == 1 && !EventSystem.current.IsPointerOverGameObject(0))
         {
             Touch touch = Input.GetTouch(0);
             Vector2 touchPosition = touch.position / (float)Screen.height;
 
-            // It is only the first tap.
-            if (m_TimeBetweenTapsCounter <= 0.0f)
+            if (!m_PreviousFrameHasTouch)
             {
-                m_FirstTapPosition = touchPosition;
+                // It is only the first tap.
+                if (m_TimeBetweenTapsCounter <= 0.0f)
+                {
+                    m_FirstTapPosition = touchPosition;
+                    m_TimeBetweenTapsCounter = m_MaxTimeBetweenTaps;
+                }
+                else
+                {
+                    // It is the second tap.
+                    m_SecondTapPosition = touchPosition;
+                    GameEventSystem.GetInstance().TriggerEvent<Vector2, Vector2>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.DoubleTap), m_FirstTapPosition, m_SecondTapPosition);
+                    m_TimeBetweenTapsCounter = 0.0f;
+                }
             }
-            else
-            {
-                // It is the second tap.
-                m_SecondTapPosition = touchPosition;
-                GameEventSystem.GetInstance().TriggerEvent<Vector2, Vector2>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.DoubleTap), m_FirstTapPosition, m_SecondTapPosition);
-            }
-
-            m_TimeBetweenTapsCounter = 0.0f;
         }
 
+        m_PreviousFrameHasTouch = (Input.touchCount > 0);
         m_TimeBetweenTapsCounter = Mathf.Max(0.0f, m_TimeBetweenTapsCounter - Time.unscaledDeltaTime);
     }
 

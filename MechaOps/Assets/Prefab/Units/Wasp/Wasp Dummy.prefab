@@ -571,7 +571,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49f00674e8b6cb845924989453768080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RotationSpeed: 3600
+  m_RotationSpeed: 720
   m_RotationAxis: 1
 --- !u!114 &114321516086233292
 MonoBehaviour:
@@ -590,6 +590,7 @@ MonoBehaviour:
   m_Priority: 0
   m_ActionCost: 1
   m_EndsTurn: 0
+  m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 0}
   m_UnitActionButtonSprite: {fileID: 0}
   m_MinAttackRange: 0
@@ -662,6 +663,7 @@ MonoBehaviour:
   m_Priority: 0
   m_ActionCost: 1
   m_EndsTurn: 0
+  m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 0}
   m_UnitActionButtonSprite: {fileID: 0}
 --- !u!114 &114640826300165538
@@ -693,6 +695,7 @@ MonoBehaviour:
   m_Priority: 50
   m_ActionCost: 0
   m_EndsTurn: 0
+  m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 0}
   m_UnitActionButtonSprite: {fileID: 0}
   m_Animation: {fileID: 114734858264194274}
@@ -781,6 +784,7 @@ MonoBehaviour:
   m_ViewTileScript: {fileID: 114433023381146124}
   m_UnitInfoDisplay_Prefab: {fileID: 114423042521562832, guid: f6fdede1943ea6742858eefd80f3ded1,
     type: 2}
+  m_EnemiesInViewRange: []
 --- !u!114 &114881584929758932
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -826,6 +830,7 @@ MonoBehaviour:
   m_Priority: 0
   m_ActionCost: 1
   m_EndsTurn: 0
+  m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 0}
   m_UnitActionButtonSprite: {fileID: 0}
   m_MovementPoints: 8

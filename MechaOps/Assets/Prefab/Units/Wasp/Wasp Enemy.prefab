@@ -232,8 +232,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1651711890449956}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.0199986, y: 0, z: -7.2130237}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4507656217001790}
@@ -608,6 +608,8 @@ MonoBehaviour:
   m_AttackAct: {fileID: 114737823929242180}
   m_WalkAct: {fileID: 114304432078445664}
   m_EnemiesInAttack: []
+  m_SeenMovingFlag: 0
+  m_EventNames: {fileID: 0}
 --- !u!114 &114295957616179928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -746,7 +748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49f00674e8b6cb845924989453768080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_RotationSpeed: 3600
+  m_RotationSpeed: 720
   m_RotationAxis: 1
 --- !u!114 &114613066354012256
 MonoBehaviour:
@@ -878,6 +880,9 @@ MonoBehaviour:
   m_TileDest:
     m_X: 0
     m_Y: 0
+  m_UnitViewScript: {fileID: 0}
+  m_SeenMovingFlag: 0
+  m_EventNames: {fileID: 0}
 --- !u!114 &114851379634724980
 MonoBehaviour:
   m_ObjectHideFlags: 1

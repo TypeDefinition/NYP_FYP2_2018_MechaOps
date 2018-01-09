@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Name: Unit Library
   m_EditorClassIdentifier: 
   m_Library:
-  - m_UnitIconSprite: {fileID: 0}
+  - m_UnitIconSprite: {fileID: 21300000, guid: 84310e512fd5da044989067ac3490cf3, type: 3}
     m_UnitPrefab: {fileID: 114718164003450294, guid: 08d48d711bd8ebb4c8ef4c4dbe590b67,
       type: 2}
-  - m_UnitIconSprite: {fileID: 0}
+  - m_UnitIconSprite: {fileID: 21300000, guid: 43dbedf16bf407941bc2343cfd4f6af0, type: 3}
     m_UnitPrefab: {fileID: 114809387758883690, guid: 7ddecae09b46e0a438c6a0b2d44be7ee,
       type: 2}
-  - m_UnitIconSprite: {fileID: 0}
+  - m_UnitIconSprite: {fileID: 21300000, guid: 678ffbd5e502125478325c4881ed8761, type: 3}
     m_UnitPrefab: {fileID: 114088806880344424, guid: 6d5268ff15a2cc34da1a79ac3e69557e,
       type: 2}
   - m_UnitIconSprite: {fileID: 0}
