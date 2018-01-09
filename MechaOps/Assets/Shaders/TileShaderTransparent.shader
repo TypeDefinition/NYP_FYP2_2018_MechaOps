@@ -11,7 +11,7 @@
 
         _CanSee ("Can See", Int) = 1
         _SeenColor("Seen Color", Color) = (1, 1, 1, 1)
-        _UnseenColor ("Unseen Color", Color) = (0.1, 0.1, 0.1, 1)
+        _UnseenColor ("Unseen Color", Color) = (0.3, 0.3, 0.3, 1)
 
         // Rotate The Texture
         _TextureRotationSpeed("Texture Rotation Speed (Degrees)", Float) = 0

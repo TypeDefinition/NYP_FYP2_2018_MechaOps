@@ -16,6 +16,8 @@ public class TileDisplay : MonoBehaviour
     [SerializeField] private bool m_Known = false;
     [SerializeField] private bool m_Visible = false;
 
+    [SerializeField] private TileDisplay[] m_ChildDisplays = null;
+
     public bool Known { get { return m_Known; } }
     public bool Visible { get { return m_Visible; } }
 
@@ -33,6 +35,11 @@ public class TileDisplay : MonoBehaviour
 
         m_Owner = _owner;
         m_OwnerInitialized = true;
+
+        foreach (TileDisplay childDisplay in m_ChildDisplays)
+        {
+            childDisplay.InitOwner(_owner);
+        }
     }
 
     public Tile GetOwner()
@@ -42,11 +49,6 @@ public class TileDisplay : MonoBehaviour
 
     public void SetVisibleState(bool _known, bool _visible)
     {
-        if (GetOwner().GetTileId().Equals(new TileId(0, 0)))
-        {
-            int i = 0;
-        }
-
         m_Known = _known;
         m_Visible = _visible;
 
@@ -57,11 +59,10 @@ public class TileDisplay : MonoBehaviour
         {
             m_VisibilityCallback(_known, _visible);
         }
-    }
 
-    private void Update()
-    {
-        GetComponent<MeshRenderer>().enabled = m_Known;
-        GetComponent<MeshRenderer>().material = (m_Visible ? m_VisibleMaterial : m_NotVisibleMaterial);
+        foreach (TileDisplay childDisplay in m_ChildDisplays)
+        {
+            childDisplay.SetVisibleState(_known, _visible);
+        }
     }
 }

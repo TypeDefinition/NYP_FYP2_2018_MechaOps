@@ -286,8 +286,30 @@ public class TileSystem : MonoBehaviour
 
         foreach (KeyValuePair<TileId, Tile> iter in m_TileDictionary)
         {
-            TileType tileType = (TileType)Random.Range(0, (int)TileType.Num_TileType);
-            iter.Value.SetTileType(tileType);
+            //TileType tileType = (TileType)Random.Range(0, (int)TileType.Num_TileType);
+            //iter.Value.SetTileType(tileType);
+
+            int randomNumber = Random.Range(0, 100);
+            if (randomNumber < 70)
+            {
+                iter.Value.SetTileType(TileType.Normal);
+            }
+            else if (randomNumber < 80)
+            {
+                iter.Value.SetTileType(TileType.Cover);
+            }
+            else if (randomNumber < 85)
+            {
+                iter.Value.SetTileType(TileType.Obstacle);
+            }
+            else if (randomNumber < 90)
+            {
+                iter.Value.SetTileType(TileType.Stealth);
+            }
+            else
+            {
+                iter.Value.SetTileType(TileType.Swirl);
+            }
         }
     }
 
