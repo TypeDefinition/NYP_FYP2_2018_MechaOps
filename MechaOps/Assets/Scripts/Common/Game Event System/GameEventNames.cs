@@ -52,6 +52,7 @@ public class GameEventNames : ScriptableObject
         ToggleSelectingUnit,
         SelectedAction,
         FocusOnTarget,
+        FollowTarget,
 
         Num_GameUINames
     }
@@ -71,18 +72,6 @@ public class GameEventNames : ScriptableObject
     [SerializeField] private string[] m_TouchGestureNames = new string[(int)TouchGestureNames.Pinch];
     public string GetEventName(TouchGestureNames _enumValue) { return m_TouchGestureNames[(int)_enumValue]; }
 
-    /*
-    // Game Systems
-    public enum GameSystemsNames
-    {
-        SystemsReady,
-
-        Num_GameSystemsNames
-    }
-    [SerializeField] public string[] m_GameSystemsNames = new string[(int)GameSystemsNames.Num_GameSystemsNames];
-    public string GetEventName(GameSystemsNames _enumValue) { return m_GameSystemsNames[(int)_enumValue]; }
-    */
-
     /// <summary>
     /// Update this function whenever a new enum or array is declared!
     /// IMPORTANT: Make sure to update GameEventNameEditor as well!
@@ -94,7 +83,6 @@ public class GameEventNames : ScriptableObject
         AutoResizeArray(ref m_GameplayNames, (int)GameplayNames.Num_GameplayNames);
         AutoResizeArray(ref m_GameUINames, (int)GameUINames.Num_GameUINames);
         AutoResizeArray(ref m_TouchGestureNames, (int)TouchGestureNames.Num_TouchNames);
-        //AutoResizeArray(ref m_GameSystemsNames, (int)GameSystemsNames.Num_GameSystemsNames);
     }
 
     private void AutoResizeArray(ref string[] _array, int _size)

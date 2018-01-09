@@ -1965,7 +1965,7 @@ MonoBehaviour:
   m_UnitActionDescription: <Placeholder Description>
   m_ControllableAction: 1
   m_Priority: 0
-  m_ActionCost: 2
+  m_ActionCost: 1
   m_EndsTurn: 1
   m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 114668755676894246, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
