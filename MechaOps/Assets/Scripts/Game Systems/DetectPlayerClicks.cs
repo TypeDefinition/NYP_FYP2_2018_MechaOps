@@ -43,7 +43,7 @@ public class DetectPlayerClicks : MonoBehaviour
 #if UNITY_EDITOR
         if (m_IgnoreClicksOnUI && EventSystem.current.IsPointerOverGameObject()) { return; }
 #else
-        if (m_IgnoreUI && EventSystem.current.IsPointerOverGameObject(m_PointerId)) { return; }
+        if (m_IgnoreClicksOnUI && EventSystem.current.IsPointerOverGameObject(m_PointerId)) { return; }
 #endif
 
         RaycastHit hitInfo;
