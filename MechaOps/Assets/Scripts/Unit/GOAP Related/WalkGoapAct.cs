@@ -7,6 +7,8 @@ public class WalkGoapAct : IGoapAction {
     [Header("References for WalkGoapAct")]
     [SerializeField, Tooltip("The Walk Unit Action that is needed to link")]
     protected UnitMoveAction m_WalkAct;
+    [SerializeField, Tooltip("Unit skip action if unit cannot move!")]
+    protected UnitSkipAction m_SkipAction;
 
     [Header("Debugging purpose for WalkGoapAct")]
     [SerializeField, Tooltip("The Tile to move to")]
@@ -46,6 +48,8 @@ public class WalkGoapAct : IGoapAction {
         base.Start();
         if (!m_WalkAct)
             m_WalkAct = GetComponent<UnitMoveAction>();
+        if (!m_SkipAction)
+            m_SkipAction = GetComponent<UnitSkipAction>();
     }
 
     public override void DoAction()
@@ -109,12 +113,30 @@ public class WalkGoapAct : IGoapAction {
             if (zeCounter == zeMaxTileNum)
                 break;
         }
+
+        WaitForFixedUpdate zeFixedUp = new WaitForFixedUpdate();
+        // QUICK FIX!
+        if (zeAvailablePaths.Length == 0)
+        {
+            m_SkipAction.CompletionCallBack += InvokeActionCompleted;
+            m_SkipAction.TurnOn();
+            while (!m_ActionCompleted)
+            {
+                yield return zeFixedUp;
+            }
+            m_SkipAction.CompletionCallBack -= InvokeActionCompleted;
+            print("Unit skip walking action at WalkGoapAct");
+            m_TileDest = null;
+            m_UpdateRoutine = null;
+            GameEventSystem.GetInstance().TriggerEvent<UnitStats, bool>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_WalkAct.GetUnitStats(), false);
+            yield break;
+        }
+
         m_WalkAct.SetTilePath(zeAvailablePaths);
         m_WalkAct.CompletionCallBack += InvokeActionCompleted;
         m_WalkAct.TurnOn();
         // destination is reached maybe but there is nothing more it can do right now!
         m_TileDest = null;
-        WaitForFixedUpdate zeFixedUp = new WaitForFixedUpdate();
         while (!m_ActionCompleted)
         {
             yield return zeFixedUp;
@@ -125,10 +147,7 @@ public class WalkGoapAct : IGoapAction {
         m_UpdateRoutine = null;
 
         // Stop following the unit.
-        //if (m_SeenMovingFlag)
-        {
-            GameEventSystem.GetInstance().TriggerEvent<UnitStats, bool>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_WalkAct.GetUnitStats(), false);
-        }
+        GameEventSystem.GetInstance().TriggerEvent<UnitStats, bool>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_WalkAct.GetUnitStats(), false);
 
         yield break;
     }
