@@ -18,6 +18,8 @@ public class GoapNearTarget : IGoapAction
     [Header("Debugging purpose")]
     [SerializeField, Tooltip("The list of units that are within the attackin range")]
     protected List<GameObject> m_EnemiesInAttack = new List<GameObject>();
+    [SerializeField] bool m_SeenMovingFlag = false;
+    [SerializeField] GameEventNames m_EventNames;
 
     public List<GameObject> EnemiesInAttack
     {
@@ -25,6 +27,11 @@ public class GoapNearTarget : IGoapAction
         {
             return m_EnemiesInAttack;
         }
+    }
+
+    private void Awake()
+    {
+        m_EventNames = GameSystemsDirectory.GetSceneInstance().GetGameEventNames();
     }
 
     protected override void Start()
@@ -40,6 +47,8 @@ public class GoapNearTarget : IGoapAction
     {
         // Since thr will only be player units to fight against, we will only wait for player unit died
         GameEventSystem.GetInstance().SubscribeToEvent<GameObject, bool>("PlayerIsDead", EnemyUnitDestroyed);
+        GameEventSystem.GetInstance().SubscribeToEvent<UnitStats>(m_EventNames.GetEventName(GameEventNames.GameplayNames.UnitSeen), SeenMoving);
+        GameEventSystem.GetInstance().SubscribeToEvent<UnitStats>(m_EventNames.GetEventName(GameEventNames.GameplayNames.UnitUnseen), UnseenMoving);
         if (!m_Planner)
             m_Planner = GetComponent<GoapPlanner>();
         m_Planner.m_CallbackStartPlan += UpdateEnemyInAttack;
@@ -49,6 +58,8 @@ public class GoapNearTarget : IGoapAction
         GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject, bool>("PlayerIsDead", EnemyUnitDestroyed);
         if (m_Planner)
             m_Planner.m_CallbackStartPlan -= UpdateEnemyInAttack;
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats>(m_EventNames.GetEventName(GameEventNames.GameplayNames.UnitSeen), SeenMoving);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats>(m_EventNames.GetEventName(GameEventNames.GameplayNames.UnitUnseen), UnseenMoving);
     }
 
     public override void DoAction()
@@ -116,12 +127,18 @@ public class GoapNearTarget : IGoapAction
         m_WalkAct.CompletionCallBack += InvokeActionCompleted;
         m_WalkAct.TurnOn();
         WaitForFixedUpdate zeFixedWait = new WaitForFixedUpdate();
+        // Start following the unit.
+        if (m_SeenMovingFlag)
+        {
+            GameEventSystem.GetInstance().TriggerEvent<UnitStats, bool>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_WalkAct.GetUnitStats(), true);
+        }
         while (!m_ActionCompleted)
             yield return zeFixedWait;
         UpdateEnemyInAttack();
         m_WalkAct.CompletionCallBack -= InvokeActionCompleted;
         print("Followed the target successfully");
         m_UpdateRoutine = null;
+        GameEventSystem.GetInstance().TriggerEvent<UnitStats, bool>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_WalkAct.GetUnitStats(), false);
         yield break;
     }
 
@@ -162,5 +179,29 @@ public class GoapNearTarget : IGoapAction
     protected void EnemyUnitDestroyed(GameObject _destroyedUnit, bool _destroyedUnitVisible)
     {
         m_EnemiesInAttack.Remove(_destroyedUnit);
+    }
+
+    void SeenMoving(UnitStats _unitStat)
+    {
+        if (_unitStat.gameObject == gameObject && !m_SeenMovingFlag)
+        {
+            m_SeenMovingFlag = true;
+            if (m_UpdateRoutine != null)
+            {
+                GameEventSystem.GetInstance().TriggerEvent<UnitStats, bool>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_WalkAct.GetUnitStats(), m_SeenMovingFlag);
+            }
+        }
+    }
+
+    void UnseenMoving(UnitStats _unitStat)
+    {
+        if (_unitStat.gameObject == gameObject && m_SeenMovingFlag)
+        {
+            m_SeenMovingFlag = false;
+            if (m_UpdateRoutine != null)
+            {
+                GameEventSystem.GetInstance().TriggerEvent<UnitStats, bool>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_WalkAct.GetUnitStats(), m_SeenMovingFlag);
+            }
+        }
     }
 }

@@ -11,6 +11,10 @@ public class WalkGoapAct : IGoapAction {
     [Header("Debugging purpose for WalkGoapAct")]
     [SerializeField, Tooltip("The Tile to move to")]
     protected TileId m_TileDest;
+    [SerializeField, Tooltip("Visible view script")]
+    protected ViewScript m_UnitViewScript;
+    [SerializeField] bool m_SeenMovingFlag = false;
+    [SerializeField] GameEventNames m_EventNames;
 
     public TileId TileDest
     {
@@ -18,6 +22,23 @@ public class WalkGoapAct : IGoapAction {
         {
             m_TileDest = value;
         }
+    }
+
+    private void Awake()
+    {
+        m_EventNames = GameSystemsDirectory.GetSceneInstance().GetGameEventNames();
+    }
+
+    private void OnEnable()
+    {
+        GameEventSystem.GetInstance().SubscribeToEvent<UnitStats>(m_EventNames.GetEventName(GameEventNames.GameplayNames.UnitSeen), SeenMoving);
+        GameEventSystem.GetInstance().SubscribeToEvent<UnitStats>(m_EventNames.GetEventName(GameEventNames.GameplayNames.UnitUnseen), UnseenMoving);
+    }
+
+    private void OnDisable()
+    {
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats>(m_EventNames.GetEventName(GameEventNames.GameplayNames.UnitSeen), SeenMoving);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats>(m_EventNames.GetEventName(GameEventNames.GameplayNames.UnitUnseen), UnseenMoving);
     }
 
     protected override void Start()
@@ -59,8 +80,10 @@ public class WalkGoapAct : IGoapAction {
         // so why not lets just cheat here to get to the closest tile!
 
         // Start following the unit.
-        GameEventNames gameEventNames = GameSystemsDirectory.GetSceneInstance().GetGameEventNames();
-        GameEventSystem.GetInstance().TriggerEvent<UnitStats, bool>(gameEventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_WalkAct.GetUnitStats(), true);
+        if (m_SeenMovingFlag)
+        {
+            GameEventSystem.GetInstance().TriggerEvent<UnitStats, bool>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_WalkAct.GetUnitStats(), true);
+        }
 
         TileId[] zeTileToWalkTo = null;
         foreach (TileId TileLocation in m_Planner.EnemiesManager.GetOneTileAwayFromEnemyWithoutAGauranteeOfAWalkableTileAtAll())
@@ -102,8 +125,35 @@ public class WalkGoapAct : IGoapAction {
         m_UpdateRoutine = null;
 
         // Stop following the unit.
-        GameEventSystem.GetInstance().TriggerEvent<UnitStats, bool>(gameEventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_WalkAct.GetUnitStats(), false);
+        //if (m_SeenMovingFlag)
+        {
+            GameEventSystem.GetInstance().TriggerEvent<UnitStats, bool>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_WalkAct.GetUnitStats(), false);
+        }
 
         yield break;
+    }
+
+    void SeenMoving(UnitStats _unitStat)
+    {
+        if (_unitStat.gameObject == gameObject && !m_SeenMovingFlag)
+        {
+            m_SeenMovingFlag = true;
+            if (m_UpdateRoutine != null)
+            {
+                GameEventSystem.GetInstance().TriggerEvent<UnitStats, bool>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_WalkAct.GetUnitStats(), m_SeenMovingFlag);
+            }
+        }
+    }
+
+    void UnseenMoving(UnitStats _unitStat)
+    {
+        if (_unitStat.gameObject == gameObject && m_SeenMovingFlag)
+        {
+            m_SeenMovingFlag = false;
+            if (m_UpdateRoutine != null)
+            {
+                GameEventSystem.GetInstance().TriggerEvent<UnitStats, bool>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_WalkAct.GetUnitStats(), m_SeenMovingFlag);
+            }
+        }
     }
 }
