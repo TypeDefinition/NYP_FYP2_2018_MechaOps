@@ -198,7 +198,7 @@ MonoBehaviour:
   m_DefaultTile: {fileID: 114553182710685338, guid: 63cb481f6a73e3640961951b73627b88,
     type: 2}
   m_TileArray: []
-  m_MapRadius: 10
+  m_MapRadius: 20
   m_TileDiameter: 4
   m_TilePath: {fileID: 1316762747078660, guid: 3fc27dc780f0ceb40a6b27ce7cb684a2, type: 2}
   m_TileSelected: {fileID: 1133740913659376, guid: dbc3f06385a24884a807f106a685cbba,

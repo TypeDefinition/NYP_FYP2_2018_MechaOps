@@ -14,10 +14,10 @@
         _UnseenColor ("Unseen Color", Color) = (0.3, 0.3, 0.3, 1)
 
         // Rotate The Texture
-        _TextureRotationSpeed("Texture Rotation Speed (Degrees)", Float) = 0
+        //_TextureRotationSpeed("Texture Rotation Speed (Degrees)", Float) = 0
         // Offset The Texture
-        _TextureOffSetSpeedU("Texture Offset Speed U", Float) = 0
-        _TextureOffSetSpeedV("Texture Offset Speed V", Float) = 0
+        //_TextureOffSetSpeedU("Texture Offset Speed U", Float) = 0
+        //_TextureOffSetSpeedV("Texture Offset Speed V", Float) = 0
 	}
 	SubShader
     {
@@ -60,9 +60,9 @@
 		half _Metallic;
 		fixed4 _Color;
 
-        half _TextureRotationSpeed;
-        half _TextureOffSetSpeedU;
-        half _TextureOffSetSpeedV;
+        //half _TextureRotationSpeed;
+        //half _TextureOffSetSpeedU;
+        //half _TextureOffSetSpeedV;
 
         fixed4 _SeenColor;
         fixed4 _UnseenColor;
@@ -80,6 +80,7 @@
 
 		void surf (Input IN, inout SurfaceOutputStandard o)
         {
+            /*
             // Rotate the texture UVs.
             half Deg2Rad = 3.1415926535 / 180.0;
             half sinRotation = sin(_TextureRotationSpeed * _Time.y * Deg2Rad);
@@ -104,6 +105,7 @@
 
             //It seems like I need to do this BEFORE doing Albedo for some weird reason.
             o.Normal = UnpackNormal(tex2D(_BumpTex, IN.uv_BumpTex));
+            */
 
 			// Albedo comes from a texture tinted by color
 			fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
