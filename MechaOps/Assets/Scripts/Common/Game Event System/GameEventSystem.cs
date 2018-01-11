@@ -37,6 +37,9 @@ public class GameEventSystem
     // Events
     private Dictionary<string, UnityEventBase> m_Events = new Dictionary<string, UnityEventBase>();
 
+    // Debug Variable(s)
+    bool m_PrintDebug = false;
+
     // Constructor(s)
     private GameEventSystem() {}
 
@@ -49,6 +52,14 @@ public class GameEventSystem
         }
 
         return m_Instance;
+    }
+
+    private void PrintDebugString(string _str)
+    {
+        if (m_PrintDebug)
+        {
+            Debug.Log(_str);
+        }
     }
 
     public bool HasEvent(string _eventName)
@@ -241,6 +252,8 @@ public class GameEventSystem
 
     public void TriggerEvent(string _eventName)
     {
+        PrintDebugString("Triggered Event: " + _eventName);
+
         UnityEventBase unityEventBase = GetEvent(_eventName);
         if (unityEventBase == null)
         {
@@ -252,10 +265,12 @@ public class GameEventSystem
         Assert.IsFalse(unityEvent == null, MethodBase.GetCurrentMethod().Name + " - Wrong TriggerEvent function called! Ensure that you call the TriggerEvent function corresponding to the AddEvent function you called!");
 
         unityEvent.Invoke();
-    }    
+    }
 
     public void TriggerEvent<T>(string _eventName, T _parameter)
     {
+        PrintDebugString("Triggered Event: " + _eventName);
+
         UnityEventBase unityEventBase = GetEvent(_eventName);
         if (unityEventBase == null)
         {
@@ -271,6 +286,8 @@ public class GameEventSystem
 
     public void TriggerEvent<T1, T2>(string _eventName, T1 _parameter1, T2 _parameter2)
     {
+        PrintDebugString("Triggered Event: " + _eventName);
+
         UnityEventBase unityEventBase = GetEvent(_eventName);
         if (unityEventBase == null)
         {
@@ -286,6 +303,8 @@ public class GameEventSystem
 
     public void TriggerEvent<T1, T2, T3>(string _eventName, T1 _parameter1, T2 _parameter2, T3 _parameter3)
     {
+        PrintDebugString("Triggered Event: " + _eventName);
+
         UnityEventBase unityEventBase = GetEvent(_eventName);
         if (unityEventBase == null)
         {
@@ -301,6 +320,8 @@ public class GameEventSystem
 
     public void TriggerEvent<T1, T2, T3, T4>(string _eventName, T1 _parameter1, T2 _parameter2, T3 _parameter3, T4 _parameter4)
     {
+        PrintDebugString("Triggered Event: " + _eventName);
+
         UnityEventBase unityEventBase = GetEvent(_eventName);
         if (unityEventBase == null)
         {

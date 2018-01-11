@@ -328,6 +328,11 @@ public class UnitStats : MonoBehaviour
     private void OnUnitDead(UnitStats _deadUnit, bool _isUnitVisible)
     {
         EnemyInRangeDead(_deadUnit, _isUnitVisible);
+
+        if (_deadUnit == this)
+        {
+            Destroy(m_UnitInfoDisplay);
+        }
     }
 
     /// <summary>
@@ -378,13 +383,16 @@ public class UnitStats : MonoBehaviour
 
     private void UpdateUnitInfoDisplay()
     {
-        // Update Health
-        m_UnitInfoDisplay.GetHealthBar().MaxHealthPoints = MaxHealthPoints;
-        m_UnitInfoDisplay.GetHealthBar().CurrentHealthPoints = CurrentHealthPoints;
+        if (m_UnitInfoDisplay)
+        {
+            // Update Health
+            m_UnitInfoDisplay.GetHealthBar().MaxHealthPoints = MaxHealthPoints;
+            m_UnitInfoDisplay.GetHealthBar().CurrentHealthPoints = CurrentHealthPoints;
 
-        // Update Action Points
-        m_UnitInfoDisplay.GetActionPointsCounter().MaxActionPoints = MaxActionPoints;
-        m_UnitInfoDisplay.GetActionPointsCounter().CurrentActionPoints = CurrentActionPoints;
+            // Update Action Points
+            m_UnitInfoDisplay.GetActionPointsCounter().MaxActionPoints = MaxActionPoints;
+            m_UnitInfoDisplay.GetActionPointsCounter().CurrentActionPoints = CurrentActionPoints;
+        }
     }
 
     /// <summary>

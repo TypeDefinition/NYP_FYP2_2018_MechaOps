@@ -1562,7 +1562,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 100
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -1642,7 +1642,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 100
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -1853,6 +1853,7 @@ MonoBehaviour:
   m_Priority: 50
   m_ActionCost: 0
   m_EndsTurn: 0
+  m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 0}
   m_UnitActionButtonSprite: {fileID: 0}
   m_Animation: {fileID: 114522144874979662}
@@ -1889,6 +1890,7 @@ MonoBehaviour:
   m_Priority: 0
   m_ActionCost: 1
   m_EndsTurn: 0
+  m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 0}
   m_UnitActionButtonSprite: {fileID: 0}
   m_MovementPoints: 5
@@ -1910,6 +1912,7 @@ MonoBehaviour:
   m_Priority: 0
   m_ActionCost: 1
   m_EndsTurn: 0
+  m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 0}
   m_UnitActionButtonSprite: {fileID: 0}
 --- !u!114 &114718164003450294
@@ -1942,6 +1945,7 @@ MonoBehaviour:
   m_ViewTileScript: {fileID: 114044705653303432}
   m_UnitInfoDisplay_Prefab: {fileID: 114423042521562832, guid: f6fdede1943ea6742858eefd80f3ded1,
     type: 2}
+  m_EnemiesInViewRange: []
 --- !u!114 &114997096915532080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1959,6 +1963,7 @@ MonoBehaviour:
   m_Priority: 0
   m_ActionCost: 1
   m_EndsTurn: 1
+  m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 0}
   m_UnitActionButtonSprite: {fileID: 0}
   m_MinAttackRange: 0

@@ -130,7 +130,7 @@ public class GoapNearTarget : IGoapAction
         // Start following the unit.
         if (m_SeenMovingFlag)
         {
-            GameEventSystem.GetInstance().TriggerEvent<UnitStats, bool>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_WalkAct.GetUnitStats(), true);
+            GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_WalkAct.GetUnitStats().gameObject);
         }
         while (!m_ActionCompleted)
             yield return zeFixedWait;
@@ -138,7 +138,7 @@ public class GoapNearTarget : IGoapAction
         m_WalkAct.CompletionCallBack -= InvokeActionCompleted;
         print("Followed the target successfully");
         m_UpdateRoutine = null;
-        GameEventSystem.GetInstance().TriggerEvent<UnitStats, bool>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_WalkAct.GetUnitStats(), false);
+        GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), null);
         yield break;
     }
 
@@ -188,7 +188,7 @@ public class GoapNearTarget : IGoapAction
             m_SeenMovingFlag = true;
             if (m_UpdateRoutine != null)
             {
-                GameEventSystem.GetInstance().TriggerEvent<UnitStats, bool>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_WalkAct.GetUnitStats(), m_SeenMovingFlag);
+                GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_WalkAct.GetUnitStats().gameObject);
             }
         }
     }
@@ -200,7 +200,7 @@ public class GoapNearTarget : IGoapAction
             m_SeenMovingFlag = false;
             if (m_UpdateRoutine != null)
             {
-                GameEventSystem.GetInstance().TriggerEvent<UnitStats, bool>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_WalkAct.GetUnitStats(), m_SeenMovingFlag);
+                GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), null);
             }
         }
     }

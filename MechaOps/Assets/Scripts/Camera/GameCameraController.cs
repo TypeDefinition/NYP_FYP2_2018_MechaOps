@@ -29,8 +29,7 @@ public class GameCameraController : MonoBehaviour
     private float m_MoveToPositionDuration = 0.3f;
 
     // The GameCameraController will attempt to follow this target.
-    private bool m_FollowingTarget = false;
-    private UnitStats m_FollowedTarget = null;
+    private GameObject m_FollowedTarget = null;
 
     // The GameCameraController will attempt to move the GameCamera to the m_SelectedUnitPosition for this amound of time.
     private float m_FocusOnTargetTimeLeft = 0.0f;
@@ -55,7 +54,7 @@ public class GameCameraController : MonoBehaviour
 
     private bool CanFollowTarget()
     {
-        return m_FollowingTarget && (m_FollowedTarget != null);
+        return (m_FollowedTarget != null);
     }
 
     private bool CanFocusOnTarget()
@@ -75,8 +74,8 @@ public class GameCameraController : MonoBehaviour
         if (m_EventsInitialised) { return; }
 
         // Initialise events
-        GameEventSystem.GetInstance().SubscribeToEvent<UnitStats, bool>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), FollowTargetCallback);
-        GameEventSystem.GetInstance().SubscribeToEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FocusOnTarget), CameraFocusCallback);
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), FollowTargetCallback);
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FocusOnTarget), CameraFocusCallback);
         GameEventSystem.GetInstance().SubscribeToEvent<float>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.Pinch), PinchCallback);
         GameEventSystem.GetInstance().SubscribeToEvent<Vector2>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.Scroll), ScrollCallback);
         GameEventSystem.GetInstance().SubscribeToEvent<Vector2>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.Swipe), SwipeCallback);
@@ -92,8 +91,8 @@ public class GameCameraController : MonoBehaviour
         if (!m_EventsInitialised) { return; }
 
         // Uninitialise events here.
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats, bool>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), FollowTargetCallback);
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FocusOnTarget), CameraFocusCallback);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), FollowTargetCallback);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FocusOnTarget), CameraFocusCallback);
         GameEventSystem.GetInstance().UnsubscribeFromEvent<float>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.Pinch), PinchCallback);
         GameEventSystem.GetInstance().UnsubscribeFromEvent<Vector2>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.Scroll), ScrollCallback);
         GameEventSystem.GetInstance().UnsubscribeFromEvent<Vector2>(m_GameEventNames.GetEventName(GameEventNames.TouchGestureNames.Swipe), SwipeCallback);
@@ -127,16 +126,15 @@ public class GameCameraController : MonoBehaviour
     }
 
     // Callbacks
-    private void FollowTargetCallback(UnitStats _unit, bool _follow)
+    private void FollowTargetCallback(GameObject _target)
     {
-        m_FollowingTarget = _follow && (_unit != null);
-        m_FollowedTarget = m_FollowingTarget ? _unit : null;
+        m_FollowedTarget = _target;
     }
 
-    private void CameraFocusCallback(UnitStats _unit)
+    private void CameraFocusCallback(GameObject _object)
     {
         // Get the tile position of the unit.
-        m_FocusPosition = m_GameCameraMovement.GetTileSystem().GetTile(_unit.CurrentTileID).transform.position;
+        m_FocusPosition = _object.transform.position;
         m_FocusOnTargetTimeLeft = m_MoveToPositionDuration;
     }
 

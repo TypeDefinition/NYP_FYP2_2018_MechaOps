@@ -21,6 +21,7 @@ public abstract class MOAnimator : MonoBehaviour
     protected GameSystemsDirectory m_GameSystemsDirectory = null;
     protected TileSystem m_TileSystem = null;
     protected CineMachineHandler m_CineMachineHandler = null;
+    protected GameEventNames m_GameEventNames = null;
 
     // Death Animation Variable(s)
 
@@ -110,6 +111,7 @@ public abstract class MOAnimator : MonoBehaviour
         // Get the Systems required fromGame Systems Directory.
         m_TileSystem = m_GameSystemsDirectory.GetTileSystem();
         m_CineMachineHandler = m_GameSystemsDirectory.GetCineMachineHandler();
+        m_GameEventNames = m_GameSystemsDirectory.GetGameEventNames();
     }
 
     protected virtual void Start()

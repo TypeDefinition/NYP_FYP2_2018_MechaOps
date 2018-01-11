@@ -182,7 +182,7 @@ public class MOAnimator_SHSM : MOAnimator
         _timeToTarget = timeToTarget;
     }
 
-    protected virtual void FireGun(Tile _targetTile, Void_Void _callback)
+    protected virtual void FireGun(Tile _targetTile)
     {
         // Spawn Muzzle Flash
         AnimateMuzzleFlash();
@@ -194,8 +194,9 @@ public class MOAnimator_SHSM : MOAnimator
         m_Bullet = Instantiate(m_Bullet_Prefab.gameObject).GetComponent<ArtileryBullet>();
         m_Bullet.transform.position = m_BulletSpawnPoint.transform.position;
         m_Bullet.TargetTile = _targetTile;
-        m_Bullet.CompletionCallback = _callback;
+        m_Bullet.CompletionCallback = OnBulletAnimationComplete;
         m_Bullet.Gravity = new Vector3(0.0f, m_BulletGravityAcceleration, 0.0f);
+        GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_Bullet.gameObject);
 
         Vector3 bulletVelocity;
         float bulletLifetime;
@@ -207,6 +208,7 @@ public class MOAnimator_SHSM : MOAnimator
     protected virtual void OnBulletAnimationComplete()
     {
         m_BulletAnimationComplete = true;
+        GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), null);
     }
 
     protected override IEnumerator ShootAnimationCouroutine()
@@ -233,7 +235,7 @@ public class MOAnimator_SHSM : MOAnimator
         }
 
         // Fire!
-        FireGun(m_TargetTile, OnBulletAnimationComplete);
+        FireGun(m_TargetTile);
 
         // Wait for a while.
         yield return new WaitForSeconds(1.0f);
@@ -271,19 +273,31 @@ public class MOAnimator_SHSM : MOAnimator
     public override void PauseShootAnimation()
     {
         base.PauseShootAnimation();
-        if (m_Bullet != null) { m_Bullet.SetPaused(true); }
+        if (m_Bullet != null)
+        {
+            GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), null);
+            m_Bullet.SetPaused(true);
+        }
     }
 
     public override void ResumeShootAnimation()
     {
         base.ResumeShootAnimation();
-        if (m_Bullet != null) { m_Bullet.SetPaused(false); }
+        if (m_Bullet != null)
+        {
+            GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_Bullet.gameObject);
+            m_Bullet.SetPaused(false);
+        }
     }
 
     public override void StopShootAnimation()
     {
         base.StopShootAnimation();
-        if (m_Bullet != null) { Destroy(m_Bullet.gameObject); }
+        if (m_Bullet != null)
+        {
+            GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), null);
+            Destroy(m_Bullet.gameObject);
+        }
     }
 
 #if UNITY_EDITOR

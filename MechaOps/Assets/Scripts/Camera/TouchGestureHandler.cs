@@ -333,7 +333,7 @@ public class TouchGestureHandler : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update ()
+    private void FixedUpdate ()
     {
         DetectPinch();
         DetectScroll();

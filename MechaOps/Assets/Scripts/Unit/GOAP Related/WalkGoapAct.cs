@@ -86,7 +86,7 @@ public class WalkGoapAct : IGoapAction {
         // Start following the unit.
         if (m_SeenMovingFlag)
         {
-            GameEventSystem.GetInstance().TriggerEvent<UnitStats, bool>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_WalkAct.GetUnitStats(), true);
+            GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_WalkAct.GetUnitStats().gameObject);
         }
 
         TileId[] zeTileToWalkTo = null;
@@ -128,7 +128,7 @@ public class WalkGoapAct : IGoapAction {
             print("Unit skip walking action at WalkGoapAct");
             m_TileDest = null;
             m_UpdateRoutine = null;
-            GameEventSystem.GetInstance().TriggerEvent<UnitStats, bool>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_WalkAct.GetUnitStats(), false);
+            GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), null);
             yield break;
         }
 
@@ -147,7 +147,7 @@ public class WalkGoapAct : IGoapAction {
         m_UpdateRoutine = null;
 
         // Stop following the unit.
-        GameEventSystem.GetInstance().TriggerEvent<UnitStats, bool>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_WalkAct.GetUnitStats(), false);
+        GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), null);
 
         yield break;
     }
@@ -159,7 +159,7 @@ public class WalkGoapAct : IGoapAction {
             m_SeenMovingFlag = true;
             if (m_UpdateRoutine != null)
             {
-                GameEventSystem.GetInstance().TriggerEvent<UnitStats, bool>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_WalkAct.GetUnitStats(), m_SeenMovingFlag);
+                GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_WalkAct.GetUnitStats().gameObject);
             }
         }
     }
@@ -171,7 +171,7 @@ public class WalkGoapAct : IGoapAction {
             m_SeenMovingFlag = false;
             if (m_UpdateRoutine != null)
             {
-                GameEventSystem.GetInstance().TriggerEvent<UnitStats, bool>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_WalkAct.GetUnitStats(), m_SeenMovingFlag);
+                GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), null);
             }
         }
     }
