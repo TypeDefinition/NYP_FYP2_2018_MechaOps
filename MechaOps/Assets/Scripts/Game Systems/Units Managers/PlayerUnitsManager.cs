@@ -149,6 +149,7 @@ public class PlayerUnitsManager : UnitsManager
         }
         if (m_ManagedUnits.Count > 0)
         {
+            GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FocusOnTarget), m_ManagedUnits[m_SelectedUnitIndex].gameObject);
             SpawnActionSelectionUI(m_ManagedUnits[m_SelectedUnitIndex]);
         }
     }
@@ -160,6 +161,7 @@ public class PlayerUnitsManager : UnitsManager
     {
         if (m_IsGameOver) { return; };
         if (_unit.UnitFaction != m_ManagedFaction) { return; }
+
         // A unit can finish an action when it isn't the player's turn. Such as Dying and Overwatch.
         if (m_IsPlayerTurn)
         {
@@ -187,6 +189,15 @@ public class PlayerUnitsManager : UnitsManager
         // If only the clicked unit belongs to the player and it must be inside the list of player unit that has yet to make a move!
         if (unitStats.UnitFaction == m_ManagedFaction && m_ManagedUnits.Contains(unitStats))
         {
+            for (int i = 0; i < m_ManagedUnits.Count; ++i)
+            {
+                if (unitStats == m_ManagedUnits[i])
+                {
+                    m_SelectedUnitIndex = i;
+                    break;
+                }
+            }
+
             SpawnActionSelectionUI(unitStats);
         }
     }
@@ -196,6 +207,19 @@ public class PlayerUnitsManager : UnitsManager
         m_SelectedUnitIndicator.gameObject.SetActive(_on);
         m_UnitSelection.gameObject.SetActive(_on);
         m_UnitActionSelectionUIScrollRect.gameObject.SetActive(_on);
+    }
+
+    public void SelectCurrentUnit()
+    {
+        if (m_ManagedUnits.Count == 0)
+        {
+            m_SelectedUnitIndex = 0;
+            return;
+        }
+
+        m_SelectedUnitIndex %= m_ManagedUnits.Count;
+        SpawnActionSelectionUI(m_ManagedUnits[m_SelectedUnitIndex]);
+        GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FocusOnTarget), m_ManagedUnits[m_SelectedUnitIndex].gameObject);
     }
 
     /// <summary>
@@ -211,7 +235,7 @@ public class PlayerUnitsManager : UnitsManager
 
         m_SelectedUnitIndex = (m_SelectedUnitIndex + 1) % m_ManagedUnits.Count;
         SpawnActionSelectionUI(m_ManagedUnits[m_SelectedUnitIndex]);
-        GameEventSystem.GetInstance().TriggerEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FocusOnTarget), m_ManagedUnits[m_SelectedUnitIndex]);
+        GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FocusOnTarget), m_ManagedUnits[m_SelectedUnitIndex].gameObject);
     }
 
     /// <summary>
@@ -234,7 +258,7 @@ public class PlayerUnitsManager : UnitsManager
             --m_SelectedUnitIndex;
         }
         SpawnActionSelectionUI(m_ManagedUnits[m_SelectedUnitIndex]);
-        GameEventSystem.GetInstance().TriggerEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FocusOnTarget), m_ManagedUnits[m_SelectedUnitIndex]);
+        GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FocusOnTarget), m_ManagedUnits[m_SelectedUnitIndex].gameObject);
     }
 
     public void SpawnSelectedActionUI(IUnitAction _selectedAction)

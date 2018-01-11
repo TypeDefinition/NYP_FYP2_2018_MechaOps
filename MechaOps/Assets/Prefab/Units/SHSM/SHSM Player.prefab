@@ -1072,7 +1072,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 100
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -1152,7 +1152,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 100
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -1390,7 +1390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MovementSpeed: 10
-  m_RotationSpeed: 60
+  m_RotationSpeed: 180
   m_AmbientAudioSource: {fileID: 82272952087381140}
   m_AmbientSound: {fileID: 8300000, guid: 4f21b045c63c10546a8e5182c11a12d8, type: 3}
   m_SFXAudioSources:

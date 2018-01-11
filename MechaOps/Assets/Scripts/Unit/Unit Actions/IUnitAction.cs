@@ -53,6 +53,7 @@ public abstract class IUnitAction : MonoBehaviour
     private bool m_TurnedOn = false;
     protected UnitStats m_UnitStats = null;
     protected GameEventNames m_GameEventNames = null;
+    protected GameFlowManager m_GameFlowManager = null;
     protected ActionState m_ActionState = ActionState.None;
     protected bool m_IsUnitTurn = false;
 
@@ -190,6 +191,7 @@ public abstract class IUnitAction : MonoBehaviour
         m_UnitActionHandler = GetComponent<UnitActionHandler>();
         Assert.IsNotNull(m_UnitActionHandler, MethodBase.GetCurrentMethod().Name + " - The GameObject this script is attached to MUST have a m_UnitActionHandler Component!");
         Assert.IsTrue(m_UnitActionName != null && m_UnitActionName != "", "No name is given to this action. GameObject Name: " + gameObject.name);
+        m_GameFlowManager = GameSystemsDirectory.GetSceneInstance().GetGameFlowManager();
 
         InitEvents();
     }
@@ -210,6 +212,11 @@ public abstract class IUnitAction : MonoBehaviour
         m_ActionState = ActionState.Running;
         GetUnitStats().CurrentActionPoints -= ActionCost;
         GetUnitStats().CurrentActiveAction = this;
+
+        if (m_UnitStats.GetViewScript().IsVisible() || m_UnitStats.UnitFaction == m_GameFlowManager.PlayerFaction)
+        {
+            GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FocusOnTarget), m_UnitStats.gameObject);
+        }
     }
 
     /// <summary>
@@ -228,6 +235,11 @@ public abstract class IUnitAction : MonoBehaviour
     public virtual void ResumeAction()
     {
         m_ActionState = ActionState.Running;
+
+        if (m_UnitStats.GetViewScript().IsVisible() || m_UnitStats.UnitFaction == m_GameFlowManager.PlayerFaction)
+        {
+            GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FocusOnTarget), m_UnitStats.gameObject);
+        }
     }
 
     /// <summary>
@@ -270,6 +282,7 @@ public abstract class IUnitAction : MonoBehaviour
         if (GetUnitStats().CurrentActionPoints == 0 || !m_UnitActionHandler.CheckCanUnitDoAction(m_UnitStats) || m_EndsTurn)
         {
             // tell the player unit manager that it can no longer do any action
+            GetUnitStats().CurrentActionPoints = 0;
             GameEventSystem.GetInstance().TriggerEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitFinishedTurn), m_UnitStats);
         }
     }

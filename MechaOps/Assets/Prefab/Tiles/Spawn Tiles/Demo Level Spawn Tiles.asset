@@ -21,7 +21,7 @@ MonoBehaviour:
       m_Y: -19
     - m_X: 1
       m_Y: -19
-    - m_X: 1
+    - m_X: -1
       m_Y: -19
     - m_X: 0
       m_Y: -18

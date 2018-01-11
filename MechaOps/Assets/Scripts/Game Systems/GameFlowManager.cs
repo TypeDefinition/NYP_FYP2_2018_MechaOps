@@ -44,6 +44,11 @@ public class GameFlowManager : MonoBehaviour
         get { return m_FactionsInPlay[m_CurrentTurnFaction]; }
     }
 
+    public FactionType PlayerFaction
+    {
+        get { return m_PlayerFaction; }
+    }
+
     public bool IsGameOver()
     {
         return m_IsGameOver;

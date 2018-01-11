@@ -108,7 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
   m_ZoomSpeed: 50
-  m_MovementSpeed: 10
+  m_MovementSpeed: 50
 --- !u!114 &114789354129003924
 MonoBehaviour:
   m_ObjectHideFlags: 1

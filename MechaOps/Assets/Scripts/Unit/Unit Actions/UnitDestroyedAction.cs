@@ -56,6 +56,7 @@ public class UnitDestroyedAction : IUnitAction
         base.StartAction();
         RegisterAnimationCompletionCallback();
         m_Animation.StartAnimation();
+        m_UnitStats.CurrentActionPoints = 0;
     }
 
     public override void PauseAction()
