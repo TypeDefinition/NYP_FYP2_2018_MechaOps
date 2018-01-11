@@ -142,7 +142,6 @@ MonoBehaviour:
   m_Id:
     m_X: -1
     m_Y: -4
-    m_Z: 5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -223,6 +222,7 @@ MonoBehaviour:
   m_Owner: {fileID: 2064406319}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &6683887
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -321,7 +321,6 @@ MonoBehaviour:
   m_Id:
     m_X: 8
     m_Y: -3
-    m_Z: -5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -402,6 +401,7 @@ MonoBehaviour:
   m_Owner: {fileID: 290817113}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &11153046
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -505,6 +505,7 @@ MonoBehaviour:
   m_Owner: {fileID: 527447882}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &16501419
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -603,7 +604,6 @@ MonoBehaviour:
   m_Id:
     m_X: 6
     m_Y: -5
-    m_Z: -1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -679,7 +679,6 @@ MonoBehaviour:
   m_Id:
     m_X: -8
     m_Y: 3
-    m_Z: 5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -755,7 +754,6 @@ MonoBehaviour:
   m_Id:
     m_X: -3
     m_Y: -6
-    m_Z: 9
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -831,7 +829,6 @@ MonoBehaviour:
   m_Id:
     m_X: -9
     m_Y: 2
-    m_Z: 7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -907,7 +904,6 @@ MonoBehaviour:
   m_Id:
     m_X: 5
     m_Y: 0
-    m_Z: -5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -983,7 +979,6 @@ MonoBehaviour:
   m_Id:
     m_X: -2
     m_Y: -6
-    m_Z: 8
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -1064,6 +1059,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1864041794}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &30494901
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1167,6 +1163,7 @@ MonoBehaviour:
   m_Owner: {fileID: 79699920}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &32546123
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1265,7 +1262,6 @@ MonoBehaviour:
   m_Id:
     m_X: 9
     m_Y: -1
-    m_Z: -8
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -1346,6 +1342,7 @@ MonoBehaviour:
   m_Owner: {fileID: 917206861}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &42458493
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1444,7 +1441,6 @@ MonoBehaviour:
   m_Id:
     m_X: 0
     m_Y: 5
-    m_Z: -5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -1525,6 +1521,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1720599018}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &48134592
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1628,6 +1625,7 @@ MonoBehaviour:
   m_Owner: {fileID: 537131112}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &48939005
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -1726,7 +1724,6 @@ MonoBehaviour:
   m_Id:
     m_X: -7
     m_Y: 2
-    m_Z: 5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -1802,7 +1799,6 @@ MonoBehaviour:
   m_Id:
     m_X: -6
     m_Y: 3
-    m_Z: 3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -1878,7 +1874,6 @@ MonoBehaviour:
   m_Id:
     m_X: 1
     m_Y: 2
-    m_Z: -3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -1954,7 +1949,6 @@ MonoBehaviour:
   m_Id:
     m_X: 0
     m_Y: 4
-    m_Z: -4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -2030,7 +2024,6 @@ MonoBehaviour:
   m_Id:
     m_X: 9
     m_Y: -3
-    m_Z: -6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -2111,6 +2104,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1601043988}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &75429554
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2209,7 +2203,6 @@ MonoBehaviour:
   m_Id:
     m_X: -1
     m_Y: 3
-    m_Z: -2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -2290,6 +2283,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1049784297}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &85052930
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2393,6 +2387,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1154357974}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &85955566
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2459,6 +2454,58 @@ Transform:
   m_Father: {fileID: 1154357975}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &86945543
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4278157762835826, guid: fac515ca326711f4aa07ee3b9c718088, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 15.871181
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278157762835826, guid: fac515ca326711f4aa07ee3b9c718088, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -5.4122677
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278157762835826, guid: fac515ca326711f4aa07ee3b9c718088, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -16.034061
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278157762835826, guid: fac515ca326711f4aa07ee3b9c718088, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278157762835826, guid: fac515ca326711f4aa07ee3b9c718088, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278157762835826, guid: fac515ca326711f4aa07ee3b9c718088, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278157762835826, guid: fac515ca326711f4aa07ee3b9c718088, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278157762835826, guid: fac515ca326711f4aa07ee3b9c718088, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 114441517303533512, guid: fac515ca326711f4aa07ee3b9c718088,
+        type: 2}
+      propertyPath: m_LookAt
+      value: 
+      objectReference: {fileID: 819106674}
+    - target: {fileID: 114441517303533512, guid: fac515ca326711f4aa07ee3b9c718088,
+        type: 2}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 106282301}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: fac515ca326711f4aa07ee3b9c718088, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &88194913
 GameObject:
   m_ObjectHideFlags: 0
@@ -2491,7 +2538,6 @@ MonoBehaviour:
   m_Id:
     m_X: 2
     m_Y: 4
-    m_Z: -6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -2572,6 +2618,7 @@ MonoBehaviour:
   m_Owner: {fileID: 364141931}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &89482018
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2670,7 +2717,6 @@ MonoBehaviour:
   m_Id:
     m_X: -7
     m_Y: 4
-    m_Z: 3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -2746,7 +2792,6 @@ MonoBehaviour:
   m_Id:
     m_X: -6
     m_Y: 6
-    m_Z: 0
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -2822,7 +2867,6 @@ MonoBehaviour:
   m_Id:
     m_X: 6
     m_Y: -10
-    m_Z: 4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -2898,7 +2942,6 @@ MonoBehaviour:
   m_Id:
     m_X: 6
     m_Y: 0
-    m_Z: -6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -2942,6 +2985,11 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
+--- !u!4 &106282301 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4564571092756414, guid: d8eadb572c9988f4eb0b84df420422e5,
+    type: 2}
+  m_PrefabInternal: {fileID: 1946926620}
 --- !u!1 &109428108
 GameObject:
   m_ObjectHideFlags: 0
@@ -2974,7 +3022,6 @@ MonoBehaviour:
   m_Id:
     m_X: -3
     m_Y: -3
-    m_Z: 6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -3055,6 +3102,7 @@ MonoBehaviour:
   m_Owner: {fileID: 2140325293}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &110365312
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3158,6 +3206,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1388621324}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &111456662
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3256,7 +3305,6 @@ MonoBehaviour:
   m_Id:
     m_X: -2
     m_Y: -4
-    m_Z: 6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -3337,6 +3385,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1946071558}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &111513065
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3435,7 +3484,6 @@ MonoBehaviour:
   m_Id:
     m_X: -8
     m_Y: 1
-    m_Z: 7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -3511,7 +3559,6 @@ MonoBehaviour:
   m_Id:
     m_X: -2
     m_Y: 4
-    m_Z: -2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -3592,6 +3639,7 @@ MonoBehaviour:
   m_Owner: {fileID: 839257763}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &114821323
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3690,7 +3738,6 @@ MonoBehaviour:
   m_Id:
     m_X: 2
     m_Y: -10
-    m_Z: 8
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -3766,7 +3813,6 @@ MonoBehaviour:
   m_Id:
     m_X: -2
     m_Y: 2
-    m_Z: 0
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -3847,6 +3893,7 @@ MonoBehaviour:
   m_Owner: {fileID: 702685109}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &120957726
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3950,6 +3997,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1853278003}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &127718017
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4048,7 +4096,6 @@ MonoBehaviour:
   m_Id:
     m_X: 4
     m_Y: -2
-    m_Z: -2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -4129,6 +4176,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1748842025}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &135109398
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4232,6 +4280,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1259887013}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &136923195
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4335,6 +4384,7 @@ MonoBehaviour:
   m_Owner: {fileID: 693187918}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &137422932
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4438,6 +4488,7 @@ MonoBehaviour:
   m_Owner: {fileID: 2035120218}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &137682222
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4536,7 +4587,6 @@ MonoBehaviour:
   m_Id:
     m_X: 9
     m_Y: -9
-    m_Z: 0
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -4612,7 +4662,6 @@ MonoBehaviour:
   m_Id:
     m_X: -4
     m_Y: 4
-    m_Z: 0
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -4693,6 +4742,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1617890211}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &143045539
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4796,6 +4846,7 @@ MonoBehaviour:
   m_Owner: {fileID: 2092457613}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &151253119
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4899,6 +4950,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1898204691}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &155444672
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -4997,7 +5049,6 @@ MonoBehaviour:
   m_Id:
     m_X: -2
     m_Y: -8
-    m_Z: 10
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -5073,7 +5124,6 @@ MonoBehaviour:
   m_Id:
     m_X: 7
     m_Y: -3
-    m_Z: -4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -5154,6 +5204,7 @@ MonoBehaviour:
   m_Owner: {fileID: 56110956}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &165402264
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5257,6 +5308,7 @@ MonoBehaviour:
   m_Owner: {fileID: 2071896332}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &165885130
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5355,7 +5407,6 @@ MonoBehaviour:
   m_Id:
     m_X: 1
     m_Y: 4
-    m_Z: -5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -5431,7 +5482,6 @@ MonoBehaviour:
   m_Id:
     m_X: -9
     m_Y: 9
-    m_Z: 0
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -5512,6 +5562,7 @@ MonoBehaviour:
   m_Owner: {fileID: 17515366}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &183564310
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5615,6 +5666,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1020112893}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &189502171
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5713,7 +5765,6 @@ MonoBehaviour:
   m_Id:
     m_X: 0
     m_Y: 3
-    m_Z: -3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -5757,6 +5808,11 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
+--- !u!4 &196607589 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4774917427898366, guid: fe04e115bedb3a04c9248416d0b6ab82,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383181777}
 --- !u!1 &200626374
 GameObject:
   m_ObjectHideFlags: 0
@@ -5794,6 +5850,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1862332476}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &200626376
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5897,6 +5954,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1474046213}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &201102536
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6000,6 +6058,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1537634435}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &202064710
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6098,7 +6157,6 @@ MonoBehaviour:
   m_Id:
     m_X: -2
     m_Y: -1
-    m_Z: 3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -6174,7 +6232,6 @@ MonoBehaviour:
   m_Id:
     m_X: 1
     m_Y: -5
-    m_Z: 4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -6250,7 +6307,6 @@ MonoBehaviour:
   m_Id:
     m_X: -6
     m_Y: 5
-    m_Z: 1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -6331,6 +6387,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1724867912}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &216388301
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6429,7 +6486,6 @@ MonoBehaviour:
   m_Id:
     m_X: 8
     m_Y: -4
-    m_Z: -4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -6510,6 +6566,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1510381771}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &227817893
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6608,7 +6665,6 @@ MonoBehaviour:
   m_Id:
     m_X: 3
     m_Y: 6
-    m_Z: -9
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -6652,6 +6708,11 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
+--- !u!4 &229225271 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4339311341716486, guid: fe04e115bedb3a04c9248416d0b6ab82,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383181777}
 --- !u!1 &230211193
 GameObject:
   m_ObjectHideFlags: 0
@@ -6689,6 +6750,7 @@ MonoBehaviour:
   m_Owner: {fileID: 191809380}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &230211195
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6787,7 +6849,6 @@ MonoBehaviour:
   m_Id:
     m_X: 5
     m_Y: 5
-    m_Z: -10
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -6868,6 +6929,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1295881278}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &236369815
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6971,6 +7033,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1307440350}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &237010482
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7069,7 +7132,6 @@ MonoBehaviour:
   m_Id:
     m_X: 4
     m_Y: -8
-    m_Z: 4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -7150,6 +7212,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1357018195}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &240962269
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7248,7 +7311,6 @@ MonoBehaviour:
   m_Id:
     m_X: 10
     m_Y: -9
-    m_Z: -1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -7329,6 +7391,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1034524715}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &241947659
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7432,6 +7495,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1020322440}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &242984111
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7535,6 +7599,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1328861380}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &252695741
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7601,6 +7666,11 @@ Transform:
   m_Father: {fileID: 1328861381}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &254857346 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4277514673072208, guid: fe04e115bedb3a04c9248416d0b6ab82,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383181777}
 --- !u!1 &257270836
 GameObject:
   m_ObjectHideFlags: 0
@@ -7633,7 +7703,6 @@ MonoBehaviour:
   m_Id:
     m_X: 3
     m_Y: -8
-    m_Z: 5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -7714,6 +7783,7 @@ MonoBehaviour:
   m_Owner: {fileID: 602923790}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &259335777
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7812,7 +7882,6 @@ MonoBehaviour:
   m_Id:
     m_X: 8
     m_Y: -9
-    m_Z: 1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -7893,6 +7962,7 @@ MonoBehaviour:
   m_Owner: {fileID: 2084005229}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &274916812
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -7996,6 +8066,7 @@ MonoBehaviour:
   m_Owner: {fileID: 821988057}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &279264990
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8099,6 +8170,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1251514791}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &282047150
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8197,7 +8269,6 @@ MonoBehaviour:
   m_Id:
     m_X: 6
     m_Y: -3
-    m_Z: -3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -8273,7 +8344,6 @@ MonoBehaviour:
   m_Id:
     m_X: 4
     m_Y: 1
-    m_Z: -5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -8354,6 +8424,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1596351152}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &288533214
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8457,6 +8528,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1071707072}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &289271119
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8555,7 +8627,6 @@ MonoBehaviour:
   m_Id:
     m_X: -6
     m_Y: 8
-    m_Z: -2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -8631,7 +8702,6 @@ MonoBehaviour:
   m_Id:
     m_X: -5
     m_Y: 2
-    m_Z: 3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -8682,11 +8752,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114260079088910834, guid: bda500c59e8c81749982a2026fe76412,
-        type: 2}
-      propertyPath: m_ChildCameras.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 4645617868491756, guid: bda500c59e8c81749982a2026fe76412, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -8719,35 +8784,19 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 114009867209889568, guid: bda500c59e8c81749982a2026fe76412,
-        type: 2}
-      propertyPath: m_LookAt
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114009867209889568, guid: bda500c59e8c81749982a2026fe76412,
-        type: 2}
-      propertyPath: m_Follow
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114260079088910834, guid: bda500c59e8c81749982a2026fe76412,
-        type: 2}
-      propertyPath: m_LookAt
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 114260079088910834, guid: bda500c59e8c81749982a2026fe76412,
         type: 2}
       propertyPath: m_Follow
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114539605063764014, guid: bda500c59e8c81749982a2026fe76412,
+      objectReference: {fileID: 1330672019}
+    - target: {fileID: 114260079088910834, guid: bda500c59e8c81749982a2026fe76412,
         type: 2}
       propertyPath: m_LookAt
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114539605063764014, guid: bda500c59e8c81749982a2026fe76412,
-        type: 2}
-      propertyPath: m_Follow
-      value: 
+      objectReference: {fileID: 1330672019}
+    - target: {fileID: 1151462294912912, guid: bda500c59e8c81749982a2026fe76412, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1601606190900866, guid: bda500c59e8c81749982a2026fe76412, type: 2}
       propertyPath: m_IsActive
@@ -8756,6 +8805,22 @@ Prefab:
     - target: {fileID: 1835530319296116, guid: bda500c59e8c81749982a2026fe76412, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081791075906076, guid: bda500c59e8c81749982a2026fe76412, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.9205205
+      objectReference: {fileID: 0}
+    - target: {fileID: 4081791075906076, guid: bda500c59e8c81749982a2026fe76412, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 3.156108
+      objectReference: {fileID: 0}
+    - target: {fileID: 4625391905256388, guid: bda500c59e8c81749982a2026fe76412, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.3894795
+      objectReference: {fileID: 0}
+    - target: {fileID: 4625391905256388, guid: bda500c59e8c81749982a2026fe76412, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 3.0361078
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bda500c59e8c81749982a2026fe76412, type: 2}
@@ -8797,6 +8862,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1550913215}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &298626616
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8895,7 +8961,6 @@ MonoBehaviour:
   m_Id:
     m_X: 0
     m_Y: -3
-    m_Z: 3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -8976,6 +9041,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1041672585}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &302876535
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9074,7 +9140,6 @@ MonoBehaviour:
   m_Id:
     m_X: -7
     m_Y: 7
-    m_Z: 0
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -9155,6 +9220,7 @@ MonoBehaviour:
   m_Owner: {fileID: 596871401}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &313337391
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9258,6 +9324,7 @@ MonoBehaviour:
   m_Owner: {fileID: 947244549}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &317295618
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9361,6 +9428,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1822933582}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &319277585
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9464,6 +9532,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1733497813}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &321990680
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9562,7 +9631,6 @@ MonoBehaviour:
   m_Id:
     m_X: 8
     m_Y: -5
-    m_Z: -3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -9638,7 +9706,6 @@ MonoBehaviour:
   m_Id:
     m_X: 5
     m_Y: 1
-    m_Z: -6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -9719,6 +9786,7 @@ MonoBehaviour:
   m_Owner: {fileID: 2005451907}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &327661324
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9822,6 +9890,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1036489078}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &330147653
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -9925,6 +9994,7 @@ MonoBehaviour:
   m_Owner: {fileID: 806805142}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &334325227
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10028,6 +10098,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1759750568}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &335474005
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10126,7 +10197,6 @@ MonoBehaviour:
   m_Id:
     m_X: 3
     m_Y: 5
-    m_Z: -8
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -10202,7 +10272,6 @@ MonoBehaviour:
   m_Id:
     m_X: 4
     m_Y: -4
-    m_Z: 0
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -10283,6 +10352,7 @@ MonoBehaviour:
   m_Owner: {fileID: 2041230264}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &349615992
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10381,7 +10451,6 @@ MonoBehaviour:
   m_Id:
     m_X: 4
     m_Y: 3
-    m_Z: -7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -10462,6 +10531,7 @@ MonoBehaviour:
   m_Owner: {fileID: 326107357}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &359268151
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10560,7 +10630,6 @@ MonoBehaviour:
   m_Id:
     m_X: -5
     m_Y: 4
-    m_Z: 1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -10636,7 +10705,6 @@ MonoBehaviour:
   m_Id:
     m_X: 3
     m_Y: 7
-    m_Z: -10
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -10717,6 +10785,7 @@ MonoBehaviour:
   m_Owner: {fileID: 767412897}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &378046388
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10820,6 +10889,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1918605445}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &385887022
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -10923,6 +10993,7 @@ MonoBehaviour:
   m_Owner: {fileID: 703576945}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &387832611
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11026,6 +11097,7 @@ MonoBehaviour:
   m_Owner: {fileID: 26503153}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &392011856
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11129,6 +11201,7 @@ MonoBehaviour:
   m_Owner: {fileID: 500816504}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &393120550
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11227,7 +11300,6 @@ MonoBehaviour:
   m_Id:
     m_X: -7
     m_Y: 10
-    m_Z: -3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -11303,7 +11375,6 @@ MonoBehaviour:
   m_Id:
     m_X: -10
     m_Y: 5
-    m_Z: 5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -11379,7 +11450,6 @@ MonoBehaviour:
   m_Id:
     m_X: 9
     m_Y: -4
-    m_Z: -5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -11460,6 +11530,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1849010769}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &409804217
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11558,7 +11629,6 @@ MonoBehaviour:
   m_Id:
     m_X: 0
     m_Y: -9
-    m_Z: 9
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -11639,6 +11709,7 @@ MonoBehaviour:
   m_Owner: {fileID: 162512532}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &417976060
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11737,7 +11808,6 @@ MonoBehaviour:
   m_Id:
     m_X: 10
     m_Y: -10
-    m_Z: 0
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -11818,6 +11888,7 @@ MonoBehaviour:
   m_Owner: {fileID: 928055435}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &426363605
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -11921,6 +11992,7 @@ MonoBehaviour:
   m_Owner: {fileID: 566212718}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &427478520
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12024,6 +12096,7 @@ MonoBehaviour:
   m_Owner: {fileID: 636130685}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &432675847
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12127,6 +12200,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1742632571}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &440967849
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12225,7 +12299,6 @@ MonoBehaviour:
   m_Id:
     m_X: 4
     m_Y: 4
-    m_Z: -8
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -12301,7 +12374,6 @@ MonoBehaviour:
   m_Id:
     m_X: 10
     m_Y: -3
-    m_Z: -7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -12382,6 +12454,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1788839039}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &446729583
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12485,6 +12558,7 @@ MonoBehaviour:
   m_Owner: {fileID: 2067340124}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &447211932
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12588,6 +12662,7 @@ MonoBehaviour:
   m_Owner: {fileID: 24035076}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &448186750
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12691,6 +12766,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1119894103}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &450306411
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12794,6 +12870,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1265624926}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &452074411
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12897,6 +12974,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1038621216}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &454389229
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13000,6 +13078,7 @@ MonoBehaviour:
   m_Owner: {fileID: 92603964}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &458338409
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13103,6 +13182,7 @@ MonoBehaviour:
   m_Owner: {fileID: 556815066}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &462004614
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13206,6 +13286,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1959453868}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &466074558
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13304,7 +13385,6 @@ MonoBehaviour:
   m_Id:
     m_X: 2
     m_Y: -4
-    m_Z: 2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -13385,6 +13465,7 @@ MonoBehaviour:
   m_Owner: {fileID: 955778267}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &469576680
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13488,6 +13569,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1820445696}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &475064223
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13586,7 +13668,6 @@ MonoBehaviour:
   m_Id:
     m_X: 7
     m_Y: -1
-    m_Z: -6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -13667,6 +13748,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1200266049}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &479001414
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13770,6 +13852,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1164686580}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &480052815
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13873,6 +13956,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1891248522}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &483584731
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -13971,7 +14055,6 @@ MonoBehaviour:
   m_Id:
     m_X: 8
     m_Y: 2
-    m_Z: -10
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -14052,6 +14135,7 @@ MonoBehaviour:
   m_Owner: {fileID: 485029564}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &488570431
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14155,6 +14239,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1870030394}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &498778150
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14253,7 +14338,6 @@ MonoBehaviour:
   m_Id:
     m_X: -2
     m_Y: 5
-    m_Z: -3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -14334,6 +14418,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1643376239}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &500603135
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14400,6 +14485,48 @@ Transform:
   m_Father: {fileID: 1643376240}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &500671441 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1651711890449956, guid: d1605c333d90d674bb1a1d5188289650,
+    type: 2}
+  m_PrefabInternal: {fileID: 1633544095}
+--- !u!114 &500671442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 500671441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2696c4408ef71aa488a8ab56280b356f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_WalkFlag: 0
+  m_DeadFlag: 0
+  m_Animator: {fileID: 500671446}
+  m_SetUpTileArray:
+  - m_X: 4
+    m_Y: -2
+--- !u!114 &500671444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 500671441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29becd529d3e3d9459d49af0a3a00677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AttackFlag: 0
+  m_WaspAnimator: {fileID: 500671446}
+  m_TargetGO: {fileID: 1615768024}
+--- !u!114 &500671446 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114756056872728986, guid: d1605c333d90d674bb1a1d5188289650,
+    type: 2}
+  m_PrefabInternal: {fileID: 1633544095}
+  m_Script: {fileID: 11500000, guid: c0225e59f618b884bb578bcafd1c56ed, type: 3}
 --- !u!1 &500816503
 GameObject:
   m_ObjectHideFlags: 0
@@ -14432,7 +14559,6 @@ MonoBehaviour:
   m_Id:
     m_X: -2
     m_Y: 10
-    m_Z: -8
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -14513,6 +14639,7 @@ MonoBehaviour:
   m_Owner: {fileID: 60737216}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &503691163
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14616,6 +14743,7 @@ MonoBehaviour:
   m_Owner: {fileID: 575615229}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &518632024
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14719,6 +14847,7 @@ MonoBehaviour:
   m_Owner: {fileID: 767156181}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &521643365
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -14817,7 +14946,6 @@ MonoBehaviour:
   m_Id:
     m_X: -1
     m_Y: -9
-    m_Z: 10
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -14893,7 +15021,6 @@ MonoBehaviour:
   m_Id:
     m_X: -7
     m_Y: 6
-    m_Z: 1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -14969,7 +15096,6 @@ MonoBehaviour:
   m_Id:
     m_X: -3
     m_Y: 1
-    m_Z: 2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -15045,7 +15171,6 @@ MonoBehaviour:
   m_Id:
     m_X: 8
     m_Y: -10
-    m_Z: 2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -15121,7 +15246,6 @@ MonoBehaviour:
   m_Id:
     m_X: 3
     m_Y: -6
-    m_Z: 3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -15197,7 +15321,6 @@ MonoBehaviour:
   m_Id:
     m_X: -6
     m_Y: -4
-    m_Z: 10
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -15273,7 +15396,6 @@ MonoBehaviour:
   m_Id:
     m_X: 9
     m_Y: 0
-    m_Z: -9
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -15349,7 +15471,6 @@ MonoBehaviour:
   m_Id:
     m_X: 3
     m_Y: -3
-    m_Z: 0
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -15425,7 +15546,6 @@ MonoBehaviour:
   m_Id:
     m_X: 1
     m_Y: -9
-    m_Z: 8
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -15501,7 +15621,6 @@ MonoBehaviour:
   m_Id:
     m_X: -10
     m_Y: 10
-    m_Z: 0
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -15582,6 +15701,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1928116048}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &557177726
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15685,6 +15805,7 @@ MonoBehaviour:
   m_Owner: {fileID: 393670774}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &557310015
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -15788,6 +15909,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1266642807}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &564568720
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16014,7 +16136,6 @@ MonoBehaviour:
   m_Id:
     m_X: -4
     m_Y: 9
-    m_Z: -5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -16058,6 +16179,48 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
+--- !u!1 &569130929 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1270927856641450, guid: fe04e115bedb3a04c9248416d0b6ab82,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383181777}
+--- !u!114 &569130934 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114891412526124098, guid: fe04e115bedb3a04c9248416d0b6ab82,
+    type: 2}
+  m_PrefabInternal: {fileID: 1383181777}
+  m_Script: {fileID: 11500000, guid: 58690c693a087544193b97bc95757744, type: 3}
+--- !u!114 &569130936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 569130929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2696c4408ef71aa488a8ab56280b356f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_WalkFlag: 0
+  m_DeadFlag: 0
+  m_Animator: {fileID: 0}
+  m_SetUpTileArray:
+  - m_X: 4
+    m_Y: -2
+--- !u!114 &569130937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 569130929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 377b212ff00b9d14998a83abfa770746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AttackFlag: 0
+  m_SHSMAnimator: {fileID: 569130934}
+  m_TargetGO: {fileID: 1256674562}
 --- !u!1 &575615228
 GameObject:
   m_ObjectHideFlags: 0
@@ -16090,7 +16253,6 @@ MonoBehaviour:
   m_Id:
     m_X: 5
     m_Y: -9
-    m_Z: 4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -16171,6 +16333,7 @@ MonoBehaviour:
   m_Owner: {fileID: 646607674}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &581489617
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16269,7 +16432,6 @@ MonoBehaviour:
   m_Id:
     m_X: -4
     m_Y: -5
-    m_Z: 9
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -16345,7 +16507,6 @@ MonoBehaviour:
   m_Id:
     m_X: 0
     m_Y: 10
-    m_Z: -10
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -16421,7 +16582,6 @@ MonoBehaviour:
   m_Id:
     m_X: 0
     m_Y: -6
-    m_Z: 6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -16502,6 +16662,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1909209008}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &590036015
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16600,7 +16761,6 @@ MonoBehaviour:
   m_Id:
     m_X: 9
     m_Y: 1
-    m_Z: -10
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -16676,7 +16836,6 @@ MonoBehaviour:
   m_Id:
     m_X: -5
     m_Y: 5
-    m_Z: 0
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -16757,6 +16916,7 @@ MonoBehaviour:
   m_Owner: {fileID: 336658012}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &595114069
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16860,6 +17020,7 @@ MonoBehaviour:
   m_Owner: {fileID: 718511655}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &595519917
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16958,7 +17119,6 @@ MonoBehaviour:
   m_Id:
     m_X: 3
     m_Y: -5
-    m_Z: 2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -17039,6 +17199,7 @@ MonoBehaviour:
   m_Owner: {fileID: 809952807}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &599205423
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17142,6 +17303,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1561362749}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &602667935
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17240,7 +17402,6 @@ MonoBehaviour:
   m_Id:
     m_X: 1
     m_Y: -7
-    m_Z: 6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -17321,6 +17482,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1826210084}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &604892716
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17424,6 +17586,7 @@ MonoBehaviour:
   m_Owner: {fileID: 2132392326}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &609408515
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17527,6 +17690,7 @@ MonoBehaviour:
   m_Owner: {fileID: 223059551}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &613630289
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17630,6 +17794,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1706942330}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &613900734
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -17728,7 +17893,6 @@ MonoBehaviour:
   m_Id:
     m_X: -4
     m_Y: 2
-    m_Z: 2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -17804,7 +17968,6 @@ MonoBehaviour:
   m_Id:
     m_X: -2
     m_Y: -7
-    m_Z: 9
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -17880,7 +18043,6 @@ MonoBehaviour:
   m_Id:
     m_X: -3
     m_Y: 4
-    m_Z: -1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -17961,6 +18123,7 @@ MonoBehaviour:
   m_Owner: {fileID: 116498682}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &619405534
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18064,6 +18227,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1163308791}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &623294553
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18167,6 +18331,7 @@ MonoBehaviour:
   m_Owner: {fileID: 40703697}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &623657095
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18265,7 +18430,6 @@ MonoBehaviour:
   m_Id:
     m_X: -3
     m_Y: -4
-    m_Z: 7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -18341,7 +18505,6 @@ MonoBehaviour:
   m_Id:
     m_X: 1
     m_Y: -10
-    m_Z: 9
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -18417,7 +18580,6 @@ MonoBehaviour:
   m_Id:
     m_X: -10
     m_Y: 7
-    m_Z: 3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -18498,6 +18660,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1424982259}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &636888240
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18601,6 +18764,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1857694465}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &640223295
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18704,6 +18868,7 @@ MonoBehaviour:
   m_Owner: {fileID: 679926553}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &645808167
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18802,7 +18967,6 @@ MonoBehaviour:
   m_Id:
     m_X: -1
     m_Y: 10
-    m_Z: -9
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -18883,6 +19047,7 @@ MonoBehaviour:
   m_Owner: {fileID: 354145208}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &653710808
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -18986,6 +19151,7 @@ MonoBehaviour:
   m_Owner: {fileID: 325621183}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &659214620
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19084,7 +19250,6 @@ MonoBehaviour:
   m_Id:
     m_X: -1
     m_Y: -1
-    m_Z: 2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -19165,6 +19330,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1443953562}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &661827464
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19268,6 +19434,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1384272563}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &669318862
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19334,6 +19501,62 @@ Transform:
   m_Father: {fileID: 1384272564}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &670257230
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4037655617584542, guid: 8b4cb556b66b82f43b4c8ed9f27caa3c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 11.988497
+      objectReference: {fileID: 0}
+    - target: {fileID: 4037655617584542, guid: 8b4cb556b66b82f43b4c8ed9f27caa3c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 4037655617584542, guid: 8b4cb556b66b82f43b4c8ed9f27caa3c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -4.8568707
+      objectReference: {fileID: 0}
+    - target: {fileID: 4037655617584542, guid: 8b4cb556b66b82f43b4c8ed9f27caa3c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.08570922
+      objectReference: {fileID: 0}
+    - target: {fileID: 4037655617584542, guid: 8b4cb556b66b82f43b4c8ed9f27caa3c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.000000036937514
+      objectReference: {fileID: 0}
+    - target: {fileID: 4037655617584542, guid: 8b4cb556b66b82f43b4c8ed9f27caa3c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -8.577681e-10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4037655617584542, guid: 8b4cb556b66b82f43b4c8ed9f27caa3c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.9963202
+      objectReference: {fileID: 0}
+    - target: {fileID: 4037655617584542, guid: 8b4cb556b66b82f43b4c8ed9f27caa3c, type: 2}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 114956595090856720, guid: 8b4cb556b66b82f43b4c8ed9f27caa3c,
+        type: 2}
+      propertyPath: m_LookAt
+      value: 
+      objectReference: {fileID: 2085768492}
+    - target: {fileID: 114956595090856720, guid: 8b4cb556b66b82f43b4c8ed9f27caa3c,
+        type: 2}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 2085768492}
+    - target: {fileID: 1503961472590706, guid: 8b4cb556b66b82f43b4c8ed9f27caa3c, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 8b4cb556b66b82f43b4c8ed9f27caa3c, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &679926552
 GameObject:
   m_ObjectHideFlags: 0
@@ -19366,7 +19589,6 @@ MonoBehaviour:
   m_Id:
     m_X: 5
     m_Y: -5
-    m_Z: 0
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -19447,6 +19669,7 @@ MonoBehaviour:
   m_Owner: {fileID: 2143090214}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &682733825
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19550,6 +19773,7 @@ MonoBehaviour:
   m_Owner: {fileID: 624418448}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &683224213
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19648,7 +19872,6 @@ MonoBehaviour:
   m_Id:
     m_X: -7
     m_Y: -1
-    m_Z: 8
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -19729,12 +19952,18 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4330352351978030, guid: f82c2883bc2da9c42aa49278643f4fb0, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 1135682606067022, guid: f82c2883bc2da9c42aa49278643f4fb0, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 114039713213863444, guid: f82c2883bc2da9c42aa49278643f4fb0,
+        type: 2}
+      propertyPath: m_LookAt
+      value: 
+      objectReference: {fileID: 819106674}
+    - target: {fileID: 114039713213863444, guid: f82c2883bc2da9c42aa49278643f4fb0,
+        type: 2}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 106282301}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f82c2883bc2da9c42aa49278643f4fb0, type: 2}
   m_IsPrefabParent: 0
@@ -19770,7 +19999,6 @@ MonoBehaviour:
   m_Id:
     m_X: -3
     m_Y: 2
-    m_Z: 1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -19846,7 +20074,6 @@ MonoBehaviour:
   m_Id:
     m_X: 1
     m_Y: 0
-    m_Z: -1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -19922,7 +20149,6 @@ MonoBehaviour:
   m_Id:
     m_X: 10
     m_Y: -1
-    m_Z: -9
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -19998,7 +20224,6 @@ MonoBehaviour:
   m_Id:
     m_X: 9
     m_Y: -2
-    m_Z: -7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -20074,7 +20299,6 @@ MonoBehaviour:
   m_Id:
     m_X: 6
     m_Y: -6
-    m_Z: 0
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -20150,7 +20374,6 @@ MonoBehaviour:
   m_Id:
     m_X: -8
     m_Y: -2
-    m_Z: 10
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -20226,7 +20449,6 @@ MonoBehaviour:
   m_Id:
     m_X: -6
     m_Y: 0
-    m_Z: 6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -20302,7 +20524,6 @@ MonoBehaviour:
   m_Id:
     m_X: 6
     m_Y: 3
-    m_Z: -9
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -20383,6 +20604,7 @@ MonoBehaviour:
   m_Owner: {fileID: 443030712}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &717615772
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20481,7 +20703,6 @@ MonoBehaviour:
   m_Id:
     m_X: 0
     m_Y: -5
-    m_Z: 5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -20557,7 +20778,6 @@ MonoBehaviour:
   m_Id:
     m_X: -4
     m_Y: 3
-    m_Z: 1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -20638,6 +20858,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1745810520}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &720352536
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20741,6 +20962,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1201604786}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &725623918
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20844,6 +21066,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1652053583}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &736115331
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -20947,6 +21170,7 @@ MonoBehaviour:
   m_Owner: {fileID: 2055217637}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &736348461
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21050,6 +21274,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1977335000}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &740148583
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21148,7 +21373,6 @@ MonoBehaviour:
   m_Id:
     m_X: 7
     m_Y: -8
-    m_Z: 1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -21229,6 +21453,7 @@ MonoBehaviour:
   m_Owner: {fileID: 799979979}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &749902031
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21332,6 +21557,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1445758652}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &756325268
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21435,6 +21661,7 @@ MonoBehaviour:
   m_Owner: {fileID: 2082993469}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &760166311
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21533,7 +21760,6 @@ MonoBehaviour:
   m_Id:
     m_X: -3
     m_Y: -2
-    m_Z: 5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -21614,6 +21840,7 @@ MonoBehaviour:
   m_Owner: {fileID: 212079199}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &761909193
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21717,6 +21944,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1323408554}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &762325692
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21820,6 +22048,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1254617377}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &762741231
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21923,6 +22152,7 @@ MonoBehaviour:
   m_Owner: {fileID: 868346749}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &763472849
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22026,6 +22256,7 @@ MonoBehaviour:
   m_Owner: {fileID: 105653057}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &763995417
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22124,7 +22355,6 @@ MonoBehaviour:
   m_Id:
     m_X: 1
     m_Y: 6
-    m_Z: -7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -22200,7 +22430,6 @@ MonoBehaviour:
   m_Id:
     m_X: -3
     m_Y: 9
-    m_Z: -6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -22281,6 +22510,7 @@ MonoBehaviour:
   m_Owner: {fileID: 29326519}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &775896899
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22379,7 +22609,6 @@ MonoBehaviour:
   m_Id:
     m_X: 8
     m_Y: -2
-    m_Z: -6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -22460,6 +22689,7 @@ MonoBehaviour:
   m_Owner: {fileID: 400394743}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &779828276
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22563,6 +22793,7 @@ MonoBehaviour:
   m_Owner: {fileID: 51266467}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &781659287
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22666,6 +22897,7 @@ MonoBehaviour:
   m_Owner: {fileID: 684625834}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &782896801
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22769,6 +23001,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1294874183}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &787606606
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -22867,7 +23100,6 @@ MonoBehaviour:
   m_Id:
     m_X: -9
     m_Y: 1
-    m_Z: 8
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -22943,7 +23175,6 @@ MonoBehaviour:
   m_Id:
     m_X: -10
     m_Y: 6
-    m_Z: 4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -23019,7 +23250,6 @@ MonoBehaviour:
   m_Id:
     m_X: -10
     m_Y: 3
-    m_Z: 7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -23095,7 +23325,6 @@ MonoBehaviour:
   m_Id:
     m_X: 4
     m_Y: -6
-    m_Z: 2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -23171,7 +23400,6 @@ MonoBehaviour:
   m_Id:
     m_X: -7
     m_Y: 1
-    m_Z: 6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -23252,6 +23480,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1008223144}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &807582003
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23350,7 +23579,6 @@ MonoBehaviour:
   m_Id:
     m_X: 3
     m_Y: 3
-    m_Z: -6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -23431,6 +23659,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1151894240}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &814213500
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23497,6 +23726,11 @@ Transform:
   m_Father: {fileID: 1151894241}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &819106674 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4027735515858806, guid: d8eadb572c9988f4eb0b84df420422e5,
+    type: 2}
+  m_PrefabInternal: {fileID: 1946926620}
 --- !u!1 &821988056
 GameObject:
   m_ObjectHideFlags: 0
@@ -23529,7 +23763,6 @@ MonoBehaviour:
   m_Id:
     m_X: -3
     m_Y: 0
-    m_Z: 3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -23610,6 +23843,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1926541782}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &828077926
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23713,6 +23947,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1654049298}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &831604465
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23816,6 +24051,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1290196731}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &835603073
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -23914,7 +24150,6 @@ MonoBehaviour:
   m_Id:
     m_X: 0
     m_Y: -2
-    m_Z: 2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -23995,6 +24230,7 @@ MonoBehaviour:
   m_Owner: {fileID: 718357915}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &839408131
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -24093,7 +24329,6 @@ MonoBehaviour:
   m_Id:
     m_X: -9
     m_Y: 10
-    m_Z: -1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -24174,6 +24409,7 @@ MonoBehaviour:
   m_Owner: {fileID: 588300783}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &850850633
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -24272,7 +24508,6 @@ MonoBehaviour:
   m_Id:
     m_X: -2
     m_Y: -2
-    m_Z: 4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -24353,6 +24588,7 @@ MonoBehaviour:
   m_Owner: {fileID: 6721052}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &855848218
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -24456,6 +24692,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1241381911}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &861322626
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -24559,21 +24796,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4236021860724184, guid: bd067b265add8e740b434d9eb314a4a1, type: 2}
       propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114472916264793238, guid: bd067b265add8e740b434d9eb314a4a1,
-        type: 2}
-      propertyPath: m_LookAt
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114472916264793238, guid: bd067b265add8e740b434d9eb314a4a1,
-        type: 2}
-      propertyPath: m_Follow
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1242979846096684, guid: bd067b265add8e740b434d9eb314a4a1, type: 2}
-      propertyPath: m_IsActive
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd067b265add8e740b434d9eb314a4a1, type: 2}
@@ -24610,7 +24833,6 @@ MonoBehaviour:
   m_Id:
     m_X: 5
     m_Y: -7
-    m_Z: 2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -24686,7 +24908,6 @@ MonoBehaviour:
   m_Id:
     m_X: -2
     m_Y: 3
-    m_Z: -1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -24767,6 +24988,7 @@ MonoBehaviour:
   m_Owner: {fileID: 302077971}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &884613089
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -24865,7 +25087,6 @@ MonoBehaviour:
   m_Id:
     m_X: 2
     m_Y: -9
-    m_Z: 7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -24946,6 +25167,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1772135583}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &894420571
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -25044,7 +25266,6 @@ MonoBehaviour:
   m_Id:
     m_X: -1
     m_Y: 4
-    m_Z: -3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -25125,6 +25346,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1052943772}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &898626118
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -25228,6 +25450,7 @@ MonoBehaviour:
   m_Owner: {fileID: 2111284061}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &904324042
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -25331,6 +25554,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1526457545}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &906964204
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -25439,7 +25663,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4355928435855886, guid: 00b9322e7d21b114c8c2b05e00f5e754, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 114006940085896276, guid: 00b9322e7d21b114c8c2b05e00f5e754,
         type: 2}
@@ -31807,6 +32031,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1026684321}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &910978554
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -31910,6 +32135,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1168217337}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &911759028
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32008,7 +32234,6 @@ MonoBehaviour:
   m_Id:
     m_X: -5
     m_Y: -2
-    m_Z: 7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -32084,7 +32309,6 @@ MonoBehaviour:
   m_Id:
     m_X: 5
     m_Y: -4
-    m_Z: -1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -32165,6 +32389,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1799174254}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &921026845
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32263,7 +32488,6 @@ MonoBehaviour:
   m_Id:
     m_X: 7
     m_Y: 0
-    m_Z: -7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -32344,6 +32568,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1675401004}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &943747225
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32442,7 +32667,6 @@ MonoBehaviour:
   m_Id:
     m_X: -5
     m_Y: -3
-    m_Z: 8
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -32518,7 +32742,6 @@ MonoBehaviour:
   m_Id:
     m_X: -9
     m_Y: 8
-    m_Z: 1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -32599,6 +32822,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1512336958}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &949519588
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32697,7 +32921,6 @@ MonoBehaviour:
   m_Id:
     m_X: -7
     m_Y: 3
-    m_Z: 4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -32773,7 +32996,6 @@ MonoBehaviour:
   m_Id:
     m_X: -10
     m_Y: 8
-    m_Z: 2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -32854,6 +33076,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1810590288}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &959868439
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32957,6 +33180,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1839514573}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &972304052
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -33060,6 +33284,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1004470454}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &974283453
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -33163,6 +33388,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1501385844}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &979425366
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -33266,6 +33492,7 @@ MonoBehaviour:
   m_Owner: {fileID: 17705644}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &983667742
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -33369,6 +33596,7 @@ MonoBehaviour:
   m_Owner: {fileID: 2045994328}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &987180921
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -33472,6 +33700,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1143403722}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &991206862
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -33575,6 +33804,7 @@ MonoBehaviour:
   m_Owner: {fileID: 103169818}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &996940650
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -33673,7 +33903,6 @@ MonoBehaviour:
   m_Id:
     m_X: -4
     m_Y: 6
-    m_Z: -2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -33749,7 +33978,6 @@ MonoBehaviour:
   m_Id:
     m_X: 0
     m_Y: 7
-    m_Z: -7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -33825,7 +34053,6 @@ MonoBehaviour:
   m_Id:
     m_X: -2
     m_Y: -3
-    m_Z: 5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -33906,6 +34133,7 @@ MonoBehaviour:
   m_Owner: {fileID: 2083799037}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1013181698
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -34004,7 +34232,6 @@ MonoBehaviour:
   m_Id:
     m_X: -1
     m_Y: 7
-    m_Z: -6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -34080,7 +34307,6 @@ MonoBehaviour:
   m_Id:
     m_X: -1
     m_Y: -5
-    m_Z: 6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -34156,7 +34382,6 @@ MonoBehaviour:
   m_Id:
     m_X: 4
     m_Y: -3
-    m_Z: -1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -34232,7 +34457,6 @@ MonoBehaviour:
   m_Id:
     m_X: 3
     m_Y: -4
-    m_Z: 1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -34308,7 +34532,6 @@ MonoBehaviour:
   m_Id:
     m_X: 1
     m_Y: 8
-    m_Z: -9
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -34389,6 +34612,7 @@ MonoBehaviour:
   m_Owner: {fileID: 778101290}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1034104392
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -34487,7 +34711,6 @@ MonoBehaviour:
   m_Id:
     m_X: -9
     m_Y: 7
-    m_Z: 2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -34563,7 +34786,6 @@ MonoBehaviour:
   m_Id:
     m_X: 0
     m_Y: 9
-    m_Z: -9
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -34644,6 +34866,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1314141906}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1037585805
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -34742,7 +34965,6 @@ MonoBehaviour:
   m_Id:
     m_X: -5
     m_Y: 0
-    m_Z: 5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -34818,7 +35040,6 @@ MonoBehaviour:
   m_Id:
     m_X: 5
     m_Y: -8
-    m_Z: 3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -34899,6 +35120,7 @@ MonoBehaviour:
   m_Owner: {fileID: 709086265}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1045844756
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -35002,6 +35224,7 @@ MonoBehaviour:
   m_Owner: {fileID: 177683651}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1048646952
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -35100,7 +35323,6 @@ MonoBehaviour:
   m_Id:
     m_X: 7
     m_Y: 3
-    m_Z: -10
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -35176,7 +35398,6 @@ MonoBehaviour:
   m_Id:
     m_X: 6
     m_Y: 2
-    m_Z: -8
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -35257,6 +35478,7 @@ MonoBehaviour:
   m_Owner: {fileID: 113875377}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1055447995
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -35360,6 +35582,7 @@ MonoBehaviour:
   m_Owner: {fileID: 787826579}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1062245202
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -35463,6 +35686,7 @@ MonoBehaviour:
   m_Owner: {fileID: 498880017}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1070485525
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -35561,7 +35785,6 @@ MonoBehaviour:
   m_Id:
     m_X: -3
     m_Y: -7
-    m_Z: 10
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -35642,6 +35865,7 @@ MonoBehaviour:
   m_Owner: {fileID: 591430869}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1073168871
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -35745,6 +35969,7 @@ MonoBehaviour:
   m_Owner: {fileID: 790630175}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1079936345
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -35848,6 +36073,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1649762444}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1082329261
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -35951,6 +36177,7 @@ MonoBehaviour:
   m_Owner: {fileID: 348322747}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1083316246
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -36054,6 +36281,7 @@ MonoBehaviour:
   m_Owner: {fileID: 466572828}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1083610738
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -36152,7 +36380,6 @@ MonoBehaviour:
   m_Id:
     m_X: -8
     m_Y: 2
-    m_Z: 6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -36228,7 +36455,6 @@ MonoBehaviour:
   m_Id:
     m_X: 3
     m_Y: 1
-    m_Z: -4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -36309,6 +36535,7 @@ MonoBehaviour:
   m_Owner: {fileID: 47218694}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1103755811
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -36412,6 +36639,7 @@ MonoBehaviour:
   m_Owner: {fileID: 539965845}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1104045591
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -36510,7 +36738,6 @@ MonoBehaviour:
   m_Id:
     m_X: 1
     m_Y: 3
-    m_Z: -4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -36591,6 +36818,7 @@ MonoBehaviour:
   m_Owner: {fileID: 410229426}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1109467081
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -36694,6 +36922,7 @@ MonoBehaviour:
   m_Owner: {fileID: 236222704}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1110382386
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -36792,7 +37021,6 @@ MonoBehaviour:
   m_Id:
     m_X: -5
     m_Y: 9
-    m_Z: -4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -36873,6 +37101,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1127644111}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1119590857
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -36971,7 +37200,6 @@ MonoBehaviour:
   m_Id:
     m_X: 2
     m_Y: -7
-    m_Z: 5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -37052,6 +37280,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1256674563}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1121271952
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -37150,7 +37379,6 @@ MonoBehaviour:
   m_Id:
     m_X: -2
     m_Y: 9
-    m_Z: -7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -37226,7 +37454,6 @@ MonoBehaviour:
   m_Id:
     m_X: -1
     m_Y: 9
-    m_Z: -8
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -37307,6 +37534,7 @@ MonoBehaviour:
   m_Owner: {fileID: 713751593}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1130167884
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -37410,6 +37638,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1573483232}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1138140800
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -37513,6 +37742,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1663420748}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1139287440
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -37611,7 +37841,6 @@ MonoBehaviour:
   m_Id:
     m_X: 2
     m_Y: 5
-    m_Z: -7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -37687,7 +37916,6 @@ MonoBehaviour:
   m_Id:
     m_X: -4
     m_Y: 8
-    m_Z: -4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -37768,6 +37996,7 @@ MonoBehaviour:
   m_Owner: {fileID: 291956666}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1149278600
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -37871,6 +38100,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1548339522}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1151148303
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -37969,7 +38199,6 @@ MonoBehaviour:
   m_Id:
     m_X: 7
     m_Y: -5
-    m_Z: -2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -38045,7 +38274,6 @@ MonoBehaviour:
   m_Id:
     m_X: 1
     m_Y: -3
-    m_Z: 2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -38121,7 +38349,6 @@ MonoBehaviour:
   m_Id:
     m_X: 5
     m_Y: -2
-    m_Z: -3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -38197,7 +38424,6 @@ MonoBehaviour:
   m_Id:
     m_X: 0
     m_Y: 8
-    m_Z: -8
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -38278,6 +38504,7 @@ MonoBehaviour:
   m_Owner: {fileID: 109428109}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1158021532
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -38381,6 +38608,7 @@ MonoBehaviour:
   m_Owner: {fileID: 420078092}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1158808384
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -38479,7 +38707,6 @@ MonoBehaviour:
   m_Id:
     m_X: 2
     m_Y: -2
-    m_Z: 0
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -38555,7 +38782,6 @@ MonoBehaviour:
   m_Id:
     m_X: 1
     m_Y: -4
-    m_Z: 3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -38631,7 +38857,6 @@ MonoBehaviour:
   m_Id:
     m_X: 3
     m_Y: 4
-    m_Z: -7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -38707,7 +38932,6 @@ MonoBehaviour:
   m_Id:
     m_X: -4
     m_Y: -4
-    m_Z: 8
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -38783,7 +39007,6 @@ MonoBehaviour:
   m_Id:
     m_X: -7
     m_Y: 5
-    m_Z: 2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -38864,6 +39087,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1686898356}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1172019682
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -38962,7 +39186,6 @@ MonoBehaviour:
   m_Id:
     m_X: 8
     m_Y: -1
-    m_Z: -7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -39043,6 +39266,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1092989842}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1179978413
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -39141,7 +39365,6 @@ MonoBehaviour:
   m_Id:
     m_X: -4
     m_Y: -2
-    m_Z: 6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -39222,6 +39445,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1182355412}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1187674001
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -39320,7 +39544,6 @@ MonoBehaviour:
   m_Id:
     m_X: -4
     m_Y: 1
-    m_Z: 3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -39364,6 +39587,34 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
+--- !u!1 &1194848498 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1287332776321016, guid: b483a91ca89449a4eae0abc8e18c5ae6,
+    type: 2}
+  m_PrefabInternal: {fileID: 1701939658}
+--- !u!114 &1194848499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1194848498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CollideAgainst:
+    serializedVersion: 2
+    m_Bits: 1536
+  m_IgnoreTag: 
+  m_MinimumDistanceFromTarget: 1.57
+  m_AvoidObstacles: 1
+  m_DistanceLimit: 0
+  m_CameraRadius: 0.46
+  m_Strategy: 0
+  m_MaximumEffort: 4
+  m_Damping: 0
+  m_OptimalTargetDistance: 0
 --- !u!1 &1195346938
 GameObject:
   m_ObjectHideFlags: 0
@@ -39401,6 +39652,7 @@ MonoBehaviour:
   m_Owner: {fileID: 2019707447}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1195346940
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -39504,6 +39756,7 @@ MonoBehaviour:
   m_Owner: {fileID: 2091937272}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1196387141
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -39607,6 +39860,7 @@ MonoBehaviour:
   m_Owner: {fileID: 699995665}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1198031767
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -39705,7 +39959,6 @@ MonoBehaviour:
   m_Id:
     m_X: 8
     m_Y: 0
-    m_Z: -8
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -39781,7 +40034,6 @@ MonoBehaviour:
   m_Id:
     m_X: -10
     m_Y: 2
-    m_Z: 8
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -39862,6 +40114,7 @@ MonoBehaviour:
   m_Owner: {fileID: 477213889}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1207267428
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -39965,6 +40218,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1104455860}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1208491377
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -40031,75 +40285,6 @@ Transform:
   m_Father: {fileID: 1104455861}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1209179015
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 114842476741683136, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00,
-        type: 2}
-      propertyPath: m_ChildCameras.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4360260156924926, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4360260156924926, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4360260156924926, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4360260156924926, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4360260156924926, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4360260156924926, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4360260156924926, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4360260156924926, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00, type: 2}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 114842476741683136, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00,
-        type: 2}
-      propertyPath: m_LookAt
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114842476741683136, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00,
-        type: 2}
-      propertyPath: m_Follow
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1368231881000642, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1871652180642650, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1344060725871210, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1209267170
 GameObject:
   m_ObjectHideFlags: 0
@@ -40132,7 +40317,6 @@ MonoBehaviour:
   m_Id:
     m_X: 5
     m_Y: 2
-    m_Z: -7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -40208,7 +40392,6 @@ MonoBehaviour:
   m_Id:
     m_X: 5
     m_Y: -1
-    m_Z: -4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -40289,6 +40472,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1003098557}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1211708624
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -40392,6 +40576,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1324407008}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1217934677
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -40495,6 +40680,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1524850951}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1228037513
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -40593,7 +40779,6 @@ MonoBehaviour:
   m_Id:
     m_X: 1
     m_Y: 9
-    m_Z: -10
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -40669,7 +40854,6 @@ MonoBehaviour:
   m_Id:
     m_X: -10
     m_Y: 0
-    m_Z: 10
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -40750,6 +40934,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1632509776}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1234103966
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -40853,6 +41038,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1167633867}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1234400510
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -40951,7 +41137,6 @@ MonoBehaviour:
   m_Id:
     m_X: -9
     m_Y: -1
-    m_Z: 10
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -41027,7 +41212,6 @@ MonoBehaviour:
   m_Id:
     m_X: 0
     m_Y: -1
-    m_Z: 1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -41108,6 +41292,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1023127408}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1242891612
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -41206,7 +41391,6 @@ MonoBehaviour:
   m_Id:
     m_X: 1
     m_Y: 7
-    m_Z: -8
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -41282,7 +41466,6 @@ MonoBehaviour:
   m_Id:
     m_X: 4
     m_Y: 2
-    m_Z: -6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -41358,7 +41541,6 @@ MonoBehaviour:
   m_Id:
     m_X: 10
     m_Y: -6
-    m_Z: -4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -41434,7 +41616,6 @@ MonoBehaviour:
   m_Id:
     m_X: 6
     m_Y: -2
-    m_Z: -4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -41510,7 +41691,6 @@ MonoBehaviour:
   m_Id:
     m_X: 2
     m_Y: 2
-    m_Z: -4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -41586,7 +41766,6 @@ MonoBehaviour:
   m_Id:
     m_X: 1
     m_Y: 5
-    m_Z: -6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -41667,6 +41846,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1953748599}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1259985617
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -41770,6 +41950,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1375826899}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1261304000
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -41868,7 +42049,6 @@ MonoBehaviour:
   m_Id:
     m_X: -1
     m_Y: 5
-    m_Z: -4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -41949,6 +42129,7 @@ MonoBehaviour:
   m_Owner: {fileID: 880346118}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1263144884
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -42047,7 +42228,6 @@ MonoBehaviour:
   m_Id:
     m_X: -7
     m_Y: -2
-    m_Z: 9
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -42123,7 +42303,6 @@ MonoBehaviour:
   m_Id:
     m_X: 10
     m_Y: -4
-    m_Z: -6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -42204,6 +42383,7 @@ MonoBehaviour:
   m_Owner: {fileID: 913083505}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1269391354
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -42307,6 +42487,7 @@ MonoBehaviour:
   m_Owner: {fileID: 117059600}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1278489634
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -42410,6 +42591,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1157321433}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1288714962
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -42508,7 +42690,6 @@ MonoBehaviour:
   m_Id:
     m_X: 0
     m_Y: 1
-    m_Z: -1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -42589,6 +42770,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1014064861}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1290374278
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -42692,6 +42874,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1437745806}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1294436564
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -42790,7 +42973,6 @@ MonoBehaviour:
   m_Id:
     m_X: -10
     m_Y: 9
-    m_Z: 1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -42866,7 +43048,6 @@ MonoBehaviour:
   m_Id:
     m_X: 6
     m_Y: -1
-    m_Z: -5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -42942,7 +43123,6 @@ MonoBehaviour:
   m_Id:
     m_X: -3
     m_Y: 7
-    m_Z: -4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -43023,6 +43203,7 @@ MonoBehaviour:
   m_Owner: {fileID: 88194914}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1296019515
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -43126,6 +43307,7 @@ MonoBehaviour:
   m_Owner: {fileID: 534259470}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1296984648
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -43229,6 +43411,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1239767864}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1302875337
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -43327,7 +43510,6 @@ MonoBehaviour:
   m_Id:
     m_X: 2
     m_Y: -1
-    m_Z: -1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -43403,7 +43585,6 @@ MonoBehaviour:
   m_Id:
     m_X: 8
     m_Y: -8
-    m_Z: 0
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -43479,7 +43660,6 @@ MonoBehaviour:
   m_Id:
     m_X: -6
     m_Y: -3
-    m_Z: 9
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -43555,7 +43735,6 @@ MonoBehaviour:
   m_Id:
     m_X: -8
     m_Y: 8
-    m_Z: 0
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -43631,7 +43810,6 @@ MonoBehaviour:
   m_Id:
     m_X: -6
     m_Y: -2
-    m_Z: 8
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -43707,7 +43885,6 @@ MonoBehaviour:
   m_Id:
     m_X: 2
     m_Y: 6
-    m_Z: -8
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -43783,7 +43960,6 @@ MonoBehaviour:
   m_Id:
     m_X: -8
     m_Y: -1
-    m_Z: 9
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -43864,6 +44040,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1812614138}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1329987848
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -43930,6 +44107,11 @@ Transform:
   m_Father: {fileID: 1812614139}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1330672019 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4678192204071410, guid: d8eadb572c9988f4eb0b84df420422e5,
+    type: 2}
+  m_PrefabInternal: {fileID: 1946926620}
 --- !u!1 &1341210872
 GameObject:
   m_ObjectHideFlags: 0
@@ -43967,6 +44149,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1209267171}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1341210874
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -44070,6 +44253,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1611541534}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1342672194
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -44173,6 +44357,7 @@ MonoBehaviour:
   m_Owner: {fileID: 2072686379}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1355288932
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -44271,7 +44456,6 @@ MonoBehaviour:
   m_Id:
     m_X: -3
     m_Y: -1
-    m_Z: 4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -44352,6 +44536,7 @@ MonoBehaviour:
   m_Owner: {fileID: 61756640}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1363821154
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -44450,7 +44635,6 @@ MonoBehaviour:
   m_Id:
     m_X: -1
     m_Y: -8
-    m_Z: 9
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -44526,7 +44710,6 @@ MonoBehaviour:
   m_Id:
     m_X: 9
     m_Y: -8
-    m_Z: -1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -44607,7 +44790,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4293442427349898, guid: fe04e115bedb3a04c9248416d0b6ab82, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114307235735154440, guid: fe04e115bedb3a04c9248416d0b6ab82,
         type: 2}
@@ -44649,7 +44832,19 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114307235735154440, guid: fe04e115bedb3a04c9248416d0b6ab82, type: 2}
+    - {fileID: 114036354878379056, guid: fe04e115bedb3a04c9248416d0b6ab82, type: 2}
+    - {fileID: 114769962397924254, guid: fe04e115bedb3a04c9248416d0b6ab82, type: 2}
+    - {fileID: 114529699096323604, guid: fe04e115bedb3a04c9248416d0b6ab82, type: 2}
+    - {fileID: 114428603780392550, guid: fe04e115bedb3a04c9248416d0b6ab82, type: 2}
+    - {fileID: 114048793003934562, guid: fe04e115bedb3a04c9248416d0b6ab82, type: 2}
+    - {fileID: 114382056858472062, guid: fe04e115bedb3a04c9248416d0b6ab82, type: 2}
+    - {fileID: 114710153389955922, guid: fe04e115bedb3a04c9248416d0b6ab82, type: 2}
+    - {fileID: 114790626031682278, guid: fe04e115bedb3a04c9248416d0b6ab82, type: 2}
+    - {fileID: 114714950352527536, guid: fe04e115bedb3a04c9248416d0b6ab82, type: 2}
+    - {fileID: 114267693694817760, guid: fe04e115bedb3a04c9248416d0b6ab82, type: 2}
+    - {fileID: 114686418102639456, guid: fe04e115bedb3a04c9248416d0b6ab82, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: fe04e115bedb3a04c9248416d0b6ab82, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1384272562
@@ -44684,7 +44879,6 @@ MonoBehaviour:
   m_Id:
     m_X: -1
     m_Y: 8
-    m_Z: -7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -44760,7 +44954,6 @@ MonoBehaviour:
   m_Id:
     m_X: 6
     m_Y: -8
-    m_Z: 2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -44836,7 +45029,6 @@ MonoBehaviour:
   m_Id:
     m_X: 6
     m_Y: -9
-    m_Z: 3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -44917,6 +45109,7 @@ MonoBehaviour:
   m_Owner: {fileID: 362284411}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1392083844
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -45015,7 +45208,6 @@ MonoBehaviour:
   m_Id:
     m_X: -3
     m_Y: 10
-    m_Z: -7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -45096,6 +45288,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1944403384}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1396203489
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -45199,6 +45392,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1158926900}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1396244576
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -45297,7 +45491,6 @@ MonoBehaviour:
   m_Id:
     m_X: 0
     m_Y: -8
-    m_Z: 8
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -45378,6 +45571,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1314465}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1409716341
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -45481,6 +45675,7 @@ MonoBehaviour:
   m_Owner: {fileID: 614497999}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1412007826
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -45584,6 +45779,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1993968480}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1422970324
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -45687,6 +45883,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1445520381}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1423541469
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -45785,7 +45982,6 @@ MonoBehaviour:
   m_Id:
     m_X: 2
     m_Y: -8
-    m_Z: 6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -45866,6 +46062,7 @@ MonoBehaviour:
   m_Owner: {fileID: 240240731}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1424706534
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -46016,11 +46213,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1424976857}
   m_LocalRotation: {x: 0.02905846, y: 0.96722907, z: -0.13004248, w: 0.21613082}
-  m_LocalPosition: {x: -1.43, y: 1.3239104, z: 2.9291263}
+  m_LocalPosition: {x: -1.3894795, y: 1.3239104, z: 3.0361078}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1424976863
 MonoBehaviour:
@@ -46084,7 +46281,6 @@ MonoBehaviour:
   m_Id:
     m_X: -9
     m_Y: 5
-    m_Z: 4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -46165,6 +46361,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1650294582}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1426061481
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -46268,6 +46465,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1686172248}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1428000932
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -46366,7 +46564,6 @@ MonoBehaviour:
   m_Id:
     m_X: -5
     m_Y: 6
-    m_Z: -1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -46442,7 +46639,6 @@ MonoBehaviour:
   m_Id:
     m_X: -7
     m_Y: 0
-    m_Z: 7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -46518,7 +46714,6 @@ MonoBehaviour:
   m_Id:
     m_X: 0
     m_Y: -4
-    m_Z: 4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -46594,7 +46789,6 @@ MonoBehaviour:
   m_Id:
     m_X: 4
     m_Y: -1
-    m_Z: -3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -46675,6 +46869,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1394854500}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1450001423
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -46773,7 +46968,6 @@ MonoBehaviour:
   m_Id:
     m_X: 7
     m_Y: 2
-    m_Z: -9
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -46854,6 +47048,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1997046118}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1454730228
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -46957,6 +47152,7 @@ MonoBehaviour:
   m_Owner: {fileID: 26743060}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1455645900
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -47060,6 +47256,7 @@ MonoBehaviour:
   m_Owner: {fileID: 257270837}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1458558182
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -47163,6 +47360,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1119559580}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1459319926
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -47266,6 +47464,7 @@ MonoBehaviour:
   m_Owner: {fileID: 790374614}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1463429182
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -47364,7 +47563,6 @@ MonoBehaviour:
   m_Id:
     m_X: -8
     m_Y: 10
-    m_Z: -2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -47445,6 +47643,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1623525272}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1470899342
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -47543,7 +47742,6 @@ MonoBehaviour:
   m_Id:
     m_X: 5
     m_Y: -10
-    m_Z: 5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -47619,7 +47817,6 @@ MonoBehaviour:
   m_Id:
     m_X: -4
     m_Y: 7
-    m_Z: -3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -47700,6 +47897,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1793283631}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1482971983
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -47803,6 +48001,7 @@ MonoBehaviour:
   m_Owner: {fileID: 746234017}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1496359809
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -47906,6 +48105,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1295459394}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1498346678
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -48004,7 +48204,6 @@ MonoBehaviour:
   m_Id:
     m_X: 4
     m_Y: 5
-    m_Z: -9
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -48085,6 +48284,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1947095591}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1508940537
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -48188,6 +48388,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1791426675}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1509400962
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -48286,7 +48487,6 @@ MonoBehaviour:
   m_Id:
     m_X: 8
     m_Y: -7
-    m_Z: -1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -48362,7 +48562,6 @@ MonoBehaviour:
   m_Id:
     m_X: 1
     m_Y: -8
-    m_Z: 7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -48443,6 +48642,7 @@ MonoBehaviour:
   m_Owner: {fileID: 854401222}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1512536421
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -48541,7 +48741,6 @@ MonoBehaviour:
   m_Id:
     m_X: -5
     m_Y: -5
-    m_Z: 10
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -48622,6 +48821,7 @@ MonoBehaviour:
   m_Owner: {fileID: 287132609}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1523629384
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -48720,7 +48920,6 @@ MonoBehaviour:
   m_Id:
     m_X: 7
     m_Y: -9
-    m_Z: 2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -48796,7 +48995,6 @@ MonoBehaviour:
   m_Id:
     m_X: -5
     m_Y: 3
-    m_Z: 2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -48877,6 +49075,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1122066352}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1529983178
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -48980,6 +49179,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1680074940}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1531506676
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -49083,6 +49283,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1211583253}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1532155460
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -49186,6 +49387,7 @@ MonoBehaviour:
   m_Owner: {fileID: 843259584}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1536716745
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -49284,7 +49486,6 @@ MonoBehaviour:
   m_Id:
     m_X: -5
     m_Y: 1
-    m_Z: 4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -49365,6 +49566,7 @@ MonoBehaviour:
   m_Owner: {fileID: 945922175}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1536949530
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -49463,7 +49665,6 @@ MonoBehaviour:
   m_Id:
     m_X: -2
     m_Y: 0
-    m_Z: 2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -49539,7 +49740,6 @@ MonoBehaviour:
   m_Id:
     m_X: 2
     m_Y: -3
-    m_Z: 1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -49615,7 +49815,6 @@ MonoBehaviour:
   m_Id:
     m_X: -10
     m_Y: 1
-    m_Z: 9
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -49691,7 +49890,6 @@ MonoBehaviour:
   m_Id:
     m_X: 3
     m_Y: 2
-    m_Z: -5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -49772,6 +49970,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1154262033}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1550226983
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -49870,7 +50069,6 @@ MonoBehaviour:
   m_Id:
     m_X: -3
     m_Y: 8
-    m_Z: -5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -49951,6 +50149,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1473676575}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1552367089
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -50054,6 +50253,7 @@ MonoBehaviour:
   m_Owner: {fileID: 693413166}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1552563007
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -50157,6 +50357,7 @@ MonoBehaviour:
   m_Owner: {fileID: 2087276838}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1554527520
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -50260,6 +50461,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1914266257}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1554533947
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -50363,6 +50565,7 @@ MonoBehaviour:
   m_Owner: {fileID: 629237940}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1554882719
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -50461,7 +50664,6 @@ MonoBehaviour:
   m_Id:
     m_X: -4
     m_Y: -3
-    m_Z: 7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -50537,7 +50739,6 @@ MonoBehaviour:
   m_Id:
     m_X: -2
     m_Y: -5
-    m_Z: 7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -50618,6 +50819,7 @@ MonoBehaviour:
   m_Owner: {fileID: 111489354}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1561708840
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -50721,6 +50923,7 @@ MonoBehaviour:
   m_Owner: {fileID: 228234916}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1564129277
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -50824,6 +51027,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1887791952}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1573237298
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -50922,7 +51126,6 @@ MonoBehaviour:
   m_Id:
     m_X: -9
     m_Y: 4
-    m_Z: 5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -50998,7 +51201,6 @@ MonoBehaviour:
   m_Id:
     m_X: -7
     m_Y: 8
-    m_Z: -1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -51079,6 +51281,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1559234275}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1577886496
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -51182,6 +51385,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1988693183}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1578905264
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -51285,6 +51489,7 @@ MonoBehaviour:
   m_Owner: {fileID: 2041525127}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1583243407
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -51388,6 +51593,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1536791480}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1589764357
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -51486,7 +51692,6 @@ MonoBehaviour:
   m_Id:
     m_X: -10
     m_Y: 4
-    m_Z: 6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -51530,6 +51735,62 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
+--- !u!1001 &1598112755
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4865729148902634, guid: 399dd24d939d34e4380a7612104c8c04, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 5.9078536
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865729148902634, guid: 399dd24d939d34e4380a7612104c8c04, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 3.4214594
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865729148902634, guid: 399dd24d939d34e4380a7612104c8c04, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -10.086363
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865729148902634, guid: 399dd24d939d34e4380a7612104c8c04, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0.21560317
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865729148902634, guid: 399dd24d939d34e4380a7612104c8c04, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865729148902634, guid: 399dd24d939d34e4380a7612104c8c04, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865729148902634, guid: 399dd24d939d34e4380a7612104c8c04, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.9764811
+      objectReference: {fileID: 0}
+    - target: {fileID: 4865729148902634, guid: 399dd24d939d34e4380a7612104c8c04, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 114934504651382050, guid: 399dd24d939d34e4380a7612104c8c04,
+        type: 2}
+      propertyPath: m_LookAt
+      value: 
+      objectReference: {fileID: 229225271}
+    - target: {fileID: 114934504651382050, guid: 399dd24d939d34e4380a7612104c8c04,
+        type: 2}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 229225271}
+    - target: {fileID: 1526924409591052, guid: 399dd24d939d34e4380a7612104c8c04, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 399dd24d939d34e4380a7612104c8c04, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1601043987
 GameObject:
   m_ObjectHideFlags: 0
@@ -51562,7 +51823,6 @@ MonoBehaviour:
   m_Id:
     m_X: 4
     m_Y: 6
-    m_Z: -10
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -51643,6 +51903,7 @@ MonoBehaviour:
   m_Owner: {fileID: 305936080}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1604240360
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -51741,7 +52002,6 @@ MonoBehaviour:
   m_Id:
     m_X: -6
     m_Y: 10
-    m_Z: -4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -51822,6 +52082,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1391710363}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1611958414
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -51888,6 +52149,11 @@ Transform:
   m_Father: {fileID: 1391710364}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1615768024 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1258380024048378, guid: d8eadb572c9988f4eb0b84df420422e5,
+    type: 2}
+  m_PrefabInternal: {fileID: 1946926620}
 --- !u!1 &1617890210
 GameObject:
   m_ObjectHideFlags: 0
@@ -51920,7 +52186,6 @@ MonoBehaviour:
   m_Id:
     m_X: 1
     m_Y: -1
-    m_Z: 0
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -51996,7 +52261,6 @@ MonoBehaviour:
   m_Id:
     m_X: 3
     m_Y: -2
-    m_Z: -1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -52072,7 +52336,6 @@ MonoBehaviour:
   m_Id:
     m_X: -6
     m_Y: 4
-    m_Z: 2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -52153,6 +52416,7 @@ MonoBehaviour:
   m_Owner: {fileID: 263623108}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1629001188
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -52251,7 +52515,6 @@ MonoBehaviour:
   m_Id:
     m_X: -9
     m_Y: 3
-    m_Z: 6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -52332,7 +52595,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4310448965930020, guid: d1605c333d90d674bb1a1d5188289650, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114906196630865626, guid: d1605c333d90d674bb1a1d5188289650,
         type: 2}
@@ -52374,7 +52637,19 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114906196630865626, guid: d1605c333d90d674bb1a1d5188289650, type: 2}
+    - {fileID: 114467498092037774, guid: d1605c333d90d674bb1a1d5188289650, type: 2}
+    - {fileID: 114466626019781564, guid: d1605c333d90d674bb1a1d5188289650, type: 2}
+    - {fileID: 114034999326429070, guid: d1605c333d90d674bb1a1d5188289650, type: 2}
+    - {fileID: 114304432078445664, guid: d1605c333d90d674bb1a1d5188289650, type: 2}
+    - {fileID: 114737823929242180, guid: d1605c333d90d674bb1a1d5188289650, type: 2}
+    - {fileID: 114919808184283194, guid: d1605c333d90d674bb1a1d5188289650, type: 2}
+    - {fileID: 114327513648936132, guid: d1605c333d90d674bb1a1d5188289650, type: 2}
+    - {fileID: 114295957616179928, guid: d1605c333d90d674bb1a1d5188289650, type: 2}
+    - {fileID: 114844506063650792, guid: d1605c333d90d674bb1a1d5188289650, type: 2}
+    - {fileID: 114149621354156038, guid: d1605c333d90d674bb1a1d5188289650, type: 2}
+    - {fileID: 114711850977891524, guid: d1605c333d90d674bb1a1d5188289650, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d1605c333d90d674bb1a1d5188289650, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1639987719
@@ -52409,7 +52684,6 @@ MonoBehaviour:
   m_Id:
     m_X: 1
     m_Y: -2
-    m_Z: 1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -52485,7 +52759,6 @@ MonoBehaviour:
   m_Id:
     m_X: -2
     m_Y: 1
-    m_Z: 1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -52561,7 +52834,6 @@ MonoBehaviour:
   m_Id:
     m_X: 3
     m_Y: -10
-    m_Z: 7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -52637,7 +52909,6 @@ MonoBehaviour:
   m_Id:
     m_X: -6
     m_Y: -1
-    m_Z: 7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -52713,7 +52984,6 @@ MonoBehaviour:
   m_Id:
     m_X: -4
     m_Y: 5
-    m_Z: -1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -52789,7 +53059,6 @@ MonoBehaviour:
   m_Id:
     m_X: 2
     m_Y: 7
-    m_Z: -9
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -52870,6 +53139,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1879612493}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1653977081
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -52968,7 +53238,6 @@ MonoBehaviour:
   m_Id:
     m_X: -1
     m_Y: -2
-    m_Z: 3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -53049,6 +53318,7 @@ MonoBehaviour:
   m_Owner: {fileID: 543166882}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1655102858
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -53115,6 +53385,68 @@ Transform:
   m_Father: {fileID: 543166883}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1656792010
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4629530938230690, guid: 7e13055f398213b47a0faf2f4d1d089a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4629530938230690, guid: 7e13055f398213b47a0faf2f4d1d089a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4629530938230690, guid: 7e13055f398213b47a0faf2f4d1d089a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4629530938230690, guid: 7e13055f398213b47a0faf2f4d1d089a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4629530938230690, guid: 7e13055f398213b47a0faf2f4d1d089a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4629530938230690, guid: 7e13055f398213b47a0faf2f4d1d089a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4629530938230690, guid: 7e13055f398213b47a0faf2f4d1d089a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4629530938230690, guid: 7e13055f398213b47a0faf2f4d1d089a, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1162143581889962, guid: 7e13055f398213b47a0faf2f4d1d089a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1979600463876502, guid: 7e13055f398213b47a0faf2f4d1d089a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1009900721480266, guid: 7e13055f398213b47a0faf2f4d1d089a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1535395777124574, guid: 7e13055f398213b47a0faf2f4d1d089a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1945480496467598, guid: 7e13055f398213b47a0faf2f4d1d089a, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7e13055f398213b47a0faf2f4d1d089a, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1661322576
 GameObject:
   m_ObjectHideFlags: 0
@@ -53152,6 +53484,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1466209123}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1661322578
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -53250,7 +53583,6 @@ MonoBehaviour:
   m_Id:
     m_X: -7
     m_Y: 9
-    m_Z: -2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -53331,6 +53663,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1954126857}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1673009665
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -53434,6 +53767,7 @@ MonoBehaviour:
   m_Owner: {fileID: 141497026}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1673771254
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -53532,7 +53866,6 @@ MonoBehaviour:
   m_Id:
     m_X: 5
     m_Y: 4
-    m_Z: -9
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -53613,6 +53946,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1978494343}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1677629973
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -53711,7 +54045,6 @@ MonoBehaviour:
   m_Id:
     m_X: 3
     m_Y: -7
-    m_Z: 4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -53787,7 +54120,6 @@ MonoBehaviour:
   m_Id:
     m_X: 9
     m_Y: -7
-    m_Z: -2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -53868,6 +54200,7 @@ MonoBehaviour:
   m_Owner: {fileID: 283337318}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1686263706
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -53966,7 +54299,6 @@ MonoBehaviour:
   m_Id:
     m_X: -8
     m_Y: 7
-    m_Z: 1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -54047,6 +54379,7 @@ MonoBehaviour:
   m_Owner: {fileID: 522247485}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1691639621
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -54150,6 +54483,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1141126984}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1693370292
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -54253,6 +54587,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1777479074}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1698727606
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -54319,6 +54654,62 @@ Transform:
   m_Father: {fileID: 1777479075}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1701939658
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4702804081440954, guid: b483a91ca89449a4eae0abc8e18c5ae6, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 11.738497
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702804081440954, guid: b483a91ca89449a4eae0abc8e18c5ae6, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702804081440954, guid: b483a91ca89449a4eae0abc8e18c5ae6, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -6.176871
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702804081440954, guid: b483a91ca89449a4eae0abc8e18c5ae6, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.05244867
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702804081440954, guid: b483a91ca89449a4eae0abc8e18c5ae6, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.12942296
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702804081440954, guid: b483a91ca89449a4eae0abc8e18c5ae6, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.006855384
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702804081440954, guid: b483a91ca89449a4eae0abc8e18c5ae6, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -0.9901777
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702804081440954, guid: b483a91ca89449a4eae0abc8e18c5ae6, type: 2}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 114914866323846154, guid: b483a91ca89449a4eae0abc8e18c5ae6,
+        type: 2}
+      propertyPath: m_LookAt
+      value: 
+      objectReference: {fileID: 2085768492}
+    - target: {fileID: 114914866323846154, guid: b483a91ca89449a4eae0abc8e18c5ae6,
+        type: 2}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 2085768492}
+    - target: {fileID: 1287332776321016, guid: b483a91ca89449a4eae0abc8e18c5ae6, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b483a91ca89449a4eae0abc8e18c5ae6, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1706942329
 GameObject:
   m_ObjectHideFlags: 0
@@ -54351,7 +54742,6 @@ MonoBehaviour:
   m_Id:
     m_X: 6
     m_Y: 4
-    m_Z: -10
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -54432,6 +54822,7 @@ MonoBehaviour:
   m_Owner: {fileID: 2072106975}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1719231245
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -54530,7 +54921,6 @@ MonoBehaviour:
   m_Id:
     m_X: -8
     m_Y: 0
-    m_Z: 8
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -54606,7 +54996,6 @@ MonoBehaviour:
   m_Id:
     m_X: 7
     m_Y: -4
-    m_Z: -3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -54687,6 +55076,7 @@ MonoBehaviour:
   m_Owner: {fileID: 399449042}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1727996681
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -54790,6 +55180,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1423887573}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1729028271
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -54888,7 +55279,6 @@ MonoBehaviour:
   m_Id:
     m_X: -4
     m_Y: 10
-    m_Z: -6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -54969,6 +55359,7 @@ MonoBehaviour:
   m_Owner: {fileID: 550644644}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1737047613
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -55072,6 +55463,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1372290753}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1738402673
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -55170,7 +55562,6 @@ MonoBehaviour:
   m_Id:
     m_X: 6
     m_Y: 1
-    m_Z: -7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -55246,7 +55637,6 @@ MonoBehaviour:
   m_Id:
     m_X: -6
     m_Y: 1
-    m_Z: 5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -55322,7 +55712,6 @@ MonoBehaviour:
   m_Id:
     m_X: 0
     m_Y: -10
-    m_Z: 10
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -55403,6 +55792,7 @@ MonoBehaviour:
   m_Owner: {fileID: 897001781}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1751195677
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -55501,7 +55891,6 @@ MonoBehaviour:
   m_Id:
     m_X: -5
     m_Y: 7
-    m_Z: -2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -55577,7 +55966,6 @@ MonoBehaviour:
   m_Id:
     m_X: -1
     m_Y: 1
-    m_Z: 0
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -55653,7 +56041,6 @@ MonoBehaviour:
   m_Id:
     m_X: 3
     m_Y: -9
-    m_Z: 6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -55729,7 +56116,6 @@ MonoBehaviour:
   m_Id:
     m_X: 0
     m_Y: 6
-    m_Z: -6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -55810,6 +56196,7 @@ MonoBehaviour:
   m_Owner: {fileID: 170058899}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1762050331
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -55913,6 +56300,7 @@ MonoBehaviour:
   m_Owner: {fileID: 761531648}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1762190158
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -56016,6 +56404,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1454311212}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1766857384
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -56114,7 +56503,6 @@ MonoBehaviour:
   m_Id:
     m_X: -8
     m_Y: 5
-    m_Z: 3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -56190,7 +56578,6 @@ MonoBehaviour:
   m_Id:
     m_X: -7
     m_Y: -3
-    m_Z: 10
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -56266,7 +56653,6 @@ MonoBehaviour:
   m_Id:
     m_X: -1
     m_Y: 2
-    m_Z: -1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -56342,7 +56728,6 @@ MonoBehaviour:
   m_Id:
     m_X: 2
     m_Y: 0
-    m_Z: -2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -56418,7 +56803,6 @@ MonoBehaviour:
   m_Id:
     m_X: -3
     m_Y: 3
-    m_Z: 0
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -56494,7 +56878,6 @@ MonoBehaviour:
   m_Id:
     m_X: -6
     m_Y: 7
-    m_Z: -1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -56575,6 +56958,7 @@ MonoBehaviour:
   m_Owner: {fileID: 712581501}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1794417215
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -56673,7 +57057,6 @@ MonoBehaviour:
   m_Id:
     m_X: -4
     m_Y: -1
-    m_Z: 5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -56754,6 +57137,7 @@ MonoBehaviour:
   m_Owner: {fileID: 139539674}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1805672882
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -56852,7 +57236,6 @@ MonoBehaviour:
   m_Id:
     m_X: -5
     m_Y: -4
-    m_Z: 9
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -56928,7 +57311,6 @@ MonoBehaviour:
   m_Id:
     m_X: -8
     m_Y: 4
-    m_Z: 4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -57009,6 +57391,7 @@ MonoBehaviour:
   m_Owner: {fileID: 2114762995}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1813870579
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -57112,6 +57495,7 @@ MonoBehaviour:
   m_Owner: {fileID: 241322295}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1817788473
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -57215,6 +57599,7 @@ MonoBehaviour:
   m_Owner: {fileID: 2070089547}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1819295066
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -57313,7 +57698,6 @@ MonoBehaviour:
   m_Id:
     m_X: 1
     m_Y: -6
-    m_Z: 5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -57389,7 +57773,6 @@ MonoBehaviour:
   m_Id:
     m_X: 4
     m_Y: -7
-    m_Z: 3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -57465,7 +57848,6 @@ MonoBehaviour:
   m_Id:
     m_X: -6
     m_Y: 9
-    m_Z: -3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -57546,6 +57928,7 @@ MonoBehaviour:
   m_Owner: {fileID: 594144806}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1825173422
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -57644,7 +58027,6 @@ MonoBehaviour:
   m_Id:
     m_X: -2
     m_Y: 7
-    m_Z: -5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -57725,6 +58107,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1758968631}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1827532549
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -57828,6 +58211,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1639987720}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1831966531
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -57931,6 +58315,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1769627087}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1833400141
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -58029,7 +58414,6 @@ MonoBehaviour:
   m_Id:
     m_X: -3
     m_Y: 6
-    m_Z: -3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -58110,6 +58494,7 @@ MonoBehaviour:
   m_Owner: {fileID: 71043811}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1846364775
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -58208,7 +58593,6 @@ MonoBehaviour:
   m_Id:
     m_X: 10
     m_Y: -5
-    m_Z: -5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -58289,6 +58673,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1823196109}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1851057548
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -58387,7 +58772,6 @@ MonoBehaviour:
   m_Id:
     m_X: 2
     m_Y: -5
-    m_Z: 3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -58463,7 +58847,6 @@ MonoBehaviour:
   m_Id:
     m_X: 10
     m_Y: 0
-    m_Z: -10
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -58539,7 +58922,6 @@ MonoBehaviour:
   m_Id:
     m_X: 1
     m_Y: 1
-    m_Z: -2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -58615,7 +58997,6 @@ MonoBehaviour:
   m_Id:
     m_X: -1
     m_Y: -3
-    m_Z: 4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -58691,7 +59072,6 @@ MonoBehaviour:
   m_Id:
     m_X: 10
     m_Y: -8
-    m_Z: -2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -58772,6 +59152,7 @@ MonoBehaviour:
   m_Owner: {fileID: 618701846}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1871818890
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -58875,6 +59256,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1523259083}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1872509209
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -58973,7 +59355,6 @@ MonoBehaviour:
   m_Id:
     m_X: 0
     m_Y: 0
-    m_Z: 0
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -59049,7 +59430,6 @@ MonoBehaviour:
   m_Id:
     m_X: -4
     m_Y: -6
-    m_Z: 10
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -59130,6 +59510,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1188260545}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1883760706
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -59233,6 +59614,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1883016470}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1883932717
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -59331,7 +59713,6 @@ MonoBehaviour:
   m_Id:
     m_X: 7
     m_Y: 1
-    m_Z: -8
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -59407,7 +59788,6 @@ MonoBehaviour:
   m_Id:
     m_X: -8
     m_Y: 9
-    m_Z: -1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -59451,6 +59831,71 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
+--- !u!1001 &1897861450
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 114324004337373792, guid: c8bd9b3d97fb63240a00037bfb04c150,
+        type: 2}
+      propertyPath: m_ChildCameras.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267867735854964, guid: c8bd9b3d97fb63240a00037bfb04c150, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267867735854964, guid: c8bd9b3d97fb63240a00037bfb04c150, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267867735854964, guid: c8bd9b3d97fb63240a00037bfb04c150, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267867735854964, guid: c8bd9b3d97fb63240a00037bfb04c150, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267867735854964, guid: c8bd9b3d97fb63240a00037bfb04c150, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267867735854964, guid: c8bd9b3d97fb63240a00037bfb04c150, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267867735854964, guid: c8bd9b3d97fb63240a00037bfb04c150, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4267867735854964, guid: c8bd9b3d97fb63240a00037bfb04c150, type: 2}
+      propertyPath: m_RootOrder
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 114324004337373792, guid: c8bd9b3d97fb63240a00037bfb04c150,
+        type: 2}
+      propertyPath: m_LookAt
+      value: 
+      objectReference: {fileID: 254857346}
+    - target: {fileID: 114324004337373792, guid: c8bd9b3d97fb63240a00037bfb04c150,
+        type: 2}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 196607589}
+    - target: {fileID: 1903786526440458, guid: c8bd9b3d97fb63240a00037bfb04c150, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048573446549106, guid: c8bd9b3d97fb63240a00037bfb04c150, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c8bd9b3d97fb63240a00037bfb04c150, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1898204690
 GameObject:
   m_ObjectHideFlags: 0
@@ -59483,7 +59928,6 @@ MonoBehaviour:
   m_Id:
     m_X: -1
     m_Y: 0
-    m_Z: 1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -59564,6 +60008,7 @@ MonoBehaviour:
   m_Owner: {fileID: 104578964}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1903752003
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -59667,6 +60112,7 @@ MonoBehaviour:
   m_Owner: {fileID: 953377121}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1906060801
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -59765,7 +60211,6 @@ MonoBehaviour:
   m_Id:
     m_X: 4
     m_Y: -9
-    m_Z: 5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -59841,7 +60286,6 @@ MonoBehaviour:
   m_Id:
     m_X: 2
     m_Y: 1
-    m_Z: -3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -59922,6 +60366,7 @@ MonoBehaviour:
   m_Owner: {fileID: 207624905}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1914571389
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -60020,7 +60465,6 @@ MonoBehaviour:
   m_Id:
     m_X: 2
     m_Y: 3
-    m_Z: -5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -60096,7 +60540,6 @@ MonoBehaviour:
   m_Id:
     m_X: 4
     m_Y: 0
-    m_Z: -4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -60177,6 +60620,7 @@ MonoBehaviour:
   m_Owner: {fileID: 661203370}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1924276932
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -60275,7 +60719,6 @@ MonoBehaviour:
   m_Id:
     m_X: -5
     m_Y: 10
-    m_Z: -5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -60356,6 +60799,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1756691316}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1927902580
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -60454,7 +60898,6 @@ MonoBehaviour:
   m_Id:
     m_X: -2
     m_Y: 8
-    m_Z: -6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -60535,6 +60978,7 @@ MonoBehaviour:
   m_Owner: {fileID: 159793427}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1931925774
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -60638,6 +61082,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1546186915}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1935628586
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -60741,6 +61186,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1247883899}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1942675439
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -60839,7 +61285,6 @@ MonoBehaviour:
   m_Id:
     m_X: 0
     m_Y: -7
-    m_Z: 7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -60915,7 +61360,6 @@ MonoBehaviour:
   m_Id:
     m_X: 2
     m_Y: 8
-    m_Z: -10
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -60996,7 +61440,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4393538622445380, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 114320079545034956, guid: d8eadb572c9988f4eb0b84df420422e5,
         type: 2}
@@ -61038,7 +61482,19 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114054195728922426, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
+    - {fileID: 114653984288070966, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
+    - {fileID: 114942262607342162, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
+    - {fileID: 114856521220186888, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
+    - {fileID: 114930548130969464, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
+    - {fileID: 114669511403171312, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
+    - {fileID: 114592386915721966, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
+    - {fileID: 114025086661032776, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
+    - {fileID: 114764957779972252, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
+    - {fileID: 114525463778650170, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
+    - {fileID: 114320079545034956, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
+    - {fileID: 114879956254548028, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d8eadb572c9988f4eb0b84df420422e5, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1947095590
@@ -61073,7 +61529,6 @@ MonoBehaviour:
   m_Id:
     m_X: 5
     m_Y: 3
-    m_Z: -8
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -61154,6 +61609,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1307326316}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1951979156
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -61252,7 +61708,6 @@ MonoBehaviour:
   m_Id:
     m_X: 7
     m_Y: -2
-    m_Z: -5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -61328,7 +61783,6 @@ MonoBehaviour:
   m_Id:
     m_X: -2
     m_Y: 6
-    m_Z: -4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -61409,6 +61863,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1962735569}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1958882799
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -61507,7 +61962,6 @@ MonoBehaviour:
   m_Id:
     m_X: -8
     m_Y: 6
-    m_Z: 2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -61583,7 +62037,6 @@ MonoBehaviour:
   m_Id:
     m_X: 7
     m_Y: -7
-    m_Z: 0
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -61659,7 +62112,6 @@ MonoBehaviour:
   m_Id:
     m_X: 9
     m_Y: -10
-    m_Z: 1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -61735,7 +62187,6 @@ MonoBehaviour:
   m_Id:
     m_X: -9
     m_Y: 6
-    m_Z: 3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -61816,6 +62267,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1400267986}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1984746569
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -61919,6 +62371,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1233422579}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1986124817
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -62022,6 +62475,7 @@ MonoBehaviour:
   m_Owner: {fileID: 582308545}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1987109577
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -62120,7 +62574,6 @@ MonoBehaviour:
   m_Id:
     m_X: 8
     m_Y: 1
-    m_Z: -9
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -62201,6 +62654,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1759988285}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1989458854
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -62304,6 +62758,7 @@ MonoBehaviour:
   m_Owner: {fileID: 550618388}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1990097011
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -62402,7 +62857,6 @@ MonoBehaviour:
   m_Id:
     m_X: -9
     m_Y: 0
-    m_Z: 9
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -62483,6 +62937,7 @@ MonoBehaviour:
   m_Owner: {fileID: 113821288}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &1994649956
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -62581,7 +63036,6 @@ MonoBehaviour:
   m_Id:
     m_X: -3
     m_Y: 5
-    m_Z: -2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -62662,6 +63116,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1538676393}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &2001563719
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -62760,7 +63215,6 @@ MonoBehaviour:
   m_Id:
     m_X: 9
     m_Y: -5
-    m_Z: -4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -62841,6 +63295,7 @@ MonoBehaviour:
   m_Owner: {fileID: 888206696}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &2007069521
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -62939,7 +63394,6 @@ MonoBehaviour:
   m_Id:
     m_X: 10
     m_Y: -2
-    m_Z: -8
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -63020,6 +63474,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1311705870}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &2022652725
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -63123,6 +63578,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1175370521}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &2027729987
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -63189,6 +63645,104 @@ Transform:
   m_Father: {fileID: 1175370522}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2034226289
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4448646209422126, guid: 22696e2dfae3f9e43a252f4c93404eed, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 13.358497
+      objectReference: {fileID: 0}
+    - target: {fileID: 4448646209422126, guid: 22696e2dfae3f9e43a252f4c93404eed, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 4448646209422126, guid: 22696e2dfae3f9e43a252f4c93404eed, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.10312915
+      objectReference: {fileID: 0}
+    - target: {fileID: 4448646209422126, guid: 22696e2dfae3f9e43a252f4c93404eed, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0.05816177
+      objectReference: {fileID: 0}
+    - target: {fileID: 4448646209422126, guid: 22696e2dfae3f9e43a252f4c93404eed, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.9337734
+      objectReference: {fileID: 0}
+    - target: {fileID: 4448646209422126, guid: 22696e2dfae3f9e43a252f4c93404eed, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.3048809
+      objectReference: {fileID: 0}
+    - target: {fileID: 4448646209422126, guid: 22696e2dfae3f9e43a252f4c93404eed, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -0.17813537
+      objectReference: {fileID: 0}
+    - target: {fileID: 4448646209422126, guid: 22696e2dfae3f9e43a252f4c93404eed, type: 2}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114400996560095302, guid: 22696e2dfae3f9e43a252f4c93404eed,
+        type: 2}
+      propertyPath: m_LookAt
+      value: 
+      objectReference: {fileID: 2085768492}
+    - target: {fileID: 114400996560095302, guid: 22696e2dfae3f9e43a252f4c93404eed,
+        type: 2}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 2085768492}
+    - target: {fileID: 1378135201426130, guid: 22696e2dfae3f9e43a252f4c93404eed, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 22696e2dfae3f9e43a252f4c93404eed, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &2034903156
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4360260156924926, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360260156924926, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360260156924926, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360260156924926, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360260156924926, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360260156924926, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360260156924926, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360260156924926, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 6edb9ab4c9ad0b74a81b4d9c4946aa00, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &2035120217
 GameObject:
   m_ObjectHideFlags: 0
@@ -63221,7 +63775,6 @@ MonoBehaviour:
   m_Id:
     m_X: 0
     m_Y: 2
-    m_Z: -2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -63297,7 +63850,6 @@ MonoBehaviour:
   m_Id:
     m_X: 5
     m_Y: -6
-    m_Z: 1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -63373,7 +63925,6 @@ MonoBehaviour:
   m_Id:
     m_X: -4
     m_Y: 0
-    m_Z: 4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -63449,7 +64000,6 @@ MonoBehaviour:
   m_Id:
     m_X: 10
     m_Y: -7
-    m_Z: -3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -63530,6 +64080,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1230903696}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &2050396261
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -63659,7 +64210,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 153.521, y: -30, z: -0.000015258789}
 --- !u!1 &2055217636
 GameObject:
@@ -63693,7 +64244,6 @@ MonoBehaviour:
   m_Id:
     m_X: -1
     m_Y: -7
-    m_Z: 8
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -63774,6 +64324,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1252463410}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &2056509388
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -63872,7 +64423,6 @@ MonoBehaviour:
   m_Id:
     m_X: 9
     m_Y: -6
-    m_Z: -3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -63953,6 +64503,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1623378781}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &2064787430
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -64056,6 +64607,7 @@ MonoBehaviour:
   m_Owner: {fileID: 444435041}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &2064976518
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -64154,7 +64706,6 @@ MonoBehaviour:
   m_Id:
     m_X: 2
     m_Y: -6
-    m_Z: 4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -64230,7 +64781,6 @@ MonoBehaviour:
   m_Id:
     m_X: -5
     m_Y: -1
-    m_Z: 6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -64306,7 +64856,6 @@ MonoBehaviour:
   m_Id:
     m_X: 5
     m_Y: -3
-    m_Z: -2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -64382,7 +64931,6 @@ MonoBehaviour:
   m_Id:
     m_X: 7
     m_Y: -6
-    m_Z: -1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -64458,7 +65006,6 @@ MonoBehaviour:
   m_Id:
     m_X: -3
     m_Y: -5
-    m_Z: 8
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -64539,6 +65086,7 @@ MonoBehaviour:
   m_Owner: {fileID: 129656772}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &2082472924
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -64637,7 +65185,6 @@ MonoBehaviour:
   m_Id:
     m_X: 8
     m_Y: -6
-    m_Z: -2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -64718,6 +65265,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1920021016}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &2083180959
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -64816,7 +65364,6 @@ MonoBehaviour:
   m_Id:
     m_X: -1
     m_Y: 6
-    m_Z: -5
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -64892,7 +65439,6 @@ MonoBehaviour:
   m_Id:
     m_X: 3
     m_Y: -1
-    m_Z: -2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -64936,54 +65482,6 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
---- !u!1 &2084449015
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 2084449017}
-  - component: {fileID: 2084449016}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2084449016
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2084449015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12bab15e5b66ec34ca822a7950f83588, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_CineStateCam: {fileID: 0}
-  m_DeathCinemachine: {fileID: 0}
-  m_ArrayOfCineCamPanzer: []
-  m_CineBrain: {fileID: 0}
-  m_OriginalCamPos: {x: 0, y: 0, z: 0}
-  m_OriginalCamRotation: {x: 0, y: 0, z: 0, w: 0}
-  m_ActiveCamBase: {fileID: 0}
-  m_CamHolderString: 
---- !u!4 &2084449017
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2084449015}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.871181, y: -5.4122677, z: -16.034061}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2084961528
 GameObject:
   m_ObjectHideFlags: 0
@@ -65021,6 +65519,7 @@ MonoBehaviour:
   m_Owner: {fileID: 552505335}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &2084961530
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -65087,6 +65586,11 @@ Transform:
   m_Father: {fileID: 552505336}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2085768492 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4507656217001790, guid: d1605c333d90d674bb1a1d5188289650,
+    type: 2}
+  m_PrefabInternal: {fileID: 1633544095}
 --- !u!1 &2086838947
 GameObject:
   m_ObjectHideFlags: 0
@@ -65124,6 +65628,7 @@ MonoBehaviour:
   m_Owner: {fileID: 213965096}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &2086838949
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -65222,7 +65727,6 @@ MonoBehaviour:
   m_Id:
     m_X: -1
     m_Y: -6
-    m_Z: 7
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -65298,7 +65802,6 @@ MonoBehaviour:
   m_Id:
     m_X: 4
     m_Y: -5
-    m_Z: 1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -65374,7 +65877,6 @@ MonoBehaviour:
   m_Id:
     m_X: 6
     m_Y: -4
-    m_Z: -2
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -65455,6 +65957,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1263132576}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &2092503380
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -65558,6 +66061,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1574455687}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &2106452764
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -65656,7 +66160,6 @@ MonoBehaviour:
   m_Id:
     m_X: -6
     m_Y: 2
-    m_Z: 4
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -65737,6 +66240,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1650104711}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &2112448034
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -65840,6 +66344,7 @@ MonoBehaviour:
   m_Owner: {fileID: 615788525}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &2113165329
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -65938,7 +66443,6 @@ MonoBehaviour:
   m_Id:
     m_X: 3
     m_Y: 0
-    m_Z: -3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -66019,6 +66523,7 @@ MonoBehaviour:
   m_Owner: {fileID: 581712919}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &2125980214
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -66122,6 +66627,7 @@ MonoBehaviour:
   m_Owner: {fileID: 1087675409}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &2126468543
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -66220,7 +66726,6 @@ MonoBehaviour:
   m_Id:
     m_X: 6
     m_Y: -7
-    m_Z: 1
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -66264,6 +66769,75 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 80887b3e43abae2468c68a55666240cd, type: 3}
+--- !u!1001 &2133352452
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 114218825571828612, guid: 30b85fa4bff8fd741b6e2d5bd1853352,
+        type: 2}
+      propertyPath: m_ChildCameras.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679471890463674, guid: 30b85fa4bff8fd741b6e2d5bd1853352, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679471890463674, guid: 30b85fa4bff8fd741b6e2d5bd1853352, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679471890463674, guid: 30b85fa4bff8fd741b6e2d5bd1853352, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679471890463674, guid: 30b85fa4bff8fd741b6e2d5bd1853352, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679471890463674, guid: 30b85fa4bff8fd741b6e2d5bd1853352, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679471890463674, guid: 30b85fa4bff8fd741b6e2d5bd1853352, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679471890463674, guid: 30b85fa4bff8fd741b6e2d5bd1853352, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4679471890463674, guid: 30b85fa4bff8fd741b6e2d5bd1853352, type: 2}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 114218825571828612, guid: 30b85fa4bff8fd741b6e2d5bd1853352,
+        type: 2}
+      propertyPath: m_LookAt
+      value: 
+      objectReference: {fileID: 196607589}
+    - target: {fileID: 114218825571828612, guid: 30b85fa4bff8fd741b6e2d5bd1853352,
+        type: 2}
+      propertyPath: m_Follow
+      value: 
+      objectReference: {fileID: 196607589}
+    - target: {fileID: 1109755924903544, guid: 30b85fa4bff8fd741b6e2d5bd1853352, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1872805121769918, guid: 30b85fa4bff8fd741b6e2d5bd1853352, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1961019403331702, guid: 30b85fa4bff8fd741b6e2d5bd1853352, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 30b85fa4bff8fd741b6e2d5bd1853352, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &2137383605
 GameObject:
   m_ObjectHideFlags: 0
@@ -66296,7 +66870,6 @@ MonoBehaviour:
   m_Id:
     m_X: 4
     m_Y: -10
-    m_Z: 6
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -66377,6 +66950,7 @@ MonoBehaviour:
   m_Owner: {fileID: 2137383606}
   m_Known: 0
   m_Visible: 0
+  m_ChildDisplays: []
 --- !u!64 &2138502683
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -66475,7 +67049,6 @@ MonoBehaviour:
   m_Id:
     m_X: 7
     m_Y: -10
-    m_Z: 3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1
@@ -66551,7 +67124,6 @@ MonoBehaviour:
   m_Id:
     m_X: -5
     m_Y: 8
-    m_Z: -3
   m_TileSystem: {fileID: 910150805}
   m_Attributes:
     m_Walkable: 1

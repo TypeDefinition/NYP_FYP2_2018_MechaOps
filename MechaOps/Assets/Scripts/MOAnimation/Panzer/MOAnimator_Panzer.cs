@@ -55,7 +55,8 @@ public class MOAnimator_Panzer : MOAnimator
     [SerializeField, Tooltip("Name for attack cinematic shot for panzer attack at CineMachineHandler")]
     protected string m_PanzerAttackCinematicName = "Attack";
     [SerializeField, Tooltip("Name for death cinematic shot for panzer death at CineMachineHandler")]
-    protected string m_PanzerDeathCinematicName = "Die";
+    protected string m_PanzerDeathCinematicName = "PanzerDie";
+    [SerializeField] ViewScript m_ViewScript;
 
     public float MaxGunElevation
     {
@@ -66,6 +67,15 @@ public class MOAnimator_Panzer : MOAnimator
     {
         get { return m_MaxGunDepression; }
         set { m_MaxGunDepression = Mathf.Clamp(value, 0.0f, 90.0f); }
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        if (!m_ViewScript)
+        {
+            m_ViewScript = GetComponent<ViewScript>();
+        }
     }
 
     protected virtual void AnimateTracks(float _leftSpeed, float _rightSpeed)
@@ -130,6 +140,12 @@ public class MOAnimator_Panzer : MOAnimator
     // Death Animation
     protected override IEnumerator DeathAnimationCoroutine()
     {
+        // Need to ensure that the Panzer is visible then it will be able to trigger such events!
+        if (m_ViewScript.IsVisible())
+        {
+            GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), m_Hull, m_Hull);
+            GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_PanzerDeathCinematicName, m_TimeDelayForDeathCam);
+        }
         StopAmbientAudioSource();
         yield return new WaitForSeconds(m_TimeDelayForDeathCam);
 

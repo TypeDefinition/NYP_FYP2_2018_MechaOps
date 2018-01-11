@@ -26,6 +26,9 @@ MonoBehaviour:
   - Unit Dead
   - Faction Dead
   - Unit Moved To Tile
+  - SetCinematicUserTransform
+  - SetCinematicTargetTransform
+  - StartCinematic
   m_GameUINames:
   - Clicked Unit
   - Clicked Tile

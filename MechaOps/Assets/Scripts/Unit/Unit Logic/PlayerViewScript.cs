@@ -95,4 +95,13 @@ public class PlayerViewScript : ViewScript
             GameEventSystem.GetInstance().TriggerEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitUnseen), m_UnitStats);
         }
     }
+
+    /// <summary>
+    /// It is always visible to the player
+    /// </summary>
+    /// <returns></returns>
+    public override bool IsVisible()
+    {
+        return true;
+    }
 }

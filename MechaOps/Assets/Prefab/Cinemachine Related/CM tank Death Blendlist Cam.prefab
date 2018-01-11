@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4645617868491756}
   - component: {fileID: 114260079088910834}
+  - component: {fileID: 114890770086325714}
   m_Layer: 0
   m_Name: CM tank Death Blendlist Cam
   m_TagString: Untagged
@@ -95,7 +96,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4065048809576768
 Transform:
   m_ObjectHideFlags: 1
@@ -208,9 +209,11 @@ MonoBehaviour:
   m_Priority: 10
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
-  m_ShowDebugText: 1
+  m_ShowDebugText: 0
   m_EnableAllChildCameras: 0
-  m_ChildCameras: []
+  m_ChildCameras:
+  - {fileID: 0}
+  - {fileID: 0}
   m_Instructions:
   - m_VirtualCamera: {fileID: 114539605063764014}
     m_Hold: 0.5
@@ -324,6 +327,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e8b78ac948f05a46a6d8339a503172b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114890770086325714
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1151462294912912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2c0ac3166880f54880862862689918a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NameID: PanzerDie
+  m_CinematicCamera: {fileID: 114260079088910834}
+  m_ArrayOfUsableCinematic: []
+  m_UserFollow: {fileID: 0}
+  m_UserLookAt: {fileID: 0}
+  m_TargetFollow: {fileID: 0}
+  m_TargetLookAt: {fileID: 0}
 --- !u!114 &114980179885700094
 MonoBehaviour:
   m_ObjectHideFlags: 1

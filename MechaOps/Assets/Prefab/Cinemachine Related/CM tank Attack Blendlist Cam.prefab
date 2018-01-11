@@ -38,6 +38,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4330352351978030}
   - component: {fileID: 114039713213863444}
+  - component: {fileID: 114577713888979440}
+  - component: {fileID: 114656103349174288}
   m_Layer: 0
   m_Name: CM tank Attack Blendlist Cam
   m_TagString: Untagged
@@ -78,7 +80,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1689675840720926
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,7 +132,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1617559558500180}
   m_LocalRotation: {x: 0.55228555, y: -0, z: -0, w: 0.83365506}
-  m_LocalPosition: {x: -6.02, y: 24.73229, z: -0.5090122}
+  m_LocalPosition: {x: 0.04052048, y: 24.73229, z: -10.712031}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4108659955877260}
@@ -157,7 +159,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1689675840720926}
   m_LocalRotation: {x: 0.17562973, y: -0, z: -0, w: 0.9844563}
-  m_LocalPosition: {x: -6.02, y: 1.6922894, z: 7.3609877}
+  m_LocalPosition: {x: 0.04052048, y: 1.6922894, z: -2.8420315}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4657312566836028}
@@ -297,6 +299,40 @@ MonoBehaviour:
     FarClipPlane: 5000
     Dutch: 0
   m_ComponentOwner: {fileID: 4657312566836028}
+--- !u!114 &114577713888979440
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1135682606067022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2c0ac3166880f54880862862689918a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NameID: PanzerAttack
+  m_CinematicCamera: {fileID: 114039713213863444}
+  m_ArrayOfUsableCinematic:
+  - {fileID: 114656103349174288}
+  m_UserFollow: {fileID: 0}
+  m_UserLookAt: {fileID: 0}
+  m_TargetFollow: {fileID: 0}
+  m_TargetLookAt: {fileID: 0}
+--- !u!114 &114656103349174288
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1135682606067022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b30ae0d05d37fc4ab43c1a57e1d967d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CinematicCam: {fileID: 114039713213863444}
+  m_FollowTransformControl: 0
+  m_LookAtTransformControl: 0
+  m_CinematicData: {fileID: 114577713888979440}
 --- !u!114 &114684379870496242
 MonoBehaviour:
   m_ObjectHideFlags: 1

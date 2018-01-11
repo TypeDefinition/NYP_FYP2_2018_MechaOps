@@ -8,54 +8,27 @@ using Cinemachine;
 /// It will handle the Cinemachine for this gameplay
 /// </summary>
 public class CineMachineHandler : MonoBehaviour {
-    [System.Serializable]
-    public class CinematicData
-    {
-        public string m_HolderName;
-        public CinemachineVirtualCameraBase m_CinematicCam;
-    }
-
     [Header("Variables for CineMachineHandler")]
-    [SerializeField, Tooltip("CineMachine for attacking cinematics")]
-    protected CinemachineStateDrivenCamera m_CineStateCam;
-    [SerializeField, Tooltip("To turn on the the death cinematic camera")]
-    protected CinemachineVirtualCameraBase m_DeathCinemachine;
-
-    [SerializeField, Tooltip("Array of cinematic camera for panzer")]
-    protected CinematicData[] m_ArrayOfCineCamPanzer;
+    [SerializeField, Tooltip("CineMachine Brain Script. There should only be 1!")]
+    protected CinemachineBrain m_CineBrain;
 
     [Header("Debugging for CineMachineHandler")]
-    [SerializeField, Tooltip("CineMachine Brain Script. Thr should only be 1!")]
-    protected CinemachineBrain m_CineBrain;
+    [SerializeField, Tooltip("Array of cinematic camera for all units. All cinematicData components should be attached under this gameobject parent!")]
+    protected CinematicData[] m_ArrayOfCinematicData;
     [SerializeField, Tooltip("Original position of the camera")]
     protected Vector3 m_OriginalCamPos;
     [SerializeField, Tooltip("Original rotation of the camera")]
     protected Quaternion m_OriginalCamRotation;
-    [SerializeField, Tooltip("Current active Cinematic camera")]
-    protected CinemachineVirtualCameraBase m_ActiveCamBase;
-    [SerializeField, Tooltip("Current string of the active cam holder")]
-    protected string m_CamHolderString;
+    [SerializeField, Tooltip("Active Cinematic Data")]
+    protected CinematicData m_ActiveCinematicData;
+    [SerializeField, Tooltip("Game Event Names related")]
+    protected GameEventNames m_GameEventNames;
+    [SerializeField] protected Transform m_UserFollow;
+    [SerializeField] protected Transform m_UserLookAt;
+    [SerializeField] protected Transform m_TargetFollow;
+    [SerializeField] protected Transform m_TargetLookAt;
 
-    public CinemachineStateDrivenCamera CineStateCam
-    {
-        get
-        {
-            return m_CineStateCam;
-        }
-    }
-
-    public CinemachineVirtualCameraBase ActiveCamBase
-    {
-        get
-        {
-            return m_ActiveCamBase;
-        }
-    }
-
-    /// <summary>
-    /// The coroutine to be controlled to turn off cinemachine
-    /// </summary>
-    protected Coroutine m_CineshutdownCoroutine;
+    protected Dictionary<string, List<CinematicData>> m_NameCineDataDict = new Dictionary<string, List<CinematicData>>();
 
     /// <summary>
     /// Try to get those missing variable when Awake()
@@ -63,7 +36,58 @@ public class CineMachineHandler : MonoBehaviour {
     private void Awake()
     {
         if (!m_CineBrain)
+        {
             m_CineBrain = FindObjectOfType<CinemachineBrain>();
+            // making sure that the cinemachine brain is inactive
+            m_CineBrain.enabled = false;
+        }
+        m_ArrayOfCinematicData = GetComponentsInChildren<CinematicData>();
+        foreach (CinematicData CineData in m_ArrayOfCinematicData)
+        {
+            List<CinematicData> ListOfCineData;
+            if (m_NameCineDataDict.TryGetValue(CineData.NameID, out ListOfCineData))
+            {
+                ListOfCineData.Add(CineData);
+            }
+            else
+            {
+                ListOfCineData = new List<CinematicData>();
+                ListOfCineData.Add(CineData);
+                m_NameCineDataDict.Add(CineData.NameID, ListOfCineData);
+            }
+            CineData.gameObject.SetActive(false);
+        }
+        m_GameEventNames = GameSystemsDirectory.GetSceneInstance().GetGameEventNames();
+    }
+
+    protected void InitEvents()
+    {
+        //GameEventSystem.GetInstance().SubscribeToEvent<Transform, Transform>("SetCinematicUserTransform", SetUserTransform);
+        //GameEventSystem.GetInstance().SubscribeToEvent<Transform, Transform>("SetCinematicTargetTransform", SetTargetTransform);
+        //GameEventSystem.GetInstance().SubscribeToEvent<string, float>("StartCinematic", SetCinematic);
+        GameEventSystem.GetInstance().SubscribeToEvent<Transform, Transform>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), SetUserTransform);
+        GameEventSystem.GetInstance().SubscribeToEvent<Transform, Transform>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.SetCineTargetTransform), SetTargetTransform);
+        GameEventSystem.GetInstance().SubscribeToEvent<string, float>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.StartCinematic), SetCinematic);
+    }
+
+    protected void DeinitEvents()
+    {
+        //GameEventSystem.GetInstance().UnsubscribeFromEvent<Transform, Transform>("SetCinematicUserTransform", SetUserTransform);
+        //GameEventSystem.GetInstance().UnsubscribeFromEvent<Transform, Transform>("SetCinematicTargetTransform", SetTargetTransform);
+        //GameEventSystem.GetInstance().UnsubscribeFromEvent<string, float>("StartCinematic", SetCinematic);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<Transform, Transform>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), SetUserTransform);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<Transform, Transform>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.SetCineTargetTransform), SetTargetTransform);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<string, float>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.StartCinematic), SetCinematic);
+    }
+
+    protected void OnEnable()
+    {
+        InitEvents();
+    }
+
+    protected void OnDisable()
+    {
+        DeinitEvents();
     }
 
     /// <summary>
@@ -73,7 +97,7 @@ public class CineMachineHandler : MonoBehaviour {
     public void SetCineBrain(bool _toggleFlag)
     {
         // and ensure that the coroutine is not null
-        if (m_CineBrain.enabled != _toggleFlag && m_CineshutdownCoroutine == null)
+        if (m_CineBrain.enabled != _toggleFlag)
         {
             m_CineBrain.enabled = _toggleFlag;
             switch (_toggleFlag)
@@ -87,66 +111,62 @@ public class CineMachineHandler : MonoBehaviour {
                     // set the camera back to normal
                     Camera.main.transform.position = m_OriginalCamPos;
                     Camera.main.transform.localRotation = m_OriginalCamRotation;
-                    if (m_ActiveCamBase != null)
-                    {
-                        m_ActiveCamBase.gameObject.SetActive(false);
-                        m_ActiveCamBase = null;
-                        m_CamHolderString = "";
-                    }
                     break;
             }
         }
     }
 
-    public void SetPanzerCinematicCamActive(string _CamName)
+    protected void SetUserTransform(Transform _userFollow, Transform _userLookAt)
     {
+        m_UserFollow = _userFollow;
+        m_UserLookAt = _userLookAt;
+    }
+
+    protected void SetTargetTransform(Transform _targetFollow, Transform _targetLookAt)
+    {
+        m_TargetFollow = _targetFollow;
+        m_TargetLookAt = _targetLookAt;
+    }
+
+    protected void SetCinematic(string _nameID, float _time)
+    {
+        // need to ensure that the previous m_activeCinematicData will not affect the soon-to-be activated cinematic camera
+        if (m_ActiveCinematicData)
+        {
+            m_ActiveCinematicData.CompleteCinematicCallback -= FinishedCinematic;
+            m_ActiveCinematicData.gameObject.SetActive(false);
+        }
+        List<CinematicData> ListOfCineData = null;
+        Assert.IsTrue(m_NameCineDataDict.TryGetValue(_nameID, out ListOfCineData), "There should be a cinematic data at CineMachinehandler");
+        if (ListOfCineData.Count > 0)
+        {
+            // random between the cinematic data
+            int result = Random.Range(0, ListOfCineData.Count);
+            m_ActiveCinematicData = ListOfCineData[result];
+        }
+        else
+        {
+            m_ActiveCinematicData = ListOfCineData[0];
+        }
+        m_ActiveCinematicData.SetUserTransform(m_UserFollow, m_UserLookAt);
+        m_ActiveCinematicData.SetTargetTransform(m_TargetFollow, m_TargetLookAt);
         SetCineBrain(true);
-        if (_CamName != m_CamHolderString)
-        {
-            if (m_ActiveCamBase != null)
-            {
-                m_ActiveCamBase.gameObject.SetActive(false);
-                m_ActiveCamBase = null;
-            }
-            foreach (CinematicData zeCamHolder in m_ArrayOfCineCamPanzer)
-            {
-                if (zeCamHolder.m_HolderName == _CamName)
-                {
-                    m_ActiveCamBase = zeCamHolder.m_CinematicCam;
-                    m_CamHolderString = zeCamHolder.m_HolderName;
-                }
-            }
-            if (m_ActiveCamBase != null)
-            {
-                m_ActiveCamBase.gameObject.SetActive(true);
-            }
-        }
+        m_ActiveCinematicData.CompleteCinematicCallback += FinishedCinematic;
+        m_ActiveCinematicData.BeginCinematic(_time);
     }
 
     /// <summary>
-    /// The function to start the coroutine in order to delay setting the cinemachine active/inactive
+    /// Waiting for cinematic data to call this function
     /// </summary>
-    /// <param name="_toggleFlag">flag to set the activeness of the cinemachine</param>
-    /// <param name="_delayTime">time to be delayed</param>
-    public void DelayCinemachineSetActive(bool _toggleFlag, float _delayTime)
+    protected void FinishedCinematic()
     {
-        if (m_CineshutdownCoroutine == null)
-        {
-            m_CineshutdownCoroutine = StartCoroutine(DelayCinemachineUpdate(_toggleFlag, _delayTime));
-        }
-    }
-
-    /// <summary>
-    /// The coroutine to delay the update of setting the cinebrain active/inactive
-    /// </summary>
-    /// <param name="_toggleFlag">What kind of flag to set</param>
-    /// <param name="_delayTime">Time to be delay</param>
-    /// <returns></returns>
-    protected IEnumerator DelayCinemachineUpdate(bool _toggleFlag, float _delayTime)
-    {
-        yield return new WaitForSeconds(_delayTime);
-        m_CineshutdownCoroutine = null;
-        SetCineBrain(_toggleFlag);
-        yield break;
+        // set all of the transform to be null
+        m_TargetFollow = null;
+        m_TargetLookAt = null;
+        m_UserFollow = null;
+        m_UserLookAt = null;
+        m_ActiveCinematicData.CompleteCinematicCallback -= FinishedCinematic;
+        m_ActiveCinematicData = null;
+        SetCineBrain(false);
     }
 }

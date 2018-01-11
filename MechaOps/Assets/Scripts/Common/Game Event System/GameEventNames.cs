@@ -38,6 +38,9 @@ public class GameEventNames : ScriptableObject
         UnitDead,
         FactionDead,
         UnitMovedToTile,
+        SetCineUserTransform,
+        SetCineTargetTransform,
+        StartCinematic,
 
         Num_GameplayNames
     }

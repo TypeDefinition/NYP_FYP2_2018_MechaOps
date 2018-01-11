@@ -38,13 +38,15 @@ GameObject:
   m_Component:
   - component: {fileID: 4360260156924926}
   - component: {fileID: 114842476741683136}
+  - component: {fileID: 114802240619864452}
+  - component: {fileID: 114787282760518896}
   m_Layer: 0
   m_Name: CM tank Attack Blendlist Cam2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1368231881000642
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,7 +62,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1842687201659078
 GameObject:
   m_ObjectHideFlags: 1
@@ -94,7 +96,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4050671528432448
 Transform:
   m_ObjectHideFlags: 1
@@ -322,6 +324,40 @@ MonoBehaviour:
   m_PitchDamping: 0
   m_YawDamping: 0
   m_RollDamping: 0
+--- !u!114 &114787282760518896
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1344060725871210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b30ae0d05d37fc4ab43c1a57e1d967d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CinematicCam: {fileID: 0}
+  m_FollowTransformControl: 1
+  m_LookAtTransformControl: 0
+  m_CinematicData: {fileID: 0}
+--- !u!114 &114802240619864452
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1344060725871210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2c0ac3166880f54880862862689918a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NameID: PanzerAttack
+  m_CinematicCamera: {fileID: 114842476741683136}
+  m_ArrayOfUsableCinematic:
+  - {fileID: 114787282760518896}
+  m_UserFollow: {fileID: 0}
+  m_UserLookAt: {fileID: 0}
+  m_TargetFollow: {fileID: 0}
+  m_TargetLookAt: {fileID: 0}
 --- !u!114 &114842476741683136
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -340,11 +376,9 @@ MonoBehaviour:
   m_Priority: 10
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
-  m_ShowDebugText: 1
+  m_ShowDebugText: 0
   m_EnableAllChildCameras: 0
-  m_ChildCameras:
-  - {fileID: 114276862820449476}
-  - {fileID: 114022939001485630}
+  m_ChildCameras: []
   m_Instructions:
   - m_VirtualCamera: {fileID: 114276862820449476}
     m_Hold: 0.5
