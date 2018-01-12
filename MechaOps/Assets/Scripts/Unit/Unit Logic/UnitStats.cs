@@ -331,7 +331,7 @@ public class UnitStats : MonoBehaviour
 
         if (_deadUnit == this)
         {
-            Destroy(m_UnitInfoDisplay);
+            Destroy(m_UnitInfoDisplay.gameObject);
         }
     }
 
