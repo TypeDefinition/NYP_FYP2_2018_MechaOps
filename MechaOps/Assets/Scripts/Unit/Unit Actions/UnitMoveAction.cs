@@ -112,7 +112,6 @@ public class UnitMoveAction : IUnitAction
         // The unit has reached it's destination.
         UnregisterAnimationCallbacks();
 
-        m_Animation.GetMOAnimator().StopCinematicCamera();
         m_ActionState = ActionState.Completed;
 
         // Sending out an event that this action has ended.

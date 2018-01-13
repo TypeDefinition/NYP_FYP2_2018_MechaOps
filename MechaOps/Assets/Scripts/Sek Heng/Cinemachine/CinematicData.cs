@@ -73,7 +73,11 @@ public class CinematicData : MonoBehaviour {
         }
         m_CinematicCamera.LookAt = m_UserLookAt;
         m_CinematicCamera.Follow = m_UserFollow;
-        StartCoroutine(SetToInactive(_time));
+        // making sure the time is not below 0! If it is, then it will always be active!
+        if (_time >= 0)
+        {
+            StartCoroutine(SetToInactive(_time));
+        }
     }
 
     protected IEnumerator SetToInactive(float _time)

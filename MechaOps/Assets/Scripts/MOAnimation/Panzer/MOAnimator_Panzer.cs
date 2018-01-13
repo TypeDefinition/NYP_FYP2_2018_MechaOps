@@ -43,21 +43,6 @@ public class MOAnimator_Panzer : MOAnimator
     protected bool m_BulletAnimationComplete = false;
     protected TankBullet m_Bullet = null;
 
-    // Cinematics
-    [SerializeField, Tooltip("Time taken for delay in the animation from camera to the turret during camera cinematics")]
-    protected float m_TimeDelayForCamToTurret = 3.0f;
-    [SerializeField, Tooltip("Time taken for the death cam animation")]
-    protected float m_TimeDelayForDeathCam = 2.0f;
-    [SerializeField, Tooltip("Time taken for the delay before camera goes back to normal from cinematics")]
-    protected float m_TimeDelayForCamBackToNormal = 0.5f;
-    [SerializeField, Tooltip("Name for walking cinematic shot for panzer walk at CineMachineHandler")]
-    protected string m_PanzerWalkCinematicName = "Walk";
-    [SerializeField, Tooltip("Name for attack cinematic shot for panzer attack at CineMachineHandler")]
-    protected string m_PanzerAttackCinematicName = "Attack";
-    [SerializeField, Tooltip("Name for death cinematic shot for panzer death at CineMachineHandler")]
-    protected string m_PanzerDeathCinematicName = "PanzerDie";
-    [SerializeField] ViewScript m_ViewScript;
-
     public float MaxGunElevation
     {
         get { return m_MaxGunElevation; }
@@ -72,10 +57,6 @@ public class MOAnimator_Panzer : MOAnimator
     protected override void Awake()
     {
         base.Awake();
-        if (!m_ViewScript)
-        {
-            m_ViewScript = GetComponent<ViewScript>();
-        }
     }
 
     protected virtual void AnimateTracks(float _leftSpeed, float _rightSpeed)
@@ -144,7 +125,7 @@ public class MOAnimator_Panzer : MOAnimator
         if (m_ViewScript.IsVisible())
         {
             GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), m_Hull, m_Hull);
-            GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_PanzerDeathCinematicName, m_TimeDelayForDeathCam);
+            GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_DeathCinematicName, m_TimeDelayForDeathCam);
         }
         StopAmbientAudioSource();
         yield return new WaitForSeconds(m_TimeDelayForDeathCam);
@@ -189,7 +170,22 @@ public class MOAnimator_Panzer : MOAnimator
 
     public override void StartMoveAnimation(TileId[] _movementPath, Void_Int _perTileCallback, Void_Void _completionCallback)
     {
+        // Need to make sure the unit is visible and it belongs to the player!
+        if (m_ViewScript.IsVisible() && m_UnitStat.UnitFaction == FactionType.Player)
+        {
+            GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), m_Gun, m_Gun);
+            GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_WalkCinematicName, -1);
+            _completionCallback += FinishCinematicMovement;
+        }
         base.StartMoveAnimation(_movementPath, _perTileCallback, _completionCallback);
+    }
+
+    /// <summary>
+    /// Stop the cinematic camera after moving as there is no time given for the camera
+    /// </summary>
+    protected virtual void FinishCinematicMovement()
+    {
+        GameEventSystem.GetInstance().TriggerEvent(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StopCinematic));
     }
 
     // Shoot Animation
@@ -241,8 +237,15 @@ public class MOAnimator_Panzer : MOAnimator
 
     protected override IEnumerator ShootAnimationCouroutine()
     {
+        // Need to ensure that the Panzer is visible then it will be able to trigger such events!
+        if (m_ViewScript.IsVisible())
+        {
+            GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineTargetTransform), m_Target.transform, m_Target.transform);
+            GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), m_Gun, m_Gun);
+            GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_AttackCinematicName, m_TimeDelayForAttackCam);
+        }
         // Allow the camera to go to the turret.
-        yield return new WaitForSeconds(m_TimeDelayForCamToTurret);
+        yield return new WaitForSeconds(m_TimeDelayForAttackCam);
 
         // Rotate our turret to face our target.
         while (true)
@@ -270,7 +273,6 @@ public class MOAnimator_Panzer : MOAnimator
         m_BulletAnimationComplete = false;
 
         yield return new WaitForSeconds(m_TimeDelayForCamBackToNormal);
-        StopCinematicCamera();
 
         // Invoke the completion callback.
         InvokeCallback(m_ShootAnimationCompletionCallback);

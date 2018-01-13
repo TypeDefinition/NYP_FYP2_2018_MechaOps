@@ -62,22 +62,18 @@ public class CineMachineHandler : MonoBehaviour {
 
     protected void InitEvents()
     {
-        //GameEventSystem.GetInstance().SubscribeToEvent<Transform, Transform>("SetCinematicUserTransform", SetUserTransform);
-        //GameEventSystem.GetInstance().SubscribeToEvent<Transform, Transform>("SetCinematicTargetTransform", SetTargetTransform);
-        //GameEventSystem.GetInstance().SubscribeToEvent<string, float>("StartCinematic", SetCinematic);
         GameEventSystem.GetInstance().SubscribeToEvent<Transform, Transform>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), SetUserTransform);
         GameEventSystem.GetInstance().SubscribeToEvent<Transform, Transform>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.SetCineTargetTransform), SetTargetTransform);
         GameEventSystem.GetInstance().SubscribeToEvent<string, float>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.StartCinematic), SetCinematic);
+        GameEventSystem.GetInstance().SubscribeToEvent(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.StopCinematic), TurnOffCinematic);
     }
 
     protected void DeinitEvents()
     {
-        //GameEventSystem.GetInstance().UnsubscribeFromEvent<Transform, Transform>("SetCinematicUserTransform", SetUserTransform);
-        //GameEventSystem.GetInstance().UnsubscribeFromEvent<Transform, Transform>("SetCinematicTargetTransform", SetTargetTransform);
-        //GameEventSystem.GetInstance().UnsubscribeFromEvent<string, float>("StartCinematic", SetCinematic);
         GameEventSystem.GetInstance().UnsubscribeFromEvent<Transform, Transform>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), SetUserTransform);
         GameEventSystem.GetInstance().UnsubscribeFromEvent<Transform, Transform>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.SetCineTargetTransform), SetTargetTransform);
         GameEventSystem.GetInstance().UnsubscribeFromEvent<string, float>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.StartCinematic), SetCinematic);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.StopCinematic), TurnOffCinematic);
     }
 
     protected void OnEnable()
@@ -94,7 +90,7 @@ public class CineMachineHandler : MonoBehaviour {
     /// Set the cinebrain to active or inactive.
     /// </summary>
     /// <param name="_toggleFlag">true will set the CineBrain active. false will set the CineBrain inactive</param>
-    public void SetCineBrain(bool _toggleFlag)
+    protected void SetCineBrain(bool _toggleFlag)
     {
         // and ensure that the coroutine is not null
         if (m_CineBrain.enabled != _toggleFlag)
@@ -128,6 +124,11 @@ public class CineMachineHandler : MonoBehaviour {
         m_TargetLookAt = _targetLookAt;
     }
 
+    /// <summary>
+    /// Set the specific cinematic camera to be active
+    /// </summary>
+    /// <param name="_nameID">Name of the cinematic camera</param>
+    /// <param name="_time">Automatically set the time to turn it off through coroutine. if it is below 0, then it will always be active</param>
     protected void SetCinematic(string _nameID, float _time)
     {
         // need to ensure that the previous m_activeCinematicData will not affect the soon-to-be activated cinematic camera
@@ -138,18 +139,12 @@ public class CineMachineHandler : MonoBehaviour {
         }
         List<CinematicData> ListOfCineData = null;
         Assert.IsTrue(m_NameCineDataDict.TryGetValue(_nameID, out ListOfCineData), "There should be a cinematic data at CineMachinehandler");
-        if (ListOfCineData.Count > 0)
-        {
-            // random between the cinematic data
-            int result = Random.Range(0, ListOfCineData.Count);
-            m_ActiveCinematicData = ListOfCineData[result];
-        }
-        else
-        {
-            m_ActiveCinematicData = ListOfCineData[0];
-        }
+        // random between the cinematic data
+        int result = Random.Range(0, ListOfCineData.Count);
+        m_ActiveCinematicData = ListOfCineData[result];
         m_ActiveCinematicData.SetUserTransform(m_UserFollow, m_UserLookAt);
         m_ActiveCinematicData.SetTargetTransform(m_TargetFollow, m_TargetLookAt);
+        m_ActiveCinematicData.gameObject.SetActive(true);
         SetCineBrain(true);
         m_ActiveCinematicData.CompleteCinematicCallback += FinishedCinematic;
         m_ActiveCinematicData.BeginCinematic(_time);
@@ -166,7 +161,17 @@ public class CineMachineHandler : MonoBehaviour {
         m_UserFollow = null;
         m_UserLookAt = null;
         m_ActiveCinematicData.CompleteCinematicCallback -= FinishedCinematic;
+        m_ActiveCinematicData.gameObject.SetActive(false);
         m_ActiveCinematicData = null;
         SetCineBrain(false);
+    }
+
+    /// <summary>
+    /// Turns off cinematic camera
+    /// </summary>
+    public void TurnOffCinematic()
+    {
+        Assert.IsNotNull(m_ActiveCinematicData, "Something is wrong as the cinematic camera is already off in the 1st place!");
+        FinishedCinematic();
     }
 }

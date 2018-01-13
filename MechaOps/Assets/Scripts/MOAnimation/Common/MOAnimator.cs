@@ -20,7 +20,6 @@ public abstract class MOAnimator : MonoBehaviour
 {
     protected GameSystemsDirectory m_GameSystemsDirectory = null;
     protected TileSystem m_TileSystem = null;
-    protected CineMachineHandler m_CineMachineHandler = null;
     protected GameEventNames m_GameEventNames = null;
 
     // Death Animation Variable(s)
@@ -76,7 +75,17 @@ public abstract class MOAnimator : MonoBehaviour
     [SerializeField] protected AudioSource[] m_SFXAudioSources = null;
     [SerializeField] protected AudioClip m_MoveSFX = null;
 
-    public CineMachineHandler GetCineMachineHandler() { return m_CineMachineHandler; }
+    [SerializeField] protected string m_WalkCinematicName;
+    [SerializeField] protected string m_DeathCinematicName;
+    [SerializeField] protected string m_AttackCinematicName;
+    [SerializeField, Tooltip("Time taken for delay in the animation from camera to the turret during camera cinematics")]
+    protected float m_TimeDelayForAttackCam = 3.0f;
+    [SerializeField, Tooltip("Time taken for the death cam animation")]
+    protected float m_TimeDelayForDeathCam = 2.0f;
+    [SerializeField, Tooltip("Time taken for the delay before camera goes back to normal from cinematics")]
+    protected float m_TimeDelayForCamBackToNormal = 0.5f;
+    [SerializeField] protected ViewScript m_ViewScript;
+    [SerializeField] protected UnitStats m_UnitStat;
 
     protected void InvokeCallback(Void_Void _callback)
     {
@@ -88,14 +97,6 @@ public abstract class MOAnimator : MonoBehaviour
     {
         if (_callback == null) { return; }
         _callback(_parameter);
-    }
-
-    /// <summary>
-    /// Stopped the cinematic camera if there is any!
-    /// </summary>
-    public void StopCinematicCamera()
-    {
-        if (m_CineMachineHandler) { m_CineMachineHandler.SetCineBrain(false); }
     }
 
     protected virtual void OnDestroy()
@@ -110,8 +111,16 @@ public abstract class MOAnimator : MonoBehaviour
 
         // Get the Systems required fromGame Systems Directory.
         m_TileSystem = m_GameSystemsDirectory.GetTileSystem();
-        m_CineMachineHandler = m_GameSystemsDirectory.GetCineMachineHandler();
         m_GameEventNames = m_GameSystemsDirectory.GetGameEventNames();
+        // only get the component if it is not linked directly
+        if (!m_UnitStat)
+        {
+            m_UnitStat = GetComponent<UnitStats>();
+            if (!m_ViewScript)
+            {
+                m_ViewScript = m_UnitStat.GetViewScript();
+            }
+        }
     }
 
     protected virtual void Start()

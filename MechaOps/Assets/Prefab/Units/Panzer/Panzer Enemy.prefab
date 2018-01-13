@@ -1780,6 +1780,14 @@ MonoBehaviour:
   m_SFXAudioSources:
   - {fileID: 82395203855276670}
   m_MoveSFX: {fileID: 8300000, guid: e9ddd28816243ec43a6e61bdc4a41ebc, type: 3}
+  m_WalkCinematicName: PanzerWalk
+  m_DeathCinematicName: PanzerDie
+  m_AttackCinematicName: PanzerAttack
+  m_TimeDelayForAttackCam: 3
+  m_TimeDelayForDeathCam: 2
+  m_TimeDelayForCamBackToNormal: 0.5
+  m_ViewScript: {fileID: 0}
+  m_UnitStat: {fileID: 0}
   m_MaxGunElevation: -80
   m_MaxGunDepression: 20
   m_Hull: {fileID: 4678192204071410}
@@ -1809,12 +1817,6 @@ MonoBehaviour:
   - {fileID: 4239691321839952}
   - {fileID: 4080591688820204}
   m_ShootGunfireSFX: {fileID: 8300000, guid: 182de6e577a9f9845b151abd20c8c501, type: 3}
-  m_TimeDelayForCamToTurret: 3
-  m_TimeDelayForDeathCam: 1.6
-  m_TimeDelayForCamBackToNormal: 0.5
-  m_PanzerWalkCinematicName: Walk
-  m_PanzerAttackCinematicName: Attack
-  m_PanzerDeathCinematicName: Die
 --- !u!114 &114283408678398602
 MonoBehaviour:
   m_ObjectHideFlags: 1
