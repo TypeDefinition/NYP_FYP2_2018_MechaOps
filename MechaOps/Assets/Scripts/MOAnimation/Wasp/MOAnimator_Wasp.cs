@@ -155,6 +155,13 @@ public class MOAnimator_Wasp : MOAnimator
         StopAmbientAudioSource();
         PlaySFXAudioSource(m_CrashingSFX, false);
 
+        // plays the death cinematic camera if it is visible
+        if (m_ViewScript.IsVisible())
+        {
+            GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), m_Hull.transform, m_Hull.transform);
+            GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_DeathCinematicName, m_TimeDelayForDeathCam);
+        }
+
         while (true)
         {
             // Do nothing while paused.
@@ -173,7 +180,7 @@ public class MOAnimator_Wasp : MOAnimator
 
             yield return null;
         }
-
+        yield return new WaitForSeconds(m_TimeDelayForDeathCam);
         InvokeCallback(m_DeathAnimationCompletionCallback);
     }
 
@@ -215,6 +222,22 @@ public class MOAnimator_Wasp : MOAnimator
         }
 
         return (Mathf.Abs(transform.position.y - _desiredHeight) < m_HeightTolerance);
+    }
+
+    public override void StartMoveAnimation(TileId[] _movementPath, Void_Int _reachedTileCallback, Void_Void _completionCallback)
+    {
+        if (m_ViewScript.IsVisible() && m_UnitStat.UnitFaction == FactionType.Player)
+        {
+            GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), m_Hull.transform, m_Hull.transform);
+            GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_WalkCinematicName, -1);
+            _completionCallback += MoveCinematicComplete;
+        }
+        base.StartMoveAnimation(_movementPath, _reachedTileCallback, _completionCallback);
+    }
+
+    protected override void MoveCinematicComplete()
+    {
+        GameEventSystem.GetInstance().TriggerEvent(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StopCinematic));
     }
 
     protected override IEnumerator MoveAnimationCouroutine()
@@ -331,6 +354,13 @@ public class MOAnimator_Wasp : MOAnimator
 
     protected override IEnumerator ShootAnimationCouroutine()
     {
+        // Need to ensure that the Panzer is visible then it will be able to trigger such events!
+        if (m_ViewScript.IsVisible())
+        {
+            GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineTargetTransform), m_Target.transform, m_Target.transform);
+            GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), m_Hull.transform, m_Hull.transform);
+            GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_AttackCinematicName, m_TimeDelayForAttackCam);
+        }
         // Take Off
         while (true)
         {

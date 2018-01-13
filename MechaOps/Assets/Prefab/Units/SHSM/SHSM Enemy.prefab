@@ -1556,6 +1556,14 @@ MonoBehaviour:
   m_SFXAudioSources:
   - {fileID: 82933218209585820}
   m_MoveSFX: {fileID: 8300000, guid: 4f21b045c63c10546a8e5182c11a12d8, type: 3}
+  m_WalkCinematicName: SHSMWalk
+  m_DeathCinematicName: SHSMDie
+  m_AttackCinematicName: SHSMAttack
+  m_TimeDelayForAttackCam: 3
+  m_TimeDelayForDeathCam: 2
+  m_TimeDelayForCamBackToNormal: 0.5
+  m_ViewScript: {fileID: 0}
+  m_UnitStat: {fileID: 0}
   m_MaxGunElevation: -80
   m_MaxGunDepression: 20
   m_Gun: {fileID: 4339311341716486}

@@ -1747,7 +1747,11 @@ MonoBehaviour:
   m_WalkCinematicName: PanzerWalk
   m_DeathCinematicName: PanzerDie
   m_AttackCinematicName: PanzerAttack
-  m_ViewScript: {fileID: 114750456944338704}
+  m_TimeDelayForAttackCam: 2.5
+  m_TimeDelayForDeathCam: 2
+  m_TimeDelayForCamBackToNormal: 0.5
+  m_ViewScript: {fileID: 0}
+  m_UnitStat: {fileID: 0}
   m_MaxGunElevation: -80
   m_MaxGunDepression: 20
   m_Hull: {fileID: 4813961791516552}
@@ -1777,10 +1781,6 @@ MonoBehaviour:
   - {fileID: 4284379999705012}
   - {fileID: 4003136375522082}
   m_ShootGunfireSFX: {fileID: 8300000, guid: 182de6e577a9f9845b151abd20c8c501, type: 3}
-  m_TimeDelayForCamToTurret: 3
-  m_TimeDelayForDeathCam: 2
-  m_TimeDelayForCamBackToNormal: 0.5
-  m_ViewScript: {fileID: 0}
 --- !u!114 &114143553378517202
 MonoBehaviour:
   m_ObjectHideFlags: 1

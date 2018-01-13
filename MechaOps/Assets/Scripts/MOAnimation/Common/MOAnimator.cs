@@ -522,6 +522,11 @@ public abstract class MOAnimator : MonoBehaviour
         StartCoroutine(m_MoveAnimationCoroutine);
     }
 
+    protected virtual void MoveCinematicComplete()
+    {
+        Assert.IsTrue(true == false, "Nothing implemented at MOAnimator.MoveCinematicComplete!");
+    }
+
     public virtual void PauseMoveAnimation()
     {
         m_MoveAnimationPaused = true;
@@ -574,9 +579,5 @@ public abstract class MOAnimator : MonoBehaviour
         StopDeathAnimation();
         StopMoveAnimation();
         StopShootAnimation();
-    }
-
-    private void Update()
-    {
     }
 }

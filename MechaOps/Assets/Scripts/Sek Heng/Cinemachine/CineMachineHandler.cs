@@ -41,7 +41,10 @@ public class CineMachineHandler : MonoBehaviour {
             // making sure that the cinemachine brain is inactive
             m_CineBrain.enabled = false;
         }
-        m_ArrayOfCinematicData = GetComponentsInChildren<CinematicData>();
+        if (m_ArrayOfCinematicData.Length == 0)
+        {
+            m_ArrayOfCinematicData = GetComponentsInChildren<CinematicData>();
+        }
         foreach (CinematicData CineData in m_ArrayOfCinematicData)
         {
             List<CinematicData> ListOfCineData;
@@ -104,9 +107,10 @@ public class CineMachineHandler : MonoBehaviour {
                     m_OriginalCamRotation = Camera.main.transform.localRotation;
                     break;
                 default:
-                    // set the camera back to normal
-                    Camera.main.transform.position = m_OriginalCamPos;
-                    Camera.main.transform.localRotation = m_OriginalCamRotation;
+                    Transform cameraTransform = Camera.main.transform;
+                    // set the camera back to normal. it appears that user prefers it to be left off where the cinematic camera at the XZ axis!
+                    cameraTransform.position = new Vector3(cameraTransform.position.x, m_OriginalCamPos.y, cameraTransform.position.z);
+                    //cameraTransform.localRotation = m_OriginalCamRotation;
                     break;
             }
         }

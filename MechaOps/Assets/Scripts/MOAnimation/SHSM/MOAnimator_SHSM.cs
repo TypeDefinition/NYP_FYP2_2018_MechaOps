@@ -213,6 +213,12 @@ public class MOAnimator_SHSM : MOAnimator
 
     protected override IEnumerator ShootAnimationCouroutine()
     {
+        // Need to ensure that the Panzer is visible then it will be able to trigger such events!
+        if (m_ViewScript.IsVisible())
+        {
+            GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), m_Hull, m_BulletSpawnPoint);
+            GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_AttackCinematicName, m_TimeDelayForAttackCam);
+        }
         // Turn towards the target.
         while (true)
         {
@@ -298,6 +304,26 @@ public class MOAnimator_SHSM : MOAnimator
             GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), null);
             Destroy(m_Bullet.gameObject);
         }
+    }
+
+    public override void StartMoveAnimation(TileId[] _movementPath, Void_Int _reachedTileCallback, Void_Void _completionCallback)
+    {
+        // Need to make sure the unit is visible and it belongs to the player!
+        if (m_ViewScript.IsVisible() && m_UnitStat.UnitFaction == FactionType.Player)
+        {
+            GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), m_Gun, m_Gun);
+            GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_WalkCinematicName, -1);
+            _completionCallback += MoveCinematicComplete;
+        }
+        base.StartMoveAnimation(_movementPath, _reachedTileCallback, _completionCallback);
+    }
+
+    /// <summary>
+    /// Stop the cinematic camera after moving as there is no time given for the camera
+    /// </summary>
+    protected override void MoveCinematicComplete()
+    {
+        GameEventSystem.GetInstance().TriggerEvent(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StopCinematic));
     }
 
 #if UNITY_EDITOR

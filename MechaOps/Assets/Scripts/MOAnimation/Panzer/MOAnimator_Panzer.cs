@@ -173,9 +173,9 @@ public class MOAnimator_Panzer : MOAnimator
         // Need to make sure the unit is visible and it belongs to the player!
         if (m_ViewScript.IsVisible() && m_UnitStat.UnitFaction == FactionType.Player)
         {
-            GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), m_Gun, m_Gun);
+            GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), m_Hull, m_Hull);
             GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_WalkCinematicName, -1);
-            _completionCallback += FinishCinematicMovement;
+            _completionCallback += MoveCinematicComplete;
         }
         base.StartMoveAnimation(_movementPath, _perTileCallback, _completionCallback);
     }
@@ -183,7 +183,7 @@ public class MOAnimator_Panzer : MOAnimator
     /// <summary>
     /// Stop the cinematic camera after moving as there is no time given for the camera
     /// </summary>
-    protected virtual void FinishCinematicMovement()
+    protected override void MoveCinematicComplete()
     {
         GameEventSystem.GetInstance().TriggerEvent(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StopCinematic));
     }
@@ -244,8 +244,10 @@ public class MOAnimator_Panzer : MOAnimator
             GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), m_Gun, m_Gun);
             GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_AttackCinematicName, m_TimeDelayForAttackCam);
         }
+        float TimeForCameraZoom = 1.25f;
+        float RemainingWaitTime = m_TimeDelayForAttackCam - TimeForCameraZoom;
         // Allow the camera to go to the turret.
-        yield return new WaitForSeconds(m_TimeDelayForAttackCam);
+        yield return new WaitForSeconds(TimeForCameraZoom);
 
         // Rotate our turret to face our target.
         while (true)
@@ -272,7 +274,7 @@ public class MOAnimator_Panzer : MOAnimator
         while (!m_BulletAnimationComplete) { yield return null; }
         m_BulletAnimationComplete = false;
 
-        yield return new WaitForSeconds(m_TimeDelayForCamBackToNormal);
+        yield return new WaitForSeconds(RemainingWaitTime);
 
         // Invoke the completion callback.
         InvokeCallback(m_ShootAnimationCompletionCallback);
