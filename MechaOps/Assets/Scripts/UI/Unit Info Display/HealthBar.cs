@@ -135,5 +135,4 @@ public class HealthBar : MonoBehaviour
         CurrentHealthPoints = m_CurrentHealthPoints;
     }
 #endif // UNITY_EDITOR
-
 }

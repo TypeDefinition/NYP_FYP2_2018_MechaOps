@@ -110,7 +110,7 @@ public class CineMachineHandler : MonoBehaviour {
                     Transform cameraTransform = Camera.main.transform;
                     // set the camera back to normal. it appears that user prefers it to be left off where the cinematic camera at the XZ axis!
                     cameraTransform.position = new Vector3(cameraTransform.position.x, m_OriginalCamPos.y, cameraTransform.position.z);
-                    //cameraTransform.localRotation = m_OriginalCamRotation;
+                    cameraTransform.localRotation = Quaternion.Euler(m_OriginalCamRotation.eulerAngles.x, m_OriginalCamRotation.eulerAngles.y, m_OriginalCamRotation.eulerAngles.z);
                     break;
             }
         }

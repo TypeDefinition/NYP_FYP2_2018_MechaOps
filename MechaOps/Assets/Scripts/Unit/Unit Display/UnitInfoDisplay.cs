@@ -53,7 +53,7 @@ public class UnitInfoDisplay : TweenUI_Scale
             Canvas screenSpaceCanvas = m_UnitStats.GetGameSystemsDirectory().GetScreenSpaceCanvas();
             Camera gameCamera = m_UnitStats.GetGameSystemsDirectory().GetGameCamera();
             Vector3 screenPoint = gameCamera.WorldToScreenPoint(m_UnitStats.gameObject.transform.position + m_UnitWorldPositionOffset);
-            screenPoint.z = m_PositionZ;
+            //screenPoint.z = m_PositionZ;
             transform.position = screenPoint;
         }
     }
