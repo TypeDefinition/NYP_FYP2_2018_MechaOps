@@ -77,6 +77,15 @@ public class GameEventNames : ScriptableObject
     [SerializeField] private string[] m_TouchGestureNames = new string[(int)TouchGestureNames.Pinch];
     public string GetEventName(TouchGestureNames _enumValue) { return m_TouchGestureNames[(int)_enumValue]; }
 
+    public enum SceneManagementName
+    {
+        SceneClosed,
+
+        Num_SceneManagementNames
+    }
+    [SerializeField] private string[] m_SceneManageNames = new string[(int)SceneManagementName.Num_SceneManagementNames];
+    public string GetEventName(SceneManagementName _enumValue) { return m_SceneManageNames[(int)_enumValue]; }
+
     /// <summary>
     /// Update this function whenever a new enum or array is declared!
     /// IMPORTANT: Make sure to update GameEventNameEditor as well!

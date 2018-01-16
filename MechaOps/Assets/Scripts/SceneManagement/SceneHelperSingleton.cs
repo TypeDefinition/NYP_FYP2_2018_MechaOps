@@ -157,4 +157,14 @@ public class SceneHelperSingleton {
             m_ListOfSceneHistory.RemoveAt(0);
         }
     }
+
+    /// <summary>
+    /// Similar to SceneManager.SetActiveScene but user won't need to mess with Unity Scene Management
+    /// </summary>
+    /// <param name="_sceneName">Scene Name which the user wants to set it active</param>
+    public void SetSceneActive(string _sceneName)
+    {
+        Scene WantedScene = SceneManager.GetSceneByName(_sceneName);
+        SceneManager.SetActiveScene(WantedScene);
+    }
 }
