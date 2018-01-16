@@ -20,7 +20,6 @@ public class SettingMenuScript : MonoBehaviour {
         {
             m_DisableScript = GetComponent<TweenDisableScript>();
         }
-        SceneHelperSingleton.Instance.SetSceneActive(m_SceneName);
 	}
 
     public void PressedDone()

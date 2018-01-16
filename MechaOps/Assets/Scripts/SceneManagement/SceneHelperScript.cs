@@ -1,8 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class TestTransitioningButton : MonoBehaviour {
+/// <summary>
+/// It just uses the functions of scene helper singleton
+/// </summary>
+public class SceneHelperScript : MonoBehaviour {
     public void TransitToOtherScene(string _sceneName)
     {
         SceneHelperSingleton.Instance.TransitionScene(_sceneName);
