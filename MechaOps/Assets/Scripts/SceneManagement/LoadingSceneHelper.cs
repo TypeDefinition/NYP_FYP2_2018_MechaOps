@@ -37,16 +37,20 @@ public class LoadingSceneHelper : MonoBehaviour {
         yield return SceneManager.LoadSceneAsync(m_LoadingSceneName, LoadSceneMode.Additive);
         // making sure that the loading scene is active
         print("Setting loading scene to be active: " + SceneManager.SetActiveScene(SceneManager.GetSceneByName(m_LoadingSceneName)));
-        // moving this gameobject to the loading scene....may not be necesssary
+        // moving this gameobject to the loading scene. so that it will only be destroyed at the loading scene!
         SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
-        yield return null;
+        // then unload the active scene and set the current scene to be active!
+        // Need to unload the current scene 1st otherwise the event system in the other scene will get removed!
+        SceneHelperSingleton.Instance.SetOtherSceneActiveAndUnloadCurrent(_sceneName);
         // Then begin loading the other scenes
         AsyncOperation OtherSceneOperation = SceneManager.LoadSceneAsync(_sceneName, LoadSceneMode.Additive);
         yield return OtherSceneOperation;
+        // set loaded scene to be active!
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName(_sceneName));
         // Maybe this line can be removed. it just delays the current loading to a further of some time! But loading of the game is done very fast
-        yield return new WaitForSecondsRealtime(m_TimeDelayForLoading);
-        // After other scene has finished loading, then unload the loading scene!
-        SceneManager.UnloadSceneAsync(m_LoadingSceneName);
+        yield return new WaitForSecondsRealtime(_timeDelay);
+         // After other scene has finished loading, then unload the loading scene!
+       SceneManager.UnloadSceneAsync(m_LoadingSceneName);
         yield break;
     }
 }

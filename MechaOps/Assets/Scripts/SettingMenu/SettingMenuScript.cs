@@ -13,6 +13,10 @@ public class SettingMenuScript : MonoBehaviour {
     protected string m_SceneName = "Setting_Menu";
     [SerializeField, Tooltip("Game Event Name asset")]
     protected GameEventNames m_EventNamesAsset;
+    [SerializeField, Tooltip("Audio Source to play sound sfx")]
+    protected AudioSource m_AudioSource;
+    [SerializeField, Tooltip("Sound effects for confirming")]
+    protected AudioClip m_SFXClip;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +30,7 @@ public class SettingMenuScript : MonoBehaviour {
     {
         // this will help to set this gameobject to be inactive
         m_DisableScript.AnimateUI();
+        m_AudioSource.PlayOneShot(m_SFXClip);
     }
 
     /// <summary>

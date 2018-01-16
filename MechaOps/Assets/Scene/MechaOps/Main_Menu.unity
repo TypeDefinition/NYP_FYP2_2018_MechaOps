@@ -1832,6 +1832,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MainMenuManager: {fileID: 2135469113}
   m_MenuState: 2
+  m_PlaySFXSource: {fileID: 1393266037}
+  m_SFXClip: {fileID: 8300000, guid: a92ba294fd7437d48b5daab306733bc2, type: 3}
 --- !u!114 &743176087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1894,7 +1896,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: lol
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &743176088
@@ -2014,7 +2016,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &750616726
@@ -2031,6 +2033,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MainMenuManager: {fileID: 2135469113}
   m_MenuState: 4
+  m_PlaySFXSource: {fileID: 1393266037}
+  m_SFXClip: {fileID: 8300000, guid: 592e20d9cc79a7042adae3584804bb1a, type: 3}
 --- !u!114 &750616727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3923,6 +3927,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MainMenuManager: {fileID: 2135469113}
   m_MenuState: 3
+  m_PlaySFXSource: {fileID: 1393266037}
+  m_SFXClip: {fileID: 8300000, guid: d663e95e253db974d8f0a52cfc9ca7e1, type: 3}
 --- !u!114 &1532876906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3985,7 +3991,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1532876907
@@ -4160,6 +4166,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MainMenuManager: {fileID: 2135469113}
   m_MenuState: 1
+  m_PlaySFXSource: {fileID: 1393266037}
+  m_SFXClip: {fileID: 8300000, guid: d663e95e253db974d8f0a52cfc9ca7e1, type: 3}
 --- !u!114 &1731345524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4222,7 +4230,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1731345525
@@ -4396,6 +4404,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MainMenuManager: {fileID: 2135469113}
   m_MenuState: 6
+  m_PlaySFXSource: {fileID: 1393266037}
+  m_SFXClip: {fileID: 8300000, guid: a92ba294fd7437d48b5daab306733bc2, type: 3}
 --- !u!114 &1833764288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4458,7 +4468,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1833764289
@@ -4910,6 +4920,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MainMenuManager: {fileID: 2135469113}
   m_MenuState: 3
+  m_PlaySFXSource: {fileID: 1393266037}
+  m_SFXClip: {fileID: 8300000, guid: a92ba294fd7437d48b5daab306733bc2, type: 3}
 --- !u!114 &1975172698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4972,7 +4984,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1975172699

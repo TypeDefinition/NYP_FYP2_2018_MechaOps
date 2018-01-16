@@ -45,7 +45,8 @@ public class MainMenuManager : MonoBehaviour
 
     public void LoadSelectedLevel()
     {
-        SceneManager.LoadScene(m_SelectedLevelSceneName, LoadSceneMode.Single);
+        //SceneManager.LoadScene(m_SelectedLevelSceneName, LoadSceneMode.Single);
+        SceneHelperSingleton.Instance.TransitionSceneWithLoading(m_SelectedLevelSceneName);
     }
 
     public void SetMenuState(MenuState _state)

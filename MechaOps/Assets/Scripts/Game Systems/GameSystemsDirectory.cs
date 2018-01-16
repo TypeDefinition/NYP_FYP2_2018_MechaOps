@@ -69,7 +69,6 @@ public class GameSystemsDirectory : MonoBehaviour
     [SerializeField] private PlayerUnitsManager m_PlayerUnitsManager = null;
     [SerializeField] private GameFlowManager m_GameFlowManager = null;
     [SerializeField] private UnitActionScheduler m_UnitActionScheduler = null;
-    [SerializeField] private CineMachineHandler m_CineMachineHandler = null;
     [SerializeField] private SpawnSystem m_SpawnSystem = null;
     [SerializeField] private Canvas m_ScreenSpaceCanvas = null;
 
@@ -87,7 +86,6 @@ public class GameSystemsDirectory : MonoBehaviour
     public PlayerUnitsManager GetPlayerUnitsManager() { return m_PlayerUnitsManager; }
     public GameFlowManager GetGameFlowManager() { return m_GameFlowManager; }
     public UnitActionScheduler GetUnitActionScheduler() { return m_UnitActionScheduler; }
-    public CineMachineHandler GetCineMachineHandler() { return m_CineMachineHandler; }
     public SpawnSystem GetSpawnSystem() { return m_SpawnSystem; }
 
     public GameAudioSettings GetGameAudioSettings() { return m_GameAudioSettings; }

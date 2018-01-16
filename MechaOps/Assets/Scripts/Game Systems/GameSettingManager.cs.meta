@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 43a67f6b74d7c464e85f353d004c2a3d
+timeCreated: 1516096034
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - m_InGameSettingUI: {instanceID: 0}
+  - m_EventNamesAsset: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

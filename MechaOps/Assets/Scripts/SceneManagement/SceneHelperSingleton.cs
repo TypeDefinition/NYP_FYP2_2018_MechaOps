@@ -13,6 +13,8 @@ public class SceneHelperSingleton {
             if (m_Instance == null)
             {
                 m_Instance = new SceneHelperSingleton();
+                // and make sure that current active scene is added to the scene history!
+                m_Instance.AddSceneNameToHistory(SceneManager.GetActiveScene().name);
             }
             return m_Instance;
         }
@@ -34,13 +36,7 @@ public class SceneHelperSingleton {
     public void TransitionScene(string _sceneName)
     {
         SceneManager.LoadScene(_sceneName, LoadSceneMode.Additive);
-        if (m_ActiveGameSceneName != "")
-        {
-            // only unload the game scene if the name isnt an empty string
-            SceneManager.UnloadSceneAsync(m_ActiveGameSceneName);
-            AddSceneNameToHistory(m_ActiveGameSceneName);
-        }
-        m_ActiveGameSceneName = _sceneName;
+        SetOtherSceneActiveAndUnloadCurrent(_sceneName);
     }
 
     /// <summary>
@@ -49,15 +45,12 @@ public class SceneHelperSingleton {
     /// <param name="_sceneName"></param>
     public void TransitionSceneWithLoading(string _sceneName)
     {
-        if (m_ActiveGameSceneName != "")
-        {
-            SceneManager.UnloadSceneAsync(m_ActiveGameSceneName);
-            AddSceneNameToHistory(m_ActiveGameSceneName);
-        }
         GameObject NewGameObj = new GameObject("Loading gameObject", typeof(LoadingSceneHelper));
         LoadingSceneHelper LoadHelper = NewGameObj.GetComponent<LoadingSceneHelper>();
         LoadHelper.TransitAfterLoading(_sceneName);
-        m_ActiveGameSceneName = _sceneName;
+        // it appears that this doesn't work
+        // Speculation is LoadingScene is yet to be an active scene then SceneManager wasn't able to unload the active scene
+        //SetOtherSceneActiveAndUnloadCurrent(_sceneName);
     }
 
     /// <summary>
@@ -67,14 +60,27 @@ public class SceneHelperSingleton {
     /// <param name="_time"></param>
     public void TransitionSceneWithLoading(string _sceneName, float _time)
     {
-        if (m_ActiveGameSceneName != "")
-        {
-            SceneManager.UnloadSceneAsync(m_ActiveGameSceneName);
-            AddSceneNameToHistory(m_ActiveGameSceneName);
-        }
-        GameObject NewGameObj = new GameObject("Loading gameObject", typeof(LoadingSceneHelper));
+         GameObject NewGameObj = new GameObject("Loading gameObject", typeof(LoadingSceneHelper));
         LoadingSceneHelper LoadHelper = NewGameObj.GetComponent<LoadingSceneHelper>();
         LoadHelper.TransitAfterLoading(_sceneName, _time);
+        // we will have to make sure that the loading scene comes 1st as the current active scene will never be unloaded!
+        // it appears that this doesn't work
+        // Speculation is LoadingScene is yet to be an active scene then SceneManager wasn't able to unload the active scene
+        //SetOtherSceneActiveAndUnloadCurrent(_sceneName);
+    }
+
+    /// <summary>
+    /// Unloading the scene then set the other scene to be the current active scene.
+    /// However it does not set the scene to be active in the SceneManager but only at the SceneHelperSingleton!
+    /// </summary>
+    /// <param name="_sceneName"></param>
+    public void SetOtherSceneActiveAndUnloadCurrent(string _sceneName)
+    {
+        if (m_ActiveGameSceneName != "")
+        {
+            UnloadScene(m_ActiveGameSceneName);
+            AddSceneNameToHistory(m_ActiveGameSceneName);
+        }
         m_ActiveGameSceneName = _sceneName;
     }
 
@@ -104,7 +110,7 @@ public class SceneHelperSingleton {
     /// </summary>
     public void TransitBackWithLoading()
     {
-        if (m_ListOfSceneHistory.Count == 0)
+        if (m_ListOfSceneHistory.Count >= 1)
         {
             Debug.Log("Cannot transit back due to there is nothing at scene history!");
         }
@@ -150,6 +156,19 @@ public class SceneHelperSingleton {
     /// <param name="_sceneName"></param>
     protected void AddSceneNameToHistory(string _sceneName)
     {
+        if (m_ActiveGameSceneName == "")
+        {
+            m_ActiveGameSceneName = _sceneName;
+        }
+        else
+        {
+            int lastIndexOfHistory = m_ListOfSceneHistory.Count - 1;
+            // if it is the same, dont bother!
+            if (m_ListOfSceneHistory[lastIndexOfHistory] == _sceneName)
+            {
+                return;
+            }
+        }
         m_ListOfSceneHistory.Add(_sceneName);
         if (m_ListOfSceneHistory.Count == MAX_NUMBER_OF_OBJECTS_IN_LIST)
         {
