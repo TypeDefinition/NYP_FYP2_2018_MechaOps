@@ -33,4 +33,9 @@ public class SceneHelperScript : MonoBehaviour {
     {
         SceneHelperSingleton.Instance.UnloadScene(_sceneName);
     }
+
+    public void ReloadScene()
+    {
+        SceneHelperSingleton.Instance.ReloadCurrentSceneWithLoadingScreen();
+    }
 }

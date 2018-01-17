@@ -186,4 +186,12 @@ public class SceneHelperSingleton {
         Scene WantedScene = SceneManager.GetSceneByName(_sceneName);
         SceneManager.SetActiveScene(WantedScene);
     }
+
+    /// <summary>
+    /// transits to loading scene then reloads the current scene
+    /// </summary>
+    public void ReloadCurrentSceneWithLoadingScreen()
+    {
+        TransitionSceneWithLoading(m_ActiveGameSceneName);
+    }
 }

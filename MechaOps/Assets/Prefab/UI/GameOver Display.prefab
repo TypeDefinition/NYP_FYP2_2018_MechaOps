@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 222955507895031268}
   - component: {fileID: 114542535528528408}
   - component: {fileID: 114016926326724450}
-  - component: {fileID: 114494615272185672}
+  - component: {fileID: 114042469449831330}
   m_Layer: 5
   m_Name: Main Menu Button
   m_TagString: Untagged
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 222606796898762704}
   - component: {fileID: 114165298409393216}
   - component: {fileID: 114553986970058738}
-  - component: {fileID: 114100849951251264}
+  - component: {fileID: 114152602460893228}
   m_Layer: 5
   m_Name: Retry Button
   m_TagString: Untagged
@@ -140,8 +140,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114494615272185672}
-        m_MethodName: GoToScene
+      - m_Target: {fileID: 114042469449831330}
+        m_MethodName: TransitOtherSceneWithLoading
         m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -153,6 +153,17 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114042469449831330
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1237160024632866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a895a4888eb61248a77e72d35adb1c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114091774304007120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,7 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TweenAnimationDuration: 0.2
---- !u!114 &114100849951251264
+--- !u!114 &114152602460893228
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -173,7 +184,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1607283410907850}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30d2835ede0df874a99e89718146aaba, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a895a4888eb61248a77e72d35adb1c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114165298409393216
@@ -203,17 +214,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114494615272185672
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1237160024632866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30d2835ede0df874a99e89718146aaba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114542535528528408
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -392,8 +392,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114100849951251264}
-        m_MethodName: ReloadCurrentScene
+      - m_Target: {fileID: 114152602460893228}
+        m_MethodName: ReloadScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
