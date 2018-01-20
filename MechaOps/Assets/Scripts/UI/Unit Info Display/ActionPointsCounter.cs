@@ -15,8 +15,6 @@ public class ActionPointsCounter : MonoBehaviour
     [SerializeField] private Color m_NotFullActionPointsColor = Color.yellow;
     [SerializeField] private Color m_NoActionPointsColor = Color.red;
 
-    private bool m_ValuesChanged = true; // Dirty Flag
-
     public int MaxActionPoints
     {
         get { return m_MaxActionPoints; }
@@ -24,14 +22,14 @@ public class ActionPointsCounter : MonoBehaviour
         {
             m_MaxActionPoints = Mathf.Max(0, value);
             m_CurrentActionPoints = Mathf.Min(m_CurrentActionPoints, m_MaxActionPoints);
-            m_ValuesChanged = true;
+            SetActionPointsText();
         }
     }
 
     public int CurrentActionPoints
     {
         get { return m_CurrentActionPoints; }
-        set { m_CurrentActionPoints = Mathf.Clamp(value, 0, m_MaxActionPoints); m_ValuesChanged = true; }
+        set { m_CurrentActionPoints = Mathf.Clamp(value, 0, m_MaxActionPoints); SetActionPointsText();}
     }
 
     private void SetActionPointsText()
@@ -60,15 +58,6 @@ public class ActionPointsCounter : MonoBehaviour
     private void Start()
     {
         SetActionPointsText();
-    }
-
-    private void Update()
-    {
-        if (m_ValuesChanged)
-        {
-            SetActionPointsText();
-            m_ValuesChanged = false;
-        }
     }
 
 #if UNITY_EDITOR
