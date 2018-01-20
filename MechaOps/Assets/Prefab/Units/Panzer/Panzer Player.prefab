@@ -1937,7 +1937,7 @@ MonoBehaviour:
       m_Y: 0
   m_TileAttributeOverrides: []
   m_ViewTileScript: {fileID: 114750456944338704}
-  m_UnitInfoDisplay_Prefab: {fileID: 114423042521562832, guid: 5de0e7aba41ddec4daa1972243bd5133,
+  m_UnitInfoDisplay_Prefab: {fileID: 114402062310350054, guid: 5de0e7aba41ddec4daa1972243bd5133,
     type: 2}
   m_EnemiesInViewRange: []
 --- !u!114 &114750456944338704

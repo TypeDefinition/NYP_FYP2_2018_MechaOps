@@ -296,9 +296,10 @@ public class UnitStats : MonoBehaviour
         Assert.IsTrue(m_UnitInfoDisplay_Prefab != null, MethodBase.GetCurrentMethod().Name + " - m_UnitInfoDisplay_Prefab must not be null!");
 
         // Initialisation of Unit Info Display
-        m_UnitInfoDisplay = Instantiate(m_UnitInfoDisplay_Prefab.gameObject, GameSystemsDirectory.GetSceneInstance().GetScreenSpaceCanvas().transform).GetComponent<UnitInfoDisplay>();
+        m_UnitInfoDisplay = Instantiate(m_UnitInfoDisplay_Prefab.gameObject, GameSystemsDirectory.GetSceneInstance().GetUnitInfoCanvas().transform).GetComponent<UnitInfoDisplay>();
         m_UnitInfoDisplay.SetUnitStats(this);
-        m_UnitInfoDisplay.transform.SetAsFirstSibling(); // Such a shitty hack.
+        m_UnitInfoDisplay.GetComponent<Billboard>().m_MainCamera = GameSystemsDirectory.GetSceneInstance().GetUnitInfoCamera();
+        m_UnitInfoDisplay.transform.position = transform.position;
 
         // Subscribe to events.
         InitEvents();

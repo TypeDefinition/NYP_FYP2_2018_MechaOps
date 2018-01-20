@@ -3,7 +3,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LoadingSceneHelper : MonoBehaviour {
-    protected const string m_LoadingSceneName = "Loading";
+    /// <summary>
+    /// TODO: Fixed this hardcoded loading scene name
+    /// </summary>
+    protected const string m_LoadingSceneName = "Loading_Menu";
     protected const float m_TimeDelayForLoading = 1.25f;
 
     /// <summary>

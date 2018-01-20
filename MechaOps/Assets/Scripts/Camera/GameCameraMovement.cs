@@ -28,6 +28,8 @@ public class GameCameraMovement : MonoBehaviour
     [SerializeField] private float m_MinFOV = 10.0f;
     [SerializeField] private float m_MaxFOV = 80.0f;
 
+    Void_Float m_FieldOfViewChangeCallbacks;
+
     public TileSystem GetTileSystem() { return m_TileSystem; }
 
     public float MinHeight
@@ -58,6 +60,12 @@ public class GameCameraMovement : MonoBehaviour
     {
         get { return m_MaxFOV; }
         set { m_MaxFOV = Mathf.Clamp(value, m_MinFOV, 179.0f); }
+    }
+
+    public Void_Float FieldOfViewChangeCallbacks
+    {
+        get { return m_FieldOfViewChangeCallbacks; }
+        set { m_FieldOfViewChangeCallbacks = value; }
     }
 
     public void LerpToPosition(Vector3 _position, float _time)
@@ -141,6 +149,10 @@ public class GameCameraMovement : MonoBehaviour
         Assert.IsTrue(camera != null);
 
         camera.fieldOfView = Mathf.Clamp(camera.fieldOfView + _zoomValue, m_MinFOV, m_MaxFOV);
+        if (FieldOfViewChangeCallbacks != null)
+        {
+            FieldOfViewChangeCallbacks.Invoke(camera.fieldOfView);
+        }
     }
 
     private void Awake()

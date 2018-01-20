@@ -62,6 +62,7 @@ public class GameSystemsDirectory : MonoBehaviour
     [Header("Systems that are NOT a child of this GameObject.")]
     [SerializeField] private TileSystem m_TileSystem = null;
     [SerializeField] private Camera m_GameCamera = null;
+    [SerializeField] private Camera m_UnitInfoCamera = null;
 
     [Header("Systems that are a child of this GameObject.")]
     [SerializeField] private UnitsTracker m_UnitsTracker = null;
@@ -71,6 +72,7 @@ public class GameSystemsDirectory : MonoBehaviour
     [SerializeField] private UnitActionScheduler m_UnitActionScheduler = null;
     [SerializeField] private SpawnSystem m_SpawnSystem = null;
     [SerializeField] private Canvas m_ScreenSpaceCanvas = null;
+    [SerializeField] private Canvas m_UnitInfoCanvas = null;
 
     [Header("Scriptable Objects.")]
     [SerializeField] private GameAudioSettings m_GameAudioSettings = null;
@@ -79,7 +81,9 @@ public class GameSystemsDirectory : MonoBehaviour
 
     public TileSystem GetTileSystem() { return m_TileSystem; }
     public Canvas GetScreenSpaceCanvas() { return m_ScreenSpaceCanvas; }
+    public Canvas GetUnitInfoCanvas() { return m_UnitInfoCanvas; }
     public Camera GetGameCamera() { return m_GameCamera; }
+    public Camera GetUnitInfoCamera() { return m_UnitInfoCamera; }
 
     public UnitsTracker GetUnitsTracker() { return m_UnitsTracker; }
     public AIUnitsManager[] GetAIUnitsManager() { return m_AIUnitManagers; }

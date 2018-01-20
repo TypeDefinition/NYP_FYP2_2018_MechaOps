@@ -92,7 +92,13 @@ public class WalkGoapAct : IGoapAction {
         TileId[] zeTileToWalkTo = null;
         foreach (TileId TileLocation in m_Planner.EnemiesManager.GetOneTileAwayFromEnemyWithoutAGauranteeOfAWalkableTileAtAll())
         {
-            Assert.IsFalse(m_Planner.m_Stats.CurrentTileID.Equals(TileLocation), "Update of Tile coordinate has failed at UpdateActRoutine in WalkGoapAct.cs");
+            //Assert.IsFalse(m_Planner.m_Stats.CurrentTileID.Equals(TileLocation), "Update of Tile coordinate has failed at UpdateActRoutine in WalkGoapAct.cs");
+            if (m_Planner.m_Stats.CurrentTileID.Equals(TileLocation))
+            {
+                m_Planner.EnemiesManager.UpdateMarkers();
+                // have to end this update loop instantly!
+                yield break;
+            }
             zeTileToWalkTo = m_WalkAct.GetTileSystem().GetPath(99999, m_Planner.m_Stats.CurrentTileID, TileLocation, m_Planner.m_Stats.GetTileAttributeOverrides());
             // have to ensure it is not null and the length is more than 0!
             if (zeTileToWalkTo != null && zeTileToWalkTo.Length > 0)

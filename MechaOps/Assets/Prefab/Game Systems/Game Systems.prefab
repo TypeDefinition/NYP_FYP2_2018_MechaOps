@@ -159,9 +159,25 @@ GameObject:
   - component: {fileID: 222221957240354304}
   - component: {fileID: 114796999710533432}
   - component: {fileID: 114279184573130580}
-  - component: {fileID: 114918186399898816}
   m_Layer: 5
   m_Name: Select Previous Unit Button
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1137408087507686
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224961083477288856}
+  - component: {fileID: 223215954925103786}
+  - component: {fileID: 114214308860207304}
+  m_Layer: 12
+  m_Name: UnitInfo Display Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -404,7 +420,6 @@ GameObject:
   - component: {fileID: 222310567214600672}
   - component: {fileID: 114766430054088042}
   - component: {fileID: 114175924487600352}
-  - component: {fileID: 114104125196554718}
   m_Layer: 5
   m_Name: Select Next Unit Button
   m_TagString: Untagged
@@ -504,7 +519,6 @@ GameObject:
   - component: {fileID: 224387115447460764}
   - component: {fileID: 222456783486601710}
   - component: {fileID: 114934323154546462}
-  - component: {fileID: 114758092926218882}
   m_Layer: 5
   m_Name: Unit Name
   m_TagString: Untagged
@@ -523,7 +537,6 @@ GameObject:
   - component: {fileID: 114149718243989042}
   - component: {fileID: 222520805679258516}
   - component: {fileID: 114595876264738790}
-  - component: {fileID: 114390741798054674}
   m_Layer: 5
   m_Name: Unit Action Selection
   m_TagString: Untagged
@@ -663,6 +676,7 @@ Transform:
   - {fileID: 4952885617691504}
   - {fileID: 4580247040524936}
   - {fileID: 224508822534507958}
+  - {fileID: 224961083477288856}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1034,17 +1048,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114104125196554718
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1710926041909012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114114847871907538
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1058,6 +1061,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TileSystem: {fileID: 0}
   m_GameCamera: {fileID: 0}
+  m_UnitInfoCamera: {fileID: 0}
   m_UnitsTracker: {fileID: 114538370514917290}
   m_AIUnitManagers:
   - {fileID: 114373422892012444}
@@ -1065,9 +1069,9 @@ MonoBehaviour:
   m_PlayerUnitsManager: {fileID: 114050078852836360}
   m_GameFlowManager: {fileID: 114249428071637902}
   m_UnitActionScheduler: {fileID: 114247842419953258}
-  m_CineMachineHandler: {fileID: 0}
   m_SpawnSystem: {fileID: 114728902987495462}
   m_ScreenSpaceCanvas: {fileID: 223668701871583062}
+  m_UnitInfoCanvas: {fileID: 223215954925103786}
   m_GameAudioSettings: {fileID: 11400000, guid: 7661fa5d75f3f464bb18461c47ac4643,
     type: 2}
   m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
@@ -1425,6 +1429,27 @@ MonoBehaviour:
   m_StateToChangeTo: 3
   m_PlaySFXSource: {fileID: 82162238240412814}
   m_PlaySFXClip: {fileID: 8300000, guid: a92ba294fd7437d48b5daab306733bc2, type: 3}
+--- !u!114 &114214308860207304
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1137408087507686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 300
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
 --- !u!114 &114237585183672840
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1616,17 +1641,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ManagedFaction: 2
   m_CheckSurroundingUnitRadius: 2
---- !u!114 &114390741798054674
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1971880654090778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114409085303880474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2210,17 +2224,6 @@ MonoBehaviour:
   m_TriggeredEvent: 0
   m_LayersToDetect:
   - Unit
---- !u!114 &114758092926218882
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1867376438944086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114766430054088042
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2329,17 +2332,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 0
---- !u!114 &114918186399898816
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1134809160867132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114918539900051546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2613,6 +2605,26 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_SortingLayerID: 0
+  m_SortingOrder: 1
+  m_TargetDisplay: 0
+--- !u!223 &223215954925103786
+Canvas:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1137408087507686}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
   m_SortingOrder: 1
   m_TargetDisplay: 0
@@ -2957,6 +2969,24 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.0000066161, y: 0.0000066161}
   m_SizeDelta: {x: -38, y: -101.1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224961083477288856
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1137408087507686}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_Children: []
+  m_Father: {fileID: 4583162169393080}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224982947087395474
 RectTransform:

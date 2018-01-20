@@ -2037,7 +2037,7 @@ MonoBehaviour:
       m_Y: -1
   m_TileAttributeOverrides: []
   m_ViewTileScript: {fileID: 114054195728922426}
-  m_UnitInfoDisplay_Prefab: {fileID: 114423042521562832, guid: f6fdede1943ea6742858eefd80f3ded1,
+  m_UnitInfoDisplay_Prefab: {fileID: 114733988119590608, guid: f6fdede1943ea6742858eefd80f3ded1,
     type: 2}
   m_EnemiesInViewRange: []
 --- !u!114 &114930548130969464
