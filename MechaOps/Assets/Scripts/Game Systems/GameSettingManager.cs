@@ -47,7 +47,7 @@ public class GameSettingManager : MonoBehaviour {
                 case GameSettingStates.MainMenuSetting:
                     m_InGameSettingUI.gameObject.SetActive(false);
                     SceneHelperSingleton.Instance.LoadScenePermanently("Setting_Menu");
-                    GameEventSystem.GetInstance().SubscribeToEvent(m_EventNamesAsset.GetEventName(GameEventNames.SceneManagementName.SceneClosed), OtherScenesClosed);
+                    GameEventSystem.GetInstance().SubscribeToEvent(m_EventNamesAsset.GetEventName(GameEventNames.SceneManagementNames.SceneClosed), OtherScenesClosed);
                     break;
                 case GameSettingStates.MainMenu:
                     SceneHelperSingleton.Instance.TransitionSceneWithLoading("Main_Menu");
@@ -63,6 +63,6 @@ public class GameSettingManager : MonoBehaviour {
     void OtherScenesClosed()
     {
         ChangeState(GameSettingStates.Setting);
-        GameEventSystem.GetInstance().UnsubscribeFromEvent(m_EventNamesAsset.GetEventName(GameEventNames.SceneManagementName.SceneClosed), OtherScenesClosed);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent(m_EventNamesAsset.GetEventName(GameEventNames.SceneManagementNames.SceneClosed), OtherScenesClosed);
     }
 }

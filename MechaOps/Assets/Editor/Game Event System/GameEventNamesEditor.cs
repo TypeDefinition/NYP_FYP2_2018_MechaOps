@@ -34,7 +34,20 @@ public class GameEventNamesEditor : Editor
         SetArrayName<GameEventNames.GameplayNames>("m_GameplayNames", "Gameplay");
         SetArrayName<GameEventNames.GameUINames>("m_GameUINames", "Game UI");
         SetArrayName<GameEventNames.TouchGestureNames>("m_TouchGestureNames", "Touch Gesture");
-        //SetArrayName<GameEventNames.GameSystemsNames>("m_GameSystemsNames", "Game Systems");
+        SetArrayName<GameEventNames.SceneManagementNames>("m_SceneManagementNames", "Scene Management");
+
+        GameEventNames gameEventNames = (GameEventNames)target;
+        if (GUILayout.Button("Validate Game Event Names"))
+        {
+            if (gameEventNames.HasDuplicateNames())
+            {
+                EditorUtility.DisplayDialog("Duplicate Names Found!", "Good luck finding out which ones. I haven't (and might never) add a functionality to automagically find out which names are the problematic ones.", "Oh, fuck...");
+            }
+            else
+            {
+                EditorUtility.DisplayDialog("All Is Well!", "There seems to be nothing wrong... as far as I can tell.", "Sure, I guess.");
+            }
+        }
 
         serializedObject.ApplyModifiedProperties();
     }

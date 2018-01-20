@@ -16,12 +16,14 @@ public class PlayerViewScript : ViewScript
     {
         base.InitEvents();
         GameEventSystem.GetInstance().SubscribeToEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitMovedToTile), OnUnitMovedToTile);
+        GameEventSystem.GetInstance().SubscribeToEvent<UnitStats, bool>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitDead), OnUnitDead);
     }
 
     protected override void DeinitEvents()
     {
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitMovedToTile), OnUnitMovedToTile);
         base.DeinitEvents();
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitMovedToTile), OnUnitMovedToTile);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats, bool>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitDead), OnUnitDead);
     }
 
     // Callbacks
@@ -35,6 +37,14 @@ public class PlayerViewScript : ViewScript
         if (_movedUnit == m_UnitStats)
         {
             CheckVisibleTiles();
+        }
+    }
+
+    protected virtual void OnUnitDead(UnitStats _deadUnit, bool _deadUnitVisible)
+    {
+        if (_deadUnit == m_UnitStats)
+        {
+            ClearVisibleTiles();
         }
     }
 
@@ -76,6 +86,9 @@ public class PlayerViewScript : ViewScript
         m_ViewedTiles.Clear();
     }
 
+    /// <summary>
+    /// Increase the counter of how many units can see us.
+    /// </summary>
     public override void IncreaseVisibility()
     {
         ++m_VisibilityCount;
@@ -86,6 +99,9 @@ public class PlayerViewScript : ViewScript
         }
     }
 
+    /// <summary>
+    /// Decrease the counter of how many units can see us.
+    /// </summary>
     public override void DecreaseVisibility()
     {
         --m_VisibilityCount;

@@ -43,3 +43,5 @@ MonoBehaviour:
   - Scroll
   - Circle Gesture
   - Double Tap
+  m_SceneManagementNames:
+  - Scene Closed

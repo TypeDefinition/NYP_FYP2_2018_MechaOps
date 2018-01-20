@@ -77,18 +77,20 @@ public class GameEventNames : ScriptableObject
     [SerializeField] private string[] m_TouchGestureNames = new string[(int)TouchGestureNames.Pinch];
     public string GetEventName(TouchGestureNames _enumValue) { return m_TouchGestureNames[(int)_enumValue]; }
 
-    public enum SceneManagementName
+    public enum SceneManagementNames
     {
         SceneClosed,
 
         Num_SceneManagementNames
     }
-    [SerializeField] private string[] m_SceneManageNames = new string[(int)SceneManagementName.Num_SceneManagementNames];
-    public string GetEventName(SceneManagementName _enumValue) { return m_SceneManageNames[(int)_enumValue]; }
+    [SerializeField] private string[] m_SceneManagementNames = new string[(int)SceneManagementNames.Num_SceneManagementNames];
+    public string GetEventName(SceneManagementNames _enumValue) { return m_SceneManagementNames[(int)_enumValue]; }
 
     /// <summary>
     /// Update this function whenever a new enum or array is declared!
     /// IMPORTANT: Make sure to update GameEventNameEditor as well!
+    /// ALSO 西北 THE IMPORTANT: Give the enum a string name in the Game Event Names Prefab!
+    /// ALSO IMPORTANT: Update HasDuplicateNames!
     /// </summary>
     private void OnValidate()
     {
@@ -97,6 +99,27 @@ public class GameEventNames : ScriptableObject
         AutoResizeArray(ref m_GameplayNames, (int)GameplayNames.Num_GameplayNames);
         AutoResizeArray(ref m_GameUINames, (int)GameUINames.Num_GameUINames);
         AutoResizeArray(ref m_TouchGestureNames, (int)TouchGestureNames.Num_TouchNames);
+        AutoResizeArray(ref m_SceneManagementNames, (int)SceneManagementNames.Num_SceneManagementNames);
+    }
+
+    /// <summary>
+    /// Update this function whenever a new enum or array is declared!
+    /// IMPORTANT: Make sure to update GameEventNameEditor as well!
+    /// ALSO 西北 THE IMPORTANT: Give the enum a string name in the Game Event Names Prefab!
+    /// ALSO IMPORTANT: Update OnValidate!
+    /// </summary>
+    public bool HasDuplicateNames()
+    {
+        HashSet<string> allEventNames = new HashSet<string>();
+
+        if (!AddEventNamesToHashSet(allEventNames, m_SpawnSystemNames)) { return true; }
+        if (!AddEventNamesToHashSet(allEventNames, m_GameAudioNames)) { return true; }
+        if (!AddEventNamesToHashSet(allEventNames, m_GameplayNames)) { return true; }
+        if (!AddEventNamesToHashSet(allEventNames, m_GameUINames)) { return true; }
+        if (!AddEventNamesToHashSet(allEventNames, m_TouchGestureNames)) { return true; }
+        if (!AddEventNamesToHashSet(allEventNames, m_SceneManagementNames)) { return true; }
+
+        return false;
     }
 
     private void AutoResizeArray(ref string[] _array, int _size)
@@ -110,5 +133,19 @@ public class GameEventNames : ScriptableObject
                 _array[i] = currentArray[i];
             }
         }
+    }
+
+    private bool AddEventNamesToHashSet(HashSet<string> _allEventNames, string[] _eventNameArray)
+    {
+        for (int i = 0; i < _eventNameArray.Length; ++i)
+        {
+            if (_allEventNames.Contains(_eventNameArray[i]))
+            {
+                return false;
+            }
+            _allEventNames.Add(_eventNameArray[i]);
+        }
+
+        return true;
     }
 }

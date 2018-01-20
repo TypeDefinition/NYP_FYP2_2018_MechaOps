@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 
 /// <summary>
-/// This will be used to render this unit invisible! inherit from PlayerViewScript to be lazy
+/// This will be used to render this unit invisible! inherit from ViewScript to be lazy
 /// </summary>
 [DisallowMultipleComponent]
 public class AIViewScript : ViewScript

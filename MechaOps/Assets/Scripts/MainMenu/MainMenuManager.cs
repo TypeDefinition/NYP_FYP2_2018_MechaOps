@@ -67,7 +67,7 @@ public class MainMenuManager : MonoBehaviour
                     //m_SettingsCanvas.gameObject.SetActive(true);
                     SceneHelperSingleton.Instance.LoadScenePermanently("Setting_Menu");
                     // and make sure that the current scene is still active!
-                    GameEventSystem.GetInstance().SubscribeToEvent(m_EventNamesAsset.GetEventName(GameEventNames.SceneManagementName.SceneClosed), WaitForOtherSceneClosed);
+                    GameEventSystem.GetInstance().SubscribeToEvent(m_EventNamesAsset.GetEventName(GameEventNames.SceneManagementNames.SceneClosed), WaitForOtherSceneClosed);
                     m_UnitsSelectionCanvas.gameObject.SetActive(false);
                     break;
                 case MenuState.LevelSelection:
@@ -101,7 +101,7 @@ public class MainMenuManager : MonoBehaviour
     /// </summary>
     void WaitForOtherSceneClosed()
     {
-        GameEventSystem.GetInstance().UnsubscribeFromEvent(m_EventNamesAsset.GetEventName(GameEventNames.SceneManagementName.SceneClosed), WaitForOtherSceneClosed);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent(m_EventNamesAsset.GetEventName(GameEventNames.SceneManagementNames.SceneClosed), WaitForOtherSceneClosed);
         // set back to main menu
         SetMenuState(MenuState.StartScreen);
     }
