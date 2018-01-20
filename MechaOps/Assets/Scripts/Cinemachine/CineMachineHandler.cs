@@ -136,16 +136,31 @@ public class CineMachineHandler : MonoBehaviour {
     protected void SetCinematic(string _nameID, float _time)
     {
         // need to ensure that the previous m_activeCinematicData will not affect the soon-to-be activated cinematic camera
-        if (m_ActiveCinematicData)
+        if (m_ActiveCinematicData != null)
         {
             m_ActiveCinematicData.CompleteCinematicCallback -= FinishedCinematic;
             m_ActiveCinematicData.gameObject.SetActive(false);
+            m_ActiveCinematicData = null;
         }
+        Assert.IsNull(m_ActiveCinematicData, "m_ActiveCinematicData is still not null at SetCinematic. wtf?");
+        Assert.IsNotNull(m_NameCineDataDict, "m_NameCineDataDict is null at SetCinematic.........is this voodoo?");
         List<CinematicData> ListOfCineData = null;
+        // Because the codes inside assert will not be executed thus this!
+#if UNITY_ASSERTIONS
         Assert.IsTrue(m_NameCineDataDict.TryGetValue(_nameID, out ListOfCineData), "There should be a cinematic data at CineMachinehandler");
+#else
+        if (!m_NameCineDataDict.TryGetValue(_nameID, out ListOfCineData))
+        {
+            print("Something is wrong with CineMachineHandler::SetCinematicData");
+            return;
+        }
+#endif
+        Assert.IsNotNull(ListOfCineData, "ListOfCineData is still null at SetCinematic!!!");
+        Assert.IsTrue(ListOfCineData.Count > 0, "There is no cinematic camera for this list at SetCinematic!");
         // random between the cinematic data
         int result = Random.Range(0, ListOfCineData.Count);
         m_ActiveCinematicData = ListOfCineData[result];
+        Assert.IsNotNull(m_ActiveCinematicData, "m_ActiveCinematicData is null wtf?");
         m_ActiveCinematicData.SetUserTransform(m_UserFollow, m_UserLookAt);
         m_ActiveCinematicData.SetTargetTransform(m_TargetFollow, m_TargetLookAt);
         m_ActiveCinematicData.gameObject.SetActive(true);

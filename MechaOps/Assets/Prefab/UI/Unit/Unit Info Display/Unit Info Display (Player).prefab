@@ -194,11 +194,12 @@ MonoBehaviour:
   m_HealthBar: {fileID: 114226265547128792}
   m_ActionPointsCounter: {fileID: 114001893041120056}
   m_UnitWorldPositionOffset: {x: 0, y: 2.5, z: 0}
-  m_PositionZ: 0
+  m_ScaleZ: 1
   m_DistanceToCameraScale: 16
   m_FOVToCameraScale: 50
   m_UnitInfoCamera: {fileID: 0}
-  m_ScaleLimit: 4
+  m_MaxScaleLimit: 5
+  m_MinScaleLimit: 0.7
 --- !u!114 &114777383387697568
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -256,7 +257,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294219520
-  m_fontColor: {r: 0, g: 0.5921569, b: 0.95686275, a: 1}
+  m_fontColor: {r: 0, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_fontColorGradient:
     topLeft: {r: 1, g: 1, b: 1, a: 1}

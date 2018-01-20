@@ -14405,6 +14405,12 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: a44c2fe5544e18e438db313df08efe1a, type: 3}
+--- !u!114 &491344672 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114709082624849018, guid: fac515ca326711f4aa07ee3b9c718088,
+    type: 2}
+  m_PrefabInternal: {fileID: 1695501921}
+  m_Script: {fileID: 11500000, guid: f2c0ac3166880f54880862862689918a, type: 3}
 --- !u!1 &491574344
 GameObject:
   m_ObjectHideFlags: 0
@@ -20366,6 +20372,12 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: a44c2fe5544e18e438db313df08efe1a, type: 3}
+--- !u!114 &700791680 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114993248295121210, guid: fac515ca326711f4aa07ee3b9c718088,
+    type: 2}
+  m_PrefabInternal: {fileID: 1695501921}
+  m_Script: {fileID: 11500000, guid: f2c0ac3166880f54880862862689918a, type: 3}
 --- !u!1 &708140074
 GameObject:
   m_ObjectHideFlags: 0
@@ -22310,6 +22322,12 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: a44c2fe5544e18e438db313df08efe1a, type: 3}
+--- !u!114 &772197747 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114254147847975406, guid: fac515ca326711f4aa07ee3b9c718088,
+    type: 2}
+  m_PrefabInternal: {fileID: 1695501921}
+  m_Script: {fileID: 11500000, guid: f2c0ac3166880f54880862862689918a, type: 3}
 --- !u!1 &773046759
 GameObject:
   m_ObjectHideFlags: 0
@@ -24314,6 +24332,12 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: a44c2fe5544e18e438db313df08efe1a, type: 3}
+--- !u!114 &838256946 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114255928615370674, guid: fac515ca326711f4aa07ee3b9c718088,
+    type: 2}
+  m_PrefabInternal: {fileID: 1695501921}
+  m_Script: {fileID: 11500000, guid: f2c0ac3166880f54880862862689918a, type: 3}
 --- !u!1 &839144252
 GameObject:
   m_ObjectHideFlags: 0
@@ -35446,6 +35470,12 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: a44c2fe5544e18e438db313df08efe1a, type: 3}
+--- !u!114 &1229511292 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114232585481016844, guid: fac515ca326711f4aa07ee3b9c718088,
+    type: 2}
+  m_PrefabInternal: {fileID: 1695501921}
+  m_Script: {fileID: 11500000, guid: f2c0ac3166880f54880862862689918a, type: 3}
 --- !u!1 &1230827379
 GameObject:
   m_ObjectHideFlags: 0
@@ -45772,7 +45802,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ShowDebugText: 1
+  m_ShowDebugText: 0
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 0
   m_WorldUpOverride: {fileID: 0}
@@ -46523,6 +46553,12 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: a44c2fe5544e18e438db313df08efe1a, type: 3}
+--- !u!114 &1615935335 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114561569053907704, guid: fac515ca326711f4aa07ee3b9c718088,
+    type: 2}
+  m_PrefabInternal: {fileID: 1695501921}
+  m_Script: {fileID: 11500000, guid: f2c0ac3166880f54880862862689918a, type: 3}
 --- !u!1 &1616149152
 GameObject:
   m_ObjectHideFlags: 0
@@ -46687,6 +46723,12 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: a44c2fe5544e18e438db313df08efe1a, type: 3}
+--- !u!114 &1619747586 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114715883929291880, guid: fac515ca326711f4aa07ee3b9c718088,
+    type: 2}
+  m_PrefabInternal: {fileID: 1695501921}
+  m_Script: {fileID: 11500000, guid: f2c0ac3166880f54880862862689918a, type: 3}
 --- !u!1 &1620691581
 GameObject:
   m_ObjectHideFlags: 0
@@ -49350,6 +49392,11 @@ Prefab:
       propertyPath: m_ChildCameras.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114537614460054334, guid: fac515ca326711f4aa07ee3b9c718088,
+        type: 2}
+      propertyPath: m_ArrayOfCinematicData.Array.size
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 4278157762835826, guid: fac515ca326711f4aa07ee3b9c718088, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -49387,6 +49434,55 @@ Prefab:
       propertyPath: m_CineBrain
       value: 
       objectReference: {fileID: 1587401087}
+    - target: {fileID: 1659574992793318, guid: fac515ca326711f4aa07ee3b9c718088, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114537614460054334, guid: fac515ca326711f4aa07ee3b9c718088,
+        type: 2}
+      propertyPath: m_ArrayOfCinematicData.Array.data[0]
+      value: 
+      objectReference: {fileID: 1619747586}
+    - target: {fileID: 114537614460054334, guid: fac515ca326711f4aa07ee3b9c718088,
+        type: 2}
+      propertyPath: m_ArrayOfCinematicData.Array.data[1]
+      value: 
+      objectReference: {fileID: 838256946}
+    - target: {fileID: 114537614460054334, guid: fac515ca326711f4aa07ee3b9c718088,
+        type: 2}
+      propertyPath: m_ArrayOfCinematicData.Array.data[2]
+      value: 
+      objectReference: {fileID: 1615935335}
+    - target: {fileID: 114537614460054334, guid: fac515ca326711f4aa07ee3b9c718088,
+        type: 2}
+      propertyPath: m_ArrayOfCinematicData.Array.data[3]
+      value: 
+      objectReference: {fileID: 2021126881}
+    - target: {fileID: 114537614460054334, guid: fac515ca326711f4aa07ee3b9c718088,
+        type: 2}
+      propertyPath: m_ArrayOfCinematicData.Array.data[4]
+      value: 
+      objectReference: {fileID: 700791680}
+    - target: {fileID: 114537614460054334, guid: fac515ca326711f4aa07ee3b9c718088,
+        type: 2}
+      propertyPath: m_ArrayOfCinematicData.Array.data[5]
+      value: 
+      objectReference: {fileID: 491344672}
+    - target: {fileID: 114537614460054334, guid: fac515ca326711f4aa07ee3b9c718088,
+        type: 2}
+      propertyPath: m_ArrayOfCinematicData.Array.data[6]
+      value: 
+      objectReference: {fileID: 1229511292}
+    - target: {fileID: 114537614460054334, guid: fac515ca326711f4aa07ee3b9c718088,
+        type: 2}
+      propertyPath: m_ArrayOfCinematicData.Array.data[7]
+      value: 
+      objectReference: {fileID: 1794140983}
+    - target: {fileID: 114537614460054334, guid: fac515ca326711f4aa07ee3b9c718088,
+        type: 2}
+      propertyPath: m_ArrayOfCinematicData.Array.data[8]
+      value: 
+      objectReference: {fileID: 772197747}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fac515ca326711f4aa07ee3b9c718088, type: 2}
   m_IsPrefabParent: 0
@@ -58797,6 +58893,12 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: a44c2fe5544e18e438db313df08efe1a, type: 3}
+--- !u!114 &1794140983 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114228130330606134, guid: fac515ca326711f4aa07ee3b9c718088,
+    type: 2}
+  m_PrefabInternal: {fileID: 1695501921}
+  m_Script: {fileID: 11500000, guid: f2c0ac3166880f54880862862689918a, type: 3}
 --- !u!1 &1801515659
 GameObject:
   m_ObjectHideFlags: 0
@@ -65711,6 +65813,12 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: a44c2fe5544e18e438db313df08efe1a, type: 3}
+--- !u!114 &2021126881 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114492581725439342, guid: fac515ca326711f4aa07ee3b9c718088,
+    type: 2}
+  m_PrefabInternal: {fileID: 1695501921}
+  m_Script: {fileID: 11500000, guid: f2c0ac3166880f54880862862689918a, type: 3}
 --- !u!1 &2021657296
 GameObject:
   m_ObjectHideFlags: 0
