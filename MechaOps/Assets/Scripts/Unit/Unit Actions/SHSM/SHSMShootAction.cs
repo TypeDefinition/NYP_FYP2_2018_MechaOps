@@ -10,12 +10,13 @@ using UnityEngine.Assertions;
 public class SHSMShootAction : UnitAttackAction
 {
     [SerializeField] protected MOAnimation_SHSMShoot m_Animation = null;
+    [SerializeField] protected int m_TargetRadius = 1;
+    [SerializeField] protected int m_NumHitTiles = 4;
 
     protected TileSystem m_TileSystem = null;
 
     protected TileId m_TargetedTile;
-    protected TileId m_HitTileId;
-    protected int m_TargetRadius = 1;
+    protected List<TileId> m_HitTileIds;
 
     protected bool m_RegisteredAnimationCompleteCallback = false;
 
@@ -37,9 +38,24 @@ public class SHSMShootAction : UnitAttackAction
         }
     }
 
+    public void SetTargetRadius(int _targetRadius)
+    {
+        m_TargetRadius = Mathf.Max(1, _targetRadius);
+    }
+
     public int GetTargetRadius()
     {
         return m_TargetRadius;
+    }
+
+    public void SetNumHitTiles(int _numHitTiles)
+    {
+        m_NumHitTiles = Mathf.Max(0, _numHitTiles);
+    }
+
+    public int GetNumHitTiles()
+    {
+        return m_NumHitTiles;
     }
 
     protected override void Awake()
@@ -83,8 +99,15 @@ public class SHSMShootAction : UnitAttackAction
 
     protected void StartShootingAnimation()
     {
-        m_HitTileId = CalculateHitTile();
-        m_Animation.TargetTile = m_TileSystem.GetTile(m_HitTileId);
+        m_HitTileIds = CalculateHitTiles();
+
+        List<Tile> tileList = new List<Tile>();
+        for (int i = 0; i < m_HitTileIds.Count; ++i)
+        {
+            tileList.Add(m_TileSystem.GetTile(m_HitTileIds[i]));
+        }
+
+        m_Animation.TargetTiles = tileList.ToArray();
         m_Animation.StartAnimation();
     }
 
@@ -112,38 +135,65 @@ public class SHSMShootAction : UnitAttackAction
 
     protected override void OnAnimationCompleted()
     {
-        m_ActionState = ActionState.Completed;
-        UnregisterAnimationCompleteCallback();
-
-        Tile hitTile = m_TileSystem.GetTile(m_HitTileId);
-        Assert.IsNotNull(hitTile, MethodBase.GetCurrentMethod().Name + " - hitTile not found!");
-        hitTile.SetHazardType(HazardType.Fire);
-        hitTile.GetHazard().TurnsToDecay = 3;
-        hitTile.GetHazard().Decay = true;
-
-        if (hitTile.HasUnit())
+        // Deal attack effects.
+        for (int i = 0; i < m_HitTileIds.Count; ++i)
         {
-            UnitStats hitUnitStats = hitTile.Unit.GetComponent<UnitStats>();
-            hitUnitStats.CurrentHealthPoints -= m_DamagePoints;
-            hitUnitStats.InvokeHealthDropCallback(m_UnitStats);
+            Tile hitTile = m_TileSystem.GetTile(m_HitTileIds[i]);
+            Assert.IsNotNull(hitTile, MethodBase.GetCurrentMethod().Name + " - hitTile not found!");
+            hitTile.SetHazardType(HazardType.Fire);
+            hitTile.GetHazard().TurnsToDecay = 3;
+            hitTile.GetHazard().Decay = true;
+
+            if (hitTile.HasUnit())
+            {
+                UnitStats hitUnitStats = hitTile.Unit.GetComponent<UnitStats>();
+                hitUnitStats.CurrentHealthPoints -= m_DamagePoints;
+                hitUnitStats.InvokeHealthDropCallback(m_UnitStats);
+            }
         }
 
+        m_ActionState = ActionState.Completed;
+        UnregisterAnimationCompleteCallback();
+        
         GameEventSystem.GetInstance().TriggerEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitFinishedAction), m_UnitStats);
         InvokeCompletionCallback();
-
+        
         CheckIfUnitFinishedTurn();
     }
 
-    protected TileId CalculateHitTile()
+    protected List<TileId> CalculateHitTiles()
     {
         TileId[] possibleHitTiles = m_TileSystem.GetSurroundingTiles(m_TargetedTile, m_TargetRadius);
         Assert.IsTrue(possibleHitTiles != null && possibleHitTiles.Length > 0, " - No possible tiles!");
 
-        return possibleHitTiles[Random.Range(0, possibleHitTiles.Length)];
+        List<TileId> randomPool = new List<TileId>();
+        for (int i = 0; i < possibleHitTiles.Length; ++i)
+        {
+            randomPool.Add(possibleHitTiles[i]);
+        }
+
+        List<TileId> result = new List<TileId>();
+        for (int i = 0; (i < m_NumHitTiles) && (randomPool.Count > 0); ++i)
+        {
+            int randomNumber = Random.Range(0, randomPool.Count);
+            result.Add(randomPool[randomNumber]);
+            randomPool.RemoveAt(randomNumber);
+        }
+
+        return result;
     }
 
     public override int CalculateHitChance()
     {
         throw new System.NotImplementedException();
     }
+
+#if UNITY_EDITOR
+    protected override void OnValidate()
+    {
+        base.OnValidate();
+        SetTargetRadius(m_TargetRadius);
+        SetNumHitTiles(m_NumHitTiles);
+    }
+#endif // UNITY_EDITOR
 }

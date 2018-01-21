@@ -53,7 +53,6 @@ GameObject:
   m_Component:
   - component: {fileID: 224529329268491470}
   - component: {fileID: 114733988119590608}
-  - component: {fileID: 114991159160206608}
   m_Layer: 12
   m_Name: Unit Info Display (Enemy)
   m_TagString: Untagged
@@ -317,12 +316,7 @@ MonoBehaviour:
   m_HealthBar: {fileID: 114111427445458144}
   m_ActionPointsCounter: {fileID: 114934890049618856}
   m_UnitWorldPositionOffset: {x: 0, y: 2.5, z: 0}
-  m_ScaleZ: 1
-  m_DistanceToCameraScale: 16
-  m_FOVToCameraScale: 50
-  m_UnitInfoCamera: {fileID: 0}
-  m_MaxScaleLimit: 5
-  m_MinScaleLimit: 0.7
+  m_PositionZ: 0
 --- !u!114 &114934890049618856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -340,20 +334,6 @@ MonoBehaviour:
   m_FullActionPointsColor: {r: 0, g: 1, b: 1, a: 1}
   m_NotFullActionPointsColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   m_NoActionPointsColor: {r: 1, g: 0, b: 0, a: 1}
---- !u!114 &114991159160206608
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1595844785329772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d09db696f8aedc408ab6f2b3d11105d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_BillboardUpAxis: 0
-  m_MainCamera: {fileID: 0}
-  m_ReverseDirection: 0
 --- !u!222 &222146249229246912
 CanvasRenderer:
   m_ObjectHideFlags: 1

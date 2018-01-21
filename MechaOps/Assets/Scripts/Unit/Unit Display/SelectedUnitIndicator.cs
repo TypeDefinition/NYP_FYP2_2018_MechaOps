@@ -8,7 +8,7 @@ public class SelectedUnitIndicator : TweenUI_Scale
 
     private void Update()
     {
-        Canvas screenSpaceCanvas = GameSystemsDirectory.GetSceneInstance().GetScreenSpaceCanvas();
+        Canvas screenSpaceCanvas = GameSystemsDirectory.GetSceneInstance().GetClickableScreenSpaceCanvas();
         Camera gameCamera = GameSystemsDirectory.GetSceneInstance().GetGameCamera();
         Vector3 screenPoint = gameCamera.WorldToScreenPoint(m_Unit.transform.position);
         screenPoint.z = 0.0f;

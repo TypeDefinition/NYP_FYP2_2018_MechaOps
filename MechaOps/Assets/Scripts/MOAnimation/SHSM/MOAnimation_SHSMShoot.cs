@@ -8,12 +8,12 @@ using UnityEngine.Assertions;
 public class MOAnimation_SHSMShoot : MOAnimation
 {
     [SerializeField] private MOAnimator_SHSM m_Animator = null;
-    private Tile m_TargetTile;
+    private Tile[] m_TargetTiles;
 
-    public Tile TargetTile
+    public Tile[] TargetTiles
     {
-        get { return m_TargetTile; }
-        set { m_TargetTile = value; }
+        get { return m_TargetTiles; }
+        set { m_TargetTiles = value; }
     }
 
     public override MOAnimator GetMOAnimator() { return m_Animator; }
@@ -25,7 +25,7 @@ public class MOAnimation_SHSMShoot : MOAnimation
 
     public override void StartAnimation()
     {
-        m_Animator.StartShootAnimation(m_TargetTile, m_CompletionCallback);
+        m_Animator.StartShootAnimation(m_TargetTiles, m_CompletionCallback);
     }
 
     public override void PauseAnimation()

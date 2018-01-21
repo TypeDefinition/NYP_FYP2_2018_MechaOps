@@ -38,13 +38,14 @@ public class MOAnimator_SHSM : MOAnimator
     // The gun will be at this elevation when shooting.
     protected float m_GunShootingElevation = -50.0f;
 
-    protected Tile m_TargetTile = null;
-    protected ArtileryBullet m_Bullet = null;
+    protected Tile[] m_TargetTiles = null;
+    protected List<ArtileryBullet> m_UnfollowedBullets = new List<ArtileryBullet>();
+    protected ArtileryBullet m_FollowedBullet = null;
     protected float m_GunElevationSpeed = 60.0f; // This is the speed in degrees.
     protected float m_AccuracyTolerance = 0.5f;
-    protected float m_BulletHorizontalVelocity = 20.0f;
+    protected float m_BulletHorizontalVelocity = 30.0f;
     protected float m_BulletGravityAcceleration = -9.8f;
-    protected bool m_BulletAnimationComplete = false;
+    protected bool m_FollowedBulletAnimationComplete = false;
 
     public float MaxGunElevation
     {
@@ -182,7 +183,7 @@ public class MOAnimator_SHSM : MOAnimator
         _timeToTarget = timeToTarget;
     }
 
-    protected virtual void FireGun(Tile _targetTile)
+    protected virtual void FireGun(Tile _targetTile, Void_Void _completionCallback, bool _followBullet)
     {
         // Spawn Muzzle Flash
         AnimateMuzzleFlash();
@@ -191,23 +192,32 @@ public class MOAnimator_SHSM : MOAnimator
         PlayOneShotSFXAudioSource(m_ShootGunfireSFX);
 
         // Spawn Bullet
-        m_Bullet = Instantiate(m_Bullet_Prefab.gameObject).GetComponent<ArtileryBullet>();
-        m_Bullet.transform.position = m_BulletSpawnPoint.transform.position;
-        m_Bullet.TargetTile = _targetTile;
-        m_Bullet.CompletionCallback = OnBulletAnimationComplete;
-        m_Bullet.Gravity = new Vector3(0.0f, m_BulletGravityAcceleration, 0.0f);
-        GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_Bullet.gameObject);
+        ArtileryBullet bullet = Instantiate(m_Bullet_Prefab.gameObject).GetComponent<ArtileryBullet>();
+        bullet.transform.position = m_BulletSpawnPoint.transform.position;
+        bullet.TargetTile = _targetTile;
+        bullet.CompletionCallback = _completionCallback;
+        bullet.Gravity = new Vector3(0.0f, m_BulletGravityAcceleration, 0.0f);
 
         Vector3 bulletVelocity;
         float bulletLifetime;
-        CalculateBulletTrajectory(m_Bullet.transform.position, _targetTile.transform.position, out bulletVelocity, out bulletLifetime);
-        m_Bullet.Lifetime = bulletLifetime + 1.0f;
-        m_Bullet.InitialVelocity = bulletVelocity;
+        CalculateBulletTrajectory(bullet.transform.position, _targetTile.transform.position, out bulletVelocity, out bulletLifetime);
+        bullet.Lifetime = bulletLifetime + 1.0f;
+        bullet.InitialVelocity = bulletVelocity;
+
+        if (_followBullet)
+        {
+            m_FollowedBullet = bullet;
+            GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), bullet.gameObject);
+        }
+        else
+        {
+            m_UnfollowedBullets.Add(bullet);
+        }
     }
 
-    protected virtual void OnBulletAnimationComplete()
+    protected virtual void OnFollowedBulletAnimationComplete()
     {
-        m_BulletAnimationComplete = true;
+        m_FollowedBulletAnimationComplete = true;
         GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), null);
     }
 
@@ -219,31 +229,46 @@ public class MOAnimator_SHSM : MOAnimator
             GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), m_Hull, m_BulletSpawnPoint);
             GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_AttackCinematicName, m_TimeDelayForAttackCam);
         }
-        // Turn towards the target.
-        while (true)
-        {
-            // Do nothing if we are paused.
-            while (m_ShootAnimationPaused) { yield return null; }
 
-            if (FaceTowardsPositionHorizontally(transform, m_TargetTile.transform.position, m_AccuracyTolerance)) { break; }
-            yield return null;
+        for (int i = 0; i < m_TargetTiles.Length; ++i)
+        {
+            // Turn towards the target.
+            while (true)
+            {
+                // Do nothing if we are paused.
+                while (m_ShootAnimationPaused) { yield return null; }
+
+                if (FaceTowardsPositionHorizontally(transform, m_TargetTiles[i].transform.position, m_AccuracyTolerance)) { break; }
+                yield return null;
+            }
+
+            // Raise our gun.
+            while (true)
+            {
+                // Do nothing if we are paused.
+                while (m_ShootAnimationPaused) { yield return null; }
+
+                if (IsGunAtElevation(m_GunShootingElevation)) { break; }
+                ElevateGunTowardsAngle(m_GunShootingElevation);
+                yield return null;
+            }
+
+            // Fire!
+            if (i == (m_TargetTiles.Length - 1))
+            {
+                // We only want the callback on the final bullet.
+                FireGun(m_TargetTiles[i], OnFollowedBulletAnimationComplete, true);
+            }
+            else
+            {
+                FireGun(m_TargetTiles[i], null, false);
+            }
+
+            // Wait a while before firing next bullet.
+            yield return new WaitForSeconds(0.3f);
         }
 
-        // Raise our gun.
-        while (true)
-        {
-            // Do nothing if we are paused.
-            while (m_ShootAnimationPaused) { yield return null; }
-
-            if (IsGunAtElevation(m_GunShootingElevation)) { break; }
-            ElevateGunTowardsAngle(m_GunShootingElevation);
-            yield return null;
-        }
-
-        // Fire!
-        FireGun(m_TargetTile);
-
-        // Wait for a while.
+        // Wait for 1 seconds. For dramatic purposes.
         yield return new WaitForSeconds(1.0f);
 
         // Lower our gun.
@@ -257,19 +282,35 @@ public class MOAnimator_SHSM : MOAnimator
             yield return null;
         }
 
-        // Wait for the bullet to hit its target.
-        while (!m_BulletAnimationComplete) { yield return null; }
-        m_BulletAnimationComplete = false;
+        // Wait for the followed bullet to hit its target.
+        while (!m_FollowedBulletAnimationComplete) { yield return null; }
+        m_FollowedBulletAnimationComplete = false;
+
+        // Wait for the unfollowed bullets to hit their target.
+        while (m_UnfollowedBullets.Count > 0)
+        {
+            // Remove the bullets that are deleted from the list.
+            for (int i = 0; i < m_UnfollowedBullets.Count; ++i)
+            {
+                if (m_UnfollowedBullets[i] == null)
+                {
+                    m_UnfollowedBullets.RemoveAt(i--);
+                }
+            }
+
+            yield return null;
+        }
 
         // Invoke the completion callback.
         InvokeCallback(m_ShootAnimationCompletionCallback);
     }
 
     // Shoot Animation
-    public void StartShootAnimation(Tile _targetTile, Void_Void _callback)
+    public void StartShootAnimation(Tile[] _targetTiles, Void_Void _callback)
     {
-        Assert.IsNotNull(_targetTile, MethodBase.GetCurrentMethod().Name + " - _targetTile must not be null!");
-        m_TargetTile = _targetTile;
+        Assert.IsNotNull(_targetTiles, MethodBase.GetCurrentMethod().Name + " - _targetTiles must not be null!");
+        Assert.IsTrue(_targetTiles.Length > 0, MethodBase.GetCurrentMethod().Name + " - _targetTiles' length must be > 0!");
+        m_TargetTiles = _targetTiles;
         m_ShootAnimationCompletionCallback = _callback;
 
         m_ShootAnimationCoroutine = ShootAnimationCouroutine();
@@ -279,30 +320,57 @@ public class MOAnimator_SHSM : MOAnimator
     public override void PauseShootAnimation()
     {
         base.PauseShootAnimation();
-        if (m_Bullet != null)
+
+        // Unpause the unfollowed bullets.
+        foreach (ArtileryBullet bullet in m_UnfollowedBullets)
         {
+            if (bullet != null)
+            {
+                bullet.SetPaused(true);
+            }
+        }
+
+        // Pause the followed bullet.
+        if (m_FollowedBullet != null)
+        {
+            m_FollowedBullet.SetPaused(true);
             GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), null);
-            m_Bullet.SetPaused(true);
         }
     }
 
     public override void ResumeShootAnimation()
     {
         base.ResumeShootAnimation();
-        if (m_Bullet != null)
+
+        // Unpause the unfollowed bullets.
+        foreach (ArtileryBullet bullet in m_UnfollowedBullets)
         {
-            GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_Bullet.gameObject);
-            m_Bullet.SetPaused(false);
+            if (bullet != null)
+            {
+                bullet.SetPaused(false);
+            }
+        }
+
+        // Unpause the followed bullet.
+        if (m_FollowedBullet != null)
+        {
+            m_FollowedBullet.SetPaused(false);
+            GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), m_FollowedBullet.gameObject);
         }
     }
 
     public override void StopShootAnimation()
     {
         base.StopShootAnimation();
-        if (m_Bullet != null)
+
+        // Destroy Unfollowed Bullets
+        DestroyUnfollowedBullets();
+
+        // Destroy Followed Bullet
+        if (m_FollowedBullet != null)
         {
             GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), null);
-            Destroy(m_Bullet.gameObject);
+            Destroy(m_FollowedBullet.gameObject);
         }
     }
 
@@ -324,6 +392,19 @@ public class MOAnimator_SHSM : MOAnimator
     protected override void MoveCinematicComplete()
     {
         GameEventSystem.GetInstance().TriggerEvent(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StopCinematic));
+    }
+
+    protected void DestroyUnfollowedBullets()
+    {
+        for (int i = 0; i < m_UnfollowedBullets.Count; ++i)
+        {
+            if (m_UnfollowedBullets[i] != null)
+            {
+                Destroy(m_UnfollowedBullets[i].gameObject);
+            }
+        }
+
+        m_UnfollowedBullets.Clear();
     }
 
 #if UNITY_EDITOR

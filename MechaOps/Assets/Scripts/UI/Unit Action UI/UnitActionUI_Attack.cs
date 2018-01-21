@@ -26,7 +26,7 @@ public class UnitActionUI_Attack : UnitActionUI
         base.Awake();
         m_IndexOfTarget = 0;
 
-        Canvas screenSpaceCanvas = GameSystemsDirectory.GetSceneInstance().GetScreenSpaceCanvas();
+        Canvas screenSpaceCanvas = GameSystemsDirectory.GetSceneInstance().GetClickableScreenSpaceCanvas();
         m_Crosshair = Instantiate(m_CrosshairPrefab.gameObject, screenSpaceCanvas.gameObject.transform).GetComponent<Image>();
         m_Crosshair.gameObject.SetActive(false);
     }
@@ -100,7 +100,7 @@ public class UnitActionUI_Attack : UnitActionUI
     {
         if (m_OtherTarget)
         {
-            Canvas screenSpaceCanvas = GameSystemsDirectory.GetSceneInstance().GetScreenSpaceCanvas();
+            Canvas screenSpaceCanvas = GameSystemsDirectory.GetSceneInstance().GetClickableScreenSpaceCanvas();
             Camera gameCamera = GameSystemsDirectory.GetSceneInstance().GetGameCamera();
             Vector3 screenPoint = gameCamera.WorldToScreenPoint(m_OtherTarget.gameObject.transform.position);
             screenPoint.z = 0.0f;

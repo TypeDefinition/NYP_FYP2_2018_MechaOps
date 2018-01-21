@@ -72,7 +72,7 @@ public class GameFlowManager : MonoBehaviour
 
     protected virtual void Awake()
     {
-        m_EnemyTurnDisplay = Instantiate(m_EnemyTurnDisplayPrefab, GameSystemsDirectory.GetSceneInstance().GetScreenSpaceCanvas().transform);
+        m_EnemyTurnDisplay = Instantiate(m_EnemyTurnDisplayPrefab, GameSystemsDirectory.GetSceneInstance().GetClickableScreenSpaceCanvas().transform);
         m_EnemyTurnDisplay.SetActive(false);
 
         Assert.IsTrue(m_FactionsInPlay.Length >= 2, MethodBase.GetCurrentMethod().Name + " - There must be at least 2 factions in play!");
@@ -148,15 +148,15 @@ public class GameFlowManager : MonoBehaviour
     protected virtual void DisplayWinScreen()
     {
         m_EnemyTurnDisplay.SetActive(false);
-        Instantiate(m_PlayerWonDisplay, GameSystemsDirectory.GetSceneInstance().GetScreenSpaceCanvas().transform).SetActive(true);
-        Instantiate(m_GameOverDisplayPrefab, GameSystemsDirectory.GetSceneInstance().GetScreenSpaceCanvas().transform).SetActive(true);
+        Instantiate(m_PlayerWonDisplay, GameSystemsDirectory.GetSceneInstance().GetClickableScreenSpaceCanvas().transform).SetActive(true);
+        Instantiate(m_GameOverDisplayPrefab, GameSystemsDirectory.GetSceneInstance().GetClickableScreenSpaceCanvas().transform).SetActive(true);
     }
 
     protected virtual void DisplayLoseScreen()
     {
         m_EnemyTurnDisplay.SetActive(false);
-        Instantiate(m_PlayerLostDisplay, GameSystemsDirectory.GetSceneInstance().GetScreenSpaceCanvas().transform).SetActive(true);
-        Instantiate(m_GameOverDisplayPrefab, GameSystemsDirectory.GetSceneInstance().GetScreenSpaceCanvas().transform).SetActive(true);
+        Instantiate(m_PlayerLostDisplay, GameSystemsDirectory.GetSceneInstance().GetClickableScreenSpaceCanvas().transform).SetActive(true);
+        Instantiate(m_GameOverDisplayPrefab, GameSystemsDirectory.GetSceneInstance().GetClickableScreenSpaceCanvas().transform).SetActive(true);
     }
 
 #if UNITY_EDITOR

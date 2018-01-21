@@ -5,7 +5,7 @@ using UnityEngine;
 public class TestSHSMAnimator : MonoBehaviour {
     [SerializeField] bool m_AttackFlag;
     [SerializeField] protected MOAnimator_SHSM m_SHSMAnimator;
-    [SerializeField] GameObject m_TargetGO;
+    [SerializeField] GameObject[] m_TargetGO;
 
 	// Use this for initialization
 	void Start () {
@@ -17,7 +17,16 @@ public class TestSHSMAnimator : MonoBehaviour {
     {
         if (m_AttackFlag)
         {
-            m_SHSMAnimator.StartShootAnimation(m_TargetGO.GetComponent<Tile>(), null);
+            List<Tile> tileList = new List<Tile>();
+            foreach (GameObject target in m_TargetGO)
+            {
+                if (target.GetComponent<Tile>() != null)
+                {
+                    tileList.Add(target.GetComponent<Tile>());
+                }
+            }
+
+            m_SHSMAnimator.StartShootAnimation(tileList.ToArray(), null);
             m_AttackFlag = false;
         }
     }

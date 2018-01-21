@@ -1224,7 +1224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UnitActionName: Artilery Strike
-  m_UnitActionDescription: Shoots 1 of 7 marked tiles.
+  m_UnitActionDescription: Shoots 4 of 7 marked tiles.
   m_ControllableAction: 1
   m_Priority: 0
   m_ActionCost: 1
@@ -1239,6 +1239,8 @@ MonoBehaviour:
   m_AccuracyPoints: 0
   m_DamagePoints: 3
   m_Animation: {fileID: 114292346527977848}
+  m_TargetRadius: 1
+  m_NumHitTiles: 4
 --- !u!114 &114038109052544924
 MonoBehaviour:
   m_ObjectHideFlags: 1

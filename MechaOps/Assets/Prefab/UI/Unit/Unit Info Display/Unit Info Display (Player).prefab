@@ -103,7 +103,6 @@ GameObject:
   m_Component:
   - component: {fileID: 224916832757805684}
   - component: {fileID: 114402062310350054}
-  - component: {fileID: 114884213446552818}
   m_Layer: 12
   m_Name: Unit Info Display (Player)
   m_TagString: Untagged
@@ -194,12 +193,7 @@ MonoBehaviour:
   m_HealthBar: {fileID: 114226265547128792}
   m_ActionPointsCounter: {fileID: 114001893041120056}
   m_UnitWorldPositionOffset: {x: 0, y: 2.5, z: 0}
-  m_ScaleZ: 1
-  m_DistanceToCameraScale: 16
-  m_FOVToCameraScale: 50
-  m_UnitInfoCamera: {fileID: 0}
-  m_MaxScaleLimit: 5
-  m_MinScaleLimit: 0.7
+  m_PositionZ: 0
 --- !u!114 &114777383387697568
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -340,20 +334,6 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &114884213446552818
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1768771394472108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d09db696f8aedc408ab6f2b3d11105d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_BillboardUpAxis: 0
-  m_MainCamera: {fileID: 0}
-  m_ReverseDirection: 0
 --- !u!222 &222058586830377686
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -483,5 +463,5 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 113.99997, y: 0.00000019443}
-  m_SizeDelta: {x: 99.99994, y: 60}
+  m_SizeDelta: {x: 100, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}

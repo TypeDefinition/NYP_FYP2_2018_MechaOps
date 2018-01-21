@@ -52,7 +52,7 @@ public class PlayerUnitsManager : UnitsManager
         base.Awake();
 
         // Screen Space Canvas
-        m_ScreenSpaceCanvas = m_GameSystemsDirectory.GetScreenSpaceCanvas().GetComponent<ScreenSpaceCanvas>();
+        m_ScreenSpaceCanvas = m_GameSystemsDirectory.GetClickableScreenSpaceCanvas().GetComponent<ScreenSpaceCanvas>();
         Assert.IsNotNull(m_ScreenSpaceCanvas);
         m_UnitActionSelectionUIScrollRect = m_ScreenSpaceCanvas.GetComponent<ScreenSpaceCanvas>().GetUnitActionSelectionScrollRect();
         Assert.IsNotNull(m_UnitActionSelectionUIScrollRect);
