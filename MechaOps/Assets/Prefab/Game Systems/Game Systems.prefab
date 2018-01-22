@@ -1061,7 +1061,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TileSystem: {fileID: 0}
   m_GameCamera: {fileID: 0}
-  m_UnitInfoCamera: {fileID: 0}
   m_UnitsTracker: {fileID: 114538370514917290}
   m_AIUnitManagers:
   - {fileID: 114373422892012444}
@@ -2624,7 +2623,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!223 &223668701871583062
 Canvas:
@@ -2644,7 +2643,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &224001980985102838
 RectTransform:

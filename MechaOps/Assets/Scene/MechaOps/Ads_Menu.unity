@@ -138,7 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8b3a31f2d5a45d4f8dc8b51d78e238b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TestBuild: 1
+  m_TestBuild: 0
   m_PlacementID: video
 --- !u!4 &1965702054
 Transform:
