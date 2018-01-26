@@ -572,7 +572,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4946031483077126}
-  - component: {fileID: 114940466561922674}
+  - component: {fileID: 114961964744638068}
   m_Layer: 0
   m_Name: Spawn System
   m_TagString: Untagged
@@ -2938,6 +2938,7 @@ MonoBehaviour:
   m_ClickedTile: {fileID: 0}
   m_EventAsset: {fileID: 0}
   m_tweenDisableScript: {fileID: 0}
+  m_ReadyShowTileInfo: 1
 --- !u!114 &114741015380878842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3169,7 +3170,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114940466561922674
+--- !u!114 &114961964744638068
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -3177,11 +3178,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1827344487890628}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c513e8d39705dff4e97a5f61b396a2c4, type: 3}
+  m_Script: {fileID: 11500000, guid: d012b00e27975b24aa223ad47721f784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UnitLibrary: {fileID: 0}
-  m_UnitsToSpawn: []
+  m_UnitLibrary: {fileID: 11400000, guid: 60f7ce9ba08de1049a082f8bd6d5ca28, type: 2}
+  m_UnitsToSpawn:
+  - {fileID: 11400000, guid: 97b5c534055f0284e89a18b433d717b2, type: 2}
+  - {fileID: 11400000, guid: 3f0a89ede7a127f4e8be09775ab01340, type: 2}
 --- !u!114 &114991204733943724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3722,7 +3725,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.9285634, y: 0.65311104}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -292.7998, y: -278.14993}
+  m_AnchoredPosition: {x: -292.80078, y: -278.14993}
   m_SizeDelta: {x: 514.6, y: 370.3999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224587150375869776
