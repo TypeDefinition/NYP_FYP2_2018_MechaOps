@@ -20,6 +20,7 @@ MonoBehaviour:
   - Turn End
   - Unit Seen
   - Unit Unseen
+  - Unit Start Action
   - Unit Finished Action
   - Unit Finished Turn
   - Game Over

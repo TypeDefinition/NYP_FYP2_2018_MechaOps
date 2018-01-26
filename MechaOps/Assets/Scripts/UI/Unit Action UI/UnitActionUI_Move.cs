@@ -58,6 +58,7 @@ public class UnitActionUI_Move : UnitActionUI
         {
             m_UnitAction.SetTilePath(m_MovementPath);
             m_UnitAction.TurnOn();
+            GameEventSystem.GetInstance().TriggerEvent(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitStartAction));
             Destroy(gameObject);
         }
     }

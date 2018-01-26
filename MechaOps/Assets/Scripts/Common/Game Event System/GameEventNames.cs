@@ -32,6 +32,7 @@ public class GameEventNames : ScriptableObject
         TurnEnd,
         UnitSeen,
         UnitUnseen,
+        UnitStartAction,
         UnitFinishedAction,
         UnitFinishedTurn,
         GameOver,

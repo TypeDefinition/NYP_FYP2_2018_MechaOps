@@ -259,6 +259,11 @@ public class Tile : MonoBehaviour
         return m_Hazard != null;
     }
 
+    public HazardType GetHazardType()
+    {
+        return m_HazardType;
+    }
+
     public bool GetIsWalkable()
     {
         if (m_Hazard == null)

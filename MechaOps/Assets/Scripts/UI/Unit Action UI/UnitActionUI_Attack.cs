@@ -48,6 +48,7 @@ public class UnitActionUI_Attack : UnitActionUI
             // set the target, schedule this action. then destroy this UI gameobject since it is not needed
             m_UnitAttackAction.SetTarget(m_OtherTarget.gameObject);
             m_UnitAttackAction.TurnOn();
+            GameEventSystem.GetInstance().TriggerEvent(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitStartAction));
             Destroy(gameObject);
         }
     }

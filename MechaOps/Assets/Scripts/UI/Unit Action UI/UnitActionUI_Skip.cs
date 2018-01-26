@@ -13,6 +13,7 @@ public class UnitActionUI_Skip : UnitActionUI
     public override void PressedConfirm()
     {
         m_UnitAction.TurnOn();
+        GameEventSystem.GetInstance().TriggerEvent(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitStartAction));
         Destroy(gameObject);
     }
 

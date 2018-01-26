@@ -67,6 +67,7 @@ public class UnitActionUI_SHSM_Shoot : UnitActionUI
         {
             m_UnitAction.SetTarget(m_TargetedTile.gameObject);
             m_UnitAction.TurnOn();
+            GameEventSystem.GetInstance().TriggerEvent(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitStartAction));
             Destroy(gameObject);
         }
     }
