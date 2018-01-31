@@ -671,8 +671,8 @@ MonoBehaviour:
   m_UnitActionDescription: Skips this unit's turn.
   m_ControllableAction: 1
   m_Priority: 0
-  m_ActionCost: 1
-  m_EndsTurn: 0
+  m_ActionCost: 0
+  m_EndsTurn: 1
   m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 114610579002547102, guid: 10234cb69b925e14d9163d2556b7fb5b,
     type: 2}
@@ -796,7 +796,6 @@ MonoBehaviour:
   m_ViewTileScript: {fileID: 114097250834631704}
   m_UnitInfoDisplay_Prefab: {fileID: 114402062310350054, guid: 5de0e7aba41ddec4daa1972243bd5133,
     type: 2}
-  m_EnemiesInViewRange: []
 --- !u!114 &114881584929758932
 MonoBehaviour:
   m_ObjectHideFlags: 1

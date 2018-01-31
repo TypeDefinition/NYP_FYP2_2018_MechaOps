@@ -581,7 +581,7 @@ MonoBehaviour:
   m_ControllableAction: 1
   m_Priority: 0
   m_ActionCost: 1
-  m_EndsTurn: 0
+  m_EndsTurn: 1
   m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 0}
   m_UnitActionButtonSprite: {fileID: 0}
@@ -607,6 +607,7 @@ MonoBehaviour:
   m_ActionCompleted: 0
   m_AttackAct: {fileID: 114737823929242180}
   m_WalkAct: {fileID: 114304432078445664}
+  m_SkipAct: {fileID: 0}
   m_EnemiesInAttack: []
   m_SeenMovingFlag: 0
   m_EventNames: {fileID: 0}
@@ -968,7 +969,6 @@ MonoBehaviour:
   m_ViewTileScript: {fileID: 114906196630865626}
   m_UnitInfoDisplay_Prefab: {fileID: 114733988119590608, guid: f6fdede1943ea6742858eefd80f3ded1,
     type: 2}
-  m_EnemiesInViewRange: []
 --- !u!136 &136535640069596984
 CapsuleCollider:
   m_ObjectHideFlags: 1

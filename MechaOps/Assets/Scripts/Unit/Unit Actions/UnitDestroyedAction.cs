@@ -51,12 +51,20 @@ public class UnitDestroyedAction : IUnitAction
         TurnOn();
     }
 
+    // Do not call DeductActionPoints on turn on. Call it in StartAction instead.
+    protected override void OnTurnOn()
+    {
+        m_ActionState = ActionState.None;
+        m_CooldownTurnsLeft = m_CooldownTurns;
+        m_IsFirstTurnSinceTurnedOn = true;
+    }
+
     public override void StartAction()
     {
         base.StartAction();
+        DeductActionPoints();
         RegisterAnimationCompletionCallback();
         m_Animation.StartAnimation();
-        m_UnitStats.CurrentActionPoints = 0;
     }
 
     public override void PauseAction()

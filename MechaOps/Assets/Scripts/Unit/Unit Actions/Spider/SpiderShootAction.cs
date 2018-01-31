@@ -8,8 +8,8 @@ public class SpiderShootAction : UnitAttackAction
 {
     [SerializeField] protected MOAnimation_SpiderShoot m_Animation;
 
-    protected bool m_RegisteredAnimationCompleteCallback = false;
     protected bool m_Hit = false;
+    protected bool m_RegisteredAnimationCompleteCallback = false;
 
     protected virtual void RegisterAnimationCompleteCallback()
     {
@@ -86,6 +86,7 @@ public class SpiderShootAction : UnitAttackAction
     {
         base.OnTurnOn();
         Assert.IsTrue(VerifyRunCondition());
+        DeductActionPoints();
         m_UnitStats.GetGameSystemsDirectory().GetUnitActionScheduler().ScheduleAction(this);
     }
 }

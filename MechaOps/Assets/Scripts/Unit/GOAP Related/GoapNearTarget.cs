@@ -14,6 +14,8 @@ public class GoapNearTarget : IGoapAction
     protected UnitAttackAction m_AttackAct;
     [SerializeField, Tooltip("Unit walk act ref")]
     protected UnitMoveAction m_WalkAct;
+    [SerializeField]
+    protected UnitSkipAction m_SkipAct;
 
     [Header("Debugging purpose")]
     [SerializeField, Tooltip("The list of units that are within the attackin range")]
@@ -123,9 +125,27 @@ public class GoapNearTarget : IGoapAction
                 break;
             }
         }
+
+        if (zeTileToWalk == null ||  zeTileToWalk.Count == 0)
+        {
+            m_SkipAct.CompletionCallBack += InvokeActionCompleted;
+            m_SkipAct.TurnOn();
+
+            while (!m_ActionCompleted)
+            {
+                yield return null;
+            }
+
+            m_SkipAct.CompletionCallBack -= InvokeActionCompleted;
+            m_UpdateRoutine = null;
+
+            yield break;
+        }
+
         m_WalkAct.SetTilePath(zeTileToWalk.ToArray());
         m_WalkAct.CompletionCallBack += InvokeActionCompleted;
         m_WalkAct.TurnOn();
+
         WaitForFixedUpdate zeFixedWait = new WaitForFixedUpdate();
         // Start following the unit.
         if (m_SeenMovingFlag)

@@ -121,6 +121,7 @@ public class SHSMShootAction : UnitAttackAction
     {
         base.OnTurnOn();
         Assert.IsTrue(VerifyRunCondition());
+        DeductActionPoints();
         m_UnitStats.GetGameSystemsDirectory().GetUnitActionScheduler().ScheduleAction(this);
     }
 

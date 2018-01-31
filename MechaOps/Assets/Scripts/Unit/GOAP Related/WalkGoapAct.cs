@@ -90,7 +90,8 @@ public class WalkGoapAct : IGoapAction {
         }
 
         TileId[] zeTileToWalkTo = null;
-        foreach (TileId TileLocation in m_Planner.EnemiesManager.GetOneTileAwayFromEnemyWithoutAGauranteeOfAWalkableTileAtAll())
+        List<TileId> oneTileAwayList = m_Planner.EnemiesManager.GetOneTileAwayFromEnemyWithoutAGauranteeOfAWalkableTileAtAll();
+        foreach (TileId TileLocation in oneTileAwayList)
         {
             //Assert.IsFalse(m_Planner.m_Stats.CurrentTileID.Equals(TileLocation), "Update of Tile coordinate has failed at UpdateActRoutine in WalkGoapAct.cs");
             if (m_Planner.m_Stats.CurrentTileID.Equals(TileLocation))

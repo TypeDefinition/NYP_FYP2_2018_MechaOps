@@ -1885,7 +1885,7 @@ MonoBehaviour:
     type: 2}
   m_UnitActionButtonSprite: {fileID: 21300000, guid: d859645726494314ab2591c7384f7d53,
     type: 3}
-  m_MovementPoints: 5
+  m_MovementPoints: 15
   m_Animation: {fileID: 114104640808132124}
 --- !u!114 &114712672434394876
 MonoBehaviour:
@@ -1903,7 +1903,7 @@ MonoBehaviour:
   m_ControllableAction: 1
   m_Priority: 0
   m_ActionCost: 1
-  m_EndsTurn: 0
+  m_EndsTurn: 1
   m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 114610579002547102, guid: 10234cb69b925e14d9163d2556b7fb5b,
     type: 2}
@@ -1924,10 +1924,10 @@ MonoBehaviour:
     m_UnitName: Panzer
     m_UnitDescription: Panzer, vor!
     m_FactionType: 0
-    m_MaxHealthPoints: 5
-    m_CurrentHealthPoints: 5
-    m_MaxActionPoints: 2
-    m_CurrentActionPoints: 2
+    m_MaxHealthPoints: 10
+    m_CurrentHealthPoints: 10
+    m_MaxActionPoints: 50
+    m_CurrentActionPoints: 50
     m_DeploymentCost: 2000
     m_ViewRange: 10
     m_ConcealmentPoints: 0
@@ -1939,7 +1939,6 @@ MonoBehaviour:
   m_ViewTileScript: {fileID: 114750456944338704}
   m_UnitInfoDisplay_Prefab: {fileID: 114402062310350054, guid: 5de0e7aba41ddec4daa1972243bd5133,
     type: 2}
-  m_EnemiesInViewRange: []
 --- !u!114 &114750456944338704
 MonoBehaviour:
   m_ObjectHideFlags: 1

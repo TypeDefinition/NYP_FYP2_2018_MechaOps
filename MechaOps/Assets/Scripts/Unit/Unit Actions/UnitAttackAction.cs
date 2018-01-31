@@ -17,7 +17,7 @@ public abstract class UnitAttackAction : IUnitAction
     protected int m_DamagePoints = 2;
 
     // Non-Serialised Variable(s)
-    protected UnitStats m_TargetUnitStats;
+    protected UnitStats m_TargetUnitStats = null;
 
     public int MinAttackRange
     {
@@ -63,43 +63,7 @@ public abstract class UnitAttackAction : IUnitAction
     {
         return m_TargetUnitStats;
     }
-
-    /// <summary>
-    /// Optimization will have to come later as this will need to be expanded upon!
-    /// </summary>
-    /// <param name="_other">The opposing target</param>
-    /// <returns>Dont know yet!</returns>
-    public override void StartAction()
-    {
-        base.StartAction();
-    }
-
-    public override void StopAction()
-    {
-        base.StopAction();
-    }
-
-    public override void PauseAction()
-    {
-        base.PauseAction();
-    }
-
-    public override void ResumeAction()
-    {
-        base.ResumeAction();
-    }
-
-    protected override void OnTurnOn()
-    {
-        base.OnTurnOn();
-        Assert.IsTrue(VerifyRunCondition());
-    }
-
-    protected override void OnTurnOff()
-    {
-        base.OnTurnOff();
-    }
-
+    
     public override bool VerifyRunCondition()
     {
         // Exit Checks
@@ -149,5 +113,4 @@ public abstract class UnitAttackAction : IUnitAction
         DamagePoints = m_DamagePoints;
     }
 #endif
-
 }

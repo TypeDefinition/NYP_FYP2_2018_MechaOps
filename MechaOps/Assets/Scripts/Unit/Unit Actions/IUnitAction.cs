@@ -30,18 +30,18 @@ public abstract class IUnitAction : MonoBehaviour
 
     // Serialised Variable(s)
     [SerializeField, Tooltip("The component name which will be use to indicate what UI tag to be activated.")]
-    private string m_UnitActionName;
+    protected string m_UnitActionName;
     [SerializeField, Tooltip("This is the description of the action.")]
-    private string m_UnitActionDescription = "<Placeholder Description>";
-    [SerializeField] private bool m_ControllableAction = true;
+    protected string m_UnitActionDescription = "<Placeholder Description>";
+    [SerializeField] protected bool m_ControllableAction = true;
     [SerializeField, Tooltip("The priority number for this action")]
-    private int m_Priority = 0;
+    protected int m_Priority = 0;
     [SerializeField, Tooltip("The action cost.")]
-    private int m_ActionCost = 1;
+    protected int m_ActionCost = 1;
     [SerializeField, Tooltip("Does this action end the turn immediately?")]
-    private bool m_EndsTurn = false;
+    protected bool m_EndsTurn = false;
     [SerializeField, Tooltip("How many turns this cooldown has after being turned on.")]
-    private int m_CooldownTurns = 0;
+    protected int m_CooldownTurns = 0;
 
     [SerializeField, Tooltip("The Unit Action UI Prefab")]
     private UnitActionUI m_UnitActionUIPrefab = null;
@@ -49,8 +49,8 @@ public abstract class IUnitAction : MonoBehaviour
     private Sprite m_UnitActionButtonSprite = null;
 
     // Non-Serialised Variable(s)
-    protected UnitActionHandler m_UnitActionHandler = null;
     private bool m_TurnedOn = false;
+    protected UnitActionHandler m_UnitActionHandler = null;
     protected UnitStats m_UnitStats = null;
     protected GameEventNames m_GameEventNames = null;
     protected GameFlowManager m_GameFlowManager = null;
@@ -160,18 +160,12 @@ public abstract class IUnitAction : MonoBehaviour
         if (m_CompletionCallBack != null) { m_CompletionCallBack(); }
     }
 
-    /// <summary>
-    /// To subscribe to some of the events with the ObserverSystem
-    /// </summary>
     protected virtual void InitEvents()
     {
         GameEventSystem.GetInstance().SubscribeToEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.TurnStart), OnTurnStart);
         GameEventSystem.GetInstance().SubscribeToEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.TurnEnd), OnTurnEnd);
     }
 
-    /// <summary>
-    /// To unsubscribe from some of the events with the ObserverSystem
-    /// </summary>
     protected virtual void DeinitEvents()
     {
         GameEventSystem.GetInstance().UnsubscribeFromEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.TurnStart), OnTurnStart);
@@ -210,12 +204,23 @@ public abstract class IUnitAction : MonoBehaviour
     public virtual void StartAction()
     {
         m_ActionState = ActionState.Running;
-        GetUnitStats().CurrentActionPoints -= ActionCost;
         GetUnitStats().CurrentActiveAction = this;
 
         if (m_UnitStats.GetViewScript().IsVisible() || m_UnitStats.UnitFaction == m_GameFlowManager.PlayerFaction)
         {
             GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FocusOnTarget), m_UnitStats.gameObject);
+        }
+    }
+
+    protected void DeductActionPoints()
+    {
+        if (EndsTurn)
+        {
+            GetUnitStats().CurrentActionPoints = 0;
+        }
+        else
+        {
+            GetUnitStats().CurrentActionPoints -= m_ActionCost;
         }
     }
 
