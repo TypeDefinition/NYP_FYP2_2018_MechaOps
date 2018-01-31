@@ -13,17 +13,10 @@ public class UnitActionScheduler : MonoBehaviour
     {
         Assert.IsFalse(_action == null, MethodBase.GetCurrentMethod().Name + " - _action should never be null!");
 
-        if (m_ScheduledActions == null)
-        {
-            m_ScheduledActions.Add(_action);
-            return;
-        }
-
         // Insertion Sort
-        int actionPriority = _action.Priority;
         for (int i = 0; i < m_ScheduledActions.Count; ++i)
         {
-            if (actionPriority > m_ScheduledActions[i].Priority)
+            if (_action.Priority > m_ScheduledActions[i].Priority)
             {
                 m_ScheduledActions.Insert(i, _action);
                 return;
@@ -35,17 +28,14 @@ public class UnitActionScheduler : MonoBehaviour
 
     private IUnitAction GetNextAction()
     {
-        if (m_ScheduledActions.Count == 0)
-        {
-            return null;
-        }
+        if (m_ScheduledActions.Count == 0) { return null; }
 
         IUnitAction result = m_ScheduledActions[0];
         m_ScheduledActions.RemoveAt(0);
         return result;
     }
-    
-    private bool CheckActionValid(IUnitAction _action)
+
+    private bool ValidateScheduledAction(IUnitAction _action)
     {
         if (_action == null)
         {
@@ -59,9 +49,6 @@ public class UnitActionScheduler : MonoBehaviour
 
         if (_action.GetActionState() == IUnitAction.ActionState.Completed)
         {
-            m_ScheduledActions.Remove(_action);
-            _action.TurnOff();
-            m_CurrentAction = null;
             return false;
         }
 
@@ -73,12 +60,59 @@ public class UnitActionScheduler : MonoBehaviour
         return true;
     }
 
-    private void Update()
+    private bool CheckCurrentActionValid()
     {
-        if (!CheckActionValid(m_CurrentAction))
+        if (m_CurrentAction == null) { return false; }
+
+        if (m_CurrentAction.TurnedOn == false) { return false; }
+
+        if (m_CurrentAction.VerifyRunCondition() == false) { return false; }
+
+        return true;
+    }
+
+    private void UpdateCurrentAction()
+    {
+        if (m_CurrentAction)
+        {
+            if (m_CurrentAction.GetActionState() == IUnitAction.ActionState.Completed)
+            {
+                m_CurrentAction.TurnOff();
+                m_CurrentAction = GetNextAction();
+            }
+            // If the current action is no longer valid, turn it off.
+            else if (CheckCurrentActionValid() == false)
+            {
+                if (m_CurrentAction.GetActionState() == IUnitAction.ActionState.Running || m_CurrentAction.GetActionState() == IUnitAction.ActionState.Paused)
+                {
+                    m_CurrentAction.StopAction();
+                }
+
+                m_CurrentAction.TurnOff();
+                m_CurrentAction = GetNextAction();
+            }
+            // If there is an action with higher priority, run that first.
+            else if (m_ScheduledActions.Count > 0 && m_ScheduledActions[0].Priority > m_CurrentAction.Priority)
+            {
+                // Get the next action.
+                IUnitAction nextAction = m_ScheduledActions[0];
+                m_ScheduledActions.RemoveAt(0);
+
+                // Pause the current action.
+                m_CurrentAction.PauseAction();
+                AddActionToSchedule(m_CurrentAction);
+                m_CurrentAction = nextAction;
+            }
+        }
+        else
         {
             m_CurrentAction = GetNextAction();
         }
+    }
+
+    private void Update()
+    {
+        UpdateCurrentAction();
 
         if (m_CurrentAction == null)
         {
@@ -108,8 +142,13 @@ public class UnitActionScheduler : MonoBehaviour
     // Interface Function(s)
     public void ScheduleAction(IUnitAction _action)
     {
-        Assert.IsTrue(CheckActionValid(_action), MethodBase.GetCurrentMethod().Name + " - Cannot schedule an invalid action!");
-        AddActionToSchedule(_action);
+        if (ValidateScheduledAction(_action))
+        {
+            AddActionToSchedule(_action);
+        }
+        else
+        {
+            _action.TurnOff();
+        }
     }
-
 }

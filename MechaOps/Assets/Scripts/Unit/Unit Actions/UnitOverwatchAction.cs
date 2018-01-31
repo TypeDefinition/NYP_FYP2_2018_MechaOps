@@ -6,6 +6,8 @@ using UnityEngine.Assertions;
 
 public class UnitOverwatchAction : UnitAttackAction
 {
+    protected bool m_CanShoot = true;
+
     // Events
     protected override void InitEvents()
     {
@@ -22,6 +24,7 @@ public class UnitOverwatchAction : UnitAttackAction
     // Other(s)
     protected override void OnTurnOn()
     {
+        Debug.Log("Overwatch Begin!");
         base.OnTurnOn();
 
         DeductActionPoints();
@@ -31,6 +34,12 @@ public class UnitOverwatchAction : UnitAttackAction
         // The completion callback is also not invoked.
         GameEventSystem.GetInstance().TriggerEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitFinishedAction), m_UnitStats);
         CheckIfUnitFinishedTurn();
+    }
+
+    protected override void OnTurnOff()
+    {
+        base.OnTurnOff();
+        m_CanShoot = true;
     }
 
     // Event Callbacks
@@ -48,6 +57,7 @@ public class UnitOverwatchAction : UnitAttackAction
     {
         // Ensure that this action is turned on.
         if (!TurnedOn) { return; }
+        if (!m_CanShoot) { return; }
 
         // Ensure that the moved unit is not an ally.
         if (_movedUnit.UnitFaction == m_UnitStats.UnitFaction) { return; }
@@ -94,6 +104,8 @@ public class UnitOverwatchAction : UnitAttackAction
         m_TargetUnitStats = _movedUnit;
         if (VerifyRunCondition())
         {
+            Debug.Log("Overwatch Scheduled!");
+            m_CanShoot = false;
             m_UnitStats.GetGameSystemsDirectory().GetUnitActionScheduler().ScheduleAction(this);
         }
         else

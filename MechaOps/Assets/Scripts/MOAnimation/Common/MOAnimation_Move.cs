@@ -38,7 +38,7 @@ public class MOAnimation_Move : MOAnimation
 
     public override void PauseAnimation()
     {
-        m_Animator.StopMoveAnimation();
+        m_Animator.PauseMoveAnimation();
     }
 
     public override void ResumeAnimation()

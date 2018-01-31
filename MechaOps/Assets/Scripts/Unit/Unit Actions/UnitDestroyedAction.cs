@@ -29,23 +29,12 @@ public class UnitDestroyedAction : IUnitAction
         }
     }
 
-    protected override void InitEvents()
-    {
-        base.InitEvents();
-        GameEventSystem.GetInstance().SubscribeToEvent<UnitStats, bool>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitDead), OnUnitDead);
-    }
-
-    protected override void DeinitEvents()
-    {
-        base.DeinitEvents();
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats, bool>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitDead), OnUnitDead);
-    }
-
     protected override void Awake()
     {
         base.Awake();
         Assert.IsFalse(ControllableAction, MethodBase.GetCurrentMethod().Name + " - UnitDestroyedAction must be a non controllable action!");
         Assert.IsTrue(ActionCost == 0, MethodBase.GetCurrentMethod().Name + " - UnitDestroyedAction's ActionCost must be 0!");
+        Assert.IsTrue(EndsTurn, MethodBase.GetCurrentMethod().Name + " - UnitDestroyedAction's ActionCost must end turn!");
 
         // Turn on this action immediately.
         TurnOn();
@@ -90,10 +79,15 @@ public class UnitDestroyedAction : IUnitAction
     {
         m_ActionState = ActionState.Completed;
         UnregisterAnimationCompletionCallback();
+
+        // Sending out an event that this action has ended.
+        GameEventSystem.GetInstance().TriggerEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitFinishedAction), m_UnitStats);
         InvokeCompletionCallback();
+
+        CheckIfUnitFinishedTurn();
     }
 
-    protected void OnUnitDead(UnitStats _deadUnit, bool _dead)
+    protected override void OnUnitDead(UnitStats _deadUnit, bool _dead)
     {
         if (!TurnedOn) { return; }
         if (_deadUnit != m_UnitStats) { return; }

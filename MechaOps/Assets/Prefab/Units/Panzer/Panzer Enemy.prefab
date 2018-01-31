@@ -1880,9 +1880,9 @@ MonoBehaviour:
   m_resultsOfThisAct:
   - TargetAttackInRange
   m_ActionCompleted: 0
-  m_AttackAct: {fileID: 0}
+  m_AttackAct: {fileID: 114669511403171312}
   m_WalkAct: {fileID: 114930548130969464}
-  m_SkipAct: {fileID: 0}
+  m_SkipAct: {fileID: 114856521220186888}
   m_EnemiesInAttack: []
   m_SeenMovingFlag: 0
   m_EventNames: {fileID: 0}
@@ -1983,7 +1983,7 @@ MonoBehaviour:
   - WalkGoal
   m_ActionCompleted: 0
   m_WalkAct: {fileID: 114930548130969464}
-  m_SkipAction: {fileID: 0}
+  m_SkipAction: {fileID: 114856521220186888}
   m_TileDest:
     m_X: 0
     m_Y: 0
@@ -2078,7 +2078,7 @@ MonoBehaviour:
   m_ControllableAction: 0
   m_Priority: 50
   m_ActionCost: 0
-  m_EndsTurn: 0
+  m_EndsTurn: 1
   m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 0}
   m_UnitActionButtonSprite: {fileID: 0}

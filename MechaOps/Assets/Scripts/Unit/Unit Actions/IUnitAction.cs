@@ -108,7 +108,10 @@ public abstract class IUnitAction : MonoBehaviour
         m_IsFirstTurnSinceTurnedOn = true;
     }
 
-    protected virtual void OnTurnOff() { m_ActionState = ActionState.None; }
+    protected virtual void OnTurnOff()
+    {
+        m_ActionState = ActionState.None;
+    }
 
     public bool TurnedOn { get { return m_TurnedOn; } }
 
@@ -164,12 +167,14 @@ public abstract class IUnitAction : MonoBehaviour
     {
         GameEventSystem.GetInstance().SubscribeToEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.TurnStart), OnTurnStart);
         GameEventSystem.GetInstance().SubscribeToEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.TurnEnd), OnTurnEnd);
+        GameEventSystem.GetInstance().SubscribeToEvent<UnitStats, bool>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitDead), OnUnitDead);
     }
 
     protected virtual void DeinitEvents()
     {
         GameEventSystem.GetInstance().UnsubscribeFromEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.TurnStart), OnTurnStart);
         GameEventSystem.GetInstance().UnsubscribeFromEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.TurnEnd), OnTurnEnd);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats, bool>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitDead), OnUnitDead);
     }
 
     /// <summary>
@@ -222,6 +227,18 @@ public abstract class IUnitAction : MonoBehaviour
         {
             GetUnitStats().CurrentActionPoints -= m_ActionCost;
         }
+    }
+
+    protected virtual void OnUnitDead(UnitStats _deadUnit, bool _dead)
+    {
+        if (!TurnedOn) { return; }
+        if (_deadUnit != m_UnitStats) { return; }
+
+        if (m_ActionState == ActionState.Paused || m_ActionState == ActionState.Running)
+        {
+            StopAction();
+        }
+        TurnOff();
     }
 
     /// <summary>

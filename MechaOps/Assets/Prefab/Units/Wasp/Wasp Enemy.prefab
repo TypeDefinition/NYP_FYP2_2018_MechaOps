@@ -607,7 +607,7 @@ MonoBehaviour:
   m_ActionCompleted: 0
   m_AttackAct: {fileID: 114737823929242180}
   m_WalkAct: {fileID: 114304432078445664}
-  m_SkipAct: {fileID: 0}
+  m_SkipAct: {fileID: 114034999326429070}
   m_EnemiesInAttack: []
   m_SeenMovingFlag: 0
   m_EventNames: {fileID: 0}
@@ -722,7 +722,7 @@ MonoBehaviour:
   m_ControllableAction: 0
   m_Priority: 50
   m_ActionCost: 0
-  m_EndsTurn: 0
+  m_EndsTurn: 1
   m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 0}
   m_UnitActionButtonSprite: {fileID: 0}

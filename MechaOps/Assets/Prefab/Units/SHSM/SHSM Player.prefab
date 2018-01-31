@@ -1295,7 +1295,6 @@ MonoBehaviour:
   m_ViewTileScript: {fileID: 114488719646846322}
   m_UnitInfoDisplay_Prefab: {fileID: 114402062310350054, guid: 5de0e7aba41ddec4daa1972243bd5133,
     type: 2}
-  m_EnemiesInViewRange: []
 --- !u!114 &114292346527977848
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1375,7 +1374,7 @@ MonoBehaviour:
   m_ControllableAction: 0
   m_Priority: 50
   m_ActionCost: 0
-  m_EndsTurn: 0
+  m_EndsTurn: 1
   m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 0}
   m_UnitActionButtonSprite: {fileID: 0}

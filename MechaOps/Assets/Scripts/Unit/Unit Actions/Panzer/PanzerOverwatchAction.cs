@@ -78,6 +78,7 @@ public class PanzerOverwatchAction : UnitOverwatchAction
         GameEventSystem.GetInstance().TriggerEvent<UnitStats, UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.AttackedUnit), m_UnitStats, m_TargetUnitStats);
         GameEventSystem.GetInstance().TriggerEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitFinishedAction), m_UnitStats);
         InvokeCompletionCallback();
+        Debug.Log("Overwatch Completed!");
 
         // Unlike most actions, where they occur immediately, Overwatch has 2 states.
         // 1. After turning on. (End turn immediately.)

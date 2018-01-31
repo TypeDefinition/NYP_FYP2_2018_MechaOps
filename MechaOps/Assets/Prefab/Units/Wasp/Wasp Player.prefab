@@ -706,7 +706,7 @@ MonoBehaviour:
   m_ControllableAction: 0
   m_Priority: 50
   m_ActionCost: 0
-  m_EndsTurn: 0
+  m_EndsTurn: 1
   m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 0}
   m_UnitActionButtonSprite: {fileID: 0}
