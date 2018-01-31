@@ -13,8 +13,8 @@ public class TileDisplay : MonoBehaviour
     [SerializeField, HideInInspector] private bool m_OwnerInitialized = false;
     [SerializeField, HideInInspector] private Tile m_Owner = null;
 
-    [SerializeField] private bool m_Known = false;
-    [SerializeField] private bool m_Visible = false;
+    [SerializeField, HideInInspector] private bool m_Known = false;
+    [SerializeField, HideInInspector] private bool m_Visible = false;
 
     [SerializeField] private TileDisplay[] m_ChildDisplays = null;
 

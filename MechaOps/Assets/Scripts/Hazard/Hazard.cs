@@ -23,12 +23,22 @@ public class HazardAttributes
 
 public abstract class Hazard : MonoBehaviour
 {
+    [SerializeField] protected GameEventNames m_GameEventNames = null;
     [SerializeField, HideInInspector] private bool m_OwnerInitialized = false;
     [SerializeField, HideInInspector] private Tile m_Owner = null;
     [SerializeField] private HazardAttributes m_Attributes = new HazardAttributes();
     [SerializeField] private bool m_Decay = false;
     [SerializeField] private int m_TurnsToDecay = 3;
     private int m_CurrentTurnsToDecay;
+    private FactionType m_FactionTurnWhenCreated = FactionType.None;
+
+    [SerializeField, HideInInspector] private bool m_Visible = false;
+    private Void_Bool m_VisibilityCallback = null;
+    public Void_Bool VisibilityCallback
+    {
+        get { return m_VisibilityCallback; }
+        set { m_VisibilityCallback = value; }
+    }
 
     public Tile Owner { get { return m_Owner; } }
 
@@ -57,20 +67,21 @@ public abstract class Hazard : MonoBehaviour
         set { m_CurrentTurnsToDecay = Mathf.Clamp(value, 0, m_TurnsToDecay); }
     }
 
+    public FactionType FactionTurnWhenCreated
+    {
+        get { return m_FactionTurnWhenCreated; }
+    }
+
+    public bool IsVisible()
+    {
+        return m_Visible;
+    }
+
     // There are no setters as this should only be changed in the inspector.
     public HazardAttributes Attributes
     {
         get { return m_Attributes; }
     }
-
-#if UNITY_EDITOR
-    private void OnValidate()
-    {
-        m_Attributes.Validate();
-        Decay = m_Decay;
-        TurnsToDecay = m_TurnsToDecay;
-    }
-#endif // UNITY_EDITOR
 
     public void InitOwner(Tile _owner)
     {
@@ -79,4 +90,75 @@ public abstract class Hazard : MonoBehaviour
         m_Owner = _owner;
         m_OwnerInitialized = true;
     }
+
+    protected virtual void InitEvents()
+    {
+        GameEventSystem.GetInstance().SubscribeToEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitMovedToTile), OnUnitMovedToTile);
+        GameEventSystem.GetInstance().SubscribeToEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.TurnStart), OnTurnStart);
+        GameEventSystem.GetInstance().SubscribeToEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.TurnEnd), OnTurnEnd);
+    }
+
+    protected virtual void DeinitEvents()
+    {
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitMovedToTile), OnUnitMovedToTile);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.TurnStart), OnTurnStart);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<FactionType>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.TurnEnd), OnTurnEnd);
+    }
+
+    protected virtual void Awake()
+    {
+        InitEvents();
+        m_FactionTurnWhenCreated = GameSystemsDirectory.GetSceneInstance().GetGameFlowManager().CurrentTurnFaction;
+    }
+
+    protected virtual void OnDestroy()
+    {
+        DeinitEvents();
+    }
+
+    // Callbacks
+    protected virtual void OnUnitMovedToTile(UnitStats _unitStats)
+    {
+    }
+
+    protected virtual void OnTurnStart(FactionType _faction)
+    {
+        if (m_Decay && (_faction == m_FactionTurnWhenCreated))
+        {
+            if ((--CurrentTurnsToDecay) <= 0)
+            {
+                m_Owner.SetHazardType(HazardType.None);
+                m_Owner.LoadHazardType();
+            }
+        }
+    }
+
+    protected virtual void OnTurnEnd(FactionType _faction)
+    {
+    }
+
+    public virtual void SetVisibleState(bool _visible)
+    {
+        m_Visible = _visible;
+
+        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+        if (meshRenderer != null)
+        {
+            meshRenderer.enabled = m_Visible;
+        }
+
+        if (m_VisibilityCallback != null)
+        {
+            m_VisibilityCallback(m_Visible);
+        }
+    }
+
+#if UNITY_EDITOR
+    protected virtual void OnValidate()
+    {
+        m_Attributes.Validate();
+        Decay = m_Decay;
+        TurnsToDecay = m_TurnsToDecay;
+    }
+#endif // UNITY_EDITOR
 }

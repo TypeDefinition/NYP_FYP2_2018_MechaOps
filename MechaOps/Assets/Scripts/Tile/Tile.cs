@@ -156,6 +156,11 @@ public class Tile : MonoBehaviour
         get { return m_Known; }
     }
 
+    public bool IsVisible()
+    {
+        return m_VisibleCounter > 0;
+    }
+
     public int VisibleCounter
     {
         get
@@ -171,7 +176,12 @@ public class Tile : MonoBehaviour
                 m_Known = true;
             }
 
-            m_DisplayObject.SetVisibleState(m_Known, (m_VisibleCounter > 0) ? true : false);
+            m_DisplayObject.SetVisibleState(m_Known, IsVisible());
+
+            if (m_Hazard)
+            {
+                m_Hazard.SetVisibleState(IsVisible());
+            }
         }
     }
 
@@ -245,6 +255,7 @@ public class Tile : MonoBehaviour
         GameObject hazard = GameObject.Instantiate(m_TileSystem.GetHazardLibrary().GetHazard(m_HazardType).gameObject);
         m_Hazard = hazard.GetComponent<Hazard>();
         m_Hazard.InitOwner(this);
+        m_Hazard.SetVisibleState(IsVisible());
         hazard.transform.position = gameObject.transform.position;
         hazard.transform.SetParent(gameObject.transform);
     }
@@ -313,7 +324,11 @@ public class Tile : MonoBehaviour
 
     private void Start()
     {
-        m_DisplayObject.SetVisibleState(m_Known, (m_VisibleCounter > 0) ? true : false);
+        m_DisplayObject.SetVisibleState(m_Known, IsVisible());
+        if (m_Hazard)
+        {
+            m_Hazard.SetVisibleState(IsVisible());
+        }
     }
 
 }

@@ -3184,7 +3184,7 @@ MonoBehaviour:
   m_UnitLibrary: {fileID: 11400000, guid: 60f7ce9ba08de1049a082f8bd6d5ca28, type: 2}
   m_UnitsToSpawn:
   - {fileID: 11400000, guid: 97b5c534055f0284e89a18b433d717b2, type: 2}
-  - {fileID: 11400000, guid: 3f0a89ede7a127f4e8be09775ab01340, type: 2}
+  - {fileID: 11400000, guid: 4e48cf5a0b3d5194fa2fad612662e629, type: 2}
 --- !u!114 &114991204733943724
 MonoBehaviour:
   m_ObjectHideFlags: 1

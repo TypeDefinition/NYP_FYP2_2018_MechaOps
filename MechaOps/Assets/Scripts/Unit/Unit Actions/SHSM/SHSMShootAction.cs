@@ -142,13 +142,14 @@ public class SHSMShootAction : UnitAttackAction
             Assert.IsNotNull(hitTile, MethodBase.GetCurrentMethod().Name + " - hitTile not found!");
             hitTile.SetHazardType(HazardType.Fire);
             hitTile.GetHazard().TurnsToDecay = 3;
+            hitTile.GetHazard().CurrentTurnsToDecay = hitTile.GetHazard().TurnsToDecay;
             hitTile.GetHazard().Decay = true;
 
             if (hitTile.HasUnit())
             {
                 UnitStats hitUnitStats = hitTile.Unit.GetComponent<UnitStats>();
                 hitUnitStats.CurrentHealthPoints -= m_DamagePoints;
-                hitUnitStats.InvokeHealthDropCallback(m_UnitStats);
+                GameEventSystem.GetInstance().TriggerEvent<UnitStats, UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.AttackedUnit), m_UnitStats, hitUnitStats);
             }
         }
 

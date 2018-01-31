@@ -75,7 +75,8 @@ public abstract class MOAnimator : MonoBehaviour
     [SerializeField] protected AudioSource[] m_SFXAudioSources = null;
     [SerializeField] protected AudioClip m_MoveSFX = null;
 
-    [SerializeField] protected string m_WalkCinematicName;
+    // Cinematics
+    [SerializeField] protected string m_MoveCinematicName;
     [SerializeField] protected string m_DeathCinematicName;
     [SerializeField] protected string m_AttackCinematicName;
     [SerializeField, Tooltip("Time taken for delay in the animation from camera to the turret during camera cinematics")]
@@ -85,7 +86,7 @@ public abstract class MOAnimator : MonoBehaviour
     [SerializeField, Tooltip("Time taken for the delay before camera goes back to normal from cinematics")]
     protected float m_TimeDelayForCamBackToNormal = 0.5f;
     [SerializeField] protected ViewScript m_ViewScript;
-    [SerializeField] protected UnitStats m_UnitStat;
+    [SerializeField] protected UnitStats m_UnitStats;
 
     protected void InvokeCallback(Void_Void _callback)
     {
@@ -113,12 +114,12 @@ public abstract class MOAnimator : MonoBehaviour
         m_TileSystem = m_GameSystemsDirectory.GetTileSystem();
         m_GameEventNames = m_GameSystemsDirectory.GetGameEventNames();
         // only get the component if it is not linked directly
-        if (!m_UnitStat)
+        if (!m_UnitStats)
         {
-            m_UnitStat = GetComponent<UnitStats>();
+            m_UnitStats = GetComponent<UnitStats>();
             if (!m_ViewScript)
             {
-                m_ViewScript = m_UnitStat.GetViewScript();
+                m_ViewScript = m_UnitStats.GetViewScript();
             }
         }
     }

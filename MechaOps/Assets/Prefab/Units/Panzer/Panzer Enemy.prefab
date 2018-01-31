@@ -1780,14 +1780,14 @@ MonoBehaviour:
   m_SFXAudioSources:
   - {fileID: 82395203855276670}
   m_MoveSFX: {fileID: 8300000, guid: e9ddd28816243ec43a6e61bdc4a41ebc, type: 3}
-  m_WalkCinematicName: PanzerWalk
+  m_MoveCinematicName: 
   m_DeathCinematicName: PanzerDie
   m_AttackCinematicName: PanzerAttack
   m_TimeDelayForAttackCam: 3
   m_TimeDelayForDeathCam: 2
   m_TimeDelayForCamBackToNormal: 0.5
-  m_ViewScript: {fileID: 0}
-  m_UnitStat: {fileID: 0}
+  m_ViewScript: {fileID: 114054195728922426}
+  m_UnitStats: {fileID: 114879956254548028}
   m_MaxGunElevation: -80
   m_MaxGunDepression: 20
   m_Hull: {fileID: 4678192204071410}
@@ -2094,7 +2094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eace8087c840f149ae7f5976dfe421a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ExplosionPrefab: {fileID: 114291209284674360, guid: 1abc2b1ddea848a4f990e0bf2efd6044,
+  m_ExplosionPrefab: {fileID: 198344024508724532, guid: f5415bd527d36354eaf382074bbbb170,
     type: 2}
   m_FlamePrefab: {fileID: 198131241012019862, guid: d07da21434175a749bb97eebed0144f1,
     type: 2}

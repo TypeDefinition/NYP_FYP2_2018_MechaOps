@@ -160,21 +160,18 @@ public class MOAnimator_Panzer : MOAnimator
 
     protected override bool MoveTowardsTile(int _movementPathIndex)
     {
-        Tile tile = m_TileSystem.GetTile(m_MovementPath[_movementPathIndex]);
-        Assert.IsNotNull(tile, MethodBase.GetCurrentMethod().Name + " - Tile " + m_MovementPath[_movementPathIndex].GetAsString() + " not found!");
-
         AnimateTracks(m_MovementSpeed * Time.deltaTime, m_MovementSpeed * Time.deltaTime);
-
-        return MoveTowardsPositionHorizontally(transform, tile.transform.position);
+        return base.MoveTowardsTile(_movementPathIndex);
     }
 
     public override void StartMoveAnimation(TileId[] _movementPath, Void_Int _perTileCallback, Void_Void _completionCallback)
     {
         // Need to make sure the unit is visible and it belongs to the player!
-        if (m_ViewScript.IsVisible() && m_UnitStat.UnitFaction == FactionType.Player)
+        FactionType playerFaction = GameSystemsDirectory.GetSceneInstance().GetGameFlowManager().PlayerFaction;
+        if (m_ViewScript.IsVisible() && m_UnitStats.UnitFaction == playerFaction)
         {
             GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), m_Hull, m_Hull);
-            GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_WalkCinematicName, -1);
+            GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_MoveCinematicName, -1);
             _completionCallback += MoveCinematicComplete;
         }
         base.StartMoveAnimation(_movementPath, _perTileCallback, _completionCallback);

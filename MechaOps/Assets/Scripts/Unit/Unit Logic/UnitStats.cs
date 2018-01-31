@@ -65,25 +65,9 @@ public class UnitStats : MonoBehaviour
     private UnitsTracker m_UnitsTracker = null;
     private UnitInfoDisplay m_UnitInfoDisplay = null;
     private IUnitAction m_CurrentActiveAction;
-    [SerializeField] private List<UnitStats> m_EnemiesInViewRange = new List<UnitStats>();
-
-    /// <summary>
-    /// A callback function will appear when ever the health point decreases.
-    /// 
-    /// Terry: I really don't like this. Can we have a way for it to automagically be called
-    /// when the health drops? Eg. implement a DamageUnit(int _damage) function. Or switch to using GameEventSystem.
-    /// </summary>
-    public Void_UnitStats m_HealthDropCallback;
+    private List<UnitStats> m_EnemiesInViewRange = new List<UnitStats>();
 
     public GameSystemsDirectory GetGameSystemsDirectory() { return GameSystemsDirectory.GetSceneInstance(); }
-
-    public void InvokeHealthDropCallback(UnitStats _unitStats)
-    {
-        if (m_HealthDropCallback != null)
-        {
-            m_HealthDropCallback(_unitStats);
-        }
-    }
 
     public string UnitName
     {
@@ -119,6 +103,7 @@ public class UnitStats : MonoBehaviour
             if (m_UnitStatsJSON.m_CurrentHealthPoints == value) { return; }
 
             m_UnitStatsJSON.m_CurrentHealthPoints = Mathf.Clamp(value, 0, m_UnitStatsJSON.m_MaxHealthPoints);
+
             // Send the event that this unit is dead!
             if (m_UnitStatsJSON.m_CurrentHealthPoints <= 0)
             {

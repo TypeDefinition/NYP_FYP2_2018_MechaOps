@@ -31,6 +31,7 @@ MonoBehaviour:
   - SetCinematicTargetTransform
   - StartCinematic
   - StopCinematic
+  - Attacked Unit
   m_GameUINames:
   - Clicked Unit
   - Clicked Tile

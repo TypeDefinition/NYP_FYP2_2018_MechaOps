@@ -31,16 +31,20 @@ public class StateData : MonoBehaviour {
     protected virtual void OnEnable()
     {
         m_Stat = GetComponent<UnitStats>();
+        // Use Game Event System instead. -Terry
         // need to listen for being attacked!
-        m_Stat.m_HealthDropCallback += GetAttackerGO;
+        // m_Stat.m_HealthDropCallback += GetAttackerGO;
     }
 
 
     protected virtual void OnDisable()
     {
+        // Use Game Event System instead. -Terry
         if (m_Stat)
+        {
             // need to listen for being attacked!
-            m_Stat.m_HealthDropCallback -= GetAttackerGO;
+            // m_Stat.m_HealthDropCallback -= GetAttackerGO;
+        }
     }
 
     /// <summary>

@@ -14,6 +14,7 @@ TagManager:
   - WorldCanvas
   - Ground
   - AttackUI
+  - PlayerUnit
   layers:
   - Default
   - TransparentFX

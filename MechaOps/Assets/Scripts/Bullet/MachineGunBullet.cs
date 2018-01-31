@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunshipBullet : Bullet
+public class MachineGunBullet : Bullet
 {
     [SerializeField] private float m_Speed = 100.0f;
 

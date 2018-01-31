@@ -43,6 +43,7 @@ public class GameEventNames : ScriptableObject
         SetCineTargetTransform,
         StartCinematic,
         StopCinematic,
+        AttackedUnit,
 
         Num_GameplayNames
     }

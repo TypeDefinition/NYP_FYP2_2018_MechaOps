@@ -66,6 +66,7 @@
 
         fixed4 _SeenColor;
         fixed4 _UnseenColor;
+        int _CanSee;
 
 		// Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
 		// See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
@@ -75,7 +76,7 @@
             // UNITY_DEFINE_INSTANCED_PROP(half, _Smoothness)
             // UNITY_DEFINE_INSTANCED_PROP(half, _Metallic)
             // UNITY_DEFINE_INSTANCED_PROP(fixed4, _Color)
-            UNITY_DEFINE_INSTANCED_PROP(int, _CanSee)
+            // UNITY_DEFINE_INSTANCED_PROP(int, _CanSee)
 		UNITY_INSTANCING_CBUFFER_END
 
 		void surf (Input IN, inout SurfaceOutputStandard o)

@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 114640826300165538}
   m_Layer: 8
   m_Name: Wasp Player
-  m_TagString: Player
+  m_TagString: PlayerUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -630,14 +630,14 @@ MonoBehaviour:
   m_SFXAudioSources:
   - {fileID: 82162032362694052}
   m_MoveSFX: {fileID: 8300000, guid: e9d51a44de0a4054685a4550280143d4, type: 3}
-  m_WalkCinematicName: WaspWalk
+  m_MoveCinematicName: 
   m_DeathCinematicName: WaspDie
   m_AttackCinematicName: WaspAttack
   m_TimeDelayForAttackCam: 3
   m_TimeDelayForDeathCam: 2
   m_TimeDelayForCamBackToNormal: 0.5
-  m_ViewScript: {fileID: 0}
-  m_UnitStat: {fileID: 0}
+  m_ViewScript: {fileID: 114097250834631704}
+  m_UnitStats: {fileID: 114809387758883690}
   m_Hull: {fileID: 1724819202653090}
   m_MaxHullElevation: -40
   m_MaxHullDepression: 40
@@ -739,7 +739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eace8087c840f149ae7f5976dfe421a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ExplosionPrefab: {fileID: 114307173407176006, guid: 6f9635063d6c86b408a2ce1d3157a189,
+  m_ExplosionPrefab: {fileID: 198344024508724532, guid: f5415bd527d36354eaf382074bbbb170,
     type: 2}
   m_FlamePrefab: {fileID: 198131241012019862, guid: d07da21434175a749bb97eebed0144f1,
     type: 2}

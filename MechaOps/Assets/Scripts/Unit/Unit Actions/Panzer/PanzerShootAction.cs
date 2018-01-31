@@ -76,9 +76,8 @@ public class PanzerShootAction : UnitAttackAction
         UnregisterAnimationCompleteCallback();
 
         if (m_Hit) { m_TargetUnitStats.CurrentHealthPoints -= m_DamagePoints; }
-        // Invoke the Target's Unit Stat's HealthDropCallback.
-        if (m_TargetUnitStats.m_HealthDropCallback != null) { m_TargetUnitStats.m_HealthDropCallback(m_UnitStats); }
 
+        GameEventSystem.GetInstance().TriggerEvent<UnitStats, UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.AttackedUnit), m_UnitStats, m_TargetUnitStats);
         GameEventSystem.GetInstance().TriggerEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitFinishedAction), m_UnitStats);
         InvokeCompletionCallback();
 

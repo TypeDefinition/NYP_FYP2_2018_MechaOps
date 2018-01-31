@@ -57,27 +57,13 @@ public class WaspShootAction : UnitAttackAction
         m_Animation.StopAnimation();
     }
 
-    public override int CalculateHitChance()
-    {
-        int distanceToTarget = TileId.GetDistance(m_TargetUnitStats.CurrentTileID, GetUnitStats().CurrentTileID);
-        int optimalDistance = MinAttackRange;
-        float hitChance = 1.0f - (distanceToTarget - optimalDistance) / (MaxAttackRange - optimalDistance);
-        hitChance *= 100.0f;
-        hitChance -= (float)m_TargetUnitStats.EvasionPoints;
-        hitChance += (float)m_AccuracyPoints;
-
-        return Mathf.Clamp((int)hitChance, 1, 100);
-    }
-
     protected override void OnAnimationCompleted()
     {
         m_ActionState = ActionState.Completed;
         UnregisterAnimationCompleteCallback();
 
         if (m_Hit) { m_TargetUnitStats.CurrentHealthPoints -= m_DamagePoints; }
-        // Invoke the Target's Unit Stat's HealthDropCallback.
-        if (m_TargetUnitStats.m_HealthDropCallback != null) { m_TargetUnitStats.m_HealthDropCallback(m_UnitStats); }
-
+        GameEventSystem.GetInstance().TriggerEvent<UnitStats, UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.AttackedUnit), m_UnitStats, m_TargetUnitStats);
         GameEventSystem.GetInstance().TriggerEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitFinishedAction), m_UnitStats);
         InvokeCompletionCallback();
 

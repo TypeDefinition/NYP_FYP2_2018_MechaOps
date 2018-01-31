@@ -73,8 +73,7 @@ public class TileSystem : MonoBehaviour
     [SerializeField] private GameObject m_TileReachable = null;
     private List<GameObject> m_PathMarkers = null;
 
-    [SerializeField] private MeshFilter m_UnknownTilesMeshFirst = null;
-    [SerializeField] private MeshFilter m_UnknownTilesMeshSecond = null;
+    [SerializeField] private MeshFilter m_UnknownTilesMesh = null;
     [SerializeField] private float m_UnknownTileMeshDiameter = 4.0f;
 
     [SerializeField] private SpawnTiles m_SpawnTiles = null;
@@ -166,27 +165,23 @@ public class TileSystem : MonoBehaviour
             }
         }
 
-        Assert.IsTrue(m_UnknownTilesMeshFirst != null, MethodBase.GetCurrentMethod().Name + " - UnknownTilesMeshFirst cannot be null!");
-        Assert.IsTrue(m_UnknownTilesMeshSecond != null, MethodBase.GetCurrentMethod().Name + " - UnknownTilesMeshSecond cannot be null!");
+        Assert.IsTrue(m_UnknownTilesMesh != null, MethodBase.GetCurrentMethod().Name + " - UnknownTilesMeshFirst cannot be null!");
         Mesh mesh = new Mesh();
         mesh.vertices = vertices.ToArray();
         mesh.uv = uvs.ToArray();
         mesh.normals = normals.ToArray();
         mesh.triangles = indices.ToArray();
 
-        m_UnknownTilesMeshFirst.mesh = mesh;
-        m_UnknownTilesMeshSecond.mesh = mesh;
+        m_UnknownTilesMesh.mesh = mesh;
     }
 
     private void ClearUnknownTilesMesh()
     {
-        Assert.IsTrue(m_UnknownTilesMeshFirst != null, MethodBase.GetCurrentMethod().Name + " - UnknownTilesMeshFirst cannot be null!");
-        Assert.IsTrue(m_UnknownTilesMeshSecond != null, MethodBase.GetCurrentMethod().Name + " - UnknownTilesMeshSecond cannot be null!");
+        Assert.IsTrue(m_UnknownTilesMesh != null, MethodBase.GetCurrentMethod().Name + " - UnknownTilesMeshFirst cannot be null!");
         Mesh mesh = new Mesh();
         mesh.Clear();
 
-        m_UnknownTilesMeshFirst.mesh = mesh;
-        m_UnknownTilesMeshSecond.mesh = mesh;
+        m_UnknownTilesMesh.mesh = mesh;
     }
 
     public void GenerateTiles()

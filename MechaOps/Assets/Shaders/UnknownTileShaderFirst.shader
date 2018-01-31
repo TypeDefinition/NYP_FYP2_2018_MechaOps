@@ -6,7 +6,7 @@
 	}
 	SubShader
 	{
-        // Render this right before the transparent tiles.
+        // Render this right before the transparent objects.
         Tags
         {
             "RenderType" = "Opaque"

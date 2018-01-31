@@ -9,16 +9,19 @@ public enum UnitType
     Player_Panzer = 0,
     Player_Wasp,
     Player_SHSM,
+    Player_Spider,
 
     // Enemy
     Enemy_Panzer,
     Enemy_Wasp,
     Enemy_SHSM,
+    Enemy_Spider,
 
     // Dummy
     Dummy_Panzer,
     Dummy_Wasp,
     Dummy_SHSM,
+    Dummy_Spider,
 
     Num_UnitType,
     None = -1

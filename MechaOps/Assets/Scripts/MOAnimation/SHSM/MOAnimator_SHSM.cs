@@ -18,6 +18,7 @@ public class MOAnimator_SHSM : MOAnimator
     [SerializeField] protected Transform m_Hull;
 
     // Wheels
+    protected float m_WheelSpeedMultiplier = 300.0f;
     [SerializeField] protected Transform[] m_LeftWheels;
     [SerializeField] protected Transform[] m_RightWheels;
 
@@ -118,6 +119,12 @@ public class MOAnimator_SHSM : MOAnimator
         }
 
         return FaceTowardsPositionHorizontally(transform, tile.transform.position, m_RotationTolerance);
+    }
+
+    protected override bool MoveTowardsTile(int _movementPathIndex)
+    {
+        AnimateWheels(m_MovementSpeed * Time.deltaTime * m_WheelSpeedMultiplier, m_MovementSpeed * Time.deltaTime * m_WheelSpeedMultiplier);
+        return base.MoveTowardsTile(_movementPathIndex);
     }
 
     // Shoot Animation
@@ -377,10 +384,11 @@ public class MOAnimator_SHSM : MOAnimator
     public override void StartMoveAnimation(TileId[] _movementPath, Void_Int _reachedTileCallback, Void_Void _completionCallback)
     {
         // Need to make sure the unit is visible and it belongs to the player!
-        if (m_ViewScript.IsVisible() && m_UnitStat.UnitFaction == FactionType.Player)
+        FactionType playerFaction = GameSystemsDirectory.GetSceneInstance().GetGameFlowManager().PlayerFaction;
+        if (m_ViewScript.IsVisible() && m_UnitStats.UnitFaction == playerFaction)
         {
             GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), m_Gun, m_Gun);
-            GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_WalkCinematicName, -1);
+            GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_MoveCinematicName, -1);
             _completionCallback += MoveCinematicComplete;
         }
         base.StartMoveAnimation(_movementPath, _reachedTileCallback, _completionCallback);

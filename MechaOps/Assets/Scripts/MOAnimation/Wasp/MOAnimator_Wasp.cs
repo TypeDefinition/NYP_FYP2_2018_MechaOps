@@ -13,7 +13,7 @@ public class MOAnimator_Wasp : MOAnimator
 
     // Shooting
     [SerializeField] protected Transform[] m_BulletSpawnPoints;
-    [SerializeField] protected GunshipBullet m_Bullet_Prefab;
+    [SerializeField] protected MachineGunBullet m_Bullet_Prefab;
     [SerializeField] protected GameObject m_MuzzleFlash_Prefab;
 
     // Audio
@@ -29,7 +29,7 @@ public class MOAnimator_Wasp : MOAnimator
 
     // Shooting Animation
     protected GameObject m_Target = null;
-    protected List<GunshipBullet> m_Bullets = new List<GunshipBullet>();
+    protected List<MachineGunBullet> m_Bullets = new List<MachineGunBullet>();
     protected float m_HullElevationSpeed = 45.0f;
     protected float m_AccuracyTolerance = 0.5f; // How small must the angle between where our gun is aiming and where the target is to be considered aimed.
     protected int m_NumBulletsToShoot = 30;
@@ -91,7 +91,7 @@ public class MOAnimator_Wasp : MOAnimator
         {
             if (m_Bullets[i] != null)
             {
-                GameObject.Destroy(m_Bullets[i].gameObject);
+                Destroy(m_Bullets[i].gameObject);
             }
         }
         m_Bullets.Clear();
@@ -226,10 +226,11 @@ public class MOAnimator_Wasp : MOAnimator
 
     public override void StartMoveAnimation(TileId[] _movementPath, Void_Int _reachedTileCallback, Void_Void _completionCallback)
     {
-        if (m_ViewScript.IsVisible() && m_UnitStat.UnitFaction == FactionType.Player)
+        FactionType playerFaction = GameSystemsDirectory.GetSceneInstance().GetGameFlowManager().PlayerFaction;
+        if (m_ViewScript.IsVisible() && m_UnitStats.UnitFaction == playerFaction)
         {
             GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), m_Hull.transform, m_Hull.transform);
-            GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_WalkCinematicName, -1);
+            GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_MoveCinematicName, -1);
             _completionCallback += MoveCinematicComplete;
         }
         base.StartMoveAnimation(_movementPath, _reachedTileCallback, _completionCallback);
@@ -345,7 +346,7 @@ public class MOAnimator_Wasp : MOAnimator
     protected void FireBullet(Transform _spawnPoint, GameObject _target)
     {
         // Spawn Bullet
-        GunshipBullet bullet = GameObject.Instantiate(m_Bullet_Prefab.gameObject).GetComponent<GunshipBullet>();
+        MachineGunBullet bullet = GameObject.Instantiate(m_Bullet_Prefab.gameObject).GetComponent<MachineGunBullet>();
         bullet.Target = _target;
         bullet.gameObject.transform.position = _spawnPoint.position;
         bullet.gameObject.transform.LookAt(_target.transform.position);
@@ -439,9 +440,6 @@ public class MOAnimator_Wasp : MOAnimator
         InvokeCallback(m_ShootAnimationCompletionCallback);
     }
 
-    // Tailored Animations
-
-    // Shoot
     public virtual void StartShootAnimation(GameObject _target, Void_Void _completionCallback)
     {
         Assert.IsTrue(_target != null);

@@ -116,7 +116,17 @@ public abstract class UnitAttackAction : IUnitAction
     /// Calculate the hit percentage of this attack.
     /// It should return an int between 1(Inclusive) and 100(Inclusive).
     /// </summary>
-    public abstract int CalculateHitChance();
+    public virtual int CalculateHitChance()
+    {
+        int distanceToTarget = TileId.GetDistance(m_TargetUnitStats.CurrentTileID, GetUnitStats().CurrentTileID);
+        int optimalDistance = MinAttackRange;
+        float hitChance = 1.0f - (distanceToTarget - optimalDistance) / (MaxAttackRange - optimalDistance);
+        hitChance *= 100.0f;
+        hitChance -= (float)m_TargetUnitStats.EvasionPoints;
+        hitChance += (float)m_AccuracyPoints;
+
+        return Mathf.Clamp((int)hitChance, 1, 100);
+    }
 
     /// <summary>
     /// This function rolls a random number between 1 (inclusive) to 101 (exclusive).

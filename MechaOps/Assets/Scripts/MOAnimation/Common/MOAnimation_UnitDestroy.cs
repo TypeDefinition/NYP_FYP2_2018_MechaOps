@@ -7,12 +7,12 @@ using UnityEngine.Assertions;
 public class MOAnimation_UnitDestroy : MOAnimation
 {
     // Prefabs
-    [SerializeField] private SimpleSpriteAnimation m_ExplosionPrefab = null;
+    [SerializeField] private ParticleSystem m_ExplosionPrefab = null;
     [SerializeField] private ParticleSystem m_FlamePrefab = null;
     [SerializeField] private MOAnimator m_Animator;
 
     // Runtime Created
-    private SimpleSpriteAnimation m_Explosion = null;
+    private ParticleSystem m_Explosion = null;
     private ParticleSystem m_Flame = null;
 
     // Other Variable(s)
@@ -46,7 +46,7 @@ public class MOAnimation_UnitDestroy : MOAnimation
 
         DeleteAnimationObjects();
 
-        m_Explosion = GameObject.Instantiate(m_ExplosionPrefab.gameObject, gameObject.transform, false).GetComponent<SimpleSpriteAnimation>();
+        m_Explosion = GameObject.Instantiate(m_ExplosionPrefab.gameObject, gameObject.transform, false).GetComponent<ParticleSystem>();
         m_Flame = GameObject.Instantiate(m_FlamePrefab.gameObject, gameObject.transform, false).GetComponent<ParticleSystem>();
 
         if (m_UnitVisible) { m_Animator.StartDeathAnimation(CompletionCallback); }
@@ -56,7 +56,7 @@ public class MOAnimation_UnitDestroy : MOAnimation
     {
         if (m_Explosion != null)
         {
-            m_Explosion.PauseAnimation();
+            m_Explosion.Pause();
         }
 
         if (m_Flame != null)
@@ -71,7 +71,7 @@ public class MOAnimation_UnitDestroy : MOAnimation
     {
         if (m_Explosion != null)
         {
-            m_Explosion.ResumeAnimation();
+            m_Explosion.Play();
         }
 
         if (m_Flame != null)
