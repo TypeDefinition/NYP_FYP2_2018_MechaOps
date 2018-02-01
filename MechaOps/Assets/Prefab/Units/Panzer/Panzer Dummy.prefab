@@ -184,7 +184,6 @@ GameObject:
   - component: {fileID: 114104640808132124}
   - component: {fileID: 114103692816794444}
   - component: {fileID: 114522144874979662}
-  - component: {fileID: 114139299714481984}
   m_Layer: 8
   m_Name: Panzer Dummy
   m_TagString: Untagged
@@ -1794,35 +1793,6 @@ MonoBehaviour:
   - {fileID: 4284379999705012}
   - {fileID: 4003136375522082}
   m_ShootGunfireSFX: {fileID: 8300000, guid: 182de6e577a9f9845b151abd20c8c501, type: 3}
---- !u!114 &114139299714481984
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1301121624703766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cbcd40e7f4a83f448896925d5759aa5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UnitActionName: Overwatch
-  m_UnitActionDescription: Shoot the first enemy that moves within your line of sight,
-    with a penalty to aim.
-  m_ControllableAction: 1
-  m_Priority: 1
-  m_ActionCost: 1
-  m_EndsTurn: 1
-  m_CooldownTurns: 0
-  m_UnitActionUIPrefab: {fileID: 114215041474992082, guid: 33d553d775551ce4d9166d800f45424a,
-    type: 2}
-  m_UnitActionButtonSprite: {fileID: 21300000, guid: 9b2e2526308c0524eab722fe277acd2f,
-    type: 3}
-  m_MinAttackRange: 0
-  m_MaxAttackRange: 6
-  m_AccuracyPoints: 50
-  m_DamagePoints: 2
-  m_Animation: {fileID: 114103692816794444, guid: 08d48d711bd8ebb4c8ef4c4dbe590b67,
-    type: 2}
 --- !u!114 &114143553378517202
 MonoBehaviour:
   m_ObjectHideFlags: 1

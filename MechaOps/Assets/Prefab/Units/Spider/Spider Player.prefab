@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 114976497318709428}
   - component: {fileID: 114639746328510696}
   - component: {fileID: 114112139632774606}
+  - component: {fileID: 114901583066791246}
   - component: {fileID: 114156625251030660}
   - component: {fileID: 114344323746228970}
   - component: {fileID: 114422513735212468}
@@ -958,7 +959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a099c0c67de6cd40a60987e4b565a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MovementSpeed: 10
+  m_MovementSpeed: 500
   m_RotationSpeed: 360
   m_AmbientAudioSource: {fileID: 82100420768412826}
   m_AmbientSound: {fileID: 8300000, guid: 9863e2d821f80db40934f57fabd37166, type: 3}
@@ -1081,10 +1082,10 @@ MonoBehaviour:
     m_UnitName: Spider
     m_UnitDescription: A fast moving car. Useful for hit and run tacticas.
     m_FactionType: 0
-    m_MaxHealthPoints: 3
-    m_CurrentHealthPoints: 3
-    m_MaxActionPoints: 3
-    m_CurrentActionPoints: 3
+    m_MaxHealthPoints: 10
+    m_CurrentHealthPoints: 10
+    m_MaxActionPoints: 50
+    m_CurrentActionPoints: 50
     m_DeploymentCost: 1000
     m_ViewRange: 13
     m_ConcealmentPoints: 3
@@ -1118,7 +1119,7 @@ MonoBehaviour:
     type: 2}
   m_UnitActionButtonSprite: {fileID: 21300000, guid: d859645726494314ab2591c7384f7d53,
     type: 3}
-  m_MovementPoints: 5
+  m_MovementPoints: 15
   m_Animation: {fileID: 114344323746228970}
 --- !u!114 &114669568832335752
 MonoBehaviour:
@@ -1164,6 +1165,34 @@ MonoBehaviour:
   m_AudioSources:
   - {fileID: 82100420768412826}
   m_VolumeType: 1
+--- !u!114 &114901583066791246
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1388366554480152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1532789ac1f40ab42b04330190730ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UnitActionName: Overwatch
+  m_UnitActionDescription: Shoot the first enemy that moves within your line of sight,
+    with a penalty to aim.
+  m_ControllableAction: 1
+  m_Priority: 1
+  m_ActionCost: 1
+  m_EndsTurn: 1
+  m_CooldownTurns: 0
+  m_UnitActionUIPrefab: {fileID: 114215041474992082, guid: 33d553d775551ce4d9166d800f45424a,
+    type: 2}
+  m_UnitActionButtonSprite: {fileID: 21300000, guid: 9b2e2526308c0524eab722fe277acd2f,
+    type: 3}
+  m_MinAttackRange: 0
+  m_MaxAttackRange: 12
+  m_AccuracyPoints: 75
+  m_DamagePoints: 2
+  m_Animation: {fileID: 114422513735212468}
 --- !u!114 &114976497318709428
 MonoBehaviour:
   m_ObjectHideFlags: 1

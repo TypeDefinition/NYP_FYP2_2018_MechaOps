@@ -382,7 +382,10 @@ public class GoapPlanner : MonoBehaviour
         if (gameObject == _goUnit.gameObject)
         {
             StopUpdate(FactionType.Enemy);
-            m_CurrentActionPlayed.StopAllCoroutines();
+            if (m_CurrentActionPlayed != null)
+            {
+                m_CurrentActionPlayed.StopAllCoroutines();
+            }
         }
     }
 }

@@ -72,6 +72,7 @@ GameObject:
   - component: {fileID: 114589910494827546}
   - component: {fileID: 114928630273676992}
   - component: {fileID: 114321516086233292}
+  - component: {fileID: 114687180859648204}
   - component: {fileID: 114461541154308928}
   - component: {fileID: 114807732359028796}
   - component: {fileID: 114734858264194274}
@@ -623,7 +624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0225e59f618b884bb578bcafd1c56ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MovementSpeed: 10
+  m_MovementSpeed: 500
   m_RotationSpeed: 180
   m_AmbientAudioSource: {fileID: 82014064273596784}
   m_AmbientSound: {fileID: 8300000, guid: e9d51a44de0a4054685a4550280143d4, type: 3}
@@ -728,6 +729,34 @@ MonoBehaviour:
   m_AudioSources:
   - {fileID: 82014064273596784}
   m_VolumeType: 1
+--- !u!114 &114687180859648204
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1535336270683784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1cc5b417612ab9479e954a3ea6aebb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UnitActionName: Overwatch
+  m_UnitActionDescription: Shoot the first enemy that moves within your line of sight,
+    with a penalty to aim.
+  m_ControllableAction: 1
+  m_Priority: 1
+  m_ActionCost: 1
+  m_EndsTurn: 1
+  m_CooldownTurns: 0
+  m_UnitActionUIPrefab: {fileID: 114215041474992082, guid: 33d553d775551ce4d9166d800f45424a,
+    type: 2}
+  m_UnitActionButtonSprite: {fileID: 21300000, guid: 9b2e2526308c0524eab722fe277acd2f,
+    type: 3}
+  m_MinAttackRange: 0
+  m_MaxAttackRange: 12
+  m_AccuracyPoints: 50
+  m_DamagePoints: 2
+  m_Animation: {fileID: 114640826300165538}
 --- !u!114 &114734858264194274
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -771,10 +800,10 @@ MonoBehaviour:
     m_UnitName: Wasp
     m_UnitDescription: Attack Helicopter Gunship
     m_FactionType: 0
-    m_MaxHealthPoints: 4
-    m_CurrentHealthPoints: 4
-    m_MaxActionPoints: 2
-    m_CurrentActionPoints: 2
+    m_MaxHealthPoints: 10
+    m_CurrentHealthPoints: 10
+    m_MaxActionPoints: 50
+    m_CurrentActionPoints: 50
     m_DeploymentCost: 2000
     m_ViewRange: 16
     m_ConcealmentPoints: -3
@@ -846,7 +875,7 @@ MonoBehaviour:
     type: 2}
   m_UnitActionButtonSprite: {fileID: 21300000, guid: d859645726494314ab2591c7384f7d53,
     type: 3}
-  m_MovementPoints: 8
+  m_MovementPoints: 15
   m_Animation: {fileID: 114807732359028796}
 --- !u!136 &136628383095931804
 CapsuleCollider:

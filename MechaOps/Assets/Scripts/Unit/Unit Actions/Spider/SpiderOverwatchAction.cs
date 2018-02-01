@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.Assertions;
 
-public class PanzerOverwatchAction : UnitOverwatchAction
+public class SpiderOverwatchAction : UnitOverwatchAction
 {
-    [SerializeField] protected MOAnimation_PanzerShoot m_Animation;
+    [SerializeField] protected MOAnimation_SpiderShoot m_Animation;
 
     protected bool m_RegisteredAnimationCompleteCallback = false;
     protected bool m_Hit = false;
@@ -32,7 +34,6 @@ public class PanzerOverwatchAction : UnitOverwatchAction
         base.StartAction();
         RegisterAnimationCompleteCallback();
         m_Hit = CheckIfHit();
-        m_Animation.Hit = m_Hit;
         m_Animation.Target = m_TargetUnitStats.gameObject;
         m_Animation.StartAnimation();
     }
@@ -56,19 +57,6 @@ public class PanzerOverwatchAction : UnitOverwatchAction
         m_Animation.StopAnimation();
     }
 
-    public override int CalculateHitChance()
-    {
-        int distanceToTarget = TileId.GetDistance(m_TargetUnitStats.CurrentTileID, GetUnitStats().CurrentTileID);
-        int optimalDistance = (MaxAttackRange - MinAttackRange) >> 1;
-        float hitChance = (float)Mathf.Abs(optimalDistance - distanceToTarget) / (float)optimalDistance;
-        hitChance *= 100.0f;
-        hitChance -= (float)m_TargetUnitStats.EvasionPoints;
-        hitChance += (float)m_AccuracyPoints;
-        hitChance *= 0.75f; // Aim Penalty
-
-        return Mathf.Clamp((int)hitChance, 1, 100);
-    }
-
     protected override void OnAnimationCompleted()
     {
         m_ActionState = ActionState.Completed;
@@ -83,7 +71,7 @@ public class PanzerOverwatchAction : UnitOverwatchAction
 
         // Unlike most actions, where they occur immediately, Overwatch has 2 states.
         // 1. After turning on. (End turn immediately.)
-        // 2. After shooting. (Do not end turn, unless it has used up all actino points.)
+        // 2. After shooting. (Do not end turn, unless it has used up all action points.)
         if (GetUnitStats().CurrentActionPoints == 0)
         {
             CheckIfUnitFinishedTurn();

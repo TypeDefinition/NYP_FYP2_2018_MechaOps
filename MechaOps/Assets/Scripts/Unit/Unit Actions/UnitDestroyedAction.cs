@@ -18,6 +18,7 @@ public class UnitDestroyedAction : IUnitAction
         if (!m_RegisteredAnimationCompleteCallback)
         {
             m_Animation.CompletionCallback += OnAnimationCompleted;
+            m_RegisteredAnimationCompleteCallback = true;
         }
     }
 
@@ -26,6 +27,7 @@ public class UnitDestroyedAction : IUnitAction
         if (m_RegisteredAnimationCompleteCallback)
         {
             m_Animation.CompletionCallback -= OnAnimationCompleted;
+            m_RegisteredAnimationCompleteCallback = false;
         }
     }
 

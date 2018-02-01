@@ -123,4 +123,15 @@ public class UnitOverwatchAction : UnitAttackAction
         int hitChance = (int)((float)base.CalculateHitChance() * 0.75f);
         return Mathf.Clamp(hitChance, 1, 100);
     }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        Assert.IsTrue(EndsTurn, MethodBase.GetCurrentMethod().Name + " - Overwatch action must have m_EndsTurn = true!");
+    }
+
+    public override bool VerifyRunCondition()
+    {
+        return (base.VerifyRunCondition() && m_UnitStats.IsAlive());
+    }
 }

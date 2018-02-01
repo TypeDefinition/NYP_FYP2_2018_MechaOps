@@ -1738,7 +1738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1fa353a39c30e74eb9e7f58a0ddf3f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MovementSpeed: 10
+  m_MovementSpeed: 500
   m_RotationSpeed: 360
   m_AmbientAudioSource: {fileID: 82111935310682220}
   m_AmbientSound: {fileID: 8300000, guid: e9ddd28816243ec43a6e61bdc4a41ebc, type: 3}
@@ -1851,7 +1851,7 @@ MonoBehaviour:
   m_UnitActionButtonSprite: {fileID: 21300000, guid: 9b2e2526308c0524eab722fe277acd2f,
     type: 3}
   m_MinAttackRange: 0
-  m_MaxAttackRange: 6
+  m_MaxAttackRange: 8
   m_AccuracyPoints: 50
   m_DamagePoints: 2
   m_Animation: {fileID: 114103692816794444}
