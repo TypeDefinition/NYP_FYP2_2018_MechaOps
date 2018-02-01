@@ -60,28 +60,30 @@ public class GameSystemsDirectory : MonoBehaviour
     }
 
     [Header("Systems that are NOT a child of this GameObject.")]
-    [SerializeField] private TileSystem m_TileSystem = null;
-    [SerializeField] private Camera m_GameCamera = null;
+    [SerializeField] protected TileSystem m_TileSystem = null;
+    [SerializeField] protected Camera m_GameCamera = null;
 
     [Header("Systems that are a child of this GameObject.")]
-    [SerializeField] private UnitsTracker m_UnitsTracker = null;
-    [SerializeField] private AIUnitsManager[] m_AIUnitManagers = null;
-    [SerializeField] private PlayerUnitsManager m_PlayerUnitsManager = null;
-    [SerializeField] private GameFlowManager m_GameFlowManager = null;
-    [SerializeField] private UnitActionScheduler m_UnitActionScheduler = null;
-    [SerializeField] private SpawnSystem m_SpawnSystem = null;
-    [SerializeField] private Canvas m_ClickableScreenSpaceCanvas = null;
-    [SerializeField] private Canvas m_UnclickableScreenSpaceCanvas = null;
+    [SerializeField] protected UnitsTracker m_UnitsTracker = null;
+    [SerializeField] protected AIUnitsManager[] m_AIUnitManagers = null;
+    [SerializeField] protected PlayerUnitsManager m_PlayerUnitsManager = null;
+    [SerializeField] protected GameFlowManager m_GameFlowManager = null;
+    [SerializeField] protected UnitActionScheduler m_UnitActionScheduler = null;
+    [SerializeField] protected SpawnSystem m_SpawnSystem = null;
+    [SerializeField] protected Canvas m_ClickableScreenSpaceCanvas = null;
+    [SerializeField] protected Canvas m_UnclickableScreenSpaceCanvas = null;
+    [SerializeField] protected AudioSource m_SFXSource;
 
     [Header("Scriptable Objects.")]
-    [SerializeField] private GameAudioSettings m_GameAudioSettings = null;
-    [SerializeField] private GameEventNames m_GameEventNames = null;
-    [SerializeField] private FactionNames m_FactionNames = null;
+    [SerializeField] protected GameAudioSettings m_GameAudioSettings = null;
+    [SerializeField] protected GameEventNames m_GameEventNames = null;
+    [SerializeField] protected FactionNames m_FactionNames = null;
 
     public TileSystem GetTileSystem() { return m_TileSystem; }
     public Canvas GetClickableScreenSpaceCanvas() { return m_ClickableScreenSpaceCanvas; }
     public Canvas GetUnclickableScreenSpaceCanvas() { return m_UnclickableScreenSpaceCanvas; }
     public Camera GetGameCamera() { return m_GameCamera; }
+    public AudioSource GetSFXSource() { return m_SFXSource; }
 
     public UnitsTracker GetUnitsTracker() { return m_UnitsTracker; }
     public AIUnitsManager[] GetAIUnitsManager() { return m_AIUnitManagers; }

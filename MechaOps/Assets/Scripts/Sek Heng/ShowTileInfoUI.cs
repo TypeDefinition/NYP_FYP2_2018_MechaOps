@@ -67,6 +67,10 @@ public class ShowTileInfoUI : MonoBehaviour {
         {
             m_tweenDisableScript = m_TileInfoGO.GetComponent<TweenDisableScript>();
         }
+        if (!m_SFXSource)
+        {
+            m_SFXSource = GameSystemsDirectory.GetSceneInstance().GetSFXSource();
+        }
 #if UNITY_ASSERTIONS
         Assert.IsNotNull(m_EventAsset, "Event asset is still null at ShowTileInfoUI.Awake()");
         Assert.IsNotNull(m_tweenDisableScript, "The tween disable script is null at ShowTileInfoUI.Awake()");
@@ -146,7 +150,6 @@ public class ShowTileInfoUI : MonoBehaviour {
                     }
                 }
             }
-            m_TileInfoGO.SetActive(true);
         }
     }
 

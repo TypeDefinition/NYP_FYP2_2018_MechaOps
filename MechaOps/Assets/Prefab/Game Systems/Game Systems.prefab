@@ -1071,6 +1071,7 @@ MonoBehaviour:
   m_SpawnSystem: {fileID: 114961964744638068}
   m_ClickableScreenSpaceCanvas: {fileID: 223668701871583062}
   m_UnclickableScreenSpaceCanvas: {fileID: 223215954925103786}
+  m_SFXSource: {fileID: 82232747514350642}
   m_GameAudioSettings: {fileID: 11400000, guid: 7661fa5d75f3f464bb18461c47ac4643,
     type: 2}
   m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
