@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Assertions;
+using UnityEngine.UI;
 
 /// <summary>
 /// To show the tile info on the UI logic
@@ -22,17 +23,24 @@ public class ShowTileInfoUI : MonoBehaviour {
     }
 
     [Header("Variables for ShowTileInfoUI")]
+    [SerializeField, Tooltip("Tile information gameobject")]
+    protected GameObject m_TileInfoGO;
+    [SerializeField, Tooltip("Minimize button")]
+    protected Button m_MinimizeButton;
+    [SerializeField, Tooltip("Expand button")]
+    protected Button m_ExpandButton;
     [SerializeField, Tooltip("Text UI for the display of tile name")]
     protected TextMeshProUGUI m_TileNameTxt;
-
     [SerializeField, Tooltip("Text UI for tile movement cost")]
     protected TextMeshProUGUI m_MoveCostTxt;
     [SerializeField, Tooltip("Text UI for tile concealment")]
     protected TextMeshProUGUI m_TileConcealTxt;
     [SerializeField, Tooltip("Text UI for tile description")]
     protected TextMeshProUGUI m_TileDescriptionTxt;
-    [SerializeField, Tooltip("Audio to play the closing sound effect")]
-    protected AudioClip m_CloseSFX;
+    [SerializeField, Tooltip("Audio to play the minimizing sound effect")]
+    protected AudioClip m_MinimizeSFX;
+    [SerializeField, Tooltip("Audio to play the expand sound effect")]
+    protected AudioClip m_ExpandSFX;
     [SerializeField, Tooltip("Audio Source to play SFX")]
     protected AudioSource m_SFXSource;
     [SerializeField, Tooltip("Array of the Tile type information")]
@@ -47,8 +55,6 @@ public class ShowTileInfoUI : MonoBehaviour {
     protected GameEventNames m_EventAsset;
     [SerializeField, Tooltip("Tweening to disable this script")]
     protected TweenDisableScript m_tweenDisableScript;
-    [SerializeField, Tooltip("Flag to check whether is it ready to show the tile info")]
-    protected bool m_ReadyShowTileInfo = true;
 
     private void Awake()
     {
@@ -59,7 +65,7 @@ public class ShowTileInfoUI : MonoBehaviour {
         InitEvents();
         if (!m_tweenDisableScript)
         {
-            m_tweenDisableScript = GetComponent<TweenDisableScript>();
+            m_tweenDisableScript = m_TileInfoGO.GetComponent<TweenDisableScript>();
         }
 #if UNITY_ASSERTIONS
         Assert.IsNotNull(m_EventAsset, "Event asset is still null at ShowTileInfoUI.Awake()");
@@ -71,28 +77,16 @@ public class ShowTileInfoUI : MonoBehaviour {
     private void Start()
     {
         // Set it back to inactive afterwards
-        gameObject.SetActive(false);
+        m_TileInfoGO.SetActive(false);
     }
     protected void InitEvents()
     {
         GameEventSystem.GetInstance().SubscribeToEvent<GameObject>(m_EventAsset.GetEventName(GameEventNames.GameUINames.ClickedTile), GetClickedTileGO);
-        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>(m_EventAsset.GetEventName(GameEventNames.GameUINames.ClickedUnit), GetClickedTileGO);
-        GameEventSystem.GetInstance().SubscribeToEvent<FactionType>(m_EventAsset.GetEventName(GameEventNames.GameplayNames.GameOver), DestroyItself);
-        GameEventSystem.GetInstance().SubscribeToEvent<FactionType>(m_EventAsset.GetEventName(GameEventNames.GameplayNames.TurnStart), AnimateToInactive);
-        GameEventSystem.GetInstance().SubscribeToEvent<FactionType>(m_EventAsset.GetEventName(GameEventNames.GameplayNames.TurnEnd), AnimateToInactive);
-        GameEventSystem.GetInstance().SubscribeToEvent<UnitStats>(m_EventAsset.GetEventName(GameEventNames.GameplayNames.UnitFinishedAction), SetReadyToShowTrue);
-        GameEventSystem.GetInstance().SubscribeToEvent(m_EventAsset.GetEventName(GameEventNames.GameplayNames.UnitStartAction), SetReadyToShowFalse);
     }
 
     protected void DeinitEvents()
     {
         GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>(m_EventAsset.GetEventName(GameEventNames.GameUINames.ClickedTile), GetClickedTileGO);
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>(m_EventAsset.GetEventName(GameEventNames.GameUINames.ClickedUnit), GetClickedTileGO);
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<FactionType>(m_EventAsset.GetEventName(GameEventNames.GameplayNames.GameOver), DestroyItself);
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<FactionType>(m_EventAsset.GetEventName(GameEventNames.GameplayNames.TurnStart), AnimateToInactive);
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<FactionType>(m_EventAsset.GetEventName(GameEventNames.GameplayNames.TurnEnd), AnimateToInactive);
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats>(m_EventAsset.GetEventName(GameEventNames.GameplayNames.UnitFinishedAction), SetReadyToShowTrue);
-        GameEventSystem.GetInstance().UnsubscribeFromEvent(m_EventAsset.GetEventName(GameEventNames.GameplayNames.UnitStartAction), SetReadyToShowFalse);
     }
 
     /// <summary>
@@ -105,7 +99,7 @@ public class ShowTileInfoUI : MonoBehaviour {
 
     protected void GetClickedTileGO(GameObject _tileGO)
     {
-        if ((_tileGO.tag == "TileBase" || _tileGO.tag == "TileDisplay") && m_ReadyShowTileInfo)
+        if (_tileGO.tag == "TileBase" || _tileGO.tag == "TileDisplay")
         {
             if (_tileGO.tag == "TileDisplay")
             {
@@ -152,52 +146,35 @@ public class ShowTileInfoUI : MonoBehaviour {
                     }
                 }
             }
-            gameObject.SetActive(true);
-        }
-        else if (gameObject.activeSelf)
-        {
-            // close this UI!
-            AnimateToInactive();
+            m_TileInfoGO.SetActive(true);
         }
     }
 
     /// <summary>
     /// When player pressed the close button on this UI
     /// </summary>
-    public void ClosedThis()
+    public void MinimizeThis()
     {
+        m_MinimizeButton.gameObject.SetActive(false);
+        m_ExpandButton.gameObject.SetActive(true);
         AnimateToInactive();
-        m_SFXSource.PlayOneShot(m_CloseSFX);
+        m_SFXSource.PlayOneShot(m_MinimizeSFX);
     }
 
+    public void ExpandThis()
+    {
+        m_MinimizeButton.gameObject.SetActive(true);
+        m_ExpandButton.gameObject.SetActive(false);
+        m_TileInfoGO.SetActive(true);
+        m_SFXSource.PlayOneShot(m_ExpandSFX);
+    }
+
+    /// <summary>
+    /// Animating the tile info UI to inactive automatically
+    /// </summary>
     public void AnimateToInactive()
     {
         m_tweenDisableScript.AnimateUI();
         m_ClickedTile = null;
-    }
-
-    public void AnimateToInactive(FactionType _factionDead)
-    {
-        AnimateToInactive();
-    }
-
-    /// <summary>
-    /// To be called by other event such as gameover
-    /// </summary>
-    protected void DestroyItself(FactionType _factionDead)
-    {
-        Destroy(gameObject);
-    }
-
-    protected void SetReadyToShowTrue(UnitStats _unitFinishedActStat)
-    {
-        m_ReadyShowTileInfo = true;
-    }
-
-    protected void SetReadyToShowFalse()
-    {
-        m_ReadyShowTileInfo = false;
-        // it needs to be inactive regardless
-        AnimateToInactive();
     }
 }

@@ -21,6 +21,8 @@ public abstract class UnitsManager : MonoBehaviour
 
     protected bool m_IsGameOver = false;
 
+    protected Void_UnitStats m_OwnUnitDeadInTurnCallback;
+
     public List<UnitStats> GetSeenEnemies() { return m_SeenEnemies; }
 
     public FactionType ManagedFaction
@@ -44,6 +46,7 @@ public abstract class UnitsManager : MonoBehaviour
 
         GameEventSystem.GetInstance().SubscribeToEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitFinishedAction), UnitFinishedAction);
         GameEventSystem.GetInstance().SubscribeToEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitFinishedTurn), UnitFinishedTurn);
+        GameEventSystem.GetInstance().SubscribeToEvent<UnitStats, bool>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitDead), UnitDeadHalfway);
     }
 
     protected virtual void DeinitEvents()
@@ -57,6 +60,7 @@ public abstract class UnitsManager : MonoBehaviour
 
         GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitFinishedAction), UnitFinishedAction);
         GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitFinishedTurn), UnitFinishedTurn);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats, bool>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitDead), UnitDeadHalfway);
     }
 
     protected virtual void Awake()
@@ -128,6 +132,32 @@ public abstract class UnitsManager : MonoBehaviour
         for (int i = 0; i < aliveManagedUnits.Length; ++i)
         {
             m_ManagedUnits.Add(aliveManagedUnits[i]);
+        }
+    }
+
+    /// <summary>
+    /// To deal with overwatch action since units will die while their action is completed!
+    /// </summary>
+    /// <param name="_unit"></param>
+    /// <param name="_isVisible"></param>
+    protected virtual void UnitDeadHalfway(UnitStats _unit, bool _isVisible)
+    {
+        if (_unit.UnitFaction == m_ManagedFaction)
+        {
+            // most of the time it should be resetting the managed units!
+            UnitStats[] aliveManagedUnits = m_UnitsTracker.GetAliveUnits(m_ManagedFaction);
+            m_ManagedUnits.Clear();
+            foreach (UnitStats unit in aliveManagedUnits)
+            {
+                if (unit.CurrentActionPoints > 0)
+                {
+                    m_ManagedUnits.Add(unit);
+                }
+            }
+            if (m_OwnUnitDeadInTurnCallback != null)
+            {
+                m_OwnUnitDeadInTurnCallback.Invoke(_unit);
+            }
         }
     }
 }

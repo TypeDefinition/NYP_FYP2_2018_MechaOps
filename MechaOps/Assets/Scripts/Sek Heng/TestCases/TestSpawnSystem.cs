@@ -7,7 +7,7 @@ public class TestSpawnSystem : SpawnSystem {
 	// Use this for initialization
 	void Start () {
         // need to get all of the player and enemies stuff
-        GameObject[] ArrayOfPlayerUnits = GameObject.FindGameObjectsWithTag("Player");
+        GameObject[] ArrayOfPlayerUnits = GameObject.FindGameObjectsWithTag("PlayerUnit");
         List<UnitStats> ListOfPlayerUnitStats = new List<UnitStats>();
         foreach (GameObject playerUnitGO in ArrayOfPlayerUnits)
         {

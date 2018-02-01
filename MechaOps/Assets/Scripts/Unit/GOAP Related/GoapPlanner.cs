@@ -64,6 +64,8 @@ public class GoapPlanner : MonoBehaviour
     protected AIUnitsManager m_EnemiesManager;
     [SerializeField, Tooltip("Tile system script")]
     protected TileSystem m_TileSystem;
+    [SerializeField, Tooltip("Current action that is being updated")]
+    protected IGoapAction m_CurrentActionPlayed;
 
     public AIUnitsManager EnemiesManager
     {
@@ -96,14 +98,26 @@ public class GoapPlanner : MonoBehaviour
     /// </summary>
     public Void_Void m_CallbackStartPlan;
 
-    protected void OnEnable()
+    void InitEvents()
     {
         GameEventSystem.GetInstance().SubscribeToEvent<FactionType>(m_GameEventNamesAsset.GetEventName(GameEventNames.GameplayNames.GameOver), StopUpdate);
+        GameEventSystem.GetInstance().SubscribeToEvent<UnitStats, bool>(m_GameEventNamesAsset.GetEventName(GameEventNames.GameplayNames.UnitDead), StopUpdate);
+    }
+
+    void DeinitEvents()
+    {
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<FactionType>(m_GameEventNamesAsset.GetEventName(GameEventNames.GameplayNames.GameOver), StopUpdate);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats, bool>(m_GameEventNamesAsset.GetEventName(GameEventNames.GameplayNames.UnitDead), StopUpdate);
+    }
+
+    protected void OnEnable()
+    {
+        InitEvents();
     }
 
     protected void OnDisable()
     {
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<FactionType>(m_GameEventNamesAsset.GetEventName(GameEventNames.GameplayNames.GameOver), StopUpdate);
+        DeinitEvents();
     }
 
     // Use this for initialization
@@ -162,7 +176,7 @@ public class GoapPlanner : MonoBehaviour
         m_FinishMoving = false;
         // TODO: Probably need coroutine but not now
         GoapNode zeCheapestActNode = null;
-        List<IGoapAction> zeListOfActToDo = null;
+        List<IGoapAction> ListOfActToDo = null;
         WaitForSeconds zeAmountOfTimeWait = new WaitForSeconds(0.1f);
         // We check it's current state
         while (m_Stats.CurrentActionPoints > 0 && !m_FinishMoving)
@@ -201,16 +215,17 @@ public class GoapPlanner : MonoBehaviour
                         break;
                 }
                 zeCheapestActNode = GetTheCheapestAction(m_CurrentGoal);
-                zeListOfActToDo = GetActsFromNode(zeCheapestActNode);
+                ListOfActToDo = GetActsFromNode(zeCheapestActNode);
             }
             else
             {
-                foreach (IGoapAction zeAct in zeListOfActToDo)
+                foreach (IGoapAction actionToDo in ListOfActToDo)
                 {
-                    zeAct.DoAction();
+                    m_CurrentActionPlayed = actionToDo;
+                    actionToDo.DoAction();
                     // Have no idea why yield return coroutine is not working anymore
-                    yield return zeAct.m_UpdateRoutine;
-                    while (zeAct.m_UpdateRoutine != null)
+                    yield return actionToDo.m_UpdateRoutine;
+                    while (actionToDo.m_UpdateRoutine != null)
                     {
                         yield return null;
                     }
@@ -359,5 +374,15 @@ public class GoapPlanner : MonoBehaviour
     protected void StopUpdate(FactionType _faction)
     {
         StopAllCoroutines();
+    }
+
+    protected void StopUpdate(UnitStats _goUnit, bool _isVisible)
+    {
+        // if the unit it dies happens to be itself!
+        if (gameObject == _goUnit.gameObject)
+        {
+            StopUpdate(FactionType.Enemy);
+            m_CurrentActionPlayed.StopAllCoroutines();
+        }
     }
 }

@@ -48,7 +48,7 @@ public class GoapNearTarget : IGoapAction
     protected virtual void OnEnable()
     {
         // Since thr will only be player units to fight against, we will only wait for player unit died
-        GameEventSystem.GetInstance().SubscribeToEvent<GameObject, bool>("PlayerIsDead", EnemyUnitDestroyed);
+        GameEventSystem.GetInstance().SubscribeToEvent<UnitStats, bool>(m_EventNames.GetEventName(GameEventNames.GameplayNames.UnitDead), EnemyUnitDestroyed);
         GameEventSystem.GetInstance().SubscribeToEvent<UnitStats>(m_EventNames.GetEventName(GameEventNames.GameplayNames.UnitSeen), SeenMoving);
         GameEventSystem.GetInstance().SubscribeToEvent<UnitStats>(m_EventNames.GetEventName(GameEventNames.GameplayNames.UnitUnseen), UnseenMoving);
         if (!m_Planner)
@@ -57,9 +57,8 @@ public class GoapNearTarget : IGoapAction
     }
     protected virtual void OnDisable()
     {
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject, bool>("PlayerIsDead", EnemyUnitDestroyed);
-        if (m_Planner)
-            m_Planner.m_CallbackStartPlan -= UpdateEnemyInAttack;
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats, bool>(m_EventNames.GetEventName(GameEventNames.GameplayNames.UnitDead), EnemyUnitDestroyed);
+        m_Planner.m_CallbackStartPlan -= UpdateEnemyInAttack;
         GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats>(m_EventNames.GetEventName(GameEventNames.GameplayNames.UnitSeen), SeenMoving);
         GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats>(m_EventNames.GetEventName(GameEventNames.GameplayNames.UnitUnseen), UnseenMoving);
     }
@@ -80,12 +79,12 @@ public class GoapNearTarget : IGoapAction
         // We will get the shortest path to the 1st player unit
         int zeEnemyIndex = 0;
         // Maybe we can randomize but we will just get the 1st unit!
-        UnitStats zeEnemyStat = m_Planner.EnemiesManager.GetSeenEnemies()[zeEnemyIndex].GetComponent<UnitStats>();
-        TileId zeDestinationTileID = zeEnemyStat.CurrentTileID;
+        UnitStats enemyStat = m_Planner.EnemiesManager.GetSeenEnemies()[zeEnemyIndex].GetComponent<UnitStats>();
+        TileId zeDestinationTileID = enemyStat.CurrentTileID;
         Tile EnemyTile = m_Planner.GameTileSystem.GetTile(zeDestinationTileID);
         Tile DestTile = m_Planner.GameTileSystem.GetTile(zeDestinationTileID);
         // we will get the surrounding tiles and check whether they are available! 
-        TileId[] zeTiles = m_Planner.GameTileSystem.GetSurroundingTiles(zeEnemyStat.CurrentTileID, m_AttackAct.MaxAttackRange);
+        TileId[] zeTiles = m_Planner.GameTileSystem.GetSurroundingTiles(enemyStat.CurrentTileID, m_AttackAct.MaxAttackRange);
         TileId[] zePathToEnemy = null;
         while (DestTile.HasUnit() || !DestTile.GetIsWalkable())
         {
@@ -107,18 +106,38 @@ public class GoapNearTarget : IGoapAction
             // if still cannot find any tile
             if (DestTile.HasUnit() || !DestTile.GetIsWalkable())
             {
-                // Then we will have to another target!
-                zeEnemyStat = m_Planner.EnemiesManager.GetSeenEnemies()[++zeEnemyIndex].GetComponent<UnitStats>();
+                ++zeEnemyIndex;
+                List<UnitStats> listOfSeenEnemies = m_Planner.EnemiesManager.GetSeenEnemies();
+                if (zeEnemyIndex < listOfSeenEnemies.Count)
+                {                 
+                    // Then we will have to find another target!
+                    enemyStat = m_Planner.EnemiesManager.GetSeenEnemies()[++zeEnemyIndex].GetComponent<UnitStats>();
+                }
+                else
+                {
+                    enemyStat = null;
+                    break;
+                }
             }
         }
+#if UNITY_ASSERTIONS
         Assert.IsNotNull(zePathToEnemy, "Path cannot be found at UpdateRoutine GoapNearTarget!");
+#endif
+        if (!enemyStat)
+        {
+            print("Skipping at goapnear target because unit cannot be found!");
+            Coroutine skipActCoroutine = StartCoroutine(SkipActionRoutine());
+            yield return skipActCoroutine;
+            yield break;
+        }
+
         // But we will just walk the shortest length of tile to get to the m_EnemyState. Maybe when there is Accuracy point then it will be added in!
         List<TileId> zeTileToWalk = new List<TileId>();
         foreach (TileId zeTile in zePathToEnemy)
         {
             zeTileToWalk.Add(zeTile);
             Tile TileOfTileID = m_Planner.GameTileSystem.GetTile(zeTile);
-            int TileDistance = TileId.GetDistance(m_Planner.GameTileSystem.GetTile(zeTile).GetTileId(), zeEnemyStat.CurrentTileID);
+            int TileDistance = TileId.GetDistance(m_Planner.GameTileSystem.GetTile(zeTile).GetTileId(), enemyStat.CurrentTileID);
             // Once that supposed tile is good enough for this unit to attack the enemy!
             if (TileDistance <= m_AttackAct.MaxAttackRange && TileDistance >= m_AttackAct.MinAttackRange && m_Planner.m_Stats.GetViewScript().RaycastToTile(TileOfTileID, EnemyTile))
             {
@@ -128,17 +147,9 @@ public class GoapNearTarget : IGoapAction
 
         if (zeTileToWalk == null ||  zeTileToWalk.Count == 0)
         {
-            m_SkipAct.CompletionCallBack += InvokeActionCompleted;
-            m_SkipAct.TurnOn();
-
-            while (!m_ActionCompleted)
-            {
-                yield return null;
-            }
-
-            m_SkipAct.CompletionCallBack -= InvokeActionCompleted;
-            m_UpdateRoutine = null;
-
+            print("skipping at GoapNearTargets because path to nearest enemy cannot be found");
+            Coroutine skipActCoroutine = StartCoroutine(SkipActionRoutine());
+            yield return skipActCoroutine;
             yield break;
         }
 
@@ -159,6 +170,21 @@ public class GoapNearTarget : IGoapAction
         print("Followed the target successfully");
         m_UpdateRoutine = null;
         GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_EventNames.GetEventName(GameEventNames.GameUINames.FollowTarget), null);
+        yield break;
+    }
+
+    IEnumerator SkipActionRoutine()
+    {
+        m_SkipAct.CompletionCallBack += InvokeActionCompleted;
+        m_SkipAct.TurnOn();
+
+        while (!m_ActionCompleted)
+        {
+            yield return null;
+        }
+
+        m_SkipAct.CompletionCallBack -= InvokeActionCompleted;
+        m_UpdateRoutine = null;
         yield break;
     }
 
@@ -196,9 +222,9 @@ public class GoapNearTarget : IGoapAction
         }
     }
 
-    protected void EnemyUnitDestroyed(GameObject _destroyedUnit, bool _destroyedUnitVisible)
+    protected void EnemyUnitDestroyed(UnitStats _destroyedUnit, bool _destroyedUnitVisible)
     {
-        m_EnemiesInAttack.Remove(_destroyedUnit);
+        m_EnemiesInAttack.Remove(_destroyedUnit.gameObject);
     }
 
     void SeenMoving(UnitStats _unitStat)

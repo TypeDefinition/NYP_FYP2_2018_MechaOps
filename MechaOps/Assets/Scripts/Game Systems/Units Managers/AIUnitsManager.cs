@@ -22,6 +22,7 @@ public class AIUnitsManager : UnitsManager
     {
         base.Awake();
         InitEvents();
+        m_OwnUnitDeadInTurnCallback += UnitDiedWhileUpdate;
     }
 
     protected virtual void OnDestroy()
@@ -68,8 +69,9 @@ public class AIUnitsManager : UnitsManager
 
             // wait till the update is finish then proceed to the next unit
             IEnumerator aiCoroutine = goapPlanner.StartPlanning();
-            StartCoroutine(aiCoroutine);
-            yield return aiCoroutine;
+            Coroutine AIRoutine = StartCoroutine(aiCoroutine);
+            //yield return aiCoroutine;
+            yield return AIRoutine;
         }
 #endif
 
@@ -119,6 +121,7 @@ public class AIUnitsManager : UnitsManager
 
         // No idea what the fuck you were doing here, but this sure as shit ain't enemy locations.
         // What happens if within a 1 tile radius there isn't a walkable tile?
+        m_OneTileAwayFromEnemyLocation.Clear();
         foreach (UnitStats enemy in aliveEnemies)
         {
             TileAttributeOverride[] tileAttributeOverrides = enemy.GetTileAttributeOverrides();
@@ -136,6 +139,28 @@ public class AIUnitsManager : UnitsManager
                     m_OneTileAwayFromEnemyLocation.Add(surroundingTiles[i]);
                 }
             }
+        }
+    }
+
+    /// <summary>
+    /// Deal with the overwatch stuff
+    /// </summary>
+    /// <param name="_unitStat"></param>
+    protected void UnitDiedWhileUpdate(UnitStats _unitStat)
+    {
+        if (m_UpdateCoroutine != null)
+        {
+            // reset the turns
+            StopUpdate();
+            TurnStart(m_ManagedFaction);
+        }
+    }
+
+    protected void StopUpdate()
+    {
+        if (m_UpdateCoroutine != null)
+        {
+            StopCoroutine(m_UpdateCoroutine);
         }
     }
 }
