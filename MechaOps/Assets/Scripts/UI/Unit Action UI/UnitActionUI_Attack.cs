@@ -15,8 +15,9 @@ public class UnitActionUI_Attack : UnitActionUI
     [SerializeField] protected TextMeshProUGUI m_TargetNameText;
     [SerializeField] Image m_CrosshairPrefab = null;
 
+    protected TileSystem m_TileSystem = null;
     protected Image m_Crosshair = null;
-    protected UnitAttackAction m_UnitAttackAction = null;
+    protected UnitAttackAction m_UnitAction = null;
     protected UnitStats m_OtherTarget = null;
     protected int m_IndexOfTarget = 0;
     protected List<UnitStats> m_ListOfTargets = new List<UnitStats>();
@@ -29,12 +30,14 @@ public class UnitActionUI_Attack : UnitActionUI
         Canvas screenSpaceCanvas = GameSystemsDirectory.GetSceneInstance().GetClickableScreenSpaceCanvas();
         m_Crosshair = Instantiate(m_CrosshairPrefab.gameObject, screenSpaceCanvas.gameObject.transform).GetComponent<Image>();
         m_Crosshair.gameObject.SetActive(false);
+        m_TileSystem = GameSystemsDirectory.GetSceneInstance().GetTileSystem();
     }
 
     protected override void OnDestroy()
     {
         base.OnDestroy();
         Destroy(m_Crosshair);
+        m_TileSystem.ClearPathMarkers();
     }
 
     /// <summary>
@@ -43,11 +46,11 @@ public class UnitActionUI_Attack : UnitActionUI
     public override void PressedConfirm()
     {
         // only press the button if the target is not null!
-        if (m_OtherTarget && m_UnitAttackAction)
+        if (m_OtherTarget && m_UnitAction)
         {
             // set the target, schedule this action. then destroy this UI gameobject since it is not needed
-            m_UnitAttackAction.SetTarget(m_OtherTarget.gameObject);
-            m_UnitAttackAction.TurnOn();
+            m_UnitAction.SetTarget(m_OtherTarget.gameObject);
+            m_UnitAction.TurnOn();
             GameEventSystem.GetInstance().TriggerEvent(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitStartAction));
             Destroy(gameObject);
         }
@@ -117,7 +120,7 @@ public class UnitActionUI_Attack : UnitActionUI
     protected override void SetUnitAction(IUnitAction _action)
     {
         // it should be the generic attack action
-        m_UnitAttackAction = (UnitAttackAction)_action;
+        m_UnitAction = (UnitAttackAction)_action;
 
         int layerToCastThrough = LayerMask.GetMask("TileDisplay");
         // We will iterate through the global list of visible enemies
@@ -125,15 +128,15 @@ public class UnitActionUI_Attack : UnitActionUI
         List<UnitStats> seenEnemies = playerUnitsManager.GetSeenEnemies();
         foreach (UnitStats enemy in seenEnemies)
         {
-            int tileDistance = TileId.GetDistance(enemy.CurrentTileID, m_UnitAttackAction.GetUnitStats().CurrentTileID);
+            int tileDistance = TileId.GetDistance(enemy.CurrentTileID, m_UnitAction.GetUnitStats().CurrentTileID);
             // if within range, then raycast to the target and check whether it works
-            if (tileDistance <= m_UnitAttackAction.MaxAttackRange && tileDistance >= m_UnitAttackAction.MinAttackRange)
+            if (tileDistance <= m_UnitAction.MaxAttackRange && tileDistance >= m_UnitAction.MinAttackRange)
             {
                 // we need the direction
-                Vector3 direction = enemy.transform.position - m_UnitAttackAction.transform.position;
+                Vector3 direction = enemy.transform.position - m_UnitAction.transform.position;
                 direction.y = 1.0f;
                 // if no obstacle is within the raycast which will be the tileDisplay layer
-                if (!Physics.Raycast(m_UnitAttackAction.transform.position, direction, direction.magnitude, layerToCastThrough))
+                if (!Physics.Raycast(m_UnitAction.transform.position, direction, direction.magnitude, layerToCastThrough))
                 {
                     m_ListOfTargets.Add(enemy);
                 }
@@ -150,6 +153,20 @@ public class UnitActionUI_Attack : UnitActionUI
             m_ConfirmButton.gameObject.SetActive(false);
             m_TargetNameText.text = "No Targets In Range";
         }
+
+        // Highlight the tiles within range.
+        TileId[] tilesInRange = m_TileSystem.GetSurroundingTiles(m_UnitAction.GetUnitStats().CurrentTileID, m_UnitAction.MaxAttackRange);
+        List<TileId> attackableTiles = new List<TileId>();
+        foreach (TileId tileId in tilesInRange)
+        {
+            int distanceToTile = TileId.GetDistance(m_UnitAction.GetUnitStats().CurrentTileID, tileId);
+            // Check if it is within the range
+            if (distanceToTile >= m_UnitAction.MinAttackRange && distanceToTile <= m_UnitAction.MaxAttackRange)
+            {
+                attackableTiles.Add(tileId);
+            }
+        }
+        m_TileSystem.SetPathMarkers(attackableTiles.ToArray(), null);
 
         UpdateActionInfo(_action);
     }
@@ -169,8 +186,8 @@ public class UnitActionUI_Attack : UnitActionUI
         else
         {
             // have to set target otherwise calculate hit chance will crash
-            m_UnitAttackAction.SetTarget(m_OtherTarget.gameObject);
-            hitChanceText = string.Format("Hit Chance: {0}%", m_UnitAttackAction.CalculateHitChance());
+            m_UnitAction.SetTarget(m_OtherTarget.gameObject);
+            hitChanceText = string.Format("Hit Chance: {0}%", m_UnitAction.CalculateHitChance());
         }
 
         m_ActionDescriptionText.text = actionCostText + " " + endsTurnText + "\n" + hitChanceText + "\n" + _action.UnitActionDescription;

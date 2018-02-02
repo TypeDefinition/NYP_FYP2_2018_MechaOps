@@ -937,14 +937,14 @@ MonoBehaviour:
   m_ControllableAction: 1
   m_Priority: 0
   m_ActionCost: 1
-  m_EndsTurn: 0
+  m_EndsTurn: 1
   m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 114668755676894246, guid: 9e101e975ee3f7d46aae0d6d9f1e0d21,
     type: 2}
   m_UnitActionButtonSprite: {fileID: 21300000, guid: e392509062377594ab81881f16831a09,
     type: 3}
   m_MinAttackRange: 0
-  m_MaxAttackRange: 6
+  m_MaxAttackRange: 8
   m_AccuracyPoints: 50
   m_DamagePoints: 2
   m_Animation: {fileID: 114422513735212468}
@@ -959,7 +959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a099c0c67de6cd40a60987e4b565a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MovementSpeed: 500
+  m_MovementSpeed: 30
   m_RotationSpeed: 360
   m_AmbientAudioSource: {fileID: 82100420768412826}
   m_AmbientSound: {fileID: 8300000, guid: 9863e2d821f80db40934f57fabd37166, type: 3}
@@ -1082,13 +1082,13 @@ MonoBehaviour:
     m_UnitName: Spider
     m_UnitDescription: A fast moving car. Useful for hit and run tacticas.
     m_FactionType: 0
-    m_MaxHealthPoints: 10
-    m_CurrentHealthPoints: 10
-    m_MaxActionPoints: 50
-    m_CurrentActionPoints: 50
+    m_MaxHealthPoints: 4
+    m_CurrentHealthPoints: 4
+    m_MaxActionPoints: 3
+    m_CurrentActionPoints: 3
     m_DeploymentCost: 1000
     m_ViewRange: 13
-    m_ConcealmentPoints: 3
+    m_ConcealmentPoints: 5
     m_EvasionPoints: 0
     m_CurrentTileID:
       m_X: 0
@@ -1119,7 +1119,7 @@ MonoBehaviour:
     type: 2}
   m_UnitActionButtonSprite: {fileID: 21300000, guid: d859645726494314ab2591c7384f7d53,
     type: 3}
-  m_MovementPoints: 15
+  m_MovementPoints: 8
   m_Animation: {fileID: 114344323746228970}
 --- !u!114 &114669568832335752
 MonoBehaviour:
