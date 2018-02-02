@@ -55,6 +55,8 @@ public class ShowTileInfoUI : MonoBehaviour {
     protected GameEventNames m_EventAsset;
     [SerializeField, Tooltip("Tweening to disable this script")]
     protected TweenDisableScript m_tweenDisableScript;
+    [SerializeField, Tooltip("Flag to check whether is it ready to show the tile info")]
+    protected bool m_ReadyShowTileInfo = true;
 
     private void Awake()
     {
@@ -77,20 +79,30 @@ public class ShowTileInfoUI : MonoBehaviour {
 #endif
     }
 
-
     private void Start()
     {
         // Set it back to inactive afterwards
         m_TileInfoGO.SetActive(false);
     }
+
     protected void InitEvents()
     {
         GameEventSystem.GetInstance().SubscribeToEvent<GameObject>(m_EventAsset.GetEventName(GameEventNames.GameUINames.ClickedTile), GetClickedTileGO);
+        GameEventSystem.GetInstance().SubscribeToEvent<FactionType>(m_EventAsset.GetEventName(GameEventNames.GameplayNames.GameOver), DestroyItself);
+        GameEventSystem.GetInstance().SubscribeToEvent<FactionType>(m_EventAsset.GetEventName(GameEventNames.GameplayNames.TurnStart), AnimateToInactive);
+        GameEventSystem.GetInstance().SubscribeToEvent<FactionType>(m_EventAsset.GetEventName(GameEventNames.GameplayNames.TurnEnd), AnimateToInactive);
+        GameEventSystem.GetInstance().SubscribeToEvent<UnitStats>(m_EventAsset.GetEventName(GameEventNames.GameplayNames.UnitFinishedAction), SetReadyToShowTrue);
+        GameEventSystem.GetInstance().SubscribeToEvent(m_EventAsset.GetEventName(GameEventNames.GameplayNames.UnitStartAction), SetReadyToShowFalse);
     }
 
     protected void DeinitEvents()
     {
         GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>(m_EventAsset.GetEventName(GameEventNames.GameUINames.ClickedTile), GetClickedTileGO);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<FactionType>(m_EventAsset.GetEventName(GameEventNames.GameplayNames.GameOver), DestroyItself);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<FactionType>(m_EventAsset.GetEventName(GameEventNames.GameplayNames.TurnStart), AnimateToInactive);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<FactionType>(m_EventAsset.GetEventName(GameEventNames.GameplayNames.TurnEnd), AnimateToInactive);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats>(m_EventAsset.GetEventName(GameEventNames.GameplayNames.UnitFinishedAction), SetReadyToShowTrue);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent(m_EventAsset.GetEventName(GameEventNames.GameplayNames.UnitStartAction), SetReadyToShowFalse);
     }
 
     /// <summary>
@@ -177,7 +189,30 @@ public class ShowTileInfoUI : MonoBehaviour {
     /// </summary>
     public void AnimateToInactive()
     {
-        m_tweenDisableScript.AnimateUI();
-        m_ClickedTile = null;
+        if (m_tweenDisableScript.gameObject.activeSelf)
+        {
+            m_tweenDisableScript.AnimateUI();
+            m_ClickedTile = null;
+        }
+    }
+
+    protected void AnimateToInactive(FactionType _whatFaction)
+    {
+        AnimateToInactive();
+    }
+
+    protected void DestroyItself(FactionType _factionDead)
+    {
+        Destroy(gameObject);
+    }
+
+    protected void SetReadyToShowTrue(UnitStats _unitFinishedActStat)
+    {
+        m_ReadyShowTileInfo = true;
+    }
+
+    protected void SetReadyToShowFalse()
+    {
+        m_ReadyShowTileInfo = false;
     }
 }
