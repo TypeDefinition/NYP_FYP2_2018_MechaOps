@@ -111,7 +111,7 @@ public class GoapNearTarget : IGoapAction
                 if (zeEnemyIndex < listOfSeenEnemies.Count)
                 {                 
                     // Then we will have to find another target!
-                    enemyStat = m_Planner.EnemiesManager.GetSeenEnemies()[++zeEnemyIndex].GetComponent<UnitStats>();
+                    enemyStat = m_Planner.EnemiesManager.GetSeenEnemies()[zeEnemyIndex].GetComponent<UnitStats>();
                 }
                 else
                 {
