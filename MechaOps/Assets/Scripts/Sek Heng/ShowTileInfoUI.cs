@@ -103,7 +103,7 @@ public class ShowTileInfoUI : MonoBehaviour {
 
     protected void GetClickedTileGO(GameObject _tileGO)
     {
-        if (_tileGO.tag == "TileBase" || _tileGO.tag == "TileDisplay")
+        if (_tileGO.tag == "Tile" || _tileGO.tag == "TileDisplay")
         {
             if (_tileGO.tag == "TileDisplay")
             {

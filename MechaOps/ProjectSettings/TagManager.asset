@@ -8,13 +8,13 @@ TagManager:
   - Attack
   - Walk
   - Guard
-  - TileBase
   - TileDisplay
   - TileSystem
   - WorldCanvas
   - Ground
   - AttackUI
   - PlayerUnit
+  - Tile
   layers:
   - Default
   - TransparentFX
@@ -29,7 +29,7 @@ TagManager:
   - TileDisplay
   - SpawnIndicator
   - UnitInfoDisplay
-  - 
+  - TileSystem
   - 
   - 
   - 

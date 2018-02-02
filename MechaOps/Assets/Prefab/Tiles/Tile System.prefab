@@ -21,9 +21,9 @@ GameObject:
   - component: {fileID: 4757602592646058}
   - component: {fileID: 33770741073977870}
   - component: {fileID: 23672961552814138}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tile_Unknown_First
-  m_TagString: Untagged
+  m_TagString: TileDisplay
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4355928435855886}
   - component: {fileID: 114006940085896276}
   - component: {fileID: 120010443292654190}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: Tile System
   m_TagString: TileSystem
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1588499557193260}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.483147, y: 7.052926, z: -72.41119}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4757602592646058}
