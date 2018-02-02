@@ -103,8 +103,6 @@ public class UnitMoveAction : IUnitAction
         // Signal that we have moved to a tile.
         GetUnitStats().CurrentTileID = m_TilePath[_reachedTileIndex];
         GameEventSystem.GetInstance().TriggerEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitMovedToTile), m_UnitStats);
-
-        // m_UnitStats.CurrentHealthPoints = 0;
     }
 
     protected override void OnAnimationCompleted()

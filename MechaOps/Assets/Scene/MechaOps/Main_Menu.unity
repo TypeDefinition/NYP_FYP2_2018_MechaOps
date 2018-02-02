@@ -3675,7 +3675,7 @@ MonoBehaviour:
   m_MainMenuManager: {fileID: 2135469113}
   m_UnitLibrary: {fileID: 11400000, guid: 60f7ce9ba08de1049a082f8bd6d5ca28, type: 2}
   m_PlayerCredits: 20000
-  m_CapacityOfUnits: 8
+  m_CapacityOfUnits: 4
   m_CreditsLeftText: {fileID: 263148031}
   m_SufficientCreditTextColor: {r: 0, g: 1, b: 0, a: 1}
   m_InsufficientCreditTextColor: {r: 1, g: 0, b: 0, a: 1}
