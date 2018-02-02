@@ -25,6 +25,7 @@ public class TileAttributes
     [SerializeField] private int m_MovementCost = 1;
     [SerializeField] private int m_ConcealmentPoints = 0;
     [SerializeField] private int m_EvasionPoints = 0;
+    [SerializeField] private string m_Description;
     // This is the GameObject that will be rendered.
     [SerializeField] private TileDisplay m_DisplayObject = null;
 
@@ -36,6 +37,8 @@ public class TileAttributes
     public int ConcealmentPoints { get { return m_ConcealmentPoints; } }
 
     public int EvasionPoints { get { return m_EvasionPoints; } }
+
+    public string Description { get { return m_Description; } }
 
     public TileDisplay DisplayObject { get { return m_DisplayObject; } }
 
