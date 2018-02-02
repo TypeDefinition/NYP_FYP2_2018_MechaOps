@@ -12,6 +12,8 @@ public class StateData : MonoBehaviour {
     protected UnitStats m_AttackerStat;
     [SerializeField, Tooltip("Goap Planner")]
     protected GoapPlanner m_Planner;
+    [SerializeField, Tooltip("The Game Event asset")]
+    protected GameEventNames m_EventNameAsset;
 
     protected HashSet<string> m_CurrentStates = new HashSet<string>();
 
@@ -31,20 +33,19 @@ public class StateData : MonoBehaviour {
     protected virtual void OnEnable()
     {
         m_Stat = GetComponent<UnitStats>();
+        if (!m_EventNameAsset)
+        {
+            m_EventNameAsset = GameSystemsDirectory.GetSceneInstance().GetGameEventNames();
+        }
         // Use Game Event System instead. -Terry
-        // need to listen for being attacked!
-        // m_Stat.m_HealthDropCallback += GetAttackerGO;
+        GameEventSystem.GetInstance().SubscribeToEvent<UnitStats, UnitStats>(m_EventNameAsset.GetEventName(GameEventNames.GameplayNames.AttackedUnit), GetAttackerGO);
     }
 
 
     protected virtual void OnDisable()
     {
         // Use Game Event System instead. -Terry
-        if (m_Stat)
-        {
-            // need to listen for being attacked!
-            // m_Stat.m_HealthDropCallback -= GetAttackerGO;
-        }
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<UnitStats, UnitStats>(m_EventNameAsset.GetEventName(GameEventNames.GameplayNames.AttackedUnit), GetAttackerGO);
     }
 
     /// <summary>
@@ -55,6 +56,14 @@ public class StateData : MonoBehaviour {
     {
         m_AttackerStat = _attacker;
         m_CurrentStates.Add("UnderAttack");
+    }
+
+    public void GetAttackerGO(UnitStats _attacker, UnitStats _victim)
+    {
+        if (_victim.gameObject == gameObject)
+        {
+            GetAttackerGO(_attacker);
+        }
     }
 
     public void StartInitState()
