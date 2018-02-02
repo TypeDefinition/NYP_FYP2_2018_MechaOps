@@ -8,20 +8,9 @@ using UnityEngine.UI;
 /// <summary>
 /// To show the tile info on the UI logic
 /// </summary>
-public class ShowTileInfoUI : MonoBehaviour {
-    [System.Serializable]
-    public struct TileTypeInfo
-    {
-        public TileType m_TileType;
-        public string m_TileDescription;
-    }
-    [System.Serializable]
-    public struct HazardTypeInfo
-    {
-        public HazardType m_HazardType;
-        public string m_HazardDescription;
-    }
-
+public class ShowTileInfoUI : MonoBehaviour
+{
+    // Serialized Variable(s)
     [Header("Variables for ShowTileInfoUI")]
     [SerializeField, Tooltip("Tile information gameobject")]
     protected GameObject m_TileInfoGO;
@@ -35,62 +24,57 @@ public class ShowTileInfoUI : MonoBehaviour {
     protected TextMeshProUGUI m_MoveCostTxt;
     [SerializeField, Tooltip("Text UI for tile concealment")]
     protected TextMeshProUGUI m_TileConcealTxt;
+    [SerializeField, Tooltip("Text UI for tile evasion")]
+    protected TextMeshProUGUI m_TileEvasionTxt;
     [SerializeField, Tooltip("Text UI for tile description")]
     protected TextMeshProUGUI m_TileDescriptionTxt;
     [SerializeField, Tooltip("Audio to play the minimizing sound effect")]
     protected AudioClip m_MinimizeSFX;
     [SerializeField, Tooltip("Audio to play the expand sound effect")]
     protected AudioClip m_ExpandSFX;
-    [SerializeField, Tooltip("Audio Source to play SFX")]
-    protected AudioSource m_SFXSource;
-    [SerializeField, Tooltip("Array of the Tile type information")]
-    protected TileTypeInfo[] m_ArrayOfTileTypeInfo;
-    [SerializeField, Tooltip("Array of hazard type information")]
-    protected HazardTypeInfo[] m_ArrayOfHazardTypeInfo;
-
-    [Header("Debugging for ShowTileInfoUI")]
-    [SerializeField, Tooltip("Tile that the player has clicked!")]
-    protected Tile m_ClickedTile;
-    [SerializeField, Tooltip("Contains all of the game event names asset. Will try to link from GameSystemDirectory if nothing is here")]
-    protected GameEventNames m_EventAsset;
     [SerializeField, Tooltip("Tweening to disable this script")]
-    protected TweenDisableScript m_tweenDisableScript;
+    protected TweenDisableScript m_TweenDisableScript;
+
+    // Non-Serialized Variable(s)
+    protected GameEventNames m_GameEventNames;
+    protected AudioSource m_SFXAudioSource;
+
+    // [Header("Debugging for ShowTileInfoUI")]
+    // [SerializeField, Tooltip("Tile that the player has clicked!")]
+    protected Tile m_ClickedTile;
 
     private void Awake()
     {
-        if (!m_EventAsset)
-        {
-            m_EventAsset = GameSystemsDirectory.GetSceneInstance().GetGameEventNames();
-        }
-        InitEvents();
-        if (!m_tweenDisableScript)
-        {
-            m_tweenDisableScript = m_TileInfoGO.GetComponent<TweenDisableScript>();
-        }
-        if (!m_SFXSource)
-        {
-            m_SFXSource = GameSystemsDirectory.GetSceneInstance().GetSFXSource();
-        }
-#if UNITY_ASSERTIONS
-        Assert.IsNotNull(m_EventAsset, "Event asset is still null at ShowTileInfoUI.Awake()");
-        Assert.IsNotNull(m_tweenDisableScript, "The tween disable script is null at ShowTileInfoUI.Awake()");
-#endif
-    }
+        m_GameEventNames = GameSystemsDirectory.GetSceneInstance().GetGameEventNames();
+        Assert.IsNotNull(m_GameEventNames, "Event asset is still null at ShowTileInfoUI.Awake()");
+        m_SFXAudioSource = GameSystemsDirectory.GetSceneInstance().GetSFXAudioSource();
+        Assert.IsNotNull(m_SFXAudioSource);
+        Assert.IsNotNull(m_TweenDisableScript, "The tween disable script is null at ShowTileInfoUI.Awake()");
 
+        // Ensure that the text references are not null.
+        Assert.IsNotNull(m_TileNameTxt);
+        Assert.IsNotNull(m_MoveCostTxt);
+        Assert.IsNotNull(m_TileConcealTxt);
+        Assert.IsNotNull(m_TileEvasionTxt);
+        Assert.IsNotNull(m_TileDescriptionTxt);
+
+    InitEvents();
+    }
 
     private void Start()
     {
         // Set it back to inactive afterwards
         m_TileInfoGO.SetActive(false);
     }
+
     protected void InitEvents()
     {
-        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>(m_EventAsset.GetEventName(GameEventNames.GameUINames.ClickedTile), GetClickedTileGO);
+        GameEventSystem.GetInstance().SubscribeToEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.ClickedTile), GetClickedTileGO);
     }
 
     protected void DeinitEvents()
     {
-        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>(m_EventAsset.GetEventName(GameEventNames.GameUINames.ClickedTile), GetClickedTileGO);
+        GameEventSystem.GetInstance().UnsubscribeFromEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.ClickedTile), GetClickedTileGO);
     }
 
     /// <summary>
@@ -118,8 +102,9 @@ public class ShowTileInfoUI : MonoBehaviour {
             if (!m_ClickedTile.Known)
             {
                 m_TileNameTxt.text = "Unknown Tile";
-                m_TileConcealTxt.text = "Concealment: ?";
                 m_MoveCostTxt.text = "Movement Cost: ?";
+                m_TileConcealTxt.text = "Concealment: ?";
+                m_TileEvasionTxt.text = "Evasion: ?";
                 m_TileDescriptionTxt.text = "";
             }
             else
@@ -128,25 +113,16 @@ public class ShowTileInfoUI : MonoBehaviour {
                 m_TileNameTxt.text = m_ClickedTile.GetTileType().ToString() + " Tile";
                 m_TileConcealTxt.text = "Concealment: " + m_ClickedTile.GetTotalConcealmentPoints();
                 m_MoveCostTxt.text = "Movement Cost: " + m_ClickedTile.GetTotalMovementCost();
-                foreach (TileTypeInfo tileTypeInfo in m_ArrayOfTileTypeInfo)
-                {
-                    if (tileTypeInfo.m_TileType == m_ClickedTile.GetTileType())
-                    {
-                        m_TileDescriptionTxt.text = tileTypeInfo.m_TileDescription + "\n";
-                        break;
-                    }
-                }
+                m_TileEvasionTxt.text = "Evasion: " + m_ClickedTile.GetTileAttributes().EvasionPoints;
+                m_TileDescriptionTxt.text = m_ClickedTile.GetTileAttributes().Description + "\n";
+                
                 // check whether it is visible to the player otherwise not much information will be shown
-                if (m_ClickedTile.VisibleCounter > 0)
+                if (m_ClickedTile.IsVisible())
                 {
-                    // we show whether is it hazardous to walk through it or not
-                    foreach (HazardTypeInfo hazardStuff in m_ArrayOfHazardTypeInfo)
+                    Hazard hazard = m_ClickedTile.GetHazard();
+                    if (hazard != null)
                     {
-                        if (hazardStuff.m_HazardType == m_ClickedTile.GetHazardType())
-                        {
-                            m_TileDescriptionTxt.text += hazardStuff.m_HazardDescription + "\n";
-                            break;
-                        }
+                        m_TileDescriptionTxt.text += hazard.Attributes.Description;
                     }
                 }
             }
@@ -161,7 +137,7 @@ public class ShowTileInfoUI : MonoBehaviour {
         m_MinimizeButton.gameObject.SetActive(false);
         m_ExpandButton.gameObject.SetActive(true);
         AnimateToInactive();
-        m_SFXSource.PlayOneShot(m_MinimizeSFX);
+        m_SFXAudioSource.PlayOneShot(m_MinimizeSFX);
     }
 
     public void ExpandThis()
@@ -169,7 +145,7 @@ public class ShowTileInfoUI : MonoBehaviour {
         m_MinimizeButton.gameObject.SetActive(true);
         m_ExpandButton.gameObject.SetActive(false);
         m_TileInfoGO.SetActive(true);
-        m_SFXSource.PlayOneShot(m_ExpandSFX);
+        m_SFXAudioSource.PlayOneShot(m_ExpandSFX);
     }
 
     /// <summary>
@@ -177,7 +153,7 @@ public class ShowTileInfoUI : MonoBehaviour {
     /// </summary>
     public void AnimateToInactive()
     {
-        m_tweenDisableScript.AnimateUI();
+        m_TweenDisableScript.AnimateUI();
         m_ClickedTile = null;
     }
 }

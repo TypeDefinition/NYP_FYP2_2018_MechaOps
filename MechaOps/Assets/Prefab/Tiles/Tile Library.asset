@@ -16,29 +16,34 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   - m_Walkable: 0
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: Provides cover.
     m_DisplayObject: {fileID: 114603814530369432, guid: 47faf5f328908d94fb1b9f46271e457a,
       type: 2}
   - m_Walkable: 0
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: Uncrossable by land units.
     m_DisplayObject: {fileID: 114834877568814252, guid: 2475c95dfce60604f88284d2b063d5f5,
       type: 2}
   - m_Walkable: 1
     m_MovementCost: 3
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: df66c0ee4c67adc4c9effe4d389cfcd2,
       type: 2}
   - m_Walkable: 1
     m_MovementCost: 2
     m_ConcealmentPoints: 4
     m_EvasionPoints: 0
+    m_Description: Provides increased concealment.
     m_DisplayObject: {fileID: 114621463578543154, guid: b4df40f7061a13a4787dcd6c92147014,
       type: 2}

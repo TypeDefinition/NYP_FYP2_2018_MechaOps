@@ -72,7 +72,9 @@ public class GameSystemsDirectory : MonoBehaviour
     [SerializeField] protected SpawnSystem m_SpawnSystem = null;
     [SerializeField] protected Canvas m_ClickableScreenSpaceCanvas = null;
     [SerializeField] protected Canvas m_UnclickableScreenSpaceCanvas = null;
-    [SerializeField] protected AudioSource m_SFXSource;
+    [SerializeField] protected AudioSource m_SFXAudioSource;
+    [SerializeField] protected AudioSource m_BGMAudioSource;
+    [SerializeField] protected AudioSource m_AmbientAudioSource;
 
     [Header("Scriptable Objects.")]
     [SerializeField] protected GameAudioSettings m_GameAudioSettings = null;
@@ -83,7 +85,9 @@ public class GameSystemsDirectory : MonoBehaviour
     public Canvas GetClickableScreenSpaceCanvas() { return m_ClickableScreenSpaceCanvas; }
     public Canvas GetUnclickableScreenSpaceCanvas() { return m_UnclickableScreenSpaceCanvas; }
     public Camera GetGameCamera() { return m_GameCamera; }
-    public AudioSource GetSFXSource() { return m_SFXSource; }
+    public AudioSource GetSFXAudioSource() { return m_SFXAudioSource; }
+    public AudioSource GetBGMAudioSource() { return m_BGMAudioSource; }
+    public AudioSource GetAmbientAudioSource() { return m_AmbientAudioSource; }
 
     public UnitsTracker GetUnitsTracker() { return m_UnitsTracker; }
     public AIUnitsManager[] GetAIUnitsManager() { return m_AIUnitManagers; }
