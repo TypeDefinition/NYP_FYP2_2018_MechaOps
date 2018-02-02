@@ -13,6 +13,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
   m_Volumes:
-  - 0.1
-  - 0.2
-  - 1
+  - 0
+  - 0.2550699
+  - 0

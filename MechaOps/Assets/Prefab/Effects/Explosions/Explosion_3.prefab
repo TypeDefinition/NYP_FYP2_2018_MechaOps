@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114291285245952060}
   - component: {fileID: 114059632409845472}
   - component: {fileID: 82046769901714710}
+  - component: {fileID: 114024112035794346}
   m_Layer: 0
   m_Name: Explosion_3
   m_TagString: Untagged
@@ -163,6 +164,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114024112035794346
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1239684297980618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5412d4f3aa2c445a400005fc737f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
+  m_GameAudioSettings: {fileID: 11400000, guid: 7661fa5d75f3f464bb18461c47ac4643,
+    type: 2}
+  m_AudioSources:
+  - {fileID: 82046769901714710}
+  m_VolumeType: 2
 --- !u!114 &114059632409845472
 MonoBehaviour:
   m_ObjectHideFlags: 1

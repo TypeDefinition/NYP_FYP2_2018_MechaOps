@@ -315,8 +315,10 @@ MonoBehaviour:
   m_TweenAnimationDuration: 0.2
   m_HealthBar: {fileID: 114111427445458144}
   m_ActionPointsCounter: {fileID: 114934890049618856}
+  m_SpottedIndicator: {fileID: 0}
   m_UnitWorldPositionOffset: {x: 0, y: 2.5, z: 0}
   m_PositionZ: 0
+  m_SpottedSFX: {fileID: 8300000, guid: c187befebdb6ef942b8a9b283b20eed8, type: 3}
 --- !u!114 &114934890049618856
 MonoBehaviour:
   m_ObjectHideFlags: 1

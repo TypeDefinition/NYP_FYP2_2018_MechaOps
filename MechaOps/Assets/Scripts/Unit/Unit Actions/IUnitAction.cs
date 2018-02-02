@@ -211,7 +211,7 @@ public abstract class IUnitAction : MonoBehaviour
         m_ActionState = ActionState.Running;
         GetUnitStats().CurrentActiveAction = this;
 
-        if (m_UnitStats.GetViewScript().IsVisible() || m_UnitStats.UnitFaction == m_GameFlowManager.PlayerFaction)
+        if (m_UnitStats.GetViewScript().IsVisibleToPlayer() || m_UnitStats.UnitFaction == m_GameFlowManager.PlayerFaction)
         {
             GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FocusOnTarget), m_UnitStats.gameObject);
         }
@@ -258,7 +258,7 @@ public abstract class IUnitAction : MonoBehaviour
     {
         m_ActionState = ActionState.Running;
 
-        if (m_UnitStats.GetViewScript().IsVisible() || m_UnitStats.UnitFaction == m_GameFlowManager.PlayerFaction)
+        if (m_UnitStats.GetViewScript().IsVisibleToPlayer() || m_UnitStats.UnitFaction == m_GameFlowManager.PlayerFaction)
         {
             GameEventSystem.GetInstance().TriggerEvent<GameObject>(m_GameEventNames.GetEventName(GameEventNames.GameUINames.FocusOnTarget), m_UnitStats.gameObject);
         }

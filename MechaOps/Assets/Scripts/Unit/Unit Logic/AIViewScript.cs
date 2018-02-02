@@ -34,8 +34,8 @@ public class AIViewScript : ViewScript
     // Callbacks
     protected override void OnUnitsSpawned()
     {
-        m_UnitStats.GetUnitInfoDisplay().gameObject.SetActive(IsVisible());
-        foreach (MeshRenderer renderer in m_AllRenderers) { renderer.enabled = IsVisible(); }
+        m_UnitStats.GetUnitInfoDisplay().gameObject.SetActive(IsVisibleToPlayer());
+        foreach (MeshRenderer renderer in m_AllRenderers) { renderer.enabled = IsVisibleToPlayer(); }
     }
 
     protected virtual void OnUnitDead(UnitStats _deadUnit, bool _deadUnitVisible)
@@ -49,6 +49,8 @@ public class AIViewScript : ViewScript
             foreach (MeshRenderer renderer in m_AllRenderers) { renderer.enabled = true; }
         }
     }
+
+    public override bool IsVisibleToPlayer() { return m_VisibilityCount > 0; }
 
     /// <summary>
     /// Decrease the counter for number of units looking at this.
@@ -80,6 +82,10 @@ public class AIViewScript : ViewScript
             foreach (MeshRenderer renderer in m_AllRenderers) { renderer.enabled = true; }
 
             m_UnitStats.GetUnitInfoDisplay().gameObject.SetActive(true);
+
+            // TODO: Let this have 2 parameters, the spotter, and the spotted.
+            // By doing so, in the future we can have 3 or more factions in the game, and the UnitsManagers can filter out which units
+            // are spotted by their faction.
             GameEventSystem.GetInstance().TriggerEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitSeen), m_UnitStats);
         }
     }

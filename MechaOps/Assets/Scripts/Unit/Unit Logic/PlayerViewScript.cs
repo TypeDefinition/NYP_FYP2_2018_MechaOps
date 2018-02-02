@@ -116,7 +116,7 @@ public class PlayerViewScript : ViewScript
     /// It is always visible to the player
     /// </summary>
     /// <returns></returns>
-    public override bool IsVisible()
+    public override bool IsVisibleToPlayer()
     {
         return true;
     }

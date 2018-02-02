@@ -11,7 +11,7 @@ public abstract class ViewScript : MonoBehaviour
     [SerializeField] protected UnitStats m_UnitStats = null;
 
     // Non-Serialized Variable(s)
-    protected int m_VisibilityCount = 0; // This is the counter for the number of units spotting this unit.
+    [SerializeField] protected int m_VisibilityCount = 0; // This is the counter for the number of units spotting this unit.
     protected TileSystem m_TileSystem = null;
     protected GameSystemsDirectory m_GameSystemsDirectory = null;
     protected GameEventNames m_GameEventNames = null;
@@ -51,7 +51,13 @@ public abstract class ViewScript : MonoBehaviour
 
     public abstract void DecreaseVisibility();
 
-    public virtual bool IsVisible() { return m_VisibilityCount > 0; }
+    /// <summary>
+    /// This function only checks if the unit is visible to the player!
+    /// To find out if this unit is visible to the opposing force,
+    /// use GetVisibilityCount() > 0.
+    /// </summary>
+    /// <returns></returns>
+    public abstract bool IsVisibleToPlayer();
 
     public virtual bool RaycastToTile(Tile _tile)
     {

@@ -156,7 +156,7 @@ public class MOAnimator_Wasp : MOAnimator
         PlaySFXAudioSource(m_CrashingSFX, false);
 
         // plays the death cinematic camera if it is visible
-        if (m_ViewScript.IsVisible())
+        if (m_ViewScript.IsVisibleToPlayer())
         {
             GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), m_Hull.transform, m_Hull.transform);
             GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_DeathCinematicName, m_TimeDelayForDeathCam);
@@ -227,7 +227,7 @@ public class MOAnimator_Wasp : MOAnimator
     public override void StartMoveAnimation(TileId[] _movementPath, Void_Int _reachedTileCallback, Void_Void _completionCallback)
     {
         FactionType playerFaction = GameSystemsDirectory.GetSceneInstance().GetGameFlowManager().PlayerFaction;
-        if (m_ViewScript.IsVisible() && m_UnitStats.UnitFaction == playerFaction)
+        if (m_ViewScript.IsVisibleToPlayer() && m_UnitStats.UnitFaction == playerFaction)
         {
             GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), m_Hull.transform, m_Hull.transform);
             GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_MoveCinematicName, -1);
@@ -356,7 +356,7 @@ public class MOAnimator_Wasp : MOAnimator
     protected override IEnumerator ShootAnimationCouroutine()
     {
         // Need to ensure that the Panzer is visible then it will be able to trigger such events!
-        if (m_ViewScript.IsVisible())
+        if (m_ViewScript.IsVisibleToPlayer())
         {
             GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineTargetTransform), m_Target.transform, m_Target.transform);
             GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), m_Hull.transform, m_Hull.transform);

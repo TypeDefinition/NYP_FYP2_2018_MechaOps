@@ -109,7 +109,7 @@ public class UnitStats : MonoBehaviour
             {
                 // Trigger an event when the unit died
                 // If the unit is visible, then start the death cinematic!
-                GameEventSystem.GetInstance().TriggerEvent<UnitStats, bool>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitDead), this, m_ViewTileScript.IsVisible());
+                GameEventSystem.GetInstance().TriggerEvent<UnitStats, bool>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitDead), this, m_ViewTileScript.IsVisibleToPlayer());
             }
             UpdateUnitInfoDisplay();
         }

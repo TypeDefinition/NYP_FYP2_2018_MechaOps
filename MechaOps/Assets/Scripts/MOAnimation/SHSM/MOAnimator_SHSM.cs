@@ -231,7 +231,7 @@ public class MOAnimator_SHSM : MOAnimator
     protected override IEnumerator ShootAnimationCouroutine()
     {
         // Need to ensure that the Panzer is visible then it will be able to trigger such events!
-        if (m_ViewScript.IsVisible())
+        if (m_ViewScript.IsVisibleToPlayer())
         {
             GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), m_Hull, m_BulletSpawnPoint);
             GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_AttackCinematicName, m_TimeDelayForAttackCam);
@@ -385,7 +385,7 @@ public class MOAnimator_SHSM : MOAnimator
     {
         // Need to make sure the unit is visible and it belongs to the player!
         FactionType playerFaction = GameSystemsDirectory.GetSceneInstance().GetGameFlowManager().PlayerFaction;
-        if (m_ViewScript.IsVisible() && m_UnitStats.UnitFaction == playerFaction)
+        if (m_ViewScript.IsVisibleToPlayer() && m_UnitStats.UnitFaction == playerFaction)
         {
             GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), m_Gun, m_Gun);
             GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_MoveCinematicName, -1);

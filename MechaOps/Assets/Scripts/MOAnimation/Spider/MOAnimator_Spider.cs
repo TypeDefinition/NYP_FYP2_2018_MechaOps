@@ -135,7 +135,7 @@ public class MOAnimator_Spider : MOAnimator
     // Death Animation
     protected override IEnumerator DeathAnimationCoroutine()
     {
-        if (m_ViewScript.IsVisible())
+        if (m_ViewScript.IsVisibleToPlayer())
         {
             GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), m_Hull, m_Hull);
             GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_DeathCinematicName, m_TimeDelayForDeathCam);

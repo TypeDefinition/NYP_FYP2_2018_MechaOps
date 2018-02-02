@@ -48,17 +48,20 @@ public class ArtileryBullet : Bullet
             RaycastHit hitInfo;
             if (Physics.Raycast(transform.position, transform.forward, out hitInfo, m_CurrentVelocity.magnitude * Time.deltaTime))
             {
-                GameObject explosion = GameObject.Instantiate(m_ExplosionPrefab);
-                explosion.transform.position = m_TargetTile.transform.position;
-
-                if (m_BulletMeshRenderer)
+                if (hitInfo.collider.gameObject.CompareTag("Tile"))
                 {
-                    m_BulletMeshRenderer.enabled = false;
+                    GameObject explosion = GameObject.Instantiate(m_ExplosionPrefab);
+                    explosion.transform.position = m_TargetTile.transform.position;
+
+                    if (m_BulletMeshRenderer)
+                    {
+                        m_BulletMeshRenderer.enabled = false;
+                    }
+
+                    m_Lifetime = m_AfterHitLifetime;
+
+                    m_HitTarget = true;
                 }
-
-                m_Lifetime = m_AfterHitLifetime;
-
-                m_HitTarget = true;
             }
 
             transform.position += m_CurrentVelocity * Time.deltaTime;
