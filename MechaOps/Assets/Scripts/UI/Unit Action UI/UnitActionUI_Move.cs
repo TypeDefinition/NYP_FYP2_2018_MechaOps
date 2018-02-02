@@ -85,7 +85,7 @@ public class UnitActionUI_Move : UnitActionUI
 
     void OnClickedTile(GameObject _clickedTile)
     {
-        if (_clickedTile.tag != "TileBase") { return; }
+        if (_clickedTile.tag != "Tile") { return; }
 
         Tile tileComponent = _clickedTile.GetComponent<Tile>();
         Assert.IsNotNull(tileComponent);

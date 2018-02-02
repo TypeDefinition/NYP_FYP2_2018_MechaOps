@@ -29,13 +29,13 @@ public class TileBuilderSettings : EditorWindow
 
     private void Update()
     {
-        if (m_ForceSelectionToParent &&
+        /*if (m_ForceSelectionToParent &&
             Selection.activeTransform != null &&
             Selection.activeTransform.parent != null &&
             Selection.activeTransform.gameObject.CompareTag("TileDisplay"))
         {
             Selection.activeTransform = Selection.activeTransform.parent;
-        }
+        }*/
     }
 
 }
