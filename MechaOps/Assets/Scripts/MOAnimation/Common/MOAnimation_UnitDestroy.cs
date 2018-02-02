@@ -15,15 +15,6 @@ public class MOAnimation_UnitDestroy : MOAnimation
     private ParticleSystem m_Explosion = null;
     private ParticleSystem m_Flame = null;
 
-    // Other Variable(s)
-    private bool m_UnitVisible = false;
-
-    public bool UnitVisible
-    {
-        get { return m_UnitVisible; }
-        set { m_UnitVisible = value; }
-    }
-
     public override MOAnimator GetMOAnimator() { return m_Animator; }
 
     private void DeleteAnimationObjects()
@@ -49,7 +40,7 @@ public class MOAnimation_UnitDestroy : MOAnimation
         m_Explosion = GameObject.Instantiate(m_ExplosionPrefab.gameObject, gameObject.transform, false).GetComponent<ParticleSystem>();
         m_Flame = GameObject.Instantiate(m_FlamePrefab.gameObject, gameObject.transform, false).GetComponent<ParticleSystem>();
 
-        if (m_UnitVisible) { m_Animator.StartDeathAnimation(CompletionCallback); }
+        m_Animator.StartDeathAnimation(CompletionCallback);
     }
 
     public override void PauseAnimation()

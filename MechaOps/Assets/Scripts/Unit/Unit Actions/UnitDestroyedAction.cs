@@ -89,12 +89,11 @@ public class UnitDestroyedAction : IUnitAction
         CheckIfUnitFinishedTurn();
     }
 
-    protected override void OnUnitDead(UnitStats _deadUnit, bool _dead)
+    protected override void OnUnitDead(UnitStats _deadUnit, bool _visible)
     {
         if (!TurnedOn) { return; }
         if (_deadUnit != m_UnitStats) { return; }
 
-        m_Animation.UnitVisible = _dead;
         m_RunCondition = true;
         Assert.IsTrue(VerifyRunCondition());
         m_UnitStats.GetGameSystemsDirectory().GetUnitActionScheduler().ScheduleAction(this);
