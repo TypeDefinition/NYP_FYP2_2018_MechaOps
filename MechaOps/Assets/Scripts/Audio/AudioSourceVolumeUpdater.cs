@@ -9,6 +9,8 @@ public class AudioSourceVolumeUpdater : MonoBehaviour
     [SerializeField] private AudioSource[] m_AudioSources = null;
     [SerializeField] private VolumeType m_VolumeType = VolumeType.BGM;
 
+    public VolumeType VolType { get { return m_VolumeType; } }
+
     private void InitialiseEvents()
     {
         GameEventSystem.GetInstance().SubscribeToEvent(m_GameEventNames.GetEventName(GameEventNames.GameAudioNames.VolumeUpdated), OnVolumeChanged);

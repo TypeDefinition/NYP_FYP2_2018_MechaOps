@@ -13,6 +13,7 @@ public class MainMenuManager : MonoBehaviour
         NONE,
         StartScreen,
         Settings,
+        Credits,
         LevelSelection,
         UnitsSelection,
         StartGame,
@@ -24,7 +25,6 @@ public class MainMenuManager : MonoBehaviour
     private string m_SelectedLevelSceneName = null;
 
     [SerializeField] Canvas m_StartScreenCanvas = null;
-    [SerializeField] Canvas m_SettingsCanvas = null;
     [SerializeField] Canvas m_LevelSelectionCanvas = null;
     [SerializeField] Canvas m_UnitsSelectionCanvas = null;
 
@@ -58,7 +58,6 @@ public class MainMenuManager : MonoBehaviour
                 case MenuState.StartScreen:
                     m_StartScreenCanvas.gameObject.SetActive(true);
                     m_LevelSelectionCanvas.gameObject.SetActive(false);
-                    m_SettingsCanvas.gameObject.SetActive(false);
                     m_UnitsSelectionCanvas.gameObject.SetActive(false);
                     break;
                 case MenuState.Settings:
@@ -70,16 +69,23 @@ public class MainMenuManager : MonoBehaviour
                     GameEventSystem.GetInstance().SubscribeToEvent(m_EventNamesAsset.GetEventName(GameEventNames.SceneManagementNames.SceneClosed), WaitForOtherSceneClosed);
                     m_UnitsSelectionCanvas.gameObject.SetActive(false);
                     break;
+                case MenuState.Credits:
+                    m_StartScreenCanvas.gameObject.SetActive(false);
+                    m_LevelSelectionCanvas.gameObject.SetActive(false);
+                    //m_SettingsCanvas.gameObject.SetActive(true);
+                    SceneHelperSingleton.Instance.LoadScenePermanently("Credits_Menu");
+                    // and make sure that the current scene is still active!
+                    GameEventSystem.GetInstance().SubscribeToEvent(m_EventNamesAsset.GetEventName(GameEventNames.SceneManagementNames.SceneClosed), WaitForOtherSceneClosed);
+                    m_UnitsSelectionCanvas.gameObject.SetActive(false);
+                    break;
                 case MenuState.LevelSelection:
                     m_StartScreenCanvas.gameObject.SetActive(false);
                     m_LevelSelectionCanvas.gameObject.SetActive(true);
-                    m_SettingsCanvas.gameObject.SetActive(false);
                     m_UnitsSelectionCanvas.gameObject.SetActive(false);
                     break;
                 case MenuState.UnitsSelection:
                     m_StartScreenCanvas.gameObject.SetActive(false);
                     m_LevelSelectionCanvas.gameObject.SetActive(false);
-                    m_SettingsCanvas.gameObject.SetActive(false);
                     m_UnitsSelectionCanvas.gameObject.SetActive(true);
                     break;
                 case MenuState.StartGame:

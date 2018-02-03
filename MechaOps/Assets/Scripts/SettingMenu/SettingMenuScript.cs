@@ -39,7 +39,6 @@ public class SettingMenuScript : MonoBehaviour {
     private void OnDisable()
     {
         SceneHelperSingleton.Instance.UnloadScene(m_SceneName);
-        //TODO: Send out events!
         GameEventSystem.GetInstance().TriggerEvent(m_EventNamesAsset.GetEventName(GameEventNames.SceneManagementNames.SceneClosed));
     }
 }

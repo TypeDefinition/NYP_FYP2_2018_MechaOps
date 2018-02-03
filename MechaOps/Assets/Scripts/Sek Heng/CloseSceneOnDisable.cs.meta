@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ba612b58b47fda74e84b24e964fdba91
+timeCreated: 1517584205
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - m_EventNamesAsset: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
