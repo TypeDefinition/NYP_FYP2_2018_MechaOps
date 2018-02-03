@@ -7,8 +7,6 @@ using UnityEngine.Assertions;
 public abstract class UnitAttackAction : IUnitAction
 {
     // Serialised Variable(s)
-    [SerializeField]
-    protected MOAnimation_DamageIndicator m_Animation_DamageIndicator = null;
     [SerializeField, Tooltip("Minimum attack range of the unit")]
     protected int m_MinAttackRange = 0;
     [SerializeField, Tooltip("Maximum attack range of the unit")]
@@ -17,6 +15,8 @@ public abstract class UnitAttackAction : IUnitAction
     protected int m_AccuracyPoints = 50;
     [SerializeField, Tooltip("The damage point it dealt")]
     protected int m_DamagePoints = 2;
+    // Shoot Animation Variable(s)
+    [SerializeField] protected DamageIndicator m_DamageIndicatorPrefab = null;
 
     // Non-Serialised Variable(s)
     protected UnitStats m_TargetUnitStats = null;
@@ -77,6 +77,15 @@ public abstract class UnitAttackAction : IUnitAction
         if (distanceToTarget > MaxAttackRange) { return false; }
 
         return true;
+    }
+
+    public virtual void CreateDamageIndicator(bool _hit, int _damageValue, GameObject _target)
+    {
+        Canvas unclickableCanvas = GameSystemsDirectory.GetSceneInstance().GetUnclickableScreenSpaceCanvas();
+        DamageIndicator damageIndicator = Instantiate(m_DamageIndicatorPrefab.gameObject, unclickableCanvas.transform).GetComponent<DamageIndicator>();
+        damageIndicator.Hit = _hit;
+        damageIndicator.DamageValue = _damageValue;
+        damageIndicator.Target = _target;
     }
 
     /// <summary>

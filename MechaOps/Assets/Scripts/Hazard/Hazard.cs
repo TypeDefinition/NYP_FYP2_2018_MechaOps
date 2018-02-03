@@ -26,6 +26,7 @@ public class HazardAttributes
 
 public abstract class Hazard : MonoBehaviour
 {
+    [SerializeField] protected DamageIndicator m_DamageIndicatorPrefab = null;
     [SerializeField] protected GameEventNames m_GameEventNames = null;
     [SerializeField, HideInInspector] private bool m_OwnerInitialized = false;
     [SerializeField, HideInInspector] private Tile m_Owner = null;
@@ -152,6 +153,15 @@ public abstract class Hazard : MonoBehaviour
         {
             m_VisibilityCallback(m_VisibleToPlayer);
         }
+    }
+
+    public virtual void CreateDamageIndicator(bool _hit, int _damageValue, GameObject _target)
+    {
+        Canvas unclickableCanvas = GameSystemsDirectory.GetSceneInstance().GetUnclickableScreenSpaceCanvas();
+        DamageIndicator damageIndicator = Instantiate(m_DamageIndicatorPrefab.gameObject, unclickableCanvas.transform).GetComponent<DamageIndicator>();
+        damageIndicator.Hit = _hit;
+        damageIndicator.DamageValue = _damageValue;
+        damageIndicator.Target = _target;
     }
 
 #if UNITY_EDITOR

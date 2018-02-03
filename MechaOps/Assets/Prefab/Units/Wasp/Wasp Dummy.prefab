@@ -76,7 +76,6 @@ GameObject:
   - component: {fileID: 114807732359028796}
   - component: {fileID: 114734858264194274}
   - component: {fileID: 114640826300165538}
-  - component: {fileID: 114987009335364820}
   m_Layer: 8
   m_Name: Wasp Dummy
   m_TagString: Untagged
@@ -625,11 +624,12 @@ MonoBehaviour:
   m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 0}
   m_UnitActionButtonSprite: {fileID: 0}
-  m_Animation_DamageIndicator: {fileID: 114987009335364820}
   m_MinAttackRange: 0
   m_MaxAttackRange: 6
   m_AccuracyPoints: 50
   m_DamagePoints: 2
+  m_DamageIndicatorPrefab: {fileID: 114830192101874150, guid: 9868bfed57214dd4c93f379a8006f183,
+    type: 2}
   m_Animation: {fileID: 114640826300165538}
 --- !u!114 &114433023381146124
 MonoBehaviour:
@@ -657,8 +657,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovementSpeed: 25
   m_RotationSpeed: 360
-  m_DamageIndicatorPrefab: {fileID: 114830192101874150, guid: 9868bfed57214dd4c93f379a8006f183,
-    type: 2}
   m_AmbientAudioSource: {fileID: 82014064273596784}
   m_AmbientSound: {fileID: 8300000, guid: e9d51a44de0a4054685a4550280143d4, type: 3}
   m_SFXAudioSources:
@@ -879,18 +877,6 @@ MonoBehaviour:
   m_UnitActionButtonSprite: {fileID: 0}
   m_MovementPoints: 8
   m_Animation: {fileID: 114807732359028796}
---- !u!114 &114987009335364820
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1535336270683784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a2272a82df64ad4f870f1284f9f82de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Animator: {fileID: 114461541154308928}
 --- !u!120 &120615185919937892
 LineRenderer:
   m_ObjectHideFlags: 1

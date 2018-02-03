@@ -27,7 +27,7 @@ public class ShowTileInfoUI : MonoBehaviour
     [SerializeField, Tooltip("Text UI for tile evasion")]
     protected TextMeshProUGUI m_TileEvasionTxt;
     [SerializeField, Tooltip("Text UI for tile description")]
-    protected TextMeshProUGUI m_TileDescriptionTxt;
+    protected TextMeshProUGUI m_HazardTxt;
     [SerializeField, Tooltip("Audio to play the minimizing sound effect")]
     protected AudioClip m_MinimizeSFX;
     [SerializeField, Tooltip("Audio to play the expand sound effect")]
@@ -56,7 +56,7 @@ public class ShowTileInfoUI : MonoBehaviour
         Assert.IsNotNull(m_MoveCostTxt);
         Assert.IsNotNull(m_TileConcealTxt);
         Assert.IsNotNull(m_TileEvasionTxt);
-        Assert.IsNotNull(m_TileDescriptionTxt);
+        Assert.IsNotNull(m_HazardTxt);
 
         InitEvents();
     }
@@ -98,33 +98,32 @@ public class ShowTileInfoUI : MonoBehaviour
             {
                 m_ClickedTile = _tileGO.GetComponent<Tile>();
             }
+
             // we need to know whether is it a known / unknown tile
-            if (!m_ClickedTile.Known)
+            if (m_ClickedTile.Known)
             {
-                m_TileNameTxt.text = "Unknown Tile";
-                m_MoveCostTxt.text = "Movement Cost: ?";
-                m_TileConcealTxt.text = "Concealment: ?";
-                m_TileEvasionTxt.text = "Evasion: ?";
-                m_TileDescriptionTxt.text = "";
-            }
-            else
-            {
-                // then set the values for display!
-                m_TileNameTxt.text = m_ClickedTile.GetTileType().ToString() + " Tile";
                 m_TileConcealTxt.text = "Concealment: " + m_ClickedTile.GetTotalConcealmentPoints();
                 m_MoveCostTxt.text = "Movement Cost: " + m_ClickedTile.GetTotalMovementCost();
                 m_TileEvasionTxt.text = "Evasion: " + m_ClickedTile.GetTileAttributes().EvasionPoints;
-                m_TileDescriptionTxt.text = m_ClickedTile.GetTileAttributes().Description + "\n";
 
-                // check whether it is visible to the player otherwise not much information will be shown
                 if (m_ClickedTile.IsVisibleToPlayer())
                 {
-                    Hazard hazard = m_ClickedTile.GetHazard();
-                    if (hazard != null)
-                    {
-                        m_TileDescriptionTxt.text += hazard.Attributes.Description;
-                    }
+                    m_TileNameTxt.text = m_ClickedTile.GetTileType().ToString();
+                    m_HazardTxt.text = "Hazard: " + m_ClickedTile.GetHazardType().ToString();
                 }
+                else
+                {
+                    m_TileNameTxt.text = m_ClickedTile.GetTileType().ToString() + " (No Vision)";
+                    m_HazardTxt.text = "Hazard: ?";
+                }
+            }
+            else
+            {
+                m_TileNameTxt.text = "Undiscovered";
+                m_MoveCostTxt.text = "Movement Cost: ?";
+                m_TileConcealTxt.text = "Concealment: ?";
+                m_TileEvasionTxt.text = "Evasion: ?";
+                m_HazardTxt.text = "Hazard: ?";
             }
         }
     }

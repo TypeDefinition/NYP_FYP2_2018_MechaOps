@@ -287,23 +287,23 @@ public class TileSystem : MonoBehaviour
             int randomNumber = Random.Range(0, 100);
             if (randomNumber < 70)
             {
-                iter.Value.SetTileType(TileType.Normal);
+                iter.Value.SetTileType(TileType.Grass);
             }
             else if (randomNumber < 80)
             {
-                iter.Value.SetTileType(TileType.Cover);
+                iter.Value.SetTileType(TileType.Rock);
             }
             else if (randomNumber < 85)
             {
-                iter.Value.SetTileType(TileType.Obstacle);
+                iter.Value.SetTileType(TileType.Water);
             }
             else if (randomNumber < 90)
             {
-                iter.Value.SetTileType(TileType.Stealth);
+                iter.Value.SetTileType(TileType.Forest);
             }
             else
             {
-                iter.Value.SetTileType(TileType.Swirl);
+                iter.Value.SetTileType(TileType.Sand);
             }
         }
     }

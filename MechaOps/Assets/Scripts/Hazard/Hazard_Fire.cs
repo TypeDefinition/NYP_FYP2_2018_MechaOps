@@ -17,48 +17,69 @@ public class Hazard_Fire : Hazard
     // Callbacks
     protected override void OnUnitMovedToTile(UnitStats _unitStats)
     {
-        if (m_UnitOnTile == _unitStats)
+        if (m_UnitOnTile == null)
         {
-            return;
+            // The unit just moved onto this.
+            if (_unitStats.CurrentTileID.Equals(Owner.GetTileId()) && _unitStats.IsAlive())
+            {
+                m_UnitOnTile = _unitStats;
+                m_UnitOnTile.CurrentHealthPoints -= Damage;
+                CreateDamageIndicator(true, Damage, m_UnitOnTile.gameObject);
+            }
         }
-
-        if (_unitStats.CurrentTileID.Equals(Owner.GetTileId()) && _unitStats.IsAlive())
+        else
         {
-            m_UnitOnTile = _unitStats;
-            m_UnitOnTile.CurrentHealthPoints -= Damage;
+            // The unit is moving away.
+            if (m_UnitOnTile == _unitStats && !_unitStats.CurrentTileID.Equals(Owner.GetTileId()))
+            {
+                m_UnitOnTile = null;
+            }
         }
     }
 
     protected override void OnTurnStart(FactionType _faction)
     {
-        base.OnTurnStart(_faction);
-    }
-
-    protected override void OnTurnEnd(FactionType _faction)
-    {
-        base.OnTurnEnd(_faction);
-
         if (m_UnitOnTile == null)
         {
+            base.OnTurnStart(_faction);
             return;
         }
 
-        if (m_UnitOnTile.CurrentTileID.Equals(Owner.GetTileId()) == false || m_UnitOnTile.IsAlive() == false)
+        if (!m_UnitOnTile.CurrentTileID.Equals(Owner.GetTileId()) ||
+            !m_UnitOnTile.IsAlive())
         {
             m_UnitOnTile = null;
+            base.OnTurnStart(_faction);
             return;
         }
 
-        if (_faction == FactionTurnWhenCreated)
+        if (_faction != FactionTurnWhenCreated)
         {
-            m_UnitOnTile.CurrentHealthPoints -= Damage;
+            base.OnTurnStart(_faction);
+            return;
         }
+
+        m_UnitOnTile.CurrentHealthPoints -= Damage;
+        CreateDamageIndicator(true, Damage, m_UnitOnTile.gameObject);
+        base.OnTurnStart(_faction);
     }
 
     protected override void Awake()
     {
         base.Awake();
         m_ParticleSystem = GetComponent<ParticleSystem>();
+    }
+
+    protected virtual void Start()
+    {
+        if (Owner.Unit != null)
+        {
+            UnitStats unitStats = Owner.Unit.GetComponent<UnitStats>();
+            if (unitStats != null)
+            {
+                m_UnitOnTile = unitStats;
+            }
+        }
     }
 
     public virtual void Update()

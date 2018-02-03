@@ -185,7 +185,6 @@ GameObject:
   - component: {fileID: 114104640808132124}
   - component: {fileID: 114103692816794444}
   - component: {fileID: 114522144874979662}
-  - component: {fileID: 114140149356239268}
   m_Layer: 8
   m_Name: Panzer Player
   m_TagString: PlayerUnit
@@ -1741,8 +1740,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovementSpeed: 20
   m_RotationSpeed: 360
-  m_DamageIndicatorPrefab: {fileID: 114830192101874150, guid: 9868bfed57214dd4c93f379a8006f183,
-    type: 2}
   m_AmbientAudioSource: {fileID: 82111935310682220}
   m_AmbientSound: {fileID: 8300000, guid: e9ddd28816243ec43a6e61bdc4a41ebc, type: 3}
   m_SFXAudioSources:
@@ -1785,18 +1782,6 @@ MonoBehaviour:
   - {fileID: 4284379999705012}
   - {fileID: 4003136375522082}
   m_ShootGunfireSFX: {fileID: 8300000, guid: 182de6e577a9f9845b151abd20c8c501, type: 3}
---- !u!114 &114140149356239268
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1301121624703766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a2272a82df64ad4f870f1284f9f82de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Animator: {fileID: 114135870724135054}
 --- !u!114 &114143553378517202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1865,11 +1850,12 @@ MonoBehaviour:
     type: 2}
   m_UnitActionButtonSprite: {fileID: 21300000, guid: 9b2e2526308c0524eab722fe277acd2f,
     type: 3}
-  m_Animation_DamageIndicator: {fileID: 114140149356239268}
   m_MinAttackRange: 0
   m_MaxAttackRange: 8
   m_AccuracyPoints: 65
   m_DamagePoints: 4
+  m_DamageIndicatorPrefab: {fileID: 114830192101874150, guid: 9868bfed57214dd4c93f379a8006f183,
+    type: 2}
   m_Animation: {fileID: 114103692816794444}
 --- !u!114 &114490250740152704
 MonoBehaviour:
@@ -2019,9 +2005,10 @@ MonoBehaviour:
     type: 2}
   m_UnitActionButtonSprite: {fileID: 21300000, guid: e392509062377594ab81881f16831a09,
     type: 3}
-  m_Animation_DamageIndicator: {fileID: 114140149356239268}
   m_MinAttackRange: 0
   m_MaxAttackRange: 12
   m_AccuracyPoints: 75
   m_DamagePoints: 4
+  m_DamageIndicatorPrefab: {fileID: 114830192101874150, guid: 9868bfed57214dd4c93f379a8006f183,
+    type: 2}
   m_Animation: {fileID: 114103692816794444}

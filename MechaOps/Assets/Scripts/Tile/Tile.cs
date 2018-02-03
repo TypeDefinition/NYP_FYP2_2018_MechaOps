@@ -104,7 +104,7 @@ public class Tile : MonoBehaviour
     [SerializeField, HideInInspector] private TileSystem m_TileSystem = null;
     [SerializeField] private TileAttributes m_Attributes;
     [SerializeField] private TileDisplay m_DisplayObject;
-    [SerializeField] private TileType m_Type = TileType.Normal;
+    [SerializeField] private TileType m_Type = TileType.Grass;
 
     // Hazard
     [SerializeField] private Hazard m_Hazard = null;
@@ -313,7 +313,7 @@ public class Tile : MonoBehaviour
         if (m_Type == TileType.Num_TileType)
         {
             EditorUtility.DisplayDialog("Invalid Value!", "TileType.TileType_NumTypes is an invalid value for m_Type! Defaulting to TileType.TileType_Normal.", "OK");
-            m_Type = TileType.Normal;
+            m_Type = TileType.Grass;
         }
     }
 #endif // UNITY_EDITOR

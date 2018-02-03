@@ -9,11 +9,11 @@ using UnityEditor;
 
 public enum TileType
 {
-    Normal = 0,
-    Cover,
-    Obstacle,
-    Swirl,
-    Stealth,
+    Grass = 0,
+    Rock,
+    Water,
+    Sand,
+    Forest,
 
     Num_TileType
 }
@@ -57,7 +57,7 @@ public class TileAttributes
 public class TileAttributeOverride
 {
 
-    [SerializeField] private TileType m_Type = TileType.Normal;
+    [SerializeField] private TileType m_Type = TileType.Grass;
     [SerializeField] private bool m_Walkable = true;
     [SerializeField] private int m_MovementCost = 1;
     [SerializeField] private int m_ConcealmentPoints = 0;
@@ -85,7 +85,7 @@ public class TileAttributeOverride
         if (m_Type == TileType.Num_TileType)
         {
             EditorUtility.DisplayDialog("Invalid Value!", "TileType.TileType_NumTypes is an invalid value for m_Type! Defaulting to TileType.TileType_Normal.", "OK");
-            m_Type = TileType.Normal;
+            m_Type = TileType.Grass;
         }
         
         m_MovementCost = Mathf.Max(1, m_MovementCost);
