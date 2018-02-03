@@ -62,9 +62,9 @@ public class Hazard_Fire : Hazard
         // This cannot be done is SetVisibleState as SetVisibleState can get called multiple times per frame,
         // since all tiles are 'unseen' before being reseen.
         // This will cause the particle system to clear its particles even though at the end of the frame the tile is seen.
-        if (m_ParticleSystem != null && m_ParticleSystem.isPlaying != IsVisible())
+        if (m_ParticleSystem != null && m_ParticleSystem.isPlaying != IsVisibleToPlayer())
         {
-            if (IsVisible())
+            if (IsVisibleToPlayer())
             {
                 m_ParticleSystem.Play();
             }

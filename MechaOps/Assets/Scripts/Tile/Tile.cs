@@ -115,6 +115,8 @@ public class Tile : MonoBehaviour
 
     // For Fog Of War
     [SerializeField] private bool m_Known = false;
+    // This counter is only to count if the player sees the tile.
+    // Does not include AI.
     [SerializeField] private int m_VisibleCounter = 0;
 
     public bool HasUnit()
@@ -156,7 +158,7 @@ public class Tile : MonoBehaviour
         get { return m_Known; }
     }
 
-    public bool IsVisible()
+    public bool IsVisibleToPlayer()
     {
         return m_VisibleCounter > 0;
     }
@@ -176,11 +178,11 @@ public class Tile : MonoBehaviour
                 m_Known = true;
             }
 
-            m_DisplayObject.SetVisibleState(m_Known, IsVisible());
+            m_DisplayObject.SetVisibleState(m_Known, IsVisibleToPlayer());
 
             if (m_Hazard)
             {
-                m_Hazard.SetVisibleState(IsVisible());
+                m_Hazard.SetVisibleState(IsVisibleToPlayer());
             }
         }
     }
@@ -255,7 +257,7 @@ public class Tile : MonoBehaviour
         GameObject hazard = GameObject.Instantiate(m_TileSystem.GetHazardLibrary().GetHazard(m_HazardType).gameObject);
         m_Hazard = hazard.GetComponent<Hazard>();
         m_Hazard.InitOwner(this);
-        m_Hazard.SetVisibleState(IsVisible());
+        m_Hazard.SetVisibleState(IsVisibleToPlayer());
         hazard.transform.position = gameObject.transform.position;
         hazard.transform.SetParent(gameObject.transform);
     }
@@ -324,10 +326,10 @@ public class Tile : MonoBehaviour
 
     private void Start()
     {
-        m_DisplayObject.SetVisibleState(m_Known, IsVisible());
+        m_DisplayObject.SetVisibleState(m_Known, IsVisibleToPlayer());
         if (m_Hazard)
         {
-            m_Hazard.SetVisibleState(IsVisible());
+            m_Hazard.SetVisibleState(IsVisibleToPlayer());
         }
     }
 

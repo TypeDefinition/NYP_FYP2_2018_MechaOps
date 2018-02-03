@@ -10,8 +10,6 @@ using UnityEngine.Assertions;
 [DisallowMultipleComponent]
 public class PlayerViewScript : ViewScript
 {
-    protected List<Tile> m_ViewedTiles = new List<Tile>();
-
     protected override void InitEvents()
     {
         base.InitEvents();
@@ -51,7 +49,7 @@ public class PlayerViewScript : ViewScript
     /// <summary>
     /// This will help to render the tiles surrounding of this unit!
     /// </summary>
-    protected virtual void CheckVisibleTiles()
+    protected override void CheckVisibleTiles()
     {
         ClearVisibleTiles();
 
@@ -77,7 +75,7 @@ public class PlayerViewScript : ViewScript
     /// <summary>
     /// Decrease the visibility counter of the tiles that are out of range.
     /// </summary>
-    protected virtual void ClearVisibleTiles()
+    protected override void ClearVisibleTiles()
     {
         foreach (Tile tile in m_ViewedTiles)
         {
