@@ -184,9 +184,12 @@ public class UnitActionUI_Attack : UnitActionUI
 
     protected override void UpdateActionInfo(IUnitAction _action)
     {
+        UnitAttackAction attackAction = (UnitAttackAction)_action;
+
         m_ActionNameText.text = _action.UnitActionName;
         string actionCostText = string.Format("Action Cost: {0}", _action.ActionCost);
         string endsTurnText = _action.EndsTurn ? "Ends Turn: Yes" : "Ends Turn: No";
+        string damageText = string.Format("Damage: {0}", attackAction.DamagePoints);
 
         string hitChanceText;
         // If not target, then make it not applicable
@@ -201,6 +204,6 @@ public class UnitActionUI_Attack : UnitActionUI
             hitChanceText = string.Format("Hit Chance: {0}%", m_UnitAction.CalculateHitChance());
         }
 
-        m_ActionDescriptionText.text = actionCostText + " " + endsTurnText + "\n" + hitChanceText + "\n" + _action.UnitActionDescription;
+        m_ActionDescriptionText.text = actionCostText + " " + endsTurnText + "\n" + hitChanceText + "\n" + damageText + "\n" + _action.UnitActionDescription;
     }
 }

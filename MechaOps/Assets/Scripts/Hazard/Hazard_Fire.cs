@@ -17,7 +17,11 @@ public class Hazard_Fire : Hazard
     // Callbacks
     protected override void OnUnitMovedToTile(UnitStats _unitStats)
     {
-        base.OnUnitMovedToTile(_unitStats);
+        if (m_UnitOnTile == _unitStats)
+        {
+            return;
+        }
+
         if (_unitStats.CurrentTileID.Equals(Owner.GetTileId()) && _unitStats.IsAlive())
         {
             m_UnitOnTile = _unitStats;

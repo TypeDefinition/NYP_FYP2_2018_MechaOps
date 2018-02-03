@@ -57,4 +57,16 @@ public class UnitActionUI_Overwatch : UnitActionUI
 
         UpdateActionInfo(_action);
     }
+
+    protected override void UpdateActionInfo(IUnitAction _action)
+    {
+        UnitAttackAction attackAction = (UnitAttackAction)_action;
+
+        m_ActionNameText.text = _action.UnitActionName;
+        string actionCostText = string.Format("Action Cost: {0}", _action.ActionCost);
+        string endsTurnText = _action.EndsTurn ? "Ends Turn: Yes" : "Ends Turn: No";
+        string damageText = string.Format("Damage: {0}", attackAction.DamagePoints);
+
+        m_ActionDescriptionText.text = actionCostText + " " + endsTurnText + "\n" + damageText + "\n" + _action.UnitActionDescription;
+    }
 }
