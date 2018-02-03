@@ -102,7 +102,10 @@ public class UnitStats : MonoBehaviour
         {
             if (m_UnitStatsJSON.m_CurrentHealthPoints == value) { return; }
 
+            int beforeHealthPoints = m_UnitStatsJSON.m_CurrentHealthPoints;
             m_UnitStatsJSON.m_CurrentHealthPoints = Mathf.Clamp(value, 0, m_UnitStatsJSON.m_MaxHealthPoints);
+            int afterHealthPoints = m_UnitStatsJSON.m_CurrentHealthPoints;
+            if (beforeHealthPoints == afterHealthPoints) { return; }
 
             // Send the event that this unit is dead!
             if (m_UnitStatsJSON.m_CurrentHealthPoints <= 0)
@@ -316,7 +319,10 @@ public class UnitStats : MonoBehaviour
 
         if (_deadUnit == this)
         {
-            Destroy(m_UnitInfoDisplay.gameObject);
+            if (m_UnitInfoDisplay != null)
+            {
+                Destroy(m_UnitInfoDisplay.gameObject);
+            }
         }
     }
 
