@@ -35,7 +35,7 @@ public abstract class Hazard : MonoBehaviour
     private int m_CurrentTurnsToDecay;
     private FactionType m_FactionTurnWhenCreated = FactionType.None;
 
-    [SerializeField, HideInInspector] private bool m_Visible = false;
+    [SerializeField, HideInInspector] private bool m_VisibleToPlayer = false;
     private Void_Bool m_VisibilityCallback = null;
     public Void_Bool VisibilityCallback
     {
@@ -75,9 +75,9 @@ public abstract class Hazard : MonoBehaviour
         get { return m_FactionTurnWhenCreated; }
     }
 
-    public bool IsVisible()
+    public bool IsVisibleToPlayer()
     {
-        return m_Visible;
+        return m_VisibleToPlayer;
     }
 
     // There are no setters as this should only be changed in the inspector.
@@ -142,17 +142,17 @@ public abstract class Hazard : MonoBehaviour
 
     public virtual void SetVisibleState(bool _visible)
     {
-        m_Visible = _visible;
+        m_VisibleToPlayer = _visible;
 
         MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
         if (meshRenderer != null)
         {
-            meshRenderer.enabled = m_Visible;
+            meshRenderer.enabled = m_VisibleToPlayer;
         }
 
         if (m_VisibilityCallback != null)
         {
-            m_VisibilityCallback(m_Visible);
+            m_VisibilityCallback(m_VisibleToPlayer);
         }
     }
 

@@ -15,6 +15,12 @@ public abstract class ViewScript : MonoBehaviour
     protected TileSystem m_TileSystem = null;
     protected GameSystemsDirectory m_GameSystemsDirectory = null;
     protected GameEventNames m_GameEventNames = null;
+    protected List<Tile> m_ViewedTiles = new List<Tile>();
+
+    public List<Tile> GetViewedTiles()
+    {
+        return m_ViewedTiles;
+    }
 
     public int GetVisibilityCount() { return m_VisibilityCount; }
 
@@ -58,6 +64,10 @@ public abstract class ViewScript : MonoBehaviour
     /// </summary>
     /// <returns></returns>
     public abstract bool IsVisibleToPlayer();
+
+    protected abstract void CheckVisibleTiles();
+
+    protected abstract void ClearVisibleTiles();
 
     public virtual bool RaycastToTile(Tile _tile)
     {

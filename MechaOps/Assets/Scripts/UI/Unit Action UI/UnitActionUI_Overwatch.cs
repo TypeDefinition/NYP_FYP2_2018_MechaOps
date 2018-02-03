@@ -30,6 +30,14 @@ public class UnitActionUI_Overwatch : UnitActionUI
     {
         m_UnitAction = (UnitOverwatchAction)_action;
 
+        // Get the tiles that we can see.
+        List<Tile> viewedTiles = m_UnitAction.GetUnitStats().GetViewScript().GetViewedTiles();
+        HashSet<TileId> viewedTilesIds = new HashSet<TileId>();
+        foreach (Tile tile in viewedTiles)
+        {
+            viewedTilesIds.Add(tile.GetTileId());
+        }
+
         // Highlight the tiles within range.
         TileId[] tilesInRange = m_TileSystem.GetSurroundingTiles(m_UnitAction.GetUnitStats().CurrentTileID, m_UnitAction.MaxAttackRange);
         List<TileId> attackableTiles = new List<TileId>();
@@ -39,7 +47,10 @@ public class UnitActionUI_Overwatch : UnitActionUI
             // Check if it is within the range
             if (distanceToTile >= m_UnitAction.MinAttackRange && distanceToTile <= m_UnitAction.MaxAttackRange)
             {
-                attackableTiles.Add(tileId);
+                if (viewedTilesIds.Contains(tileId))
+                {
+                    attackableTiles.Add(tileId);
+                }
             }
         }
         m_TileSystem.SetPathMarkers(attackableTiles.ToArray(), null);

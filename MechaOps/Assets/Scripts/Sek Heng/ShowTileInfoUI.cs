@@ -117,7 +117,7 @@ public class ShowTileInfoUI : MonoBehaviour
                 m_TileDescriptionTxt.text = m_ClickedTile.GetTileAttributes().Description + "\n";
 
                 // check whether it is visible to the player otherwise not much information will be shown
-                if (m_ClickedTile.IsVisible())
+                if (m_ClickedTile.IsVisibleToPlayer())
                 {
                     Hazard hazard = m_ClickedTile.GetHazard();
                     if (hazard != null)

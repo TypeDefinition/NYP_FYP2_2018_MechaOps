@@ -89,4 +89,30 @@ public class AIViewScript : ViewScript
             GameEventSystem.GetInstance().TriggerEvent<UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.UnitSeen), m_UnitStats);
         }
     }
+
+    protected override void CheckVisibleTiles()
+    {
+        ClearVisibleTiles();
+
+        TileId[] surroundingTiles = m_TileSystem.GetSurroundingTiles(m_UnitStats.CurrentTileID, m_UnitStats.ViewRange);
+        // And then iterate though the list and increase the tile range
+        foreach (TileId tileId in surroundingTiles)
+        {
+            if (TileId.GetDistance(m_UnitStats.CurrentTileID, tileId) > m_UnitStats.ViewRange)
+            {
+                continue;
+            }
+
+            Tile tile = m_TileSystem.GetTile(tileId);
+            // then raycast to that tile to see if it works and get the id
+            if (RaycastToTile(tile))
+            {
+                m_ViewedTiles.Add(tile);
+            }
+        }
+    }
+    protected override void ClearVisibleTiles()
+    {
+        m_ViewedTiles.Clear();
+    }
 }

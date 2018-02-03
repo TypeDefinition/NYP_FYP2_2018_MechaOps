@@ -1234,7 +1234,7 @@ MonoBehaviour:
     type: 2}
   m_UnitActionButtonSprite: {fileID: 21300000, guid: e392509062377594ab81881f16831a09,
     type: 3}
-  m_MinAttackRange: 1
+  m_MinAttackRange: 4
   m_MaxAttackRange: 18
   m_AccuracyPoints: 0
   m_DamagePoints: 3
