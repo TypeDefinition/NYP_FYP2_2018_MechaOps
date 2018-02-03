@@ -19,6 +19,8 @@ public class UnitSelectionButton : MonoBehaviour
     protected TextMeshProUGUI m_UnitStatsText;
     [SerializeField, Tooltip("Text for unit costs.")]
     protected TextMeshProUGUI m_UnitCostText;
+    [SerializeField, Tooltip("Text for unit actions.")]
+    protected TextMeshProUGUI m_UnitActionsText;
     [SerializeField, Tooltip("Image for the unit icon.")]
     protected Image m_UnitIcon;
     [SerializeField]
@@ -36,12 +38,23 @@ public class UnitSelectionButton : MonoBehaviour
     {
         m_UnitType = _unitType;
         UnitLibrary.UnitLibraryData unitLibraryData = m_UnitLibrary.GetUnitLibraryData(m_UnitType);
+        UnitStats unitPrefab = unitLibraryData.GetUnitPrefab();
 
         m_UnitIcon.sprite = unitLibraryData.GetUnitIconSprite();
         m_UnitNameText.SetText(unitLibraryData.GetUnitPrefab().UnitName);
-        m_UnitDescriptionText.SetText(unitLibraryData.GetUnitPrefab().UnitDescription);
-        //m_UnitStatsText.text = string.Format("HP: {0}\nAttack: {1}\nView Range: {2}\nEvasion: {3}\nConcealment: {4}", m_UnitLibraryData.MaxHealthPoints, m_UnitLibraryData.GetUnitStats().ViewRange, m_UnitLibraryData.GetUnitStats().EvasionPoints, m_UnitLibraryData.GetUnitStats().ConcealmentPoints);
-        m_UnitCostText.SetText("Deployment Cost: {0}", unitLibraryData.GetUnitPrefab().DeploymentCost);
+        m_UnitDescriptionText.SetText("Info:\n" + unitLibraryData.GetUnitPrefab().UnitDescription);
+        m_UnitCostText.SetText("Cost: {0}", unitLibraryData.GetUnitPrefab().DeploymentCost);
+        m_UnitStatsText.text = string.Format("HP: {0}\nView Range: {1}\nEvasion: {2}\nConcealment: {3}", unitPrefab.MaxHealthPoints, unitPrefab.ViewRange, unitPrefab.EvasionPoints, unitPrefab.ConcealmentPoints);
+
+        m_UnitActionsText.text = "Actions:\n";
+        IUnitAction[] availableActions = unitPrefab.gameObject.GetComponentsInChildren<IUnitAction>();
+        for (int i = 0; i < availableActions.Length; ++i)
+        {
+            if (availableActions[i].ControllableAction)
+            {
+                m_UnitActionsText.text += (availableActions[i].UnitActionName + "\n");
+            }
+        }
     }
 
     public UnitType GetUnitType() { return m_UnitType; }
