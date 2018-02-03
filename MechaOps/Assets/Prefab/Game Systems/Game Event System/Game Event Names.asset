@@ -47,3 +47,5 @@ MonoBehaviour:
   - Double Tap
   m_SceneManagementNames:
   - Scene Closed
+  - Load Blended
+  - Load Ended

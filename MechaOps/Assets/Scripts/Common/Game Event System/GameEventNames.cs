@@ -82,6 +82,8 @@ public class GameEventNames : ScriptableObject
     public enum SceneManagementNames
     {
         SceneClosed,
+        LoadingBlended,
+        LoadingEnded,
 
         Num_SceneManagementNames
     }
