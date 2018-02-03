@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Name: level_2_enemyspawn
   m_EditorClassIdentifier: 
   m_FactionType: 1
-  m_UnitList: 0300000001000000020000000000000000000000
+  m_UnitList: 04000000050000000600000004000000
