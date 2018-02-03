@@ -6,8 +6,14 @@ using UnityEngine.Assertions;
 
 public class MOAnimator_Wasp : MOAnimator
 {
+    // Rotor
+    [SerializeField] protected RotationScript m_Rotor = null;
+
+    // Line
+    [SerializeField] protected LineRenderer m_Line = null;
+
     // Hull Elevation
-    [SerializeField] protected GameObject m_Hull;
+    [SerializeField] protected Transform m_Hull;
     [SerializeField, Range(-90, 0)] protected float m_MaxHullElevation = -80.0f;
     [SerializeField, Range(0, 90)] protected float m_MaxHullDepression = 20.0f;
 
@@ -180,6 +186,9 @@ public class MOAnimator_Wasp : MOAnimator
 
             yield return null;
         }
+
+        m_Rotor.StopRotation();
+
         yield return new WaitForSeconds(m_TimeDelayForDeathCam);
         InvokeCallback(m_DeathAnimationCompletionCallback);
     }
@@ -244,6 +253,8 @@ public class MOAnimator_Wasp : MOAnimator
     protected override IEnumerator MoveAnimationCouroutine()
     {
         PlaySFXAudioSource(m_MoveSFX, true);
+
+        m_Rotor.StartRotation();
 
         while (true)
         {
@@ -468,6 +479,27 @@ public class MOAnimator_Wasp : MOAnimator
     {
         base.StopShootAnimation();
         ClearBullets();
+    }
+
+    protected virtual void UpdateLine()
+    {
+        RaycastHit hitInfo;
+        if (m_UnitStats.GetViewScript().IsVisibleToPlayer() && Physics.Raycast(m_Hull.transform.position, Vector3.down, out hitInfo, Mathf.Infinity))
+        {
+            m_Line.positionCount = 2;
+            m_Line.SetPosition(0, m_Hull.transform.position);
+            m_Line.SetPosition(1, hitInfo.point);
+        }
+        else
+        {
+            m_Line.positionCount = 0;
+        }
+    }
+
+    // Update
+    protected virtual void Update()
+    {
+        UpdateLine();
     }
 
 #if UNITY_EDITOR

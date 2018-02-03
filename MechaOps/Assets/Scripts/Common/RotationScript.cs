@@ -11,10 +11,22 @@ public class RotationScript : MonoBehaviour
         Z,
     }
 
+    [SerializeField]
+    private bool m_Rotate = false;
     [SerializeField, Tooltip("The rotation speed in degrees/second.")]
     private float m_RotationSpeed = 60.0f;
     [SerializeField, Tooltip("The axis of rotation")]
     private RotationAxis m_RotationAxis = RotationAxis.X;
+
+    public void StartRotation()
+    {
+        m_Rotate = true;
+    }
+
+    public void StopRotation()
+    {
+        m_Rotate = false;
+    }
 
     public float GetRotationSpeed() { return m_RotationSpeed; }
 
@@ -22,6 +34,11 @@ public class RotationScript : MonoBehaviour
 
 	void Update ()
     {
+        if (!m_Rotate)
+        {
+            return;
+        }
+
         switch (m_RotationAxis)
         {
             case RotationAxis.X:
