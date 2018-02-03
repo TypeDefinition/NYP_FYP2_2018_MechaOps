@@ -1762,6 +1762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UnitStats: {fileID: 114879956254548028}
+  m_VisibilityCount: 0
 --- !u!114 &114189902084662826
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1860,6 +1861,7 @@ MonoBehaviour:
   m_Stat: {fileID: 0}
   m_AttackerStat: {fileID: 0}
   m_Planner: {fileID: 0}
+  m_EventNameAsset: {fileID: 0}
 --- !u!114 &114525463778650170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1916,6 +1918,7 @@ MonoBehaviour:
     m_GoapName: 
   m_EnemiesManager: {fileID: 0}
   m_TileSystem: {fileID: 0}
+  m_CurrentActionPlayed: {fileID: 0}
 --- !u!114 &114653984288070966
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2030,8 +2033,8 @@ MonoBehaviour:
     m_MaxActionPoints: 2
     m_CurrentActionPoints: 2
     m_DeploymentCost: 0
-    m_ViewRange: 5
-    m_ConcealmentPoints: 0
+    m_ViewRange: 10
+    m_ConcealmentPoints: 1
     m_EvasionPoints: 0
     m_CurrentTileID:
       m_X: 1

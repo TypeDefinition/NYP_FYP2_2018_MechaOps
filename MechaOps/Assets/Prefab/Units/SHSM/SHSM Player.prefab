@@ -1286,7 +1286,7 @@ MonoBehaviour:
     m_CurrentActionPoints: 2
     m_DeploymentCost: 4000
     m_ViewRange: 6
-    m_ConcealmentPoints: 5
+    m_ConcealmentPoints: 3
     m_EvasionPoints: 0
     m_CurrentTileID:
       m_X: 0
