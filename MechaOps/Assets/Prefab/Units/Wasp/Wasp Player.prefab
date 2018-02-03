@@ -77,6 +77,7 @@ GameObject:
   - component: {fileID: 114807732359028796}
   - component: {fileID: 114734858264194274}
   - component: {fileID: 114640826300165538}
+  - component: {fileID: 114168596551930216}
   m_Layer: 8
   m_Name: Wasp Player
   m_TagString: PlayerUnit
@@ -618,6 +619,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UnitStats: {fileID: 114809387758883690}
   m_VisibilityCount: 0
+--- !u!114 &114168596551930216
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1535336270683784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a2272a82df64ad4f870f1284f9f82de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 114461541154308928}
 --- !u!114 &114321516086233292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -640,6 +653,7 @@ MonoBehaviour:
     type: 2}
   m_UnitActionButtonSprite: {fileID: 21300000, guid: e392509062377594ab81881f16831a09,
     type: 3}
+  m_Animation_DamageIndicator: {fileID: 114168596551930216}
   m_MinAttackRange: 0
   m_MaxAttackRange: 6
   m_AccuracyPoints: 50
@@ -656,8 +670,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0225e59f618b884bb578bcafd1c56ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MovementSpeed: 30
-  m_RotationSpeed: 180
+  m_MovementSpeed: 25
+  m_RotationSpeed: 360
+  m_DamageIndicatorPrefab: {fileID: 114830192101874150, guid: 9868bfed57214dd4c93f379a8006f183,
+    type: 2}
   m_AmbientAudioSource: {fileID: 82014064273596784}
   m_AmbientSound: {fileID: 8300000, guid: e9d51a44de0a4054685a4550280143d4, type: 3}
   m_SFXAudioSources:
@@ -786,6 +802,7 @@ MonoBehaviour:
     type: 2}
   m_UnitActionButtonSprite: {fileID: 21300000, guid: 9b2e2526308c0524eab722fe277acd2f,
     type: 3}
+  m_Animation_DamageIndicator: {fileID: 114168596551930216}
   m_MinAttackRange: 0
   m_MaxAttackRange: 12
   m_AccuracyPoints: 50

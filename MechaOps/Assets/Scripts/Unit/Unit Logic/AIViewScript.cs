@@ -81,7 +81,10 @@ public class AIViewScript : ViewScript
         {
             foreach (MeshRenderer renderer in m_AllRenderers) { renderer.enabled = true; }
 
-            m_UnitStats.GetUnitInfoDisplay().gameObject.SetActive(true);
+            if (m_UnitStats != null)
+            {
+                m_UnitStats.GetUnitInfoDisplay().gameObject.SetActive(true);
+            }
 
             // TODO: Let this have 2 parameters, the spotter, and the spotted.
             // By doing so, in the future we can have 3 or more factions in the game, and the UnitsManagers can filter out which units

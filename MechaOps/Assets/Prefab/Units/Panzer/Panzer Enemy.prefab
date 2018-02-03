@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 114764957779972252}
   - component: {fileID: 114525463778650170}
   - component: {fileID: 114320079545034956}
+  - component: {fileID: 114968393733738602}
   m_Layer: 8
   m_Name: Panzer Enemy
   m_TagString: EnemyUnit
@@ -1774,8 +1775,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1fa353a39c30e74eb9e7f58a0ddf3f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MovementSpeed: 10
+  m_MovementSpeed: 20
   m_RotationSpeed: 360
+  m_DamageIndicatorPrefab: {fileID: 114830192101874150, guid: 9868bfed57214dd4c93f379a8006f183,
+    type: 2}
   m_AmbientAudioSource: {fileID: 82418634400931514}
   m_AmbientSound: {fileID: 8300000, guid: e9ddd28816243ec43a6e61bdc4a41ebc, type: 3}
   m_SFXAudioSources:
@@ -1950,6 +1953,7 @@ MonoBehaviour:
   m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 0}
   m_UnitActionButtonSprite: {fileID: 0}
+  m_Animation_DamageIndicator: {fileID: 114968393733738602}
   m_MinAttackRange: 0
   m_MaxAttackRange: 5
   m_AccuracyPoints: 75
@@ -2086,6 +2090,18 @@ MonoBehaviour:
   m_UnitActionUIPrefab: {fileID: 0}
   m_UnitActionButtonSprite: {fileID: 0}
   m_Animation: {fileID: 114982705508500524}
+--- !u!114 &114968393733738602
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1258380024048378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a2272a82df64ad4f870f1284f9f82de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 114189902084662826}
 --- !u!114 &114982705508500524
 MonoBehaviour:
   m_ObjectHideFlags: 1

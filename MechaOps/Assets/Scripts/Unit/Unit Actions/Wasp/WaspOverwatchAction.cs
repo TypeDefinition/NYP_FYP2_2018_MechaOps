@@ -62,6 +62,11 @@ public class WaspOverwatchAction : UnitOverwatchAction
         m_ActionState = ActionState.Completed;
         UnregisterAnimationCompleteCallback();
 
+        m_Animation_DamageIndicator.Hit = m_Hit;
+        m_Animation_DamageIndicator.DamageValue = m_DamagePoints;
+        m_Animation_DamageIndicator.Target = m_TargetUnitStats.gameObject;
+        m_Animation_DamageIndicator.StartAnimation();
+
         if (m_Hit) { m_TargetUnitStats.CurrentHealthPoints -= m_DamagePoints; }
 
         GameEventSystem.GetInstance().TriggerEvent<UnitStats, UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.AttackedUnit), m_UnitStats, m_TargetUnitStats);

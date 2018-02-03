@@ -87,6 +87,7 @@ GameObject:
   - component: {fileID: 114790626031682278}
   - component: {fileID: 114714950352527536}
   - component: {fileID: 114267693694817760}
+  - component: {fileID: 114650905997222244}
   m_Layer: 8
   m_Name: SHSM Enemy
   m_TagString: EnemyUnit
@@ -1248,6 +1249,7 @@ MonoBehaviour:
   m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 0}
   m_UnitActionButtonSprite: {fileID: 0}
+  m_Animation_DamageIndicator: {fileID: 114650905997222244}
   m_MinAttackRange: 4
   m_MaxAttackRange: 16
   m_AccuracyPoints: 0
@@ -1269,6 +1271,7 @@ MonoBehaviour:
   m_Stat: {fileID: 0}
   m_AttackerStat: {fileID: 0}
   m_Planner: {fileID: 0}
+  m_EventNameAsset: {fileID: 0}
 --- !u!114 &114307235735154440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1281,6 +1284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UnitStats: {fileID: 114686418102639456}
+  m_VisibilityCount: 0
 --- !u!114 &114382056858472062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1311,6 +1315,7 @@ MonoBehaviour:
     m_GoapName: 
   m_EnemiesManager: {fileID: 0}
   m_TileSystem: {fileID: 0}
+  m_CurrentActionPlayed: {fileID: 0}
 --- !u!114 &114428603780392550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1387,6 +1392,18 @@ MonoBehaviour:
   m_CooldownTurns: 0
   m_UnitActionUIPrefab: {fileID: 0}
   m_UnitActionButtonSprite: {fileID: 0}
+--- !u!114 &114650905997222244
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1270927856641450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a2272a82df64ad4f870f1284f9f82de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 114891412526124098}
 --- !u!114 &114663487240003532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1551,8 +1568,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58690c693a087544193b97bc95757744, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MovementSpeed: 10
+  m_MovementSpeed: 20
   m_RotationSpeed: 180
+  m_DamageIndicatorPrefab: {fileID: 114830192101874150, guid: 9868bfed57214dd4c93f379a8006f183,
+    type: 2}
   m_AmbientAudioSource: {fileID: 82591588978088100}
   m_AmbientSound: {fileID: 8300000, guid: 4f21b045c63c10546a8e5182c11a12d8, type: 3}
   m_SFXAudioSources:

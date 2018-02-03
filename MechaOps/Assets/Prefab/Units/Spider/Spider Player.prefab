@@ -115,6 +115,7 @@ GameObject:
   - component: {fileID: 114344323746228970}
   - component: {fileID: 114422513735212468}
   - component: {fileID: 114738544605403014}
+  - component: {fileID: 114132474157774344}
   m_Layer: 0
   m_Name: Spider Player
   m_TagString: Untagged
@@ -943,11 +944,24 @@ MonoBehaviour:
     type: 2}
   m_UnitActionButtonSprite: {fileID: 21300000, guid: e392509062377594ab81881f16831a09,
     type: 3}
+  m_Animation_DamageIndicator: {fileID: 114132474157774344}
   m_MinAttackRange: 0
   m_MaxAttackRange: 8
   m_AccuracyPoints: 50
   m_DamagePoints: 2
   m_Animation: {fileID: 114422513735212468}
+--- !u!114 &114132474157774344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1388366554480152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a2272a82df64ad4f870f1284f9f82de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Animator: {fileID: 114156625251030660}
 --- !u!114 &114156625251030660
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -959,8 +973,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a099c0c67de6cd40a60987e4b565a5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MovementSpeed: 30
+  m_MovementSpeed: 20
   m_RotationSpeed: 360
+  m_DamageIndicatorPrefab: {fileID: 114830192101874150, guid: 9868bfed57214dd4c93f379a8006f183,
+    type: 2}
   m_AmbientAudioSource: {fileID: 82100420768412826}
   m_AmbientSound: {fileID: 8300000, guid: 9863e2d821f80db40934f57fabd37166, type: 3}
   m_SFXAudioSources:
@@ -1189,6 +1205,7 @@ MonoBehaviour:
     type: 2}
   m_UnitActionButtonSprite: {fileID: 21300000, guid: 9b2e2526308c0524eab722fe277acd2f,
     type: 3}
+  m_Animation_DamageIndicator: {fileID: 114132474157774344}
   m_MinAttackRange: 0
   m_MaxAttackRange: 12
   m_AccuracyPoints: 75

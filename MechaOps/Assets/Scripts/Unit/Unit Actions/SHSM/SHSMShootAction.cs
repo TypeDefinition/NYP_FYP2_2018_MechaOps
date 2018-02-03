@@ -149,6 +149,12 @@ public class SHSMShootAction : UnitAttackAction
             if (hitTile.HasUnit())
             {
                 UnitStats hitUnitStats = hitTile.Unit.GetComponent<UnitStats>();
+
+                m_Animation_DamageIndicator.Hit = true;
+                m_Animation_DamageIndicator.DamageValue = m_DamagePoints;
+                m_Animation_DamageIndicator.Target = hitUnitStats.gameObject;
+                m_Animation_DamageIndicator.StartAnimation();
+
                 hitUnitStats.CurrentHealthPoints -= m_DamagePoints;
                 GameEventSystem.GetInstance().TriggerEvent<UnitStats, UnitStats>(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.AttackedUnit), m_UnitStats, hitUnitStats);
             }

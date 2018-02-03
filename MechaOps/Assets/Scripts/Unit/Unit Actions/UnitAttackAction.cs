@@ -7,6 +7,8 @@ using UnityEngine.Assertions;
 public abstract class UnitAttackAction : IUnitAction
 {
     // Serialised Variable(s)
+    [SerializeField]
+    protected MOAnimation_DamageIndicator m_Animation_DamageIndicator = null;
     [SerializeField, Tooltip("Minimum attack range of the unit")]
     protected int m_MinAttackRange = 0;
     [SerializeField, Tooltip("Maximum attack range of the unit")]

@@ -18,15 +18,9 @@ public class RotationScript : MonoBehaviour
     [SerializeField, Tooltip("The axis of rotation")]
     private RotationAxis m_RotationAxis = RotationAxis.X;
 
-    public void StartRotation()
-    {
-        m_Rotate = true;
-    }
+    public void StartRotation() { m_Rotate = true; }
 
-    public void StopRotation()
-    {
-        m_Rotate = false;
-    }
+    public void StopRotation() { m_Rotate = false; }
 
     public float GetRotationSpeed() { return m_RotationSpeed; }
 
@@ -34,10 +28,7 @@ public class RotationScript : MonoBehaviour
 
 	void Update ()
     {
-        if (!m_Rotate)
-        {
-            return;
-        }
+        if (!m_Rotate) { return; }
 
         switch (m_RotationAxis)
         {
