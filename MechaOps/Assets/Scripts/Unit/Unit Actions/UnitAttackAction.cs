@@ -69,6 +69,7 @@ public abstract class UnitAttackAction : IUnitAction
     public override bool VerifyRunCondition()
     {
         // Exit Checks
+        if (m_UnitStats.IsAlive() == false) { return false; }
         if (m_TargetUnitStats == null) { return false; }
         if (m_TargetUnitStats.IsAlive() == false) { return false; }
         int distanceToTarget = TileId.GetDistance(m_TargetUnitStats.CurrentTileID, GetUnitStats().CurrentTileID);

@@ -121,7 +121,10 @@ public class UnitMoveAction : IUnitAction
         CheckIfUnitFinishedTurn();
     }
 
-    public override bool VerifyRunCondition() { return m_TilePath.Count > 0; }
+    public override bool VerifyRunCondition()
+    {
+        return m_TilePath.Count > 0 && m_UnitStats.IsAlive();
+    }
 
     // Even though we check Assert.IsTrue(VerifyRunCondition()); here,
     // This is not the case for ALL actions. For an action like overwatch,

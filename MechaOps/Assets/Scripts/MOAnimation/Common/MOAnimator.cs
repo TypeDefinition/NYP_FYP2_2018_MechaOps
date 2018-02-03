@@ -528,6 +528,8 @@ public abstract class MOAnimator : MonoBehaviour
 
     public virtual void StartMoveAnimation(TileId[] _movementPath, Void_Int _reachedTileCallback, Void_Void _completionCallback)
     {
+        Debug.Log("Move Animation Start");
+
         m_MoveAnimationPaused = false;
 
         SetMovementPath(_movementPath);
@@ -545,18 +547,22 @@ public abstract class MOAnimator : MonoBehaviour
 
     public virtual void PauseMoveAnimation()
     {
+        Debug.Log("Move Animation Paused");
         m_MoveAnimationPaused = true;
         PauseAllSFXAudioSources();
     }
     
     public virtual void ResumeMoveAnimation()
     {
+        Debug.Log("Move Animation Resumed");
         m_MoveAnimationPaused = false;
         ResumeAllSFXAudioSources();
     }
     
     public virtual void StopMoveAnimation()
     {
+        Debug.Log("Move Animation Stop");
+
         m_MoveAnimationPaused = false;
 
         StopCoroutine(m_MoveAnimationCoroutine);

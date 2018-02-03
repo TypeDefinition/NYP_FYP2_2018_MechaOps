@@ -32,8 +32,11 @@ public class UnitSkipAction : IUnitAction
     }
 
     /// <summary>
-    /// This function can definitely be run no matter what.
+    /// This function can definitely be run no matter what, unless the unit is dead.
     /// </summary>
     /// <returns></returns>
-    public override bool VerifyRunCondition() { return true; }
+    public override bool VerifyRunCondition()
+    {
+        return m_UnitStats.IsAlive();
+    }
 }

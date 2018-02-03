@@ -158,6 +158,7 @@ public class MOAnimator_Wasp : MOAnimator
 
     protected override IEnumerator DeathAnimationCoroutine()
     {
+        Debug.Log(gameObject.name + " - Death Animation Coroutine Start");
         StopAmbientAudioSource();
         PlaySFXAudioSource(m_CrashingSFX, false);
 
@@ -191,6 +192,8 @@ public class MOAnimator_Wasp : MOAnimator
 
         yield return new WaitForSeconds(m_TimeDelayForDeathCam);
         InvokeCallback(m_DeathAnimationCompletionCallback);
+
+        Debug.Log(gameObject.name + " - Death Animation Coroutine End");
     }
 
     // Move Animation

@@ -129,9 +129,4 @@ public class UnitOverwatchAction : UnitAttackAction
         base.Awake();
         Assert.IsTrue(EndsTurn, MethodBase.GetCurrentMethod().Name + " - Overwatch action must have m_EndsTurn = true!");
     }
-
-    public override bool VerifyRunCondition()
-    {
-        return (base.VerifyRunCondition() && m_UnitStats.IsAlive());
-    }
 }

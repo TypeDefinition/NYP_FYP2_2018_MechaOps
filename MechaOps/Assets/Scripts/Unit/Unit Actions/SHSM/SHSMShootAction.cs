@@ -127,6 +127,7 @@ public class SHSMShootAction : UnitAttackAction
 
     public override bool VerifyRunCondition()
     {
+        if (m_UnitStats.IsAlive() == false) { return false; }
         if (m_TargetedTile == null) { return false; }
         int distanceToTarget = TileId.GetDistance(m_TargetedTile, GetUnitStats().CurrentTileID);
         if (distanceToTarget > m_MaxAttackRange || distanceToTarget < m_MinAttackRange) { return false; }

@@ -206,6 +206,10 @@ public abstract class IUnitAction : MonoBehaviour
     /// <returns>True if the condition for this action to run is met.</returns>
     public abstract bool VerifyRunCondition();
 
+    /// <summary>
+    /// IMPORTANT: UnitActionScheduler should be the only one that calls this function!
+    /// To run a function, schedule it with UnitActionScheduler!
+    /// </summary>
     public virtual void StartAction()
     {
         m_ActionState = ActionState.Running;
@@ -231,19 +235,13 @@ public abstract class IUnitAction : MonoBehaviour
 
     protected virtual void OnUnitDead(UnitStats _deadUnit, bool _dead)
     {
-        if (!TurnedOn) { return; }
-        if (_deadUnit != m_UnitStats) { return; }
-
-        if (m_ActionState == ActionState.Paused || m_ActionState == ActionState.Running)
-        {
-            StopAction();
-        }
-        TurnOff();
     }
 
     /// <summary>
+    /// IMPORTANT: UnitActionScheduler should be the only one that calls this function!
+    /// To run a function, schedule it with UnitActionScheduler!
     /// The function that pauses the update of this action.
-    /// It is virtual as other actions have different way of pausing
+    /// It is virtual as other actions have different way of pausing.
     /// </summary>
     public virtual void PauseAction()
     {
@@ -251,6 +249,8 @@ public abstract class IUnitAction : MonoBehaviour
     }
 
     /// <summary>
+    /// IMPORTANT: UnitActionScheduler should be the only one that calls this function!
+    /// To run a function, schedule it with UnitActionScheduler!
     /// The function that resumes the update of this action.
     /// Not the same as StartAction() because StartAction completely resets the action!
     /// </summary>
@@ -265,6 +265,8 @@ public abstract class IUnitAction : MonoBehaviour
     }
 
     /// <summary>
+    /// IMPORTANT: UnitActionScheduler should be the only one that calls this function!
+    /// To run a function, schedule it with UnitActionScheduler!
     /// The function that stops the update of the action.
     /// Not to be confused with PauseAction()!
     /// </summary>

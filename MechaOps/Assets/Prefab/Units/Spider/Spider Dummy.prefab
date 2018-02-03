@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4371905744077650}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Bullet Spawn Point 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4731016911235452}
   - component: {fileID: 33782011244354570}
   - component: {fileID: 23724759578741280}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Spider_Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 4908331031376786}
   - component: {fileID: 82351483923734566}
   - component: {fileID: 114270157125829752}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SFX Audio Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 4109453544499150}
   - component: {fileID: 33605828978860186}
   - component: {fileID: 23795189567999192}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Spider_Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 4473775992306234}
   - component: {fileID: 82100420768412826}
   - component: {fileID: 114767236276957420}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Ambient Audio Source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 114422513735212468}
   - component: {fileID: 114738544605403014}
   - component: {fileID: 114035384600240026}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Spider Dummy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 4771272724473070}
   - component: {fileID: 33166655199943220}
   - component: {fileID: 23865356718591756}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Wheel_L1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 4433048296723192}
   - component: {fileID: 33735767489334544}
   - component: {fileID: 23130111010368484}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Wheel_R2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 4137819049990102}
   - component: {fileID: 33141213820729546}
   - component: {fileID: 23208679200726110}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Wheel_L0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 4758511298771940}
   - component: {fileID: 33779717269925526}
   - component: {fileID: 23743211250404814}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Wheel_R1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 4026657636812184}
   - component: {fileID: 33241222984482100}
   - component: {fileID: 23830448584911398}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Spider_Hull
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -215,7 +215,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4895954047518056}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Bullet Spawn Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4209747564577912}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Wheels_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +245,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4472482313643370}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Bullet Spawn Point 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4427966262150458}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Wheels_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
