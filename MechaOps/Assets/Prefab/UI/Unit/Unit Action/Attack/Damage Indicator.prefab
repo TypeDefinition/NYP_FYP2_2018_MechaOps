@@ -169,7 +169,7 @@ MonoBehaviour:
   m_TargetWorldPositionOffset: {x: 0, y: 2.5, z: 0}
   m_Velocity: {x: 0, y: 2, z: 0}
   m_HitColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  m_MissColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_MissColor: {r: 0.9485294, g: 0.35569853, b: 0.828, a: 1}
   m_DamageValueText: {fileID: 114108096030780786}
 --- !u!222 &222749598545476346
 CanvasRenderer:

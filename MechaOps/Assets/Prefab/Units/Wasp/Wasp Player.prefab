@@ -657,7 +657,7 @@ MonoBehaviour:
   m_MinAttackRange: 0
   m_MaxAttackRange: 6
   m_AccuracyPoints: 50
-  m_DamagePoints: 1
+  m_DamagePoints: 2
   m_Animation: {fileID: 114640826300165538}
 --- !u!114 &114461541154308928
 MonoBehaviour:

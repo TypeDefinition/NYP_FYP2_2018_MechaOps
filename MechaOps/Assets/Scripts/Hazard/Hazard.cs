@@ -120,9 +120,7 @@ public abstract class Hazard : MonoBehaviour
     }
 
     // Callbacks
-    protected virtual void OnUnitMovedToTile(UnitStats _unitStats)
-    {
-    }
+    protected abstract void OnUnitMovedToTile(UnitStats _unitStats);
 
     protected virtual void OnTurnStart(FactionType _faction)
     {
