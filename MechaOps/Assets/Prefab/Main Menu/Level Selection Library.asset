@@ -16,3 +16,7 @@ MonoBehaviour:
     m_LevelName: Demo Level
     m_LevelDescription: Level For Demo Purposes
     m_LevelIcon: {fileID: 0}
+  - m_SceneName: level_2
+    m_LevelName: Level 2
+    m_LevelDescription: 2nd Level
+    m_LevelIcon: {fileID: 0}

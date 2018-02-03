@@ -266,6 +266,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1533931065}
@@ -430,6 +431,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1106847091}
@@ -631,6 +633,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1925768769}
@@ -795,6 +798,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1178553571}
@@ -959,6 +963,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1561664293}
@@ -1034,6 +1039,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 534615724}
@@ -1376,6 +1382,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 923525856}
@@ -1401,7 +1408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!223 &23541681
 Canvas:
   m_ObjectHideFlags: 0
@@ -1618,6 +1625,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1321336378}
@@ -1693,6 +1701,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1096136501}
@@ -2124,6 +2133,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1602834499}
@@ -2199,6 +2209,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1389300025}
@@ -2274,6 +2285,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 288909240}
@@ -2438,6 +2450,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 921697221}
@@ -3112,6 +3125,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1631688030}
@@ -3365,6 +3379,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1851167831}
@@ -3440,6 +3455,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 352547586}
@@ -3515,6 +3531,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1213437580}
@@ -3857,6 +3874,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 214635496}
@@ -4325,6 +4343,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 289378421}
@@ -4512,6 +4531,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1287455900}
@@ -4676,6 +4696,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2003920502}
@@ -4751,6 +4772,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1409192277}
@@ -5182,6 +5204,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 715846340}
@@ -5346,6 +5369,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 890587991}
@@ -5421,6 +5445,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 687442224}
@@ -5496,6 +5521,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 678458244}
@@ -5571,6 +5597,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1772416954}
@@ -5913,6 +5940,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 52550570}
@@ -5988,6 +6016,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1505800413}
@@ -6152,6 +6181,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 53268710}
@@ -6405,6 +6435,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1651060178}
@@ -6480,6 +6511,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 98928438}
@@ -6655,6 +6687,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 992431029}
@@ -6908,6 +6941,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1418420565}
@@ -6983,6 +7017,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1430911983}
@@ -7147,6 +7182,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1624277372}
@@ -7462,6 +7498,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1970362580}
@@ -7982,6 +8019,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 240369574}
@@ -8188,6 +8226,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 128291108}
@@ -8263,6 +8302,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1765502560}
@@ -8338,6 +8378,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 18425034}
@@ -8680,6 +8721,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 19467455}
@@ -9134,6 +9176,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1620034966}
@@ -9209,6 +9252,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 360727001}
@@ -9284,6 +9328,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1117670586}
@@ -9448,6 +9493,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 525673685}
@@ -9612,6 +9658,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1130445724}
@@ -9954,6 +10001,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1323364951}
@@ -10230,6 +10278,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1361572489}
@@ -10572,6 +10621,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1758113474}
@@ -10647,6 +10697,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114603814530369432, guid: 47faf5f328908d94fb1b9f46271e457a,
       type: 2}
   m_DisplayObject: {fileID: 136842204}
@@ -11199,6 +11250,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 899468820}
@@ -11329,6 +11381,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 372338379}
@@ -11404,6 +11457,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 129922684}
@@ -11835,6 +11889,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 531364724}
@@ -11910,6 +11965,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 669059801}
@@ -12488,6 +12544,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1985584527}
@@ -12652,6 +12709,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 248997398}
@@ -12717,7 +12775,9 @@ MonoBehaviour:
   m_SpawnSystem: {fileID: 559615459}
   m_ClickableScreenSpaceCanvas: {fileID: 532853635}
   m_UnclickableScreenSpaceCanvas: {fileID: 23541681}
-  m_SFXSource: {fileID: 1471147402}
+  m_SFXAudioSource: {fileID: 0}
+  m_BGMAudioSource: {fileID: 0}
+  m_AmbientAudioSource: {fileID: 0}
   m_GameAudioSettings: {fileID: 11400000, guid: 7661fa5d75f3f464bb18461c47ac4643,
     type: 2}
   m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
@@ -12992,6 +13052,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 857330720}
@@ -13245,6 +13306,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 959185802}
@@ -13320,6 +13382,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1566952207}
@@ -13484,6 +13547,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 759441664}
@@ -13648,6 +13712,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1462977396}
@@ -14029,6 +14094,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 522834980}
@@ -14104,6 +14170,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 977741565}
@@ -14179,6 +14246,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1688133671}
@@ -14412,6 +14480,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 220493127}
@@ -14701,6 +14770,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2108508622}
@@ -14776,6 +14846,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1888832076}
@@ -15236,6 +15307,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1926167160}
@@ -15578,6 +15650,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114603814530369432, guid: 47faf5f328908d94fb1b9f46271e457a,
       type: 2}
   m_DisplayObject: {fileID: 349946434}
@@ -15653,6 +15726,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2119403733}
@@ -15817,6 +15891,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114603814530369432, guid: 47faf5f328908d94fb1b9f46271e457a,
       type: 2}
   m_DisplayObject: {fileID: 549212384}
@@ -16541,6 +16616,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 602441400}
@@ -16705,6 +16781,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 46372906}
@@ -16869,6 +16946,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 418521539}
@@ -17189,6 +17267,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1640315698}
@@ -17264,6 +17343,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1445245468}
@@ -17339,6 +17419,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1886866938}
@@ -17414,6 +17495,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 889928217}
@@ -17489,6 +17571,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 384670569}
@@ -17564,6 +17647,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 241340118}
@@ -17639,6 +17723,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 622483946}
@@ -17803,6 +17888,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1080732097}
@@ -17967,6 +18053,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 526607195}
@@ -18042,6 +18129,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1977437884}
@@ -18384,6 +18472,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 447949466}
@@ -18706,6 +18795,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 879005579}
@@ -18781,6 +18871,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 788112703}
@@ -19054,6 +19145,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1807477179}
@@ -19474,6 +19566,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 117716702}
@@ -19549,6 +19642,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2142815971}
@@ -19624,6 +19718,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1717343229}
@@ -19788,6 +19883,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1347823256}
@@ -19952,6 +20048,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114603814530369432, guid: 47faf5f328908d94fb1b9f46271e457a,
       type: 2}
   m_DisplayObject: {fileID: 1214455582}
@@ -20027,6 +20124,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 284858156}
@@ -20280,6 +20378,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 368052565}
@@ -20355,6 +20454,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1546272063}
@@ -20430,6 +20530,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 699411679}
@@ -20772,6 +20873,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 493193081}
@@ -20847,6 +20949,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1799564400}
@@ -21367,6 +21470,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1061720314}
@@ -21715,6 +21819,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 376460986}
@@ -21790,6 +21895,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 534858124}
@@ -21865,6 +21971,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 146003539}
@@ -22094,6 +22201,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1463283785}
@@ -22169,6 +22277,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1586477003}
@@ -22244,6 +22353,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 850943930}
@@ -22319,6 +22429,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2215653}
@@ -22615,6 +22726,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 610221969}
@@ -22868,6 +22980,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 892388555}
@@ -22943,6 +23056,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1030992934}
@@ -23196,6 +23310,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 731948809}
@@ -23634,6 +23749,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 146243172}
@@ -23804,6 +23920,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1566359517}
@@ -23879,6 +23996,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 279540652}
@@ -23954,6 +24072,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1075603802}
@@ -24029,6 +24148,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 949237311}
@@ -24104,6 +24224,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1544570289}
@@ -24268,6 +24389,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 112350591}
@@ -24343,6 +24465,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1021963982}
@@ -24507,6 +24630,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 910121776}
@@ -24671,6 +24795,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1716606323}
@@ -24835,6 +24960,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1390354750}
@@ -24910,6 +25036,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1156234998}
@@ -25074,6 +25201,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 36514561}
@@ -25149,6 +25277,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1110875076}
@@ -25224,6 +25353,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 832590996}
@@ -25617,6 +25747,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 331385322}
@@ -25959,6 +26090,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1655928242}
@@ -26034,6 +26166,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1371267068}
@@ -26287,6 +26420,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 838354679}
@@ -26362,6 +26496,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2117980119}
@@ -26437,6 +26572,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 153928973}
@@ -26805,6 +26941,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 419137659}
@@ -26880,6 +27017,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1779903871}
@@ -26955,6 +27093,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1027338073}
@@ -27386,6 +27525,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1241810998}
@@ -27461,6 +27601,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1950971946}
@@ -27625,6 +27766,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 375805165}
@@ -27700,6 +27842,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1139446293}
@@ -27775,6 +27918,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1092786337}
@@ -28117,6 +28261,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1537106068}
@@ -28192,6 +28337,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 909087760}
@@ -28356,6 +28502,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 842700618}
@@ -28787,6 +28934,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 78657403}
@@ -28994,6 +29142,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2076373001}
@@ -29101,6 +29250,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1913496378}
@@ -29176,6 +29326,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1155289211}
@@ -29251,6 +29402,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1924623524}
@@ -29326,6 +29478,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 25361249}
@@ -29490,6 +29643,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1936096631}
@@ -29565,6 +29719,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 542498937}
@@ -29640,6 +29795,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1821386019}
@@ -29804,6 +29960,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 237222114}
@@ -30778,6 +30935,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1713014476}
@@ -30853,6 +31011,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1598045469}
@@ -31017,6 +31176,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 331752556}
@@ -31092,6 +31252,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1407745354}
@@ -31167,6 +31328,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 176909249}
@@ -31420,6 +31582,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 963150847}
@@ -31760,6 +31923,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 321265761}
@@ -31835,6 +31999,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1624076158}
@@ -32467,6 +32632,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2098309097}
@@ -32542,6 +32708,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 679776787}
@@ -32706,6 +32873,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 936722119}
@@ -32781,6 +32949,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 592156349}
@@ -32856,6 +33025,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 603473029}
@@ -33065,6 +33235,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 369159488}
@@ -33321,6 +33492,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1283393774}
@@ -33396,6 +33568,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1879354119}
@@ -33916,6 +34089,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1495581183}
@@ -34386,6 +34560,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 817070815}
@@ -34461,6 +34636,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1643497286}
@@ -35070,6 +35246,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 642100755}
@@ -35145,6 +35322,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 198299068}
@@ -35309,6 +35487,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1422838011}
@@ -35473,6 +35652,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 162825211}
@@ -35904,6 +36084,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1032843628}
@@ -35979,6 +36160,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 850419213}
@@ -36054,6 +36236,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114603814530369432, guid: 47faf5f328908d94fb1b9f46271e457a,
       type: 2}
   m_DisplayObject: {fileID: 290414037}
@@ -36307,6 +36490,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 630782205}
@@ -36382,6 +36566,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1088373342}
@@ -36457,6 +36642,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1224889922}
@@ -36710,6 +36896,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1079422958}
@@ -36830,6 +37017,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1722339133}
@@ -36905,6 +37093,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1073467253}
@@ -37336,6 +37525,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 691025405}
@@ -37555,6 +37745,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114603814530369432, guid: 47faf5f328908d94fb1b9f46271e457a,
       type: 2}
   m_DisplayObject: {fileID: 633250951}
@@ -37720,6 +37911,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 508442888}
@@ -38062,6 +38254,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 300538627}
@@ -38137,6 +38330,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 772358724}
@@ -38212,6 +38406,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1337875439}
@@ -38488,6 +38683,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 29049857}
@@ -38706,6 +38902,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 233457346}
@@ -38876,6 +39073,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1746563633}
@@ -39254,6 +39452,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1789618485}
@@ -39329,6 +39528,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1581866214}
@@ -39493,6 +39693,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1868060976}
@@ -39568,6 +39769,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 909544878}
@@ -39732,6 +39934,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 112675700}
@@ -40238,6 +40441,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2125782773}
@@ -40491,6 +40695,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 867614999}
@@ -40566,6 +40771,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 460731659}
@@ -40641,6 +40847,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1023159755}
@@ -40805,6 +41012,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1987552038}
@@ -40880,6 +41088,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 317554033}
@@ -40955,6 +41164,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 75550191}
@@ -41119,6 +41329,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 838823357}
@@ -41194,6 +41405,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 177588903}
@@ -41269,6 +41481,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1988233207}
@@ -41433,6 +41646,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 412319784}
@@ -41508,6 +41722,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2078771816}
@@ -41888,6 +42103,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 730392948}
@@ -42269,6 +42485,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1869605686}
@@ -42433,6 +42650,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1345816904}
@@ -42597,6 +42815,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 97976760}
@@ -42725,6 +42944,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1483433492}
@@ -42800,6 +43020,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 188830556}
@@ -42964,6 +43185,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1640641577}
@@ -43039,6 +43261,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1875336738}
@@ -43372,6 +43595,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 412117746}
@@ -43447,6 +43671,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1453532543}
@@ -43611,6 +43836,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2072481224}
@@ -43829,6 +44055,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1815905510}
@@ -44016,6 +44243,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2049403101}
@@ -44091,6 +44319,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1313319716}
@@ -44344,6 +44573,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1164715770}
@@ -44629,6 +44859,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 456320360}
@@ -44793,6 +45024,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 963299506}
@@ -45046,6 +45278,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 608794586}
@@ -45210,6 +45443,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2066746924}
@@ -45532,6 +45766,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1505425846}
@@ -45696,6 +45931,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 740036009}
@@ -45877,6 +46113,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1518549689}
@@ -46239,6 +46476,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114603814530369432, guid: 47faf5f328908d94fb1b9f46271e457a,
       type: 2}
   m_DisplayObject: {fileID: 506697723}
@@ -46623,6 +46861,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1192841669}
@@ -46698,6 +46937,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1516761224}
@@ -47217,6 +47457,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1575226708}
@@ -47292,6 +47533,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 953323911}
@@ -47859,6 +48101,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 529523429}
@@ -47934,6 +48177,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 416080307}
@@ -48009,6 +48253,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 34709911}
@@ -48317,6 +48562,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 781721263}
@@ -48570,6 +48816,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1374458912}
@@ -48645,6 +48892,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1112349199}
@@ -48985,6 +49233,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 28398784}
@@ -49306,6 +49555,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 764954346}
@@ -49737,6 +49987,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 968453052}
@@ -49812,6 +50063,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1146109315}
@@ -50065,6 +50317,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1090052851}
@@ -50361,6 +50614,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 144549888}
@@ -50712,6 +50966,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1012048280}
@@ -50876,6 +51131,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 22441676}
@@ -51040,6 +51296,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 54073124}
@@ -51204,6 +51461,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 983780442}
@@ -51368,6 +51626,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 452686179}
@@ -51856,6 +52115,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1113411721}
@@ -51931,6 +52191,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 13926452}
@@ -52006,6 +52267,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1501511213}
@@ -52081,6 +52343,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2123544391}
@@ -52690,6 +52953,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1179904164}
@@ -53123,7 +53387,9 @@ MonoBehaviour:
   m_SpawnSystem: {fileID: 1667695472}
   m_ClickableScreenSpaceCanvas: {fileID: 407349971}
   m_UnclickableScreenSpaceCanvas: {fileID: 965592964}
-  m_SFXSource: {fileID: 0}
+  m_SFXAudioSource: {fileID: 0}
+  m_BGMAudioSource: {fileID: 0}
+  m_AmbientAudioSource: {fileID: 0}
   m_GameAudioSettings: {fileID: 11400000, guid: 7661fa5d75f3f464bb18461c47ac4643,
     type: 2}
   m_GameEventNames: {fileID: 11400000, guid: 9ebc0b78774540943807911404cdec18, type: 2}
@@ -53219,6 +53485,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1843137844}
@@ -53294,6 +53561,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 691795734}
@@ -53369,6 +53637,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 654614873}
@@ -53444,6 +53713,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1737112828}
@@ -53519,6 +53789,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2004686600}
@@ -53793,6 +54064,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1142698793}
@@ -53911,6 +54183,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 313555817}
@@ -53986,6 +54259,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1173854243}
@@ -54150,6 +54424,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1258125951}
@@ -54369,6 +54644,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 5092156}
@@ -54955,6 +55231,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 667298747}
@@ -55119,6 +55396,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1755791115}
@@ -55194,6 +55472,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 584008770}
@@ -55269,6 +55548,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 211426983}
@@ -55499,6 +55779,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1430650173}
@@ -55663,6 +55944,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114603814530369432, guid: 47faf5f328908d94fb1b9f46271e457a,
       type: 2}
   m_DisplayObject: {fileID: 1022738195}
@@ -55738,6 +56020,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 512926493}
@@ -56149,6 +56432,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1298892207}
@@ -56224,6 +56508,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1145564201}
@@ -56388,6 +56673,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 381653463}
@@ -56731,6 +57017,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1659267474}
@@ -56806,6 +57093,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 912881865}
@@ -77231,6 +77519,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1276141019}
@@ -77450,6 +77739,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114603814530369432, guid: 47faf5f328908d94fb1b9f46271e457a,
       type: 2}
   m_DisplayObject: {fileID: 1909677401}
@@ -77525,6 +77815,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 205411768}
@@ -77600,6 +77891,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1642325808}
@@ -77859,6 +78151,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 638513754}
@@ -78023,6 +78316,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 15795482}
@@ -78434,6 +78728,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1713154562}
@@ -78509,6 +78804,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1164394462}
@@ -79290,6 +79586,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114603814530369432, guid: 47faf5f328908d94fb1b9f46271e457a,
       type: 2}
   m_DisplayObject: {fileID: 1394583326}
@@ -79365,6 +79662,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1201257976}
@@ -79440,6 +79738,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 359291794}
@@ -79693,6 +79992,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1909750406}
@@ -79946,6 +80246,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 437136515}
@@ -80199,6 +80500,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 494556978}
@@ -80405,6 +80707,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1743701169}
@@ -80480,6 +80783,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2090106530}
@@ -80845,6 +81149,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1454971721}
@@ -80920,6 +81225,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1539306737}
@@ -80995,6 +81301,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1477035341}
@@ -81070,6 +81377,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 752704438}
@@ -81501,6 +81809,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1704467626}
@@ -81576,6 +81885,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1289203881}
@@ -81740,6 +82050,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 49117464}
@@ -81815,6 +82126,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1981910126}
@@ -81890,6 +82202,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1264441753}
@@ -82143,6 +82456,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2139088923}
@@ -82218,6 +82532,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 691938371}
@@ -82293,6 +82608,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1237305715}
@@ -82368,6 +82684,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 682131305}
@@ -82443,6 +82760,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2121819874}
@@ -82696,6 +83014,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 432970683}
@@ -82934,6 +83253,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1196538809}
@@ -83009,6 +83329,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 251176597}
@@ -83173,6 +83494,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 365835030}
@@ -83248,6 +83570,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1020596276}
@@ -83590,6 +83913,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 283366010}
@@ -83987,6 +84311,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 670060237}
@@ -84005,7 +84330,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4324667317270710, guid: 7ddecae09b46e0a438c6a0b2d44be7ee, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -23.655657
+      value: -5.84
       objectReference: {fileID: 0}
     - target: {fileID: 4324667317270710, guid: 7ddecae09b46e0a438c6a0b2d44be7ee, type: 2}
       propertyPath: m_LocalPosition.y
@@ -84013,7 +84338,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4324667317270710, guid: 7ddecae09b46e0a438c6a0b2d44be7ee, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 17.290754
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4324667317270710, guid: 7ddecae09b46e0a438c6a0b2d44be7ee, type: 2}
       propertyPath: m_LocalRotation.x
@@ -84038,12 +84363,12 @@ Prefab:
     - target: {fileID: 114809387758883690, guid: 7ddecae09b46e0a438c6a0b2d44be7ee,
         type: 2}
       propertyPath: m_UnitStatsJSON.m_CurrentTileID.m_X
-      value: -8
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 114809387758883690, guid: 7ddecae09b46e0a438c6a0b2d44be7ee,
         type: 2}
       propertyPath: m_UnitStatsJSON.m_CurrentTileID.m_Y
-      value: 9
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 136628383095931804, guid: 7ddecae09b46e0a438c6a0b2d44be7ee,
         type: 2}
@@ -84135,6 +84460,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 753139246}
@@ -84210,6 +84536,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 414093753}
@@ -84380,6 +84707,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2023084991}
@@ -84455,6 +84783,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 791203189}
@@ -84530,6 +84859,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1023105331}
@@ -84694,6 +85024,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 383904138}
@@ -84769,6 +85100,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 969373449}
@@ -85746,6 +86078,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 859282223}
@@ -85821,6 +86154,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 2102563845}
@@ -86074,6 +86408,7 @@ MonoBehaviour:
     m_MovementCost: 1
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
+    m_Description: 
     m_DisplayObject: {fileID: 114831931147255818, guid: dbec9ec64a174aa48ad5279f8a00e505,
       type: 2}
   m_DisplayObject: {fileID: 1582150455}
@@ -86596,7 +86931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PlayerFaction: 0
   m_FactionsInPlay: 000000000100000002000000
-  m_CurrentTurnFaction: 1
+  m_CurrentTurnFaction: 0
   m_PlayerWonDisplay: {fileID: 1340652212449704, guid: b8400546c5ca32c44b77542b2687c5a3,
     type: 2}
   m_PlayerLostDisplay: {fileID: 1219414303167620, guid: 85d077349c1087d46a381752e9d6af94,

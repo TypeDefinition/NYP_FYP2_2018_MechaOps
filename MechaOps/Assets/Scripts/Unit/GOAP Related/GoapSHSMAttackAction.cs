@@ -13,7 +13,7 @@ public class GoapSHSMAttackAction : GoapAttackAct {
             // it means the unit is not able to attack it!
             m_SkipAction.CompletionCallBack += InvokeActionCompleted;
             // TODO: Have to StartAction then skip action will work!
-            m_SkipAction.StartAction();
+            m_SkipAction.TurnOn();
             while (!m_ActionCompleted)
                 yield return FixedWait;
             m_SkipAction.CompletionCallBack -= InvokeActionCompleted;

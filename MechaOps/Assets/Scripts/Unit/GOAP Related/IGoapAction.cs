@@ -67,4 +67,12 @@ public abstract class IGoapAction : MonoBehaviour {
     {
         m_ActionCompleted = true;
     }
+
+    public virtual void StopAction()
+    {
+        if (m_UpdateRoutine != null)
+        {
+            StopCoroutine(m_UpdateRoutine);
+        }
+    }
 }

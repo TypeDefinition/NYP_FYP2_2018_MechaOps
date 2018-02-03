@@ -799,7 +799,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: '<align="center"><size=+15>Credits</size></align>
+  m_text: '<align="center"><size=+25><b>Credits</b></size></align>
 
     <b>Developers:</b>
 

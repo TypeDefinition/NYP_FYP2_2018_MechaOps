@@ -384,7 +384,7 @@ public class GoapPlanner : MonoBehaviour
             StopUpdate(FactionType.Enemy);
             if (m_CurrentActionPlayed != null)
             {
-                m_CurrentActionPlayed.StopAllCoroutines();
+                m_CurrentActionPlayed.StopAction();
             }
         }
     }

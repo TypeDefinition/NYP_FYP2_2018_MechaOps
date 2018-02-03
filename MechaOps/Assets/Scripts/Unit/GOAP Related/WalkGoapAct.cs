@@ -62,27 +62,6 @@ public class WalkGoapAct : IGoapAction {
 
     public override IEnumerator UpdateActRoutine()
     {
-        //Tile locatedLocation = null;
-
-        // TODO!
-        //foreach (TileId TileLocation in m_Planner.EnemiesManager.PlayerUnitLocations)
-        //{
-        //    locatedLocation = m_WalkAct.GetTileSystem().GetTile(TileLocation);
-        //    if (!m_Planner.m_Stats.CurrentTileID.Equals(m_Planner.EnemiesManager.PlayerUnitLocations) && !locatedLocation.HasUnit())
-        //    {
-        //        m_TileDest = TileLocation;
-        //        break;
-        //    }
-        //    else
-        //    {
-        //        locatedLocation = null;
-        //    }
-        //}
-        //Assert.IsNotNull(locatedLocation, "Update of Tile coordinate has failed at UpdateActRoutine in WalkGoapAct.cs");
-        //if (m_Planner.m_Stats.CurrentTileID.Equals(m_Planner.EnemiesManager.PlayerUnitLocations))
-        //    Assert.IsTrue(true == false, "Update of Tile coordinate has failed at UpdateActRoutine in WalkGoapAct.cs");
-        // so why not lets just cheat here to get to the closest tile!
-
         // Start following the unit.
         if (m_SeenMovingFlag)
         {
