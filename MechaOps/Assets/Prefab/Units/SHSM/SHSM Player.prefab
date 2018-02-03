@@ -1278,7 +1278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UnitStatsJSON:
     m_UnitName: Primus
-    m_UnitDescription: Long Range Artilery
+    m_UnitDescription: Long range artilery used for bombardment.
     m_FactionType: 0
     m_MaxHealthPoints: 3
     m_CurrentHealthPoints: 3
@@ -1341,6 +1341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UnitStats: {fileID: 114088806880344424}
+  m_VisibilityCount: 0
 --- !u!114 &114560271820377396
 MonoBehaviour:
   m_ObjectHideFlags: 1
