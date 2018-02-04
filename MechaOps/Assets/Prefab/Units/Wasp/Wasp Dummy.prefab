@@ -817,10 +817,15 @@ MonoBehaviour:
   m_TileAttributeOverrides:
   - m_Type: 3
     m_Walkable: 1
-    m_MovementCost: 3
+    m_MovementCost: 2
     m_ConcealmentPoints: 0
     m_EvasionPoints: 0
   - m_Type: 1
+    m_Walkable: 1
+    m_MovementCost: 2
+    m_ConcealmentPoints: 0
+    m_EvasionPoints: 0
+  - m_Type: 2
     m_Walkable: 1
     m_MovementCost: 2
     m_ConcealmentPoints: 0
