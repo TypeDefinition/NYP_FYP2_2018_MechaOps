@@ -25,6 +25,9 @@ public class TouchGestureHandler : MonoBehaviour
     private const float m_MinScrollAngle = 0.0f;
     [SerializeField] private float m_MaxScrollAngle = 40.0f;
 
+    [SerializeField]
+    private bool m_IgnoreClicksOnUI = true;
+
     private IEnumerator m_DetectCircleGestureCoroutine;
     private bool m_DetectCircleGestureCoroutineStarted = false;
 
@@ -59,6 +62,12 @@ public class TouchGestureHandler : MonoBehaviour
         set { m_MaxScrollAngle = Mathf.Clamp(value, m_MinScrollAngle, 90.0f); }
     }
 
+    public bool IgnoreClicksOnUI
+    {
+        get { return m_IgnoreClicksOnUI; }
+        set { m_IgnoreClicksOnUI = value; }
+    }
+
     private void DebugOutput(string _message)
     {
         if (m_DebugTextOutput != null)
@@ -74,6 +83,16 @@ public class TouchGestureHandler : MonoBehaviour
 
     private bool DetectPinch()
     {
+        if (m_IgnoreClicksOnUI && EventSystem.current.IsPointerOverGameObject(1))
+        {
+            return false;
+        }
+
+        if (m_IgnoreClicksOnUI && EventSystem.current.IsPointerOverGameObject(0))
+        {
+            return false;
+        }
+
         // Ensure that there are only 2 touches on the screen.
         if (Input.touchCount != 2)
         {
@@ -111,6 +130,16 @@ public class TouchGestureHandler : MonoBehaviour
 
     private bool DetectScroll()
     {
+        if (m_IgnoreClicksOnUI && EventSystem.current.IsPointerOverGameObject(0))
+        {
+            return false;
+        }
+
+        if (m_IgnoreClicksOnUI && EventSystem.current.IsPointerOverGameObject(1))
+        {
+            return false;
+        }
+
         // Ensure that there are only 2 touches on the screen.
         if (Input.touchCount != 2)
         {
@@ -143,6 +172,11 @@ public class TouchGestureHandler : MonoBehaviour
 
     private bool DetectSwipe()
     {
+        if (m_IgnoreClicksOnUI && EventSystem.current.IsPointerOverGameObject(0))
+        {
+            return false;
+        }
+
         // Ensure that there is only 1 touch on the screen.
         if (Input.touchCount != 1)
         {
@@ -158,6 +192,11 @@ public class TouchGestureHandler : MonoBehaviour
 
     private void DetectCircleGesture()
     {
+        if (m_IgnoreClicksOnUI && EventSystem.current.IsPointerOverGameObject(0))
+        {
+            return;
+        }
+
         if (m_DetectCircleGestureCoroutineStarted || Input.touchCount != 1)
         {
             return;
@@ -299,6 +338,11 @@ public class TouchGestureHandler : MonoBehaviour
 
     private void DetectDoubleTap()
     {
+        if (m_IgnoreClicksOnUI && EventSystem.current.IsPointerOverGameObject(0))
+        {
+            return;
+        }
+
         // Ensure that there is only 1 touch on the screen.
         if (Input.touchCount == 1 && !EventSystem.current.IsPointerOverGameObject(0))
         {

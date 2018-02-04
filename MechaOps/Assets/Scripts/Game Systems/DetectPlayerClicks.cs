@@ -24,7 +24,7 @@ public class DetectPlayerClicks : MonoBehaviour
         get { return m_PointerId; }
     }
 
-    public bool IgnoreUI
+    public bool IgnoreClicksOnUI
     {
         get { return m_IgnoreClicksOnUI; }
     }
