@@ -15,8 +15,8 @@ MonoBehaviour:
   - m_SceneName: Demo_Level
     m_LevelName: Demo Level
     m_LevelDescription: Level For Demo Purposes
-    m_LevelIcon: {fileID: 0}
+    m_LevelIcon: {fileID: 21300000, guid: 208e98e5055ca114fbb07fb37c448233, type: 3}
   - m_SceneName: level_2
     m_LevelName: Level 2
     m_LevelDescription: 2nd Level
-    m_LevelIcon: {fileID: 0}
+    m_LevelIcon: {fileID: 21300000, guid: 5687053aa5a662b409c1dd0aa6b23c95, type: 3}
