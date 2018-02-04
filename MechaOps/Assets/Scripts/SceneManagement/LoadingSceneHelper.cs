@@ -8,6 +8,12 @@ public class LoadingSceneHelper : MonoBehaviour {
     /// </summary>
     protected const string m_LoadingSceneName = "Loading_Menu";
     protected const float m_TimeDelayForLoading = 1.25f;
+    bool m_FinishedBlending = false;
+
+    void SetBlendingTrue()
+    {
+        m_FinishedBlending = true;
+    }
 
     /// <summary>
     /// Transition to other scene with a default time delay of 1.25 seconds
@@ -52,8 +58,8 @@ public class LoadingSceneHelper : MonoBehaviour {
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(_sceneName));
         // Maybe this line can be removed. it just delays the current loading to a further of some time! But loading of the game is done very fast
         yield return new WaitForSecondsRealtime(_timeDelay);
-         // After other scene has finished loading, then unload the loading scene!
-       SceneManager.UnloadSceneAsync(m_LoadingSceneName);
+        // After other scene has finished loading, then unload the loading scene!
+        SceneManager.UnloadSceneAsync(m_LoadingSceneName);
         yield break;
     }
 }
