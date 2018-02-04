@@ -641,7 +641,7 @@ MonoBehaviour:
   m_UnitActionButtonSprite: {fileID: 21300000, guid: e392509062377594ab81881f16831a09,
     type: 3}
   m_MinAttackRange: 0
-  m_MaxAttackRange: 6
+  m_MaxAttackRange: 7
   m_AccuracyPoints: 50
   m_DamagePoints: 2
   m_DamageIndicatorPrefab: {fileID: 114830192101874150, guid: 9868bfed57214dd4c93f379a8006f183,
@@ -840,8 +840,8 @@ MonoBehaviour:
     m_FactionType: 0
     m_MaxHealthPoints: 4
     m_CurrentHealthPoints: 4
-    m_MaxActionPoints: 2
-    m_CurrentActionPoints: 2
+    m_MaxActionPoints: 3
+    m_CurrentActionPoints: 3
     m_DeploymentCost: 2000
     m_ViewRange: 16
     m_ConcealmentPoints: 0
