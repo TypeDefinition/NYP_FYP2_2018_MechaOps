@@ -6,6 +6,14 @@ using UnityEngine;
 using UnityEngine.Advertisements;
 
 public class HandleAdsScript : MonoBehaviour {
+#if UNITY_STANDALONE
+    void Awake()
+    {
+        Destroy(gameObject);
+        return;
+    }
+#endif
+#if UNITY_IOS || UNITY_ANDROID
     [Header("Variables for HandleAdsScript")]
     [SerializeField, Tooltip("Uncheck this if this build is going live")]
     protected bool m_TestBuild = true;
@@ -23,7 +31,6 @@ public class HandleAdsScript : MonoBehaviour {
 #elif UNITY_IOS
     const string m_AdsGameID = "1676229";
 #endif
-
     // Use this for initialization
     void Awake () {
         // if there is no internet connection at all, dont display the ads at all!
@@ -49,4 +56,5 @@ public class HandleAdsScript : MonoBehaviour {
         Advertisement.Show(m_PlacementID, m_ShowOption);
         yield break;
     }
+#endif
 }

@@ -9,7 +9,7 @@ public class AdsDestroyScene : MonoBehaviour {
     protected HandleAdsScript m_HandleAds;
     [SerializeField, Tooltip("Name of the scene to unload when ads is completed")]
     protected string m_SceneNameToUnload = "Ads_Menu";
-
+#if UNITY_IOS || UNITY_ANDROID
     private void OnEnable()
     {
         if (!m_HandleAds)
@@ -29,7 +29,7 @@ public class AdsDestroyScene : MonoBehaviour {
         // regardless of the result just unload the scene
         Destroy(gameObject);
     }
-
+#endif
     private void OnDestroy()
     {
         SceneHelperSingleton.Instance.UnloadScene(m_SceneNameToUnload);
