@@ -665,7 +665,7 @@ MonoBehaviour:
   m_SFXAudioSources:
   - {fileID: 82162032362694052}
   m_MoveSFX: {fileID: 8300000, guid: e9d51a44de0a4054685a4550280143d4, type: 3}
-  m_MoveCinematicName: 
+  m_MoveCinematicName: WaspWalk
   m_DeathCinematicName: WaspDie
   m_AttackCinematicName: WaspAttack
   m_TimeDelayForAttackCam: 3

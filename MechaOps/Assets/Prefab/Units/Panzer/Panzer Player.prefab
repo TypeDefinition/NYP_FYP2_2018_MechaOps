@@ -1745,7 +1745,7 @@ MonoBehaviour:
   m_SFXAudioSources:
   - {fileID: 82364992539692268}
   m_MoveSFX: {fileID: 8300000, guid: e9ddd28816243ec43a6e61bdc4a41ebc, type: 3}
-  m_MoveCinematicName: 
+  m_MoveCinematicName: PanzerWalk
   m_DeathCinematicName: PanzerDie
   m_AttackCinematicName: PanzerAttack
   m_TimeDelayForAttackCam: 2.5

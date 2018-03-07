@@ -19,6 +19,8 @@ public class CineMachineHandler : MonoBehaviour {
     protected Vector3 m_OriginalCamPos;
     [SerializeField, Tooltip("Original rotation of the camera")]
     protected Quaternion m_OriginalCamRotation;
+    [SerializeField, Tooltip("Original field of view for camera")]
+    protected float m_OriginalCamFOV;
     [SerializeField, Tooltip("Active Cinematic Data")]
     protected CinematicData m_ActiveCinematicData;
     [SerializeField, Tooltip("Game Event Names related")]
@@ -105,15 +107,28 @@ public class CineMachineHandler : MonoBehaviour {
                     // if set active, then need to contain the original position and rotation of the camera
                     m_OriginalCamPos = Camera.main.transform.position;
                     m_OriginalCamRotation = Camera.main.transform.localRotation;
+                    m_OriginalCamFOV = Camera.main.fieldOfView;
                     break;
                 default:
                     Transform cameraTransform = Camera.main.transform;
                     // set the camera back to normal. it appears that user prefers it to be left off where the cinematic camera at the XZ axis!
                     cameraTransform.position = new Vector3(cameraTransform.position.x, m_OriginalCamPos.y, cameraTransform.position.z);
                     cameraTransform.localRotation = Quaternion.Euler(m_OriginalCamRotation.eulerAngles.x, m_OriginalCamRotation.eulerAngles.y, m_OriginalCamRotation.eulerAngles.z);
+                    StartCoroutine(DelayedUpdateOfCameraAction());
                     break;
             }
         }
+    }
+
+    /// <summary>
+    /// Needed to deal with the error that happens at other scripts for using the camera FOV
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator DelayedUpdateOfCameraAction()
+    {
+        yield return new WaitForEndOfFrame();
+        Camera.main.fieldOfView = m_OriginalCamFOV;
+        yield break;
     }
 
     protected void SetUserTransform(Transform _userFollow, Transform _userLookAt)
@@ -142,8 +157,10 @@ public class CineMachineHandler : MonoBehaviour {
             m_ActiveCinematicData.gameObject.SetActive(false);
             m_ActiveCinematicData = null;
         }
+#if UNITY_ASSERTIONS
         Assert.IsNull(m_ActiveCinematicData, "m_ActiveCinematicData is still not null at SetCinematic. wtf?");
         Assert.IsNotNull(m_NameCineDataDict, "m_NameCineDataDict is null at SetCinematic.........is this voodoo?");
+#endif
         List<CinematicData> ListOfCineData = null;
         // Because the codes inside assert will not be executed thus this!
 #if UNITY_ASSERTIONS

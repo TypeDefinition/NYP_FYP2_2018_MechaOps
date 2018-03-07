@@ -149,6 +149,12 @@ public class MOAnimator_Spider : MOAnimator
     public override void StartDeathAnimation(Void_Void _completionCallback)
     {
         base.StartDeathAnimation(_completionCallback);
+        // plays the death cinematic camera if it is visible
+        if (m_ViewScript.IsVisibleToPlayer())
+        {
+            GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), m_Hull.transform, m_Hull.transform);
+            GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_DeathCinematicName, m_TimeDelayForDeathCam);
+        }
     }
 
     // Move Animations
@@ -251,6 +257,12 @@ public class MOAnimator_Spider : MOAnimator
 
     protected override IEnumerator ShootAnimationCouroutine()
     {
+        if (m_ViewScript.IsVisibleToPlayer())
+        {
+            GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), m_Turret, m_Gun);
+            GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_AttackCinematicName, m_TimeDelayForAttackCam);
+        }
+
         // Rotate our turret to face our target.
         while (true)
         {
@@ -336,6 +348,30 @@ public class MOAnimator_Spider : MOAnimator
     {
         base.StopShootAnimation();
         ClearBullets();
+    }
+
+    /// <summary>
+    /// So that there will be walking cinematic animation
+    /// </summary>
+    /// <param name="_movementPath"></param>
+    /// <param name="_reachedTileCallback"></param>
+    /// <param name="_completionCallback"></param>
+    public override void StartMoveAnimation(TileId[] _movementPath, Void_Int _reachedTileCallback, Void_Void _completionCallback)
+    {
+        // Need to make sure the unit is visible and it belongs to the player!
+        FactionType playerFaction = GameSystemsDirectory.GetSceneInstance().GetGameFlowManager().PlayerFaction;
+        if (m_ViewScript.IsVisibleToPlayer() && m_UnitStats.UnitFaction == playerFaction)
+        {
+            GameEventSystem.GetInstance().TriggerEvent<Transform, Transform>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.SetCineUserTransform), m_Hull, m_Hull);
+            GameEventSystem.GetInstance().TriggerEvent<string, float>(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StartCinematic), m_MoveCinematicName, -1);
+            _completionCallback += MoveCinematicComplete;
+        }
+        base.StartMoveAnimation(_movementPath, _reachedTileCallback, _completionCallback);
+    }
+
+    protected override void MoveCinematicComplete()
+    {
+        GameEventSystem.GetInstance().TriggerEvent(m_GameSystemsDirectory.GetGameEventNames().GetEventName(GameEventNames.GameplayNames.StopCinematic));
     }
 
 #if UNITY_EDITOR

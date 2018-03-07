@@ -1400,7 +1400,7 @@ MonoBehaviour:
   m_SFXAudioSources:
   - {fileID: 82834791891908384}
   m_MoveSFX: {fileID: 8300000, guid: 4f21b045c63c10546a8e5182c11a12d8, type: 3}
-  m_MoveCinematicName: 
+  m_MoveCinematicName: SHSMWalk
   m_DeathCinematicName: SHSMDie
   m_AttackCinematicName: SHSMAttack
   m_TimeDelayForAttackCam: 3

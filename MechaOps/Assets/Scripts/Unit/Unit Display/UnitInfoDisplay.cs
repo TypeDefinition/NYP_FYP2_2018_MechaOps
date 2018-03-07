@@ -60,7 +60,7 @@ public class UnitInfoDisplay : TweenUI_Scale
     /// <summary>
     /// as unit always update it's position at Update(). this comes afterwards
     /// </summary>
-    protected virtual void LateUpdate()
+    protected virtual void Update()
     {
         if (m_UnitStats != null)
         {
@@ -88,6 +88,32 @@ public class UnitInfoDisplay : TweenUI_Scale
                     }
                 }
             }
+
+            #region Check Whether can see it!
+            // TODO: I believe that this part can be improved further by taking into account of the camera field of view angle then we set the Display to be inactive!
+            Vector3 directionFromCamToUnitInfoPos = m_UnitStats.gameObject.transform.position - gameCamera.transform.position;
+            directionFromCamToUnitInfoPos.Normalize();
+            float DotProductResult = Vector3.Dot(gameCamera.transform.forward, directionFromCamToUnitInfoPos);
+            // if it is out of the camera range (more like whether is it more than 90 degrees!), the do not render the images!
+            if (DotProductResult < 0)
+            {
+                SetInfoDisplayRender(false);
+            }
+            else
+            {
+                SetInfoDisplayRender(true);
+            }
+            #endregion
         }
+    }
+
+    void SetInfoDisplayRender(bool _renderActive)
+    {
+        if (m_SpottedIndicator && m_SpottedIndicator.enabled != _renderActive)
+        {
+            m_SpottedIndicator.enabled = _renderActive;
+        }
+        m_HealthBar.gameObject.SetActive(_renderActive);
+        m_ActionPointsCounter.gameObject.SetActive(_renderActive);
     }
 }

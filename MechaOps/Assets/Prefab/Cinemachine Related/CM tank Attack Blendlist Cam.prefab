@@ -218,7 +218,7 @@ MonoBehaviour:
     m_Hold: 0
     m_Blend:
       m_Style: 1
-      m_Time: 1.25
+      m_Time: 0.75
 --- !u!114 &114215903397608556
 MonoBehaviour:
   m_ObjectHideFlags: 1

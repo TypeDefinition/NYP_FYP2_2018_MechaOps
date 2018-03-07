@@ -48,7 +48,7 @@ public class CinematicControl : MonoBehaviour {
                 m_CinematicCam.LookAt = m_CinematicData.TargetLookAt;
                 break;
             case ControlOfCineCamera.TrackUser:
-                m_CinematicCam.LookAt = m_CinematicData.TargetFollow;
+                m_CinematicCam.LookAt = m_CinematicData.UserLookAt;
                 break;
             default:
                 Assert.IsTrue(true == false, "Something is wrong at cinematic control setcontrol");
