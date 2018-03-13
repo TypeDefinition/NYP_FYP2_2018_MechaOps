@@ -51,7 +51,7 @@ public class CinematicControl : MonoBehaviour {
                 m_CinematicCam.LookAt = m_CinematicData.UserLookAt;
                 break;
             default:
-                Assert.IsTrue(true == false, "Something is wrong at cinematic control setcontrol");
+                Assert.IsTrue(true == false, "Something is wrong at cinematic control set control");
                 break;
         }
     }

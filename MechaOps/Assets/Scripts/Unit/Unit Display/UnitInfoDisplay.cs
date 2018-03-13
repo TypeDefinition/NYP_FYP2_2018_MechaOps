@@ -23,6 +23,7 @@ public class UnitInfoDisplay : TweenUI_Scale
 
     protected UnitStats m_UnitStats = null;
     protected AudioSource m_SFXAudioSource = null;
+    protected GameEventNames m_EventNames;
 
     public HealthBar GetHealthBar() { return m_HealthBar; }
     public ActionPointsCounter GetActionPointsCounter() { return m_ActionPointsCounter; }
@@ -31,6 +32,9 @@ public class UnitInfoDisplay : TweenUI_Scale
     {
         m_UnitStats = _unitStats;
         StatsChangeCallback(m_UnitStats);
+        // need to subscribe to various events
+        m_EventNames = m_UnitStats.GetGameSystemsDirectory().GetGameEventNames();
+        InitEvents();
     }
     public UnitStats GetUnitStats() { return m_UnitStats; }
 
@@ -57,10 +61,34 @@ public class UnitInfoDisplay : TweenUI_Scale
         Assert.IsNotNull(m_SFXAudioSource);
     }
 
+    protected void InitEvents()
+    {
+        if (m_EventNames)
+        {
+            GameEventSystem.GetInstance().SubscribeToEvent(m_EventNames.GetEventName(GameEventNames.GameplayNames.BeginCinemtic), SetDisplayRenderFalse);
+            GameEventSystem.GetInstance().SubscribeToEvent(m_EventNames.GetEventName(GameEventNames.GameplayNames.EndCinematic), SetDisplayRenderTrue);
+        }
+    }
+
+    public override void OnEnable()
+    {
+        base.OnEnable();
+        InitEvents();
+    }
+
+    protected void OnDisable()
+    {
+        if (m_EventNames)
+        {
+            GameEventSystem.GetInstance().UnsubscribeFromEvent(m_EventNames.GetEventName(GameEventNames.GameplayNames.BeginCinemtic), SetDisplayRenderFalse);
+            GameEventSystem.GetInstance().UnsubscribeFromEvent(m_EventNames.GetEventName(GameEventNames.GameplayNames.EndCinematic), SetDisplayRenderTrue);
+        }
+    }
+
     /// <summary>
     /// as unit always update it's position at Update(). this comes afterwards
     /// </summary>
-    protected virtual void Update()
+    protected virtual void LateUpdate()
     {
         if (m_UnitStats != null)
         {
@@ -91,23 +119,33 @@ public class UnitInfoDisplay : TweenUI_Scale
 
             #region Check Whether can see it!
             // TODO: I believe that this part can be improved further by taking into account of the camera field of view angle then we set the Display to be inactive!
-            Vector3 directionFromCamToUnitInfoPos = m_UnitStats.gameObject.transform.position - gameCamera.transform.position;
-            directionFromCamToUnitInfoPos.Normalize();
-            float DotProductResult = Vector3.Dot(gameCamera.transform.forward, directionFromCamToUnitInfoPos);
-            // if it is out of the camera range (more like whether is it more than 90 degrees!), the do not render the images!
-            if (DotProductResult < 0)
-            {
-                SetInfoDisplayRender(false);
-            }
-            else
-            {
-                SetInfoDisplayRender(true);
-            }
+            //Vector3 directionFromCamToUnitInfoPos = m_UnitStats.gameObject.transform.position - gameCamera.transform.position;
+            //directionFromCamToUnitInfoPos.Normalize();
+            //float DotProductResult = Vector3.Dot(gameCamera.transform.forward, directionFromCamToUnitInfoPos);
+            //// if it is out of the camera range (more like whether is it more than 90 degrees!), the do not render the images!
+            //if (DotProductResult < 0)
+            //{
+            //    SetInfoDisplayRender(false);
+            //}
+            //else
+            //{
+            //    SetInfoDisplayRender(true);
+            //}
             #endregion
         }
     }
 
-    void SetInfoDisplayRender(bool _renderActive)
+    protected void SetDisplayRenderTrue()
+    {
+        SetInfoDisplayRender(true);
+    }
+
+    protected void SetDisplayRenderFalse()
+    {
+        SetInfoDisplayRender(false);
+    }
+
+    protected void SetInfoDisplayRender(bool _renderActive)
     {
         if (m_SpottedIndicator && m_SpottedIndicator.enabled != _renderActive)
         {

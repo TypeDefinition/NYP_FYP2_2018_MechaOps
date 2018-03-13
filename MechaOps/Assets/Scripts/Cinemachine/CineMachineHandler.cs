@@ -108,6 +108,7 @@ public class CineMachineHandler : MonoBehaviour {
                     m_OriginalCamPos = Camera.main.transform.position;
                     m_OriginalCamRotation = Camera.main.transform.localRotation;
                     m_OriginalCamFOV = Camera.main.fieldOfView;
+                    GameEventSystem.GetInstance().TriggerEvent(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.BeginCinemtic));
                     break;
                 default:
                     Transform cameraTransform = Camera.main.transform;
@@ -115,6 +116,7 @@ public class CineMachineHandler : MonoBehaviour {
                     cameraTransform.position = new Vector3(cameraTransform.position.x, m_OriginalCamPos.y, cameraTransform.position.z);
                     cameraTransform.localRotation = Quaternion.Euler(m_OriginalCamRotation.eulerAngles.x, m_OriginalCamRotation.eulerAngles.y, m_OriginalCamRotation.eulerAngles.z);
                     StartCoroutine(DelayedUpdateOfCameraAction());
+                    GameEventSystem.GetInstance().TriggerEvent(m_GameEventNames.GetEventName(GameEventNames.GameplayNames.EndCinematic));
                     break;
             }
         }

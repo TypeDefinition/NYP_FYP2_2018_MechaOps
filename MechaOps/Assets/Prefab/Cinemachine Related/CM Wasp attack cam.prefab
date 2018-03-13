@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4037655617584542}
   - component: {fileID: 114956595090856720}
   - component: {fileID: 114615853854767752}
+  - component: {fileID: 114434177271061196}
   m_Layer: 0
   m_Name: CM Wasp attack cam
   m_TagString: Untagged
@@ -52,8 +53,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1503961472590706}
-  m_LocalRotation: {x: -0.32015792, y: 0.017039426, z: -0.005759472, w: -0.94719344}
-  m_LocalPosition: {x: 9.000507, y: 2.8891706, z: -4.254708}
+  m_LocalRotation: {x: -0.16973542, y: -0.0068962835, z: 0.0011877575, w: -0.9854649}
+  m_LocalPosition: {x: 9.000507, y: 2.0691705, z: -4.2447076}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4854448498263504}
@@ -85,13 +86,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 2.25, z: -1.67}
+  m_FollowOffset: {x: 0, y: 1.43, z: -1.66}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
   m_PitchDamping: 0
   m_YawDamping: 0
   m_RollDamping: 0
+--- !u!114 &114434177271061196
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1503961472590706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b30ae0d05d37fc4ab43c1a57e1d967d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CinematicCam: {fileID: 114956595090856720}
+  m_FollowTransformControl: 0
+  m_LookAtTransformControl: 0
+  m_CinematicData: {fileID: 114615853854767752}
 --- !u!114 &114499699563254078
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -114,13 +130,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
+  m_TrackedObjectOffset: {x: 0, y: 0.73, z: 0}
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 10
   m_HorizontalDamping: 0.2
   m_VerticalDamping: 0.5
-  m_ScreenX: 0.52781576
-  m_ScreenY: 0.8956044
+  m_ScreenX: 0.4891822
+  m_ScreenY: 0.57967025
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_SoftZoneWidth: 0.8
@@ -140,7 +156,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NameID: WaspAttack
   m_CinematicCamera: {fileID: 114956595090856720}
-  m_ArrayOfUsableCinematic: []
+  m_ArrayOfUsableCinematic:
+  - {fileID: 114434177271061196}
   m_UserFollow: {fileID: 0}
   m_UserLookAt: {fileID: 0}
   m_TargetFollow: {fileID: 0}

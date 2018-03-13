@@ -40,13 +40,14 @@ GameObject:
   - component: {fileID: 114400996560095302}
   - component: {fileID: 114066538880902640}
   - component: {fileID: 114428017257335222}
+  - component: {fileID: 114828771964768968}
   m_Layer: 0
   m_Name: CM Wasp death cam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4448646209422126
 Transform:
   m_ObjectHideFlags: 1
@@ -87,7 +88,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NameID: WaspDie
   m_CinematicCamera: {fileID: 114400996560095302}
-  m_ArrayOfUsableCinematic: []
+  m_ArrayOfUsableCinematic:
+  - {fileID: 114828771964768968}
   m_UserFollow: {fileID: 0}
   m_UserLookAt: {fileID: 0}
   m_TargetFollow: {fileID: 0}
@@ -194,3 +196,18 @@ MonoBehaviour:
   m_SoftZoneHeight: 0.8
   m_BiasX: -0.17400004
   m_BiasY: 0
+--- !u!114 &114828771964768968
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1378135201426130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b30ae0d05d37fc4ab43c1a57e1d967d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CinematicCam: {fileID: 114400996560095302}
+  m_FollowTransformControl: 0
+  m_LookAtTransformControl: 0
+  m_CinematicData: {fileID: 114066538880902640}

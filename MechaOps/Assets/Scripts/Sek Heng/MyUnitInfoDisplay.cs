@@ -41,7 +41,7 @@ public class MyUnitInfoDisplay : UnitInfoDisplay
     /// <summary>
     /// as unit always update it's position at Update(). this comes afterwards
     /// </summary>
-    protected override void Update()
+    protected override void LateUpdate()
     {
         // set the position offset
         transform.position = m_UnitStats.transform.position + m_UnitWorldPositionOffset;
